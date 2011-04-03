@@ -1,7 +1,6 @@
 <?php
 class Config 
 {
-
 var $param_const;
 var $path_to;
 var $access_level;
