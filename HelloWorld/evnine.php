@@ -1,4 +1,5 @@
 <?php
+
 //error_reporting(E_ERROR|E_RECOVERABLE_ERROR|E_PARSE|E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR);
 error_reporting(0);
 /**
