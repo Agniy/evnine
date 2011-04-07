@@ -29,7 +29,6 @@ evnine - AJAX PHP - JQuery DSL controller for CMS (Joomla, Bitrix, etc). [Easy d
 Особенности:
 	[JQuery] Поддержка метода обработки URL twitter.com#!sub_request=
 	Кросc-браузерная работа AJAX  методов с отключённым JavaScript.
-	google.com – yandex.ru – AJAX совместимые ссылки.
 	Поддержка ЧПУ в AJAX запросах которые поддерживает yandex, google  (Перехватываем клик и обработываем через JavaScript).
 	Авто генерация путей методов с передачей параметров исходя из данных для влидации.
 	Имена в массиве ответа контроллера соответствуют путям к исходникам.
