@@ -4,6 +4,7 @@ class Config
 
 	var $param_const;
 	var $path_to;
+	var $api;
 	var $access_level;
 	var $class_path;
 	var $controller_menu_view;
