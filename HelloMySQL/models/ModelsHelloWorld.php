@@ -24,5 +24,9 @@ class ModelsHelloWorld
 		$array['query_error']=$this->api->getQuery('fasdfas');
 		return $array;
 	}
+
+	function setResetForTest($param){//Reset any data
+		echo 'setResetForTest<br />';
+	}
 }
 ?>

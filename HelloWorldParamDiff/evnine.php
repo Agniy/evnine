@@ -1166,8 +1166,10 @@ function getDataFromMethod($methods_class,$methods_array){
 				return false;
 			}
 			//DEBUG TODO DELETE
-			if ($this->param["PHPUnitTestStopReset"]==true)
-				$this->loaded_class[$methods_class]->setResetForTest();//Сбрасываем для теста таблицу
+			if ($this->param["setResetForTest"]==true){
+				$this->loaded_class[$methods_class]->setResetForTest($this->param);//Сбрасываем для теста таблицу
+				$this->result[$methods_class.'_'.$methods_array_value.'_'.'setResetForTest']=true;
+			}
 			
 			//$this->param['info']= '';
 			
