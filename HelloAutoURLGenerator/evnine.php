@@ -1,5 +1,6 @@
 <?php
 //error_reporting(E_ERROR|E_RECOVERABLE_ERROR|E_PARSE|E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR);
+//error_reporting(0);
 /**
  * Базовый контроллер 
  *
@@ -16,7 +17,7 @@ class Controller extends Config
 
 	/** Cвязь с базой данных
 	 */
-	var $database;
+	var $api;
 
 	/** Список шаблонов с функциями в этих шаблонах
 	 */
@@ -39,26 +40,14 @@ class Controller extends Config
 	 */
 function __construct(){//$init_param
 	$this->sef_mode=false;
+	$this->param=array();
 	parent::__construct();
 	//Инициализировать базу данных
-	//if (!isset($this->database))
-	$this->setInitDB();
-}
-
-
-/** setInitDB 
- * setInitDB 
- * 
- * @assert ($param) == $this->object->getDataForTest('setInitDB',$param='')
- * @access private
- * @return void
- */
-function setInitDB(){
-	$class_dir=$this->path_to.$this->class_path['ModelsDatabase']['path'].DIRECTORY_SEPARATOR.'ModelsDatabase'.'.php';
-	if (file_exists($class_dir)){//Если существует файл
-		require_once($class_dir);
-		$this->database = new ModelsDatabase();
+	if (!empty($this->api)){
+		if ($this->isSetClassToLoadAndSetParam($this->api)){
+			$this->loaded_class[$this->api]->setInitAPI($this->param);
 		}
+	}
 }
 
 /** Получить классы инициализации
@@ -1087,20 +1076,10 @@ function getMethodFromClass($methods_class,$methods_array) {
 	//Создаём путь до класса
 	//&&!empty($methods_class)
 		if (empty($this->loaded_class[$methods_class])&&!empty($methods_class)){
-			$class_dir=$this->path_to.$this->class_path[$methods_class]['path'].DIRECTORY_SEPARATOR.$methods_class.'.php';
-			if (file_exists($class_dir)){//Если существует файл
-			//Подключить класс
-				include_once($class_dir);
-//				echo '#$methods_class: <pre>'; print_r($methods_class); echo "</pre><br />\r\n";
-//				echo '#$this->class_path[$methods_class]["param"]: <pre>'; print_r($this->class_path[$methods_class]["param"]); echo "</pre><br />\r\n";
-				if (count($this->class_path[$methods_class]['param'])>0){
-					//echo '#$this->class_path[$methods_class]["path"]: <pre>'; print_r($this->class_path[$methods_class]["param"]); echo "</pre><br />\r\n";
-					$this->param=array_merge($this->param,$this->class_path[$methods_class]['param']);
-				}
-//				echo '#$this->param: <pre>'; print_r($this->param); echo "</pre><br />\r\n";
-				$this->loaded_class[$methods_class] = new $methods_class($this->database);//Создём экземпляр
+			if ($this->isSetClassToLoadAndSetParam($methods_class)){
 				$this->getDataFromMethod($methods_class,$methods_array);
 			}
+			
 		}elseif(!empty($this->loaded_class[$methods_class])) {
 			$this->getDataFromMethod($methods_class,$methods_array);
 		}
@@ -1117,6 +1096,29 @@ function getMethodFromClass($methods_class,$methods_array) {
 		$this->getDataFromMethod($methods_class,$methods_array);
 	}
  */
+}
+
+/**
+ * setClassToLoad 
+ * 
+ * @param mixed $class 
+ * @access public
+ * @return void
+ */
+function isSetClassToLoadAndSetParam($methods_class){
+	$class_dir=$this->path_to.$this->class_path[$methods_class]['path'].DIRECTORY_SEPARATOR.$methods_class.'.php';
+		if (file_exists($class_dir)){//Если существует файл
+		//Подключить класс
+			include_once($class_dir);
+			if (count($this->class_path[$methods_class]['param'])>0){
+				//echo '#$this->class_path[$methods_class]["path"]: <pre>'; print_r($this->class_path[$methods_class]["param"]); echo "</pre><br />\r\n";
+				$this->param=array_merge($this->param,$this->class_path[$methods_class]['param']);
+			}
+			$this->loaded_class[$methods_class] = new $methods_class($this->loaded_class[$this->api]);//Создём экземпляр
+			return true;
+		}else {
+			return false;
+		}
 }
 
 /** Получить данные из метода класса 
