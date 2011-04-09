@@ -1,4 +1,4 @@
-evnine - AJAX PHP - JQuery DSL controller for CMS (Joomla, Bitrix, etc). [Easy debug]
+evnine - AJAX PHP - JQuery DSL controller for CMS API (Joomla, Bitrix, etc). [Easy debug]
 	Three things in programming for the changes in life:
 		1.	Visual easy understand the complex structure of the controller code 
 					-no more if, switch, while, etc
@@ -6,14 +6,14 @@ evnine - AJAX PHP - JQuery DSL controller for CMS (Joomla, Bitrix, etc). [Easy d
 					+Is passed only one parameter for the method. (For UML to PHP generation)
 		2.	Easy debug 
 					+beautiful print_r
-					+“frozen” data in DB tables for debug.
+					+“frozen” data for debug and unit test (in DB, files, env, etc)
 					+auto generation of input parameters
 					+unit-test with automatic generation of tests and store to as serialized data.
 		3.	Inspection of the changes in only one parameter for the method.
 					+green – new 
 					+gray – in grave
 		
-	evnine – AJAX PHP – JQuery DSL Контроллер для ЦМС (Joomla, Битрикс итд). [С простой отладкой]
+	evnine – AJAX PHP – JQuery DSL Контроллер для работы с API ЦМС (Joomla, Битрикс итд). [С простой отладкой]
 	Структура контроллера “дерево” для простой кодогенерации.
 	1.	+Визуальное быстрое понимания сути происходящих в контроллере
 				-ни каких циклов, переключателей итд
@@ -21,7 +21,7 @@ evnine - AJAX PHP - JQuery DSL controller for CMS (Joomla, Bitrix, etc). [Easy d
 				+между базовыми методами только один параметру  (Для удобной генераций кода из UML модели) 
 	2.	Легкая отладка
 				+удобный вывод переменных.
-				+данные в таблицах которые при запуске отладки возвращаются по умолчанию.
+				+данные в процессе отладки и тестирования можно заморозить (Таблицы, Файлы, окружение, итд)
 				+авто генерация входных параметров 
 				+Юнит-тесты создаются сами и хранятся как стерилизованные объекты.
 	3.	+Визуальное отображения изменений в параметрах переданных от метода к методу.
