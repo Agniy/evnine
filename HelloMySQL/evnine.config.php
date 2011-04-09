@@ -28,7 +28,7 @@ class Config
 					'host'=>'localhost',
 					'login' => 'root',
 					'pass' => 'root',
-					'db' => 'evnine'
+					'db' => 'information_schema'
 				),
 			),
 			'ModelsHelloWorld'=>array(
