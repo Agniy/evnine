@@ -1,5 +1,5 @@
 <?php
-//error_reporting(E_ERROR|E_RECOVERABLE_ERROR|E_PARSE|E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR);
+error_reporting(E_ERROR|E_RECOVERABLE_ERROR|E_PARSE|E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR);
 //error_reporting(0);
 /**
  * Базовый контроллер 
@@ -68,7 +68,7 @@ function setInitController($init_array) {
 
 /** getControllerForParam - Получить данные из контроллера
  * 
- * @assert ($param) == $this->object->getDataForTest('getControllerForParam',$param = array('template' =>''))
+ * @assert ($param) == $this->object->getDataForTest('getControllerForParam',$param = array('controller' =>''))
  * @access public
  * @param template
  * @return array
@@ -103,9 +103,9 @@ function getControllerForParam($param,$debug=false) {
 		){
 			unset($param['form_data']['submit']);
 			//Получаем значения шаблона и метода
-			if (!empty($param['form_data'][$first_key]['t'])){
-				$param['controller']=$param['form_data'][$first_key]['t'];
-				unset($param['form_data'][$first_key]['t']);
+			if (!empty($param['form_data'][$first_key]['c'])){
+				$param['controller']=$param['form_data'][$first_key]['c'];
+				unset($param['form_data'][$first_key]['c']);
 			}
 			if (!empty($param['form_data'][$first_key]['m'])){
 				$param['method']=$param['form_data'][$first_key]['m'];
@@ -166,7 +166,7 @@ function getControllerForParam($param,$debug=false) {
  * И когда параметры явно не указаны /62-User.html 
  *		'Метод' => array(	
  *			'inURLSEF' => array(
- *						template/method'1' => 'Профиль','.' => '.html',
+ *						controller/method'1' => 'Профиль','.' => '.html',
  *			)
  *		)
  * 
@@ -263,14 +263,14 @@ function getSEFUrl($sef){
  *		
  *	Случай когда хотим указать внешний котроллер и ссылку на метод во внешнем котроллере
  *		'Метод' => array(	
- *			'template' => '', Является обязательным для генерации ссылки
+ *			'controller' => '', Является обязательным для генерации ссылки
  *			'method' => '',
  *		)
  *		
  *	ЧПУ для метода, формата контроллер\метод\юзер-событие-дата.html
  *		'Метод' => array(	
  *			'inURLSEF' => array(
- *						template/method'1' => 'Профиль','.' => '.html',
+ *						controller/method'1' => 'Профиль','.' => '.html',
  *			)
  *		)
  * @param mixed $validate 
@@ -306,13 +306,17 @@ function getURL($seo=false) {
 	$url_template= $this->getTemplateURL($this->param['controller'],$seo);
 	//Окончание для адреса
 	if ($seo){
-		$postfix='/index.html';
+		if (empty($this->param['sef_url'])){
+				$postfix='/index.html';
+			}else {
+				$postfix=$this->param['sef_url'];
+			}
 	}else {
 		$postfix='';
 	}
 	//Флаг для включения ЧПУ режима в методе
 	$seo_flag_save='';
-	if (!empty($this->current_controller['public_methods']['default']['inURLMethod'])&&$this->param['ajax']==false){
+	if (!empty($this->current_controller['public_methods']['default']['inURLMethod'])/*&&$this->param['ajax']==false*/){
 		$url_method = $this->current_controller['public_methods']['default']['inURLMethod'];
 		if(!empty($this->current_controller['public_methods'][$this->param['method']]['inURLMethod_add'])){
 			//Обединить с методом по умолчанию и методом для добовления
@@ -424,7 +428,7 @@ function getURL($seo=false) {
 			
 			if(!empty($this->current_controller['public_methods'][$method]['controller'])) {
 					$this->result['inURL'][$method]['inputs']=
-					$this->getInputFormText('t',$this->current_controller['public_methods'][$method]['controller'],$seo)
+					$this->getInputFormText('c',$this->current_controller['public_methods'][$method]['controller'],$seo)
 					.$this->getInputFormText('m',$this->current_controller['public_methods'][$method]['method'])
 					.$this->result['inURL'][$method]['inputs'];
 				//Создаём урл из данных в контроллере для другова шаблона и метода
@@ -434,7 +438,7 @@ function getURL($seo=false) {
 				$this->result['inURL'][$method]['post']=$postfix;
 			}else {
 				$this->result['inURL'][$method]['inputs']=
-					$this->getInputFormText('t',$this->param['controller'])
+					$this->getInputFormText('c',$this->param['controller'])
 					.$this->getInputFormText('m',$method)
 					.$this->result['inURL'][$method]['inputs'];
 				$this->result['inURL'][$method]['pre']=
@@ -454,19 +458,20 @@ function getURL($seo=false) {
 			$this->result['inURL'][$method]=
 				$this->getInputsFromArray($this->current_controller['public_methods'][$method]['validation_multi_form'],$method);
 			$this->result['inURL'][$method]['submit']='submit['.$method.']';		
-				if(!empty($this->current_controller['public_methods'][$method]['controller'])) { 
+			//echo '#$this->current_controller["public_methods"][$method]: <pre>'; print_r($this->current_controller["public_methods"][$method]); echo "</pre><br />\r\n";
+				if(!empty($this->current_controller['public_methods'][$method]['inURLController'])) { 
 					$this->result['inURL'][$method]['inputs']=
 						//'<textarea rows=""4 cols="60">'
-						$this->getInputFormText('t',$this->current_controller['public_methods'][$method]['controller'],$method)
+						$this->getInputFormText('c',$this->current_controller['public_methods'][$method]['inURLController'],$method)
 						.$this->getInputFormText('m',$this->current_controller['public_methods'][$method]['method'],$method)
 						.$this->result['inURL'][$method]['inputs']
 						//.'</textarea>';
 						;
 					//Создаём урл из данных в контроллере для другова шаблона и метода
 					$this->result['inURL'][$method]['pre']=
-						$this->getTemplateURL($this->current_controller['public_methods'][$method]['controller'],$seo)
+						$this->getTemplateURL($this->current_controller['public_methods'][$method]['inURLController'],$seo)
 						.$this->getMethodURL($this->current_controller['public_methods'][$method]['method'],$seo);
-						//$this->getInputFormText('t',$this->current_controller['public_methods'][$method]['controller'],$method);
+						//$this->getInputFormText('c',$this->current_controller['public_methods'][$method]['inURLController'],$method);
 					$this->result['inURL'][$method]['post']=$postfix;		
 				}else {
 					$this->result['inURL'][$method]['inputs']=
@@ -486,11 +491,11 @@ function getURL($seo=false) {
 			//по умолчанию ставим урл из метода default
 		}else {//if not exist validation and validation_add 
 			//echo $method.' - if not exist validation and validation_add <br />';
-			if(!empty($this->current_controller['public_methods'][$method]['controller'])) {
+			if(!empty($this->current_controller['public_methods'][$method]['inURLController'])) {
 				//$this->result['inURL'][$method]=$this->getURLFromArray($this->current_controller['public_methods'][$method]['validation'],$seo);
 				//Создаём урл из данных в контроллере для другова шаблона и метода
 				$this->result['inURL'][$method]['pre']=
-					$this->getTemplateURL($this->current_controller['public_methods'][$method]['controller'],$seo)
+					$this->getTemplateURL($this->current_controller['public_methods'][$method]['inURLController'],$seo)
 					.$this->getMethodURL($this->current_controller['public_methods'][$method]['method'],$seo);
 				$this->result['inURL'][$method]['post']=$postfix;
 			}else {
@@ -575,7 +580,7 @@ function getTemplateURL($tmpl,$seo) {
 	//}elseif($seo&&$seo!==true)/*if SEF*/ {//Если указано формирование ЧПУ
 		$url_template='/'.$tmpl;
 	}else {
-		$url_template='?t='.$tmpl;
+		$url_template='?c='.$tmpl;
 		if ($this->sef_mode){
 			$url_template='/index.php'.$url_template;
 		}
@@ -807,7 +812,7 @@ function setLoadController($template) {
 
 /** Получить данные из контроллера
  * 
- * @assert ($param) == $this->object->getDataForTest('getDataFromController',$param = array('template' =>''))
+ * @assert ($param) == $this->object->getDataForTest('getDataFromController',$param = array('controller' =>''))
  * @access public
  * @param template
  * @return array
@@ -1167,8 +1172,12 @@ function getDataFromMethod($methods_class,$methods_array){
 			}
 			//DEBUG TODO DELETE
 			if ($this->param["setResetForTest"]==true){
+				if ((method_exists($this->loaded_class[$methods_class],'setResetForTest'))){
 				$this->loaded_class[$methods_class]->setResetForTest($this->param);//Сбрасываем для теста таблицу
 				$this->result[$methods_class.'_'.$methods_array_value.'_'.'setResetForTest']=true;
+				}else {
+					$this->result['ControllerError'][]= 'NOT Exist: '.$methods_class.'_'.'setResetForTest';
+				}
 			}
 			
 			//$this->param['info']= '';
@@ -1406,7 +1415,7 @@ function isGetMethodForAnswer($method,$methods_case) {
 /** Запустить публичное действие в шаблоне
  * Запустить публичное действие в шаблоне
  * 
- * @assert ($param) == $this->object->getDataForTest('getPublicMethod',$param=array('template' =>'profile_public'))
+ * @assert ($param) == $this->object->getDataForTest('getPublicMethod',$param=array('controller' =>'profile_public'))
  * @param mixed $param 
  * @access public
  * @return void
