@@ -12,6 +12,7 @@ var $echo_on;
 var $comment;
 var $tpl= 'Twig';
 var $name= 'tpl';
+var $cfg;
 
 function __construct($config) 
 {
@@ -39,6 +40,9 @@ function __construct($config)
 }
 
 function getArrayToTemplate ($array,$shift=0,$template='Twig') {
+	include_once('evnine.views.generator.template.config.php');
+	$template_method='getConfig'.$this->tpl;
+	$this->cfg = $cfg = TemplateConfig::$template_method();
 	return //'<hr/>'
 		''
 		.$this->getB(
@@ -95,7 +99,7 @@ function getParsingArrayForTemplate($array,$shift=0,$full_key,$this_key,$alias_k
 
 	//echo '#$array: <pre>'; print_r($array); echo "</pre><br />\r\n";
 	//die();
-		$dot = '.';
+		$dot = $this->cfg['tag_variable_join']['0'];
 		foreach ($array as $current_key => $value) {
 			if (!$shift){ 
 				$alias_key=$this_key=$full_key='';
@@ -149,18 +153,18 @@ function getParsingArrayForTemplate($array,$shift=0,$full_key,$this_key,$alias_k
 				if (count($value)==1) {
 					unset($array_out[$alias_key]);
 					if (is_array($value)){
-						$first_key.='.'.($tmp_key = $this->getFirstArrayKey($value));
+						$first_key.=$this->cfg['tag_variable_join']['0'].($tmp_key = $this->getFirstArrayKey($value));
 						$value= $value[$tmp_key];
 					}
-					$array_out[$full_key.'.'.$first_key]['full_key'] = $current_key;
-					$array_out[$full_key.'.'.$first_key]['str'] = $value;
-					$array_out[$full_key.'.'.$first_key]['array'] = false;
+					$array_out[$full_key.$this->cfg['tag_variable_join']['0'].$first_key]['full_key'] = $current_key;
+					$array_out[$full_key.$this->cfg['tag_variable_join']['0'].$first_key]['str'] = $value;
+					$array_out[$full_key.$this->cfg['tag_variable_join']['0'].$first_key]['array'] = false;
 					$in_sub_array_flag= false;
 				}
 			}else {
 				$tmp_key= 'key = $shift '.$shift.' $current_key: '.$current_key.' $full_key: '.$full_key.' $this_key '.$this_key.' $alias_key: '.$alias_key;
 				if ($in_sub_array_flag){
-					$tmp_key= $alias_key.'.'.$current_key;
+					$tmp_key= $alias_key.$this->cfg['tag_variable_join']['0'].$current_key;
 					$array_out[$tmp_key]['str']=$value;
 					$array_out[$tmp_key]['key']=$current_key;
 					$array_out[$tmp_key]['tab']=$shift;
@@ -223,10 +227,11 @@ function getParsingArrayForTemplate($array,$shift=0,$full_key,$this_key,$alias_k
 		if (!$shift){
 			//echo '#$array: <pre>'; print_r($array); echo "</pre><br />\r\n";
 		}
-		include_once('evnine.views.generator.template.config.php');
-		$template_method='getConfig'.$this->tpl;
-		$cfg = TemplateConfig::$template_method();
-		$dot= '.';
+		$cfg=$this->cfg;
+//		echo '#$this: <pre>'; print_r($this->cfg); echo "</pre><br />\r\n";
+///		echo $this->cfg['tag_variable_join']['0'];
+		$dot= $this->cfg['tag_variable_join']['0'];
+//		echo '...:'.$dot;
 		foreach ($array as $current_key => $value) {
 			if (is_array($value)){
 				if ($value['array']){
@@ -248,15 +253,36 @@ function getParsingArrayForTemplate($array,$shift=0,$full_key,$this_key,$alias_k
 	}
 	
 	
-		function getTemplateBlock($str,$tab,$full_key='',$dot,$current_key,$value,$cfg){
+		function getTemplateBlock($str,$tab,$full_key='',$dot,$current_key,$value,$cfg,$tab_int){
+			//echo '#$str: <pre>'; print_r($str); echo "</pre><br />\r\n";
+			//echo '#$tab: <pre>'; print_r($tab); echo "</pre><br />\r\n";
+			//echo '#$full_key: <pre>'; print_r($full_key); echo "</pre><br />\r\n";
+			//echo '#$value: <pre>'; print_r($value); echo "</pre><br />\r\n";
+			//echo '#$current_key: <pre>'; print_r($current_key); echo "</pre><br />\r\n";
+			$current_key = preg_replace("/&#?[a-z0-9]{2,8};|:/i","",($current_key));
 			return '' 
+				//.'$tab_int:'.$tab_int
+				//.'$tab_int|'.$this->getTabCount($tab)
+				//.'|'
+						//.'|'.$tab.'|'
 						.$tab
 						.$cfg['tag_block'][0]
 						.$this->getB($cfg['tag_block_for'][0])
 						.$cfg['tag_block_open_close'][0]
-						.$full_key
+						.(
+							$cfg['tag_block_for_place_tmp_var']==1
+							?
+								$full_key
+								:
+								($this->getTabCount($tab)==1
+									?$cfg['tag_variable_join'][0]
+									:$cfg['tag_variable'][2]
+								)
+							.$current_key
+							.$cfg['tag_variable_join'][1]
+						)
 						.$cfg['tag_block_for'][2]
-						.preg_replace("/&#?[a-z0-9]{2,8};|:/i","",($current_key))
+						.($cfg['tag_block_for_place_tmp_var']==1?$current_key:$full_key)
 						.$cfg['tag_block_open_close'][1]
 						.$cfg['tag_block'][1]
 						.$tab
@@ -289,7 +315,15 @@ function getParsingArrayForTemplate($array,$shift=0,$full_key,$this_key,$alias_k
 				)
 					.(!$this->if_echo?'':''
 						.$cfg['tag_variable'][0]
+						.($in_sub_array_flag==false
+							?
+							($cfg['tag_block_init_var']==true?$cfg['tag_variable_join'][0]:'')
+							:'')
+						.($in_sub_array_flag!=false?$cfg['tag_variable'][2]:'')
+						//.($in_sub_array_flag==true?$cfg['tag_variable'][5]:'')
 						.$full_key.$dot.preg_replace("/&#?[a-z0-9]{2,8};|:/i","",$current_key)
+						.$cfg['tag_variable_join'][1]
+						//.($in_sub_array_flag==false?$cfg['tag_variable_join'][1]:'')
 						.$cfg['tag_variable'][1]
 					)
 				.(!$this->if_on?'':''
@@ -304,6 +338,7 @@ function getParsingArrayForTemplate($array,$shift=0,$full_key,$this_key,$alias_k
 						.$this->getHTMLGray(''
 							.$cfg['tag_comment'][0]
 							.$full_key.$dot.preg_replace("/&#?[a-z0-9]{2,8};|:/i","",$current_key)
+							.$cfg['tag_variable_join'][1]
 							.' = '
 							.$cfg['tag_comment'][2].$value
 							.$cfg['tag_comment'][1]
@@ -318,8 +353,11 @@ function getParsingArrayForTemplate($array,$shift=0,$full_key,$this_key,$alias_k
 		}
 	
 	
-	
-			function getTab($shift) {
+		function getTabCount($shift) {
+			return ceil(strlen($shift)/6/3);
+		}
+		
+		function getTab($shift) {
 				$i=0;
 				$nbsp = '&nbsp;';
 				while($i <= $shift) {

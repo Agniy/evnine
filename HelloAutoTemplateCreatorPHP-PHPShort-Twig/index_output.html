@@ -64,7 +64,7 @@
 					{ cursor:pointer; }
 				
 				/* array */
-				table.dBug_array { background-color:#888888;}
+				table.dBug_array { background-color:#888888;position:relative;z-index:1000}
 				table.dBug_arrayNew { background-color:#888888;}
 				table.dBug_arrayOld { background-color:darkgray; }
 				table.dBug_array td { background-color:#FFFFFF; }
@@ -84,29 +84,29 @@
 
 				
 				/* object */
-				table.dBug_object { background-color:#0000CC; }
+				table.dBug_object { background-color:#0000CC;position:relative;z-index:1000 }
 				table.dBug_object td { background-color:#FFFFFF; }
 				table.dBug_object td.dBug_objectHeader { background-color:#4444CC; }
 				table.dBug_object td.dBug_objectKey { background-color:#CCDDFF; }
 				
 				/* resource */
-				table.dBug_resourceC { background-color:#884488; }
+				table.dBug_resourceC { background-color:#884488;position:relative;z-index:1000 }
 				table.dBug_resourceC td { background-color:#FFFFFF; }
 				table.dBug_resourceC td.dBug_resourceCHeader { background-color:#AA66AA; }
 				table.dBug_resourceC td.dBug_resourceCKey { background-color:#FFDDFF; }
 				
 				/* resource */
-				table.dBug_resource { background-color:#884488; }
+				table.dBug_resource { background-color:#884488;position:relative;z-index:1000 }
 				table.dBug_resource td { background-color:#FFFFFF; }
 				table.dBug_resource td.dBug_resourceHeader { background-color:#AA66AA; }
 				table.dBug_resource td.dBug_resourceKey { background-color:#FFDDFF; }
 				
 				/* xml */
-				table.dBug_xml { background-color:#888888; }
+				table.dBug_xml { background-color:#888888;position:relative;z-index:1000 }
 				table.dBug_xml td { background-color:#FFFFFF; }
 				table.dBug_xml td.dBug_xmlHeader { background-color:#AAAAAA; }
 				table.dBug_xml td.dBug_xmlKey { background-color:#DDDDDD; }
-			</style><table cellspacing=2 cellpadding=3 class="dBug_array"><tr><td class="dBug_arrayHeader" colspan=2 onClick='dBug_toggleTable(this)'>#$output, "array",false (Array)</td>
+			</style><table cellspacing=2 cellpadding=3 class="dBug_array"><tr><td class="dBug_arrayHeader" colspan=2 onClick='dBug_toggleTable(this)'>#$var (Array)</td>
 				</tr><tr>
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">LoadController</td>
 				<td  class="dBug_arrayKeyBody">helloworld</td></tr>
@@ -118,10 +118,148 @@
 				<td  class="dBug_arrayKeyBody">True</td></tr>
 <tr>
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">REQUEST_IN</td>
-				<td  class="dBug_arrayKeyBody">[empty]</td></tr>
+				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">0</td>
+				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">var</td>
+				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">0</td>
+				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">0</td>
+				<td  class="dBug_arrayKeyBody">1</td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">1</td>
+				<td  class="dBug_arrayKeyBody">2</td></tr>
+</table></td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">1</td>
+				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">0</td>
+				<td  class="dBug_arrayKeyBody">3</td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">1</td>
+				<td  class="dBug_arrayKeyBody">4</td></tr>
+</table></td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">2</td>
+				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">0</td>
+				<td  class="dBug_arrayKeyBody">5</td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">1</td>
+				<td  class="dBug_arrayKeyBody">6</td></tr>
+</table></td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">3</td>
+				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">0</td>
+				<td  class="dBug_arrayKeyBody">7</td></tr>
+</table></td></tr>
+</table></td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">0</td>
+				<td  class="dBug_arrayKeyBody">3</td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">1</td>
+				<td  class="dBug_arrayKeyBody">4</td></tr>
+</table></td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">1</td>
+				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">0</td>
+				<td  class="dBug_arrayKeyBody">3</td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">1</td>
+				<td  class="dBug_arrayKeyBody">4</td></tr>
+</table></td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">2</td>
+				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">0</td>
+				<td  class="dBug_arrayKeyBody">5</td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">1</td>
+				<td  class="dBug_arrayKeyBody">6</td></tr>
+</table></td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">3</td>
+				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">0</td>
+				<td  class="dBug_arrayKeyBody">7</td></tr>
+</table></td></tr>
+</table></td></tr>
 <tr>
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">REQUEST_OUT</td>
-				<td  class="dBug_arrayKeyBody">[empty]</td></tr>
+				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">0</td>
+				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">var</td>
+				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">0</td>
+				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">0</td>
+				<td  class="dBug_arrayKeyBody">1</td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">1</td>
+				<td  class="dBug_arrayKeyBody">2</td></tr>
+</table></td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">1</td>
+				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">0</td>
+				<td  class="dBug_arrayKeyBody">3</td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">1</td>
+				<td  class="dBug_arrayKeyBody">4</td></tr>
+</table></td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">2</td>
+				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">0</td>
+				<td  class="dBug_arrayKeyBody">5</td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">1</td>
+				<td  class="dBug_arrayKeyBody">6</td></tr>
+</table></td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">3</td>
+				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">0</td>
+				<td  class="dBug_arrayKeyBody">7</td></tr>
+</table></td></tr>
+</table></td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">0</td>
+				<td  class="dBug_arrayKeyBody">3</td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">1</td>
+				<td  class="dBug_arrayKeyBody">4</td></tr>
+</table></td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">1</td>
+				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">0</td>
+				<td  class="dBug_arrayKeyBody">3</td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">1</td>
+				<td  class="dBug_arrayKeyBody">4</td></tr>
+</table></td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">2</td>
+				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">0</td>
+				<td  class="dBug_arrayKeyBody">5</td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">1</td>
+				<td  class="dBug_arrayKeyBody">6</td></tr>
+</table></td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">3</td>
+				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">0</td>
+				<td  class="dBug_arrayKeyBody">7</td></tr>
+</table></td></tr>
+</table></td></tr>
 <tr>
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">inURL</td>
 				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
@@ -137,4 +275,4 @@
 				<td  class="dBug_arrayKeyBody">[empty]</td></tr>
 </table></td></tr>
 </table></td></tr>
-</table><b>evnine.views.generator.template.php: [ ECHO for  twig ]</b><br />&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="24" value="{{ LoadController }}"/><font color="lightgray">{# LoadController =  helloworld #}</font><br />&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="19" value="{{ LoadMethod }}"/><font color="lightgray">{# LoadMethod =  default #}</font><br />&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="12" value="{{ ajax }}"/><font color="lightgray">{# ajax =  True #}</font><br />&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="19" value="{{ REQUEST_IN }}"/><br />&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="20" value="{{ REQUEST_OUT }}"/><br />&nbsp;&nbsp;&nbsp;{% <b>for </b>inURL in inURL %}&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="22" value="{{ inURL.PathID }}"/><font color="lightgray">{# inURL.PathID =  &path_id= #}</font><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="18" value="{{ inURL.pre }}"/><font color="lightgray">{# inURL.pre =  ?t=helloworld&m=default #}</font><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="19" value="{{ inURL.post }}"/><br />&nbsp;&nbsp;&nbsp;{% <b>endfor</b> %}<br /><b>evnine.views.generator.template.php: [ ECHO for  php ]</b><br />&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="36" value="< ?php echo LoadController; ?>"/><font color="lightgray">< ?php /*LoadController =  helloworld*/ ?></font><br />&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="31" value="< ?php echo LoadMethod; ?>"/><font color="lightgray">< ?php /*LoadMethod =  default*/ ?></font><br />&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="24" value="< ?php echo ajax; ?>"/><font color="lightgray">< ?php /*ajax =  True*/ ?></font><br />&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="31" value="< ?php echo REQUEST_IN; ?>"/><br />&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="32" value="< ?php echo REQUEST_OUT; ?>"/><br />&nbsp;&nbsp;&nbsp;< ?php <b>foreach </b>(inURL => inURL): ?>&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="34" value="< ?php echo inURL.PathID; ?>"/><font color="lightgray">< ?php /*inURL.PathID =  &path_id=*/ ?></font><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="30" value="< ?php echo inURL.pre; ?>"/><font color="lightgray">< ?php /*inURL.pre =  ?t=helloworld&m=default*/ ?></font><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="31" value="< ?php echo inURL.post; ?>"/><br />&nbsp;&nbsp;&nbsp;< ?php <b>endforeach</b> ?><br /><b>evnine.views.generator.template.php: [ ECHO for  PHPSHORT ]</b><br />&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="24" value="< ?=LoadController?>"/><font color="lightgray">< ?/*LoadController =  helloworld*/ ?></font><br />&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="19" value="< ?=LoadMethod?>"/><font color="lightgray">< ?/*LoadMethod =  default*/ ?></font><br />&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="12" value="< ?=ajax?>"/><font color="lightgray">< ?/*ajax =  True*/ ?></font><br />&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="19" value="< ?=REQUEST_IN?>"/><br />&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="20" value="< ?=REQUEST_OUT?>"/><br />&nbsp;&nbsp;&nbsp;< ?= <b>foreach </b>(inURL => inURL): ?>&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="22" value="< ?=inURL.PathID?>"/><font color="lightgray">< ?/*inURL.PathID =  &path_id=*/ ?></font><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="18" value="< ?=inURL.pre?>"/><font color="lightgray">< ?/*inURL.pre =  ?t=helloworld&m=default*/ ?></font><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="19" value="< ?=inURL.post?>"/><br />&nbsp;&nbsp;&nbsp;< ?= <b>endforeach</b> ?><br />
+</table><b>evnine.views.generator.template.php: [ ECHO for  twig ]</b><br />&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="24" value="{{ LoadController }}"/><font color="lightgray">{# LoadController =  helloworld #}</font><br />&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="19" value="{{ LoadMethod }}"/><font color="lightgray">{# LoadMethod =  default #}</font><br />&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="12" value="{{ ajax }}"/><font color="lightgray">{# ajax =  True #}</font><br />&nbsp;&nbsp;&nbsp;{% <b>for </b>IN in REQUEST_IN %}&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{% <b>for </b>var in IN.var %}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="13" value="{{ var.0 }}"/><font color="lightgray">{# var.0 =  1 #}</font><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="13" value="{{ var.1 }}"/><font color="lightgray">{# var.1 =  2 #}</font><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{% <b>endfor</b> %}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="13" value="{{ var.0 }}"/><font color="lightgray">{# var.0 =  3 #}</font><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="13" value="{{ var.1 }}"/><font color="lightgray">{# var.1 =  4 #}</font><br />&nbsp;&nbsp;&nbsp;{% <b>endfor</b> %}<br />&nbsp;&nbsp;&nbsp;{% <b>for </b>OUT in REQUEST_OUT %}&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{% <b>for </b>var in OUT.var %}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="13" value="{{ var.0 }}"/><font color="lightgray">{# var.0 =  1 #}</font><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="13" value="{{ var.1 }}"/><font color="lightgray">{# var.1 =  2 #}</font><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{% <b>endfor</b> %}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="13" value="{{ var.0 }}"/><font color="lightgray">{# var.0 =  3 #}</font><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="13" value="{{ var.1 }}"/><font color="lightgray">{# var.1 =  4 #}</font><br />&nbsp;&nbsp;&nbsp;{% <b>endfor</b> %}<br />&nbsp;&nbsp;&nbsp;{% <b>for </b>inURL in inURL %}&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="22" value="{{ inURL.PathID }}"/><font color="lightgray">{# inURL.PathID =  &path_id= #}</font><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="18" value="{{ inURL.pre }}"/><font color="lightgray">{# inURL.pre =  ?t=helloworld&m=default #}</font><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="19" value="{{ inURL.post }}"/><br />&nbsp;&nbsp;&nbsp;{% <b>endfor</b> %}<br /><b>evnine.views.generator.template.php: [ ECHO for  php ]</b><br />&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="43" value="&lt;?php echo ['LoadController']; ?>"/><font color="lightgray">&lt;?php /*$LoadController'] =  helloworld*/ ?></font><br />&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="38" value="&lt;?php echo ['LoadMethod']; ?>"/><font color="lightgray">&lt;?php /*$LoadMethod'] =  default*/ ?></font><br />&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="31" value="&lt;?php echo ['ajax']; ?>"/><font color="lightgray">&lt;?php /*$ajax'] =  True*/ ?></font><br />&nbsp;&nbsp;&nbsp;&lt;?php <b>foreach </b>(['REQUEST_IN'] as $IN): ?>&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;?php <b>foreach </b>($IN['var'] as $var): ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="32" value="&lt;?php echo $var['0']; ?>"/><font color="lightgray">&lt;?php /*$var['0'] =  1*/ ?></font><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="32" value="&lt;?php echo $var['1']; ?>"/><font color="lightgray">&lt;?php /*$var['1'] =  2*/ ?></font><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;?php <b>endforeach</b> ?><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="32" value="&lt;?php echo $var['0']; ?>"/><font color="lightgray">&lt;?php /*$var['0'] =  3*/ ?></font><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="32" value="&lt;?php echo $var['1']; ?>"/><font color="lightgray">&lt;?php /*$var['1'] =  4*/ ?></font><br />&nbsp;&nbsp;&nbsp;&lt;?php <b>endforeach</b> ?><br />&nbsp;&nbsp;&nbsp;&lt;?php <b>foreach </b>(['REQUEST_OUT'] as $OUT): ?>&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;?php <b>foreach </b>($OUT['var'] as $var): ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="32" value="&lt;?php echo $var['0']; ?>"/><font color="lightgray">&lt;?php /*$var['0'] =  1*/ ?></font><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="32" value="&lt;?php echo $var['1']; ?>"/><font color="lightgray">&lt;?php /*$var['1'] =  2*/ ?></font><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;?php <b>endforeach</b> ?><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="32" value="&lt;?php echo $var['0']; ?>"/><font color="lightgray">&lt;?php /*$var['0'] =  3*/ ?></font><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="32" value="&lt;?php echo $var['1']; ?>"/><font color="lightgray">&lt;?php /*$var['1'] =  4*/ ?></font><br />&nbsp;&nbsp;&nbsp;&lt;?php <b>endforeach</b> ?><br />&nbsp;&nbsp;&nbsp;&lt;?php <b>foreach </b>(['inURL'] as $inURL): ?>&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="41" value="&lt;?php echo $inURL['PathID']; ?>"/><font color="lightgray">&lt;?php /*$inURL['PathID'] =  &path_id=*/ ?></font><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="37" value="&lt;?php echo $inURL['pre']; ?>"/><font color="lightgray">&lt;?php /*$inURL['pre'] =  ?t=helloworld&m=default*/ ?></font><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="38" value="&lt;?php echo $inURL['post']; ?>"/><br />&nbsp;&nbsp;&nbsp;&lt;?php <b>endforeach</b> ?><br /><b>evnine.views.generator.template.php: [ ECHO for  PHPSHORT ]</b><br />&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="31" value="&lt;?=['LoadController']?>"/><font color="lightgray">&lt;?/*$LoadController'] =  helloworld*/ ?></font><br />&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="26" value="&lt;?=['LoadMethod']?>"/><font color="lightgray">&lt;?/*$LoadMethod'] =  default*/ ?></font><br />&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="19" value="&lt;?=['ajax']?>"/><font color="lightgray">&lt;?/*$ajax'] =  True*/ ?></font><br />&nbsp;&nbsp;&nbsp;&lt;? <b>foreach </b>(['REQUEST_IN'] as $IN): ?>&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;? <b>foreach </b>($IN['var'] as $var): ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="20" value="&lt;?=$var['0']?>"/><font color="lightgray">&lt;?/*$var['0'] =  1*/ ?></font><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="20" value="&lt;?=$var['1']?>"/><font color="lightgray">&lt;?/*$var['1'] =  2*/ ?></font><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;? <b>endforeach</b> ?><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="20" value="&lt;?=$var['0']?>"/><font color="lightgray">&lt;?/*$var['0'] =  3*/ ?></font><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="20" value="&lt;?=$var['1']?>"/><font color="lightgray">&lt;?/*$var['1'] =  4*/ ?></font><br />&nbsp;&nbsp;&nbsp;&lt;? <b>endforeach</b> ?><br />&nbsp;&nbsp;&nbsp;&lt;? <b>foreach </b>(['REQUEST_OUT'] as $OUT): ?>&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;? <b>foreach </b>($OUT['var'] as $var): ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="20" value="&lt;?=$var['0']?>"/><font color="lightgray">&lt;?/*$var['0'] =  1*/ ?></font><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="20" value="&lt;?=$var['1']?>"/><font color="lightgray">&lt;?/*$var['1'] =  2*/ ?></font><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;? <b>endforeach</b> ?><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="20" value="&lt;?=$var['0']?>"/><font color="lightgray">&lt;?/*$var['0'] =  3*/ ?></font><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="20" value="&lt;?=$var['1']?>"/><font color="lightgray">&lt;?/*$var['1'] =  4*/ ?></font><br />&nbsp;&nbsp;&nbsp;&lt;? <b>endforeach</b> ?><br />&nbsp;&nbsp;&nbsp;&lt;? <b>foreach </b>(['inURL'] as $inURL): ?>&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="29" value="&lt;?=$inURL['PathID']?>"/><font color="lightgray">&lt;?/*$inURL['PathID'] =  &path_id=*/ ?></font><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="25" value="&lt;?=$inURL['pre']?>"/><font color="lightgray">&lt;?/*$inURL['pre'] =  ?t=helloworld&m=default*/ ?></font><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="this.select();" size="26" value="&lt;?=$inURL['post']?>"/><br />&nbsp;&nbsp;&nbsp;&lt;? <b>endforeach</b> ?><br />

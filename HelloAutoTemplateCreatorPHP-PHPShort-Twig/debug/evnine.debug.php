@@ -242,7 +242,11 @@ class dBug {
 					$this->checkType($value,$type,$depth);
 				else {
 					$value=(trim($value)=="") ? "[empty]" : $value;
-					echo $value;
+					if ($value['0']=='<'){
+						echo '<pre>'.htmlspecialchars($value).'</pre>';
+					}else {
+						echo $value;
+					}
 				}
 				echo $this->closeTDRow();
 			}
@@ -542,7 +546,7 @@ class dBug {
 					{ cursor:pointer; }
 				
 				/* array */
-				table.dBug_array { background-color:#888888;}
+				table.dBug_array { background-color:#888888;position:relative;z-index:1000}
 				table.dBug_arrayNew { background-color:#888888;}
 				table.dBug_arrayOld { background-color:darkgray; }
 				table.dBug_array td { background-color:#FFFFFF; }
@@ -562,25 +566,25 @@ class dBug {
 
 				
 				/* object */
-				table.dBug_object { background-color:#0000CC; }
+				table.dBug_object { background-color:#0000CC;position:relative;z-index:1000 }
 				table.dBug_object td { background-color:#FFFFFF; }
 				table.dBug_object td.dBug_objectHeader { background-color:#4444CC; }
 				table.dBug_object td.dBug_objectKey { background-color:#CCDDFF; }
 				
 				/* resource */
-				table.dBug_resourceC { background-color:#884488; }
+				table.dBug_resourceC { background-color:#884488;position:relative;z-index:1000 }
 				table.dBug_resourceC td { background-color:#FFFFFF; }
 				table.dBug_resourceC td.dBug_resourceCHeader { background-color:#AA66AA; }
 				table.dBug_resourceC td.dBug_resourceCKey { background-color:#FFDDFF; }
 				
 				/* resource */
-				table.dBug_resource { background-color:#884488; }
+				table.dBug_resource { background-color:#884488;position:relative;z-index:1000 }
 				table.dBug_resource td { background-color:#FFFFFF; }
 				table.dBug_resource td.dBug_resourceHeader { background-color:#AA66AA; }
 				table.dBug_resource td.dBug_resourceKey { background-color:#FFDDFF; }
 				
 				/* xml */
-				table.dBug_xml { background-color:#888888; }
+				table.dBug_xml { background-color:#888888;position:relative;z-index:1000 }
 				table.dBug_xml td { background-color:#FFFFFF; }
 				table.dBug_xml td.dBug_xmlHeader { background-color:#AAAAAA; }
 				table.dBug_xml td.dBug_xmlKey { background-color:#DDDDDD; }

@@ -7,12 +7,25 @@ $evnine = new Controller();
 $output = $evnine->getControllerForParam(
 	array(
 		'controller' => 'helloworld',
-		'form_data' => '',
+		'form_data' => array(
+			array('var'=>
+				array(
+					array('1','2'),
+					array('3','4'),
+					array('5','6'),
+					array('7'),
+				),
+				'3','4',
+			),
+			array('3','4'),
+			array('5','6'),
+			array('7'),
+		),
 		'ajax' => 'ajax',
 	)
 );
 
-new dBug($output, "array",false);
+print_r2($output);
 
 $twig_generator= 
 	getTemplateFromArray(
@@ -34,7 +47,4 @@ $twig_generator=
 		$template_param1= array('echo' => true,'if' => false,'comment' => true,'tpl' => 'PHPSHORT')
 	);
 echo $twig_generator;
-
-
-
 ?>
