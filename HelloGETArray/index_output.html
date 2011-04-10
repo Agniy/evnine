@@ -1,0 +1,218 @@
+			<script language="JavaScript">
+			/* code modified from ColdFusion's cfdump code */
+				function dBug_toggleRow(source) {
+					var target = (document.all) ? source.parentElement.cells[1] : source.parentNode.lastChild;
+					dBug_toggleTarget(target,dBug_toggleSource(source));
+				}
+				
+				function dBug_toggleSource(source) {
+					if (source.style.fontStyle=='italic') {
+						source.style.fontStyle='normal';
+						source.title='click to collapse';
+						return 'open';
+					} else {
+						source.style.fontStyle='italic';
+						source.title='click to expand';
+						return 'closed';
+					}
+				}
+			
+				function dBug_toggleTarget(target,switchToState) {
+					target.style.display = (switchToState=='open') ? '' : 'none';
+				}
+			
+				function dBug_toggleTable(source) {
+					var switchToState=dBug_toggleSource(source);
+					if(document.all) {
+						var table=source.parentElement.parentElement;
+						for(var i=1;i<table.rows.length;i++) {
+							target=table.rows[i];
+							dBug_toggleTarget(target,switchToState);
+						}
+					}
+					else {
+						var table=source.parentNode.parentNode;
+						for (var i=1;i<table.childNodes.length;i++) {
+							target=table.childNodes[i];
+							if(target.style) {
+								dBug_toggleTarget(target,switchToState);
+							}
+						}
+					}
+				}
+			</script>
+			
+			<style type="text/css">
+				table.dBug_arrayNew,table.dBug_arrayOld,table.dBug_array,table.dBug_object,table.dBug_resource,table.dBug_resourceC,table.dBug_xml {
+					font-family:Verdana, Arial, Helvetica, sans-serif; color:#000000; font-size:12px;
+				}
+				
+				.dBug_arrayHeader,
+				.dBug_arrayNewHeader,
+				.dBug_arrayOldHeader,
+				.dBug_objectHeader,
+				.dBug_resourceHeader,
+				.dBug_resourceCHeader,
+				.dBug_xmlHeader 
+					{ font-weight:bold; color:#FFFFFF; cursor:pointer; }
+				
+				.dBug_arrayKey,
+				.dBug_arrayNewKey,
+				.dBug_arrayOldKey,
+				.dBug_objectKey,
+				.dBug_xmlKey 
+					{ cursor:pointer; }
+				
+				/* array */
+				table.dBug_array { background-color:#888888;position:relative;z-index:1000}
+				table.dBug_arrayNew { background-color:#888888;}
+				table.dBug_arrayOld { background-color:darkgray; }
+				table.dBug_array td { background-color:#FFFFFF; }
+				table.dBug_array td.dBug_arrayHeader { background-color:#AAAAAA;color:white;}
+				table.dBug_array td.dBug_arrayNewHeader{ background-color:#cfc;color:green; } 
+				table.dBug_array td.dBug_arrayOldHeader{ background-color:lightgray;color:gray; } 
+				table.dBug_array td.dBug_arrayKey { background-color:#DDDDDD; }
+				table.dBug_array td.dBug_arrayNewKey { background-color:#cfc;color:green; }
+				table.dBug_array td.dBug_arrayOldKey { background-color:lightgray;color:gray; }
+				table.dBug_array td.dBug_arrayNewKeyBody { color:green;padding:1px; }
+				table.dBug_array td.dBug_arrayOldKeyBody { color:#808080; }
+
+				table.dBug_arrayBug { background-color:#884488  }
+				table.dBug_array td.dBug_arrayBugHeader{ background-color:#AA66AA;color:white; } 
+				table.dBug_array td.dBug_arrayBugKey { background-color:#FFDDFF;color:black; }
+				table.dBug_array td.dBug_arrayBugKeyBody { color:black;padding:1px; }
+
+				
+				/* object */
+				table.dBug_object { background-color:#0000CC;position:relative;z-index:1000 }
+				table.dBug_object td { background-color:#FFFFFF; }
+				table.dBug_object td.dBug_objectHeader { background-color:#4444CC; }
+				table.dBug_object td.dBug_objectKey { background-color:#CCDDFF; }
+				
+				/* resource */
+				table.dBug_resourceC { background-color:#884488;position:relative;z-index:1000 }
+				table.dBug_resourceC td { background-color:#FFFFFF; }
+				table.dBug_resourceC td.dBug_resourceCHeader { background-color:#AA66AA; }
+				table.dBug_resourceC td.dBug_resourceCKey { background-color:#FFDDFF; }
+				
+				/* resource */
+				table.dBug_resource { background-color:#884488;position:relative;z-index:1000 }
+				table.dBug_resource td { background-color:#FFFFFF; }
+				table.dBug_resource td.dBug_resourceHeader { background-color:#AA66AA; }
+				table.dBug_resource td.dBug_resourceKey { background-color:#FFDDFF; }
+				
+				/* xml */
+				table.dBug_xml { background-color:#888888;position:relative;z-index:1000 }
+				table.dBug_xml td { background-color:#FFFFFF; }
+				table.dBug_xml td.dBug_xmlHeader { background-color:#AAAAAA; }
+				table.dBug_xml td.dBug_xmlKey { background-color:#DDDDDD; }
+			</style><table cellspacing=2 cellpadding=3 class="dBug_array"><tr><td class="dBug_arrayHeader" colspan=2 onClick='dBug_toggleTable(this)'>#$output, "array",false (Array)</td>
+				</tr><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">LoadController</td>
+				<td  class="dBug_arrayKeyBody">helloworld</td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">LoadMethod</td>
+				<td  class="dBug_arrayKeyBody">default</td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">ajax</td>
+				<td  class="dBug_arrayKeyBody">True</td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">REQUEST_IN</td>
+				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">path_id</td>
+				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">0</td>
+				<td  class="dBug_arrayKeyBody">0</td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">1</td>
+				<td  class="dBug_arrayKeyBody">3</td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">2</td>
+				<td  class="dBug_arrayKeyBody">2</td></tr>
+</table></td></tr>
+</table></td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">REQUEST_OUT</td>
+				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">PathID</td>
+				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">0</td>
+				<td  class="dBug_arrayKeyBody">0</td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">1</td>
+				<td  class="dBug_arrayKeyBody">3</td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">2</td>
+				<td  class="dBug_arrayKeyBody">2</td></tr>
+</table></td></tr>
+</table></td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">param</td>
+				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">default</td>
+				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">param_out</td>
+				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">controller</td>
+				<td  class="dBug_arrayKeyBody">helloworld</td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">form_data</td>
+				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">PathID</td>
+				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">0</td>
+				<td  class="dBug_arrayKeyBody">0</td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">1</td>
+				<td  class="dBug_arrayKeyBody">3</td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">2</td>
+				<td  class="dBug_arrayKeyBody">2</td></tr>
+</table></td></tr>
+</table></td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">ajax</td>
+				<td  class="dBug_arrayKeyBody">TRUE</td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">method</td>
+				<td  class="dBug_arrayKeyBody">default</td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">form_error</td>
+				<td  class="dBug_arrayKeyBody">NULL</td></tr>
+</table></td></tr>
+</table></td></tr>
+</table></td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">ModelsValidation_isValidModifierParamFormError</td>
+				<td  class="dBug_arrayKeyBody">TRUE</td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">inURL</td>
+				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">default</td>
+				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">PathID</td>
+				<td  class="dBug_arrayKeyBody">&path_id[]=</td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">pre</td>
+				<td  class="dBug_arrayKeyBody">?c=helloworld&m=default</td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">post</td>
+				<td  class="dBug_arrayKeyBody">[empty]</td></tr>
+</table></td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">post</td>
+				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">PathID</td>
+				<td  class="dBug_arrayKeyBody">path_id[]</td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">inputs</td>
+				<td  class="dBug_arrayKeyBody"><pre>&lt;input type=&quot;hidden&quot; name=&quot;c&quot; value=&quot;helloworld&quot;/&gt;&lt;input type=&quot;hidden&quot; name=&quot;m&quot; value=&quot;post&quot;/&gt;</pre></td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">pre</td>
+				<td  class="dBug_arrayKeyBody">?c=helloworld&m=post</td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">post</td>
+				<td  class="dBug_arrayKeyBody">[empty]</td></tr>
+</table></td></tr>
+</table></td></tr>
+</table>URN: ?c=helloworld&m=default&path_id[]=0&path_id[]=3&path_id[]=2
