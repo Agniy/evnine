@@ -18,6 +18,7 @@ class Config
 		);
 
 		$this->param_const=array(
+			'default_controller'=>'default_controller',
 			'frozen_file'=>'frozen_file.txt',
 			'ResetDBClass'=>'models'.DIRECTORY_SEPARATOR.'ModelsMySQLFrozenTables.php',
 			'setResetForTest'=>true,

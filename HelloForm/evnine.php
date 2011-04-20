@@ -787,8 +787,8 @@ function setLoadController($template) {
 	if (empty($template)||
 		empty($this->controller_menu_view[$template])
 	){//В случае если шаблона нет в списке контроллеров или если шаблон не установлен
-		$this->result['ControllerError'][]='<b>function setLoadController:</b> Controller "'.$template. '" not found '.$this->current_template;
-		$this->param['controller']=$this->current_template = 'frontend';
+		$this->result['ControllerError'][]='<b>function setLoadController:</b> Controller "<b>'.$template. '</b>" not found <b>'.$this->current_template.'</b>';
+		$this->param['controller']=$this->current_template = $this->param_const['default_controller'];
 	}else {
 		$this->current_template = $template;
 	}
@@ -1456,15 +1456,15 @@ function getPrivateMethod($method){
 	if (!empty($this->current_controller['private_methods'][$method])){
 		//Получаем метод
 		$methods_callback = $this->current_controller['private_methods'][$method];
-	}
-	if (!empty($this->current_controller['public_methods'][$this->param['method']][$method]))
-	{
-	$methods_callback = $this->current_controller['public_methods'][$this->param['method']][$method];
-	}
+	}elseif (!empty($this->current_controller['public_methods'][$this->param['method']][$method])){
+		$methods_callback = $this->current_controller['public_methods'][$this->param['method']][$method];
+	}else {
+		$this->result['ControllerError'][]='<b>function getPrivateMethod:</b> In controller "<b>'.$this->current_template.'</b>" not found Method "<b>'.$method.'</b>"';	
+		return true;
+	} 
 	//Запускаем каждый метод класса
-	foreach ($methods_callback as $method_title =>$method_value){
+	foreach ($methods_callback as $method_title =>$method_value)
 		$this->getMethodFromClass($method_title,$method_value);
-	}
 }
 
 /** Получить первый эл-т массива
