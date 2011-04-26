@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<script type="text/javascript" language="JavaScript" src="js/jq.include.js?20110414"></script>
-<script type="text/javascript" language="JavaScript" src="js/jq.evnine.js?20110414"></script>
-<script type="text/javascript" language="JavaScript" src="js/jq.index.js?20110414"></script>
+<script type="text/javascript" language="JavaScript" src="js/jq.include.js"></script>
+<script type="text/javascript" language="JavaScript" src="js/jq.evnine.js"></script>
+<script type="text/javascript" language="JavaScript" src="js/jq.index.js"></script>
 
 </head>
 <body id="body">

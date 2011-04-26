@@ -16,7 +16,7 @@ var $controller_menu_view;
 	);
 
 	$this->param_const=array(
-		'default_controller'=>'default_controller',
+			'default_controller'=>'default_controller',
 //		'setResetForTest'=>true
 	);
 	$this->controller_menu_view=array(

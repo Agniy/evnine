@@ -5,6 +5,8 @@
 <br/>
 <a href="index.php?param=param">index.php?param=param</a>
 <br/>
+<a href="index.php?param=param&data[]=1&data[]=1&data[]=1&data[]=1&data[]=1&data[]=1&data[]=1">index.php?param=param&data[]=1</a>
+<br/>
 <a href="index.html">index.html - SEF</a>
 <br/>
 <a class="json" href="index.php">index.php class="json"</a>                   

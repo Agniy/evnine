@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<script type="text/javascript" language="JavaScript" src="js/jq.include.js?20110414"></script>
-<script type="text/javascript" language="JavaScript" src="js/jq.evnine.js?20110414"></script>
-<script type="text/javascript" language="JavaScript" src="js/jq.index.js?20110414"></script>
+<script type="text/javascript" language="JavaScript" src="js/jq.include.js"></script>
+<script type="text/javascript" language="JavaScript" src="js/jq.evnine.js"></script>
+<script type="text/javascript" language="JavaScript" src="js/jq.index.js"></script>
 
 </head>
 <body id="body">
@@ -14,6 +14,8 @@
 <a id="clicked" href="index.php">index.php</a>                   
 <br/>
 <a href="index.php?param=param">index.php?param=param</a>
+<br/>
+<a href="index.php?param=param&data[]=1&data[]=1&data[]=1&data[]=1&data[]=1&data[]=1&data[]=1">index.php?param=param&data[]=1</a>
 <br/>
 <a href="index.html">index.html - SEF</a>
 <br/>
@@ -221,14 +223,23 @@
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">ModelsValidation_isValidModifierParamFormError</td>
 				<td  class="dBug_arrayKeyBody">TRUE</td></tr>
 <tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">ControllerError</td>
+				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">0</td>
+				<td  class="dBug_arrayKeyBody">function getPrivateMethod: In controller "validation" not found Method "isValidModifierParamFormError_true"</td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">1</td>
+				<td  class="dBug_arrayKeyBody">function getPrivateMethod: In controller "validation" not found Method "isValidModifierParamFormError_true"</td></tr>
+</table></td></tr>
+<tr>
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">ModelsHelloWorld_getContentFromFormData</td>
 				<td  class="dBug_arrayKeyBody">[empty]</td></tr>
 <tr>
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">Class: &rArr;validation&nbsp;&nbsp;&nbsp;</br>Method: default</td>
-				<td  class="dBug_arrayKeyBody">&rArr;Extend Method <font color="orange"><b>validation::default</b></font> is load</td></tr>
+				<td  class="dBug_arrayKeyBody">&rArr;Extend Method <font color="orange">validation::default</font> is load</td></tr>
 <tr>
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">Class: &lArr;validation&nbsp;&nbsp;&nbsp;</br>Method: default</td>
-				<td  class="dBug_arrayKeyBody">&lArr;Extend Method <font color="orange"><b>validation::default</b></font> is unload</td></tr>
+				<td  class="dBug_arrayKeyBody">&lArr;Extend Method <font color="orange">validation::default</font> is unload</td></tr>
 <tr>
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">inURL</td>
 				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
@@ -286,5 +297,5 @@
 				<td  class="dBug_arrayKeyBody">[empty]</td></tr>
 </table></td></tr>
 </table></td></tr>
-</table><body>
+</table></body>
 </html>

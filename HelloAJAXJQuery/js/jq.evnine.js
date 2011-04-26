@@ -1,49 +1,55 @@
 //<script type="text/javascript">
-(function($) { 
 jQuery.fn.evnine = function($rewrite_options){
 	//Flag for load AJAX
 	/*Текущий статус загрузки AJAX*/
-	$ajax_is_load=false;
+	var $ajax_is_load=false;
+	var $loaded_href_hash_fix='';
 	//Default setting
 	//getTraceObject($rewrite_options);
 		/* настройки по умолчанию*/
-var $options = jQuery.extend({
-		live_bind_type											 :'click',
-		debug_to_console                     :true,/*FirFox FireBug, Chrome, Opera*/
-		live_selector_for_ajax               :'a, input:submit',
-		//is ajax mode work in the folder?
-		/*Если аякс должен работать в папке*/
-		urn_for_ajax_call_and_set_anchore    :'/evnine/HelloAJAXJQuery/',
-		ajax_indicator                       :'',
-		ajax_data_type                       :'html',
-		/*Ссылка совпадает с этим регулярным то не использовать аякс*/
-		is_href_match_this_regexp_set_no_ajax:'^http://|^hop',//=$href.match(/^http://|^hop/g)
-		/*Если аякс режим добавить параметр в ссылку*/
-		if_ajax_add_this_param_to_href       :'ajax=ajax',//=index.php?ajax=ajax
-		/*Ссылка совпадает с регулярным, работаем аякс в ЧПУ режиме*/
-		is_href_match_this_regexp_set_sef    :'.html$',//=$href.match(/\.html/g)
-		/*Если аякс работает в ЧПУ режиме, заменим адрес на */
-		if_sef_ajax_replace_href_match_to    :'.ajax'//=$href.replace(/\.html$/g, '.ajax')
-		//Example: index.html => index.ajax
-		//ajax_options_rewrite:{
-			//error: showResponseError,
-			//success: showResponse,
-			//dataType: 'html'
-		//}
-},$rewrite_options);
+var $options = jQuery.extend({},$rewrite_options);
 
 if ($rewrite_options!=undefined)
-	$options.ajax_options_rewrite = jQuery.extend({
+	$options.loadAJAXOptions = jQuery.extend({
 		error: showResponseError,
 		success: showResponse,
 		dataType: 'html'
-	},$rewrite_options.ajax_options_rewrite);
+	},$rewrite_options.loadAJAXOptions);
 
-if (window.console&&$options.debug_to_console) console.warn("evnine::getTraceObject($options): ");
-//if (window.console&&$options.debug_to_console) getTraceObject($options);
 
-if (window.console) console.dir($options['ajax_options_rewrite']);
+
 //HELPER Debug
+
+if (!window.console){
+	$options.debugToConsole=false;
+}
+
+if ($options.debugToConsoleNotSupport){
+	$options.debugPrefixString='';
+	window.console=new Object();
+	var debug_buffer='';
+	window.console.warn=function($str){
+		alert('INFO:'+debug_buffer+"\n\r"+'WARN:'+"\n\r\t"+$str);
+		debug_buffer='';
+	};
+	window.console.info=function($str){
+		debug_buffer+="\n\r"+$str;
+	};
+}
+
+//if ($options.debugToConsole) console.warn("evnine->getTraceObject($options): ");
+//if ($options.debugToConsole) getTraceObject($options,getTabByLevel(1));
+
+function getTabByLevel($shift) {
+	var $tab='';
+	$i=0;
+	while($i <= $shift) {
+		$i++;
+		$tab=$tab+$options.debugPrefixString;
+	}
+	return $tab;
+}
+
 /*Помощник для олтадки*/
 function getTraceObject($obj,$tab){//Показываем свойства объектов
 	var s = "";
@@ -53,20 +59,15 @@ function getTraceObject($obj,$tab){//Показываем свойства об�
 		if (typeof $obj[prop] != "function" && typeof $obj[prop] != "object")
 		{
 			s = $tab+"[" + prop + "] => " + $obj[prop] + "";
-			if (window.console&&$options.debug_to_console) console.info(s);
+			if ($options.debugToConsole) console.info(s);
 		}else if(typeof $obj[prop] === "object"){
 			s = $tab+"[" + prop + "] => object (";
-			if (window.console&&$options.debug_to_console) console.info(s);
+			if ($options.debugToConsole) console.info(s);
 			getTraceObject($obj[prop],$tab+'                   ');
 			s= $tab+")";
-			if (window.console&&$options.debug_to_console) console.info(s);
+			if ($options.debugToConsole) console.info(s);
 		}
 	}
-}
-
-//For get safe AJAX URN
-function getRegSafeString ($str) {
-	return $str.replace(/(["'\.\-])(?:(?=(\\?))\2.)*?\1/g,"");
 }
 
 
@@ -105,81 +106,136 @@ function getTraceFunction() {
       isCallstackPopulated = true;
     }
   }
- 
   getTraceObject(callstack);
 }
 /*END HELPER*/
 
+	function getInt($int){//Функция получение числа
+		return parseInt(parseFloat($int), '10');
+	}
+	
+	$options.scriptNameForAJAX= $options.scriptForAJAXCallAndSetAnchore.replace(/^.*(\\|\/|\:)/, '');
+	function isHasCrossBrowserMinimumVersion() {
+		if ($options.debugToConsole) console.info(getTabByLevel(1)+"evnine::isHasCrossBrowserMinimumVersion()");
+		var userAgent = navigator.userAgent.toLowerCase();
+		jQuery.browser = {
+			'version': (userAgent.match( /.+(?:rv|it|ra|ie|me)[\/: ]([\d.]+)/ ) || [])[1],
+			'chrome': (/chrome/).test( userAgent ),
+			'safari': (/webkit/).test( userAgent ) && !(/chrome/).test( userAgent ),
+			'opera': (/opera/).test( userAgent ),
+			'msie': (/msie/).test( userAgent ) && !(/opera/).test( userAgent ),
+			'mozilla': (/mozilla/).test( userAgent ) && !(/(compatible|webkit)/).test( userAgent )
+		};
+		var $return=true;
+		jQuery.each($options.crossBrowserMinimumVersion, function($browser,$version){
+			if (jQuery.browser[$browser]){
+				if (getInt(jQuery.browser.version)>=$version){
+
+					if (window.console) console.warn("#getInt(jQuery.browser.version): "+getInt(jQuery.browser.version));
+					if (window.console) console.warn("#$version: "+$version);
+					if ($options.debugToConsole) console.info(getTabByLevel(2)+"evnine::isHasCrossBrowserMinimumVersion return true");
+					$return=true;
+					return '';
+				}else {
+					if (window.console) console.warn("#getInt(jQuery.browser.version): "+getInt(jQuery.browser.version));
+					if (window.console) console.warn("#$version: "+$version);
+					if ($options.debugToConsole) console.info(getTabByLevel(2)+"evnine::isHasCrossBrowserMinimumVersion return false");
+					$return=false;
+					return '';
+				}
+			}
+		});
+		return $return;
+	}
+	$options.isAllowThisBrowser=isHasCrossBrowserMinimumVersion();
+if (window.console) console.info(getTabByLevel(1)+"evnine::$options.isAllowThisBrowser="+$options.isAllowThisBrowser);
+
+//For get safe AJAX URN
+function getRegSafeString ($str) {
+	return $str.replace(/(["'\.\-])(?:(?=(\\?))\2.)*?\1/g,"");
+}
+
 function getClickHref($that){
 	if (jQuery($that).attr('href')!=undefined){
 		$href = jQuery($that).attr('href');
-		if (window.console&&$options.debug_to_console) console.warn("		evnine::getClickHref $href: "+$href);
-		$reg = new RegExp($options.is_href_match_this_regexp_set_no_ajax,"g");
+		if ($options.debugToConsole) console.info(getTabByLevel(3)+"evnine::getClickHref $href: "+$href);
+		$reg = new RegExp($options.isHREFMatchThisRegExpSetNoUseAJAX,"g");
 		if ($href.match($reg)){
-			if (window.console&&$options.debug_to_console) console.warn("		evnine::getClickHref is no ajax href");
-			if (window.console&&$options.debug_to_console) console.warn("		evnine::getClickHref match $options.is_href_match_this_regexp_set_no_ajax");
+			if ($options.debugToConsole) console.info(getTabByLevel(4)+"evnine::getClickHref is no ajax href");
+			if ($options.debugToConsole) console.info(getTabByLevel(4)+"evnine::getClickHref match $options.isHREFMatchThisRegExpSetNoUseAJAX");
 			return true;
 		}else {
 			getAJAXHref($href);
-			if (window.console&&$options.debug_to_console) console.info("		evnine::getClickHref is ajax href");
+			if ($options.debugToConsole) console.info(getTabByLevel(4)+"evnine::getClickHref is ajax href");
 		}
 	}else if (jQuery($that).attr('type')==='submit'){
-		if (window.console&&$options.debug_to_console) console.info("		evnine::getClickHref is ajax submit");
+		if ($options.debugToConsole) console.info(getTabByLevel(4)+"evnine::getClickHref is ajax submit");
 		getAJAXSubmit($that);
 	}
 	return false;
 }
 
 function getAJAXSubmit($href) {
-	if (window.console&&$options.debug_to_console) console.info("			evnine::getAJAXSubmit");
+	if ($options.debugToConsole) console.warn(getTabByLevel(4)+"evnine::getAJAXSubmit");
 	getAJAX('','href');
 }
 
 function getAJAXHref($href) {
-	if (window.console&&$options.debug_to_console) console.info("			evnine::getAJAXHref");
+	if ($options.debugToConsole) console.warn(getTabByLevel(4)+"evnine::getAJAXHref");
 	getAJAX($href,'href');
 }
 
-function getURLWithAJAXFlag($href) {//Установить флаг в урл что запрос делаем аяском в .htaccess отловим потом
+function getURLWithFlag($href,$post_fix,$post_sef) {//Установить флаг в урл что запрос делаем аяском в .htaccess отловим потом
+	if (window.console) console.warn(getTabByLevel(7)+"evnine::getURLWithFlag() ");
 	if ($href===''){
-		return '?'+$options.if_ajax_add_this_param_to_href;
+		return '?'+$post_fix;
 	}
-	$reg = new RegExp($options.is_href_match_this_regexp_set_sef,"g");
+	$reg = new RegExp($options.isHREFMatchThisRegExpSetSEFMode,"g");
 	if ($href.match($reg)){//IF SEF URN
-		if (window.console&&$options.debug_to_console) console.warn("			#match sef: ");
-		return $href.replace($reg, $options.if_sef_ajax_replace_href_match_to);
+		if ($options.debugToConsole) console.info(getTabByLevel(8)+"evnine::getURLWithFlag match SEF ");
+		return $href.replace($reg, $post_sef);
 	}else if($href.match(/\?/)) {//IF not SEF URN and has param
-		if (window.console&&$options.debug_to_console) console.warn("			#match &: ");
-		return $href+'&'+$options.if_ajax_add_this_param_to_href;
+		if ($options.debugToConsole) console.info(getTabByLevel(8)+"evnine::getURLWithFlag match & ");
+		return $href+'&'+$post_fix;
 	}else {//If not SEF URN and not has param
-		if (window.console&&$options.debug_to_console) console.warn("			#match ?: ");
-		return $href+'?'+$options.if_ajax_add_this_param_to_href;
+		if ($options.debugToConsole) console.info(getTabByLevel(8)+"evnine::getURLWithFlag match ? ");
+		return $href+'?'+$post_fix;
 	}
 }
 
 
 function showResponseError(responseText, statusText){//Функций - Показать AJAX ответ в случае ошибке
-	if (window.console) console.info("				evnine::showResponseError: ");
+	if ($options.debugToConsole) console.warn(getTabByLevel(5)+"evnine::showResponseError: ");
+	if ($options.debugToConsole) console.info(getTabByLevel(6)+"evnine::showResponseError->responseText="+responseText);
+	if ($options.debugToConsole) console.info(getTabByLevel(6)+"evnine::showResponseError->statusText="+statusText);
 	$ajax_is_load = false;
 	//return true;
 }
 
 function showResponse(responseText, statusText){//Функций - Показать AJAX ответ в случае ошибке
-	if (window.console) console.info("				evnine::showResponse");
+	if ($options.debugToConsole) console.info(getTabByLevel(5)+"evnine::showResponse");
 	$ajax_is_load = false;
-	$($options.selector_for_ajax_replace).html(responseText);
+	jQuery($options.selectorForAJAXReplace).html(responseText);
 }
 
 function isURLBaseAJAX() {
-	//$options.urn_for_ajax_call_and_set_anchore
-	if (window.console) console.warn("					#$options.urn_for_ajax_call_and_set_anchore: "+$options.urn_for_ajax_call_and_set_anchore);
-	if (location.pathname===$options.urn_for_ajax_call_and_set_anchore){
-		return true;
-	}else {
+	if (window.console) console.warn(getTabByLevel(7)+"evnine::isURLBaseAJAX()");
+	if (location.search!==''){
+		if ($options.debugToConsole) console.info(getTabByLevel(8)+"evnine::isURLBaseAJAX retrun FALSE");
 		return false;
 	}
-	getTraceObject(location,'						');
-	//if (window.console&&$options.debug_to_console) console.warn("						evnine::isHasAnchore: ");
+	//$options.scriptForAJAXCallAndSetAnchore
+	if ($options.debugToConsole) console.info(getTabByLevel(8)+"evnine::isURLBaseAJAX->=$options.scriptForAJAXCallAndSetAnchore="+$options.scriptForAJAXCallAndSetAnchore);
+	getTraceObject(location,getTabByLevel(8));
+	if (location.pathname===$options.scriptForAJAXCallAndSetAnchore){
+		if ($options.debugToConsole) console.info(getTabByLevel(8)+"evnine::isURLBaseAJAX retrun TRUE");
+		return true;
+	}else {
+		if ($options.debugToConsole) console.info(getTabByLevel(8)+"evnine::isURLBaseAJAX retrun FALSE");
+		return false;
+	}
+	//getTraceObject(location,'						');
+	//if ($options.debugToConsole) console.info(getTabByLevel(5)+getTabByLevel(3)+"evnine::isHasAnchore: ");
 	//if (location.hash!==''){
 		//return true;
 	//}else {
@@ -191,96 +247,107 @@ function isURLBaseAJAX() {
 		
 		//$current_url=document.URL.replace(location.protocol+'//'+window.location.host+'/',"");
 		//getTraceObject(document,'						');
-		//if (window.console) console.warn("#$current_url.*: "+$current_url);
-		//if (window.console) console.warn("#$current_url.document.URL: "+$current_url);
+		//if (window.console) console.info("#$current_url.*: "+$current_url);
+		//if (window.console) console.info("#$current_url.document.URL: "+$current_url);
 		//$current_url=$current_url.replace(/^#!.*/,"");
 //
-		//if (window.console) console.warn("#$current_url/^#!.*/: "+$current_url);
+		//if (window.console) console.info("#$current_url/^#!.*/: "+$current_url);
 		////getTraceObject(document);
-		//if (window.console) console.warn("#$options.is_axaj_is_sub_folder: "+$options.is_axaj_is_sub_folder);
+		//if (window.console) console.info("#$options.is_axaj_is_sub_folder: "+$options.is_axaj_is_sub_folder);
 	//}else {
-		//if (window.console) console.warn("#$options.is_axaj_is_sub_folder: "+$options.is_axaj_is_sub_folder);
+		//if (window.console) console.info("#$options.is_axaj_is_sub_folder: "+$options.is_axaj_is_sub_folder);
 	//}
-	//if (window.console) console.warn("#location.hash: "+location.hash);
+	//if (window.console) console.info("#location.hash: "+location.hash);
 	//if (location.hash!==''){//Если есть хэш урл
 		//return true;
 	//}
 //
-	//if (window.console) console.warn("#document.URL: "+document.URL);
+	//if (window.console) console.info("#document.URL: "+document.URL);
 //
-	//if (window.console) console.warn("#location.protocol+'//'+window.location.host+'/': "+location.protocol+'//'+window.location.host+'/');
+	//if (window.console) console.info("#location.protocol+'//'+window.location.host+'/': "+location.protocol+'//'+window.location.host+'/');
 	//if (document.URL===location.protocol+'//'+window.location.host+'/'){
 		//return true;
 	//}
 	//$current_url=document.URL.replace(location.protocol+'//'+window.location.host+'/',"");
 //
-	//if (window.console) console.warn("#$current_url: "+$current_url);
+	//if (window.console) console.info("#$current_url: "+$current_url);
 	//if ($current_url===''){//Если текущий УРЛ не главная страница
 		//return true;
 	//}else {
 		//$current_url=$current_url.replace(/^#!.*/,"");
-		//if (window.console) console.warn("#$current_url: "+$current_url);
+		//if (window.console) console.info("#$current_url: "+$current_url);
 		//if ($current_url===''){//Проверим есть ли остаток якоря с прошлой страницы
 			//return true;
 		//}
-		//if (window.console) console.warn("#$current_url: "+$current_url);
+		//if (window.console) console.info("#$current_url: "+$current_url);
 		//return false;
 	//}
 }
 
+function setURLToBrowser($base,$href) {
+	$reg = new RegExp('^'+$options.scriptNameForAJAX+'|^'+$options.scriptForAJAXCallAndSetAnchore+'|\\?');
+	$href=$href.replace($reg,'');
+	if ($options.isAllowThisBrowser){
+		window.location = $base+'#'+$options.ancorePreFix+$href;
+	}else {
+		window.location = $base+$href;
+	}
+}
 
 //Set URL as anchore
 /*Установить адрес в историю просмотра*/
-function setURLToHashAndLocation($href) {
-	if (window.console&&$options.debug_to_console) console.warn("					#setURLToHashAndLocation: href ["+$href+']');
+function setURLToHashAndLocation($href,$reset) {
+	if ($options.debugToConsole) console.warn(getTabByLevel(7)+"evnine::setURLToHashAndLocation($href="+$href+")");
 	if ($href==='/') {
-		window.location= $options.urn_for_ajax_call_and_set_anchore+'#!';
+		//window.location= $options.scriptForAJAXCallAndSetAnchore+'#!';
+		$loaded_href_hash_fix= '';
+		window.location.hash = $.URLDecode($options.ancorePreFix);
+		if ($options.debugToConsole) document.title = '';
+		return $options.scriptForAJAXCallAndSetAnchore;
 	}else {
-		window.location = $options.urn_for_ajax_call_and_set_anchore+'#!'+$href;
+		$reg = new RegExp('^'+$options.scriptNameForAJAX+'|^'+$options.scriptForAJAXCallAndSetAnchore);
+		$loaded_href_hash_fix=$hash_href_without_script_name=$href.replace($reg,'');
+		if ($options.debugToConsole) console.info(getTabByLevel(8)+"evnine::setURLToHashAndLocation->hash_href_without_script_name="+$hash_href_without_script_name);
+		window.location.hash = $.URLDecode($options.ancorePreFix+$hash_href_without_script_name);
+		if ($options.debugToConsole) document.title = $href;
+		return $href;
 	}
 }
 
 
-return jQuery($options.live_selector_for_ajax).live($options.live_bind_type, function() {
-		return getClickHref(this);
-});
-
 //return {getAJAX: this.getAJAX};
 
-
-};
-
-var getAJAX = function ($href,$type,$id,$data){//Функция - отправка данныx через jQuery plugin form в include.js
-	if (window.console&&$options.debug_to_console) console.info("				evnine::getAJAX");
-	//if (window.console&&$options.debug_to_console) console.warn("#getAJAXSubmit: ");
-	//if (window.console&&$options.debug_to_console) console.warn("#href: "+$href);
-	//if (window.console&&$options.debug_to_console) console.warn("#type: "+type);
-	//if (window.console&&$options.debug_to_console) console.warn("#$id: "+$id);
-	//if (window.console&&$options.debug_to_console) console.warn("#$ajax_is_load: "+$ajax_is_load);
-	//$url_with_ajax = getURLWithAJAXFlag($href);
-	//if (window.console&&$options.debug_to_console) console.warn("#$url_with_ajax: "+$url_with_ajax);
+function getAJAX ($href,$type,$id,$data){//Функция - отправка данныx через jQuery plugin form в include.js
+	if ($options.debugToConsole) console.warn(getTabByLevel(5)+"evnine::getAJAX()");
+	//if ($options.debugToConsole) console.info("#getAJAXSubmit: ");
+	//if ($options.debugToConsole) console.info("#href: "+$href);
+	//if ($options.debugToConsole) console.info("#type: "+type);
+	//if ($options.debugToConsole) console.info("#$id: "+$id);
+	//if ($options.debugToConsole) console.info("#$ajax_is_load: "+$ajax_is_load);
+	//$url_with_ajax = getURLWithFlag($href);
+	//if ($options.debugToConsole) console.info("#$url_with_ajax: "+$url_with_ajax);
 	$id='body';
 	$ajax_run=true;
 	if (!$ajax_is_load){
 		//TODO re comment
 		//$ajax_is_load = true;
 		//$respond = getTypeResponseForHREF(href);
-		//if (window.console) console.warn("#$respond: "+$respond);
+		//if (window.console) console.info("#$respond: "+$respond);
 		//$ajax_options = jQuery.extend({
-			//url:getURLWithAJAXFlag($href)
-		//},$options.ajax_options_rewrite);
-		$options.ajax_options_rewrite.url=getURLWithAJAXFlag($href);
-		//$options.ajax_options_rewrite.success=showResponse;
-		//$options.ajax_options_rewrite.error=showResponseError;
-		if (window.console&&$options.debug_to_console) console.warn("				#$options.ajax_options_rewrite: ");
-		if (window.console&&$options.debug_to_console) getTraceObject($options.ajax_options_rewrite,'					');
-		//$ajax_options.url=getURLWithAJAXFlag($href);
-		//if (window.console) console.warn("#type: "+type);
+			//url:getURLWithFlag($href)
+		//},$options.loadAJAXOptions);
+		//$options.loadAJAXOptions.success=showResponse;
+		//$options.loadAJAXOptions.error=showResponseError;
+		if ($options.debugToConsole) console.info(getTabByLevel(6)+"evnine::getAJAX->$options.loadAJAXOptions: ");
+		if ($options.debugToConsole) getTraceObject($options.loadAJAXOptions,getTabByLevel(6));
+		//$ajax_options.url=getURLWithFlag($href);
+		//if (window.console) console.info("#type: "+type);
 		if ($type==='submit'&&$ajax_run===true){
+			$options.loadAJAXOptions.url=getURLWithFlag(setURLToHashAndLocation($href),$options.ifAJAXAddThisParamToScript,$option.ifSEFAJAXReplaceHREFMatchTo);
 			try{
 				$load_href= $href;
-				//if (window.console) console.warn("#$load_href: "+$load_href);
-				//$('#'+$id).ajaxSubmit($options.ajax_options_rewrite);
+				//if (window.console) console.info("#$load_href: "+$load_href);
+				//$('#'+$id).ajaxSubmit($options.loadAJAXOptions);
 			}catch($bug){
 				$load_href= '';
 				//$ajax_is_loader.hide();
@@ -288,60 +355,91 @@ var getAJAX = function ($href,$type,$id,$data){//Функция - отправк
 				//getAJAXSubmit($href,$type,$id);
 			}
 		}else if($ajax_run===true) {
-			setURLToHashAndLocation($href);
+			//$options.loadAJAXOptions.url=getURLWithFlag(setURLToHashAndLocation($href),$options.);
+			//$href = setURLToHashAndLocation($href);
+			if ($options.debugToConsole)   console.info(getTabByLevel(6)+"evnine::getAJAX->loadAJAXOptions.url="+$options.loadAJAXOptions.url);
 			if (isURLBaseAJAX()){
-				if (window.console&&$options.debug_to_console) console.warn("					isHasAnchore:TRUE");
+				$options.loadAJAXOptions.url=getURLWithFlag(setURLToHashAndLocation($href),$options.ifAJAXAddThisParamToScript,$options.ifSEFAJAXReplaceHREFMatchTo);
 				//setURLToHashAndLocation($href);
 				try{
 					//$load_href= $href;
-					//if (window.console) console.warn("		#$.ajax: "+$.ajax);
-					$.ajax(this.$options.ajax_options_rewrite);
+					//if (window.console) console.info(getTabByLevel(3)+"#$.ajax: "+$.ajax);
+					$.ajax($options.loadAJAXOptions);
 				}catch($bug){
-					if (window.console) console.warn("		evnine::CATCH #bug: "+$bug);
+					if (window.console)        console.info(getTabByLevel(6)+"evnine::getAJAX->$bug="+$bug);
 					//$load_href= '';
 					////$ajax_is_loader.hide();
 					//$ajax_is_load = false;
 					//getAJAXSubmit($href,$type);
 				}
-			}else {
-				if (window.console&&$options.debug_to_console) console.warn("					isHasAnchore:FALSE");
+				//$loaded_href_hash_fix=$href;
 			}
-			//else {
-				//if (window.console) console.warn("	#setURLToHashAndLocation: "+setURLToHashAndLocation);
-			//}
+			else {
+				setURLToBrowser($options.scriptForAJAXCallAndSetAnchore,$href);
+				//window.location=$options.scriptForAJAXCallAndSetAnchore+$href;
+				//if (window.console) console.info(getTabByLevel(2)+"#setURLToHashAndLocation: "+setURLToHashAndLocation);
+			}
 		}
 	}
-};
+}
 
-
-})(jQuery);
-//var $init_hash_flag=true;
-//TODO AFRER DEBUG
-var $init_hash_flag=false;
-//Когда все эл-ты страницы загружены выполним привязки АЙДИ к действиям
-$(document).ready(function(){
-	if (!$init_hash_flag){
-	$init_hash_flag=true;
-		//Set back button to work
-		/*Для того что бы отслеживать когда юзер нажал кнопку назад или выбрал адрес из истории*/
-	$(window).trigger('hashchange');
-	//Load href if hash was changed
-	/*При изменения адреса хэша подгрузим страницу из якоря адреса*/
-	//var evnine_prev_hash_save='';
-	$(window).bind( 'hashchange', function(){
-			if (window.location.hash){ 
-				if (window.console) console.info("				hashchange YES");
-				$hash = location.hash.replace(/#!/,"");
-				if (window.console) console.warn("				#getAJAXHref: "+$hash);
-				jQuery().evnine().getAJAX($hash,'href');
-					//.getAJAX(location.hash,'href');
-				//getAJAXHref($hash,'href');
-			} else {
-				if (window.console) console.info("				hashchange NO");
-			}
-	});
+if ($options.folowByChangeOfHistory){
+	function getHash(loc){
+		loc = loc.toString();
+		if (loc.indexOf("#") != -1){
+			return loc.substring(loc.indexOf('#'));
+		} else {
+			return "";
+		}
 	}
-});
-//}
+	function setAnchoreClearWithoutURL (){//Установить новую страницу если в ссылке есть аякс вызов ссылка#вызов
+		if ($options.debugToConsole) console.warn(getTabByLevel(1)+"evnine::setAnchoreClearWithoutURL()");
+		$href=getHash(location);
+		$reg=new RegExp('^#'+$options.ancorePreFix,"g");
+		$href= $href.replace($reg,"");
+		if (window.console) console.info(getTabByLevel(2)+"evnine::setAnchoreClearWithoutURL->$href_after_replace="+$href);
+		if ($href){
+			if ($options.debugToConsole) console.info(getTabByLevel(2)+"evnine::setAnchoreClearWithoutURL->$href: "+$href);
+			//$reload_page=true;
+			//$('#body').html();
+				if (window.console) console.info(getTabByLevel(2)+"evnine::setAnchoreClearWithoutURL->isURLBaseAJAX return true");
+				//if ($options.isAllowThisBrowser){
+					getAJAX($options.scriptForAJAXCallAndSetAnchore+$href,'href');
+				//}else {
+					//window.location=$options.scriptForAJAXCallAndSetAnchore+$href;
+				//}
+				//else {
+					//window.location=$options.scriptForAJAXCallAndSetAnchore+$href;
+				//}
+		}
+	}
+	setAnchoreClearWithoutURL();//if first load href with AJAX anchor #!axax=ajax
+	if ($options.isAllowThisBrowser){
+		jQuery(window).trigger('hashchange');
+		jQuery(window).bind( 'hashchange', function(){
+				if ($options.debugToConsole) console.warn(getTabByLevel(0)+"evnine::hashchange()");
+				if (window.location.hash){ 
+					$reg=new RegExp('^#'+$options.ancorePreFix,"g");
+					$hash = location.hash.replace($reg,"");
+					if ($loaded_href_hash_fix!==$hash){
+						if ($options.debugToConsole) console.info(getTabByLevel(1)+"evnine::hashchange=YES");
+						if (window.console) console.info(getTabByLevel(1)+"|"+$hash + "|!=|"+$loaded_href_hash_fix+"|");
+						getAJAX($hash,'href');
+					} else {
+					if ($options.debugToConsole) console.info(getTabByLevel(1)+"evnine::hashchange=NO");
+					}
+				}
+		});
+	}
+}
+if ($options.debugToConsoleNotSupport){
+	if (window.console) console.warn("END");
+}
+
+if ($options.isAllowThisBrowser){
+	return jQuery($options.liveSelectorForAJAX).live($options.liveBindType, function() {
+			return getClickHref(this);
+	});
+}
+};
 //</script>
-//http://stackoverflow.com/questions/1042072/how-to-call-functions-that-are-nested-inside-a-jquery-plugin
