@@ -3,7 +3,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="text/javascript" language="JavaScript" src="js/jq.include.js"></script>
-<script type="text/javascript" language="JavaScript" src="js/jq.evnine.js"></script>
+<script type="text/javascript" language="JavaScript" src="js/jq.evnine.debug.js"></script>
+<script type="text/javascript" language="JavaScript" src="js/jq.evnine.func.js"></script>
+<script type="text/javascript" language="JavaScript" src="js/jq.evnine.nav.js"></script>
 <script type="text/javascript" language="JavaScript" src="js/jq.index.js"></script>
 
 </head>
