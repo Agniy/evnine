@@ -1,43 +1,58 @@
 //<script type="text/javascript">
 /*
- * JQuery AJAX AJAX Event
- *
- * Copyright 2011, (c) ev9eniy.info
- * Dual licensed under the MIT or GPL Version 2 licenses.
+ * en: jQuery AJAX plugin function
+ * ru: Плагин для запуска функций после аякс запроса
+ *  
+ * @name jq.evnine.func.js
+ * @author ev9eniy.info
+ * en: Copyright 2011, (c) ev9eniy.info
+ * en: Dual licensed under the MIT or GPL Version 2 licenses.
+ * ru: Двойная лицензия MIT или GPL Version 2
  *
  */
 new function (document, $, undefined) {
+	/**
+	* @name jQuery.evFunc
+	* @class jQuery.evFunc
+	* @constant $EVNINE_NAME ru: Имя
+	* @constant $EVNINE_VER ru: Версия
+	* @version 0.3
+	*/
 	jQuery.evFunc = function($rewrite_options) {
 		var $EVNINE_VER="0.3";
 		var $EVNINE_NAME='evFunc'+'.';
+		//en:
+		/*ru: Выставляем опции по умолчанию */
 		var $options = jQuery.extend({debugFunctionGroup:false},$rewrite_options);
 		//en:
-		/*ru: Учитываем случай когда при загрузки странице нужно запустить скрипт*/
+		/*ru: Учитываем случай когда при загрузки странице нужно запустить скрипт */
 		this.$reload_page=false;
 		//en:
-		/*ru:Какие скрипты подгружены*/
+		/*ru:Какие скрипты подгружены */
 		var $includ_scripts={};
 		//en:
-		/*ru:Переменная в который храним класс текущего метода*/
+		/*ru:Переменная в который храним класс текущего метода */
 		var $current_method_class=false;
 		if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,0)+$EVNINE_NAME+'init BEGIN');
 		//en:
-		/*ru: Случай когда для отладки нужно группировать в консоли вызовы*/
-		if ($options.debugFunctionGroup){
-			$options.debugPrefixString= '';
-		}	
-		/*ru:настройки по умолчанию*/
-		var $loaded_state={//Массив для хранения загруженных методов и новых
+		/*ru: Случай когда для отладки нужно группировать в консоли вызовы */
+		//if ($options.debugFunctionGroup){
+			//$options.debugPrefixString= '';
+		//}
+		//en:
+		/*ru:Объект для хранения загруженных методов и новых */
+		var $loaded_state={
 			'from' : {},'to'   : {}};
 			
 		/**
-		 *  ru: Получить скрипт и выполнить функцию после его загрузки
+		 * en:  
+		 * ru: Получить скрипт и выполнить функцию после его загрузки
 		 * @access public
 		 * @param $script_href - string
 		 * @param $fun - function
 		 * @return void
 		*/
-	$options.include_once=function($script_href,$fun) {
+		$options.include_once=function($script_href,$fun) {
 			//en:
 			/*ru: Сохраняем функцию для последующего доступа*/
 				var $function=$fun;
@@ -54,13 +69,12 @@ new function (document, $, undefined) {
 								console.warn(jQuery.evDev.getTab($options.debugPrefixString,0)+$EVNINE_NAME+'getScript.ready.function() BEGIN');
 							try {
 								//en:
-								/*ru: Ожидаем появления ошибки в функции запускаем переданную функцию*/	
+								/*ru: Ожидаем появления ошибки в функции. Запускаем переданную функцию*/	
 								$function();
 							}catch($e){
 								if ($options.debugToConsole) console.error(jQuery.evDev.getTab($options.debugPrefixString,5)+$EVNINE_NAME+'setInitJSFuncForHREF(): '+"try{...} catch(){"+$e+'}');
 							}
-								if ($options.debugToConsole) 
-									console.warn(jQuery.evDev.getTab($options.debugPrefixString,0)+$EVNINE_NAME+'getScript.ready.function() END');
+							if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,0)+$EVNINE_NAME+'getScript.ready.function() END');
 						});
 					});
 				}else {
@@ -68,6 +82,8 @@ new function (document, $, undefined) {
 					/*ru: Случай если скрипт уже загружен*/
 					if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,0)+$EVNINE_NAME+'getScript.ready.function() BEGIN');
 					try {
+						//en:
+						/*ru: Ожидаем появления ошибки в функции. Запускаем переданную функцию*/	
 						$function();
 					}catch($e){
 						if ($options.debugToConsole) console.error(jQuery.evDev.getTab($options.debugPrefixString,5)+$EVNINE_NAME+'setInitJSFuncForHREF(): '+"try{...} catch(){"+$e+'}');
@@ -78,7 +94,7 @@ new function (document, $, undefined) {
 				
 		/**
 		 * en:
-		 * ru: Вызываем из плагина навигации установку флага
+		 * ru: Вызываем из плагина навигации установку флага, что не нужно перезагружать страницу
 		 * 
 		 * @access public
 		 * @return void
@@ -99,6 +115,8 @@ new function (document, $, undefined) {
 		 */
 		this.setPostCallShowResponse=function($load_href) {
 			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,2)+$EVNINE_NAME+'setPostCallShowResponse($load_href='+$load_href+') BEGIN');
+			//en:
+			/*ru: Сохраним параметры загрузки адреса */	
 			this.getParseURLAndSave($load_href);
 			if ($loaded_state.to[$options.controller.paramName]!=undefined||
 				$loaded_state.to[$options.method.paramName]!=undefined)
@@ -116,6 +134,7 @@ new function (document, $, undefined) {
 		/**
 		 * en:
 		 * ru: Разбираем адрес загруженной страницы
+		 * 
 		 * @access public
 		 * @param $href - string
 		 * @return void
@@ -139,8 +158,12 @@ new function (document, $, undefined) {
 		};
 
 		/**
-			*  en:
-			*  ru:Получим метод и контроллер в ЧПУ урле
+			*en:
+			*ru:Получим метод и контроллер в ЧПУ адресе
+			*
+			* @access public
+			* @param $href - string
+			* @return object{[$options.controller.paramName],$obj[$options.method.paramName]}
 		*/
 		this.getMethodFromSEFURL=function($href){
 			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,2)+$EVNINE_NAME+'getMethodFromSEFURL() BEGIN');
@@ -160,7 +183,17 @@ new function (document, $, undefined) {
 			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,2)+$EVNINE_NAME+'getMethodFromSEFURL() END');
 			return $obj;
 		};
-	
+
+		/**
+			* en: Obtain a method and controller of the URL<br />
+			* ru: Разберем адрес и получим метод и контроллер
+			* 
+			* @access private
+			* @param $href - string
+			* @param $tab_level - int ru: Отступы в режиме отладке
+			* @return object{[$options.controller.paramName],$obj[$options.method.paramName]}
+			*  
+		*/
 		function getParseURL($href,$tab_level){//Парсим адрес для получения шаблона и метода
 			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,$tab_level)+$EVNINE_NAME+'getParseURL($href='+$href+') BEGIN');
 			if ($href===undefined){
@@ -168,23 +201,35 @@ new function (document, $, undefined) {
 			}
 			$href=$href.replace(/^.*\?/,"?");
 			$reg = new RegExp($options.isHREFMatchThisRegExpSetSEFMode,"g");
-			if ($href.match($reg)){//IF SEF URN
+			//en:
+			/*ru: Если совпадает с ЧПУ адресом */
+			if ($href.match($reg)){
 				$parse_url = this.getMethodFromSEFURL($href);
 			}else {
 				$parse_url = $.parseQuery($href);
 			}
 			if ($options.debugToConsole) console.info(jQuery.evDev.getTab($options.debugPrefixString,$tab_level+1)+$EVNINE_NAME+'$parse_url:');
 			if ($options.debugToConsole) jQuery.evDev.getTraceObject($parse_url,jQuery.evDev.getTab($options.debugPrefixString,$tab_level+2));
+			//en:
+			/*ru: Проверяем есть ли значение контроллера в адресе*/
 			if (!$parse_url[$options.controller.paramName] || $parse_url[$options.controller.paramName]===null || $parse_url[$options.controller.paramName]==='' || $parse_url[$options.controller.paramName]==undefined){
 				$controller=$options.controller.defaultValue;
 			}else {
+				//en:
+				/*ru: В случае если имени контроллера нет, выставляем значение по умолчанию из опций*/
 				$controller=$parse_url[$options.controller.paramName];
 			}
+			//en:
+			/*ru: Проверяем есть ли значение метода в адресе */
 			if (!$parse_url[$options.method.paramName] || $parse_url[$options.method.paramName]===null || $parse_url[$options.method.paramName]==='' || $parse_url[$options.method.paramName]==undefined){
 				$method=$options.method.defaultValue;
 			}else {
+				//en:
+				/*ru: В случае если имени метода нет, выставляем значение по умолчанию из опций*/
 				$method=$parse_url[$options.method.paramName];
 			}
+			//en:
+			/*ru: Возвращаем объект с значениями для последующего сохранения и получения функции */
 			var $obj={};
 			$obj[$options.controller.paramName]=$controller;
 			$obj[$options.method.paramName]=$method;
@@ -192,46 +237,26 @@ new function (document, $, undefined) {
 			if ($options.debugToConsole) jQuery.evDev.getTraceObject($obj,jQuery.evDev.getTab($options.debugPrefixString,$tab_level+1)+'return ');
 			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,$tab_level)+$EVNINE_NAME+'getParseURL($href='+$href+') END');
 			return $obj;
-			//return {controller_name : $controller,method_name : $method};
 		}
 
 		/**
-		 * ru:Для случая когда в кнопке указан метод, устанавливаем этот метод в ссылку	
+		 * en:
+		 * ru: Устанавливаем функцию удаления
+		 * 
+		 * @access private
+		 * @param $function_callback - string
+		 * @return void
 		 */
-		this.setMethodTOURL=function($href,$method) {
-			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,2)+$EVNINE_NAME+'setMethodTOURL() BEGIN');
-			if ($method.length===0){
-				return $href;
-			}else {
-				if ($href.match(/\.html$/)){
-					$href = $href.substring(1);
-					$method_replace  = $href.match(/.*\//);
-					$method_replace=$method_replace.toString().split(/\//);
-					if ($method_replace[1].match(/=/)){
-						$method_match==$method_replace[0]+'/';
-						$method='/'+$method_replace[0]+'/'+$method;
-					}else {
-						$method_match=$method_replace[1];
-					}
-					$href = $href.replace($method_match,$method);
-				}else {
-					$method_match = $href.match(/&m=.*/);
-					$href = $href.replace($method_match,"&m="+$method);
-				}
-				if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,2)+$EVNINE_NAME+'setMethodTOURL() END');
-				return $href;
-			}
-		};
-
-/**
- *  ru: Запуск удаления метода
- */
 		function setUnsetJSFuncForHREF($function_callback){
 			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,4)+$EVNINE_NAME+'setInitJSFuncForHREF($function_callback='+$function_callback+') BEGIN');
 			try {
+				//en:
+				/*ru: проверяем изменился ли контроллер, если да, запускаем функцию переданную в функцию */	
 				if ($loaded_state.from[$options.controller.paramName]!==$loaded_state.to[$options.controller.paramName]){
 					setRunFunction($current_method_class[$options.controller.paramName],$loaded_state.from[$options.controller.paramName],$loaded_state.to[$options.controller.paramName],$function_callback);
 				}
+				//en:
+				/*ru: проверяем изменился ли метод, если да, запускаем функцию переданную в функцию */	
 				if ($loaded_state.from[$options.method.paramName]!==$loaded_state.to[$options.method.paramName]){
 					setRunFunction($current_method_class[$options.method.paramName],$loaded_state.from[$options.method.paramName],$loaded_state.to[$options.method.paramName],$function_callback);
 				}
@@ -242,12 +267,19 @@ new function (document, $, undefined) {
 		}
 		
 
-/**
- *  ru: Запуск метода функции
- */
+		/**
+		 * en
+		 * ru: Инициализируем функцию
+		 * 
+		 * @access private
+		 * @param $function_callback - string
+		 * @return void
+		 */
 		function setInitJSFuncForHREF($function_callback){
 			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,4)+$EVNINE_NAME+'setInitJSFuncForHREF($function_callback='+$function_callback+') BEGIN');
 			try {
+				//en:
+				/*ru: Для текущего шаблона получим класс из списка привязки шаблонов к классам */
 				$current_method_class = getFuncForControllerAndMethod();
 				setRunFunction($current_method_class[$options.controller.paramName],$loaded_state.from[$options.controller.paramName],$loaded_state.to[$options.controller.paramName],$function_callback);
 				setRunFunction($current_method_class[$options.method.paramName],$loaded_state.from[$options.method.paramName],$loaded_state.to[$options.method.paramName],$function_callback);
@@ -258,16 +290,28 @@ new function (document, $, undefined) {
 		}
 		
 		/**
+		 * en:
 		 * ru:Запустим функцию
-		 */
+		 * 
+		 * @access private
+		 * @param $function_callback - string
+		 * @param $before - string
+		 * @param $after - string
+		 * @param $function_callback - string
+		 * @return bool
+		*/ 
 		function setRunFunction($obj,$before,$after,$function_callback){
 			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,5)+$EVNINE_NAME+'setRunFunction() BEGIN');
 			if ($obj==undefined){
 				if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,5)+$EVNINE_NAME+'setRunFunction() END: return false, case:$obj==undefined');
 				return false;
 			}
+			//en:
+			/*ru: проверяем изменен ли параметр с прошлого раза */
 			if ($before!==$after){
 				if ($options.debugToConsole) console.info(jQuery.evDev.getTab($options.debugPrefixString,6)+'[$before='+$before+']!==[$after='+$after+']');
+				//en:
+				/*ru: проверяем уровень доступа */
 				if (isHasAccess($obj)){
 					$obj = $obj[$function_callback];
 					if (typeof $obj==='function'){
@@ -286,6 +330,8 @@ new function (document, $, undefined) {
 					if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,5)+$EVNINE_NAME+'setRunFunction() END: return false, case:setReloadPageAction==undefined');
 					return false;
 				}
+				//en:
+				/*ru: проверяем уровень доступа */
 				if (isHasAccess($obj)){
 					if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,6)+"$options.setJSFuncForLoadPage.setFunction.setReloadPageAction()");
 					$obj.setReloadPageAction();
@@ -296,24 +342,36 @@ new function (document, $, undefined) {
 		}
 
 		/**
-		* Получить из адреса текущий контроллер и метод 
-		*/
+		 * en:
+		 * ru:Получить из адреса текущий контроллер и метод 
+		 * 
+		 * @access public
+		 * @param $mode ru: метод инициализации
+		 * @return void
+		 */
 		this.setMethodAndControllerFunc=function($mode) {//Сохраним текущие данные по шаблону и методу
 			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,3)+$EVNINE_NAME+'setMethodAndControllerFunc($mode='+$mode+') BEGIN');
 			if ($mode==='init'){
 				$loaded_state.to = getParseURL(location.pathname,4);
+				//en:
+				/*ru: Инициализируем функцию */
 				setInitJSFuncForHREF('setAction');
 				$loaded_state.from= $loaded_state.to;
 			}else {
 				setInitJSFuncForHREF('setAction');
-				//$loaded_state.from = getParseURL(location.pathname,4);
 			}
-			//Загрузим дополнительные скрипты
+			//en:
+			/*ru: Загрузим дополнительные скрипты*/
 			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,3)+$EVNINE_NAME+'setMethodAndControllerFunc($mode='+$mode+') END');
 		};
 	
 		/**
-		 *  ru:Проверяем есть ли доступ по функции в опции
+		 * en:
+		 * ru: Проверяем есть ли доступ к функции из опций
+		 * 
+		 * @access private
+		 * @param $obj - object
+		 * @return function() or bool
 		 */
 		function isHasAccess($obj) {
 			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,7)+$EVNINE_NAME+'isHasAccess() BEGIN');
@@ -327,11 +385,17 @@ new function (document, $, undefined) {
 		}
 	
 		/**
+		 * en:
 		 * ru:Для текущего шаблона получим класс из списка привязки шаблонов к классам
+		 * 
+		 * @access private
+		 * @return object{[$options.controller.paramName],$obj[$options.method.paramName]}
 		 */
 		function getFuncForControllerAndMethod(){
 			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,5)+$EVNINE_NAME+'getFuncForControllerAndMethod() BEGIN');
 			var $obj={};
+			// en:
+			/* ru:Получить функции по ключу из объекта полученного после парсинга*/
 			$obj[$options.controller.paramName]=getFunctionFromOptions($loaded_state.to[$options.controller.paramName]);
 			$obj[$options.method.paramName]=getFunctionFromOptions($loaded_state.to[$options.controller.paramName]+$options.strUnionControllerWithMethod+$loaded_state.to[$options.method.paramName]);
 			if ($options.debugToConsole) jQuery.evDev.getTraceObject($obj,jQuery.evDev.getTab($options.debugPrefixString,6)+'return ',$options.debugPrefixString);
@@ -340,50 +404,62 @@ new function (document, $, undefined) {
 		}
 	
 		/**
-		 * ru:Получить обект функции
+		 * en:
+		 * ru:Получить функции по ключу из объекта полученного после парсинга
 		 * 
-		 * @access public
-		 * @return void
+		 * @access private
+		 * @param $key string ru: ключ массива
+		 * @return object[$options.setFuncByEvnineParamMatch[$key]] or undefined
 		 */
 		function getFunctionFromOptions($key){
 			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,4)+$EVNINE_NAME+'getFunctionFromOptions() BEGIN');
 			var $setFunctionKey='';
 			try{
+				//en:
+				/*ru: Проверяем существует ли ключ */
 				if ($options.setFuncByEvnineParamMatch[$key]!=undefined){
 					$setFunctionKey = $options.setFuncByEvnineParamMatch[$key];
 					if (typeof $options.setFunction[$setFunctionKey]==='function'){
+						//en:
+						/*ru: Вернем функцию для вызова  */
 						return new $options.setFunction[$setFunctionKey]($options);
 					}
 				}
-
+				//en:
+				/*ru: Проверим совпадение с адресом */
 				if ($options.setFuncByHREFMatch!=undefined) {
 					if ($options.setFuncByHREFMatch[$loaded_state.to.url]!=undefined){
 						$setFunctionKey = $options.setFuncByHREFMatch[$loaded_state.to.url];
+						//en:
+						/*ru: Если объект в массиве является функцией */
 						if (typeof $options.setFunction[$setFunctionKey]==='function'){
 							if ($options.debugToConsole) console.info(jQuery.evDev.getTab($options.debugPrefixString,4)+$EVNINE_NAME+'$options.setFuncByHREFMatch');
-							//if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,4)+$EVNINE_NAME+'getFunctionFromOptions() END return object');
 							return new $options.setFunction[$setFunctionKey]($options);
 						}
 					}
 				}
-				
+				//en:
+				/*ru: Проверим совпадение с регулярным выражением */
 				if ($options.setFuncByMatchRegHREF!=undefined) {
 					var obj={};
 					$.each($options.setFuncByMatchRegHREF, function($href_reg,$setFunctionKey){
 						$reg = new RegExp($href_reg,"g");
-						if ($loaded_state.to.url.match($reg)){//IF SEF URN
+						if ($loaded_state.to.url.match($reg)){
+							//en:
+							/*ru: Если объект в массиве является функцией */
 							if (typeof $options.setFunction[$setFunctionKey]==='function'){
 								$obj=new $options.setFunction[$setFunctionKey]($options);
 							}
 						}
 					});
+					//en:
+					/*ru: Если объект указан возвращаем его */
 					if ($obj!=undefined){
 						if ($options.debugToConsole) console.info(jQuery.evDev.getTab($options.debugPrefixString,4)+$EVNINE_NAME+'$options.setFuncByMatchRegHREF');
 						if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,4)+$EVNINE_NAME+'getFunctionFromOptions() END return object');
 						return $obj;
 					}
 				}
-				
 			}catch($e){
 				if ($options.debugToConsole) console.error(jQuery.evDev.getTab($options.debugPrefixString,4)+$EVNINE_NAME+'getFunctionFromOptions'+"try{...} catch(){"+$e+'}');
 			}

@@ -12,14 +12,154 @@
  *
  */
 new function (document, $, undefined) {
+	/**
+		* en: Plugin navigation links in the #anchoring after the AJAX load.<br />
+		* ru: Плагин навигации по ссылкам с учётом установки якоря после аякс загрузки страницы.
+		* @name jQuery.evNav 
+		* @class jQuery.evNav 
+		* en: <br />
+		* ru: Выводить отладочную информацию в консоль FireFox FireBug, Chrome, Opera итд
+		* @param $options.debugToConsole                   default: false,<br />
+		* en: <br />
+		* ru: Префикс для вывода в окно отладки FireFox FireBug, Chrome, Opera
+		* @param $options.debugPrefixString                  default: '| '<br />
+		* en: <br />
+		* ru: Если нужна отладка в консоль в IE 6-7, Safari итд 
+		* @param $options.debugToConsoleNotSupport         default: false,<br />
+		* en: <br />
+		* ru: Использовать группировку в консоли для плагина навигации, так же нужно указать в плагине функций 
+		* @param $options.debugFunctionGroup               default: false,<br />
+		* en:<br />
+		* ru: Прокручивать вверх до загрузки страницы
+		* @param $options.scrollToTopAfterAJAXCall           default: false,<br />
+		* en: <br />
+		* ru: Селектор для привязки, в данном случае не учитываем с классом  json, body
+		* @param $options.liveSelectorForAJAX                default: 'a, input:submit'<br />
+		* en: <br />
+		* ru: Тип события по которому загружаем страницу
+		* @param $options.liveBindType                       default: 'click'<br />
+		* en: <br />
+		* ru: Минимальная версия для совместимости 
+		* @param $options.crossBrowserMinimumVersion        {
+		*  en: <br />
+		*  ru: Минимальная версия для IE  
+		*  default: msie   :'8'
+		* },
+		* en: <br />
+		* ru: Отслеживаем если юзер нажал кнопку назад, либо выбрал ссылку из истории 
+		* @param $options.folowByChangeOfHistory             default: true,<br />
+		* en: <br />
+		* ru: Через сколько попыток остановить вызов AJAX 
+		* @param $options.maxErrorCountBeforeStopAJAXCall    default: 3,<br />
+		* en: <br />
+		* ru: Селектор для заметы, в данном случае заменяем все тело страницы
+		* @param $options.selectorForAJAXReplace             default: 'body', <br />
+		* en: <br />
+		* ru: Адрес относительно которого производить ajax вызовы
+		* @param $options.scriptForAJAXCallAndSetAnchore     default: '/HelloAJAXJQuery/index.php'<br />
+		* en: <br />
+		* ru: Префикс для указания в якоре 
+		* index.php#!test
+		* @param $options.ancorePreFix                       default: '!'<br />
+		* en: <br />
+		* ru: Ссылка совпадает с этим регулярным то не использовать аякс
+		* =$href.match(/^http:\/\//g)
+		* @param $options.isHREFMatchThisRegExpSetNoUseAJAX  default: '^http://'<br />
+		* en: <br />
+		* ru: Если аякс режим добавить параметр в ссылку вызова скрипта
+		* =index.php?ajax=ajax
+		* @param $options.ifAJAXAddThisParamToScript         default: 'ajax=ajax'<br />
+		* en: <br />
+		* ru: Ссылка совпадает с регулярным, работаем аякс в ЧПУ режиме
+		* =$href.match(/\.html/g)
+		* @param $options.isHREFMatchThisRegExpSetSEFMode    default: '.html$'<br />
+		* en: <br />
+		* ru: Если аякс работает в ЧПУ режиме, заменим адрес на 
+		* @index.html => index.ajax
+		* @param $options.ifSEFAJAXReplaceHREFMatchTo        default: '.ajax'<br />
+		* en: Function for the AJAX indicator off and on<br />
+		* ru: Функции для отображения индикации аякс погрузки 
+		* =$href.replace(/\.html$/g, '.ajax')
+		* 
+		*/
 	jQuery.evNav = function($rewrite_options){
 		// The current version of Evnine being used
+/**
+ * @constant $EVNINE_NAME ru: Имя
+ */
 	$EVNINE_VER="0.3";
+/**
+ * @constant $EVNINE_VER ru: Версия
+ */
 	$EVNINE_NAME='evNav'+'.';
-	//Default setting
-	/* настройки по умолчанию*/
+/**
+	*  en:Default setting<br />
+	*  ru:настройки по умолчанию
+ */
 	var $options = jQuery.extend({
-		debugFunctionGroup:false
+	//en: <br />
+	/*ru: Выводить отладочную информацию в консоль FireFox FireBug, Chrome, Opera итд*/
+	//debugToConsole                    :true,
+	debugToConsole                  :false,
+	//en: <br />
+	/*ru: Префикс для вывода в окно отладки FireFox FireBug, Chrome, Opera*/
+	debugPrefixString                 :'|	',
+	//debugPrefixString               :' ',
+	//en: <br />
+	/*ru: Если нужна отладка в консоль в IE 6-7, Safari итд */
+	debugToConsoleNotSupport          :false,
+	//debugToConsoleNotSupport        :true,
+	//en: <br />
+	/*ru: Использовать группировку в консоли для плагина навигации, так же нужно указать в плагине функций */
+	//debugFunctionGroup                :true,
+	debugFunctionGroup              :false,
+	//en:<br />
+	/*ru: Прокручивать вверх до загрузки страницы*/
+	scrollToTopAfterAJAXCall          :false,
+	//en: <br />
+	/*ru: Селектор для привязки, в данном случае не учитываем с классом  json, body*/
+	liveSelectorForAJAX               :'a, input:submit',
+	//en: <br />
+	/*ru: Тип события по которому загружаем страницу*/
+	liveBindType                      :'click',
+	//liveBindType                    :'mouseover',
+	//en: <br />
+	/*ru: Минимальная версия для совместимости */
+	crossBrowserMinimumVersion        :{
+		//en: <br />
+		/*ru: Минимальная версия для IE */	
+		msie   :'8'
+	},
+	//en: <br />
+	/*ru: Отслеживаем если юзер нажал кнопку назад, либо выбрал ссылку из истории */
+	folowByChangeOfHistory            :true,
+	//en: <br />
+	/*ru: Через сколько попыток остановить вызов AJAX */
+	maxErrorCountBeforeStopAJAXCall   :3,
+	//en: <br />
+	/*ru: Селектор для заметы, в данном случае заменяем все тело страницы*/
+	selectorForAJAXReplace            :'body', 
+	//en: <br />
+	/*ru: Адрес относительно которого производить ajax вызовы*/
+	scriptForAJAXCallAndSetAnchore    :'/HelloAJAXJQuery/index.php',
+	//en: <br />
+	/*ru: Префикс для указания в якоре */
+	ancorePreFix                      :'!',//index.php#!test
+	//en: <br />
+	/*ru: Ссылка совпадает с этим регулярным то не использовать аякс*/
+	isHREFMatchThisRegExpSetNoUseAJAX :'^http://',//=$href.match(/^http:\/\//g)
+	//en: <br />
+	/*ru: Если аякс режим добавить параметр в ссылку вызова скрипта*/
+	ifAJAXAddThisParamToScript        :'ajax=ajax',//=index.php?ajax=ajax
+	//en: <br />
+	/*ru: Ссылка совпадает с регулярным, работаем аякс в ЧПУ режиме*/
+	isHREFMatchThisRegExpSetSEFMode   :'.html$',//=$href.match(/\.html/g)
+	//en: <br />
+	/*ru: Если аякс работает в ЧПУ режиме, заменим адрес на */
+	//Example: index.html => index.ajax
+	ifSEFAJAXReplaceHREFMatchTo       :'.ajax'//=$href.replace(/\.html$/g, '.ajax')
+	//en: Function for the AJAX indicator off and on
+	/*ru: Функции для отображения индикации аякс погрузки*/ 
 	},$rewrite_options);
 	if ($rewrite_options!=undefined){
 		$options.loadAJAXOptions = jQuery.extend({
@@ -27,8 +167,10 @@ new function (document, $, undefined) {
 			success:showResponseError,
 			dataType: 'html'
 		},$rewrite_options.loadAJAXOptions);
-		//en:
-		/*ru: Обертка для передачи в обратную функцию метода опции */
+	/**
+		*  en:
+		*  ru: Обертка для передачи в обратную функцию метода опции 
+		*/
 		if ($rewrite_options.loadAJAXOptions.error!=undefined){
 			$options.loadAJAXOptions.error_for_options=$rewrite_options.loadAJAXOptions.error;
 			$options.loadAJAXOptions.error=function(responseText, statusText){
@@ -213,6 +355,7 @@ new function (document, $, undefined) {
 	
 	/**
 	* ru:Является ли адрес базовым указанный в $options.scriptForAJAXCallAndSetAnchore?
+	* @example 
 	* /index.php#!?test=test 
 	* return true
 	*
@@ -240,7 +383,9 @@ new function (document, $, undefined) {
 	}
 	
 	/**
+		* en:
 		* ru:Сбрасываем в случае когда в адресной части есть параметры
+		* example 
 		* /HelloAJAXJQuery/index.php?param=param#!?test=test
 		* =
 		* /HelloAJAXJQuery/index.php#!?test=test
@@ -283,9 +428,44 @@ new function (document, $, undefined) {
 			return $href;
 		}
 	}
-	
+
+		/**
+			* en: 
+			* ru:Для случая когда в кнопке указан метод, устанавливаем этот метод в ссылку
+			* 
+			* @access public
+			* @param $href - string
+			* @param $method - string
+			* @return $href string
+			* 
+		 */
+		function setMethodTOURL ($href,$method) {
+			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,2)+$EVNINE_NAME+'setMethodTOURL() BEGIN');
+			if ($method.length===0){
+				return $href;
+			}else {
+				if ($href.match(/\.html$/)){
+					$href = $href.substring(1);
+					$method_replace  = $href.match(/.*\//);
+					$method_replace=$method_replace.toString().split(/\//);
+					if ($method_replace[1].match(/=/)){
+						$method_match==$method_replace[0]+'/';
+						$method='/'+$method_replace[0]+'/'+$method;
+					}else {
+						$method_match=$method_replace[1];
+					}
+					$href = $href.replace($method_match,$method);
+				}else {
+					$method_match = $href.match(/&m=.*/);
+					$href = $href.replace($method_match,"&m="+$method);
+				}
+				if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,2)+$EVNINE_NAME+'setMethodTOURL() END');
+				return $href;
+			}
+		}
+
 	/**
-	* ru:Выполнить POST запрос
+	* ru: Выполнить POST запрос
 	* 
 	* @param string $href 
 	* @access public
@@ -300,15 +480,16 @@ new function (document, $, undefined) {
 		if ($length>6){
 			$method = $method.substring(7, $length-1);
 			$options.loadAJAXOptions.data= {'submit':$method};
-				//$href =setMethodTOURL($form.attr('action'),$method);
-			$href =$form.attr('action');
+			$href =setMethodTOURL($form.attr('action'),$method);
+			//$href =$form.attr('action');
 		}else {
-			$href =$form.attr('action');
+			$href =setMethodTOURL($form.attr('action'),$method);
+			//$href =$form.attr('action');
 			$options.loadAJAXOptions.data='';
 		}
 		if ($options.debugToConsole) console.info(jQuery.evDev.getTab($options.debugPrefixString,4)+$EVNINE_NAME+"getAJAXSubmit.$options.loadAJAXOptions.data: "+$options.loadAJAXOptions.data);
-		//If not exist add id to form
-		/*Если не указан айди для формы, генерируем свой*/
+		//eN: If not exist form id add rand id 
+		/*ru: Если не указан айди для формы, генерируем свой*/
 		$id = $form.attr('id');
 		if ($id!=undefined){
 			$id = 'tmp_'+Math.floor(Math.random()*100);
@@ -321,10 +502,11 @@ new function (document, $, undefined) {
 	}
 	
 	/**
+	* en:
 	* ru:Выполнить GET запрос
 	* 
 	* @param string $href 
-	* @access public
+	* @access private
 	* @return void
 	*/
 	function getAJAXHref($href) {
@@ -334,7 +516,10 @@ new function (document, $, undefined) {
 	}
 	
 	/**
+	* en:
 	* ru:Случай когда ошибка в аякс запросе
+	* @access private
+	* @return void
 	*/
 	function showResponseError(responseText, statusText){//Функций - Показать AJAX ответ в случае ошибке
 		if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,5)+$EVNINE_NAME+"showResponseError() BEGIN");
@@ -348,7 +533,11 @@ new function (document, $, undefined) {
 	}
 	
 	/**
+	* en:
 	* ru:Случай когда запрос успешно выполнен
+	* @access private
+	* @param responseText, statusText
+	* @return void
 	*/
 	function showResponse(responseText, statusText){//Функций - Показать AJAX ответ в случае ошибке
 		if ($options.debugToConsole) console.info(jQuery.evDev.getTab($options.debugPrefixString,5)+$EVNINE_NAME+"showResponse() BEGIN");
@@ -361,7 +550,12 @@ new function (document, $, undefined) {
 	}
 	
 	/**
+	* en:
 	* ru:Функция - отправка через jQuery plugin form в include.js 
+	* 
+	* @access private
+	* @param $href,$type,$id,$error_count
+	* @return void
 	*/
 	function getAJAX($href,$type,$id,$error_count){
 		if ($error_count==undefined){
@@ -410,6 +604,7 @@ new function (document, $, undefined) {
 	
 		
 		/**
+		* en:
 		* ru:Получаем кросс-браузерно якорную часть
 		* 
 		* @param loc $loc 
@@ -426,8 +621,9 @@ new function (document, $, undefined) {
 		}
 		
 	/**
-		* en:if first load href with AJAX anchor #!axax=ajax
+		* en:if first load href with AJAX anchor #!axax=ajax<br />
 		* ru:Установить новую страницу если в ссылке есть аякс вызов ссылка#вызов
+		* @example 
 		* ru:При первой инициализации проверяем есть ли якорная часть
 		* ru:для ссылок вида
 		* ru:/HelloAJAXJQuery/index.php#!?test=test
