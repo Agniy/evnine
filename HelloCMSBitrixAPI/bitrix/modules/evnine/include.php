@@ -1,5 +1,2 @@
 <?
-class CCompress1
-{
-}
 ?>

@@ -31,7 +31,7 @@ function getQuery($param) {
 				'NAME' => 'ASC',
 			)
 			,$arGroupBy=false
-			,array('nPageSize' => '1')
+			,array('nPageSize' => '10')
 			,$get_prop=false
 		);
 	}
