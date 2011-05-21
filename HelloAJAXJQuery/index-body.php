@@ -3,9 +3,9 @@
 
 <a id="clicked" href="index.php">index.php</a>                   
 <br/>
-<a href="index.php?param=param">index.php?param=param</a>
+<a id="test_href" href="index.php?c=param1&m=param2">index.php?c=param1&m=param2</a>
 <br/>
-<a href="index.php?param=param&data[]=1&data[]=1&data[]=1&data[]=1&data[]=1&data[]=1&data[]=1">index.php?param=param&data[]=1</a>
+<a id="param_href" href="index.php?param=param&data[]=1&data[]=1&data[]=1&data[]=1&data[]=1&data[]=1&data[]=1">index.php?param=param&data[]=1</a>
 <br/>
 <a href="index.html">index.html - SEF</a>
 <br/>
@@ -23,7 +23,7 @@
 <a href="http://google.com">google.com</a>
 <a href="hop">hop</a>
 <form 
-	method="get" 
+	method="post" 
 	action=<?php echo $ctrlr['inURL']['default']['pre'].$ctrlr['inURL']['post']; ?>
 >
 <?php echo $ctrlr['inURL']['default']['inputs']; ?>

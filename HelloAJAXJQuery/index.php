@@ -2,7 +2,6 @@
 error_reporting(2046);
 include_once 'evnine.php';
 include_once 'debug/evnine.debug.php';
-
 $evnine = new Controller();
 $ctrlr = $evnine->getControllerForParam(
 	array(

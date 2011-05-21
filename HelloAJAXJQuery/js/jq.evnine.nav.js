@@ -1,54 +1,69 @@
 //<script type="text/javascript">
 /*
  * JQuery AJAX Nav Evnine
+ * Plugin for CMS API (Joomla, Bitrix, etc). [Easy debug]
+ * 
  *
  * Copyright 2011, (c) ev9eniy.info
  * Dual licensed under the MIT or GPL Version 2 licenses.
+ * 
+ * ru: evnine – AJAX PHP – JQuery плагин для работы с API ЦМС (Joomla, Битрикс итд).
+ * 
  *
  */
 new function (document, $, undefined) {
-	jQuery.setEvnineNav = function($rewrite_options){
+	jQuery.evNav = function($rewrite_options){
 		// The current version of Evnine being used
 	$EVNINE_VER="0.3";
-	$EVNINE_NAME='$.setEvnineNav'+'->';
-		
+	$EVNINE_NAME='evNav'+'.';
 	//Default setting
 	/* настройки по умолчанию*/
-	var $options = jQuery.extend({},$rewrite_options);
+	var $options = jQuery.extend({
+		debugFunctionGroup:false
+	},$rewrite_options);
 	if ($rewrite_options!=undefined){
 		$options.loadAJAXOptions = jQuery.extend({
 			error:showResponseError,
 			success:showResponseError,
 			dataType: 'html'
 		},$rewrite_options.loadAJAXOptions);
+		//en:
+		/*ru: Обертка для передачи в обратную функцию метода опции */
 		if ($rewrite_options.loadAJAXOptions.error!=undefined){
 			$options.loadAJAXOptions.error_for_options=$rewrite_options.loadAJAXOptions.error;
-			//Обертка для передачи в обратную функцию метода опции
 			$options.loadAJAXOptions.error=function(responseText, statusText){
+				if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,1)+$EVNINE_NAME+"$options.loadAJAXOptions.error_for_options() BEGIN");
 				try{
 					$options.loadAJAXOptions.error_for_options(responseText, statusText, $options);
 				}catch($e){
-					if ($options.debugToConsole) console.error(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,4)+$EVNINE_NAME+'setJSFuncForHREF(): '+"try{...} catch(){"+$e+'}');
+					if ($options.debugToConsole) console.error(jQuery.evDev.getTab($options.debugPrefixString,4)+$EVNINE_NAME+'setJSFuncForHREF(): '+"try{...} catch(){"+$e+'}');
 				}
 				if (typeof $options.functionsForAJAXIndicator.Off==='function'){
 					$options.functionsForAJAXIndicator.Off($options);
 				}
 				$options.$ajax_is_load = false;
+				if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,1)+$EVNINE_NAME+"$options.loadAJAXOptions.error_for_options() END");
 			};
 		}
+		//en:
+		/*ru: Обертка для передачи в обратную функцию метода опции */
 		if ($rewrite_options.loadAJAXOptions.success!=undefined){
-			$options.loadAJAXOptions.success_for_options=$rewrite_options.loadAJAXOptions.success;
-			//Обертка для передачи в обратную функцию метода опции
 			$options.loadAJAXOptions.success=function(responseText, statusText){
+			$options.loadAJAXOptions.success_for_options=$rewrite_options.loadAJAXOptions.success;
 				try{
+			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,0)+$EVNINE_NAME+"$options.loadAJAXOptions.success_for_options() BEGIN");
 					$options.loadAJAXOptions.success_for_options(responseText, statusText, $options);
 				}catch($e){
-					if ($options.debugToConsole) console.error(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,4)+$EVNINE_NAME+'setJSFuncForHREF(): '+"try{...} catch(){"+$e+'}');
+					if ($options.debugToConsole) console.error(jQuery.evDev.getTab($options.debugPrefixString,4)+$EVNINE_NAME+'setJSFuncForHREF(): '+"try{...} catch(){"+$e+'}');
 				}
 				if (typeof $options.functionsForAJAXIndicator.Off==='function'){
 					$options.functionsForAJAXIndicator.Off($options);
 				}
+				if ($options.scrollToTopAfterAJAXCall){
+				 	jQuery('html,body').scrollTop(0);
+				}
 				$options.$ajax_is_load = false;
+				if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,0)+$EVNINE_NAME+"$options.loadAJAXOptions.success_for_options() END");
 			};
 		}
 	}
@@ -58,19 +73,23 @@ new function (document, $, undefined) {
 	$options.$loaded_href_hash_fix='';
 	$options.$loaded_href='';
 	$options.$ajax_is_load=false;
-	
-	//jQuery.setEvnineDebug.getTraceObject($rewrite_options.loadAJAXOptions,jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,2),$options.debugPrefixString);
-	if ($options.setJSFuncForLoadPage==undefined){
-		$options.flagJSFunc=false;
-	}else {
-		$options.flagJSFunc=true;
+	if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,0)+$EVNINE_NAME+'call BEGIN');
+	if ($options.debugToConsole){
+		if ($options.setJSFuncForLoadPage==undefined){
+			$options.flagJSFunc=false;
+		}else {
+			$options.flagJSFunc=true;
+		}
+		if (!window.console||jQuery.evDev==undefined){
+			$options.debugToConsole=false;
+		}else {
+			jQuery.evDev.initNotSupport();
+		}
+		if ($options.debugFunctionGroup){
+			$options.debugPrefixString= '';
+			jQuery.evDev.initGoupFunctionCall($options.debugToConsoleNotSupport);
+		}
 	}
-	if (!window.console||jQuery.setEvnineDebug==undefined){
-		$options.debugToConsole=false;
-	}else {
-		jQuery.setEvnineDebug.initNotSupport($options.debugToConsoleNotSupport);
-	}
-
 
 	/**
 		*ru:Функция получение числа
@@ -92,7 +111,7 @@ new function (document, $, undefined) {
 	 * @return void
 	 */
 	function isHasCrossBrowserMinimumVersion() {
-		if ($options.debugToConsole) console.info(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,1)+$EVNINE_NAME+"isHasCrossBrowserMinimumVersion()");
+		if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,1)+$EVNINE_NAME+"isHasCrossBrowserMinimumVersion() BEGIN");
 		var userAgent = navigator.userAgent.toLowerCase();
 		jQuery.browser = {
 			'version': (userAgent.match( /.+(?:rv|it|ra|ie|me)[\/: ]([\d.]+)/ ) || [])[1],
@@ -106,26 +125,26 @@ new function (document, $, undefined) {
 		jQuery.each($options.crossBrowserMinimumVersion, function($browser,$version){
 			if (jQuery.browser[$browser]){
 				if (getInt(jQuery.browser.version)>=$version){
-
 					if ($options.debugToConsole) console.warn("#getInt(jQuery.browser.version): "+getInt(jQuery.browser.version));
 					if ($options.debugToConsole) console.warn("#$version: "+$version);
-					if ($options.debugToConsole) console.info(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,2)+$EVNINE_NAME+"isHasCrossBrowserMinimumVersion return true");
+					if ($options.debugToConsole) console.info(jQuery.evDev.getTab($options.debugPrefixString,2)+$EVNINE_NAME+"isHasCrossBrowserMinimumVersion return true");
 					$return=true;
 					return '';
 				}else {
 					if ($options.debugToConsole) console.warn("#getInt(jQuery.browser.version): "+getInt(jQuery.browser.version));
 					if ($options.debugToConsole) console.warn("#$version: "+$version);
-					if ($options.debugToConsole) console.info(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,2)+$EVNINE_NAME+"isHasCrossBrowserMinimumVersion return false");
+					if ($options.debugToConsole) console.info(jQuery.evDev.getTab($options.debugPrefixString,2)+$EVNINE_NAME+"isHasCrossBrowserMinimumVersion return false");
 					$return=false;
 					return '';
 				}
 			}
 		});
+		if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,1)+$EVNINE_NAME+"isHasCrossBrowserMinimumVersion() END");
 		return $return;
 	}
 	$options.isAllowThisBrowser=isHasCrossBrowserMinimumVersion();
 
-	if ($options.debugToConsole) console.info(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,1)+$EVNINE_NAME+"$options.isAllowThisBrowser="+$options.isAllowThisBrowser);
+	if ($options.debugToConsole) console.info(jQuery.evDev.getTab($options.debugPrefixString,1)+$EVNINE_NAME+"$options.isAllowThisBrowser="+$options.isAllowThisBrowser);
 
 	/**
 	* en:For get safe AJAX URN.
@@ -149,18 +168,18 @@ new function (document, $, undefined) {
 	function getClickHref($that){
 		if (jQuery($that).attr('href')!=undefined){
 			$href = jQuery($that).attr('href');
-			if ($options.debugToConsole) console.info(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,3)+$EVNINE_NAME+"getClickHref $href: "+$href);
+			if ($options.debugToConsole) console.info(jQuery.evDev.getTab($options.debugPrefixString,3)+$EVNINE_NAME+"getClickHref $href: "+$href);
 			$reg = new RegExp($options.isHREFMatchThisRegExpSetNoUseAJAX,"g");
 			if ($href.match($reg)){
-				if ($options.debugToConsole) console.info(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,4)+$EVNINE_NAME+"getClickHref is no ajax href");
-				if ($options.debugToConsole) console.info(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,4)+$EVNINE_NAME+"getClickHref match $options.isHREFMatchThisRegExpSetNoUseAJAX");
+				if ($options.debugToConsole) console.info(jQuery.evDev.getTab($options.debugPrefixString,4)+$EVNINE_NAME+"getClickHref is no ajax href");
+				if ($options.debugToConsole) console.info(jQuery.evDev.getTab($options.debugPrefixString,4)+$EVNINE_NAME+"getClickHref match $options.isHREFMatchThisRegExpSetNoUseAJAX");
 				return true;
 			}else {
 				getAJAXHref($href);
-				if ($options.debugToConsole) console.info(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,4)+$EVNINE_NAME+"getClickHref is ajax href");
+				if ($options.debugToConsole) console.info(jQuery.evDev.getTab($options.debugPrefixString,4)+$EVNINE_NAME+"getClickHref is ajax href");
 			}
 		}else if (jQuery($that).attr('type')==='submit'){
-			if ($options.debugToConsole) console.info(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,4)+$EVNINE_NAME+"getClickHref is ajax submit");
+			if ($options.debugToConsole) console.info(jQuery.evDev.getTab($options.debugPrefixString,4)+$EVNINE_NAME+"getClickHref is ajax submit");
 				getAJAXSubmit($that);
 		}
 		return false;
@@ -171,19 +190,23 @@ new function (document, $, undefined) {
 	* ru:Добавить параметры к адресной части
 	*/
 	function getURLWithFlag($href,$post_fix,$post_sef) {//Установить флаг в урл что запрос делаем аяском в .htaccess отловим потом
-		if ($options.debugToConsole) console.warn(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,7)+$EVNINE_NAME+"getURLWithFlag() ");
+		if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,7)+$EVNINE_NAME+"getURLWithFlag() BEGIN");
 		if ($href===''){
+			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,7)+$EVNINE_NAME+"getURLWithFlag() END");
 			return '?'+$post_fix;
 		}
 		$reg = new RegExp($options.isHREFMatchThisRegExpSetSEFMode,"g");
 		if ($href.match($reg)){//IF SEF URN
-			if ($options.debugToConsole) console.info(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,8)+$EVNINE_NAME+"getURLWithFlag match SEF ");
+			if ($options.debugToConsole) console.info(jQuery.evDev.getTab($options.debugPrefixString,8)+$EVNINE_NAME+"getURLWithFlag match SEF ");
+			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,7)+$EVNINE_NAME+"getURLWithFlag() END");
 			return $href.replace($reg, $post_sef);
 		}else if($href.match(/\?/)) {//IF not SEF URN and has param
-			if ($options.debugToConsole) console.info(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,8)+$EVNINE_NAME+"getURLWithFlag match & ");
+			if ($options.debugToConsole) console.info(jQuery.evDev.getTab($options.debugPrefixString,8)+$EVNINE_NAME+"getURLWithFlag match & ");
+			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,7)+$EVNINE_NAME+"getURLWithFlag() END");
 			return $href+'&'+$post_fix;
 		}else {//If not SEF URN and not has param
-			if ($options.debugToConsole) console.info(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,8)+$EVNINE_NAME+"getURLWithFlag match ? ");
+			if ($options.debugToConsole) console.info(jQuery.evDev.getTab($options.debugPrefixString,8)+$EVNINE_NAME+"getURLWithFlag match ? ");
+			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,7)+$EVNINE_NAME+"getURLWithFlag() END");
 			return $href+'?'+$post_fix;
 		}
 	}
@@ -200,18 +223,18 @@ new function (document, $, undefined) {
 	* @return void
 	*/
 	function isURLBaseAJAX() {
-		if ($options.debugToConsole) console.warn(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,7)+$EVNINE_NAME+"isURLBaseAJAX()");
+		if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,7)+$EVNINE_NAME+"isURLBaseAJAX() BEGIN");
 		if (location.search!==''){
-			if ($options.debugToConsole) console.info(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,8)+$EVNINE_NAME+"isURLBaseAJAX retrun FALSE");
+			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,7)+$EVNINE_NAME+"isURLBaseAJAX() END return false");
 			return false;
 		}
-		if ($options.debugToConsole) console.info(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,8)+$EVNINE_NAME+"isURLBaseAJAX->=$options.scriptForAJAXCallAndSetAnchore="+$options.scriptForAJAXCallAndSetAnchore);
-		//if ($options.debugToConsole) jQuery.setEvnineDebug.getTraceObject(location,jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,8));
+		if ($options.debugToConsole) console.info(jQuery.evDev.getTab($options.debugPrefixString,8)+$EVNINE_NAME+"isURLBaseAJAX.$options.scriptForAJAXCallAndSetAnchore="+$options.scriptForAJAXCallAndSetAnchore);
+		//if ($options.debugToConsole) jQuery.evDev.getTraceObject(location,jQuery.evDev.getTab($options.debugPrefixString,8));
 		if (location.pathname===$options.scriptForAJAXCallAndSetAnchore){
-			if ($options.debugToConsole) console.info(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,8)+$EVNINE_NAME+"isURLBaseAJAX retrun TRUE");
+			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,7)+$EVNINE_NAME+"isURLBaseAJAX() END return true");
 			return true;
 		}else {
-			if ($options.debugToConsole) console.info(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,8)+$EVNINE_NAME+"isURLBaseAJAX retrun FALSE");
+			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,7)+$EVNINE_NAME+"isURLBaseAJAX() END return false");
 			return false;
 		}
 	}
@@ -245,7 +268,7 @@ new function (document, $, undefined) {
 	* @return void
 	*/
 	function setURLToHashAndLocation($href,$reset) {
-		if ($options.debugToConsole) console.warn(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,7)+$EVNINE_NAME+"setURLToHashAndLocation($href="+$href+")");
+		if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,7)+$EVNINE_NAME+"setURLToHashAndLocation($href="+$href+")");
 		if ($href==='/') {
 			$options.$loaded_href_hash_fix= '';
 			window.location.hash = $.URLDecode($options.ancorePreFix);
@@ -254,7 +277,7 @@ new function (document, $, undefined) {
 		}else {
 			$reg = new RegExp('^'+$options.scriptNameForAJAX+'|^'+$options.scriptForAJAXCallAndSetAnchore);
 			$options.$loaded_href_hash_fix=$hash_href_without_script_name=$href.replace($reg,'');
-			if ($options.debugToConsole) console.info(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,8)+$EVNINE_NAME+"setURLToHashAndLocation->hash_href_without_script_name="+$hash_href_without_script_name);
+			if ($options.debugToConsole) console.info(jQuery.evDev.getTab($options.debugPrefixString,8)+$EVNINE_NAME+"setURLToHashAndLocation.hash_href_without_script_name="+$hash_href_without_script_name);
 			window.location.hash = $.URLDecode($options.ancorePreFix+$hash_href_without_script_name);
 			if ($options.debugToConsole) document.title = $href;
 			return $href;
@@ -269,7 +292,7 @@ new function (document, $, undefined) {
 	* @return void
 	*/
 	function getAJAXSubmit($that) {
-		if ($options.debugToConsole) console.warn(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,4)+$EVNINE_NAME+"getAJAXSubmit");
+		if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,4)+$EVNINE_NAME+"getAJAXSubmit");
 		$method = jQuery($that).attr('name');
 		$form = jQuery($that).parents('form');
 		$length = $method.length;
@@ -283,7 +306,7 @@ new function (document, $, undefined) {
 			$href =$form.attr('action');
 			$options.loadAJAXOptions.data='';
 		}
-		if ($options.debugToConsole) console.info(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,4)+$EVNINE_NAME+"getAJAXSubmit->$options.loadAJAXOptions.data: "+$options.loadAJAXOptions.data);
+		if ($options.debugToConsole) console.info(jQuery.evDev.getTab($options.debugPrefixString,4)+$EVNINE_NAME+"getAJAXSubmit.$options.loadAJAXOptions.data: "+$options.loadAJAXOptions.data);
 		//If not exist add id to form
 		/*Если не указан айди для формы, генерируем свой*/
 		$id = $form.attr('id');
@@ -292,8 +315,8 @@ new function (document, $, undefined) {
 			$form.attr('id',$id);
 		}
 		//loadAJAXOptions
-		if ($options.debugToConsole) console.info(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,5)+$EVNINE_NAME+"getAJAXSubmit->$id="+$id);
-		if ($options.debugToConsole) console.info(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,5)+$EVNINE_NAME+"getAJAXSubmit->$href="+$href);
+		if ($options.debugToConsole) console.info(jQuery.evDev.getTab($options.debugPrefixString,5)+$EVNINE_NAME+"getAJAXSubmit.$id="+$id);
+		if ($options.debugToConsole) console.info(jQuery.evDev.getTab($options.debugPrefixString,5)+$EVNINE_NAME+"getAJAXSubmit.$href="+$href);
 		getAJAX($href,'submit',$id,0);
 	}
 	
@@ -305,55 +328,57 @@ new function (document, $, undefined) {
 	* @return void
 	*/
 	function getAJAXHref($href) {
-		if ($options.debugToConsole) console.warn(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,4)+$EVNINE_NAME+"getAJAXHref");
+		if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,4)+$EVNINE_NAME+"getAJAXHref () BEGIN");
 		getAJAX($href,'href','',0);
+		if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,4)+$EVNINE_NAME+"getAJAXHref () END");
 	}
 	
 	/**
 	* ru:Случай когда ошибка в аякс запросе
 	*/
 	function showResponseError(responseText, statusText){//Функций - Показать AJAX ответ в случае ошибке
-		if ($options.debugToConsole) console.warn(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,5)+$EVNINE_NAME+"showResponseError: ");
-		if ($options.debugToConsole) console.info(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,6)+$EVNINE_NAME+"showResponseError->responseText="+responseText);
-		if ($options.debugToConsole) console.info(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,6)+$EVNINE_NAME+"showResponseError->statusText="+statusText);
+		if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,5)+$EVNINE_NAME+"showResponseError() BEGIN");
+		if ($options.debugToConsole) console.info(jQuery.evDev.getTab($options.debugPrefixString,6)+$EVNINE_NAME+"showResponseError.responseText="+responseText);
+		if ($options.debugToConsole) console.info(jQuery.evDev.getTab($options.debugPrefixString,6)+$EVNINE_NAME+"showResponseError.statusText="+statusText);
 		$options.$ajax_is_load = false;
 		if (typeof $options.functionsForAJAXIndicator.Off==='function'){
 			$options.functionsForAJAXIndicator.Off($options);
 		}
-		//return true;
+		if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,5)+$EVNINE_NAME+"showResponseError() END");
 	}
 	
 	/**
 	* ru:Случай когда запрос успешно выполнен
 	*/
 	function showResponse(responseText, statusText){//Функций - Показать AJAX ответ в случае ошибке
-		if ($options.debugToConsole) console.info(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,5)+$EVNINE_NAME+"showResponse");
+		if ($options.debugToConsole) console.info(jQuery.evDev.getTab($options.debugPrefixString,5)+$EVNINE_NAME+"showResponse() BEGIN");
 		jQuery($options.selectorForAJAXReplace).html(responseText);
 		$options.$ajax_is_load = false;
 		if (typeof $options.functionsForAJAXIndicator.Off==='function'){
 			$options.functionsForAJAXIndicator.Off($options);
 		}
+		if ($options.debugToConsole) console.info(jQuery.evDev.getTab($options.debugPrefixString,5)+$EVNINE_NAME+"showResponse() END");
 	}
 	
 	/**
 	* ru:Функция - отправка через jQuery plugin form в include.js 
 	*/
-	function getAJAX ($href,$type,$id,$error_count){
+	function getAJAX($href,$type,$id,$error_count){
 		if ($error_count==undefined){
 			$error_count=0;
 		}
-		if ($options.debugToConsole) console.warn(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,5)+$EVNINE_NAME+"getAJAX()");
-		if ($options.debugToConsole) console.info(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,6)+$EVNINE_NAME+"getAJAX->$options.$ajax_is_load="+$options.$ajax_is_load);
+		if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,3)+$EVNINE_NAME+"getAJAX() BEGIN");
+		if ($options.debugToConsole) console.info(jQuery.evDev.getTab($options.debugPrefixString,4)+$EVNINE_NAME+"getAJAX.$options.$ajax_is_load="+$options.$ajax_is_load);
 		//$id='body';
 		if (!$options.$ajax_is_load){
-			if ($options.debugToConsole) console.info(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,6)+$EVNINE_NAME+"getAJAX->$options.loadAJAXOptions: ");
-			if ($options.debugToConsole) jQuery.setEvnineDebug.getTraceObject($options.loadAJAXOptions,jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,6));
+			if ($options.debugToConsole) console.info(jQuery.evDev.getTab($options.debugPrefixString,4)+$EVNINE_NAME+"getAJAX.$options.loadAJAXOptions: ");
+			if ($options.debugToConsole) jQuery.evDev.getTraceObject($options.loadAJAXOptions,jQuery.evDev.getTab($options.debugPrefixString,5));
 			try{
 				if (isURLBaseAJAX()){
 					$options.$ajax_is_load = true;
 					$options.$loaded_href= $href;
 					$options.loadAJAXOptions.url=getURLWithFlag(setURLToHashAndLocation($href),$options.ifAJAXAddThisParamToScript,$options.ifSEFAJAXReplaceHREFMatchTo);
-					if ($options.debugToConsole) console.info(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,6)+$EVNINE_NAME+"getAJAX->$options.loadAJAXOptions.url="+$options.loadAJAXOptions.url);
+					if ($options.debugToConsole) console.info(jQuery.evDev.getTab($options.debugPrefixString,4)+$EVNINE_NAME+"getAJAX.$options.loadAJAXOptions.url="+$options.loadAJAXOptions.url);
 					if (typeof $options.functionsForAJAXIndicator.On==='function'){
 						$options.functionsForAJAXIndicator.On($options);
 					}
@@ -369,7 +394,7 @@ new function (document, $, undefined) {
 				}
 			}catch($bug){
 				$options.$ajax_is_load = false;
-				if ($options.debugToConsole)        console.info(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,6)+$EVNINE_NAME+"getAJAX->$bug="+$bug);
+				if ($options.debugToConsole)        console.info(jQuery.evDev.getTab($options.debugPrefixString,4)+$EVNINE_NAME+"getAJAX.$bug="+$bug);
 				$options.$loaded_href= '';
 				$error_count++;
 				if ($error_count<=$options.maxErrorCountBeforeStopAJAXCall){
@@ -380,6 +405,7 @@ new function (document, $, undefined) {
 				}
 			}
 		}
+		if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,3)+$EVNINE_NAME+"getAJAX() END");
 	}
 	
 		
@@ -408,20 +434,26 @@ new function (document, $, undefined) {
 		*  
 	*/
 	function setAnchoreClearWithoutURL (){
-		if ($options.debugToConsole) console.warn(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,1)+$EVNINE_NAME+"setAnchoreClearWithoutURL()");
+		if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,1)+$EVNINE_NAME+"setAnchoreClearWithoutURL() BEGIN");
 		$href=getHash(location);
 		$reg=new RegExp('^#'+$options.ancorePreFix,"g");
 		$href= $href.replace($reg,"");
-		if ($options.debugToConsole) console.info(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,2)+$EVNINE_NAME+"setAnchoreClearWithoutURL->$href_after_replace="+$href);
+		if ($options.debugToConsole) console.info(jQuery.evDev.getTab($options.debugPrefixString,2)+$EVNINE_NAME+"setAnchoreClearWithoutURL.$href_after_replace="+$href);
 		if ($href){
 			if ($options.flagJSFunc){
 				$options.setJSFuncForLoadPage.$reload_page=true;
 			}
-			if ($options.debugToConsole) console.info(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,2)+$EVNINE_NAME+"setAnchoreClearWithoutURL->$href: "+$href);
-			if ($options.debugToConsole) console.info(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,2)+$EVNINE_NAME+"setAnchoreClearWithoutURL->isURLBaseAJAX return true");
+			if ($options.debugToConsole) console.info(jQuery.evDev.getTab($options.debugPrefixString,2)+$EVNINE_NAME+"setAnchoreClearWithoutURL.$href: "+$href);
+			if ($options.debugToConsole) console.info(jQuery.evDev.getTab($options.debugPrefixString,2)+$EVNINE_NAME+"setAnchoreClearWithoutURL.isURLBaseAJAX return true");
 			$($options.selectorForAJAXReplace).html();
 			getAJAX($options.scriptForAJAXCallAndSetAnchore+$href,'href');
+		}else {
+			/* ru:Сохраним текущие данные по шаблону и методу, нужно для загрузки дополнительных скриптов*/
+			if ($options.flagJSFunc&&!$options.setJSFuncForLoadPage.$reload_page){
+				$options.setJSFuncForLoadPage.setMethodAndControllerFunc('init');
+			}
 		}
+		if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,1)+$EVNINE_NAME+"setAnchoreClearWithoutURL() END");
 	}
 
 	// en:if first load href with AJAX anchor #!axax=ajax
@@ -431,25 +463,28 @@ new function (document, $, undefined) {
 	if ($options.folowByChangeOfHistory&&$options.isAllowThisBrowser){
 		jQuery(window).trigger('hashchange');
 		jQuery(window).bind( 'hashchange', function(){
-				if ($options.debugToConsole) console.warn(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,0)+$EVNINE_NAME+"hashchange()");
-				if (window.location.hash){ 
-					$reg=new RegExp('^#'+$options.ancorePreFix,"g");
-					$hash = location.hash.replace($reg,"");
-					if ($options.$loaded_href_hash_fix!==$hash){
-						if ($options.debugToConsole) console.info(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,1)+$EVNINE_NAME+"hashchange=YES");
-						if ($options.debugToConsole) console.info(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,1)+"|"+$hash + "|!=|"+$options.$loaded_href_hash_fix+"|");
-						getAJAX($hash,'href');
-					} else {
-					if ($options.debugToConsole) console.info(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,1)+$EVNINE_NAME+"hashchange=NO");
-					}
+			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,0)+$EVNINE_NAME+"hashchange() BEGIN");
+			if (window.location.hash){ 
+				$reg=new RegExp('^#'+$options.ancorePreFix,"g");
+				$hash = location.hash.replace($reg,"");
+				if ($options.$loaded_href_hash_fix!==$hash){
+					if ($options.debugToConsole) console.info(jQuery.evDev.getTab($options.debugPrefixString,1)+$EVNINE_NAME+"hashchange=YES");
+					if ($options.debugToConsole) console.info(jQuery.evDev.getTab($options.debugPrefixString,1)+"|"+$hash + "|!=|"+$options.$loaded_href_hash_fix+"|");
+					getAJAX($hash,'href');
+				} else {
+				if ($options.debugToConsole) console.info(jQuery.evDev.getTab($options.debugPrefixString,1)+$EVNINE_NAME+"hashchange=NO");
 				}
+			}
+			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,0)+$EVNINE_NAME+"hashchange() END");
 		});
 	}
 	
 	if ($options.debugToConsoleNotSupport){
 		if ($options.debugToConsole) console.warn("END");
 	}
-
+	if ($options.debugToConsole) {
+		console.warn(jQuery.evDev.getTab($options.debugPrefixString,0)+$EVNINE_NAME+'call END');
+	}
 	if ($options.isAllowThisBrowser){
 		return jQuery($options.liveSelectorForAJAX).live($options.liveBindType, function() {
 			return getClickHref(this);

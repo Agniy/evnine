@@ -7,64 +7,145 @@
  *
  */
 new function (document, $, undefined) {
-	jQuery.setEvnineFunc = function($rewrite_options) {
+	jQuery.evFunc = function($rewrite_options) {
+		var $EVNINE_VER="0.3";
+		var $EVNINE_NAME='evFunc'+'.';
+		var $options = jQuery.extend({debugFunctionGroup:false},$rewrite_options);
+		//en:
+		/*ru: Учитываем случай когда при загрузки странице нужно запустить скрипт*/
 		this.$reload_page=false;
-		var $options = jQuery.extend({},$rewrite_options);
+		//en:
 		/*ru:Какие скрипты подгружены*/
-		var $js_script_is_load={};
-
+		var $includ_scripts={};
+		//en:
 		/*ru:Переменная в который храним класс текущего метода*/
 		var $current_method_class=false;
-		var $EVNINE_VER="0.3";
-		var $EVNINE_NAME='$.setEvnineFunc'+'->';
-		if ($options.debugToConsole) console.info(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,0)+$EVNINE_NAME+'()');
-		
+		if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,0)+$EVNINE_NAME+'init BEGIN');
+		//en:
+		/*ru: Случай когда для отладки нужно группировать в консоли вызовы*/
+		if ($options.debugFunctionGroup){
+			$options.debugPrefixString= '';
+		}	
 		/*ru:настройки по умолчанию*/
-		var $loaded_state={//Массив для хранения загруженных методов и новыx
-			'from' : {
-				'controller' : '','method' : ''
-			},
-			'to'   : {
-				'controller' : '','method' :'','url' : ''
-			}
-		};
-
+		var $loaded_state={//Массив для хранения загруженных методов и новых
+			'from' : {},'to'   : {}};
+			
 		/**
-		 * setPreshowResponse 
+		 *  ru: Получить скрипт и выполнить функцию после его загрузки
+		 * @access public
+		 * @param $script_href - string
+		 * @param $fun - function
+		 * @return void
+		*/
+	$options.include_once=function($script_href,$fun) {
+			//en:
+			/*ru: Сохраняем функцию для последующего доступа*/
+				var $function=$fun;
+				if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,5)+$EVNINE_NAME+'include_once()');
+				//en:
+				/*ru: Проверяем загружен ли скрипт*/
+				if ($includ_scripts[$script_href]==undefined){
+					jQuery.getScript($script_href, function() {
+						//en:
+						/*ru: Ставим флаг что скрипт загружен*/
+						$includ_scripts[$script_href]=true;
+						jQuery(document).ready(function(){
+							if ($options.debugToConsole) 
+								console.warn(jQuery.evDev.getTab($options.debugPrefixString,0)+$EVNINE_NAME+'getScript.ready.function() BEGIN');
+							try {
+								//en:
+								/*ru: Ожидаем появления ошибки в функции запускаем переданную функцию*/	
+								$function();
+							}catch($e){
+								if ($options.debugToConsole) console.error(jQuery.evDev.getTab($options.debugPrefixString,5)+$EVNINE_NAME+'setInitJSFuncForHREF(): '+"try{...} catch(){"+$e+'}');
+							}
+								if ($options.debugToConsole) 
+									console.warn(jQuery.evDev.getTab($options.debugPrefixString,0)+$EVNINE_NAME+'getScript.ready.function() END');
+						});
+					});
+				}else {
+					//en:
+					/*ru: Случай если скрипт уже загружен*/
+					if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,0)+$EVNINE_NAME+'getScript.ready.function() BEGIN');
+					try {
+						$function();
+					}catch($e){
+						if ($options.debugToConsole) console.error(jQuery.evDev.getTab($options.debugPrefixString,5)+$EVNINE_NAME+'setInitJSFuncForHREF(): '+"try{...} catch(){"+$e+'}');
+					}
+					if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,0)+$EVNINE_NAME+'getScript.ready.function() END');
+				}
+			};
+				
+		/**
+		 * en:
+		 * ru: Вызываем из плагина навигации установку флага
 		 * 
 		 * @access public
 		 * @return void
 		 */
 		this.setPreCallShowResponse=function() {
-			if ($options.debugToConsole) console.warn(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,2)+$EVNINE_NAME+'setPostCallShowResponse()');
+			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,2)+$EVNINE_NAME+'setPreCallShowResponse() BEGIN');
 			this.$reload_page=false;
+			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,2)+$EVNINE_NAME+'setPreCallShowResponse() END');
 		};
 		
 		/**
-		 * setPostshowResponse 
+		 * en:
+		 * ru: Функция выполняемая после отображения данных из скрипта, указанная в конфигурационном файла
 		 * 
 		 * @access public
+		 * @param $load_href - string
 		 * @return void
 		 */
 		this.setPostCallShowResponse=function($load_href) {
-			if ($options.debugToConsole) console.warn(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,2)+$EVNINE_NAME+'setPostCallShowResponse($load_href='+$load_href+')');
-			//$.scrollTo( '#main', 0);
-				//if ($load_href!==''){
-					//$load_href= '';
-				//}
-			this.getParseURLWithSave($load_href);
-			this.setUnloadJSFuncForHREF();
+			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,2)+$EVNINE_NAME+'setPostCallShowResponse($load_href='+$load_href+') BEGIN');
+			this.getParseURLAndSave($load_href);
+			if ($loaded_state.to[$options.controller.paramName]!=undefined||
+				$loaded_state.to[$options.method.paramName]!=undefined)
+			{
+				//en:
+				/*ru: Запускаем функцию удаления */
+				setUnsetJSFuncForHREF('unSetAction');
+			}
+			//en: 
+			/*ru: Запускаем функцию для страницы */
 			this.setMethodAndControllerFunc();
+			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,2)+$EVNINE_NAME+'setPostCallShowResponse($load_href='+$load_href+') END');
 		};
-			
+
+		/**
+		 * en:
+		 * ru: Разбираем адрес загруженной страницы
+		 * @access public
+		 * @param $href - string
+		 * @return void
+		 */
+		this.getParseURLAndSave=function($href){
+			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,3)+$EVNINE_NAME+'getParseURLAndSave() BEGIN');
+			//en:
+			/*ru: Если адреса совпадают ничего не делаем */
+			if ($loaded_state.to.url===$href){
+				return $loaded_state.to;
+			}
+			//en:
+			/*ru: Сохраняем в из состояние после  */
+			$loaded_state.from= $loaded_state.to;
+			//en:
+			/*ru: Получаем текущее состояние разобрав адрес*/	
+			$loaded_state.to = getParseURL($href,4);
+			if ($options.debugToConsole) console.info(jQuery.evDev.getTab($options.debugPrefixString,4)+$EVNINE_NAME+'$loaded_state: ');
+			if ($options.debugToConsole) jQuery.evDev.getTraceObject($loaded_state,jQuery.evDev.getTab($options.debugPrefixString,5),$options.debugPrefixString);
+			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,3)+$EVNINE_NAME+'getParseURLAndSave() END');
+		};
+
 		/**
 			*  en:
-			*  ru:Получим метод в ЧПУ урле
+			*  ru:Получим метод и контроллер в ЧПУ урле
 		*/
-		this.getMethodFromSEFURL=function($url){
-			if ($options.debugToConsole) console.warn(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,2)+$EVNINE_NAME+'getMethodFromSEFURL()');
-			$url = $url.substring(1);
-			$method_replace  = $url.match(/.*\//);
+		this.getMethodFromSEFURL=function($href){
+			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,2)+$EVNINE_NAME+'getMethodFromSEFURL() BEGIN');
+			$href = $href.substring(1);
+			$method_replace  = $href.match(/.*\//);
 			$method_replace=$method_replace.toString().split(/\//);
 			if ($method_replace[1].match(/=/)){
 				$controller= $method_replace[0];
@@ -75,75 +156,56 @@ new function (document, $, undefined) {
 			}
 			var $obj={};
 			$obj[$options.controller.paramName]=$controller;
-			$obj[$options.method.paramName]=$controller;
-			if ($options.debugToConsole) jQuery.setEvnineDebug.getTraceObject($obj,jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,5));
-			if ($options.debugToConsole) jQuery.setEvnineDebug.getTraceObject($obj,jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,5));
+			$obj[$options.method.paramName]=$method;
+			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,2)+$EVNINE_NAME+'getMethodFromSEFURL() END');
 			return $obj;
 		};
 	
-		function getParseURL (href){//Парсим адрес для получения шаблона и метода
-			if ($options.debugToConsole) console.warn(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,4)+$EVNINE_NAME+'getParseURL()');
-			if (href===undefined){
+		function getParseURL($href,$tab_level){//Парсим адрес для получения шаблона и метода
+			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,$tab_level)+$EVNINE_NAME+'getParseURL($href='+$href+') BEGIN');
+			if ($href===undefined){
 				return false;
 			}
-			if (href.match(/\.html$/)){
-				$parse_url = this.getMethodFromSEFURL(href);
+			$href=$href.replace(/^.*\?/,"?");
+			$reg = new RegExp($options.isHREFMatchThisRegExpSetSEFMode,"g");
+			if ($href.match($reg)){//IF SEF URN
+				$parse_url = this.getMethodFromSEFURL($href);
 			}else {
-				$parse_url = $.parseQuery(href);
+				$parse_url = $.parseQuery($href);
 			}
-			$controller = $parse_url.t;
-			if (!$parse_url.m || $parse_url.m===null || $parse_url.m==='' || $parse_url.m===undefined){
-				$method=$options.method.defaultValue;
-				if (!$parse_url.t || $parse_url.t===null || $parse_url.t==='' || $parse_url.t===undefined){
-					$controller=$options.controller.defaultValue;
-				}
+			if ($options.debugToConsole) console.info(jQuery.evDev.getTab($options.debugPrefixString,$tab_level+1)+$EVNINE_NAME+'$parse_url:');
+			if ($options.debugToConsole) jQuery.evDev.getTraceObject($parse_url,jQuery.evDev.getTab($options.debugPrefixString,$tab_level+2));
+			if (!$parse_url[$options.controller.paramName] || $parse_url[$options.controller.paramName]===null || $parse_url[$options.controller.paramName]==='' || $parse_url[$options.controller.paramName]==undefined){
+				$controller=$options.controller.defaultValue;
 			}else {
-				$method= $parse_url.m;
+				$controller=$parse_url[$options.controller.paramName];
+			}
+			if (!$parse_url[$options.method.paramName] || $parse_url[$options.method.paramName]===null || $parse_url[$options.method.paramName]==='' || $parse_url[$options.method.paramName]==undefined){
+				$method=$options.method.defaultValue;
+			}else {
+				$method=$parse_url[$options.method.paramName];
 			}
 			var $obj={};
 			$obj[$options.controller.paramName]=$controller;
-			$obj[$options.method.paramName]=$controller;
-			if ($options.debugToConsole) jQuery.setEvnineDebug.getTraceObject($obj,jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,5));
+			$obj[$options.method.paramName]=$method;
+			$obj.url=$href;
+			if ($options.debugToConsole) jQuery.evDev.getTraceObject($obj,jQuery.evDev.getTab($options.debugPrefixString,$tab_level+1)+'return ');
+			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,$tab_level)+$EVNINE_NAME+'getParseURL($href='+$href+') END');
 			return $obj;
 			//return {controller_name : $controller,method_name : $method};
 		}
 
 		/**
-		* ru:Получаем распарсеные данные из адреса и так же сохраним их в массив загруженных шаблонов
-		*/
-		this.getParseURLWithSave=function($url){
-			if ($options.debugToConsole) console.warn(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,2)+$EVNINE_NAME+'getParseURLWithSave()');
-			//if ($options.debugToConsole) console.info("#function() getParseURLWithSave: ");
-			if ( $loaded_state.to.url!==undefined){
-				//if ($options.debugToConsole) console.info("#getParseURLWithSave: ");
-			if ($loaded_state.to.url===$url){
-				return $loaded_state.to;
-			}
-			}
-			//$loaded_state.from.method= $loaded_state.to.method;
-			//$loaded_state.from.controller= $loaded_state.to.controller;
-			$param = getParseURL($url);
-			$loaded_state.to.method=$param.method;
-			$loaded_state.to.controller=$param.controller;
-			$loaded_state.to.url=$url;
-			return $param;
-			//$loaded_state.to.controller=$param.controller;
-			//$loaded_state.to.method=$param.method;
-			//$loaded_state.to.url=$url;
-			//return $param;
-		};
-	
-		/**
-		* ru:Для случая когда в кнопке указан метод, устанавливаем этот метод в ссылку	
-		*/
-		this.setMethodTOURL=function($url,$method) {
-			if ($options.debugToConsole) console.warn(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,2)+$EVNINE_NAME+'setMethodTOURL()');
+		 * ru:Для случая когда в кнопке указан метод, устанавливаем этот метод в ссылку	
+		 */
+		this.setMethodTOURL=function($href,$method) {
+			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,2)+$EVNINE_NAME+'setMethodTOURL() BEGIN');
 			if ($method.length===0){
-				return $url;
+				return $href;
 			}else {
-				if ($url.match(/\.html$/)){
-					$url = $url.substring(1);
-					$method_replace  = $url.match(/.*\//);
+				if ($href.match(/\.html$/)){
+					$href = $href.substring(1);
+					$method_replace  = $href.match(/.*\//);
 					$method_replace=$method_replace.toString().split(/\//);
 					if ($method_replace[1].match(/=/)){
 						$method_match==$method_replace[0]+'/';
@@ -151,137 +213,115 @@ new function (document, $, undefined) {
 					}else {
 						$method_match=$method_replace[1];
 					}
-					$url = $url.replace($method_match,$method);
+					$href = $href.replace($method_match,$method);
 				}else {
-					$method_match = $url.match(/&m=.*/);
-					$url = $url.replace($method_match,"&m="+$method);
+					$method_match = $href.match(/&m=.*/);
+					$href = $href.replace($method_match,"&m="+$method);
 				}
-				return $url;
+				if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,2)+$EVNINE_NAME+'setMethodTOURL() END');
+				return $href;
 			}
 		};
-	
 
+/**
+ *  ru: Запуск удаления метода
+ */
+		function setUnsetJSFuncForHREF($function_callback){
+			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,4)+$EVNINE_NAME+'setInitJSFuncForHREF($function_callback='+$function_callback+') BEGIN');
+			try {
+				if ($loaded_state.from[$options.controller.paramName]!==$loaded_state.to[$options.controller.paramName]){
+					setRunFunction($current_method_class[$options.controller.paramName],$loaded_state.from[$options.controller.paramName],$loaded_state.to[$options.controller.paramName],$function_callback);
+				}
+				if ($loaded_state.from[$options.method.paramName]!==$loaded_state.to[$options.method.paramName]){
+					setRunFunction($current_method_class[$options.method.paramName],$loaded_state.from[$options.method.paramName],$loaded_state.to[$options.method.paramName],$function_callback);
+				}
+			}catch($e){
+				if ($options.debugToConsole) console.error(jQuery.evDev.getTab($options.debugPrefixString,5)+$EVNINE_NAME+'setInitJSFuncForHREF(): '+"try{...} catch(){"+$e+'}');
+			}
+			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,4)+$EVNINE_NAME+'setInitJSFuncForHREF($function_callback='+$function_callback+') END');
+		}
+		
+
+/**
+ *  ru: Запуск метода функции
+ */
+		function setInitJSFuncForHREF($function_callback){
+			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,4)+$EVNINE_NAME+'setInitJSFuncForHREF($function_callback='+$function_callback+') BEGIN');
+			try {
+				$current_method_class = getFuncForControllerAndMethod();
+				setRunFunction($current_method_class[$options.controller.paramName],$loaded_state.from[$options.controller.paramName],$loaded_state.to[$options.controller.paramName],$function_callback);
+				setRunFunction($current_method_class[$options.method.paramName],$loaded_state.from[$options.method.paramName],$loaded_state.to[$options.method.paramName],$function_callback);
+			}catch($e){
+				if ($options.debugToConsole) console.error(jQuery.evDev.getTab($options.debugPrefixString,5)+$EVNINE_NAME+'setInitJSFuncForHREF(): '+"try{...} catch(){"+$e+'}');
+			}
+			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,4)+$EVNINE_NAME+'setInitJSFuncForHREF($function_callback='+$function_callback+') END');
+		}
+		
 		/**
-		*  ru:Установить для шаблона метод удаления активности если перешли в другой шаблон
-		*/
-		function setUnloadJSFuncForHREF(){
-			if ($options.debugToConsole) console.warn(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,2)+$EVNINE_NAME+'setUnloadJSFuncForHREF()');
-			if ($options.debugToConsole) console.info("#>>>>>>setUnloadJSFuncForHREF: ");
-				//if ($options.debugToConsole) console.warn("$current_method_class.controller: "+typeof $current_method_class.controller);
-				//if ($options.debugToConsole) console.warn("$current_method_class.method.unSetAction: "+typeof $current_method_class.method.unSetAction);
-				//if ($options.debugToConsole) console.warn("to.controller: "+$loaded_state.to.controller);
-				//if ($options.debugToConsole) console.warn("from.controller: "+$loaded_state.from.controller);
-				try {
-				if ($loaded_state.to.controller!==undefined&&
-					$loaded_state.from.controller!==undefined)
-					//($current_method_class.controller!==undefined||$current_method_class.method!==undefined)
-				//)
-				{
-					if ($options.debugToConsole) console.warn("to.method: "+$loaded_state.to.method+' == '+"from.method: "+$loaded_state.from.method);
-					if ($loaded_state.to.method!==$loaded_state.from.method){
-				if ($options.debugToConsole) console.warn("$current_method_class.method: "+typeof $current_method_class.method);
-						if ($current_method_class.method!==undefined){
-							if ($options.debugToConsole) console.warn("		method: "+$current_method_class.method);
-							if ($options.debugToConsole) console.warn("		method.unSetAction: "+$current_method_class.method.unSetAction);
-							if ($options.debugToConsole) console.warn("		method.unSetAction typeof: "+(typeof $current_method_class.method.unSetAction));
-							if (typeof $current_method_class.method.unSetAction==='function'&&
-							isHasAccess($current_method_class.method.default_access_level)){
-							if ($options.debugToConsole) console.warn("method.unSetAction: ");
-								$current_method_class.method.unSetAction();
-								$current_method_class.method=undefined;
-							}
-						}
-					}
-					if ($options.debugToConsole) console.warn("to.controller: "+$loaded_state.to.controller+" == from.controller: "+$loaded_state.from.controller);
-					if ($loaded_state.to.controller!==$loaded_state.from.controller){
-						if ($options.debugToConsole) console.warn("$current_method_class.controller.unSetAction: "+typeof $current_method_class.controller.unSetAction);
-							//if ($options.debugToConsole) console.warn("		controller: "+$current_method_class.method);
-							//if ($options.debugToConsole) console.warn("		controller.unSetAction: "+$current_method_class.method.unSetAction);
-							//if ($options.debugToConsole) console.warn("		controller.unSetAction typeof: "+(typeof $current_method_class.method.unSetAction));
-						if (typeof $current_method_class.controller.unSetAction==='function'&&
-							isHasAccess($current_method_class.controller.default_access_level)){
-							if ($options.debugToConsole) console.warn("controller.unSetAction: ");
-							$current_method_class.controller.unSetAction();
-							$current_method_class.controller=undefined;
-						}
+		 * ru:Запустим функцию
+		 */
+		function setRunFunction($obj,$before,$after,$function_callback){
+			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,5)+$EVNINE_NAME+'setRunFunction() BEGIN');
+			if ($obj==undefined){
+				if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,5)+$EVNINE_NAME+'setRunFunction() END: return false, case:$obj==undefined');
+				return false;
+			}
+			if ($before!==$after){
+				if ($options.debugToConsole) console.info(jQuery.evDev.getTab($options.debugPrefixString,6)+'[$before='+$before+']!==[$after='+$after+']');
+				if (isHasAccess($obj)){
+					$obj = $obj[$function_callback];
+					if (typeof $obj==='function'){
+						if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,5)+$EVNINE_NAME+'setRunFunction() END: return true, case:$obj===function');
+						if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,6)+"$options.setJSFuncForLoadPage.setFunction."+$function_callback+"()");
+						$obj();
+						return true;
+					}else {
+						if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,5)+$EVNINE_NAME+'setRunFunction() END: return false, case:$before!==$after ');
+						return false;
 					}
 				}
-				}catch (err) {}
-				$debug=false;
+			}else {
+				if ($options.debugToConsole) console.info(jQuery.evDev.getTab($options.debugPrefixString,6)+'[$before='+$before+']===[$after='+$after+']');
+				if ($obj.setReloadPageAction==undefined){
+					if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,5)+$EVNINE_NAME+'setRunFunction() END: return false, case:setReloadPageAction==undefined');
+					return false;
+				}
+				if (isHasAccess($obj)){
+					if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,6)+"$options.setJSFuncForLoadPage.setFunction.setReloadPageAction()");
+					$obj.setReloadPageAction();
+					if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,5)+$EVNINE_NAME+'setRunFunction() END: return true');
+					return true;
+				}
 			}
+		}
 
 		/**
 		* Получить из адреса текущий контроллер и метод 
 		*/
 		this.setMethodAndControllerFunc=function($mode) {//Сохраним текущие данные по шаблону и методу
-			if ($options.debugToConsole) console.warn(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,2)+$EVNINE_NAME+'setMethodAndControllerFunc()');
-			if ($options.debugToConsole) console.info(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,3)+$EVNINE_NAME+'$mode='+$mode);
+			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,3)+$EVNINE_NAME+'setMethodAndControllerFunc($mode='+$mode+') BEGIN');
 			if ($mode==='init'){
-				$getParseURL = getParseURL(location.pathname);
-				$loaded_state.to.controller=$getParseURL[$options.controller.paramName];
-				$loaded_state.to.method=$getParseURL[$options.method.paramName];
-				$loaded_state.to.url=location.pathname;
+				$loaded_state.to = getParseURL(location.pathname,4);
+				setInitJSFuncForHREF('setAction');
+				$loaded_state.from= $loaded_state.to;
+			}else {
+				setInitJSFuncForHREF('setAction');
+				//$loaded_state.from = getParseURL(location.pathname,4);
 			}
 			//Загрузим дополнительные скрипты
-			setJSFuncForHREF();	
-			$getParseURL = getParseURL(location.pathname);
-			$loaded_state.from.controller=$getParseURL[$options.controller.paramName];
-			$loaded_state.from.method=$getParseURL[$options.method.paramName];
-			if ($options.debugToConsole) console.info(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,3)+$EVNINE_NAME+'$loaded_state: ');
-			if ($options.debugToConsole) jQuery.setEvnineDebug.getTraceObject($loaded_state,jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,4),$options.debugPrefixString);
+			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,3)+$EVNINE_NAME+'setMethodAndControllerFunc($mode='+$mode+') END');
 		};
-	
-		/**
-		 * ru:Установить для шаблона метод активности
-		 */
-		function setJSFuncForHREF(){
-			if ($options.debugToConsole) console.warn(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,3)+$EVNINE_NAME+'setJSFuncForHREF()');
-			try {
-				var $current_method_class = getFuncForController();
-				if ($options.debugToConsole) console.info(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,4)+"$current_method_class=");
-				if ($options.debugToConsole) jQuery.setEvnineDebug.getTraceObject($current_method_class,jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,5));
-				setRunFunction($current_method_class.controller,$loaded_state.to.controller,$loaded_state.from.controller);
-				setRunFunction($current_method_class.method,$loaded_state.to.method,$loaded_state.from.method);
-			}catch($e){
-				if ($options.debugToConsole) console.error(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,4)+$EVNINE_NAME+'setJSFuncForHREF(): '+"try{...} catch(){"+$e+'}');
-			}
-		}
-	
-	
-		/**
-		 * ru:Запустим функцию
-		 */
-		function setRunFunction($obj,$before,$after){
-			if ($obj==undefined||$before==undefined||$after==undefined){
-				return false;
-			}
-			if ($before!==$after){
-				if ($obj.setReloadPageAction==undefined){
-					return false;
-				}
-				if (isHasAccess($obj)){
-					if ($options.debugToConsole) console.warn(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,5)+"$options->setJSFuncForLoadPage->setFunction->setAction()");
-					$obj.setAction();
-				}
-			}else {
-				if ($obj.setReloadPageAction==undefined){
-					return false;
-				}
-				if (isHasAccess($obj)){
-					if ($options.debugToConsole) console.warn(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,5)+"$options->setJSFuncForLoadPage->setFunction->setReloadPageAction()");
-					$obj.setReloadPageAction();
-				}
-			}
-		}
 	
 		/**
 		 *  ru:Проверяем есть ли доступ по функции в опции
 		 */
 		function isHasAccess($obj) {
-			if ($options.debugToConsole) console.warn(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,4)+$EVNINE_NAME+'isHasAccess()');
+			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,7)+$EVNINE_NAME+'isHasAccess() BEGIN');
 			if ($options.setFunction.isHasAccess!=undefined){
+				if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,7)+$EVNINE_NAME+'isHasAccess() END retrun $options.setFunction.isHasAccess($obj,$options)');
 				return $options.setFunction.isHasAccess($obj,$options);
 			}else {
+				if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,7)+$EVNINE_NAME+'isHasAccess() END retrun true');
 				return true;
 			}
 		}
@@ -289,12 +329,14 @@ new function (document, $, undefined) {
 		/**
 		 * ru:Для текущего шаблона получим класс из списка привязки шаблонов к классам
 		 */
-		function getFuncForController(){
-			if ($options.debugToConsole) console.warn(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,4)+$EVNINE_NAME+'getFuncForController()');
-			return {
-				controller:getFunctionFromOptions($loaded_state.to.controller),
-				method:getFunctionFromOptions($loaded_state.to.controller+$options.strUnionControllerWithMethod+$loaded_state.to.method)
-			};
+		function getFuncForControllerAndMethod(){
+			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,5)+$EVNINE_NAME+'getFuncForControllerAndMethod() BEGIN');
+			var $obj={};
+			$obj[$options.controller.paramName]=getFunctionFromOptions($loaded_state.to[$options.controller.paramName]);
+			$obj[$options.method.paramName]=getFunctionFromOptions($loaded_state.to[$options.controller.paramName]+$options.strUnionControllerWithMethod+$loaded_state.to[$options.method.paramName]);
+			if ($options.debugToConsole) jQuery.evDev.getTraceObject($obj,jQuery.evDev.getTab($options.debugPrefixString,6)+'return ',$options.debugPrefixString);
+			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,5)+$EVNINE_NAME+'getFuncForControllerAndMethod() END');
+			return $obj;
 		}
 	
 		/**
@@ -304,24 +346,49 @@ new function (document, $, undefined) {
 		 * @return void
 		 */
 		function getFunctionFromOptions($key){
+			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,4)+$EVNINE_NAME+'getFunctionFromOptions() BEGIN');
+			var $setFunctionKey='';
 			try{
 				if ($options.setFuncByEvnineParamMatch[$key]!=undefined){
-					var $setFunctionKey = $options.setFuncByEvnineParamMatch[$key];
+					$setFunctionKey = $options.setFuncByEvnineParamMatch[$key];
 					if (typeof $options.setFunction[$setFunctionKey]==='function'){
 						return new $options.setFunction[$setFunctionKey]($options);
 					}
 				}
+
+				if ($options.setFuncByHREFMatch!=undefined) {
+					if ($options.setFuncByHREFMatch[$loaded_state.to.url]!=undefined){
+						$setFunctionKey = $options.setFuncByHREFMatch[$loaded_state.to.url];
+						if (typeof $options.setFunction[$setFunctionKey]==='function'){
+							if ($options.debugToConsole) console.info(jQuery.evDev.getTab($options.debugPrefixString,4)+$EVNINE_NAME+'$options.setFuncByHREFMatch');
+							//if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,4)+$EVNINE_NAME+'getFunctionFromOptions() END return object');
+							return new $options.setFunction[$setFunctionKey]($options);
+						}
+					}
+				}
+				
+				if ($options.setFuncByMatchRegHREF!=undefined) {
+					var obj={};
+					$.each($options.setFuncByMatchRegHREF, function($href_reg,$setFunctionKey){
+						$reg = new RegExp($href_reg,"g");
+						if ($loaded_state.to.url.match($reg)){//IF SEF URN
+							if (typeof $options.setFunction[$setFunctionKey]==='function'){
+								$obj=new $options.setFunction[$setFunctionKey]($options);
+							}
+						}
+					});
+					if ($obj!=undefined){
+						if ($options.debugToConsole) console.info(jQuery.evDev.getTab($options.debugPrefixString,4)+$EVNINE_NAME+'$options.setFuncByMatchRegHREF');
+						if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,4)+$EVNINE_NAME+'getFunctionFromOptions() END return object');
+						return $obj;
+					}
+				}
+				
 			}catch($e){
-				if ($options.debugToConsole) console.error(jQuery.setEvnineDebug.getTabByLevel($options.debugPrefixString,4)+$EVNINE_NAME+'getFunctionFromOptions'+"try{...} catch(){"+$e+'}');
+				if ($options.debugToConsole) console.error(jQuery.evDev.getTab($options.debugPrefixString,4)+$EVNINE_NAME+'getFunctionFromOptions'+"try{...} catch(){"+$e+'}');
 			}
+			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,4)+$EVNINE_NAME+'getFunctionFromOptions() END return this');
 			return undefined;
-		}
-	
-		/**
-		 * ru:Сохраним текущие данные по шаблону и методу, нужно для загрузки дополнительных скриптов
-		 */
-		if (!this.$reload_page){
-			this.setMethodAndControllerFunc('init');
 		}
 		return this;
 	};
