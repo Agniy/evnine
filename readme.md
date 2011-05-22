@@ -43,8 +43,8 @@ Three things in programming for the changes in life:
 		авто генерация входных параметров 
 		Юнит-тесты создаются сами и хранятся как стерилизованные объекты.
 		+Имена в массиве ответа контроллера соответствуют путям к исходникам.
-			>Это значит, что запись [ModelsHelloWorld_getHellow]
-			>Был вызван метод класса \models\ModelsHelloWorld->getHellow()
+		>Это значит, что [ModelsHelloWorld_getHellow]
+		>был вызван метод класса \models\ModelsHelloWorld->getHellow()
 
 3.	+Визуальное отображения изменений в параметрах переданных от метода к методу.
 ----
