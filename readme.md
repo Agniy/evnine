@@ -7,16 +7,16 @@ Three things in programming for the changes in life:
 ----
 1.	Visual easy understand the complex structure of the controller code 
 ----
-			-no more if, switch, while, etc
-			+only true-false
-			+Is passed only one parameter for the method. (For UML to PHP generation)
+		-no more if, switch, while, etc
+		+only true-false
+		+Is passed only one parameter for the method. (For UML to PHP generation)
 
 2.	Easy debug 
 ----
-	+beautiful print_r2
-	+“frozen” data for debug and unit test (in DB, files, env, etc)
-	auto generation of input parameters
-	unit-test with automatic generation of tests and store to as serialized data.
+		+beautiful print_r2
+		+“frozen” data for debug and unit test (in DB, files, env, etc)
+		auto generation of input parameters
+		unit-test with automatic generation of tests and store to as serialized data.
 
 3.	Inspection of the changes in only one parameter for the method.
 ----
