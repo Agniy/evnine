@@ -1,6 +1,4 @@
-[EN] evnine - AJAX PHP DSL controller
-JQuery Plugin AJAX Navigation + functions AJAX init
-for CMS API (Joomla, Bitrix, etc). [Easy debug]
+[EN] evnine - AJAX PHP DSL controller JQuery Plugin AJAX Navigation + functions AJAX init for CMS API (Joomla, Bitrix, etc). [Easy debug]
 ================================
 (c) 2008-2011 ev9eniy.info
 
@@ -21,9 +19,7 @@ for CMS API (Joomla, Bitrix, etc). [Easy debug]
 					+green – new 
 					+gray – in grave
 ================================		
-[RU] evnine – AJAX PHP DSL Контроллер
-JQuery плагин навигации и загрузки функций 
-для работы с API ЦМС (Joomla, Битрикс итд). [С простой отладкой]
+[RU] evnine – AJAX PHP DSL Контроллер JQuery плагин навигации и загрузки функций  для работы с API ЦМС (Joomla, Битрикс итд). [С простой отладкой]
 ================================
 (c) 2008-2011 ev9eniy.info
 
