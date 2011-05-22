@@ -43,8 +43,8 @@ Three things in programming for the changes in life:
 		авто генерация входных параметров 
 		Юнит-тесты создаются сами и хранятся как стерилизованные объекты.
 		+Имена в массиве ответа контроллера соответствуют путям к исходникам.
-		>Это значит, что [ModelsHelloWorld_getHellow]
-		>был вызван метод класса \models\ModelsHelloWorld->getHellow()
+			> Это значит, что [ModelsHelloWorld_getHellow]
+			> был вызван метод класса \models\ModelsHelloWorld->getHellow()
 
 3.	+Визуальное отображения изменений в параметрах переданных от метода к методу.
 ----
@@ -54,11 +54,11 @@ Three things in programming for the changes in life:
 4.  +Автоматизация
 ----
 		+Встроенная валидация в контроллере 
-			>(Указали переменную, в методе получили доступ)
+			> (Указали переменную, в методе получили доступ)
 		+Авто генерация URN (URL) исxодя из параметров 
-			>(Данныx для валидации) принимаемыx методом.
+			> (Данныx для валидации) принимаемыx методом.
 		+Передача в классы любыx переменныx через конфиг
 		+Система авто генерации кода для шаблонизаторов.
-			>PHPShort:  <?=$out[‘ModelsHelloWorld_getHellow’]?>
-			>PHP:  <?php echo $out[‘ModelsHelloWorld_getHellow’]; ?>
-			>Twig: {{ ModelsHelloWorld_getHellow }} 			
+			> PHPShort:  <?=$out['ModelsHelloWorld_getHellow']?> 
+			> PHP:  <?php echo $out['ModelsHelloWorld_getHellow']; ?>
+			> Twig: {{ ModelsHelloWorld_getHellow }} 			
