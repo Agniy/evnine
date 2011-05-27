@@ -1,29 +1,133 @@
 //<script type="text/javascript">
-/*
- * en: jQuery AJAX plugin function
- * ru: Плагин для запуска функций после аякс запроса
- *  
- * @name jq.evnine.func.js
- * @author ev9eniy.info
- * en: Copyright 2011, (c) ev9eniy.info
- * en: Dual licensed under the MIT or GPL Version 2 licenses.
- * ru: Двойная лицензия MIT или GPL Version 2
- *
- */
-new function (document, $, undefined) {
-	/**
-	* @name jQuery.evFunc
-	* @class jQuery.evFunc
-	* @constant $EVNINE_NAME ru: Имя
-	* @constant $EVNINE_VER ru: Версия
+/**
 	* @version 0.3
+	* @author ev9eniy.info
+	* @class jQuery.evFunc
+	* <br />en: jQuery plugin - call function after ajax complete or reload page
+	* <br />ru: Плагин для запуска функций после аякс запроса или загрузки новой страницы.
+	* <br />
+	* <br />en: Copyright 2011, (c) ev9eniy.info
+	* <br />en: Dual licensed under the MIT or GPL Version 2 licenses
+	* <br />
+	* <br />ru: Двойная лицензия MIT или GPL v.2 
+	* 
+	* @config {object}  [=undefined]
+	* en: Init evFunc plugin<br />
+	* ru: Доступ для плагина запуска функций
+	* 
+	* @config {object} [controller={paramName:'c',defaultValue:'default'}]
+	* en: Parameter for the controller and the default value<br />
+	* ru: Параметр для контроллера и значение по умолчанию
+	* 
+	* @config {object} [method={paramName:'m',defaultValue:'default'}]
+	* en: Parameter to the method and the default value<br />
+	* ru: Параметр для метода и значение по умолчанию
+	* 
+	* @config {RegExp} [isHREFMatchThisRegExpSetSEFMode='.html$']
+	* en: If match RegExp, use SEF mode<br />
+	* ru: Ссылка совпадает с регулярным, аякс в ЧПУ режиме $href.match(/\.html/g)
+	*
+	* @config {object} [setFunction:{function_name:function()}=undefined]
+	* en: Functions for execute after ajax complete<br />
+	* ru: Функция для запуска после аякс загрузки страницы
+	* 
+	* @config {function} [setFunction[function_name]($options)=undefined]
+	* en: Init with $options<br />
+	* ru: Передаём опции для того что бы иметь доступ к настройкам 
+	* 
+	* @config {function:return boolean} [setFunction.isHasAccess($obj,$options)=undefined]
+	* en: Is user has access for function, init with (setFunction[function_name],$options)<br />
+	* ru: Проверяем доступ, инициализируем с объектом, функции из setFunction()<br />
+	* ru: А так же передаём опции<br />
+	* 
+	* @config {string} [strUnionControllerWithMethod='.']
+	* en: The symbol for the union of controller and methods in the setFuncByEvnineParamMatch
+	* ru: Символ для объединения методов в setFuncByEvnineParamMatch
+	*
+	* @config {object} [setFuncByEvnineParamMatch:<br />
+	* {arguments.controller+arguments.strUnionControllerWithMethod+arguments.method:function_name}=undefined]
+	* en: Controller with method and function<br />
+	* ru: Контроллер.метод и связанная с ним функции 
+	*
+	* @config {object} [setFuncByEvnineParamMatch:{string:function_name}=undefined]  
+	* en: URN and related functions<br />
+	* ru: Ссылка и связанная с ней функции
+	*
+	* @config {object} [setFuncByHREFMatch:{RegExp:function_name}=undefined]  
+	* en: RegExp and associated functions<br />
+	* ru: Регулярное выражение и связанная с ней функции 
+	* 
+	* @config {boolean} [debugToConsole=false]
+	* en: Debug to console<br />
+	* ru: Выводить отладочную информацию в консоль (FireFox FireBug, Chrome, Opera итд)
+	* 
+	* @config {string} [debugPrefixString='| ']
+	* en: Debug prefix for group of functions<br />
+	* ru: Префикс для вывода в окно отладки группирования по функциям (FireFox FireBug, Chrome, Opera)
+	*
+	* @config {boolean} [debugToConsoleNotSupport=false]
+	* en: If you want debug in IE 6-7, Safari, etc. using alert() as console.info <br />
+	* ru: Если нужна отладка в консоль с использованием alert() в IE 6-7, Safari итд 
+	*
+	* @config {boolean} [debugFunctionGroup=false]
+	* en: Use console.group as alternative to $options.debugPrefixString  <br />
+	* ru: Использовать группировку в консоли для плагина навигации, так же нужно указать в плагине функций  
 	*/
+new function (document, $, undefined) {
 	jQuery.evFunc = function($rewrite_options) {
 		var $EVNINE_VER="0.3";
 		var $EVNINE_NAME='evFunc'+'.';
 		//en:
 		/*ru: Выставляем опции по умолчанию */
-		var $options = jQuery.extend({debugFunctionGroup:false},$rewrite_options);
+		var $options = jQuery.extend({
+			//en:
+			/*ru: Ссылка совпадает с регулярным, работаем аякс в ЧПУ режиме*/
+			isHREFMatchThisRegExpSetSEFMode   :'.html$',//=$href.match(/\.html/g)
+			//en: Parameter for the controller and the default value
+			/*ru: Параметр для контроллера и значение по умолчанию*/
+			controller:{
+				paramName:'c',defaultValue:'default'
+			},
+			//en: Parameter to the method and the default value.
+			/*ru: Параметр для метода и значение по умолчанию*/
+			method:{
+				paramName:'m',defaultValue:'default'
+			},
+			//en: 
+			/*ru: Выводить отладочную информацию в консоль FireFox FireBug, Chrome, Opera итд*/
+			debugToConsole                    :true,
+			//debugToConsole                  :false,
+			//en: 
+			/*ru: Префикс для вывода в окно отладки FireFox FireBug, Chrome, Opera*/
+			debugPrefixString                 :'|	',
+			//debugPrefixString               :' ',
+			//en: 
+			/*ru: Если нужна отладка в консоль в IE 6-7, Safari итд */
+			debugToConsoleNotSupport          :false,
+			//debugToConsoleNotSupport        :true,
+			//en: 
+			/*ru: Использовать группировку в консоли для плагина навигации, так же нужно указать в плагине функций */
+			//debugFunctionGroup                :true,
+			debugFunctionGroup              :false,
+			//en:
+			/*ru: символ для объединения методов в setFuncByEvnineParamMatch*/
+			strUnionControllerWithMethod    :'.'
+			//en: Function is for controller with method.
+			/*ru: Контроллер.метод и связанная с ним функции */
+			//setFuncByEvnineParamMatch       :{
+				//'default.default'               :'default',
+			//}
+			//en:
+			/*ru: Ссылка и связанная с ней функции */	
+			//setFuncByHREFMatch              :{
+				//'/HelloAJAXJQuery/index.php'  : 'param1'
+			//},
+			//en:
+			/*ru: Регулярное выражение и связанная с ней функции */	
+			//setFuncByMatchRegHREF              :{
+				//'.*index\.php.*'                :'default'
+			//}
+		},$rewrite_options);
 		//en:
 		/*ru: Учитываем случай когда при загрузки странице нужно запустить скрипт */
 		this.$reload_page=false;

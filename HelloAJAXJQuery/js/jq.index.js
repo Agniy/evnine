@@ -1,94 +1,115 @@
 //<script type="text/javascript">
 jQuery(document).ready(function(){  
-/**
-	* en: 
-	* ru:Вызов плагина навигации с параметрами
+	/**
+	* @name $.evNav
+	* @author ev9eniy.info 
+	* <a href="http://ev9eniy.info/evnine">ev9eniy.info/evnine</a>
+	* 
+	*
+	* @class $.evNav
+	* <br />en: Init $.evNav() jQuery plugin with options and 
+	* <br />en: $.evFunc() jQuery plugin as callback function
+	* <br />
+	* <br />ru: Вызов jQuery плагина навигации с параметрами
+	* <br />ru: и передача в плагин навигации jQuery плагина запуска функций $.evFunc()
+	* 
+	* @config {object} [ =<a href="jQuery.evNav.html#constructor">jQuery.evNav arguments</a>]
+	* en: Init evNav Plugin<br />
+	* ru: Инициализируем плагин навигации.
+	* 
+	* @config {object}  [setJSFuncForLoadPage:$.evFunc({})=<a href="jQuery.evFunc.html#constructor">jQuery.evFunc arguments</a>] 
+	* en: Init evFunc plugin<br />
+	* ru: Доступ для плагина запуска функций 
+	* 
+	* @example 
+	* en: Example of running plugin with debug to console and group prefix.
+	* ru: Пример запуска плагина для перехода по ссылкам, с отладкой
+	* $.evNav({
+	*	scriptForAJAXCallAndSetAnchore:'/HelloAJAXJQuery/index.php',
+	*	liveSelectorForAJAX           : 'a',
+	*	debugToConsole                :true,
+	*	debugPrefixString             :'|	'
+	*	functionsForAJAXIndicator     :{
+	*		On:function($options){$('#ajax_load').show();},
+	*		Off:function($options){$('#ajax_load').off();}
+	*	},
+	*	});
+	*	
+	* console:
+	* evNav.$options.isAllowThisBrowser=true
+	* evNav.setAnchoreClearWithoutURL() BEGIN
+	*|	evFunc.getParseURL($href=/HelloAJAXJQuery/index.php) BEGIN
+	*|	|	return [c] => default
+	*|	|	return [m] => default
+	*|	|	return [url] => /HelloAJAXJQuery/index.php
+	*|	evFunc.getParseURL($href=/HelloAJAXJQuery/index.php) END
+	* evNav.setAnchoreClearWithoutURL() end
+	*
+	* en: Example for AJAX Indicator.
+	* ru: Пример для показа индикатора аякс загрузки.
+	* $.evNav({
+	*	functionsForAJAXIndicator: {
+	*		On:function($options){$('#ajax_load').show();},
+	*		Off:function($options){$('#ajax_load').off();}
+	*	},
+	*});
+	*
+	* en: case - save ajax indicator object in $options.
+	* ru: случай - если хотим использовать индикатор в опциях.
+	* $.evNav({
+	*	ajax_load=$('#ajax_load'),
+	*	functionsForAJAXIndicator: {
+	*		On:function($options){$($options.ajax_load).show();},
+	*		Off:function($options){$($options.ajax_load).hide();}
+	*	},
+	*});
+	*
+	* @public
+	* @returns {object} jQuery
 	*/
 $.evNav({
+	debugToConsole                    :true,
+	debugPrefixString                 :'|	',
+	scriptForAJAXCallAndSetAnchore    :'/HelloAJAXJQuery/index.php',
 	functionsForAJAXIndicator         : {
-		On:function($options){
-			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,4)+"$options.functionsForAJAXIndicator.On()");
-		},
-		Off:function($options){
-			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,1)+"$options.functionsForAJAXIndicator.Off()");
-		}
+		On:function($options){if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,4)+"$options.functionsForAJAXIndicator.On()");},
+		Off:function($options){if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,1)+"$options.functionsForAJAXIndicator.Off()");}
 	},
-	//en: 
-	/*ru: Опции для AJAX загрузки, вызываются через обертку для того что бы учесть выставления флагов и показа индикатора */
+	// en: Options for the AJAX load
+	/* ru: Опции для AJAX загрузки*/
 	loadAJAXOptions                   :{
-		//en: 
-		/*ru: Тип данных */
-		dataType:'html',
-		//en: 
-		/*ru: В случае успешного запроса - показать ответ*/
+		//en: In the case of a successful request - show a response. 
+		/*ru: В случае успешного запроса - показать ответ */
 		success: function (responseText, statusText, $options){
 			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,1)+"$options.loadAJAXOptions.success() BEGIN");
-			//en: 
-			/*ru: Функция установки флагов для плагина запуска функций*/
+			//en: Setting function of flags for evFunc()
+			/*ru: Функция установки флагов для плагина запуска функций */
 			$options.setJSFuncForLoadPage.setPreCallShowResponse($options.$loaded_href);
 			jQuery($options.selectorForAJAXReplace).html(responseText);
-			//en: 
-			/*ru: Функция пос загрузки с запуском скриптов для данной страницы*/
+			//en: Call function after jQuery html replace.
+			/*ru: Функция после загрузки с запуском скриптов для данной страницы */
 			$options.setJSFuncForLoadPage.setPostCallShowResponse($options.$loaded_href);
 			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,1)+"$options.loadAJAXOptions.success() END");
-		},
-		//en: 
-		/*ru: В случае ошибки запроса, так же запускается в обертке */
-		error: function (responseText, statusText, $options){//Функций - Показать AJAX ответ в случае ошибке
-			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,1)+"$options.loadAJAXOptions.error() BEGIN");
-			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,1)+"$options.loadAJAXOptions.error() END");
 		}
 	},
-	//en: 
+	//en: Init evFunc plugin
 	/*ru: Доступ для плагина запуска функций */
 	setJSFuncForLoadPage              :$.evFunc({
-		//en:
-		/*ru: Ссылка совпадает с регулярным, работаем аякс в ЧПУ режиме*/
-		isHREFMatchThisRegExpSetSEFMode   :'.html$',//=$href.match(/\.html/g)
-		//en:
-		/*ru: Параметр для контроллера и значение по умолчанию*/
-		controller:{
-			paramName:'c',
-			defaultValue:'default'
-		},
-		//en:
-		/*ru: Параметр для контроллера и значение по умолчанию*/
-		method:{
-			paramName:'m',
-			defaultValue:'default'
-		},
-		//en: 
-		/*ru: Выводить отладочную информацию в консоль FireFox FireBug, Chrome, Opera итд*/
-		debugToConsole                    :true,
-		//debugToConsole                  :false,
-		//en: 
-		/*ru: Префикс для вывода в окно отладки FireFox FireBug, Chrome, Opera*/
-		debugPrefixString                 :'|	',
-		//debugPrefixString               :' ',
-		//en: 
-		/*ru: Если нужна отладка в консоль в IE 6-7, Safari итд */
-		debugToConsoleNotSupport          :false,
-		//debugToConsoleNotSupport        :true,
-		//en: 
-		/*ru: Использовать группировку в консоли для плагина навигации, так же нужно указать в плагине функций */
-		//debugFunctionGroup                :true,
-		debugFunctionGroup              :false,
-		
-		//en:
-		/*ru: функция для запуска после аякс подгрузки */
+		//en: Functions for execute after ajax complete
+		/*ru: Функция для запуска после аякс загрузки страницы */
 		setFunction:
-		//en:
+		//en: Init with setJSFuncForLoadPage.$options
 		/*ru: Передаём опции для того что бы иметь доступ к настройкам */{
 				'default'               :function($options) 
 				{
-					//en:
+					//en: Default access level
 					/*ru: Уровень доступа */
 					this.access='1';
 					//en: if load new method
 					/*ru: Если подгрузили новый метод*/
 					this.setAction = function() {
 						if ($options.debugToConsole) console.info(jQuery.evDev.getTab($options.debugPrefixString,7)+"$options.setJSFuncForLoadPage.setFunction.default.setAction()");
-						//en:
+						//en: include once method with call back function
 						/*ru: метод include для выполнения функции после загрузки скрипта, если функция загружена не подгружаем */
 						$options.include_once('/HelloAJAXJQuery/js/jq.getscript.test.js',function(){
 							$options.include_once('/HelloAJAXJQuery/js/jq.getscript.test2.js',function(){
@@ -107,51 +128,37 @@ $.evNav({
 						if ($options.debugToConsole) console.info(jQuery.evDev.getTab($options.debugPrefixString,7)+"$options.setJSFuncForLoadPage.setFunction.default.unSetAction()");
 					};
 				},
-				//en:
+				//en: Is user has access for function, init with setFunction[function] and setJSFuncForLoadPage.$options
 				/*ru: Проверяем доступ, инициализируем с объектом, функции из setFunction */
 				/*ru: А так же передаём опции */
 				'isHasAccess':function($obj,$options) {
 					if ($obj.access==undefined){
 						if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,7)+"$options.setJSFuncForLoadPage.setFunction.isHasAccess()=true");
-						return true;
 					}else {
-						$current_level= 1;
-						if ($current_level>=$obj.access){
 						if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,7)+"$options.setJSFuncForLoadPage.setFunction.isHasAccess()=true");
-							return true;
-						}else {
-							if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,7)+"$options.setJSFuncForLoadPage.setFunction.isHasAccess()=false");
-							return false;
-						}
 					}
-					if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,7)+"$options.setJSFuncForLoadPage.setFunction.isHasAccess()=true");
 					return true;
 				}
-			},
-			//en:
-			/*ru: символ для объединения методов в setFuncByEvnineParamMatch*/
-			strUnionControllerWithMethod    :'.',
-				//
+		},
 			//en: Function is for controller with method.
 			/*ru: Контроллер.метод и связанная с ним функции */
 			setFuncByEvnineParamMatch       :{
 				//For controller
-				'validation'                    :'default',
-				'default'                       :'default',
-				//'default.default'               :'default',
-				'param1'                        :'default'
-				//'param1.param2'                 :'default'
+				'validation'                  :'default',
+				'default'                     :'default',
+				'param1'                      :'default',
+				//controller.method
+				'param1.param1'               :'default'
 			}
-			//en:
+			//en: URN and related functions
 			/*ru: Ссылка и связанная с ней функции */	
 			//setFuncByHREFMatch              :{
-				//'/HelloAJAXJQuery/index.php'  : 'param1'
+			//	'/HelloAJAXJQuery/index.php'  : 'param1'
 			//},
-			//en:
+			//en: RegExp and associated functions.
 			/*ru: Регулярное выражение и связанная с ней функции */	
 			//setFuncByMatchRegHREF              :{
-				//'.*index\.php.*'                :'default'
-			//}
+			//	'.*index\.php.*'                :'default'
 	})
 });
 });
