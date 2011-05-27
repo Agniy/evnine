@@ -15,8 +15,8 @@ Three things in programming for the changes in life:
 ----
 		+beautiful print_r2
 		+“frozen” data for debug and unit test (in DB, files, env, etc)
-		auto generation of input parameters
-		unit-test with automatic generation of tests and store to as serialized data.
+		[rewrite] auto generation of input parameters
+		[rewrite] unit-test with automatic generation of tests and store to as serialized data.
 
 3.	Inspection of the changes in only one parameter for the method.
 ----
@@ -40,8 +40,8 @@ Three things in programming for the changes in life:
 ----
 		+удобный вывод переменных (array, obj, xml) по print_r2.
 		+данные в процессе отладки и тестирования можно заморозить (Таблицы, Файлы, окружение, итд)
-		авто генерация входных параметров 
-		Юнит-тесты создаются сами и хранятся как стерилизованные объекты.
+		[переписываю код] авто генерация входных параметров 
+		[переписываю код] Юнит-тесты создаются сами и хранятся как стерилизованные объекты.
 		+Имена в массиве ответа контроллера соответствуют путям к исходникам.
 			Это значит, что [ModelsHelloWorld_getHellow]
 			был вызван метод класса \models\ModelsHelloWorld->getHellow()
