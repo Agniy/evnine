@@ -19,7 +19,24 @@ class ModelsBitrixInfoBlockParser
 		$full_value = array();
 		$full_value['NAME'] = $product->fields['NAME'];
 		$full_value['ID'] = $product->fields['ID'];
-		$full_value['PREVIEW_TEXT'] = $product->fields['PREVIEW_TEXT'];
+		$full_value['IBLOCK_ID'] = $product->fields['IBLOCK_ID'];
+		
 		return $full_value;
 	}
+
+	/**
+	*Вспомогательная функция - разбор данныx из инфоблока
+	*@return array
+	*/
+	function parseAllData ($product, $arProps)
+	{
+		$full_value = array();
+		$full_value['NAME'] = $product->fields['NAME'];
+		$full_value['ID'] = $product->fields['ID'];
+		$full_value['IBLOCK_ID'] = $product->fields['IBLOCK_ID'];
+		foreach ($arProps as $arProps_title => $arProps_value)
+			$full_value[$arProps_title] = $arProps_value['VALUE'];
+		return $full_value;
+	}
+
 }

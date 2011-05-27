@@ -48,14 +48,8 @@ if (!$bDesignMode && $arParams["IS_RSS"] == "Y")
 }
 
 // Подключаем файл без кеширования
-$modifier_path = $_SERVER["DOCUMENT_ROOT"].$arResult["__TEMPLATE_FOLDER"]."/result_modifier_nc.php";
-//$modifier_short_path = $_SERVER["DOCUMENT_ROOT"].$arResult["__TEMPLATE_FOLDER"]."/nc.php";
-//
-//if (file_exists($modifier_short_path))
-//{
-//	require_once($modifier_short_path);
-//	$mod_name = "nc.php";
-//}
+$modifier_path = $_SERVER["DOCUMENT_ROOT"].$arResult["__TEMPLATE_FOLDER"]."/result_nc.php";
+$nocahe_template_path = $_SERVER["DOCUMENT_ROOT"].$arResult["__TEMPLATE_FOLDER"]."/template_nc.php";
 if (file_exists($modifier_path))
 {
 	require_once($modifier_path);
@@ -64,69 +58,10 @@ if (file_exists($modifier_path))
 
 
 // Подключаем шаблон без кеширования
-
-$nocahe_template_path = $_SERVER["DOCUMENT_ROOT"].$arResult["__TEMPLATE_FOLDER"]."/template_nc.php";
 if (file_exists($nocahe_template_path))
 {
 	require_once($nocahe_template_path);
 }
-
-/*
-if($GLOBALS["APPLICATION"]->GetShowIncludeAreas() && $USER->isAdmin())
-{
-
-	// Подключение иконок редактирования файла .parameters.php
-
-	$filename = ".parameters.php";
-	$result_modifier_edit = "jsPopup.ShowDialog('/bitrix/admin/public_file_edit_src.php?site=".SITE_ID."&path=".urlencode($arResult["__TEMPLATE_FOLDER"])."%2F".$filename."', {'width':'770', 'height':'570', 'resize':true })";
-
-	$this->AddIncludeAreaIcon(
-	array(
-		'URL'   => "javascript:".$result_modifier_edit.";",
-		'SRC'   => $this->GetPath().'/images/edit.gif',
-		'TITLE' => "Редактировать файл .parameters.php"
-	));
-
-
-	// Подключение иконок редактирования файла result_modifier.php
-
-	$filename = "result_modifier.php";
-	$result_modifier_edit = "jsPopup.ShowDialog('/bitrix/admin/public_file_edit_src.php?site=".SITE_ID."&path=".urlencode($arResult["__TEMPLATE_FOLDER"])."%2F".$filename."', {'width':'770', 'height':'570', 'resize':true })";
-
-	$this->AddIncludeAreaIcon(
-	array(
-		'URL'   => "javascript:".$result_modifier_edit.";",
-		'SRC'   => $this->GetPath().'/images/edit.gif',
-		'TITLE' => "Редактировать файл result_modifier.php"
-	));
-
-
-	// Подключение иконок редактирования файла result_modifier_nc.php
-
-	$filename = $mod_name;
-	$result_modifier_edit = "jsPopup.ShowDialog('/bitrix/admin/public_file_edit_src.php?site=".SITE_ID."&path=".urlencode($arResult["__TEMPLATE_FOLDER"])."%2F".$filename."', {'width':'770', 'height':'570', 'resize':true })";
-
-	$this->AddIncludeAreaIcon(
-	array(
-		'URL'   => "javascript:".$result_modifier_edit.";",
-		'SRC'   => $this->GetPath().'/images/edit.gif',
-		'TITLE' => "Редактировать файл result_modifier_nc.php"
-	));
-
-	// Подключение иконок редактирования файла template_nc.php
-
-	$filename = "template_nc.php";
-	$template_nc_edit = "jsPopup.ShowDialog('/bitrix/admin/public_file_edit_src.php?site=".SITE_ID."&path=".urlencode($arResult["__TEMPLATE_FOLDER"])."%2F".$filename."', {'width':'770', 'height':'570', 'resize':true })";
-
-	$this->AddIncludeAreaIcon(
-	array(
-		'URL'   => "javascript:".$template_nc_edit.";",
-		'SRC'   => $this->GetPath().'/images/edit.gif',
-		'TITLE' => "Редактировать файл template_nc.php"
-	));
-
-}	
-*/
 
 // Возвращаемое значение
 if (!empty($arResult["__RETURN_VALUE"]))

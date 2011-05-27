@@ -7,6 +7,8 @@ $APPLICATION->SetPageProperty("keywords", "HelloWorld");
 ?>
 <?$APPLICATION->IncludeComponent("evnine:evnine", "evnine", Array(
 		'IBLOCK_ID' => '',
+		'CACHE_TIME'=>'3600',
+	//'CACHE_TIME'=>'0',
 		)
 	);
 ?>

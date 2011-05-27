@@ -19,6 +19,7 @@ class Config
 
 		$this->param_const=array(
 			'default_controller'=>'default_controller',
+			'isPHPUnitDebug'=>true,
 		);
 		$this->controller_menu_view=array(
 			'helloworld'=>'ControllersHelloWorld',

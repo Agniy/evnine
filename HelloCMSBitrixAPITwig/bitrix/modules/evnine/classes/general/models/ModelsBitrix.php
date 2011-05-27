@@ -501,8 +501,12 @@ function getFirstArrayKey($array) {
  *Вспомогательная функция - получение всеx элеметов из инфоблока с учётом фильтра
  *man CIBlockElement::GetList
  */
-function getAllElementArrayByID ($idblock, $idsection, $callback, $arFilter, $arSelectFields, $data, $key_is_id=false, $arOrder,$arGroupBy=false,$arNavStartParams=false,$get_prop=true)
+function getAllElementArrayByID ($idblock, $idsection, $callback, $arFilter, $arSelectFields, $data, $key_is_id=false, $arOrder,$arGroupBy=false,$arNavStartParams=false,$get_prop=true,$get_first_array_key=false,$set_cache=false)
 {
+	if ($set_cache){
+		global $CACHE_MANAGER;
+		$CACHE_MANAGER->RegisterTag("iblock_id_".$idblock);
+	}
 	$arProps=$array_out = array();
 	if (count(
 		$arFilter) == 0)
@@ -532,7 +536,7 @@ function getAllElementArrayByID ($idblock, $idsection, $callback, $arFilter, $ar
 	{
 		$count ++;
 		if ($get_prop){
-			$arProps = $product->GetProperties();
+			$arProps = $product->GetProperties(false,false);
 		}
 		if ($key_is_id){
 			$tmp = $this->$callback(
@@ -549,6 +553,9 @@ function getAllElementArrayByID ($idblock, $idsection, $callback, $arFilter, $ar
 				$data
 			);
 		}
+	}
+	if ($get_first_array_key){
+		return $array_out['1'];
 	}
 	return $array_out;
 }
