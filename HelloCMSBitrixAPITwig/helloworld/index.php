@@ -1,9 +1,5 @@
 <?
-require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("HelloWorld");
-$APPLICATION->SetPageProperty("title", "HelloWorld");
-$APPLICATION->SetPageProperty("description", "HelloWorld");
-$APPLICATION->SetPageProperty("keywords", "HelloWorld");   
+require_once($_SERVER['DOCUMENT_ROOT']."/bitrix/modules/main/include/prolog_before.php");
 ?>
 <?$APPLICATION->IncludeComponent("evnine:evnine", "evnine", Array(
 		'IBLOCK_ID' => '',
@@ -12,4 +8,3 @@ $APPLICATION->SetPageProperty("keywords", "HelloWorld");
 		)
 	);
 ?>
-<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
