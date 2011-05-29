@@ -22,6 +22,7 @@ class Config
 			'frozen_file'=>'frozen_file.txt',
 			'ResetDBClass'=>'models'.DIRECTORY_SEPARATOR.'ModelsMySQLFrozenTables.php',
 			'setResetForTest'=>true,
+			'debug'=>true,
 				//before call the method 
 				//call reset method setResetForTest,
 				//->setResetForTest($param)
