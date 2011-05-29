@@ -8,17 +8,19 @@
  */
 class ControllersHelloWorld
 {
-	var $controller_menu_view;//Array controller
-														//Базовый массив контроллера
-	function __construct($access_level){//Initialize the controller with access levels
-																			//Инициализируем контроллер передавая уровни доступа из конфига
+	var $controller_menu_view;
+	// en: Array controller
+	/* ru: Базовый массив контроллера*/
+	function __construct($access_level){
+	// en: Initialize the controller with access levels
+	/* ru: Инициализируем контроллер передавая уровни доступа из конфига*/
 		$this->controller_menu_view = array(
 			'private_methods' => array(
-				//Private methods are not available for outside calls.
-				//available only when a call from the public methods.
+				// en: Private methods are not available for outside calls.
+				// en: available only when a call from the public methods.
 				#
-				/*Приватные методы не доступные для вызова из вне,*/
-				/*доступны только при вызова из публичных методов*/
+				/* ru: Приватные методы не доступные для вызова из вне,*/
+				/* ru: доступны только при вызова из публичных методов*/
 				#
 				'isGetNotHelloWorld_true'=>array(
 					'ModelsHelloWorld' => 'getNotHelloWorld',

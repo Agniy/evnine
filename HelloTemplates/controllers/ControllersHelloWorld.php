@@ -40,7 +40,8 @@ class ControllersHelloWorld
 					)
 				),
 
-			'public_methods' => array(//en: Public methods are available for all	
+			'public_methods' => array(
+					//en: Public methods are available for all	
 					//Example: index.php?t=the controller&m=the public method
 					/* ru: Публичные методы доступные всем пользователям*/
 					/* ru: Пример вызова t=имя контроллера&m=публичный метод	*/

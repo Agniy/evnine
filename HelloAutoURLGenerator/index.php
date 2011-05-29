@@ -14,6 +14,6 @@ $output = $evnine->getControllerForParam(
 
 new dBug($output, "array",false);
 
-echo 'URN: '.$output['inURL']['default']['pre'].$output['inURL']['default']['PathID'].$output['REQUEST_OUT']['PathID'].$output['inURL']['post'];
+echo 'URN: '.$output['inURL']['default']['pre'].$output['inURL']['default']['TestID'].$output['REQUEST_OUT']['TestID'].'insert_by_script'.$output['inURL']['default']['post'];
 
 ?>
