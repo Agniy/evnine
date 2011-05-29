@@ -787,7 +787,7 @@ function setLoadController($template) {
 	if (empty($template)||
 		empty($this->controller_menu_view[$template])
 	){//В случае если шаблона нет в списке контроллеров или если шаблон не установлен
-		$this->result['ControllerError'][]='function setLoadController: Controller "'.$template. '" not found '.$this->current_template.'';
+		$this->result['ControllerError'][]='<b>function setLoadController:</b> Controller "<b>'.$template. '</b>" not found <b>'.$this->current_template.'</b>';
 		$this->param['controller']=$this->current_template = $this->param_const['default_controller'];
 	}else {
 		$this->current_template = $template;
@@ -887,7 +887,7 @@ function getDataFromController($param,$debug=false) {
 					&&!empty($this->current_controller['parent']))
 			{
 				$parent = $this->current_controller['parent'];
-				$this->result['&rArr;'.$parent.':parent-default'] = '&rArr;Parent Method <font color="orange">'.$parent.'::default</font> is load';//Init method load double fix
+				$this->result['&rArr;'.$parent.':parent-default'] = '&rArr;Parent Method <font color="orange"><b>'.$parent.'::parent-default</b></font> is load';//Init method load double fix
 				//Загружаем шаблон родителя 
 				$save_template = $this->param['controller'];
 				$save_method  = $this->param['method'];
@@ -895,16 +895,16 @@ function getDataFromController($param,$debug=false) {
 				$this->param['controller']=$this->current_controller['parent'];
 				//Выполняем в нем функции, с учётом текущего массива результатов
 				$this->getDataFromController($this->param,false);
-				$this->result['&lArr;'.$parent.':parent-default'] = '&lArr;Parent Method <font color="orange">'.$parent.'::default</font> is unload';//Init method load double fix		
+				$this->result['&lArr;'.$parent.':parent-default'] = '&lArr;Parent Method <font color="orange"><b>'.$parent.'::parent-default</b></font> is unload';//Init method load double fix		
 				$this->param['method']= $save_method;
 				$this->param['controller']=$save_template;
 			}elseif (!empty($this->current_controller['public_methods']['default'])){
 				$this->setInitController($this->current_controller['init'],$this->current_template);//Инициализируем данные
 				//Загружаем метод по умолчания в главном контроллере
 				$this->param['method']='default';
-				$this->result['&rArr;'.$this->current_template.':default'] = '&rArr;Extend Method <font color="orange">'.$this->current_template.'::default</font> is load';//Init method load double fix
+				$this->result['&rArr;'.$this->current_template.':default'] = '&rArr;Extend Method <font color="orange"><b>'.$this->current_template.'::default</b></font> is load';//Init method load double fix
 				$this->getPublicMethod($this->param);
-				$this->result['&lArr;'.$this->current_template.':default'] = '&lArr;Extend Method <font color="orange">'.$this->current_template.'::default</font> is unload';//Init method load double fix
+				$this->result['&lArr;'.$this->current_template.':default'] = '&lArr;Extend Method <font color="orange"><b>'.$this->current_template.'::default</b></font> is unload';//Init method load double fix
 			}
 			$this->getAvailableTemplates($this->current_controller['templates'],$this->current_template);
 		}
@@ -1048,13 +1048,13 @@ function getMethodFromClass($methods_class,$methods_array) {
 			$this->param['controller']=$methods_class;
 			$this->param['ajax']=true;
 			$this->param['method']=$this->getFirstArrayKey($methods_array,'first_value');//Берем первый по ключу
-			$this->result['&rArr;'.$methods_class.':'.$this->param['method']] = '&rArr;Extend Method <font color="orange">'.$methods_class.'::'.$this->param['method'].'</font> is load';//Init method load double fix
+			$this->result['&rArr;'.$methods_class.':'.$this->param['method']] = '&rArr;Extend Method <font color="orange"><b>'.$methods_class.'::'.$this->param['method'].'</b></font> is load';//Init method load double fix
 //edit_univer_fix			if (!isset($this->result['ModelsValidation_isValidModifierParamFormError'])){
 //				$is_save_validation_param= true;
 //			}
 				//Выполняем в нем функции, с учётом текущего массива результатов
 			$this->getDataFromController($this->param,false);
-			$this->result['&lArr;'.$methods_class.':'.$this->param['method']] = '&lArr;Extend Method <font color="orange">'.$methods_class.'::'.$this->param['method'].'</font> is unload';//Init method load double fix
+			$this->result['&lArr;'.$methods_class.':'.$this->param['method']] = '&lArr;Extend Method <font color="orange"><b>'.$methods_class.'::'.$this->param['method'].'</b></font> is unload';//Init method load double fix
 			$this->current_template = $this->param['controller']=$save_param['controller'];
 //edit_univer_fix			if (!$is_save_validation_param)
 //				$this->param['form_data']=$save_param['form_data'];
@@ -1063,7 +1063,7 @@ function getMethodFromClass($methods_class,$methods_array) {
 			$this->current_controller=$save_controller;
 			return true;
 		}else {
-			$this->result['ControllerError'][]='function getMethodFromClass: Extend controller not exist '.$methods_class.'';
+			$this->result['ControllerError'][]='<b>function getMethodFromClass</b>: Extend controller not exist <b>'.$methods_class.'</b>';
 		}
 		$methods_class=$this->getFirstArrayKey($methods_array);//Берем первый по ключу
 		if (count($methods_array[$methods_class])>1)//Если методов больше одного, уменьшаем глубину на один уровень
@@ -1234,9 +1234,13 @@ function getDataFromMethod($methods_class,$methods_array){
 				//echo 'isSET!<br />';
 			//}
 			if (method_exists($this->loaded_class[$methods_class],$methods_array_value)){
+				try{
 					$answer = $this->loaded_class[$methods_class]->$methods_array_value($this->param);
+				} catch (Exception $e) {
+	        $this->param['info']=$e->getMessage();
+				}
 			}else {
-					$this->result['ControllerError'][]='function getDataFromMethod: Extend method not exist '.$methods_array_value.'';
+				$this->result['ControllerError'][]='<b>function getDataFromMethod</b>: Extend method not exist <b>'.$methods_array_value.'</b>';
 			}
 			//Ключ для массива
 //			$array_key= $methods_class.':'.
@@ -1245,7 +1249,7 @@ function getDataFromMethod($methods_class,$methods_array){
 			//$debug=false;
 //			$this->param['isPHPUnitDebug']=true;
 //$this->param['isPHPUnitDebug']&&
-			if ($debug=='true'){//TODO DELETE 
+			if ($this->param['debug']){//TODO DELETE 
 				if (isset($this->result['param'][$this->param['method']]['param_out'])){
 					$this->result['param'][$this->param['method']][$array_key] = $this->getForDebugArrayDiff($this->param,$this->result['param'][$this->param['method']]['param_out']);
 					$this->result['param'][$this->param['method']]['param_out'] = $this->param;
@@ -1429,7 +1433,7 @@ function getPublicMethod($param) {
 			$this->getMethodFromClass($_title,$_value);
 		}
 	}else {
-		$this->result['ControllerError'][]='function getPublicMethod: Method '.$param['method'].' not found in '.$this->current_template.'';
+		$this->result['ControllerError'][]='<b>function getPublicMethod:</b> Method <b>'.$param['method'].'</b> not found in <b>'.$this->current_template.'</b>';
 		if (!empty($this->current_controller['public_methods']['default'])){
 			if (!empty($this->current_controller['public_methods']['default'])){
 				$param['method']='default';
@@ -1459,7 +1463,7 @@ function getPrivateMethod($method){
 	}elseif (!empty($this->current_controller['public_methods'][$this->param['method']][$method])){
 		$methods_callback = $this->current_controller['public_methods'][$this->param['method']][$method];
 	}else {
-		$this->result['ControllerError'][]='function getPrivateMethod: In controller "'.$this->current_template.'" not found Method "'.$method.'"';	
+		$this->result['ControllerError'][]='<b>function getPrivateMethod:</b> In controller "<b>'.$this->current_template.'</b>" not found Method "<b>'.$method.'</b>"';	
 		return true;
 	} 
 	//Запускаем каждый метод класса

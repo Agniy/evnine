@@ -887,7 +887,7 @@ function getDataFromController($param,$debug=false) {
 					&&!empty($this->current_controller['parent']))
 			{
 				$parent = $this->current_controller['parent'];
-				$this->result['&rArr;'.$parent.':parent-default'] = '&rArr;Parent Method <font color="orange"><b>'.$parent.'::default</b></font> is load';//Init method load double fix
+				$this->result['&rArr;'.$parent.':parent-default'] = '&rArr;Parent Method <font color="orange"><b>'.$parent.'::parent-default</b></font> is load';//Init method load double fix
 				//Загружаем шаблон родителя 
 				$save_template = $this->param['controller'];
 				$save_method  = $this->param['method'];
@@ -895,7 +895,7 @@ function getDataFromController($param,$debug=false) {
 				$this->param['controller']=$this->current_controller['parent'];
 				//Выполняем в нем функции, с учётом текущего массива результатов
 				$this->getDataFromController($this->param,false);
-				$this->result['&lArr;'.$parent.':parent-default'] = '&lArr;Parent Method <font color="orange"><b>'.$parent.'::default</b></font> is unload';//Init method load double fix		
+				$this->result['&lArr;'.$parent.':parent-default'] = '&lArr;Parent Method <font color="orange"><b>'.$parent.'::parent-default</b></font> is unload';//Init method load double fix		
 				$this->param['method']= $save_method;
 				$this->param['controller']=$save_template;
 			}elseif (!empty($this->current_controller['public_methods']['default'])){
@@ -1234,9 +1234,13 @@ function getDataFromMethod($methods_class,$methods_array){
 				//echo 'isSET!<br />';
 			//}
 			if (method_exists($this->loaded_class[$methods_class],$methods_array_value)){
+				try{
 					$answer = $this->loaded_class[$methods_class]->$methods_array_value($this->param);
+				} catch (Exception $e) {
+	        $this->param['info']=$e->getMessage();
+				}
 			}else {
-					$this->result['ControllerError'][]='<b>function getDataFromMethod</b>: Extend method not exist <b>'.$methods_array_value.'</b>';
+				$this->result['ControllerError'][]='<b>function getDataFromMethod</b>: Extend method not exist <b>'.$methods_array_value.'</b>';
 			}
 			//Ключ для массива
 //			$array_key= $methods_class.':'.
@@ -1245,7 +1249,7 @@ function getDataFromMethod($methods_class,$methods_array){
 			//$debug=false;
 //			$this->param['isPHPUnitDebug']=true;
 //$this->param['isPHPUnitDebug']&&
-			if ($debug=='true'){//TODO DELETE 
+			if ($this->param['debug']){//TODO DELETE 
 				if (isset($this->result['param'][$this->param['method']]['param_out'])){
 					$this->result['param'][$this->param['method']][$array_key] = $this->getForDebugArrayDiff($this->param,$this->result['param'][$this->param['method']]['param_out']);
 					$this->result['param'][$this->param['method']]['param_out'] = $this->param;

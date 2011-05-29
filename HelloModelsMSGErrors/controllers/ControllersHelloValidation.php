@@ -121,12 +121,12 @@ class ControllersHelloValidation
 				/* ru: Приватные методы не доступные для вызова из вне,*/
 				/* ru: доступны только при вызова из публичных методов*/
 				'isValidModifierParamFormError_false'=>array(
+					// ru: Get errors
+					/* ru: Выводим ошибку */
 					'ModelsErrors'=>array(
 						'getError',
 						'getError->alternative_way_of_setting_errors',
-				)
-					// ru: Get errors
-					/* ru: Выводим ошибку */
+					)
 				),
 
 			)

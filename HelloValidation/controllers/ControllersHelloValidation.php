@@ -115,7 +115,17 @@ class ControllersHelloValidation
 						'ModelsValidation' => 'isValidModifierParamFormError', //Validation check in method
 																																	 //Вызов валидации
 					),
+			),
+			'private_methods' => array(
+				// en: Private methods are not available for outside calls.
+				// en: available only when a call from the public methods.
+				/* ru: Приватные методы не доступные для вызова из вне,*/
+				/* ru: доступны только при вызова из публичных методов*/
+				'isValidModifierParamFormError_true'=>array(
+					'ModelsHelloWorld' => 'getHelloWorld',
+				),
 			)
+
 		);
 	}
 } 

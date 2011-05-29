@@ -887,7 +887,7 @@ function getDataFromController($param,$debug=false) {
 					&&!empty($this->current_controller['parent']))
 			{
 				$parent = $this->current_controller['parent'];
-				$this->result['&rArr;'.$parent.':parent-default'] = '&rArr;Parent Method <font color="orange"><b>'.$parent.'::default</b></font> is load';//Init method load double fix
+				$this->result['&rArr;'.$parent.':parent-default'] = '&rArr;Parent Method <font color="orange"><b>'.$parent.'::parent-default</b></font> is load';//Init method load double fix
 				//Загружаем шаблон родителя 
 				$save_template = $this->param['controller'];
 				$save_method  = $this->param['method'];
@@ -895,7 +895,7 @@ function getDataFromController($param,$debug=false) {
 				$this->param['controller']=$this->current_controller['parent'];
 				//Выполняем в нем функции, с учётом текущего массива результатов
 				$this->getDataFromController($this->param,false);
-				$this->result['&lArr;'.$parent.':parent-default'] = '&lArr;Parent Method <font color="orange"><b>'.$parent.'::default</b></font> is unload';//Init method load double fix		
+				$this->result['&lArr;'.$parent.':parent-default'] = '&lArr;Parent Method <font color="orange"><b>'.$parent.'::parent-default</b></font> is unload';//Init method load double fix		
 				$this->param['method']= $save_method;
 				$this->param['controller']=$save_template;
 			}elseif (!empty($this->current_controller['public_methods']['default'])){
