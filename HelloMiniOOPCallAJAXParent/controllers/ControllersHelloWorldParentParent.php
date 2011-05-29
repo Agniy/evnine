@@ -8,10 +8,12 @@
  */
 class ControllersHelloWorldParentParent
 {
-	var $controller_menu_view;// en: Array controller
-														/* ru: Базовый массив контроллера*/
-	function __construct($access_level){// en: Initialize the controller with access levels
-																			/* ru: Инициализируем контроллер передавая уровни доступа из конфига*/
+	var $controller_menu_view;
+	// en: Array controller
+	/* ru: Базовый массив контроллера*/
+	function __construct($access_level){
+	// en: Initialize the controller with access levels
+	/* ru: Инициализируем контроллер передавая уровни доступа из конфига*/
 		$this->controller_menu_view = array(
 					'page_level'=>'0',
 					// en: Depth of the controller, for the parents controller load
