@@ -1,8 +1,0 @@
-DirectoryIndex index.php index.php
-
-<IfModule mod_rewrite.c>
-RewriteEngine On
-RewriteRule .* - [L]
-RewriteRule ^(.*).(body|ajax|html)$ index.php?sef=$1&ajax=$2 [NC,L]
-</IfModule>	
-
