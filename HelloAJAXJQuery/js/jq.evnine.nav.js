@@ -256,7 +256,7 @@ new function (document, $, undefined) {
 		}
 		if ($options.debugFunctionGroup){
 			$options.debugPrefixString= '';
-			jQuery.evDev.initGoupFunctionCall($options.debugToConsoleNotSupport);
+			jQuery.evDev.initGroupFunctionCall($options.debugToConsoleNotSupport);
 		}
 	}
 
