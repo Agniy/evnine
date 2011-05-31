@@ -133,8 +133,8 @@
 <span class='line'>126</span> </span><span class="WHIT">	</span><span class="COMM">// &lt;br /></span><span class="WHIT">
 <span class='line'>127</span> </span><span class="WHIT">	</span><span class="NAME">maxErrorCountBeforeStopAJAXCall</span><span class="WHIT">   </span><span class="PUNC">:</span><span class="NUMB">3</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>128</span> </span><span class="WHIT">	</span><span class="COMM">// &lt;br /></span><span class="WHIT">
-<span class='line'>129</span> </span><span class="WHIT">	</span><span class="NAME">selectorForAJAXReplace</span><span class="WHIT">            </span><span class="PUNC">:</span><span class="STRN">'body'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="WHIT">
-<span class='line'>130</span> </span><span class="WHIT">	</span><span class="COMM">// &lt;br /></span><span class="WHIT">
+<span class='line'>129</span> </span><span class="WHIT">	</span><span class="NAME">selectorForAJAXReplace</span><span class="WHIT">            </span><span class="PUNC">:</span><span class="STRN">'body'</span><span class="PUNC">,</span><span class="WHIT"> 
+<span class='line'>130</span> 	</span><span class="COMM">// &lt;br /></span><span class="WHIT">
 <span class='line'>131</span> </span><span class="WHIT">	</span><span class="NAME">scriptForAJAXCallAndSetAnchore</span><span class="WHIT">    </span><span class="PUNC">:</span><span class="STRN">'/index.php'</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>132</span> </span><span class="WHIT">	</span><span class="COMM">// &lt;br /></span><span class="WHIT">
 <span class='line'>133</span> </span><span class="WHIT">	</span><span class="NAME">ancorePreFix</span><span class="WHIT">                      </span><span class="PUNC">:</span><span class="STRN">'!'</span><span class="PUNC">,</span><span class="COMM">//index.php#!test</span><span class="WHIT">
@@ -214,7 +214,7 @@
 <span class='line'>207</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
 <span class='line'>208</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">$options.debugFunctionGroup</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'>209</span> </span><span class="WHIT">			</span><span class="NAME">$options.debugPrefixString</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">''</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>210</span> </span><span class="WHIT">			</span><span class="NAME">jQuery.evDev.initGoupFunctionCall</span><span class="PUNC">(</span><span class="NAME">$options.debugToConsoleNotSupport</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>210</span> </span><span class="WHIT">			</span><span class="NAME">jQuery.evDev.initGroupFunctionCall</span><span class="PUNC">(</span><span class="NAME">$options.debugToConsoleNotSupport</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>211</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
 <span class='line'>212</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
 <span class='line'>213</span> 
@@ -227,10 +227,10 @@
 <span class='line'>220</span> </span><span class="WHIT">	</span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">trim</span><span class="PUNC">(</span><span class="NAME">str</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'>221</span> </span><span class="WHIT">		</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">str.replace</span><span class="PUNC">(</span><span class="REGX">/^ +/g</span><span class="PUNC">,</span><span class="STRN">''</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">replace</span><span class="PUNC">(</span><span class="REGX">/ +$/g</span><span class="PUNC">,</span><span class="STRN">''</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>222</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>223</span> </span><span class="WHIT">	</span><span class="WHIT">
-<span class='line'>224</span> </span><span class="WHIT">	</span><span class="NAME">$options.scriptNameForAJAX</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$options.scriptForAJAXCallAndSetAnchore.replace</span><span class="PUNC">(</span><span class="REGX">/^.*(\\|\/|\:)/</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">''</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>225</span> </span><span class="WHIT">	</span><span class="WHIT">
-<span class='line'>226</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>223</span> </span><span class="WHIT">	
+<span class='line'>224</span> 	</span><span class="NAME">$options.scriptNameForAJAX</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$options.scriptForAJAXCallAndSetAnchore.replace</span><span class="PUNC">(</span><span class="REGX">/^.*(\\|\/|\:)/</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">''</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>225</span> </span><span class="WHIT">	
+<span class='line'>226</span> 	</span><span class="COMM">/**
 <span class='line'>227</span> 	 * 
 <span class='line'>228</span> 	 * @access public
 <span class='line'>229</span> 	 * @return void
@@ -281,8 +281,8 @@
 <span class='line'>274</span> </span><span class="WHIT">	</span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">getRegSafeString</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">$str</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'>275</span> </span><span class="WHIT">		</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">$str.replace</span><span class="PUNC">(</span><span class="REGX">/(["'\.\-])(?:(?=(\\?))\2.)*?\1/g</span><span class="PUNC">,</span><span class="STRN">""</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>276</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>277</span> </span><span class="WHIT">	</span><span class="WHIT">
-<span class='line'>278</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>277</span> </span><span class="WHIT">	
+<span class='line'>278</span> 	</span><span class="COMM">/**
 <span class='line'>279</span> 	* 
 <span class='line'>280</span> 	* @param mixed $that 
 <span class='line'>281</span> 	* @access public
@@ -307,9 +307,9 @@
 <span class='line'>300</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
 <span class='line'>301</span> </span><span class="WHIT">		</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>302</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>303</span> </span><span class="WHIT">	</span><span class="WHIT">
-<span class='line'>304</span> </span><span class="WHIT">	</span><span class="WHIT">
-<span class='line'>305</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>303</span> </span><span class="WHIT">	
+<span class='line'>304</span> 	
+<span class='line'>305</span> 	</span><span class="COMM">/**
 <span class='line'>306</span> 	*/</span><span class="WHIT">
 <span class='line'>307</span> </span><span class="WHIT">	</span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">getURLWithFlag</span><span class="PUNC">(</span><span class="NAME">$href</span><span class="PUNC">,</span><span class="NAME">$post_fix</span><span class="PUNC">,</span><span class="NAME">$post_sef</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="COMM">//Установить флаг в урл что запрос делаем аяском в .htaccess отловим потом</span><span class="WHIT">
 <span class='line'>308</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">$options.debugToConsole</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">console.warn</span><span class="PUNC">(</span><span class="NAME">jQuery.evDev.getTab</span><span class="PUNC">(</span><span class="NAME">$options.debugPrefixString</span><span class="PUNC">,</span><span class="NUMB">7</span><span class="PUNC">)</span><span class="PUNC">+</span><span class="NAME">$EVNINE_NAME</span><span class="PUNC">+</span><span class="STRN">"getURLWithFlag() BEGIN"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
@@ -332,8 +332,8 @@
 <span class='line'>325</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">$href</span><span class="PUNC">+</span><span class="STRN">'?'</span><span class="PUNC">+</span><span class="NAME">$post_fix</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>326</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
 <span class='line'>327</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>328</span> </span><span class="WHIT">	</span><span class="WHIT">
-<span class='line'>329</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>328</span> </span><span class="WHIT">	
+<span class='line'>329</span> 	</span><span class="COMM">/**
 <span class='line'>330</span> 	* @example 
 <span class='line'>331</span> 	* /index.php#!?test=test 
 <span class='line'>332</span> 	* return true
@@ -359,8 +359,8 @@
 <span class='line'>352</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>353</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
 <span class='line'>354</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>355</span> </span><span class="WHIT">	</span><span class="WHIT">
-<span class='line'>356</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>355</span> </span><span class="WHIT">	
+<span class='line'>356</span> 	</span><span class="COMM">/**
 <span class='line'>357</span> 		* 
 <span class='line'>358</span> 		* example 
 <span class='line'>359</span> 		* /HelloAJAXJQuery/index.php?param=param#!?test=test
@@ -378,8 +378,8 @@
 <span class='line'>371</span> </span><span class="WHIT">			</span><span class="NAME">window.location</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$base</span><span class="PUNC">+</span><span class="NAME">$href</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>372</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
 <span class='line'>373</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>374</span> </span><span class="WHIT">	</span><span class="WHIT">
-<span class='line'>375</span> </span><span class="WHIT">	</span><span class="COMM">//</span><span class="WHIT">
+<span class='line'>374</span> </span><span class="WHIT">	
+<span class='line'>375</span> 	</span><span class="COMM">//</span><span class="WHIT">
 <span class='line'>376</span> </span><span class="WHIT">	</span><span class="COMM">/*
 <span class='line'>377</span> 	* Set URL as anchore
 <span class='line'>378</span> 	* 
@@ -473,8 +473,8 @@
 <span class='line'>466</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">$options.debugToConsole</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">console.info</span><span class="PUNC">(</span><span class="NAME">jQuery.evDev.getTab</span><span class="PUNC">(</span><span class="NAME">$options.debugPrefixString</span><span class="PUNC">,</span><span class="NUMB">5</span><span class="PUNC">)</span><span class="PUNC">+</span><span class="NAME">$EVNINE_NAME</span><span class="PUNC">+</span><span class="STRN">"getAJAXSubmit.$href="</span><span class="PUNC">+</span><span class="NAME">$href</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>467</span> </span><span class="WHIT">		</span><span class="NAME">getAJAX</span><span class="PUNC">(</span><span class="NAME">$href</span><span class="PUNC">,</span><span class="STRN">'submit'</span><span class="PUNC">,</span><span class="NAME">$id</span><span class="PUNC">,</span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>468</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>469</span> </span><span class="WHIT">	</span><span class="WHIT">
-<span class='line'>470</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>469</span> </span><span class="WHIT">	
+<span class='line'>470</span> 	</span><span class="COMM">/**
 <span class='line'>471</span> 	* 
 <span class='line'>472</span> 	* 
 <span class='line'>473</span> 	* @param string $href 
@@ -486,8 +486,8 @@
 <span class='line'>479</span> </span><span class="WHIT">		</span><span class="NAME">getAJAX</span><span class="PUNC">(</span><span class="NAME">$href</span><span class="PUNC">,</span><span class="STRN">'href'</span><span class="PUNC">,</span><span class="STRN">''</span><span class="PUNC">,</span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>480</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">$options.debugToConsole</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">console.warn</span><span class="PUNC">(</span><span class="NAME">jQuery.evDev.getTab</span><span class="PUNC">(</span><span class="NAME">$options.debugPrefixString</span><span class="PUNC">,</span><span class="NUMB">4</span><span class="PUNC">)</span><span class="PUNC">+</span><span class="NAME">$EVNINE_NAME</span><span class="PUNC">+</span><span class="STRN">"getAJAXHref () END"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>481</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>482</span> </span><span class="WHIT">	</span><span class="WHIT">
-<span class='line'>483</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>482</span> </span><span class="WHIT">	
+<span class='line'>483</span> 	</span><span class="COMM">/**
 <span class='line'>484</span> 	* 
 <span class='line'>485</span> 	* @access private
 <span class='line'>486</span> 	* @return void
@@ -502,8 +502,8 @@
 <span class='line'>495</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
 <span class='line'>496</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">$options.debugToConsole</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">console.warn</span><span class="PUNC">(</span><span class="NAME">jQuery.evDev.getTab</span><span class="PUNC">(</span><span class="NAME">$options.debugPrefixString</span><span class="PUNC">,</span><span class="NUMB">5</span><span class="PUNC">)</span><span class="PUNC">+</span><span class="NAME">$EVNINE_NAME</span><span class="PUNC">+</span><span class="STRN">"showResponseError() END"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>497</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>498</span> </span><span class="WHIT">	</span><span class="WHIT">
-<span class='line'>499</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>498</span> </span><span class="WHIT">	
+<span class='line'>499</span> 	</span><span class="COMM">/**
 <span class='line'>500</span> 	* 
 <span class='line'>501</span> 	* @access private
 <span class='line'>502</span> 	* @param responseText, statusText
@@ -518,8 +518,8 @@
 <span class='line'>511</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
 <span class='line'>512</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">$options.debugToConsole</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">console.info</span><span class="PUNC">(</span><span class="NAME">jQuery.evDev.getTab</span><span class="PUNC">(</span><span class="NAME">$options.debugPrefixString</span><span class="PUNC">,</span><span class="NUMB">5</span><span class="PUNC">)</span><span class="PUNC">+</span><span class="NAME">$EVNINE_NAME</span><span class="PUNC">+</span><span class="STRN">"showResponse() END"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>513</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>514</span> </span><span class="WHIT">	</span><span class="WHIT">
-<span class='line'>515</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>514</span> </span><span class="WHIT">	
+<span class='line'>515</span> 	</span><span class="COMM">/**
 <span class='line'>516</span> 	* 
 <span class='line'>517</span> 	* 
 <span class='line'>518</span> 	* @access private
@@ -570,9 +570,9 @@
 <span class='line'>563</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
 <span class='line'>564</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">$options.debugToConsole</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">console.warn</span><span class="PUNC">(</span><span class="NAME">jQuery.evDev.getTab</span><span class="PUNC">(</span><span class="NAME">$options.debugPrefixString</span><span class="PUNC">,</span><span class="NUMB">3</span><span class="PUNC">)</span><span class="PUNC">+</span><span class="NAME">$EVNINE_NAME</span><span class="PUNC">+</span><span class="STRN">"getAJAX() END"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>565</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>566</span> </span><span class="WHIT">	</span><span class="WHIT">
-<span class='line'>567</span> </span><span class="WHIT">		</span><span class="WHIT">
-<span class='line'>568</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>566</span> </span><span class="WHIT">	
+<span class='line'>567</span> 		
+<span class='line'>568</span> 		</span><span class="COMM">/**
 <span class='line'>569</span> 		* 
 <span class='line'>570</span> 		* 
 <span class='line'>571</span> 		* @param loc $loc 
@@ -587,8 +587,8 @@
 <span class='line'>580</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>581</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
 <span class='line'>582</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>583</span> </span><span class="WHIT">		</span><span class="WHIT">
-<span class='line'>584</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>583</span> </span><span class="WHIT">		
+<span class='line'>584</span> 	</span><span class="COMM">/**
 <span class='line'>585</span> 		* if first load href with AJAX anchor #!axax=ajax&lt;br />
 <span class='line'>586</span> 		* @example 
 <span class='line'>587</span> 		*  
@@ -617,13 +617,13 @@
 <span class='line'>610</span> 
 <span class='line'>611</span> </span><span class="WHIT">	</span><span class="COMM">// if first load href with AJAX anchor #!axax=ajax</span><span class="WHIT">
 <span class='line'>612</span> </span><span class="WHIT">	</span><span class="NAME">setAnchoreClearWithoutURL</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>613</span> </span><span class="WHIT">	</span><span class="COMM">/* Если установлена опция следовать за историей*/</span><span class="WHIT"> </span><span class="WHIT">
-<span class='line'>614</span> </span><span class="WHIT">	</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">$options.folowByChangeOfHistory</span><span class="PUNC">&&</span><span class="NAME">$options.isAllowThisBrowser</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>613</span> </span><span class="WHIT">	</span><span class="COMM">/* Если установлена опция следовать за историей*/</span><span class="WHIT"> 
+<span class='line'>614</span> 	</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">$options.folowByChangeOfHistory</span><span class="PUNC">&&</span><span class="NAME">$options.isAllowThisBrowser</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'>615</span> </span><span class="WHIT">		</span><span class="NAME">jQuery</span><span class="PUNC">(</span><span class="NAME">window</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">trigger</span><span class="PUNC">(</span><span class="STRN">'hashchange'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>616</span> </span><span class="WHIT">		</span><span class="NAME">jQuery</span><span class="PUNC">(</span><span class="NAME">window</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">bind</span><span class="PUNC">(</span><span class="WHIT"> </span><span class="STRN">'hashchange'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'>617</span> </span><span class="WHIT">			</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">$options.debugToConsole</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">console.warn</span><span class="PUNC">(</span><span class="NAME">jQuery.evDev.getTab</span><span class="PUNC">(</span><span class="NAME">$options.debugPrefixString</span><span class="PUNC">,</span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">+</span><span class="NAME">$EVNINE_NAME</span><span class="PUNC">+</span><span class="STRN">"hashchange() BEGIN"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>618</span> </span><span class="WHIT">			</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">window.location.hash</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT"> </span><span class="WHIT">
-<span class='line'>619</span> </span><span class="WHIT">				</span><span class="NAME">$reg</span><span class="PUNC">=</span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">RegExp</span><span class="PUNC">(</span><span class="STRN">'^#'</span><span class="PUNC">+</span><span class="NAME">$options.ancorePreFix</span><span class="PUNC">,</span><span class="STRN">"g"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>618</span> </span><span class="WHIT">			</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">window.location.hash</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT"> 
+<span class='line'>619</span> 				</span><span class="NAME">$reg</span><span class="PUNC">=</span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">RegExp</span><span class="PUNC">(</span><span class="STRN">'^#'</span><span class="PUNC">+</span><span class="NAME">$options.ancorePreFix</span><span class="PUNC">,</span><span class="STRN">"g"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>620</span> </span><span class="WHIT">				</span><span class="NAME">$hash</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">location.hash.replace</span><span class="PUNC">(</span><span class="NAME">$reg</span><span class="PUNC">,</span><span class="STRN">""</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>621</span> </span><span class="WHIT">				</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">$options.$loaded_href_hash_fix</span><span class="PUNC">!==</span><span class="NAME">$hash</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'>622</span> </span><span class="WHIT">					</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">$options.debugToConsole</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">console.info</span><span class="PUNC">(</span><span class="NAME">jQuery.evDev.getTab</span><span class="PUNC">(</span><span class="NAME">$options.debugPrefixString</span><span class="PUNC">,</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">+</span><span class="NAME">$EVNINE_NAME</span><span class="PUNC">+</span><span class="STRN">"hashchange=YES"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
@@ -636,8 +636,8 @@
 <span class='line'>629</span> </span><span class="WHIT">			</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">$options.debugToConsole</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">console.warn</span><span class="PUNC">(</span><span class="NAME">jQuery.evDev.getTab</span><span class="PUNC">(</span><span class="NAME">$options.debugPrefixString</span><span class="PUNC">,</span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">+</span><span class="NAME">$EVNINE_NAME</span><span class="PUNC">+</span><span class="STRN">"hashchange() END"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>630</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>631</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>632</span> </span><span class="WHIT">	</span><span class="WHIT">
-<span class='line'>633</span> </span><span class="WHIT">	</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">$options.debugToConsoleNotSupport</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>632</span> </span><span class="WHIT">	
+<span class='line'>633</span> 	</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">$options.debugToConsoleNotSupport</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'>634</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">$options.debugToConsole</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">console.warn</span><span class="PUNC">(</span><span class="STRN">"END"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>635</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
 <span class='line'>636</span> </span><span class="WHIT">	</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">$options.debugToConsole</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">

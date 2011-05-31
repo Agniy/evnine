@@ -1,1 +1,1 @@
-bash jsrun.sh -t=/jsdoc jq.index.ru.js jq.evnine.func.ru.js jq.evnine.nav.ru.js $
+bash jsrun.sh -t=/jsdoc -d=/jsdoc-ru jq.evnine.debug.ru.js jq.index.ru.js jq.evnine.func.ru.js jq.evnine.nav.ru.js $
