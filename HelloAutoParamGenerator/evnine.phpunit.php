@@ -239,8 +239,8 @@ foreach ($all_class as $controller_title =>$controller_value){
 		$SaController_case[$controller_title]=$param_const;
 		$SaController_case[$controller_title]['template'][]=$controller_title;
 		$Controller = new $controller_value();
-		//echo '<pre>#$Controller->controller_menu_view: '; print_r($Controller->controller_menu_view); echo '</pre>';
-		foreach ($Controller->controller_menu_view['public_methods'] as $Controller_title =>$Controller_value)if ($Controller_value!=''){
+		//echo '<pre>#$Controller->controller: '; print_r($Controller->controller); echo '</pre>';
+		foreach ($Controller->controller['public_methods'] as $Controller_title =>$Controller_value)if ($Controller_value!=''){
 			if ($Controller_title=='default') 
 				$Controller_title= '';
 			if ($Controller_title==$filter['value']||isset($filter['value'][$Controller_title])||empty($filter)){
@@ -457,7 +457,7 @@ function getDataFromAllTest($template,$param_const,$filter='',$unitshow=false,$c
 	if (count($save_case)==0){
 		$echo.='Create new cache  PHP unit case<br />';
 		$echo.='Ошибка, кэш параметров не найден, возможно изменены параметры запуска<br />';
-		$save_case = getPHPUnitAllCase($template,$SaController->controller_menu_view,$param_const,$filter);
+		$save_case = getPHPUnitAllCase($template,$SaController->controller,$param_const,$filter);
 		getDataForTest($template.'::param-'.md5(multi_implode('',$param_const).multi_implode('',$filter)).'.data',$save_case,$reset_cache);
 	}else {
 		$echo.='[Load cache case]<br />';
