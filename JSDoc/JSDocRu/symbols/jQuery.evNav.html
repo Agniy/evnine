@@ -219,10 +219,10 @@ ul.inheritsList
 				
 			
 				jQuery.evNav
-<br /> Плагин навигации по ссылкам с установкой якоря после аякс загрузки страницы.
+<br /> Плагин навигации по ссылкам с установкой якоря после аякс загрузки страницы
 <br />
-<br />
-<br /> Двойная лицензия MIT или GPL v.2
+<br /> Двойная лицензия MIT или GPL v.2 
+<br />Copyright 2011, (c) ev9eniy.info
 				
 				
 					<br /><i>Defined in: </i> <a href="../symbols/src/jq.evnine.nav.ru.js.html">jq.evnine.nav.ru.js</a>.
@@ -273,7 +273,7 @@ ul.inheritsList
 								<div class="fixedFont">
 								<b><a href="../symbols/jQuery.evNav.html#-$options">$options</a></b>
 								</div>
-								<div class="description">настройки по умолчанию</div>
+								<div class="description">Настройки по умолчанию</div>
 							</td>
 						</tr>
 					
@@ -301,45 +301,52 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&lt;inner&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/jQuery.evNav.html#-getAJAX">getAJAX</a></b>($href,$type,$id,$error_count, $type, $id, $error_count)
+								<div class="fixedFont"><b><a href="../symbols/jQuery.evNav.html#-getAJAX">getAJAX</a></b>($href, $type, $id, $error_count)
 								</div>
-								<div class="description">Функция - отправка через jQuery plugin form в include.js</div>
+								<div class="description">getAJAX($href,$type,$id,$error_count)<br />
+
+ Отправка через jQuery plugin form в include.js</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&lt;inner&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/jQuery.evNav.html#-getAJAXHref">getAJAXHref</a></b>(string)
+								<div class="fixedFont"><b><a href="../symbols/jQuery.evNav.html#-getAJAXHref">getAJAXHref</a></b>($href)
 								</div>
-								<div class="description">Выполнить GET запрос</div>
+								<div class="description">getAJAXHref($href)<br />
+ Выполнить GET запрос</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&lt;inner&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/jQuery.evNav.html#-getAJAXSubmit">getAJAXSubmit</a></b>(string)
+								<div class="fixedFont"><b><a href="../symbols/jQuery.evNav.html#-getAJAXSubmit">getAJAXSubmit</a></b>($that)
 								</div>
-								<div class="description">Выполнить POST запрос</div>
+								<div class="description">getAJAXSubmit($that)<br />
+ Выполнить POST запрос</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&lt;inner&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/jQuery.evNav.html#-getClickHref">getClickHref</a></b>(mixed)
+								<div class="fixedFont"><b><a href="../symbols/jQuery.evNav.html#-getClickHref">getClickHref</a></b>($that)
 								</div>
-								<div class="description">Обработать клик по ссылке</div>
+								<div class="description">getClickHref($that)<br />
+
+ Выполнить AJAX запрос исходя из типа кликнутого элемента</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&lt;inner&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/jQuery.evNav.html#-getHash">getHash</a></b>(loc)
+								<div class="fixedFont"><b><a href="../symbols/jQuery.evNav.html#-getHash">getHash</a></b>($loc)
 								</div>
-								<div class="description">Получаем кросс-браузерно якорную часть</div>
+								<div class="description">getHash(loc)<br />
+ Получаем кросс-браузерно якорную часть</div>
 							</td>
 						</tr>
 					
@@ -348,16 +355,19 @@ ul.inheritsList
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/jQuery.evNav.html#-getInt">getInt</a></b>($int)
 								</div>
-								<div class="description">Функция получение числа</div>
+								<div class="description">getInt($int)<br />
+ Функция получение числа</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&lt;inner&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/jQuery.evNav.html#-getRegSafeString">getRegSafeString</a></b>(mixed)
+								<div class="fixedFont"><b><a href="../symbols/jQuery.evNav.html#-getRegSafeString">getRegSafeString</a></b>($str)
 								</div>
-								<div class="description">Для получения безопасного выражения.</div>
+								<div class="description">getRegSafeString($str)<br />
+
+Для получения безопасного выражения</div>
 							</td>
 						</tr>
 					
@@ -366,7 +376,9 @@ ul.inheritsList
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/jQuery.evNav.html#-getURLWithFlag">getURLWithFlag</a></b>($href, $post_fix, $post_sef)
 								</div>
-								<div class="description">Добавить параметры к адресной части</div>
+								<div class="description">getURLWithFlag($href,$post_fix,$post_sef)<br />
+
+ Добавить параметры к адресной части</div>
 							</td>
 						</tr>
 					
@@ -375,7 +387,9 @@ ul.inheritsList
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/jQuery.evNav.html#-isHasCrossBrowserMinimumVersion">isHasCrossBrowserMinimumVersion</a></b>()
 								</div>
-								<div class="description">Проверяем является ли версия браузера минимальной для работы</div>
+								<div class="description">isHasCrossBrowserMinimumVersion()<br />
+
+ Функция проверки.</div>
 							</td>
 						</tr>
 					
@@ -384,7 +398,9 @@ ul.inheritsList
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/jQuery.evNav.html#-isURLBaseAJAX">isURLBaseAJAX</a></b>()
 								</div>
-								<div class="description">Является ли адрес базовым указанный в $options.scriptForAJAXCallAndSetAnchore?</div>
+								<div class="description">isURLBaseAJAX()<br />
+
+ Является ли текущий URL базовым указанный в $options.scriptForAJAXCallAndSetAnchore?</div>
 							</td>
 						</tr>
 					
@@ -393,7 +409,11 @@ ul.inheritsList
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/jQuery.evNav.html#-setAnchoreClearWithoutURL">setAnchoreClearWithoutURL</a></b>()
 								</div>
-								<div class="description">Установить новую страницу если в ссылке есть аякс вызов ссылка#вызов</div>
+								<div class="description">setAnchoreClearWithoutURL()<br />
+
+ При первой инициализации, загрузим, если есть, ссылку из якоря
+<br />#!?test=test
+<br />/HelloAJAXJQuery/index.php#!?test=test</div>
 							</td>
 						</tr>
 					
@@ -402,7 +422,9 @@ ul.inheritsList
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/jQuery.evNav.html#-setMethodTOURL">setMethodTOURL</a></b>($href, $method)
 								</div>
-								<div class="description">Для случая когда в кнопке указан метод, устанавливаем этот метод в ссылку</div>
+								<div class="description">setMethodTOURL ($href,$method)<br />
+
+ Для случая, когда в кнопке указан метод, устанавливаем этот метод в ссылку</div>
 							</td>
 						</tr>
 					
@@ -411,20 +433,31 @@ ul.inheritsList
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/jQuery.evNav.html#-setURLToBrowser">setURLToBrowser</a></b>($base, $href)
 								</div>
-								<div class="description">Сбрасываем в случае когда в адресной части есть параметры
-example 
-/HelloAJAXJQuery/index.php?param=param#!?test=test
-=
-/HelloAJAXJQuery/index.php#!?test=test</div>
+								<div class="description">setURLToBrowser($base,$href)<br />
+
+ Ставим якорную ссылку если браузер позволяет это сделать<br />
+ В случае если не базовый адрес используется, ставим базовый скрипт и параметры адреса</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&lt;inner&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/jQuery.evNav.html#-showResponse">showResponse</a></b>(responseText,, statusText)
+								<div class="fixedFont"><b><a href="../symbols/jQuery.evNav.html#-setURLToHashAndLocation">setURLToHashAndLocation</a></b>($href)
 								</div>
-								<div class="description">Случай по умолчанию, когда запрос успешно выполнен</div>
+								<div class="description">setURLToHashAndLocation($href)<br />
+ Установить адрес в историю просмотра</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;inner&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/jQuery.evNav.html#-showResponse">showResponse</a></b>(responseText, statusText)
+								</div>
+								<div class="description">showResponse(responseText, statusText)<br />
+
+ Callback функция по умолчанию, когда запрос успешно выполнен</div>
 							</td>
 						</tr>
 					
@@ -433,7 +466,19 @@ example
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/jQuery.evNav.html#-showResponseError">showResponseError</a></b>(responseText, statusText)
 								</div>
-								<div class="description">Случай по умолчанию, когда ошибка в аякс запросе</div>
+								<div class="description">showResponseError(responseText, statusText)<br />
+ Callback функция по умолчанию, когда ошибка в AJAX запросе</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;inner&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/jQuery.evNav.html#-trim">trim</a></b>($str)
+								</div>
+								<div class="description">trim(str)<br />
+
+ Убираем пробелы до и после.</div>
 							</td>
 						</tr>
 					
@@ -545,22 +590,22 @@ example
 								<span class="light fixedFont">{string}</span>  <b>arguments.ancorePreFix</b>
 								<i>Optional, Default: !</i>
 							</dt>
-								<dd>Префикс в якоре<br />
-index.php#!test</dd>
+								<dd>Префикс в якоре
+<br />index.php#!test</dd>
 						
 							<dt>
 								<span class="light fixedFont">{RegExp}</span>  <b>arguments.isHREFMatchThisRegExpSetNoUseAJAX</b>
 								<i>Optional, Default: ^http://</i>
 							</dt>
-								<dd>Ссылка совпадает с этим регулярным то не использовать аякс<br />
-$href.match(/^http:\/\//g)</dd>
+								<dd>Ссылка совпадает с этим регулярным то не использовать аякс
+<br />$href.match(/^http:\/\//g)</dd>
 						
 							<dt>
 								<span class="light fixedFont">{string}</span>  <b>arguments.ifAJAXAddThisParamToScript</b>
 								<i>Optional, Default: ajax=ajax</i>
 							</dt>
-								<dd>Если аякс режим добавить параметр в ссылку вызова скрипта<br />
-index.php?ajax=ajax</dd>
+								<dd>Если аякс режим добавить параметр в ссылку вызова скрипта
+<br />index.php?ajax=ajax</dd>
 						
 							<dt>
 								<span class="light fixedFont">{RegExp}</span>  <b>arguments.isHREFMatchThisRegExpSetSEFMode</b>
@@ -572,8 +617,8 @@ index.php?ajax=ajax</dd>
 								<span class="light fixedFont">{string}</span>  <b>arguments.ifSEFAJAXReplaceHREFMatchTo</b>
 								<i>Optional, Default: .ajax</i>
 							</dt>
-								<dd>Если аякс работает в ЧПУ режиме, заменим адрес на $href.replace(/\.html$/g, '.ajax')<br />
-index.html => index.ajax</dd>
+								<dd>Если аякс работает в ЧПУ режиме, заменим адрес на $href.replace(/\.html$/g, '.ajax')
+<br />index.html => index.ajax</dd>
 						
 							<dt>
 								<span class="light fixedFont">{object}</span>  <b>arguments.functionsForAJAXIndicator</b>
@@ -597,25 +642,25 @@ index.html => index.ajax</dd>
 								<span class="light fixedFont">{object}</span>  <b>arguments.loadAJAXOptions</b>
 								<i>Optional</i>
 							</dt>
-								<dd>Опции для AJAX загрузки<br /></dd>
+								<dd>Опции для AJAX загрузки</dd>
 						
 							<dt>
 								<span class="light fixedFont">{string}</span>  <b>arguments.loadAJAXOptions.dataType</b>
 								<i>Optional, Default: html</i>
 							</dt>
-								<dd>Тип для загрузки страницы<br /></dd>
+								<dd>Тип для загрузки страницы</dd>
 						
 							<dt>
 								<span class="light fixedFont">{function}</span>  <b>arguments.loadAJAXOptions.success(responseText,statusText,$options)</b>
 								<i>Optional, Default: jQuery.evNav.showResponse(responseText, statusText, $options)</i>
 							</dt>
-								<dd>Успешное получение данных, вызываются через функцию - обертку с передачей опций<br /></dd>
+								<dd>Успешное получение данных, вызываются через функцию - обертку с передачей опций</dd>
 						
 							<dt>
 								<span class="light fixedFont">{function}</span>  <b>arguments.loadAJAXOptions.error(responseText,statusText,$options)</b>
 								<i>Optional, Default: jQuery.evNav.showResponseError(responseText, statusText, $options)</i>
 							</dt>
-								<dd>При ошибке, вызываются через функцию - обертку с передачей опций<br /></dd>
+								<dd>При ошибке, вызываются через функцию - обертку с передачей опций</dd>
 						
 						</dl>
 					
@@ -643,10 +688,33 @@ index.html => index.ajax</dd>
 					
 					</div>
 					<div class="description">
-						настройки по умолчанию
+						Настройки по умолчанию
 						
 						
 					</div>
+					
+					
+					
+					<pre class="code">
+debugToConsole                    :false,
+debugPrefixString                 :'|	',
+debugToConsoleNotSupport          :false,
+debugFunctionGroup                :false,
+scrollToTopAfterAJAXCall          :true,
+liveSelectorForAJAX               :'a, input:submit',
+liveBindType                      :'click',
+crossBrowserMinimumVersion        :{msie   :'8'},
+folowByChangeOfHistory            :true,
+maxErrorCountBeforeStopAJAXCall   :3,
+selectorForAJAXReplace            :'body', 
+scriptForAJAXCallAndSetAnchore    :'/index.php',
+ancorePreFix                      :'!',
+isHREFMatchThisRegExpSetNoUseAJAX :'^http://',
+ifAJAXAddThisParamToScript        :'ajax=ajax',
+isHREFMatchThisRegExpSetSEFMode   :'.html$',
+ifSEFAJAXReplaceHREFMatchTo       :'.ajax',
+functionsForAJAXIndicator         :undefined,
+setJSFuncForLoadPage              :undefined</pre>
 					
 					
 
@@ -669,11 +737,13 @@ index.html => index.ajax</dd>
 					<div class="fixedFont">&lt;inner&gt; 
 					
 					
-					<b>getAJAX</b>($href,$type,$id,$error_count, $type, $id, $error_count)
+					<b>getAJAX</b>($href, $type, $id, $error_count)
 					
 					</div>
 					<div class="description">
-						Функция - отправка через jQuery plugin form в include.js
+						getAJAX($href,$type,$id,$error_count)<br />
+
+ Отправка через jQuery plugin form в include.js
 						
 						
 					</div>
@@ -685,28 +755,28 @@ index.html => index.ajax</dd>
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<b>$href,$type,$id,$error_count</b>
-									
+									<span class="light fixedFont">{string}</span> <b>$href</b>
+									<i>Optional, Default: ''</i>
 								</dt>
 								<dd></dd>
 							
 								<dt>
-									<b>$type</b>
-									
+									<span class="light fixedFont">{string}</span> <b>$type</b>
+									<i>Optional, Default: ''</i>
 								</dt>
-								<dd></dd>
+								<dd>Тип запроса submit [ POST ] и GET</dd>
 							
 								<dt>
-									<b>$id</b>
-									
+									<span class="light fixedFont">{string}</span> <b>$id</b>
+									<i>Optional, Default: ''</i>
 								</dt>
-								<dd></dd>
+								<dd>ID формы</dd>
 							
 								<dt>
-									<b>$error_count</b>
-									
+									<span class="light fixedFont">{int}</span> <b>$error_count</b>
+									<i>Optional, Default: undefined</i>
 								</dt>
-								<dd></dd>
+								<dd>Количество ошибок при AJAX запросе</dd>
 							
 							</dl>
 						
@@ -730,11 +800,12 @@ index.html => index.ajax</dd>
 					<div class="fixedFont">&lt;inner&gt; 
 					
 					
-					<b>getAJAXHref</b>(string)
+					<b>getAJAXHref</b>($href)
 					
 					</div>
 					<div class="description">
-						Выполнить GET запрос
+						getAJAXHref($href)<br />
+ Выполнить GET запрос
 						
 						
 					</div>
@@ -746,10 +817,10 @@ index.html => index.ajax</dd>
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<b>string</b>
+									<span class="light fixedFont">{string}</span> <b>$href</b>
 									
 								</dt>
-								<dd>$href</dd>
+								<dd></dd>
 							
 							</dl>
 						
@@ -773,11 +844,12 @@ index.html => index.ajax</dd>
 					<div class="fixedFont">&lt;inner&gt; 
 					
 					
-					<b>getAJAXSubmit</b>(string)
+					<b>getAJAXSubmit</b>($that)
 					
 					</div>
 					<div class="description">
-						Выполнить POST запрос
+						getAJAXSubmit($that)<br />
+ Выполнить POST запрос
 						
 						
 					</div>
@@ -789,10 +861,10 @@ index.html => index.ajax</dd>
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<b>string</b>
+									<span class="light fixedFont">{jQuery object}</span> <b>$that</b>
 									
 								</dt>
-								<dd>$href</dd>
+								<dd>Объект для получения данных о форме</dd>
 							
 							</dl>
 						
@@ -815,12 +887,14 @@ index.html => index.ajax</dd>
 					<a name="-getClickHref"> </a>
 					<div class="fixedFont">&lt;inner&gt; 
 					
-					
-					<b>getClickHref</b>(mixed)
+					<span class="light">{boolean}</span>
+					<b>getClickHref</b>($that)
 					
 					</div>
 					<div class="description">
-						Обработать клик по ссылке
+						getClickHref($that)<br />
+
+ Выполнить AJAX запрос исходя из типа кликнутого элемента
 						
 						
 					</div>
@@ -832,10 +906,10 @@ index.html => index.ajax</dd>
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<b>mixed</b>
+									<span class="light fixedFont">{jQuery object}</span> <b>$that</b>
 									
 								</dt>
-								<dd>$that</dd>
+								<dd></dd>
 							
 							</dl>
 						
@@ -846,7 +920,7 @@ index.html => index.ajax</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd>void</dd>
+								<dd><span class="light fixedFont">{boolean}</span> </dd>
 							
 							</dl>
 						
@@ -858,12 +932,13 @@ index.html => index.ajax</dd>
 					<a name="-getHash"> </a>
 					<div class="fixedFont">&lt;inner&gt; 
 					
-					
-					<b>getHash</b>(loc)
+					<span class="light">{string}</span>
+					<b>getHash</b>($loc)
 					
 					</div>
 					<div class="description">
-						Получаем кросс-браузерно якорную часть
+						getHash(loc)<br />
+ Получаем кросс-браузерно якорную часть
 						
 						
 					</div>
@@ -875,10 +950,10 @@ index.html => index.ajax</dd>
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<b>loc</b>
+									<span class="light fixedFont">{string}</span> <b>$loc</b>
 									
 								</dt>
-								<dd>$loc</dd>
+								<dd></dd>
 							
 							</dl>
 						
@@ -889,7 +964,7 @@ index.html => index.ajax</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd>string</dd>
+								<dd><span class="light fixedFont">{string}</span> </dd>
 							
 							</dl>
 						
@@ -906,7 +981,8 @@ index.html => index.ajax</dd>
 					
 					</div>
 					<div class="description">
-						Функция получение числа
+						getInt($int)<br />
+ Функция получение числа
 						
 						
 					</div>
@@ -918,7 +994,7 @@ index.html => index.ajax</dd>
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<b>$int</b>
+									<span class="light fixedFont">{string}</span> <b>$int</b>
 									
 								</dt>
 								<dd></dd>
@@ -929,6 +1005,13 @@ index.html => index.ajax</dd>
 						
 						
 						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd>int</dd>
+							
+							</dl>
+						
 						
 						
 
@@ -937,12 +1020,14 @@ index.html => index.ajax</dd>
 					<a name="-getRegSafeString"> </a>
 					<div class="fixedFont">&lt;inner&gt; 
 					
-					
-					<b>getRegSafeString</b>(mixed)
+					<span class="light">{string}</span>
+					<b>getRegSafeString</b>($str)
 					
 					</div>
 					<div class="description">
-						Для получения безопасного выражения.
+						getRegSafeString($str)<br />
+
+Для получения безопасного выражения
 						
 						
 					</div>
@@ -954,10 +1039,10 @@ index.html => index.ajax</dd>
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<b>mixed</b>
+									<span class="light fixedFont">{string}</span> <b>$str</b>
 									
 								</dt>
-								<dd>$str</dd>
+								<dd></dd>
 							
 							</dl>
 						
@@ -968,7 +1053,7 @@ index.html => index.ajax</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd>void</dd>
+								<dd><span class="light fixedFont">{string}</span> </dd>
 							
 							</dl>
 						
@@ -980,12 +1065,14 @@ index.html => index.ajax</dd>
 					<a name="-getURLWithFlag"> </a>
 					<div class="fixedFont">&lt;inner&gt; 
 					
-					
+					<span class="light">{string}</span>
 					<b>getURLWithFlag</b>($href, $post_fix, $post_sef)
 					
 					</div>
 					<div class="description">
-						Добавить параметры к адресной части
+						getURLWithFlag($href,$post_fix,$post_sef)<br />
+
+ Добавить параметры к адресной части
 						
 						
 					</div>
@@ -997,28 +1084,35 @@ index.html => index.ajax</dd>
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<b>$href</b>
+									<span class="light fixedFont">{string}</span> <b>$href</b>
 									
 								</dt>
-								<dd></dd>
+								<dd>Адрес</dd>
 							
 								<dt>
-									<b>$post_fix</b>
+									<span class="light fixedFont">{string}</span> <b>$post_fix</b>
 									
 								</dt>
-								<dd></dd>
+								<dd>Параметры запроса.</dd>
 							
 								<dt>
-									<b>$post_sef</b>
+									<span class="light fixedFont">{string}</span> <b>$post_sef</b>
 									
 								</dt>
-								<dd></dd>
+								<dd>Для ЧПУ режима</dd>
 							
 							</dl>
 						
 						
 						
 						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{string}</span> '?'+$post_fix or $href.replace($reg, $post_sef) or $href+'&'+$post_fix or $href+'?'+$post_fix</dd>
+							
+							</dl>
 						
 						
 						
@@ -1028,12 +1122,15 @@ index.html => index.ajax</dd>
 					<a name="-isHasCrossBrowserMinimumVersion"> </a>
 					<div class="fixedFont">&lt;inner&gt; 
 					
-					
+					<span class="light">{boolean}</span>
 					<b>isHasCrossBrowserMinimumVersion</b>()
 					
 					</div>
 					<div class="description">
-						Проверяем является ли версия браузера минимальной для работы
+						isHasCrossBrowserMinimumVersion()<br />
+
+ Функция проверки. <br />
+ Является ли версия браузера минимальной для работы к с якорной навигацией.
 						
 						
 					</div>
@@ -1048,7 +1145,7 @@ index.html => index.ajax</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd>void</dd>
+								<dd><span class="light fixedFont">{boolean}</span> </dd>
 							
 							</dl>
 						
@@ -1060,12 +1157,14 @@ index.html => index.ajax</dd>
 					<a name="-isURLBaseAJAX"> </a>
 					<div class="fixedFont">&lt;inner&gt; 
 					
-					
+					<span class="light">{boolean}</span>
 					<b>isURLBaseAJAX</b>()
 					
 					</div>
 					<div class="description">
-						Является ли адрес базовым указанный в $options.scriptForAJAXCallAndSetAnchore?
+						isURLBaseAJAX()<br />
+
+ Является ли текущий URL базовым указанный в $options.scriptForAJAXCallAndSetAnchore?
 						
 						
 					</div>
@@ -1076,8 +1175,8 @@ index.html => index.ajax</dd>
 /index.php#!?test=test 
 return true
 
-Для случая, ответ false
-/index.php?param=param#!?test=test</pre>
+/index.php?param=param#!?test=test 
+ return false - в адресе ?param=param</pre>
 					
 					
 					
@@ -1089,7 +1188,7 @@ return true
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd>void</dd>
+								<dd><span class="light fixedFont">{boolean}</span> </dd>
 							
 							</dl>
 						
@@ -1106,24 +1205,28 @@ return true
 					
 					</div>
 					<div class="description">
-						Установить новую страницу если в ссылке есть аякс вызов ссылка#вызов
+						setAnchoreClearWithoutURL()<br />
+
+ При первой инициализации, загрузим, если есть, ссылку из якоря
+<br />#!?test=test
+<br />/HelloAJAXJQuery/index.php#!?test=test
 						
 						
 					</div>
 					
 					
 					
-					<pre class="code">
-При первой инициализации проверяем есть ли якорная часть
-для ссылок вида
-/HelloAJAXJQuery/index.php#!?test=test</pre>
-					
-					
-					
 						
 						
 						
 						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd>void</dd>
+							
+							</dl>
 						
 						
 						
@@ -1133,12 +1236,14 @@ return true
 					<a name="-setMethodTOURL"> </a>
 					<div class="fixedFont">&lt;inner&gt; 
 					
-					
+					<span class="light">{string}</span>
 					<b>setMethodTOURL</b>($href, $method)
 					
 					</div>
 					<div class="description">
-						Для случая когда в кнопке указан метод, устанавливаем этот метод в ссылку
+						setMethodTOURL ($href,$method)<br />
+
+ Для случая, когда в кнопке указан метод, устанавливаем этот метод в ссылку
 						
 						
 					</div>
@@ -1150,16 +1255,16 @@ return true
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<b>$href</b>
+									<span class="light fixedFont">{string}</span> <b>$href</b>
 									
 								</dt>
-								<dd>- string</dd>
+								<dd>Ссылка для добавления метода</dd>
 							
 								<dt>
-									<b>$method</b>
+									<span class="light fixedFont">{string}</span> <b>$method</b>
 									
 								</dt>
-								<dd>- string</dd>
+								<dd>Название метода</dd>
 							
 							</dl>
 						
@@ -1170,7 +1275,8 @@ return true
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd>$href string</dd>
+								<dd><span class="light fixedFont">{string}</span> $href 
+ Возвращаем адрес с добавленным методом</dd>
 							
 							</dl>
 						
@@ -1187,11 +1293,67 @@ return true
 					
 					</div>
 					<div class="description">
-						Сбрасываем в случае когда в адресной части есть параметры
-example 
+						setURLToBrowser($base,$href)<br />
+
+ Ставим якорную ссылку если браузер позволяет это сделать<br />
+ В случае если не базовый адрес используется, ставим базовый скрипт и параметры адреса
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">
 /HelloAJAXJQuery/index.php?param=param#!?test=test
 =
-/HelloAJAXJQuery/index.php#!?test=test
+/HelloAJAXJQuery/index.php#!?test=test</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{string}</span> <b>$base</b>
+									
+								</dt>
+								<dd>Текущий URL</dd>
+							
+								<dt>
+									<span class="light fixedFont">{string}</span> <b>$href</b>
+									
+								</dt>
+								<dd>Ссылка для перехода</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd>void</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="-setURLToHashAndLocation"> </a>
+					<div class="fixedFont">&lt;inner&gt; 
+					
+					<span class="light">{string}</span>
+					<b>setURLToHashAndLocation</b>($href)
+					
+					</div>
+					<div class="description">
+						setURLToHashAndLocation($href)<br />
+ Установить адрес в историю просмотра
 						
 						
 					</div>
@@ -1203,22 +1365,23 @@ example
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<b>$base</b>
+									<span class="light fixedFont">{string}</span> <b>$href</b>
 									
 								</dt>
-								<dd></dd>
-							
-								<dt>
-									<b>$href</b>
-									
-								</dt>
-								<dd></dd>
+								<dd>Ссылка для перехода</dd>
 							
 							</dl>
 						
 						
 						
 						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{string}</span> $href or $options.scriptForAJAXCallAndSetAnchore</dd>
+							
+							</dl>
 						
 						
 						
@@ -1229,11 +1392,13 @@ example
 					<div class="fixedFont">&lt;inner&gt; 
 					
 					
-					<b>showResponse</b>(responseText,, statusText)
+					<b>showResponse</b>(responseText, statusText)
 					
 					</div>
 					<div class="description">
-						Случай по умолчанию, когда запрос успешно выполнен
+						showResponse(responseText, statusText)<br />
+
+ Callback функция по умолчанию, когда запрос успешно выполнен
 						
 						
 					</div>
@@ -1245,16 +1410,16 @@ example
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<b>responseText,</b>
+									<b>responseText</b>
 									
 								</dt>
-								<dd>statusText</dd>
+								<dd>Текст ответа</dd>
 							
 								<dt>
 									<b>statusText</b>
 									
 								</dt>
-								<dd></dd>
+								<dd>Статус ответа</dd>
 							
 							</dl>
 						
@@ -1282,7 +1447,8 @@ example
 					
 					</div>
 					<div class="description">
-						Случай по умолчанию, когда ошибка в аякс запросе
+						showResponseError(responseText, statusText)<br />
+ Callback функция по умолчанию, когда ошибка в AJAX запросе
 						
 						
 					</div>
@@ -1297,10 +1463,55 @@ example
 									<b>responseText</b>
 									
 								</dt>
-								<dd></dd>
+								<dd>Текст ответа</dd>
 							
 								<dt>
 									<b>statusText</b>
+									
+								</dt>
+								<dd>Статус ответа</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd>void</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="-trim"> </a>
+					<div class="fixedFont">&lt;inner&gt; 
+					
+					
+					<b>trim</b>($str)
+					
+					</div>
+					<div class="description">
+						trim(str)<br />
+
+ Убираем пробелы до и после.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{string}</span> <b>$str</b>
 									
 								</dt>
 								<dd></dd>
@@ -1314,7 +1525,7 @@ example
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd>void</dd>
+								<dd>string</dd>
 							
 							</dl>
 						
@@ -1335,7 +1546,7 @@ example
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Tue May 31 2011 21:53:09 GMT+0300 (GMT+03:00)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Sun Jun 19 2011 22:04:21 GMT+0300 (GMT+03:00)
 		</div>
 	</body>
 </html>

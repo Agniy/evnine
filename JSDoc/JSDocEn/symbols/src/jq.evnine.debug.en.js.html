@@ -195,35 +195,34 @@
 <span class='line'>188</span> </span><span class="WHIT">		
 <span class='line'>189</span> 	</span><span class="COMM">/**
 <span class='line'>190</span> 		*  If clients browser is not supported by the console, use an 
-<span class='line'>191</span> 		* &lt;br /> alternative way of collecting all .warn and .info in the buffer
-<span class='line'>192</span> 		* &lt;br />
-<span class='line'>193</span> 		* 
-<span class='line'>194</span> 		* @param {boolean} [$debugToConsoleNotSupport=false]
-<span class='line'>195</span> 		*  Use a buffer for the console and call alert()&lt;br />
-<span class='line'>196</span> 		* @return void
-<span class='line'>197</span> 		*/</span><span class="WHIT">
-<span class='line'>198</span> </span><span class="WHIT">	</span><span class="NAME">initNotSupport</span><span class="PUNC">:</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">$debugToConsoleNotSupport</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>199</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">$debugToConsoleNotSupport</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>200</span> </span><span class="WHIT">			</span><span class="COMM">/**
-<span class='line'>201</span> 			 *  Create a new object to work with the console&lt;br />
-<span class='line'>202</span> 			 */</span><span class="WHIT">
-<span class='line'>203</span> </span><span class="WHIT">			</span><span class="NAME">window.console</span><span class="PUNC">=</span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Object</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>204</span> </span><span class="WHIT">			</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">debug_buffer</span><span class="PUNC">=</span><span class="STRN">''</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>205</span> </span><span class="WHIT">			</span><span class="NAME">window.console.warn</span><span class="PUNC">=</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">$str</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>206</span> </span><span class="WHIT">				</span><span class="NAME">alert</span><span class="PUNC">(</span><span class="STRN">'INFO:'</span><span class="PUNC">+</span><span class="NAME">debug_buffer</span><span class="PUNC">+</span><span class="STRN">"\n\r"</span><span class="PUNC">+</span><span class="STRN">'WARN:'</span><span class="PUNC">+</span><span class="STRN">"\n\r\t"</span><span class="PUNC">+</span><span class="NAME">$str</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>207</span> </span><span class="WHIT">				</span><span class="NAME">debug_buffer</span><span class="PUNC">=</span><span class="STRN">''</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>208</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>209</span> </span><span class="WHIT">			</span><span class="NAME">window.console.info</span><span class="PUNC">=</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">$str</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>210</span> </span><span class="WHIT">				</span><span class="NAME">debug_buffer</span><span class="PUNC">+</span><span class="PUNC">=</span><span class="STRN">"\n\r"</span><span class="PUNC">+</span><span class="NAME">$str</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>211</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>212</span> </span><span class="WHIT">			</span><span class="NAME">window.console.error</span><span class="PUNC">=</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">$str</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>213</span> </span><span class="WHIT">				</span><span class="NAME">debug_buffer</span><span class="PUNC">+</span><span class="PUNC">=</span><span class="STRN">"\n\rERROR:"</span><span class="PUNC">+</span><span class="NAME">$str</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>214</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>215</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>216</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>217</span> </span><span class="WHIT">	
-<span class='line'>218</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>219</span> </span><span class="PUNC">}</span><span class="PUNC">(</span><span class="NAME">document</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">jQuery</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>220</span> 
-<span class='line'>221</span> </span><span class="COMM">//&lt;/script></span><span class="WHIT">
-<span class='line'>222</span> </span></pre></body></html>
+<span class='line'>191</span> 		* &lt;br /> alternative way of collecting all .warn and .info in the buffer&lt;br />
+<span class='line'>192</span> 		* 
+<span class='line'>193</span> 		* @param {boolean} [$debugToConsoleNotSupport=false]
+<span class='line'>194</span> 		*  Use a buffer for the console and call alert()&lt;br />
+<span class='line'>195</span> 		* @return void
+<span class='line'>196</span> 		*/</span><span class="WHIT">
+<span class='line'>197</span> </span><span class="WHIT">	</span><span class="NAME">initNotSupport</span><span class="PUNC">:</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">$debugToConsoleNotSupport</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>198</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">$debugToConsoleNotSupport</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>199</span> </span><span class="WHIT">			</span><span class="COMM">/**
+<span class='line'>200</span> 			 *  Create a new object to work with the console&lt;br />
+<span class='line'>201</span> 			 */</span><span class="WHIT">
+<span class='line'>202</span> </span><span class="WHIT">			</span><span class="NAME">window.console</span><span class="PUNC">=</span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Object</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>203</span> </span><span class="WHIT">			</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">debug_buffer</span><span class="PUNC">=</span><span class="STRN">''</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>204</span> </span><span class="WHIT">			</span><span class="NAME">window.console.warn</span><span class="PUNC">=</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">$str</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>205</span> </span><span class="WHIT">				</span><span class="NAME">alert</span><span class="PUNC">(</span><span class="STRN">'INFO:'</span><span class="PUNC">+</span><span class="NAME">debug_buffer</span><span class="PUNC">+</span><span class="STRN">"\n\r"</span><span class="PUNC">+</span><span class="STRN">'WARN:'</span><span class="PUNC">+</span><span class="STRN">"\n\r\t"</span><span class="PUNC">+</span><span class="NAME">$str</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>206</span> </span><span class="WHIT">				</span><span class="NAME">debug_buffer</span><span class="PUNC">=</span><span class="STRN">''</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>207</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>208</span> </span><span class="WHIT">			</span><span class="NAME">window.console.info</span><span class="PUNC">=</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">$str</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>209</span> </span><span class="WHIT">				</span><span class="NAME">debug_buffer</span><span class="PUNC">+</span><span class="PUNC">=</span><span class="STRN">"\n\r"</span><span class="PUNC">+</span><span class="NAME">$str</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>210</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>211</span> </span><span class="WHIT">			</span><span class="NAME">window.console.error</span><span class="PUNC">=</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">$str</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>212</span> </span><span class="WHIT">				</span><span class="NAME">debug_buffer</span><span class="PUNC">+</span><span class="PUNC">=</span><span class="STRN">"\n\rERROR:"</span><span class="PUNC">+</span><span class="NAME">$str</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>213</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>214</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>215</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>216</span> </span><span class="WHIT">	
+<span class='line'>217</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>218</span> </span><span class="PUNC">}</span><span class="PUNC">(</span><span class="NAME">document</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">jQuery</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>219</span> 
+<span class='line'>220</span> </span><span class="COMM">//&lt;/script></span><span class="WHIT">
+<span class='line'>221</span> </span></pre></body></html>

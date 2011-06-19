@@ -218,7 +218,11 @@ ul.inheritsList
 				
 				
 			
-				jQuery.evFunc<br /> Плагин для запуска функций после аякс запроса или загрузки новой страницы.<br /><br /><br /> Двойная лицензия MIT или GPL v.2
+				jQuery.evFunc
+<br /> Плагин для запуска функций после аякс запроса или первой загрузки страницы.
+<br />
+<br /> Двойная лицензия MIT или GPL v.2 
+<br />Copyright 2011, (c) ev9eniy.info
 				
 				
 					<br /><i>Defined in: </i> <a href="../symbols/src/jq.evnine.func.ru.js.html">jq.evnine.func.ru.js</a>.
@@ -251,6 +255,74 @@ ul.inheritsList
 
 <!-- ============================== properties summary ===================== -->
 			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the fields documented in the class jQuery.evFunc.">
+					<caption>Field Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Field Attributes</th>
+							<th scope="col">Field Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&lt;inner&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/jQuery.evFunc.html#-$current_method_class">$current_method_class</a></b>
+								</div>
+								<div class="description">Методы загруженной страницы</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;inner&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/jQuery.evFunc.html#-$include_scripts">$include_scripts</a></b>
+								</div>
+								<div class="description">Подгруженные скрипты</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;inner&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/jQuery.evFunc.html#-$loaded_state">$loaded_state</a></b>
+								</div>
+								<div class="description">Объект для хранения загруженных методов и новых</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;inner&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/jQuery.evFunc.html#-$options">$options</a></b>
+								</div>
+								<div class="description">Настройки по умолчанию</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/jQuery.evFunc.html#$reload_page">$reload_page</a></b>
+								</div>
+								<div class="description">Флаг плагина evNav для первой загрузки страницы</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
+			
 
 <!-- ============================== methods summary ======================== -->
 			
@@ -271,7 +343,9 @@ ul.inheritsList
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/jQuery.evFunc.html#-getFuncForControllerAndMethod">getFuncForControllerAndMethod</a></b>()
 								</div>
-								<div class="description">Для текущего шаблона получим класс из списка привязки шаблонов к классам</div>
+								<div class="description">function getFuncForControllerAndMethod()<br />
+
+ Для контроллера и метода из ссылки получим методы</div>
 							</td>
 						</tr>
 					
@@ -280,7 +354,8 @@ ul.inheritsList
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/jQuery.evFunc.html#-getFunctionFromOptions">getFunctionFromOptions</a></b>($key)
 								</div>
-								<div class="description">Получить функции по ключу из объекта полученного после парсинга</div>
+								<div class="description">function getFunctionFromOptions($key)<br />
+ Получить функцию по ключу из опций</div>
 							</td>
 						</tr>
 					
@@ -289,7 +364,9 @@ ul.inheritsList
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/jQuery.evFunc.html#getMethodFromSEFURL">getMethodFromSEFURL</a></b>($href)
 								</div>
-								<div class="description">Получим метод и контроллер в ЧПУ адресе</div>
+								<div class="description">this.getMethodFromSEFURL=function($href)<br />
+
+ Получим метод и контроллер в ЧПУ адресе</div>
 							</td>
 						</tr>
 					
@@ -298,7 +375,9 @@ ul.inheritsList
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/jQuery.evFunc.html#-getParseURL">getParseURL</a></b>($href, $tab_level)
 								</div>
-								<div class="description">Разберем адрес и получим метод и контроллер</div>
+								<div class="description">getParseURL($href,$tab_level)<br />
+
+ Разберем адрес и получим метод и контроллер</div>
 							</td>
 						</tr>
 					
@@ -307,7 +386,9 @@ ul.inheritsList
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/jQuery.evFunc.html#getParseURLAndSave">getParseURLAndSave</a></b>($href)
 								</div>
-								<div class="description">Разбираем адрес загруженной страницы</div>
+								<div class="description">this.getParseURLAndSave=function($href)<br />
+
+ Разбираем адрес загруженной страницы</div>
 							</td>
 						</tr>
 					
@@ -316,7 +397,8 @@ ul.inheritsList
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/jQuery.evFunc.html#-isHasAccess">isHasAccess</a></b>($obj)
 								</div>
-								<div class="description">Проверяем есть ли доступ к функции из опций</div>
+								<div class="description">isHasAccess($obj)<br />
+ Проверяем, есть ли доступ к функции из опций?</div>
 							</td>
 						</tr>
 					
@@ -325,7 +407,9 @@ ul.inheritsList
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/jQuery.evFunc.html#-setInitJSFuncForHREF">setInitJSFuncForHREF</a></b>($function_callback)
 								</div>
-								<div class="description">en Инициализируем функцию</div>
+								<div class="description">setInitJSFuncForHREF($function_callback)<br />
+
+ Инициализируем функцию для обратного вызова.</div>
 							</td>
 						</tr>
 					
@@ -334,7 +418,8 @@ ul.inheritsList
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/jQuery.evFunc.html#setMethodAndControllerFunc">setMethodAndControllerFunc</a></b>($mode)
 								</div>
-								<div class="description">Получить из адреса текущий контроллер и метод</div>
+								<div class="description">setMethodAndControllerFunc=function($mode)<br />
+ Установить контроллер и метод из ссылки.</div>
 							</td>
 						</tr>
 					
@@ -343,7 +428,10 @@ ul.inheritsList
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/jQuery.evFunc.html#setPostCallShowResponse">setPostCallShowResponse</a></b>($load_href)
 								</div>
-								<div class="description">Функция выполняемая после отображения данных из скрипта, указанная в конфигурационном файла</div>
+								<div class="description">this.setPostCallShowResponse=function($load_href)<br />
+
+ Функция выполняемая после отображения данных из скрипта, 
+ указанная в опциях</div>
 							</td>
 						</tr>
 					
@@ -352,16 +440,21 @@ ul.inheritsList
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/jQuery.evFunc.html#setPreCallShowResponse">setPreCallShowResponse</a></b>()
 								</div>
-								<div class="description">Вызываем из плагина навигации установку флага, что не нужно перезагружать страницу</div>
+								<div class="description">this.setPreCallShowResponse=function()<br />
+
+ Вызываем из плагина навигации установку флага, 
+ что не нужно перезагружать страницу</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&lt;inner&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/jQuery.evFunc.html#-setRunFunction">setRunFunction</a></b>($function_callback, $before, $after, $function_callback)
+								<div class="fixedFont"><b><a href="../symbols/jQuery.evFunc.html#-setRunFunction">setRunFunction</a></b>($obj, $function_callback, $before, $after)
 								</div>
-								<div class="description">Запустим функцию</div>
+								<div class="description">setRunFunction($obj,$before,$after,$function_callback)<br />
+
+ Запустим функцию.</div>
 							</td>
 						</tr>
 					
@@ -370,7 +463,9 @@ ul.inheritsList
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/jQuery.evFunc.html#-setUnsetJSFuncForHREF">setUnsetJSFuncForHREF</a></b>($function_callback)
 								</div>
-								<div class="description">Устанавливаем функцию удаления</div>
+								<div class="description">setUnsetJSFuncForHREF($function_callback)<br />
+
+ Устанавливаем функцию удаления действия</div>
 							</td>
 						</tr>
 					
@@ -446,7 +541,8 @@ ul.inheritsList
 								<span class="light fixedFont">{function:return boolean}</span>  <b>arguments.setFunction.isHasAccess($obj,$options)</b>
 								<i>Optional, Default: undefined</i>
 							</dt>
-								<dd>Проверяем доступ, инициализируем с объектом, функции из setFunction()<br /> А так же передаём опции<br /></dd>
+								<dd>Проверяем доступ, инициализируем с объектом, функции из setFunction()
+ А так же передаём опции<br /></dd>
 						
 							<dt>
 								<span class="light fixedFont">{string}</span>  <b>arguments.strUnionControllerWithMethod</b>
@@ -455,7 +551,8 @@ ul.inheritsList
 								<dd>Символ для объединения методов в setFuncByEvnineParamMatch</dd>
 						
 							<dt>
-								<span class="light fixedFont">{object}</span>  <b>arguments.setFuncByEvnineParamMatch:<br />{arguments.controller+arguments.strUnionControllerWithMethod+arguments.method:function_name}</b>
+								<span class="light fixedFont">{object}</span>  <b>arguments.setFuncByEvnineParamMatch:<br />
+{arguments.controller+arguments.strUnionControllerWithMethod+arguments.method:function_name}</b>
 								<i>Optional, Default: undefined</i>
 							</dt>
 								<dd>Контроллер.метод и связанная с ним функции</dd>
@@ -510,6 +607,162 @@ ul.inheritsList
 
 <!-- ============================== field details ========================== -->		
 			
+				<div class="sectionTitle">
+					Field Detail
+				</div>
+				
+					<a name="-$current_method_class"> </a>
+					<div class="fixedFont">&lt;inner&gt; 
+					
+					
+					<b>$current_method_class</b>
+					
+					</div>
+					<div class="description">
+						Методы загруженной страницы
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code"> $options.controller.paramName:'',
+ $options.method.paramName:'',</pre>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="-$include_scripts"> </a>
+					<div class="fixedFont">&lt;inner&gt; 
+					
+					
+					<b>$include_scripts</b>
+					
+					</div>
+					<div class="description">
+						Подгруженные скрипты
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">'/jq.ui.js': true</pre>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="-$loaded_state"> </a>
+					<div class="fixedFont">&lt;inner&gt; 
+					
+					
+					<b>$loaded_state</b>
+					
+					</div>
+					<div class="description">
+						Объект для хранения загруженных методов и новых
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">
+'from' : {
+ $options.controller.paramName:'',
+ $options.method.paramName:'',
+ url:''
+},
+'to'   : {
+ $options.controller.paramName:'',
+ $options.method.paramName:'',
+ url:''
+};</pre>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="-$options"> </a>
+					<div class="fixedFont">&lt;inner&gt; 
+					
+					
+					<b>$options</b>
+					
+					</div>
+					<div class="description">
+						Настройки по умолчанию
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">isHREFMatchThisRegExpSetSEFMode :'.html$',
+controller                      :{paramName:'c',defaultValue:'default'},
+method                          :{paramName:'m',defaultValue:'default'},
+debugToConsole                  :true,
+debugPrefixString               :'|	',
+debugToConsoleNotSupport        :false,
+debugFunctionGroup              :false,
+strUnionControllerWithMethod    :'.'</pre>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="$reload_page"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>$reload_page</b>
+					
+					</div>
+					<div class="description">
+						Флаг плагина evNav для первой загрузки страницы
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">jq.evnine.nav.js
+if ($options.flag_ev_func&&!$options.setJSFuncForLoadPage.$reload_page){
+ $options.setJSFuncForLoadPage.setMethodAndControllerFunc('init');
+}</pre>
+					
+					
+
+						
+						
+						
+						
+
+					
+				
+			
 
 <!-- ============================== method details ========================= -->		
 			
@@ -520,12 +773,14 @@ ul.inheritsList
 					<a name="-getFuncForControllerAndMethod"> </a>
 					<div class="fixedFont">&lt;inner&gt; 
 					
-					
+					<span class="light">{object}</span>
 					<b>getFuncForControllerAndMethod</b>()
 					
 					</div>
 					<div class="description">
-						Для текущего шаблона получим класс из списка привязки шаблонов к классам
+						function getFuncForControllerAndMethod()<br />
+
+ Для контроллера и метода из ссылки получим методы
 						
 						
 					</div>
@@ -540,7 +795,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd>object{[$options.controller.paramName],$obj[$options.method.paramName]}</dd>
+								<dd><span class="light fixedFont">{object}</span> {[$options.controller.paramName],$obj[$options.method.paramName]}</dd>
 							
 							</dl>
 						
@@ -552,12 +807,13 @@ ul.inheritsList
 					<a name="-getFunctionFromOptions"> </a>
 					<div class="fixedFont">&lt;inner&gt; 
 					
-					
+					<span class="light">{object}</span>
 					<b>getFunctionFromOptions</b>($key)
 					
 					</div>
 					<div class="description">
-						Получить функции по ключу из объекта полученного после парсинга
+						function getFunctionFromOptions($key)<br />
+ Получить функцию по ключу из опций
 						
 						
 					</div>
@@ -569,10 +825,10 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<b>$key</b>
+									<span class="light fixedFont">{string}</span> <b>$key</b>
 									
 								</dt>
-								<dd>string  ключ массива</dd>
+								<dd>Ключ из парсинга ссылки</dd>
 							
 							</dl>
 						
@@ -583,7 +839,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd>object[$options.setFuncByEvnineParamMatch[$key]] or undefined</dd>
+								<dd><span class="light fixedFont">{object}</span> $options.setFuncByEvnineParamMatch[$key] or undefined</dd>
 							
 							</dl>
 						
@@ -595,12 +851,14 @@ ul.inheritsList
 					<a name="getMethodFromSEFURL"> </a>
 					<div class="fixedFont">
 					
-					
+					<span class="light">{object}</span>
 					<b>getMethodFromSEFURL</b>($href)
 					
 					</div>
 					<div class="description">
-						Получим метод и контроллер в ЧПУ адресе
+						this.getMethodFromSEFURL=function($href)<br />
+
+ Получим метод и контроллер в ЧПУ адресе
 						
 						
 					</div>
@@ -612,10 +870,10 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<b>$href</b>
+									<span class="light fixedFont">{string}</span> <b>$href</b>
 									
 								</dt>
-								<dd>- string</dd>
+								<dd></dd>
 							
 							</dl>
 						
@@ -626,7 +884,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd>object{[$options.controller.paramName],$obj[$options.method.paramName]}</dd>
+								<dd><span class="light fixedFont">{object}</span> {$options.controller.paramName:function(),$options.method.paramName:function()}</dd>
 							
 							</dl>
 						
@@ -638,12 +896,14 @@ ul.inheritsList
 					<a name="-getParseURL"> </a>
 					<div class="fixedFont">&lt;inner&gt; 
 					
-					
+					<span class="light">{object}</span>
 					<b>getParseURL</b>($href, $tab_level)
 					
 					</div>
 					<div class="description">
-						Разберем адрес и получим метод и контроллер
+						getParseURL($href,$tab_level)<br />
+
+ Разберем адрес и получим метод и контроллер
 						
 						
 					</div>
@@ -655,16 +915,16 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<b>$href</b>
+									<span class="light fixedFont">{string}</span> <b>$href</b>
 									
 								</dt>
-								<dd>- string</dd>
+								<dd>Ссылка для обработки</dd>
 							
 								<dt>
-									<b>$tab_level</b>
+									<span class="light fixedFont">{int}</span> <b>$tab_level</b>
 									
 								</dt>
-								<dd>- int  Отступы в режиме отладке</dd>
+								<dd>Отступы в режиме отладке</dd>
 							
 							</dl>
 						
@@ -675,7 +935,8 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd>object{[$options.controller.paramName],$obj[$options.method.paramName]}</dd>
+								<dd><span class="light fixedFont">{object}</span> {$options.controller.paramName:function(),$options.method.paramName:function(),$url=string}
+<br /> Возвращаем объект для последующего сохранения и получения функции,<br /> по методу и контроллеру</dd>
 							
 							</dl>
 						
@@ -692,7 +953,9 @@ ul.inheritsList
 					
 					</div>
 					<div class="description">
-						Разбираем адрес загруженной страницы
+						this.getParseURLAndSave=function($href)<br />
+
+ Разбираем адрес загруженной страницы
 						
 						
 					</div>
@@ -704,10 +967,10 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<b>$href</b>
+									<span class="light fixedFont">{string}</span> <b>$href</b>
 									
 								</dt>
-								<dd>- string</dd>
+								<dd>Ссылка для обработки</dd>
 							
 							</dl>
 						
@@ -730,15 +993,33 @@ ul.inheritsList
 					<a name="-isHasAccess"> </a>
 					<div class="fixedFont">&lt;inner&gt; 
 					
-					
+					<span class="light">{boolean}</span>
 					<b>isHasAccess</b>($obj)
 					
 					</div>
 					<div class="description">
-						Проверяем есть ли доступ к функции из опций
+						isHasAccess($obj)<br />
+ Проверяем, есть ли доступ к функции из опций?
 						
 						
 					</div>
+					
+					
+					
+					<pre class="code">$.evNav(
+{
+ setJSFuncForLoadPage:$.evFunc(
+ {
+  setFunction:
+  {
+   'default':function($options) 
+   {
+     Уровень доступа 
+    this.access='1';
+   }
+  }
+ })
+});</pre>
 					
 					
 					
@@ -747,10 +1028,10 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<b>$obj</b>
+									<span class="light fixedFont">{object}</span> <b>$obj</b>
 									
 								</dt>
-								<dd>- object</dd>
+								<dd>Объект с методом. Проверим есть ли доступ?</dd>
 							
 							</dl>
 						
@@ -761,7 +1042,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd>function() or bool</dd>
+								<dd><span class="light fixedFont">{boolean}</span> по умолчанию true</dd>
 							
 							</dl>
 						
@@ -778,7 +1059,9 @@ ul.inheritsList
 					
 					</div>
 					<div class="description">
-						en Инициализируем функцию
+						setInitJSFuncForHREF($function_callback)<br />
+
+ Инициализируем функцию для обратного вызова.
 						
 						
 					</div>
@@ -790,10 +1073,10 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<b>$function_callback</b>
+									<span class="light fixedFont">{string}</span> <b>$function_callback</b>
 									
 								</dt>
-								<dd>- string</dd>
+								<dd>Функция обратного вызова</dd>
 							
 							</dl>
 						
@@ -821,7 +1104,8 @@ ul.inheritsList
 					
 					</div>
 					<div class="description">
-						Получить из адреса текущий контроллер и метод
+						setMethodAndControllerFunc=function($mode)<br />
+ Установить контроллер и метод из ссылки.
 						
 						
 					</div>
@@ -833,10 +1117,10 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<b>$mode</b>
-									
+									<span class="light fixedFont">{string}</span> <b>$mode</b>
+									<i>Optional, Default: ''</i>
 								</dt>
-								<dd>метод инициализации</dd>
+								<dd>Флаг для проверки первой инициализации</dd>
 							
 							</dl>
 						
@@ -864,7 +1148,10 @@ ul.inheritsList
 					
 					</div>
 					<div class="description">
-						Функция выполняемая после отображения данных из скрипта, указанная в конфигурационном файла
+						this.setPostCallShowResponse=function($load_href)<br />
+
+ Функция выполняемая после отображения данных из скрипта, 
+ указанная в опциях
 						
 						
 					</div>
@@ -876,10 +1163,10 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<b>$load_href</b>
+									<span class="light fixedFont">{string}</span> <b>$load_href</b>
 									
 								</dt>
-								<dd>- string</dd>
+								<dd>Ссылка для обработки</dd>
 							
 							</dl>
 						
@@ -907,7 +1194,10 @@ ul.inheritsList
 					
 					</div>
 					<div class="description">
-						Вызываем из плагина навигации установку флага, что не нужно перезагружать страницу
+						this.setPreCallShowResponse=function()<br />
+
+ Вызываем из плагина навигации установку флага, 
+ что не нужно перезагружать страницу
 						
 						
 					</div>
@@ -934,12 +1224,14 @@ ul.inheritsList
 					<a name="-setRunFunction"> </a>
 					<div class="fixedFont">&lt;inner&gt; 
 					
-					
-					<b>setRunFunction</b>($function_callback, $before, $after, $function_callback)
+					<span class="light">{boolean}</span>
+					<b>setRunFunction</b>($obj, $function_callback, $before, $after)
 					
 					</div>
 					<div class="description">
-						Запустим функцию
+						setRunFunction($obj,$before,$after,$function_callback)<br />
+
+ Запустим функцию.
 						
 						
 					</div>
@@ -951,28 +1243,28 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<b>$function_callback</b>
+									<span class="light fixedFont">{object}</span> <b>$obj</b>
 									
 								</dt>
-								<dd>- string</dd>
+								<dd>Объект с методами</dd>
 							
 								<dt>
-									<b>$before</b>
+									<span class="light fixedFont">{string}</span> <b>$function_callback</b>
 									
 								</dt>
-								<dd>- string</dd>
+								<dd>Функция обратного вызова</dd>
 							
 								<dt>
-									<b>$after</b>
+									<span class="light fixedFont">{string}</span> <b>$before</b>
 									
 								</dt>
-								<dd>- string</dd>
+								<dd>Метод или контроллер до</dd>
 							
 								<dt>
-									<b>$function_callback</b>
+									<span class="light fixedFont">{string}</span> <b>$after</b>
 									
 								</dt>
-								<dd>- string</dd>
+								<dd>Метод или контроллер после</dd>
 							
 							</dl>
 						
@@ -983,7 +1275,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd>bool</dd>
+								<dd><span class="light fixedFont">{boolean}</span> <br /> true - если функция успешно выполнена.<br /> false - если функцию запустить не удалось</dd>
 							
 							</dl>
 						
@@ -1000,7 +1292,9 @@ ul.inheritsList
 					
 					</div>
 					<div class="description">
-						Устанавливаем функцию удаления
+						setUnsetJSFuncForHREF($function_callback)<br />
+
+ Устанавливаем функцию удаления действия
 						
 						
 					</div>
@@ -1012,10 +1306,10 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<b>$function_callback</b>
+									<span class="light fixedFont">{string}</span> <b>$function_callback</b>
 									
 								</dt>
-								<dd>- string</dd>
+								<dd>Функция обратного вызова</dd>
 							
 							</dl>
 						
@@ -1047,7 +1341,7 @@ ul.inheritsList
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Tue May 31 2011 21:53:09 GMT+0300 (GMT+03:00)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Sun Jun 19 2011 22:04:21 GMT+0300 (GMT+03:00)
 		</div>
 	</body>
 </html>
