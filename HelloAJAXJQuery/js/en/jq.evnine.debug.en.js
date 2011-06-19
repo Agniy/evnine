@@ -2,35 +2,28 @@
 new function (document, $, undefined) {
 /** 
 	* @class jQuery.evDev
-	* <br />en: jQuery Plugin - Debug for evnine plugins
-	* <br />ru: Плагин для отладки кода.
+	* <br /> jQuery Plugin - Debug for evnine plugins
 	* <br />
-	* <br />en: Copyright 2011, (c) ev9eniy.info
-	* <br />en: Dual licensed under the MIT or GPL Version 2 licenses
+	* <br /> Copyright 2011, (c) ev9eniy.info
+	* <br /> Dual licensed under the MIT or GPL Version 2 licenses
 	* <br />
-	* <br />ru: Двойная лицензия MIT или GPL v.2 
 	*/
 jQuery.evDev={
 	/**
-		* en: Return the indentation<br />
-		* en: Example Call<br />
-		* ru: Создаём отступы<br />
-		* ru: Пример вызова<br />
+		*  Return the indentation<br />
+		*  Example Call<br />
 		* this.getTab('| ',0)=''<br />
 		* this.getTab('| ',1)='| '<br />
 		* this.getTab('| ',2)='| | '
 		*
 		* @param {string} [$debugPrefixString='']
-		* en: Debug prefix for group of functions<br />
-		* ru: Префикс для вывода в окно отладки группирования по функциям (FireFox FireBug, Chrome, Opera)
+		*  Debug prefix for group of functions<br />
 		*
 		* @param {int} [$shift_int='']
-		* en: Base shift to show nesting<br />
-		* ru: Начальный сдвиг для отображения вложенности
+		*  Base shift to show nesting<br />
 		* 
 		* @return {string} $tab=''
-		* <br />en: return the indentation
-		* <br />ru: вернем отступы
+		* <br /> return the indentation
 		*/
 	getTab:function($debugPrefixString,$shift_int){
 		if ($shift_int===0){
@@ -46,10 +39,8 @@ jQuery.evDev={
 	},
 
 	/** 
-	 * en: Get stack trace<br />
-	 * en: (c) Eric Wendelin, eriwen.com/javascript<br />
-	 * ru: Отследить вызов функции<br />
-	 * ru: (c) Эрик Венделин, eriwen.com/javascript<br />
+	 *  Get stack trace<br />
+	 *  (c) Eric Wendelin, eriwen.com/javascript<br />
 	 * 
 	 * @return object
 	 */
@@ -58,14 +49,14 @@ jQuery.evDev={
 		var isCallstackPopulated = false;
 		try {
 			/**
-			* en: doesn't exist- that's the point
+			*  doesn't exist- that's the point
 			*/
 			i.dont.exist+=0; 
 		} catch(e) {
 			var lines = e.stack.split('\n');
 			if (e.stack) { 
 			/**
-				* en: Firefox
+				*  Firefox
 				*/
 				for (i=0, len=lines.length; i<len; i++) {
 					if (lines[i].match(/^\s*[A-Za-z0-9\-_\$]+\(/)) {
@@ -74,7 +65,7 @@ jQuery.evDev={
 					}
 				}
 				/**
-					* en: Remove call to printStackTrace()
+					*  Remove call to printStackTrace()
 					*/
 				callstack.shift();
 				isCallstackPopulated = true;
@@ -84,7 +75,7 @@ jQuery.evDev={
 					if (lines[i].match(/^\s*[A-Za-z0-9\-_\$]+\(/)) {
 						var entry = lines[i];
 						/**
-							* en: Append next line also since it has the file info
+							*  Append next line also since it has the file info
 							*/
 						if (lines[i+1]) {
 							entry += ' at ' + lines[i+1];
@@ -94,14 +85,14 @@ jQuery.evDev={
 					}
 				}
 				/**
-					* en: Remove call to printStackTrace()
+					*  Remove call to printStackTrace()
 					*/
 				callstack.shift();
 				isCallstackPopulated = true;
 			}
 		}
 			/**
-				* en: IE and Safari
+				*  IE and Safari
 				*/
 			if (!isCallstackPopulated) {
 			var currentFunction = arguments.callee.caller;
@@ -116,25 +107,20 @@ jQuery.evDev={
 	},
 
 		/** 
-		* en: List contents of an object with spaces for debugging<br />
-		* ru: Вывести содержимое объекта с отступами для отладки
+		*  List contents of an object with spaces for debugging<br />
 		* 
 		* @param {object} [$obj=undefined]
-		* en: Object to output<br />
-		* ru: Объект для вывода
+		*  Object to output<br />
 		*
 		* @param {string} [$tab='']
 		* getTraceObject($obj[prop],$tab=$tab+$shift);
-		* en: Indent, which changes the derivation of children objects<br />
-		* ru: Отступ, который изменяется при выводе вложенных объектов
+		*  Indent, which changes the derivation of children objects<br />
 		* 
 		* @param {string} [$shift=' ']
-		* en: Base shift to show nesting<br />
-		* ru: Начальный сдвиг для отображения вложенности
+		*  Base shift to show nesting<br />
 		* 
 		* @param {boolean} [$show_function=false]
-		* en: Derive methods in the object
-		* ru: Вывести методы в объекте
+		*  Derive methods in the object
 		* 
 		* @return void
 		*/
@@ -171,20 +157,17 @@ jQuery.evDev={
 	},
 
 	/**
-		* en: Function for the join functions group in the console<br />
-		* ru: Функция вывода группировки в консоле
+		*  Function for the join functions group in the console<br />
 		* 
 		* @param {boolean} [$debugToConsoleNotSupport=false]
-		* en: Use a buffer for the console and call alert()<br />
-		* ru: Использовать буфер для консоли и делать alert()
+		*  Use a buffer for the console and call alert()<br />
 		* 
 		* @return void
 		*/
 	initGroupFunctionCall:function($debugToConsoleNotSupport){
 		if (!$debugToConsoleNotSupport){
 			/**
-			 * en: Replace the basic techniques of working with the console<br />
-			 * ru: Заменяем базовые методы работы с консолью
+			 *  Replace the basic techniques of working with the console<br />
 			 */
 			window.console.warn_old=window.console.warn;
 			window.console.info_old=window.console.info;
@@ -204,21 +187,17 @@ jQuery.evDev={
 	},
 		
 	/**
-		* en: If clients browser is not supported by the console, use an 
-		* <br />en: alternative way of collecting all .warn and .info in the buffer<br />
-		* <br />ru: Если в браузере консоль не поддерживается, 
-		* <br />ru: используем альтернативный способ, собирая в буфер все данные
+		*  If clients browser is not supported by the console, use an 
+		* <br /> alternative way of collecting all .warn and .info in the buffer<br />
 		* 
 		* @param {boolean} [$debugToConsoleNotSupport=false]
-		* en: Use a buffer for the console and call alert()<br />
-		* ru: Использовать буфер для консоли и делать alert()
+		*  Use a buffer for the console and call alert()<br />
 		* @return void
 		*/
 	initNotSupport:function($debugToConsoleNotSupport){
 		if ($debugToConsoleNotSupport){
 			/**
-			 * en: Create a new object to work with the console<br />
-			 * ru: Создаём новый объект для работы с консолью
+			 *  Create a new object to work with the console<br />
 			 */
 			window.console=new Object();
 			var debug_buffer='';

@@ -3,82 +3,63 @@
 	* @version 0.3
 	* @author ev9eniy.info
 	* @class jQuery.evFunc
-	* <br />en: jQuery plugin - call function after ajax complete or reload page
-	* <br />ru: Плагин для запуска функций после аякс запроса или первой загрузки страницы.
+	* <br /> jQuery plugin - call function after ajax complete or reload page
 	* <br />
-	* <br />en: Dual licensed under the MIT or GPL Version 2 licenses
-	* <br />ru: Двойная лицензия MIT или GPL v.2 
+	* <br /> Dual licensed under the MIT or GPL Version 2 licenses
 	* <br />Copyright 2011, (c) ev9eniy.info
 	* 
 	* @config {object}  [=undefined]
-	* en: Init evFunc plugin
-	* ru: Доступ для плагина запуска функций
+	*  Init evFunc plugin
 	* 
 	* @config {object} [controller={paramName:'c',defaultValue:'default'}]
-	* en: Parameter for the controller and the default value
-	* ru: Параметр для контроллера и значение по умолчанию
+	*  Parameter for the controller and the default value
 	* 
 	* @config {object} [method={paramName:'m',defaultValue:'default'}]
-	* en: Parameter to the method and the default value
-	* ru: Параметр для метода и значение по умолчанию
+	*  Parameter to the method and the default value
 	* 
 	* @config {RegExp} [isHREFMatchThisRegExpSetSEFMode='.html$']
-	* en: If match RegExp, use SEF mode
-	* ru: Ссылка совпадает с регулярным, аякс в ЧПУ режиме $href.match(/\.html/g)
+	*  If match RegExp, use SEF mode
 	*
 	* @config {object} [setFunction:{function_name:function()}=undefined]
-	* en: Functions for execute after ajax complete
-	* ru: Функция для запуска после аякс загрузки страницы
+	*  Functions for execute after ajax complete
 	* 
 	* @config {function} [setFunction[function_name]($options)=undefined]
-	* en: Init with $options
-	* ru: Передаём опции для того что бы иметь доступ к настройкам 
+	*  Init with $options
 	* 
 	* @config {function:return boolean} [setFunction.isHasAccess($obj,$options)=undefined]
-	* en: Is user has access for function, init with (setFunction[function_name],$options)
-	* ru: Проверяем доступ, инициализируем с объектом, функции из setFunction()
-	* ru: А так же передаём опции<br />
+	*  Is user has access for function, init with (setFunction[function_name],$options)
 	* 
 	* @config {string} [strUnionControllerWithMethod='.']
-	* en: The symbol for the union of controller and methods in the setFuncByEvnineParamMatch
-	* ru: Символ для объединения методов в setFuncByEvnineParamMatch
+	*  The symbol for the union of controller and methods in the setFuncByEvnineParamMatch
 	*
 	* @config {object} [setFuncByEvnineParamMatch:<br />
 	* {arguments.controller+arguments.strUnionControllerWithMethod+arguments.method:function_name}=undefined]
-	* en: Controller with method and function
-	* ru: Контроллер.метод и связанная с ним функции 
+	*  Controller with method and function
 	*
 	* @config {object} [setFuncByEvnineParamMatch:{string:function_name}=undefined]  
-	* en: URN and related functions
-	* ru: Ссылка и связанная с ней функции
+	*  URN and related functions
 	*
 	* @config {object} [setFuncByHREFMatch:{RegExp:function_name}=undefined]  
-	* en: RegExp and associated functions<br />
-	* ru: Регулярное выражение и связанная с ней функции 
+	*  RegExp and associated functions<br />
 	* 
 	* @config {boolean} [debugToConsole=false]
-	* en: Debug to console
-	* ru: Выводить отладочную информацию в консоль (FireFox FireBug, Chrome, Opera итд)
+	*  Debug to console
 	* 
 	* @config {string} [debugPrefixString='| ']
-	* en: Debug prefix for group of functions<br />
-	* ru: Префикс для вывода в окно отладки группирования по функциям (FireFox FireBug, Chrome, Opera)
+	*  Debug prefix for group of functions<br />
 	*
 	* @config {boolean} [debugToConsoleNotSupport=false]
-	* en: If you want debug in IE 6-7, Safari, etc. using alert() as console.info
-	* ru: Если нужна отладка в консоль с использованием alert() в IE 6-7, Safari итд 
+	*  If you want debug in IE 6-7, Safari, etc. using alert() as console.info
 	*
 	* @config {boolean} [debugFunctionGroup=false]
-	* en: Use console.group as alternative to $options.debugPrefixString
-	* ru: Использовать группировку в консоли для плагина навигации, так же нужно указать в плагине функций  
+	*  Use console.group as alternative to $options.debugPrefixString
 	*/
 new function (document, $, undefined) {
 	jQuery.evFunc = function($rewrite_options) {
 		var $EVNINE_VER="0.3";
 		var $EVNINE_NAME='evFunc'+'.';
 		/**
-			* en: Default setting
-			* ru: Настройки по умолчанию
+			*  Default setting
 			* 
 			* @example
 			* isHREFMatchThisRegExpSetSEFMode :'.html$',
@@ -94,76 +75,64 @@ new function (document, $, undefined) {
 		var $options = jQuery.extend({
 			isHREFMatchThisRegExpSetSEFMode   :'.html$',//=$href.match(/\.html/g)
 			/**
-				* en: If match RegExp, use SEF mode
-				* ru: Ссылка совпадает с регулярным, аякс в ЧПУ режиме $href.match(/\.html/g)
+				*  If match RegExp, use SEF mode
 				*/
 			controller:{
 				paramName:'c',defaultValue:'default'
 			},
 			/**
-				* en: Parameter for the controller and the default value
-				* ru: Параметр для контроллера и значение по умолчанию
+				*  Parameter for the controller and the default value
 				*/
 			method:{
 				paramName:'m',defaultValue:'default'
 			},
 			/**
-				* en: Parameter to the method and the default value
-				* ru: Параметр для метода и значение по умолчанию
+				*  Parameter to the method and the default value
 				*/
 			debugToConsole                    :true,
 			/**
-				* en: Debug to console
-				* ru: Выводить отладочную информацию в консоль (FireFox FireBug, Chrome, Opera итд)
+				*  Debug to console
 				*/
 			debugPrefixString                 :'|	',
 			//debugPrefixString               :' ',
 			/**
-				* en: Debug prefix for group of functions
-				* ru: Префикс для вывода в окно отладки группирования по функциям (FireFox FireBug, Chrome, Opera)
+				*  Debug prefix for group of functions
 				*/
 			debugToConsoleNotSupport          :false,
 			//debugToConsoleNotSupport        :true,
 			/**
-				* en: If you want debug in IE 6-7, Safari, etc. using alert() as console.info 
-				* ru: Если нужна отладка в консоль с использованием alert() в IE 6-7, Safari итд 
+				*  If you want debug in IE 6-7, Safari, etc. using alert() as console.info 
 				*/
 			debugFunctionGroup              :false,
 			//debugFunctionGroup                :true,
 			/**
-				* en: Use console.group as alternative to $options.debugPrefixString  
-				* ru: Использовать группировку в консоли для плагина навигации, так же нужно указать в плагине функций  
+				*  Use console.group as alternative to $options.debugPrefixString  
 				*/
 			strUnionControllerWithMethod    :'.'
 			/**
-				* en: The symbol for the union of controller and methods in the setFuncByEvnineParamMatch
-				* ru: Символ для объединения методов в setFuncByEvnineParamMatch
+				*  The symbol for the union of controller and methods in the setFuncByEvnineParamMatch
 				*/
 			//setFuncByEvnineParamMatch       :{
 				//'default.default'               :'default',
 			//}
 			/**
-				* en: Function is for controller with method.
-				* ru: Контроллер.метод и связанная с ним функции
+				*  Function is for controller with method.
 				*/
 			//setFuncByHREFMatch              :{
 				//'/HelloAJAXJQuery/index.php'  : 'param1'
 			//},
 			/** 
-				* en: HREF and related functions.
-				* ru: Ссылка и связанная с ней функции
+				*  HREF and related functions.
 				*/
 			//setFuncByMatchRegHREF              :{
 				//'.*index\.php.*'                :'default'
 			//}
 			/**
-				* en: Regular expression and associated functions.
-				* ru: Регулярное выражение и связанная с ней функции
+				*  Regular expression and associated functions.
 				*/
 		},$rewrite_options);
 		/**
-			* en: Flag evNav plugin for the first page load
-			* ru: Флаг плагина evNav для первой загрузки страницы
+			*  Flag evNav plugin for the first page load
 			* @example
 			* jq.evnine.nav.js
 			* if ($options.flag_ev_func&&!$options.setJSFuncForLoadPage.$reload_page){
@@ -174,16 +143,14 @@ new function (document, $, undefined) {
 			*/
 		this.$reload_page=false;
 		/**
-			* en: The loaded scripts
-			* ru: Подгруженные скрипты
+			*  The loaded scripts
 			* @example
 			* '/jq.ui.js': true
 			* @access private
 			*/
 		var $include_scripts={};
 		/**
-			* en: Methods loaded page
-			* ru: Методы загруженной страницы
+			*  Methods loaded page
 			* @example
 			*  $options.controller.paramName:'',
 			*  $options.method.paramName:'',
@@ -192,8 +159,7 @@ new function (document, $, undefined) {
 		var $current_method_class=false;
 		if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,0)+$EVNINE_NAME+'init BEGIN');
 		/**
-			* en: Object to store the loaded methods and new.
-			* ru: Объект для хранения загруженных методов и новых
+			*  Object to store the loaded methods and new.
 			* @example 
 			* 'from' : {
 			*  $options.controller.paramName:'',
@@ -212,35 +178,29 @@ new function (document, $, undefined) {
 		/** $options.include_once=function($script_href,$fun)
 			* @access public
 			* 
-			* en: Get a script and execute the function when it is loaded.
-			* ru: Получить скрипт и выполнить функцию после его загрузки
+			*  Get a script and execute the function when it is loaded.
 			* 
 			* @param {string} $script_href
-			* en: Link to download script
-			* ru: Ссылка для загрузки скрипта
+			*  Link to download script
 			* 
 			* @param {function} $fun
-			* en: Callback function
-			* ru: Функция, которую запустим после загрузки скрипта
+			*  Callback function
 			*
 			* @return void
 			*/
 		$options.include_once=function($script_href,$fun) {
 			/**
-				* en: Save function for future access
-				* ru: Сохраняем функцию для последующего доступа
+				*  Save function for future access
 				*/
 			var $function=$fun;
 			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,5)+$EVNINE_NAME+'include_once()');
 			if ($include_scripts[$script_href]==undefined){
 			/**
-				* en: Check whether the script is loaded
-				* ru: Проверяем загружен ли скрипт
+				*  Check whether the script is loaded
 				*/
 				jQuery.getScript($script_href, function() {
 					/**
-						* en: We set a flag that the script is loaded
-						* ru: Ставим флаг что скрипт загружен
+						*  We set a flag that the script is loaded
 						*/
 					$include_scripts[$script_href]=true;
 					jQuery(document).ready(function(){
@@ -248,14 +208,12 @@ new function (document, $, undefined) {
 							console.warn(jQuery.evDev.getTab($options.debugPrefixString,0)+$EVNINE_NAME+'getScript.ready.function() BEGIN');
 						try {
 							/**
-								* en: Watch for errors. Run callback function.
-								* ru: Учитываем возможное появление ошибки. Запускаем переданную функцию
+								*  Watch for errors. Run callback function.
 								*/
 							$function();
 						}catch($e){
 							/**
-								* en: Case of errors.
-								* ru: Учтём возможные ошибки
+								*  Case of errors.
 								*/
 							if ($options.debugToConsole) console.error(jQuery.evDev.getTab($options.debugPrefixString,5)+$EVNINE_NAME+'setInitJSFuncForHREF(): '+"try{...} catch(){"+$e+'}');
 						}
@@ -264,14 +222,12 @@ new function (document, $, undefined) {
 				});
 			}else {
 			/**
-				* en: Case if the script is already loaded, run the callback function
-				* ru: Случай если скрипт уже загружен, запустим callback function
+				*  Case if the script is already loaded, run the callback function
 				*/
 				if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,0)+$EVNINE_NAME+'getScript.ready.function() BEGIN');
 				try {
 					/**
-						* en: Watch for errors. Run callback function.
-						* ru: Учитываем возможное появление ошибки. Запускаем переданную функцию
+						*  Watch for errors. Run callback function.
 						*/
 					$function();
 				}catch($e){
@@ -283,10 +239,8 @@ new function (document, $, undefined) {
 		
 		/** this.setPreCallShowResponse=function()<br />
 			* 
-			* en: Call of the plug-in navigation setup flag
-			* en: there is no need to reload page
-			* ru: Вызываем из плагина навигации установку флага, 
-			* ru: что не нужно перезагружать страницу
+			*  Call of the plug-in navigation setup flag
+			*  there is no need to reload page
 			* 
 			* @access public
 			* @return void
@@ -299,14 +253,11 @@ new function (document, $, undefined) {
 		
 		/** this.setPostCallShowResponse=function($load_href)<br />
 			* 
-			* en: Function to execute after displaying data from a script
-			* en: specified in the options
-			* ru: Функция выполняемая после отображения данных из скрипта, 
-			* ru: указанная в опциях
+			*  Function to execute after displaying data from a script
+			*  specified in the options
 			* 
 			* @param {string} $load_href
-			* en: Link to processing
-			* ru: Ссылка для обработки
+			*  Link to processing
 			*
 			* @access public
 			* @return void
@@ -314,22 +265,19 @@ new function (document, $, undefined) {
 		this.setPostCallShowResponse=function($load_href) {
 			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,2)+$EVNINE_NAME+'setPostCallShowResponse($load_href='+$load_href+') BEGIN');
 			/**
-				* en: Parse the address loaded in the page
-				* ru: Разбираем адрес загруженной страницы. Сохраним параметры загрузки адреса
+				*  Parse the address loaded in the page
 				*/
 			this.getParseURLAndSave($load_href);
 			if ($loaded_state.to[$options.controller.paramName]!=undefined||
 				$loaded_state.to[$options.method.paramName]!=undefined)
 			{
 			/**
-				* en: Set the option to delete the action
-				* ru: Устанавливаем функцию удаления действия
+				*  Set the option to delete the action
 				*/
 				setUnsetJSFuncForHREF('unSetAction');
 			}
 			/**
-				* en: Get the address of the current controller and method.
-				* ru: Получить из адреса текущий контроллер и метод 
+				*  Get the address of the current controller and method.
 				*/
 			this.setMethodAndControllerFunc();
 			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,2)+$EVNINE_NAME+'setPostCallShowResponse($load_href='+$load_href+') END');
@@ -337,12 +285,10 @@ new function (document, $, undefined) {
 
 		/** this.getParseURLAndSave=function($href)<br />
 			* 
-			* en: Parse the URL
-			* ru: Разбираем адрес загруженной страницы
+			*  Parse the URL
 			* 
 			* @param {string} $href
-			* en: Link to processing
-			* ru: Ссылка для обработки
+			*  Link to processing
 			* 
 			* @access public
 			* @return void
@@ -351,19 +297,16 @@ new function (document, $, undefined) {
 			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,3)+$EVNINE_NAME+'getParseURLAndSave() BEGIN');
 			if ($loaded_state.to.url===$href){
 			/**
-				* en: If the URL are the same do nothing
-				* ru: Если адреса совпадают ничего не делаем
+				*  If the URL are the same do nothing
 				*/
 				return $loaded_state.to;
 			}
 			/**
-				* en: Save the past state
-				* ru: Сохраняем прошлое состояние
+				*  Save the past state
 				*/
 			$loaded_state.from= $loaded_state.to;
 			/**
-				* en: Obtain a method and controller of the URL
-				* ru: Разберем адрес и получим метод и контроллер
+				*  Obtain a method and controller of the URL
 				*/
 			$loaded_state.to = getParseURL($href,4);
 			if ($options.debugToConsole) console.info(jQuery.evDev.getTab($options.debugPrefixString,4)+$EVNINE_NAME+'$loaded_state: ');
@@ -373,8 +316,7 @@ new function (document, $, undefined) {
 
 		/** this.getMethodFromSEFURL=function($href)<br />
 			* 
-			* en: Obtain a method and a controller in the SEF URL.
-			* ru: Получим метод и контроллер в ЧПУ адресе
+			*  Obtain a method and a controller in the SEF URL.
 			*
 			* @param {string} $href
 			* 
@@ -402,21 +344,17 @@ new function (document, $, undefined) {
 
 		/** getParseURL($href,$tab_level)<br />
 			* 
-			* en: Obtain a method and controller of the URL
-			* ru: Разберем адрес и получим метод и контроллер
+			*  Obtain a method and controller of the URL
 			* 
 			* @param {string} $href
-			* en: Link to processing
-			* ru: Ссылка для обработки
+			*  Link to processing
 			* 
 			* @param {int} $tab_level
-			* en: Indentations in debug mode
-			* ru: Отступы в режиме отладке
+			*  Indentations in debug mode
 			* 
 			* @access private
 			* @return {object} {$options.controller.paramName:function(),$options.method.paramName:function(),$url=string}
-			* <br />en: Returns an object for save and get the functions<br /> by controller and method name.
-			* <br />ru: Возвращаем объект для последующего сохранения и получения функции,<br /> по методу и контроллеру
+			* <br /> Returns an object for save and get the functions<br /> by controller and method name.
 			*  
 		*/
 		function getParseURL($href,$tab_level){
@@ -428,14 +366,12 @@ new function (document, $, undefined) {
 			$reg = new RegExp($options.isHREFMatchThisRegExpSetSEFMode,"g");
 			if ($href.match($reg)){
 			/**
-				* en: If the SEF URL
-				* ru: Если совпадает с ЧПУ адресом
+				*  If the SEF URL
 				*/
 				$parse_url = this.getMethodFromSEFURL($href);
 			}else {
 			/**
-				* en: Use the plugin to parse the references.
-				* ru: Используем плагин для разбора ссылки
+				*  Use the plugin to parse the references.
 				*/
 				$parse_url = $.parseQuery($href);
 			}
@@ -443,31 +379,25 @@ new function (document, $, undefined) {
 			if ($options.debugToConsole) jQuery.evDev.getTraceObject($parse_url,jQuery.evDev.getTab($options.debugPrefixString,$tab_level+2));
 			if (!$parse_url[$options.controller.paramName] || $parse_url[$options.controller.paramName]===null || $parse_url[$options.controller.paramName]==='' || $parse_url[$options.controller.paramName]==undefined){
 				/**
-					* en: Specify the controller in the link?
-					* ru: Проверяем указан ли контроллер в ссылке?
+					*  Specify the controller in the link?
 					*/
 				$controller=$options.controller.defaultValue;
 			}else {
 			/**
-				* en: If the controller name is not specified,<br /> 
-				* en: use the default value of the options
-				* ru: В случае если контроллер не указан,<br /> 
-				* ru: используем значение по умолчанию из опций
+				*  If the controller name is not specified,<br /> 
+				*  use the default value of the options
 				*/
 				$controller=$parse_url[$options.controller.paramName];
 			}
 			if (!$parse_url[$options.method.paramName] || $parse_url[$options.method.paramName]===null || $parse_url[$options.method.paramName]==='' || $parse_url[$options.method.paramName]==undefined){
 				/**
-					* en: Specify the method in the link?
-					* ru: Проверяем указан ли метод в ссылке?
+					*  Specify the method in the link?
 					*/
 				$method=$options.method.defaultValue;
 			}else {
 			/**
-				* en: If the method name is not specified,<br /> 
-				* en: use the default value of the options
-				* ru: В случае если метод не указан,<br /> 
-				* ru: используем значение по умолчанию из опций
+				*  If the method name is not specified,<br /> 
+				*  use the default value of the options
 				*/
 				$method=$parse_url[$options.method.paramName];
 			}
@@ -482,12 +412,10 @@ new function (document, $, undefined) {
 
 		/** setUnsetJSFuncForHREF($function_callback)<br />
 		 * 
-		 * en: Set the option to delete the action
-		 * ru: Устанавливаем функцию удаления действия
+		 *  Set the option to delete the action
 		 * 
 		 * @param {string} $function_callback
-		 * en: Function callback.
-		 * ru: Функция обратного вызова
+		 *  Function callback.
 		 * 
 		 * @access private
 		 * @return void
@@ -496,19 +424,15 @@ new function (document, $, undefined) {
 			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,4)+$EVNINE_NAME+'setInitJSFuncForHREF($function_callback='+$function_callback+') BEGIN');
 			try {
 				/**
-					* en: Has the controller since the last call?
-					* en: If yes, run the callback function.
-					* ru: Изменился ли контроллер с прошлого вызова? 
-					* ru: Если да, запускаем callback function.
+					*  Has the controller since the last call?
+					*  If yes, run the callback function.
 					*/
 				if ($loaded_state.from[$options.controller.paramName]!==$loaded_state.to[$options.controller.paramName]){
 					setRunFunction($current_method_class[$options.controller.paramName],$loaded_state.from[$options.controller.paramName],$loaded_state.to[$options.controller.paramName],$function_callback);
 				}
 				/**
-					* en: Has the method since the last call?
-					* en: If yes, run the callback function.
-					* ru: Изменился ли метод с прошлого вызова? 
-					* ru: Если да, запускаем callback function.
+					*  Has the method since the last call?
+					*  If yes, run the callback function.
 					*/
 				if ($loaded_state.from[$options.method.paramName]!==$loaded_state.to[$options.method.paramName]){
 					setRunFunction($current_method_class[$options.method.paramName],$loaded_state.from[$options.method.paramName],$loaded_state.to[$options.method.paramName],$function_callback);
@@ -521,12 +445,10 @@ new function (document, $, undefined) {
 		
 		/** setInitJSFuncForHREF($function_callback)<br />
 			* 
-			* en: Initialize the function to callback.
-			* ru: Инициализируем функцию для обратного вызова.
+			*  Initialize the function to callback.
 			* 
 			* @param {string} $function_callback
-			* en: Function callback.
-			* ru: Функция обратного вызова
+			*  Function callback.
 			* 
 			* @access private
 			* @return void
@@ -535,8 +457,7 @@ new function (document, $, undefined) {
 			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,4)+$EVNINE_NAME+'setInitJSFuncForHREF($function_callback='+$function_callback+') BEGIN');
 			try {
 				/**
-					* en: For the controller and the method of reference is the method.
-					* ru: Для контроллера и метода из ссылки получим методы
+					*  For the controller and the method of reference is the method.
 					*/
 				$current_method_class = getFuncForControllerAndMethod();
 				setRunFunction($current_method_class[$options.controller.paramName],$loaded_state.from[$options.controller.paramName],$loaded_state.to[$options.controller.paramName],$function_callback);
@@ -549,56 +470,46 @@ new function (document, $, undefined) {
 		
 		/** setRunFunction($obj,$before,$after,$function_callback)<br />
 			* 
-			* en: Start the function.
-			* ru: Запустим функцию.
+			*  Start the function.
 			* 
 			* @param {object} $obj
-			* en: An object with methods.
-			* ru: Объект с методами
+			*  An object with methods.
 			* 
 			* @param {string} $function_callback
-			* en: Function callback.
-			* ru: Функция обратного вызова
+			*  Function callback.
 			*
 			* @param {string} $before
-			* en: Method or controller before.
-			* ru: Метод или контроллер до
+			*  Method or controller before.
 			* 
 			* @param {string} $after
-			* en: Method or controller after.
-			* ru: Метод или контроллер после
+			*  Method or controller after.
 			*
 			* @access private
 			* @return {boolean}
-			* <br />en: true - if the function executed successfully.<br /> false - if function failed to call
-			* <br />ru: true - если функция успешно выполнена.<br /> false - если функцию запустить не удалось 
+			* <br /> true - if the function executed successfully.<br /> false - if function failed to call
 			*/ 
 		function setRunFunction($obj,$before,$after,$function_callback){
 			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,5)+$EVNINE_NAME+'setRunFunction() BEGIN');
 			if ($obj==undefined){
 			/**
-				* en: If not specified object.
-				* ru: Если не указан объект.
+				*  If not specified object.
 				*/
 				if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,5)+$EVNINE_NAME+'setRunFunction() END: return false, case:$obj==undefined');
 				return false;
 			}
 			if ($before!==$after){
 				/**
-					* en: Compare the method and controller before and after.
-					* ru: Сравниваем метод и контроллер до и после
+					*  Compare the method and controller before and after.
 					*/
 				if ($options.debugToConsole) console.info(jQuery.evDev.getTab($options.debugPrefixString,6)+'[$before='+$before+']!==[$after='+$after+']');
 				if (isHasAccess($obj)){
 					/**
-						* en: Check the level of access to the function of the options?
-						* ru: Проверяем, есть ли доступ к функции из опций?
+						*  Check the level of access to the function of the options?
 						*/
 					$obj = $obj[$function_callback];
 					if (typeof $obj==='function'){
 						/**
-							* en: Executed if the object specified function.
-							* ru: Выполняется если в объекте указана функция
+							*  Executed if the object specified function.
 							*/
 						if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,5)+$EVNINE_NAME+'setRunFunction() END: return true, case:$obj===function');
 						if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,6)+"$options.setJSFuncForLoadPage.setFunction."+$function_callback+"()");
@@ -611,8 +522,7 @@ new function (document, $, undefined) {
 				}
 			}else {
 				/**
-					* en: Case reload the same page when the method or the controller has not changed.
-					* ru: Случай обновления той же страницы, когда метод или контроллер не изменился
+					*  Case reload the same page when the method or the controller has not changed.
 					*/
 				if ($options.debugToConsole) console.info(jQuery.evDev.getTab($options.debugPrefixString,6)+'[$before='+$before+']===[$after='+$after+']');
 				if ($obj.setReloadPageAction==undefined){
@@ -621,8 +531,7 @@ new function (document, $, undefined) {
 				}
 				if (isHasAccess($obj)){
 					/**
-						* en: Check the level of access to the function of the options?
-						* ru: Проверяем, есть ли доступ к функции из опций?
+						*  Check the level of access to the function of the options?
 						*/
 					if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,6)+"$options.setJSFuncForLoadPage.setFunction.setReloadPageAction()");
 					$obj.setReloadPageAction();
@@ -633,12 +542,10 @@ new function (document, $, undefined) {
 		}
 
 		/** setMethodAndControllerFunc=function($mode)<br />
-			* en: Set a controller and method of URL.
-			* ru: Установить контроллер и метод из ссылки.
+			*  Set a controller and method of URL.
 			* 
 			* @param {string} [$mode='']
-			* en: Flag for checking the first initialization.
-			* ru: Флаг для проверки первой инициализации
+			*  Flag for checking the first initialization.
 			*
 			* @access public
 			* @return void
@@ -647,22 +554,18 @@ new function (document, $, undefined) {
 			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,3)+$EVNINE_NAME+'setMethodAndControllerFunc($mode='+$mode+') BEGIN');
 			if ($mode==='init'){
 				/**
-					* en: If the first initialization.
-					* en: To set the initial values of the states before and after.
-					* ru: Если первая инициализация
-					* ru: Для установки начальных значений состояний до и после.
+					*  If the first initialization.
+					*  To set the initial values of the states before and after.
 					*/
 				$loaded_state.to = getParseURL(location.pathname,4);
 				/**
-					* en: Initialize the function to callback
-					* ru: Инициализируем функцию для обратного вызова
+					*  Initialize the function to callback
 					*/
 				setInitJSFuncForHREF('setAction');
 				$loaded_state.from= $loaded_state.to;
 			} else {
 				/**
-					* en: Initialize the function to callback
-					* ru: Инициализируем функцию для обратного вызова
+					*  Initialize the function to callback
 					*/
 				setInitJSFuncForHREF('setAction');
 			}
@@ -670,12 +573,10 @@ new function (document, $, undefined) {
 		};
 	
 		/** isHasAccess($obj)<br />
-			* en: Check the level of access to the function of the options?
-			* ru: Проверяем, есть ли доступ к функции из опций?
+			*  Check the level of access to the function of the options?
 			* 
 			* @param {object} $obj
-			* en: Object with the method. Check, have access to it?
-			* ru: Объект с методом. Проверим есть ли доступ?
+			*  Object with the method. Check, have access to it?
 			* 
 			* @example
 			* $.evNav(
@@ -686,8 +587,7 @@ new function (document, $, undefined) {
 			*   {
 			*    'default':function($options) 
 			*    {
-			*     en: Default access level
-			*     ru: Уровень доступа 
+			*      Default access level
 			*     this.access='1';
 			*    }
 			*   }
@@ -696,27 +596,22 @@ new function (document, $, undefined) {
 			* 
 			* @access private
 			* @return {boolean}
-			* en: default is true.
-			* en: если 
-			* ru: по умолчанию true
+			*  default is true.
+			*  если 
 			*/
 		function isHasAccess($obj) {
 			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,7)+$EVNINE_NAME+'isHasAccess() BEGIN');
 			if ($options.setFunction.isHasAccess!=undefined){
 				/**
-					* en: If the object specified.
-					* en: Return the response from the method of access checks.
-					* en: Which is set in the options.
-					* ru: Если объект задан. 
-					* ru: Возвращаем ответ от метода проверки доступа.
-					* ru: Который задан в опциях.
+					*  If the object specified.
+					*  Return the response from the method of access checks.
+					*  Which is set in the options.
 					*/
 				if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,7)+$EVNINE_NAME+'isHasAccess() END retrun $options.setFunction.isHasAccess($obj,$options)');
 				return $options.setFunction.isHasAccess($obj,$options);
 			}else {
 				/**
-					* en: When the checks do not always return - there is access.
-					* ru: Если проверки нет всегда возвращаем - доступ есть.
+					*  When the checks do not always return - there is access.
 					*/
 				if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,7)+$EVNINE_NAME+'isHasAccess() END retrun true');
 				return true;
@@ -725,8 +620,7 @@ new function (document, $, undefined) {
 
 		/** function getFuncForControllerAndMethod()<br />
 			* 
-			* en: For the controller and the method of reference is the method
-			* ru: Для контроллера и метода из ссылки получим методы
+			*  For the controller and the method of reference is the method
 			* 
 			* @access private
 			* @return {object} {[$options.controller.paramName],$obj[$options.method.paramName]}
@@ -735,10 +629,8 @@ new function (document, $, undefined) {
 			if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,5)+$EVNINE_NAME+'getFuncForControllerAndMethod() BEGIN');
 			var $obj={};
 			/**
-				* en: Get on a key function of the options
-				* en: Key from the parsing links
-				* ru: Получить функцию по ключу из опций 
-				* ru: Ключ из парсинга ссылки
+				*  Get on a key function of the options
+				*  Key from the parsing links
 				*/
 			$obj[$options.controller.paramName]=getFunctionFromOptions($loaded_state.to[$options.controller.paramName]);
 			$obj[$options.method.paramName]=getFunctionFromOptions($loaded_state.to[$options.controller.paramName]+$options.strUnionControllerWithMethod+$loaded_state.to[$options.method.paramName]);
@@ -748,12 +640,10 @@ new function (document, $, undefined) {
 		}
 	
 		/** function getFunctionFromOptions($key)<br />
-			* en: Get on a key function of the options
-			* ru: Получить функцию по ключу из опций 
+			*  Get on a key function of the options
 			* 
 			* @param {string} $key
-			* en: Key from the parsing links
-			* ru: Ключ из парсинга ссылки
+			*  Key from the parsing links
 			* 
 			* @access private
 			* @return {object} $options.setFuncByEvnineParamMatch[$key] or undefined
@@ -764,28 +654,24 @@ new function (document, $, undefined) {
 			try{
 				if ($options.setFuncByEvnineParamMatch[$key]!=undefined){
 				/**
-					* en: Is set key?
-					* ru: Проверяем существует ли ключ?
+					*  Is set key?
 					*/
 					$setFunctionKey = $options.setFuncByEvnineParamMatch[$key];
 					if (typeof $options.setFunction[$setFunctionKey]==='function'){
 					/**
-						* en: Return the function to call
-						* ru: Вернем функцию для вызова
+						*  Return the function to call
 						*/
 						return new $options.setFunction[$setFunctionKey]($options);
 					}
 				}
 				if ($options.setFuncByHREFMatch!=undefined) {
 				/**
-					* en: Verify the match with the address
-					* ru: Проверим совпадение с адресом
+					*  Verify the match with the address
 					*/
 						if ($options.setFuncByHREFMatch[$loaded_state.to.url]!=undefined){
 						$setFunctionKey = $options.setFuncByHREFMatch[$loaded_state.to.url];
 						/**
-							* en: If the object in the array is a function. 
-							* ru: Если объект в массиве является функцией
+							*  If the object in the array is a function. 
 							*/
 						if (typeof $options.setFunction[$setFunctionKey]==='function'){
 							if ($options.debugToConsole) console.info(jQuery.evDev.getTab($options.debugPrefixString,4)+$EVNINE_NAME+'$options.setFuncByHREFMatch');
@@ -795,16 +681,14 @@ new function (document, $, undefined) {
 				}
 				if ($options.setFuncByMatchRegHREF!=undefined) {
 				/**
-					* en: To verify that the regular expression.
-					* ru: Проверим совпадение с регулярным выражением
+					*  To verify that the regular expression.
 					*/
 					var obj={};
 					$.each($options.setFuncByMatchRegHREF, function($href_reg,$setFunctionKey){
 						$reg = new RegExp($href_reg,"g");
 						if ($loaded_state.to.url.match($reg)){
 						/**
-							* en: If the object in the array is a function
-							* ru: Если объект в массиве является функцией
+							*  If the object in the array is a function
 							*/
 							if (typeof $options.setFunction[$setFunctionKey]==='function'){
 								$obj=new $options.setFunction[$setFunctionKey]($options);
@@ -813,8 +697,7 @@ new function (document, $, undefined) {
 					});
 					if ($obj!=undefined){
 					/**
-						* en: If the object specified return it
-						* ru: Если объект указан возвращаем его
+						*  If the object specified return it
 						*/
 						if ($options.debugToConsole) console.info(jQuery.evDev.getTab($options.debugPrefixString,4)+$EVNINE_NAME+'$options.setFuncByMatchRegHREF');
 						if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,4)+$EVNINE_NAME+'getFunctionFromOptions() END return object');
@@ -828,8 +711,7 @@ new function (document, $, undefined) {
 			return undefined;
 		}
 		/**
-			* en: Link to themselves for access from the jQuery evNav plugin
-			* ru: Ссылка на себя для доступа из jQuery evNav plugin
+			*  Link to themselves for access from the jQuery evNav plugin
 			*/
 		return this;
 	};
