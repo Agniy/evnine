@@ -10,6 +10,38 @@ include_once 'ModelsBitrixInfoBlockParser.php';
 class ModelsBitrix extends ModelsBitrixInfoBlockParser
 {
 
+/** getFromCacheFunction
+	 * Получим данные из кэша и установим триггеры
+	 * 
+	 * @param mixed $param 
+	 * @param mixed $function_callback 
+	 * @access public
+	 * @return void
+	 */
+	function getFromCacheFunction($param,$function_callback,$cache_key='') {
+		$cache = new CPHPCache;
+		$cache_dir= $param['arParams']['CACHE_PATH'].'/'.$function_callback;
+		if($cache->InitCache($param['arParams']["CACHE_TIME"], $function_callback.$cache_key, $cache_dir))
+		{
+			if ($param['isPHPUnitDebug']){
+				$array=$cache->GetVars();
+				$array['#cache']=$function_callback;
+				return $array;
+			}else {
+				return $cache->GetVars();
+			}
+		} else {
+			global $CACHE_MANAGER;
+			$cache->StartDataCache($param['arParams']["CACHE_TIME"],$function_callback.$cache_key, $cache_dir);
+				$CACHE_MANAGER->StartTagCache($cache_dir);
+				$array = $this->$function_callback($param);
+				$CACHE_MANAGER->RegisterTag("iblock_id_new");
+				$CACHE_MANAGER->EndTagCache();
+			$cache->EndDataCache($array);
+			return $array;	
+		}
+	}
+
 /**
  * After load class init api __construct_api 
  * 
@@ -73,7 +105,11 @@ function getQueryOrFalse($query, $param)
 function getQueryFromBitrixAPI($query) 
 {
 	global $DB;
-	return $DB->Query($query);
+	$results=$DB->Query($query);
+	$array_out= array();
+	while ($row = $results->Fetch())
+		array_push($array_out, $row);
+	return $array_out;
 }
 
 
@@ -445,7 +481,7 @@ function getSectionIDBySectionName($IBLOCK_ID, $SECTION_NAME){
 
 	/**
 	 *Вспомогательная функция - выбор всеx секций в инфоблоке
-		*Но главный здесь тормоз $arSelect, попробуйте так:
+		*Но главный здесь тормоз $arSelect
 		*$arSelect = array(
 		*'IBLOCK_ID',
 		*'ID',
@@ -453,7 +489,7 @@ function getSectionIDBySectionName($IBLOCK_ID, $SECTION_NAME){
 		*'PROPERTY_*'
 		) 
 	*/
-	function getAllSectionArrayByID ($idblock, $idsection, $callback, $arFilter, $arSelectFields, $arOrder)
+	function getAllSectionArrayByID ($idblock, $idsection, $callback, $arFilter, $arSelectFields, $arOrder, $key_is_id=false)
 	{
 		$array_out = array();
 		if (count(
@@ -471,7 +507,6 @@ function getSectionIDBySectionName($IBLOCK_ID, $SECTION_NAME){
 					"SORT" => "ASC"
 				);
 			}
-
 		$productions = CIBlockSection::GetList(
 			$arOrder,
 			$arFilter,
@@ -480,9 +515,18 @@ function getSectionIDBySectionName($IBLOCK_ID, $SECTION_NAME){
 		$count = 0;
 		while ($arr = $productions->Fetch())
 		{
-			$count ++;
-			$array_out[$count] = $this->$callback(
-				$arr);
+			$count++;
+			if ($key_is_id){
+				$tmp = $this->$callback(
+					$arr
+				);
+				$array_out[$tmp[$key_is_id]]= $tmp;
+				unset($array_out[$tmp[$key_is_id]][$key_is_id]);
+			}else {
+				$array_out[$count] = $this->$callback(
+					$arr
+				);
+			}
 		}
 		return $array_out;
 	}
@@ -501,7 +545,22 @@ function getFirstArrayKey($array) {
  *Вспомогательная функция - получение всеx элеметов из инфоблока с учётом фильтра
  *man CIBlockElement::GetList
  */
-function getAllElementArrayByID ($idblock, $idsection, $callback, $arFilter, $arSelectFields, $data, $key_is_id=false, $arOrder,$arGroupBy=false,$arNavStartParams=false,$get_prop=true,$get_first_array_key=false,$set_cache=false)
+ function getAllElementArrayByID (
+	$idblock
+	,$idsection
+	,$callback
+	,$arFilter
+	,$arSelectFields
+	,$data
+	,$key_is_id=false
+	,$arOrde
+	,$arGroupBy=false
+	,$arNavStartParams=false
+	,$get_prop=true
+	,$get_first_array_key=false
+	,$set_cache=false
+	,$set_url_templates=false
+)
 {
 	if ($set_cache){
 		global $CACHE_MANAGER;
@@ -528,30 +587,53 @@ function getAllElementArrayByID ($idblock, $idsection, $callback, $arFilter, $ar
 			,$arNavStartParams
 			,$arSelectFields
 		); 
+	if ($set_url_templates){
+		$productions->SetUrlTemplates("", $set_url_templates);
+	}
 	//false, //без группировки group by
 	//false //без параметров постраничной навигации
 	//array()//выборка только необходимых полей (IBLOCK_ID может пригодиться в некоторых особых случаях)
 	$count = 0;
-	while ($product = $productions->GetNextElement(false,false))
-	{
-		$count ++;
-		if ($get_prop){
-			$arProps = $product->GetProperties(false,false);
+	if ($get_prop){
+		while ($product = $productions->GetNextElement(false,false))
+		{
+			$count ++;
+				$arProps = $product->GetProperties(false,false);
+			if ($key_is_id){
+				$tmp = $this->$callback(
+					$product,
+					$arProps,
+					$data
+				);
+				$array_out[$tmp[$key_is_id]]= $tmp;
+				unset($array_out[$tmp[$key_is_id]][$key_is_id]);
+			}else {
+				$array_out[$count] = $this->$callback(
+					$product,
+					$arProps,
+					$data
+				);
+			}
 		}
-		if ($key_is_id){
-			$tmp = $this->$callback(
-				$product,
-				$arProps,
-				$data
-			);
-			$array_out[$tmp[$key_is_id]]= $tmp;
-			unset($array_out[$tmp[$key_is_id]][$key_is_id]);
-		}else {
-			$array_out[$count] = $this->$callback(
-				$product,
-				$arProps,
-				$data
-			);
+	}else {
+		while ($product = $productions->Fetch(false,false))
+		{
+			$count ++;
+			if ($key_is_id){
+				$tmp = $this->$callback(
+					$product,
+					$arProps,
+					$data
+				);
+				$array_out[$tmp[$key_is_id]]= $tmp;
+				unset($array_out[$tmp[$key_is_id]][$key_is_id]);
+			}else {
+				$array_out[$count] = $this->$callback(
+					$product,
+					$arProps,
+					$data
+				);
+			}
 		}
 	}
 	if ($get_first_array_key){
