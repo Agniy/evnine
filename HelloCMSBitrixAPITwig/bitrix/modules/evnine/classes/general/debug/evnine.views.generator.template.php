@@ -13,6 +13,8 @@ var $comment;
 var $tpl= 'Twig';
 var $name= 'tpl';
 var $cfg;
+var $init_config;
+
 
 function __construct($config) 
 {
@@ -37,16 +39,16 @@ function __construct($config)
 	if ($config['tpl']){
 		$this->tpl= $config['tpl'];
 	}
+	$this->init_config=$config;
 }
 
 function getArrayToTemplate ($array,$shift=0,$template='Twig') {
 	include_once('evnine.views.generator.template.config.php');
 	$template_method='getConfig'.$this->tpl;
 	$this->cfg = $cfg = TemplateConfig::$template_method();
-	return //'<hr/>'
-		''
+	return 
+		(empty($this->init_config['id'])?'':'<a name="'.$this->init_config['id'].'-tpl-gen"></a>')
 		.$this->getB(
-		//'<a name="'.$this->name.'"></a>
 		'evnine.views.generator.template.php: '
 			.'['
 				.($this->if_on?' IF ':'').($this->if_echo?' ECHO for ':'').($this->tpl?' '.$this->tpl.' ':'')
