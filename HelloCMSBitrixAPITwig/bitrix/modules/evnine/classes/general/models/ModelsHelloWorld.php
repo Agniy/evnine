@@ -6,7 +6,7 @@
  * @version 1.0
  * @created 04-apr-2010 11:03:41
  */
-class ModelsHelloWorld
+class ModelsHelloWorld extends ModelsBitrix
 {	
 
 	var $api;
@@ -29,36 +29,58 @@ class ModelsHelloWorld
 		return $this->getFromCacheFunction($param, 'getAllElementArrayByID', /*$cache_keys=*/$param['arParams']['IBLOCK_ID']);
 	}
 
-	/** getFromCacheFunction
-	 * Получим данные из кэша и установим триггеры
+	/**
+	 * Используется новый метод доступа
 	 * 
 	 * @param mixed $param 
-	 * @param mixed $function_callback 
 	 * @access public
 	 * @return void
 	 */
-	function getFromCacheFunction($param,$function_callback,$cache_key='') {
-		$cache = new CPHPCache;
-		$cache_dir= $param['arParams']['CACHE_PATH'].'/'.$function_callback;
-		if($cache->InitCache($param['arParams']["CACHE_TIME"], $function_callback.$cache_key, $cache_dir))
-		{
-			if ($param['isPHPUnitDebug']){
-				$array=$cache->GetVars();
-				$array['#cache']=$function_callback;
-				return $array;
-			}else {
-				return $cache->GetVars();
-			}
-		} else {
-			global $CACHE_MANAGER;
-			$cache->StartDataCache($param['arParams']["CACHE_TIME"],$function_callback.$cache_key, $cache_dir);
-				$CACHE_MANAGER->StartTagCache($cache_dir);
-				$array = $this->$function_callback($param);
-				$CACHE_MANAGER->RegisterTag("iblock_id_new");
-				$CACHE_MANAGER->EndTagCache();
-			$cache->EndDataCache($array);
-			return $array;	
-		}
+	function getAllElementUserNewAPI($param) {
+	return $this->getAllFromAPI(
+	array(
+  '$arOrder'=>array()
+  ,'$arFilter'=>array()
+  ,'$arGroupBy'=>array()
+  ,'$arNavStartParams'=>array()
+  ,'$arSelectFields'=>array()
+  ,'set_cache'=>false
+     // Триггер очистки кэша по IBLOCK_ID
+     // обязательно указать $param['$arFilter']['IBLOCK_ID']
+  ,'set_parser'=>''
+     // Callback функция для обработки данных, 
+     // задаётся в models/ModelsBitrixInfoBlockParser.php 
+  ,'get_section'=>false
+     // Получить данные секций, по умолчанию берутся эл-ты
+  ,'get_sef'=>''
+     // Нужен ли метод для форматирования URL?
+     // get_sef=true GetNextElement(false,false)
+     // get_sef=false Fetch(false,false)
+  ,'set_sef'=>''
+     // Использовать свой адрес ЧПУ 
+     // 'set_sef'=>#SECTION_ID#/#ELEMENT_ID#
+     // SetUrlTemplates("", $param['set_sef']);
+  ,'get_prop'=>false
+     // Получить свойства эл-тов, 
+     // если указана секция, то 'get_prop'=false
+  ,'set_key_id'=>false
+     // Какой использовать ключ для формирования массива
+     // Пример: На входе: 'set_key_id'=>'ID',
+     // На выходе: 
+     // array(
+     //  555=>array('ID'='555',array(..))
+     //  777=>array('ID'='7',array(..))
+     // )
+  ,'get_first'=>false
+     // Вернуть первый эл-т массива без ключа
+     // По умолчанию, на выходе:
+     // array(
+     //  '0'=>array('ID'='555',array(..))
+     // )
+     // C ключом ,'get_first'=>true,
+     // на выходе:
+     // array('ID'='555',array(..))
+  ));
 	}
 
 	/** getAllElementArrayByID
@@ -87,6 +109,7 @@ class ModelsHelloWorld
 			,$set_cache=true
 		);
 	}
+
 
 	function setResetForTest($param){//Reset any data
 		//echo 'setResetForTest<br />';

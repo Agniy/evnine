@@ -479,6 +479,148 @@ function getSectionIDBySectionName($IBLOCK_ID, $SECTION_NAME){
 		return false;
 	}
 
+
+/** getAllFromAPI 
+ * Универсальный метод для получения данных из API
+ * 
+  $param=array(
+  '$arOrder'=>array()
+  ,'$arFilter'=>array()
+  ,'$arGroupBy'=>array()
+  ,'$arNavStartParams'=>array()
+  ,'$arSelectFields'=>array()
+  ,'set_cache'=>true
+     // Триггер очистки кэша по IBLOCK_ID
+     // обязательно указать $param['$arFilter']['IBLOCK_ID']
+  ,'set_parser'=>''
+     // Callback функция для обработки данных, 
+     // задаётся в models/ModelsBitrixInfoBlockParser.php 
+  ,'get_section'=>false
+     // Получить данные секций, по умолчанию берутся эл-ты
+  ,'get_sef'=>''
+     // Нужен ли метод для форматирования URL?
+     // get_sef=true GetNextElement(false,false)
+     // get_sef=false Fetch(false,false)
+  ,'set_sef'=>''
+     // Использовать свой адрес ЧПУ 
+     // 'set_sef'=>#SECTION_ID#/#ELEMENT_ID#
+     // SetUrlTemplates("", $param['set_sef']);
+  ,'get_prop'=>false
+     // Получить свойства эл-тов, 
+     // если указана секция, то 'get_prop'=false
+  ,'set_key_id'=>false
+     // Какой использовать ключ для формирования массива
+     // Пример: На входе: 'set_key_id'=>'ID',
+     // На выходе: 
+     // array(
+     //  555=>array('ID'='555',array(..))
+     //  777=>array('ID'='7',array(..))
+     // )
+  ,'get_first'=>false
+     // Вернуть первый эл-т массива без ключа
+     // По умолчанию, на выходе:
+     // array(
+     //  '0'=>array('ID'='555',array(..))
+     // )
+     // C ключом ,'get_first'=>true,
+     // на выходе:
+     // array('ID'='555',array(..))
+  )
+ * 
+ * @param array $param 
+ * @access public
+ * @return array
+ */
+function getAllFromAPI($param){
+	$array_out=array();
+	echo '#$param: <pre>'; if(function_exists(print_r2)) print_r2($param); else print_r($param);echo "</pre><br />\r\n";
+	if ($param['set_cache']){
+		global $CACHE_MANAGER;
+		$CACHE_MANAGER->RegisterTag("iblock_id_".$param['$arFilter']['IBLOCK_ID']);
+	}
+	if ($param['set_parser']){
+		$callback= $param['set_parser'];
+	}else {
+		$callback=false;
+	}
+	if ($param['get_section']){
+		$items=CIBlockSection::GetList(
+		$arOrder=$param['$arOrder']
+		,$arFilter=$param['$arFilter']
+		,$arNavStartParams=$param['$arNavStartParams']
+		//,$arSelectFields=$param['$arSelectFields']
+	);
+	}else {
+		$items=CIBlockElement::GetList(
+		$arOrder=$param['$arOrder']
+		,$arFilter=$param['$arFilter']
+		,$arGroupBy=$param['$arGroupBy']
+		,$arNavStartParams=$param['$arNavStartParams']
+		,$arSelectFields=$param['$arSelectFields']
+	);
+	}
+	if ($param['set_sef']){
+		$items->SetUrlTemplates("", $param['set_sef']);
+	}
+	$count = 0;
+	if ($param['get_prop']||$param['get_sef']){
+		while ($item = $items->GetNextElement(false,false))
+		{
+			if ($param['get_prop']&&!$param['get_section']){
+				$props = $item->GetProperties(false,false);
+			}else {
+				$props=array();
+			}
+			if ($callback){
+				$tmp = $this->$callback(
+					$item,
+					$props,
+					$param
+				);
+			}else {
+				if ($param['get_prop']) {
+					$item['props']=$props;
+				}
+				$tmp = $item;
+			}
+			if ($param['set_key_id']){
+				$array_out[$tmp[$param['set_key_id']]]= $tmp;
+				unset($array_out[$tmp[$param['set_key_id']]][$param['set_key_id']]);
+			}else {
+				$array_out[$count] = $tmp;
+			}
+			$count++;
+		}
+	}else {
+		while ($item = $items->Fetch(false,false))
+		{
+			if ($callback){
+				$tmp = $this->$callback(
+					$item,
+					$props,
+					$param
+				);
+			}else {
+				if ($param['get_prop']) {
+					$item['props']=$props;
+				}
+				$tmp = $item;
+			}
+			if ($param['set_key_id']){
+				$array_out[$tmp[$param['set_key_id']]]= $tmp;
+				unset($array_out[$tmp[$param['set_key_id']]][$param['set_key_id']]);
+			}else {
+				$array_out[$count] = $tmp;
+			}
+			$count++;
+		}
+	}
+	if ($param['get_first']){
+		return $array_out['0'];
+	}
+	return $array_out;
+}
+
 	/**
 	 *Вспомогательная функция - выбор всеx секций в инфоблоке
 		*Но главный здесь тормоз $arSelect
@@ -489,56 +631,38 @@ function getSectionIDBySectionName($IBLOCK_ID, $SECTION_NAME){
 		*'PROPERTY_*'
 		) 
 	*/
-	function getAllSectionArrayByID ($idblock, $idsection, $callback, $arFilter, $arSelectFields, $arOrder, $key_is_id=false)
+	function getAllSectionArrayByID (
+		$idblock, 
+		$idsection, 
+		$callback, 
+		$arFilter, 
+		$arSelectFields, 
+		$arOrder, 
+		$key_is_id=false)
 	{
-		$array_out = array();
-		if (count(
-					$arFilter) == 0)
-		{
-			$arFilter = array(
-								"IBLOCK_ID" => $idblock,
-								"SECTION_ID" => $idsection
-			);
-		}
-			if (count(
-					$arOrder) == 0)
-			{
-				$arOrder = Array(
-					"SORT" => "ASC"
-				);
-			}
-		$productions = CIBlockSection::GetList(
-			$arOrder,
-			$arFilter,
-			false,
-			$arSelectFields);
-		$count = 0;
-		while ($arr = $productions->Fetch())
-		{
-			$count++;
-			if ($key_is_id){
-				$tmp = $this->$callback(
-					$arr
-				);
-				$array_out[$tmp[$key_is_id]]= $tmp;
-				unset($array_out[$tmp[$key_is_id]][$key_is_id]);
-			}else {
-				$array_out[$count] = $this->$callback(
-					$arr
-				);
-			}
-		}
-		return $array_out;
-	}
-
-
-function getFirstArrayKey($array) {
-	$tmp = each($array);
-	return $tmp['key'];
-	//echo '#$tmp: <pre>'; if(function_exists(print_r2)) print_r2($tmp); else print_r($tmp);echo "</pre><br />\r\n";
-	//list($key, $value)=$tmp;
-	//echo '#$key: <pre>'; if(function_exists(print_r2)) print_r2($key); else print_r($key);echo "</pre><br />\r\n";
-	//return $key;
+		return $this->getAllFromAPI(
+		 array(
+	 '$arOrder'=>$arOrde
+  ,'$arFilter'=>$arFilter
+  ,'$arSelectFields'=>$arSelectFields
+  ,'set_cache'=>$set_cache
+     // Триггер очистки кэша по IBLOCK_ID
+     // обязательно указать $param['$arFilter']['IBLOCK_ID']
+  ,'set_parser'=>$callback
+     // Callback функция для обработки данных, 
+     // задаётся в models/ModelsBitrixInfoBlockParser.php 
+  ,'get_section'=>true
+     // Получить данные секций, по умолчанию берутся эл-ты
+  ,'set_key_id'=>$key_is_id
+     // Какой использовать ключ для формирования массива
+     // Пример: На входе: 'set_key_id'=>'ID',
+     // На выходе: 
+     // array(
+     //  555=>array('ID'='555',array(..))
+     //  777=>array('ID'='7',array(..))
+     // )
+  )
+ );
 }
 
 /**
@@ -561,85 +685,61 @@ function getFirstArrayKey($array) {
 	,$set_cache=false
 	,$set_url_templates=false
 )
-{
-	if ($set_cache){
-		global $CACHE_MANAGER;
-		$CACHE_MANAGER->RegisterTag("iblock_id_".$idblock);
-	}
-	$arProps=$array_out = array();
-	if (count(
-		$arFilter) == 0)
-	{
-		$arFilter = array(
-			"IBLOCK_ID" => $idblock,
-			"SECTION_ID" => $idsection
-		);
-	}
-	if (count($arOrder) == 0){
-			$arOrder = Array(
-			"SORT" => "ASC"
-			);
-	}
-	$productions = CIBlockElement::GetList(
-			$arOrder,
-			$arFilter
-			,$arGroupBy
-			,$arNavStartParams
-			,$arSelectFields
-		); 
-	if ($set_url_templates){
-		$productions->SetUrlTemplates("", $set_url_templates);
-	}
-	//false, //без группировки group by
-	//false //без параметров постраничной навигации
-	//array()//выборка только необходимых полей (IBLOCK_ID может пригодиться в некоторых особых случаях)
-	$count = 0;
-	if ($get_prop){
-		while ($product = $productions->GetNextElement(false,false))
-		{
-			$count ++;
-				$arProps = $product->GetProperties(false,false);
-			if ($key_is_id){
-				$tmp = $this->$callback(
-					$product,
-					$arProps,
-					$data
-				);
-				$array_out[$tmp[$key_is_id]]= $tmp;
-				unset($array_out[$tmp[$key_is_id]][$key_is_id]);
-			}else {
-				$array_out[$count] = $this->$callback(
-					$product,
-					$arProps,
-					$data
-				);
-			}
-		}
-	}else {
-		while ($product = $productions->Fetch(false,false))
-		{
-			$count ++;
-			if ($key_is_id){
-				$tmp = $this->$callback(
-					$product,
-					$arProps,
-					$data
-				);
-				$array_out[$tmp[$key_is_id]]= $tmp;
-				unset($array_out[$tmp[$key_is_id]][$key_is_id]);
-			}else {
-				$array_out[$count] = $this->$callback(
-					$product,
-					$arProps,
-					$data
-				);
-			}
-		}
-	}
-	if ($get_first_array_key){
-		return $array_out['1'];
-	}
-	return $array_out;
+ {
+	 return $this->getAllFromAPI(
+		 array(
+	 '$arOrder'=>$arOrde
+  ,'$arFilter'=>$arFilter
+  ,'$arGroupBy'=>$arGroupBy
+  ,'$arNavStartParams'=>$arNavStartParams
+  ,'$arSelectFields'=>$arSelectFields
+  ,'set_cache'=>$set_cache
+     // Триггер очистки кэша по IBLOCK_ID
+     // обязательно указать $param['$arFilter']['IBLOCK_ID']
+  ,'set_parser'=>$callback
+     // Callback функция для обработки данных, 
+     // задаётся в models/ModelsBitrixInfoBlockParser.php 
+  ,'get_section'=>false
+     // Получить данные секций, по умолчанию берутся эл-ты
+  //,'get_sef'=>''
+     // Нужен ли метод для форматирования URL?
+     // get_sef=true GetNextElement(false,false)
+     // get_sef=false Fetch(false,false)
+  ,'set_sef'=>$set_url_templates
+     // Использовать свой адрес ЧПУ 
+     // 'set_sef'=>#SECTION_ID#/#ELEMENT_ID#
+     // SetUrlTemplates("", $param['set_sef']);
+  ,'get_prop'=>$get_prop
+     // Получить свойства эл-тов, 
+     // если указана секция, то 'get_prop'=false
+  ,'set_key_id'=>$key_is_id
+     // Какой использовать ключ для формирования массива
+     // Пример: На входе: 'set_key_id'=>'ID',
+     // На выходе: 
+     // array(
+     //  555=>array('ID'='555',array(..))
+     //  777=>array('ID'='7',array(..))
+     // )
+  ,'get_first'=>$get_first_array_key,
+     // Вернуть первый эл-т массива без ключа
+     // По умолчанию, на выходе:
+     // array(
+     //  '0'=>array('ID'='555',array(..))
+     // )
+     // C ключом ,'get_first'=>true,
+     // на выходе:
+     // array('ID'='555',array(..))
+  )
+ );
+}
+
+function getFirstArrayKey($array) {
+	$tmp = each($array);
+	return $tmp['key'];
+	//echo '#$tmp: <pre>'; if(function_exists(print_r2)) print_r2($tmp); else print_r($tmp);echo "</pre><br />\r\n";
+	//list($key, $value)=$tmp;
+	//echo '#$key: <pre>'; if(function_exists(print_r2)) print_r2($key); else print_r($key);echo "</pre><br />\r\n";
+	//return $key;
 }
 
 /**

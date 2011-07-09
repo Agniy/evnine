@@ -7,7 +7,7 @@ class Config
 	var $api;
 	var $access_level;
 	var $class_path;
-	var $controller_menu_view;
+	var $controller_alias;
 
 	function __construct(){
 
