@@ -21,7 +21,7 @@ class Config
 			'default_controller'=>'default_controller',
 			'isPHPUnitDebug'=>true,
 		);
-		$this->controller_menu_view=array(
+		$this->controller_alias=array(
 			'helloworld'=>'ControllersHelloWorld',
 		);
 		$this->class_path=array(
