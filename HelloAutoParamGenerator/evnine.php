@@ -224,6 +224,13 @@ function __construct(){
 			$this->loaded_class[$this->api]->setInitAPI($this->param);
 		}
 	}
+/**
+ * en: evnine.debug.php function getForDebugArrayDiff()
+ * ru: Проверяем наличия функции для сравнения массивов.
+ */
+	if ($this->param_const['debug']&&function_exists('getForDebugArrayDiff')){
+		$this->param_const['debug_param_diff']=true;
+	}
 }
 
 /** setInitController($init_array)
@@ -401,13 +408,15 @@ function getControllerForParam($param) {
 		* ru: Используется валидация из методов контроллера
 		*/
 	$this->getURL();
-	if (count($this->result['param'])>1){
-		/**
-			* TODO ADD if($this->param['debug']
-			* en: For debug
-			* ru: Для отладки, удалим параметры на выходи
-			*/
+	if ($this->param_const['debug_param_diff']){
+	/**
+		* en: For debug
+		* ru: Для отладки, удалим параметры на выходе
+		*/
 		unset($this->result['param'][$this->param['method']]['param_out']);
+	}
+	if ($this->param_const['param_out']){
+		$this->result['param_out']=$this->param;
 	}
 	return $this->result;
 }
@@ -638,6 +647,9 @@ function getURL($seo=false) {
 		*  'default',
 		* )
 		*/
+		if (!is_array($this->current_controller['public_methods']['default']['inURLMethod'])){
+		$this->current_controller['public_methods']['default']['inURLMethod']=array($this->current_controller['public_methods']['default']['inURLMethod']);
+		}
 		$url_method = $this->current_controller['public_methods']['default']['inURLMethod'];
 		if(!empty($this->current_controller['public_methods'][$this->param['method']]['inURLMethod_add'])){
 		/**
@@ -1203,7 +1215,6 @@ function getTemplateURL($tmpl,$seo) {
 		/**
 			* en: If a general method for SEF controller, use /param=value/
 			* ru: Если общий метод ЧПУ для контроллера, используем /param=value/
-			* TODO check SEF for controller
 			*/
 		$urn_base='/'.$tmpl;
 	} else {
@@ -1310,7 +1321,7 @@ function getInputFormText($name,$value,$multi_form=false){
 	*  'ext_search' => array(
 	*   'inURLMethod' => array('ext_search'),
 	*   'validation_form'=> array(
-	*     'search' => array(
+	*     'search' => array(	
 	*       'to'=>'SearchTitle',
 	*       'inURL' => true,
 	*       'type'=>'str',
@@ -1667,13 +1678,18 @@ function getDataFromController($param,$debug=false) {
 				$this->result['&lArr;'.$parent.':parent-default'] = '&lArr;Parent Method <font color="orange">'.$parent.'::parent-default</font> is unload';//Init method load double fix		
 				$this->param['method']= $save_method;
 				$this->param['controller']=$save_template;
-			}elseif (!empty($this->current_controller['public_methods']['default'])){
+			}elseif (
+				!empty($this->current_controller['public_methods']['default'])
+				&&$this->param['method']!=='default'
+				//FIX 07.08.2011
+				//Заперет инициализации повторной есть нет AJAX
+			){
+				$this->result['&rArr;'.$this->current_controller_name.':default'] = '&rArr;Default extend method <font color="orange">'.$this->current_controller_name.'::default</font> is load';//Init method load double fix
 				$this->setInitController($this->current_controller['init'],$this->current_controller_name);//Инициализируем данные
 				//Загружаем метод по умолчания в главном контроллере
 				$this->param['method']='default';
-				$this->result['&rArr;'.$this->current_controller_name.':default'] = '&rArr;Extend Method <font color="orange">'.$this->current_controller_name.'::default</font> is load';//Init method load double fix
 				$this->getPublicMethod($this->param);
-				$this->result['&lArr;'.$this->current_controller_name.':default'] = '&lArr;Extend Method <font color="orange">'.$this->current_controller_name.'::default</font> is unload';//Init method load double fix
+				$this->result['&lArr;'.$this->current_controller_name.':default'] = '&lArr;Default extend method <font color="orange">'.$this->current_controller_name.'::default</font> is unload';//Init method load double fix
 			}
 			$this->getAvailableTemplates($this->current_controller['templates'],$this->current_controller_name);
 		}
@@ -1802,7 +1818,7 @@ function getMethodFromClass($methods_class,$methods_array) {
 			$methods_class= $this->param['controller'];
 		}
 		//ev9eniy 20.06.2011 правка
-		if (isset($this->current_controller[$methods_class])){
+		if (isset($this->controller_alias[$methods_class])){
 			$is_save_validation_param= false;
 			$save_param['controller']= $this->param['controller'];
 //edit_univer_fix			$save_param['form_data']= $this->param['form_data'];
@@ -1998,9 +2014,9 @@ function getDataFromMethod($methods_class,$methods_array){
 			//$debug=false;
 //			$this->param['isPHPUnitDebug']=true;
 //$this->param['isPHPUnitDebug']&&
-			if ($this->param['debug']){//TODO DELETE 
+			if ($this->param['debug_param_diff']){//TODO DELETE 
 				if (isset($this->result['param'][$this->param['method']]['param_out'])){
-					$this->result['param'][$this->param['method']][$array_key] = $this->getForDebugArrayDiff($this->param,$this->result['param'][$this->param['method']]['param_out']);
+					$this->result['param'][$this->param['method']][$array_key] = getForDebugArrayDiff($this->param,$this->result['param'][$this->param['method']]['param_out']);
 					$this->result['param'][$this->param['method']]['param_out'] = $this->param;
 				}else {
 					$this->result['param'][$this->param['method']]['param_out'] = $this->param;
@@ -2237,153 +2253,40 @@ function getFirstArrayKey($array,$key_mode='key') {
 	}
 }
 
-/** Сделать выборку для теста
-	*
-	*/
-function getDataForTest($method,$param){
+function getControllerForParamTest($method,$array_init,$param){
+	if (empty($this->param_const['CacheDirPHPUnit'])){
+		return 'ERROR not exist in  evnine.config.php
+			$this->param_const=array(\'CacheDirPHPUnit\'=>\'CACHE_DIR\')';
+	}
+	$methods_class='ModelsPHPUnit';
+	if ($this->isSetClassToLoadAndSetParam($methods_class)){
 		//Буфиризируем вывод шаблона
 		ob_start();
 		//Подключаем файл тестирования
-		include_once($_SERVER["DOCUMENT_ROOT"].DIRECTORY_SEPARATOR.'components/com_sa/models/base/ModelsUnitPHP.php');
 		//Создаём имя файла дерриктория + метод
-		$file_name = __CLASS__.'::'.$method.$param['controller'].'-'.md5(implode('","',$param));
+		$file_name = $this->loaded_class[$methods_class]->getFileNameMD5ForParam($this->path_to.$this->param_const['CacheDirPHPUnit'],$param);
 		//Получаем данные из кэша
-		$array = ModelsUnitPHP::getSerData($file_name);
+		$array = $this->loaded_class[$methods_class]->getSerData($file_name,$param);
 		//Если данных нет, обновляем кэш метода
 		if (empty($array)){
-			//Запрашиваем метод в текущем классе
-			if (method_exists($this,$method))	
+			if (!empty($array_init)){
+				$array = $array_init;
+			}elseif (method_exists($this,$method)){
+				//Запрашиваем метод в текущем классе
 				$array = $this->$method($param);
+			}
 			//Сохраняем в кэш
-			ModelsUnitPHP::setSerData($file_name,$array);
+			$this->loaded_class[$methods_class]->setSerData($file_name,$array,true);
 		}
 		//Обнуляем все данные
 		//$this->setRestetForTest();
 		ob_end_flush();
 		return $array;
-}
-
-function getForDebugArrayDiff($first_array,$second_array,$not_check=array('REQUEST_IN' => '','REQUEST_OUT' => ''/*,'ViewMethod' => ''*/),$max_in_array=200)
-{
-	$return = array (); // return
-	$new='+';
-	foreach ($first_array as $k => $pl) // payload
-		if (!isset($not_check[$k])){
-		if ( ! isset ($second_array[$k]) 
-			|| 
-			(	
-				$second_array[$k] != $pl 
-				&& 
-				count($second_array[$k]) != count($pl)
-			) 
-			//|| (count(array_merge(array_diff($second_array[$k],$pl)))>0)
-			||md5(
-			$this->getMultiImplode(
-				'',($first_array[$k])
-			)
-			)!=md5(
-				$this->getMultiImplode('',$second_array[$k])
-				)
-		){
-			//echo '<<===<pre>#$second_array[$k]: '; print_r($second_array[$k]); echo '</pre>!!';
-			if (is_array($pl)&&count($pl)>$max_in_array){
-				$i=0;
-				foreach ($pl as $pl_title =>$pl_value){
-					if($i>$max_in_array&&is_array($pl_value)&&isset ($second_array[$k])){
-						$return[$k][$new][$pl_title] = '...';
-					}else {
-						$return[$k][$new][$pl_title] = $pl_value;
-					}
-					$i++;
-				}		
-			}else {
-					$return[$k][$new] = $pl;
-			}
-			if (! isset ($second_array[$k])){
-				//$return[$k][$new] 
-				$tmp = $return[$k][$new];
-				unset($return[$k]);
-				$return[$new.$k]=$tmp;
-			}
-		}
+	}else {
+		return 'ERROR not exist in  evnine.config.php
+			$this->class_path=array(\'ModelsPHPUnit\'=>array(\'path\'=>\'models\'.DIRECTORY_SEPARATOR)';
 	}
-	$old='-';
-	foreach ($second_array as $k => $pl) // payload
-	if (!isset($not_check[$k])){
-		if ( ( ! isset ($first_array[$k]) 
-			|| ($first_array[$k] != $pl 
-			&& count($first_array[$k]) != count($pl) 
-		)
-			||md5($this->getMultiImplode('',($first_array[$k])))!=md5($this->getMultiImplode('',$second_array[$k]))
-			//|| (count(array_merge(array_diff($first_array[$k],$pl)))>0)
-		) /*&& ! isset ($return[$k])*/ ){
-			if (is_array($pl)&&count($pl)>$max_in_array){
-				$i=0;
-				foreach ($pl as $pl_title =>$pl_value){
-					if($i>$max_in_array&&is_array($pl_value)/*&&isset($first_array[$k])*/){
-						$return[$k][$old][$pl_title] = '...';
-					}else {
-						$return[$k][$old][$pl_title] = $pl_value;
-					}
-					$i++;
-				}		
-			}else {
-					$return[$k][$old] = $pl;
-			}
-			if (count($return[$k])==1){
-				$tmp = $return[$k][$old];
-				unset($return[$k]);
-				$return[$old.$k]=$tmp;
-			}
-		if (isset($first_array[$k])&&isset($first_array[$k])){
-				$tmp1 = $return[$k][$new];
-				$tmp2 = $return[$k][$old];
-				$return[$k][$new] 
-						=$this->getForDebugArrayDiff($tmp1,$tmp2,$not_check);
-				$return[$k][$old] 
-					=$this->getForDebugArrayDiff($tmp2,$tmp1,$not_check);
-				if (count($return[$k][$old])==0){
-					unset($return[$k][$old]);
-					$return[$k][$old.' ']= $tmp2;
-				}
-				if (count($return[$k][$new])==0){
-					unset($return[$k][$new]);
-					$return[$k]['+']= $tmp1;
-				}	
-			}
-			if ($return[$new.$k]==$return[$old.$k]&&
-				count($return[$new.$k])==0&&
-				count($return[$new.$k])==0
-			){
-				unset($return[$new.$k]);
-				unset($return[$old.$k]);
-			}
-			if (count($return[$k])==2){
-				unset($return[$k][$old]);
-			}
-		}
-	}
-	return $return;
-} 
-
-function getMultiImplode($glue, $pieces)
-{
-    $string='';
-    if(is_array($pieces))
-    {
-        reset($pieces);
-        while(list($key,$value)=each($pieces))
-        {
-            $string.=$glue.$this->getMultiImplode($glue, $value);
-        }
-    }
-    else
-    {
-        return $pieces;
-    }
-    return trim($string, $glue);
 }
-
 
 }
 ?>

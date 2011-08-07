@@ -8,6 +8,8 @@
  */
 class ControllersHelloWorld
 {
+
+
 	var $controller;
 	// en: Array controller
 	/* ru: Базовый массив контроллера*/
@@ -15,8 +17,8 @@ class ControllersHelloWorld
 	// en: Initialize the controller with access levels
 	/* ru: Инициализируем контроллер передавая уровни доступа из конфига*/
 		$this->controller = array(
-			'inURLUnitTest' => array(
-				'all' => 'all',
+			//'inURLUnitTest' => array(
+				//'all' => 'all',
 				//'form_data'=>array(
 					//array('test_id'=>'1'),
 				//),
@@ -25,7 +27,7 @@ class ControllersHelloWorld
 					//'true',
 					//'',
 				//),
-			),
+			//),
 			'public_methods' => array(//Public methods are available for all
 					//Example: index.php?t=the controller&m=the public method
 					//Публичные методы доступные всем пользователям
@@ -34,35 +36,12 @@ class ControllersHelloWorld
 													 //Метод по умолчанию, выполняется всегда если не указан
 						'ModelsHelloWorld' => 'getHelloWorld', //Call Method from class \models\ModelsHelloWorld->getHelloWorld
 						'inURLUnitTest' => array(
-							'test_1'=>array(
-									'1',
-									array(
-										'test' => '1',
-										'test2' => '2',
-									)
-//								 ,'2'
-								 //,'3'
-								//,'333'
-								 ////'3'
-								////,'2'
-								//,'1'
-								//,'7'
-								//,'8'
-							),
-//							'test_2'=>array(
-//								  '1'
-//								 ,'2'
-//								,'3'
-//								,'4'
-//								,'5'
-//								,'6'
-//								,'7'
-//								,'8'
-//							),
-							 'test_3'=>array(
-								  //'1'
-								 //,'2'
-								 //,'3'
+							//'test'=>array(
+								//'1','2'
+							//),
+							'form_data'=>array(
+								array('test1' => '1',test=>'23'),
+								array('test2' => '1',)
 							),
 							'PHPFlag' => '',
 							//'form_data'=>array(
@@ -80,20 +59,25 @@ class ControllersHelloWorld
 					'default2'=>array(//Default method is always executed unless you specify
 													 //Метод по умолчанию, выполняется всегда если не указан
 						'ModelsHelloWorld' => 'getHelloWorld', //Call Method from class \models\ModelsHelloWorld->getHelloWorld
-						'inURLUnitTest' => array(
-							'form_data'=>array(),
-							'ajax' => array(
-								'full',
-							),
-						),
+						//'inURLUnitTest' => array(
+							//'form_data'=>array(),
+							//'ajax' => array(
+								//'full',
+							//),
+						//),
 					),
 					'default_no_inURLUnitTest'=>array(//Default method is always executed unless you specify
 													 //Метод по умолчанию, выполняется всегда если не указан
 						'ModelsHelloWorld' => 'getHelloWorld', //Call Method from class \models\ModelsHelloWorld->getHelloWorld
-						'inURLUnitTest' => array(
-							'form_data'=>array(),
-							'ajax' => array(),
-						),
+						//'inURLUnitTest' => array(
+							//'form_data'=>array(
+								//array('test777' => '1',
+											//'test99' => '2',),
+								//array('1test777' => '1',
+											//'2test99' => '2',),
+							//),
+							//'ajax' => array(),
+						//),
 					),
 			)
 		);

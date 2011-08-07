@@ -7,7 +7,8 @@
  * @created 01-oct-2010 22:03:41
  */
 class ModelsHelloWorld
-{	 
+{
+ 
  	function getHelloWorld($param){
 		return 'HelloWorld';
 	}

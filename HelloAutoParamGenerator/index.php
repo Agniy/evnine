@@ -1,22 +1,34 @@
 <?php
-include_once('evnine.php');
 include_once 'debug/evnine.debug.php';
+include_once 'evnine.php';
 include_once 'evnine.views.generator.template.php';
-
 $evnine = new Controller();
-$output = $evnine->getControllerForParam(
+include('index.header.php');
+/**
+ * en: Use two controllers.
+ * en: One model for other view (param in of the model),
+ * en: to access the URL Generator.
+ * ru: Используем вызов двух контроллеров.
+ * ru: Один для модели другой для вида (На входе параметры модели), 
+ * ru: для получения доступа к URL генератору.
+ */
+
+$out = $evnine->getControllerForParam(
 	array(
-		'controller' => 'param_gen',
-//		'method' => 'default',
-		//'form_data'=>$_REQUEST,
+		'controller' => 'param_gen_models',
 		'ajax' => 'ajax',
+		'form_data' => $_REQUEST,
 	)
 );
- //print_r2($output, "array",false);
-//echo $output['ModelsPHPUnit_getMSGHeader'];
-//foreach ($output["ModelsPHPUnit_getDataFromControllerByParam"] as $param_id =>$param_array){
-	//echo '<br />'.$output['ModelsPHPUnit_getParamTextName'][$param_id].'<br />';
-	//print_r2($param_array);
-//}
-//;
+$output = $evnine->getControllerForParam(
+array_merge(
+		$out['param_out'],
+		array(
+			'controller'=>'param_gen_view'
+			,'method'=>'default'
+			,'inURL'=>$out['inURL']
+		)
+	)
+);
+include('index.footer.php');
 ?>
