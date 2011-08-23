@@ -20,7 +20,6 @@ require('evnine.config.php');
  * 
  * en: The base controller.
  * ru: Базовый контроллер.
- * TODO ctrl-end
  * 
  * @uses Config
  * @package Controller
@@ -2509,7 +2508,8 @@ function getMethodFromClass($methods_class,$methods_array) {
 			*   )
 			*/
 			$methods_class= $this->param['controller'];
-		}elseif (isset($this->controller_alias[$methods_class])){
+		}
+		if (isset($this->controller_alias[$methods_class])){
 		/**
 			* en: If the method exists in the list of aliases controllers.
 			* en: The case when a reference to an external controller.
@@ -3683,8 +3683,4 @@ function getControllerForParamTest($method,$array_init,$param){
 }
 
 }
-//TODO
-//Сделать пример для внешнего контроллера и метода
-//Сделать пример для inURLView (Раньше view) в контроллере и методе, в место inURLView в методе
-//Была авто замена 'view'=>inURLView
 ?>
