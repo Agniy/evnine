@@ -1,0 +1,261 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="minwidth" dir="ltr" xml:lang="ru-ru" xmlns="http://www.w3.org/1999/xhtml" lang="ru-ru"><head><style type="text/css">vhindicator {}</style>
+
+
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="index, follow">
+  <meta name="keywords" content="joomla, Joomla">
+  <meta name="description" content="Joomla! - the dynamic portal engine and content management system">
+  <meta name="generator" content="Joomla! 1.5 - Open Source Content Management">
+  <title>SA - Администрирование</title>
+  <link href="http://sa.dev/administrator/templates/khepri/favicon.ico" rel="shortcut icon" type="image/x-icon">
+  <style type="text/css">
+    <!--
+
+.icon-16-logo {
+	background: url(components/com_jce/img/logo.png) no-repeat;
+}
+
+.icon-16-icon-16-cpanel {
+	background: url(templates/khepri/images/menu/icon-16-cpanel.png) no-repeat;
+}
+
+.icon-16-icon-16-config {
+	background: url(templates/khepri/images/menu/icon-16-config.png) no-repeat;
+}
+
+.icon-16-icon-16-user {
+	background: url(templates/khepri/images/menu/icon-16-user.png) no-repeat;
+}
+
+.icon-16-icon-16-plugin {
+	background: url(templates/khepri/images/menu/icon-16-plugin.png) no-repeat;
+}
+
+.icon-16-icon-16-install {
+	background: url(templates/khepri/images/menu/icon-16-install.png) no-repeat;
+}
+
+.icon-16-joomlapack-16 {
+	background: url(components/com_joomlapack/assets/images/joomlapack-16.png) no-repeat;
+}
+
+.icon-16-backup-16 {
+	background: url(components/com_joomlapack/assets/images/backup-16.png) no-repeat;
+}
+
+.icon-16-config-16 {
+	background: url(components/com_joomlapack/assets/images/config-16.png) no-repeat;
+}
+
+.icon-16-bufa-16 {
+	background: url(components/com_joomlapack/assets/images/bufa-16.png) no-repeat;
+}
+
+    -->
+  </style>
+  <script type="text/javascript" src="joomla_config_files/joomla.js"></script>
+  <script type="text/javascript" src="joomla_config_files/mootools.js"></script>
+
+
+<link rel="stylesheet" href="joomla_config_files/system.css" type="text/css">
+<link href="joomla_config_files/template.css" rel="stylesheet" type="text/css">
+
+
+<!--[if IE 7]>
+<link href="templates/khepri/css/ie7.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+
+<!--[if lte IE 6]>
+<link href="templates/khepri/css/ie6.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+
+	<link rel="stylesheet" type="text/css" href="joomla_config_files/rounded.css">
+
+	<script type="text/javascript" src="joomla_config_files/menu.js"></script>
+	<script type="text/javascript" src="joomla_config_files/index.js"></script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><div firebugversion="1.5X.4" style="display: none;" id="_firebugConsole"></div><body id="minwidth-body">
+	<div id="border-top" class="h_green">
+		<div>
+			<div>
+				<span class="version">Версия 1.5.20</span>
+				<span class="title">SA</span>
+			</div>
+		</div>
+	</div>
+	<div id="header-box">
+		<div id="module-status">
+			<span class="preview"><a href="http://sa.dev/" target="_blank">Просмотр</a></span><a href="http://sa.dev/administrator/index.php?option=com_messages"><span class="no-unread-messages">0</span></a><span class="loggedin-users">1</span><span class="logout"><a href="http://sa.dev/administrator/index.php?option=com_login&amp;task=logout">Выйти</a></span>
+		</div>
+		<div id="module-menu">
+			<ul id="menu">
+<li class="node"><a>Сайт</a>
+<ul style="width: 174px;">
+<li style="width: 174px;"><a class="icon-16-cpanel" href="http://sa.dev/administrator/index.php">Панель управления</a></li>
+<li style="width: 174px;" class="separator"><span></span></li>
+<li style="width: 174px;"><a class="icon-16-user" href="http://sa.dev/administrator/index.php?option=com_users&amp;task=view">Пользователи</a></li>
+<li style="width: 174px;"><a class="icon-16-media" href="http://sa.dev/administrator/index.php?option=com_media">Медиа менеджер</a></li>
+<li style="width: 174px;" class="separator"><span></span></li>
+<li style="width: 174px;"><a class="icon-16-config" href="http://sa.dev/administrator/index.php?option=com_config">Общие настройки</a></li>
+<li style="width: 174px;" class="separator"><span></span></li>
+<li style="width: 174px;"><a class="icon-16-logout" href="http://sa.dev/administrator/index.php?option=com_login&amp;task=logout">Выйти</a></li>
+</ul>
+</li>
+<li class="node"><a>Все меню</a>
+<ul style="width: 155px;">
+<li style="width: 155px;"><a class="icon-16-menu" href="http://sa.dev/administrator/index.php?option=com_menus">Менеджер меню</a></li>
+<li style="width: 155px;"><a class="icon-16-trash" href="http://sa.dev/administrator/index.php?option=com_trash&amp;task=viewMenu">Корзина меню</a></li>
+<li style="width: 155px;" class="separator"><span></span></li>
+<li style="width: 155px;"><a class="icon-16-menu" href="http://sa.dev/administrator/index.php?option=com_menus&amp;task=view&amp;menutype=mainmenu">Main Menu *</a></li>
+<li style="width: 155px;"><a class="icon-16-menu" href="http://sa.dev/administrator/index.php?option=com_menus&amp;task=view&amp;menutype=usermenu">User Menu</a></li>
+<li style="width: 155px;"><a class="icon-16-menu" href="http://sa.dev/administrator/index.php?option=com_menus&amp;task=view&amp;menutype=topmenu">Top Menu</a></li>
+</ul>
+</li>
+<li class="node"><a>Материалы</a>
+<ul style="width: 240px;">
+<li class="" style="width: 240px;"><a class="icon-16-article" href="http://sa.dev/administrator/index.php?option=com_content">Менеджер материалов</a></li>
+<li class="" style="width: 240px;"><a class="icon-16-trash" href="http://sa.dev/administrator/index.php?option=com_trash&amp;task=viewContent">Корзина материалов</a></li>
+<li style="width: 240px;" class="separator"><span></span></li>
+<li style="width: 240px;"><a class="icon-16-section" href="http://sa.dev/administrator/index.php?option=com_sections&amp;scope=content">Менеджер разделов</a></li>
+<li style="width: 240px;"><a class="icon-16-category" href="http://sa.dev/administrator/index.php?option=com_categories&amp;section=com_content">Менеджер категорий</a></li>
+<li style="width: 240px;" class="separator"><span></span></li>
+<li style="width: 240px;"><a class="icon-16-frontpage" href="http://sa.dev/administrator/index.php?option=com_frontpage">Менеджер Главной страницы</a></li>
+</ul>
+</li>
+<li class="node"><a>Компоненты</a>
+<ul style="width: 206px;">
+<li style="width: 206px;" class="node"><a class="icon-16-component" href="http://sa.dev/administrator/index.php?option=com_banners">Баннер</a><ul style="width: 116px;" id="menu-������" class="menu-component">
+<li style="width: 116px;"><a class="icon-16-edit" href="http://sa.dev/administrator/index.php?option=com_banners">Баннеры</a></li>
+<li style="width: 116px;"><a class="icon-16-categories" href="http://sa.dev/administrator/index.php?option=com_banners&amp;c=client">Клиенты</a></li>
+<li style="width: 116px;"><a class="" href="http://sa.dev/administrator/index.php?option=com_categories&amp;section=com_banner">Категории</a></li>
+</ul>
+</li>
+<li style="width: 206px;" class="node"><a class="icon-16-component" href="http://sa.dev/administrator/index.php?option=com_contact">Контакты</a><ul style="width: 116px;" id="menu-��������" class="menu-component">
+<li style="width: 116px;"><a class="icon-16-edit" href="http://sa.dev/administrator/index.php?option=com_contact">Контакты</a></li>
+<li style="width: 116px;"><a class="icon-16-categories" href="http://sa.dev/administrator/index.php?option=com_categories&amp;section=com_contact_details">Категории</a></li>
+</ul>
+</li>
+<li style="width: 206px;" class="node"><a class="icon-16-component" href="http://sa.dev/administrator/index.php?option=com_evnine">evnine Frontend</a><ul style="width: 139px;" id="menu-evnine-frontend" class="menu-component">
+<li style="width: 139px;"><a class="icon-16-component" href="http://sa.dev/administrator/index.php?option=com_evnine&amp;view=config">Configurations</a></li>
+</ul>
+</li>
+<li style="width: 206px;" class="node"><a class="icon-16-logo" href="http://sa.dev/administrator/index.php?option=com_jce">Редактор</a><ul style="width: 174px;" id="menu-��������" class="menu-component">
+<li style="width: 174px;"><a class="icon-16-icon-16-cpanel" href="http://sa.dev/administrator/index.php?option=com_jce">Панель управления</a></li>
+<li style="width: 174px;"><a class="icon-16-icon-16-config" href="http://sa.dev/administrator/index.php?option=com_jce&amp;type=config">Настройки</a></li>
+<li style="width: 174px;"><a class="icon-16-icon-16-user" href="http://sa.dev/administrator/index.php?option=com_jce&amp;type=group">Группы</a></li>
+<li style="width: 174px;"><a class="icon-16-icon-16-plugin" href="http://sa.dev/administrator/index.php?option=com_jce&amp;type=plugin">Плагины</a></li>
+<li style="width: 174px;"><a class="icon-16-icon-16-install" href="http://sa.dev/administrator/index.php?option=com_jce&amp;type=install">Установка</a></li>
+</ul>
+</li>
+<li style="width: 206px;" class="node"><a class="icon-16-joomlapack-16" href="http://sa.dev/administrator/index.php?option=com_joomlapack">Резервное копирование</a><ul style="width: 265px;" id="menu-���������-�����������" class="menu-component">
+<li style="width: 265px;"><a class="icon-16-backup-16" href="http://sa.dev/administrator/index.php?option=com_joomlapack&amp;view=backup">Сделать резервную копию</a></li>
+<li style="width: 265px;"><a class="icon-16-config-16" href="http://sa.dev/administrator/index.php?option=com_joomlapack&amp;view=config">Конфигурация</a></li>
+<li style="width: 265px;"><a class="icon-16-bufa-16" href="http://sa.dev/administrator/index.php?option=com_joomlapack&amp;view=buadmin">Управление резервными копиями</a></li>
+</ul>
+</li>
+<li style="width: 206px;" class="node"><a class="icon-16-component" href="http://sa.dev/administrator/index.php?option=com_masscontent">Пакетное наполнение</a><ul style="width: 213px;" id="menu-��������-����������" class="menu-component">
+<li style="width: 213px;"><a class="icon-16-component" href="http://sa.dev/administrator/index.php?option=com_masscontent&amp;controller=content">Наполнение содержимым</a></li>
+<li style="width: 213px;"><a class="icon-16-component" href="http://sa.dev/administrator/index.php?option=com_masscontent&amp;controller=sections">Наполнение разделов</a></li>
+<li style="width: 213px;"><a class="icon-16-component" href="http://sa.dev/administrator/index.php?option=com_masscontent&amp;controller=categories">Наполнение категорий</a></li>
+<li style="width: 213px;"><a class="icon-16-component" href="http://sa.dev/administrator/index.php?option=com_masscontent&amp;controller=delete">Удаление содержимого</a></li>
+</ul>
+</li>
+<li style="width: 206px;"><a class="icon-16-component" href="http://sa.dev/administrator/index.php?option=com_poll">Голосования</a></li>
+<li style="width: 206px;"><a class="icon-16-component" href="http://sa.dev/administrator/index.php?option=com_search">Поиск</a></li>
+<li style="width: 206px;"><a class="icon-16-component" href="http://sa.dev/administrator/index.php?option=com_xmap">Карта сайта</a></li>
+</ul>
+</li>
+<li class="node"><a>Расширения</a>
+<ul style="width: 185px;">
+<li style="width: 185px;"><a class="icon-16-install" href="http://sa.dev/administrator/index.php?option=com_installer">Установить/Удалить</a></li>
+<li style="width: 185px;" class="separator"><span></span></li>
+<li style="width: 185px;"><a class="icon-16-module" href="http://sa.dev/administrator/index.php?option=com_modules">Менеджер модулей</a></li>
+<li style="width: 185px;"><a class="icon-16-plugin" href="http://sa.dev/administrator/index.php?option=com_plugins">Менеджер плагинов</a></li>
+<li style="width: 185px;"><a class="icon-16-themes" href="http://sa.dev/administrator/index.php?option=com_templates">Менеджер шаблонов</a></li>
+<li style="width: 185px;"><a class="icon-16-language" href="http://sa.dev/administrator/index.php?option=com_languages">Менеджер языков</a></li>
+</ul>
+</li>
+<li class="node"><a>Инструменты</a>
+<ul style="width: 212px;">
+<li style="width: 212px;"><a class="icon-16-messages" href="http://sa.dev/administrator/index.php?option=com_messages">Прочитать сообщения</a></li>
+<li style="width: 212px;"><a class="icon-16-messages" href="http://sa.dev/administrator/index.php?option=com_messages&amp;task=add">Написать сообщение</a></li>
+<li style="width: 212px;" class="separator"><span></span></li>
+<li style="width: 212px;"><a class="icon-16-massmail" href="http://sa.dev/administrator/index.php?option=com_massmail">Массовая рассылка</a></li>
+<li style="width: 212px;" class="separator"><span></span></li>
+<li style="width: 212px;"><a class="icon-16-checkin" href="http://sa.dev/administrator/index.php?option=com_checkin">Сброс блокировок</a></li>
+<li style="width: 212px;" class="separator"><span></span></li>
+<li style="width: 212px;"><a class="icon-16-config" href="http://sa.dev/administrator/index.php?option=com_cache">Очистить кеш</a></li>
+<li style="width: 212px;"><a class="icon-16-config" href="http://sa.dev/administrator/index.php?option=com_cache&amp;task=purgeadmin">Удалить устаревший кеш</a></li>
+</ul>
+</li>
+<li class="node"><a>Помощь</a>
+<ul style="width: 198px;">
+<li style="width: 198px;"><a class="icon-16-help" href="http://sa.dev/administrator/index.php?option=com_admin&amp;task=help">Помощь Joomla!</a></li>
+<li style="width: 198px;"><a class="icon-16-info" href="http://sa.dev/administrator/index.php?option=com_admin&amp;task=sysinfo">Информация о системе</a></li>
+</ul>
+</li>
+</ul>
+
+		</div>
+		<div class="clr"></div>
+	</div>
+	<div id="content-box">
+		<div class="border">
+			<div class="padding">
+				<div id="toolbar-box">
+   			<div class="t">
+				<div class="t">
+					<div class="t"></div>
+				</div>
+			</div>
+			<div class="m">
+				<div class="toolbar" id="toolbar">
+<table class="toolbar"><tbody><tr>
+</tr></tbody></table>
+</div>
+				
+				<div class="clr"></div>
+			</div>
+			<div class="b">
+				<div class="b">
+					<div class="b"></div>
+				</div>
+			</div>
+  		</div>
+   		<div class="clr"></div>
+				
+				
+		<div id="element-box">
+			<div class="t">
+		 		<div class="t">
+					<div class="t"></div>
+		 		</div>
+			</div>
+			<div class="m">
+				
+			
+		<pre>\components\com_evnine\evnine.config.php<form action="/administrator/index.php?option=com_evnine" name="form" method="post"><input size="18" style="" value="Соxранить" id="save[ok]" name="save[ok]" type="submit">&nbsp;<input size="18" style="" value="Отмена" id="save[cancel]" name="save[cancel]" type="submit">&nbsp;<h2>Параметры кототрые передаются в контроллер:</h2><table><tbody><tr><td><b>default_controller</b>:</td><td><input size="18" style="" value="default_controller" id="param_const[default_controller]" name="param_const[default_controller]" type="type">&nbsp;</td></tr><tr><td><b>debug</b>:</td><td><input size="18" style="" value="1" id="param_const[debug]" name="param_const[debug]" type="type">&nbsp;</td></tr></tbody></table><input size="18" style="" value="Соxранить" id="save[ok]" name="save[ok]" type="submit">&nbsp;<input size="18" style="" value="Отмена" id="save[cancel]" name="save[cancel]" type="submit">&nbsp;<h2>Уровни доступа:</h2><table><tbody><tr><td><b>Для гостя</b>:</td><td><input size="18" style="" value="0" id="access_level[guest]" name="access_level[guest]" type="type">&nbsp;</td></tr></tbody></table><input size="18" style="" value="Соxранить" id="save[ok]" name="save[ok]" type="submit">&nbsp;<input size="18" style="" value="Отмена" id="save[cancel]" name="save[cancel]" type="submit">&nbsp;<h2>Пути до классов с параметрами инициализации:</h2><table><tbody><tr><td></td><td><hr><h2>ModelsDatabaseInstallTables:</h2></td></tr></tbody></table><table><tbody><tr><td>&nbsp;</td><td><b>Путь до класса</b>:</td><td><input size="18" style="" value="/models/" id="class_path[ModelsDatabaseInstallTables][path]" name="class_path[ModelsDatabaseInstallTables][path]" type="type">&nbsp;</td></tr></tbody></table><hr><h2>ModelsHelloWorld:</h2><table><tbody><tr><td>&nbsp;</td><td><b>Путь до класса</b>:</td><td><input size="18" style="" value="/models/" id="class_path[ModelsHelloWorld][path]" name="class_path[ModelsHelloWorld][path]" type="type">&nbsp;</td></tr></tbody></table><hr><h2>ModelsJoomla:</h2><table><tbody><tr><td></td><td><hr><h2>Параметры для класса:</h2></td></tr></tbody></table><table><tbody><tr><td>&nbsp;</td><td><b>host</b>:</td><td><input size="18" style="" value="localhost" id="class_path[ModelsJoomla][param][host]" name="class_path[ModelsJoomla][param][host]" type="type">&nbsp;</td></tr><tr><td>&nbsp;</td><td><b>login</b>:</td><td><input size="18" style="" value="root" id="class_path[ModelsJoomla][param][login]" name="class_path[ModelsJoomla][param][login]" type="type">&nbsp;</td></tr><tr><td>&nbsp;</td><td><b>pass</b>:</td><td><input size="18" style="" value="root" id="class_path[ModelsJoomla][param][pass]" name="class_path[ModelsJoomla][param][pass]" type="type">&nbsp;</td></tr><tr><td>&nbsp;</td><td><b>db</b>:</td><td><input size="18" style="" value="information_schema" id="class_path[ModelsJoomla][param][db]" name="class_path[ModelsJoomla][param][db]" type="type">&nbsp;</td></tr></tbody></table><b>Путь до класса</b>:<input size="18" style="" value="/models/" id="class_path[ModelsJoomla][path]" name="class_path[ModelsJoomla][path]" type="type">&nbsp;<input size="18" style="" value="Соxранить" id="save[ok]" name="save[ok]" type="submit">&nbsp;<input size="18" style="" value="Отмена" id="save[cancel]" name="save[cancel]" type="submit">&nbsp;<h2>Контроллеры страниц:</h2><table><tbody><tr><td><b>helloworld</b>:</td><td><input size="55" style="" value="ControllersHelloWorld" id="controller_menu_view[helloworld]" name="controller_menu_view[helloworld]" type="type">&nbsp;</td></tr></tbody></table><input size="18" style="" value="Соxранить" id="save[ok]" name="save[ok]" type="submit">&nbsp;<input size="18" style="" value="Отмена" id="save[cancel]" name="save[cancel]" type="submit">&nbsp;<input size="18" style="" value="Соxранить" id="save[ok]" name="save[ok]" type="submit">&nbsp;<input size="18" style="" value="Отмена" id="save[cancel]" name="save[cancel]" type="submit">&nbsp;</form></pre><br>
+
+				<div class="clr"></div>
+			</div>
+			<div class="b">
+				<div class="b">
+					<div class="b"></div>
+				</div>
+			</div>
+   		</div>
+		<noscript>
+			!Внимание! Javascript должен быть разрешён для правильной работы Администратора		</noscript>
+		<div class="clr"></div>
+	</div>
+	<div class="clr"></div>
+</div>
+</div>
+	<div id="border-bottom"><div><div></div></div></div>
+	<div id="footer">
+		<p class="copyright">
+			<a href="http://www.joomla.org/" target="_blank">Joomla!</a>
+			Распространяется по лицензии GNU/GPL | Локализация и поддержка: <a href="http://www.joomla.ru/">Joomla CMS - система управления сайтом</a>		</p>
+	</div>
+</body></html>
