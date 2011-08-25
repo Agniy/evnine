@@ -7,7 +7,7 @@ $output = $evnine->getControllerForParam(
 	array(
 		'controller' => 'helloworld',
 //		'method' => 'default',
-		//'form_data'=>$_REQUEST,
+		//'REQUEST'=>$_REQUEST,
 		'ajax' => 'ajax',
 	)
 );
