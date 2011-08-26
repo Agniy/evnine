@@ -38,7 +38,7 @@ class ModelsValidation
 	*/
 	function isValidModifierParamFormError(&$param) 
 	{ 
-		$param['array_name']='form_data';
+		$param['array_name']='REQUEST';
 		$isValid = $this->isValid(&$param);
 		unset($param['validation']);
 		unset($param['array_name']);
