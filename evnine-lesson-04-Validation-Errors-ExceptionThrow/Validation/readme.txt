@@ -12,8 +12,8 @@ ru: Передаём массив в модель валидации.
 		)
 	);
 
-en: Pass the array REQUEST of model validation.
-ru: Передаём массив в модель валидации.
+en: Model validation.
+ru: Модель валидации.
 /evnine.config.php
 	$this->class_path=array(
 		'ModelsValidation'=>array(
