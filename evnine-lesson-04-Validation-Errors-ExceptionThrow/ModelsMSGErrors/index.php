@@ -8,7 +8,7 @@ $evnine = new Controller();
 $ctrlr = $evnine->getControllerForParam(
 	array(
 		'controller' => 'validation',
-		'form_data' => array('path_id' => ''),
+		'REQUEST' => array('path_id' => ''),
 		'ajax' => 'ajax',
 	)
 );

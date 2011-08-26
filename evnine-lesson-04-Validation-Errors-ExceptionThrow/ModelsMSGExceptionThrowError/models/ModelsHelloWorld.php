@@ -10,8 +10,8 @@ class ModelsHelloWorld
 {	 
  	function setErrorsToParamform_error(&$param){
 		$param['form_error']=array(
-			'error of ModelsHelloWorld'=>'text of ModelsHelloWorld->setErrorsToParamform_error()'
-			,'error of ModelsHelloWorld 2'=>'text of ModelsHelloWorld->setErrorsToParamform_error()'
+			'error of ModelsHelloWorld'=>'1 text of ModelsHelloWorld->setErrorsToParamform_error()'
+			,'error of ModelsHelloWorld 2'=>'2 text of ModelsHelloWorld->setErrorsToParamform_error()'
 		);
 	}
 

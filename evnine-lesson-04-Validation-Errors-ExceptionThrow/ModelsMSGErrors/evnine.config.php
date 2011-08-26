@@ -6,7 +6,7 @@ var $param_const;
 var $path_to;
 var $access_level;
 var $class_path;
-var $controller_menu_view;
+var $controller_alias;
 
 	function __construct(){
 
@@ -19,7 +19,7 @@ var $controller_menu_view;
 		'default_controller'=>'default_controller',
 		'debug'=>true,
 	);
-	$this->controller_menu_view=array(
+	$this->controller_alias=array(
 		'validation'=>'ControllersHelloValidation',
 	);
 	$this->class_path=array(

@@ -8,13 +8,13 @@
  */
 class ControllersHelloValidation
 {
-	var $controller_menu_view;
+	var $controller;
 	// en: Array controller
 	/* ru: Базовый массив контроллера*/
 	function __construct($access_level){
 	// en: Initialize the controller with access levels
 	/* ru: Инициализируем контроллер передавая уровни доступа из конфига*/
-		$this->controller_menu_view = array(
+		$this->controller = array(
 			'public_methods' => array(
 					//Public methods are available for all
 					//Example: index.php?t=the controller&m=the public method
@@ -51,10 +51,10 @@ class ControllersHelloValidation
 										/*Данные для валидации, передаются в метод isValidModifierParamFormError*/
 						
 							'path_id' => array(
-								'to'=>'PathID'//Variable is stored in an array $param['form_data']['PathID']
+								'to'=>'PathID'//Variable is stored in an array $param['REQUEST']['PathID']
 															//Also used in the template if you need to pass parameter through URN (URI)
 								
-															/*Переменая сохраняется в массив $param['form_data']['PathID']*/
+															/*Переменая сохраняется в массив $param['REQUEST']['PathID']*/
 															/*Так же используется в шаблоне если нужно передать параметр через URN (URI)*/
 								
 								,'inURL' => true

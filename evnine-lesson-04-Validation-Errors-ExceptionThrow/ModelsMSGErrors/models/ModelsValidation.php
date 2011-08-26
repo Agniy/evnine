@@ -3,7 +3,7 @@
 /**
  * ModelsValidation
  *
- * @package Models 
+ * @package ModelsBase
  * @author ev9eniy
  * @version 1.0
  * @created 07-apr-2010 11:03:39
@@ -38,7 +38,7 @@ class ModelsValidation
 	*/
 	function isValidModifierParamFormError(&$param) 
 	{ 
-		$param['array_name']='form_data';
+		$param['array_name']='REQUEST';
 		$isValid = $this->isValid(&$param);
 		unset($param['validation']);
 		unset($param['array_name']);
@@ -153,6 +153,8 @@ class ModelsValidation
 						}elseif ($validation[$title]['required']) {
 							$form_errors[$title][]=$validation[$title]['error'];
 						}
+					}elseif ($validation[$title]['default']){
+						$param_form_data[$to]=$validation[$title]['default'];
 					}
 		}
 				
@@ -165,13 +167,14 @@ class ModelsValidation
 		}
 	}
 
-/**
- * en: For unit test reset
- * ru: Обнулить таблицы для теста
- */
-function setResetForTest() 
-{	 
-}
+	/**
+	 * ForUnitTestReset
+	 *
+	 * @assert ($param) == $this->object->getDataForTest('setResetForTest',$param=array('test'=>'test'))
+	 */
+	function setResetForTest() 
+	{	 
+	}
 
 }
 ?>

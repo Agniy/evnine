@@ -8,14 +8,12 @@ $evnine = new Controller();
 $ctrlr = $evnine->getControllerForParam(
 	array(
 		'controller' => 'validation',
-		'form_data' => array('path_id' => '777'),
+		'REQUEST' => array('path_id' => '777'),
 		'ajax' => 'ajax',
 	)
 );
 
-new dBug($ctrlr, "array",false);
+print_r2($ctrlr, "array",false);
 
 echo $ctrlr['inURL']['default']['pre'].$ctrlr['inURL']['default']['PathID'].$ctrlr['REQUEST_OUT']['PathID'].$ctrlr['inURL']['post']
-
-
 ?>
