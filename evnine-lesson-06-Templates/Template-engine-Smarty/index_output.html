@@ -1,0 +1,139 @@
+			<script language="JavaScript">
+			/* code modified from ColdFusion's cfdump code */
+				function dBug_toggleRow(source) {
+					var target = (document.all) ? source.parentElement.cells[1] : source.parentNode.lastChild;
+					dBug_toggleTarget(target,dBug_toggleSource(source));
+				}
+				
+				function dBug_toggleSource(source) {
+					if (source.style.fontStyle=='italic') {
+						source.style.fontStyle='normal';
+						source.title='click to collapse';
+						return 'open';
+					} else {
+						source.style.fontStyle='italic';
+						source.title='click to expand';
+						return 'closed';
+					}
+				}
+			
+				function dBug_toggleTarget(target,switchToState) {
+					target.style.display = (switchToState=='open') ? '' : 'none';
+				}
+			
+				function dBug_toggleTable(source) {
+					var switchToState=dBug_toggleSource(source);
+					if(document.all) {
+						var table=source.parentElement.parentElement;
+						for(var i=1;i<table.rows.length;i++) {
+							target=table.rows[i];
+							dBug_toggleTarget(target,switchToState);
+						}
+					}
+					else {
+						var table=source.parentNode.parentNode;
+						for (var i=1;i<table.childNodes.length;i++) {
+							target=table.childNodes[i];
+							if(target.style) {
+								dBug_toggleTarget(target,switchToState);
+							}
+						}
+					}
+				}
+			</script>
+			
+			<style type="text/css">
+				pre{font-family:12px Arial;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-o-pre-wrap;white-space:-pre-wrap;word-wrap:break-word}
+				table.dBug_arrayNew,table.dBug_arrayOld,table.dBug_array,table.dBug_object,table.dBug_resource,table.dBug_resourceC,table.dBug_xml {
+					font-family:Verdana, Arial, Helvetica, sans-serif; color:#000000; font-size:12px;
+				}
+				
+				.dBug_arrayHeader,
+				.dBug_arrayNewHeader,
+				.dBug_arrayOldHeader,
+				.dBug_objectHeader,
+				.dBug_resourceHeader,
+				.dBug_resourceCHeader,
+				.dBug_xmlHeader 
+					{ font-weight:bold; color:#FFFFFF; cursor:pointer; }
+				
+				.dBug_arrayKey,
+				.dBug_arrayNewKey,
+				.dBug_arrayOldKey,
+				.dBug_objectKey,
+				.dBug_xmlKey 
+					{ cursor:pointer; }
+				
+				/* array */
+				table.dBug_array { background-color:#888888;position:relative;z-index:1000}
+				table.dBug_arrayNew { background-color:#888888;}
+				table.dBug_arrayOld { background-color:darkgray; }
+				table.dBug_array td { background-color:#FFFFFF; }
+				table.dBug_array td.dBug_arrayHeader { background-color:#AAAAAA;color:white;}
+				table.dBug_array td.dBug_arrayNewHeader{ background-color:#cfc;color:green; } 
+				table.dBug_array td.dBug_arrayOldHeader{ background-color:lightgray;color:gray; } 
+				table.dBug_array td.dBug_arrayKey { background-color:#DDDDDD; }
+				table.dBug_array td.dBug_arrayNewKey { background-color:#cfc;color:green; }
+				table.dBug_array td.dBug_arrayOldKey { background-color:lightgray;color:gray; }
+				table.dBug_array td.dBug_arrayNewKeyBody { color:green;padding:1px; }
+				table.dBug_array td.dBug_arrayOldKeyBody { color:#808080; }
+
+				table.dBug_arrayBug { background-color:#884488  }
+				table.dBug_array td.dBug_arrayBugHeader{ background-color:#AA66AA;color:white; } 
+				table.dBug_array td.dBug_arrayBugKey { background-color:#FFDDFF;color:black; }
+				table.dBug_array td.dBug_arrayBugKeyBody { color:black;padding:1px; }
+
+				
+				/* object */
+				table.dBug_object { background-color:#0000CC; }
+				table.dBug_object td { background-color:#FFFFFF; }
+				table.dBug_object td.dBug_objectHeader { background-color:#4444CC; }
+				table.dBug_object td.dBug_objectKey { background-color:#CCDDFF; }
+				
+				/* resource */
+				table.dBug_resourceC { background-color:#884488; }
+				table.dBug_resourceC td { background-color:#FFFFFF; }
+				table.dBug_resourceC td.dBug_resourceCHeader { background-color:#AA66AA; }
+				table.dBug_resourceC td.dBug_resourceCKey { background-color:#FFDDFF; }
+				
+				/* resource */
+				table.dBug_resource { background-color:#884488; }
+				table.dBug_resource td { background-color:#FFFFFF; }
+				table.dBug_resource td.dBug_resourceHeader { background-color:#AA66AA; }
+				table.dBug_resource td.dBug_resourceKey { background-color:#FFDDFF; }
+				
+				/* xml */
+				table.dBug_xml { background-color:#888888; }
+				table.dBug_xml td { background-color:#FFFFFF; }
+				table.dBug_xml td.dBug_xmlHeader { background-color:#AAAAAA; }
+				table.dBug_xml td.dBug_xmlKey { background-color:#DDDDDD; }
+			</style><table cellspacing=2 cellpadding=3 class="dBug_array"><tr><td class="dBug_arrayHeader" colspan=2 onClick='dBug_toggleTable(this)'>#$var (Array)</td>
+				</tr><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">LoadController</td>
+				<td  class="dBug_arrayKeyBody">helloworld</td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">LoadMethod</td>
+				<td  class="dBug_arrayKeyBody">default</td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">ajax</td>
+				<td  class="dBug_arrayKeyBody">True</td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">param</td>
+				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">default</td>
+				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">ModelsHelloWorld_getByeBye</td>
+				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"></table></td></tr>
+</table></td></tr>
+</table></td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">ModelsHelloWorld_isParamHello</td>
+				<td  class="dBug_arrayKeyBody">FALSE</td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">ModelsHelloWorld_getByeBye</td>
+				<td  class="dBug_arrayKeyBody">ByeBye</td></tr>
+</table>Smarty: ByeBye<script type="text/javascript">
+    _smarty_console = window.open("","consoled41d8cd98f00b204e9800998ecf8427e","width=680,height=600,resizable,scrollbars=yes");
+    _smarty_console.document.write("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.1//EN\" \"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd\">\n<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\">\n<head>\n    <title>Smarty Debug Console<\/title>\n<style type=\"text/css\">\n\nbody, h1, h2, td, th, p {\n    font-family: sans-serif;\n    font-weight: normal;\n    font-size: 0.9em;\n    margin: 1px;\n    padding: 0;\n}\n\nh1 {\n    margin: 0;\n    text-align: left;\n    padding: 2px;\n    background-color: #f0c040;\n    color:  black;\n    font-weight: bold;\n    font-size: 1.2em;\n }\n\nh2 {\n    background-color: #9B410E;\n    color: white;\n    text-align: left;\n    font-weight: bold;\n    padding: 2px;\n    border-top: 1px solid black;\n}\n\nbody {\n    background: black; \n}\n\np, table, div {\n    background: #f0ead8;\n} \n\np {\n    margin: 0;\n    font-style: italic;\n    text-align: center;\n}\n\ntable {\n    width: 100%;\n}\n\nth, td {\n    font-family: monospace;\n    vertical-align: top;\n    text-align: left;\n    width: 50%;\n}\n\ntd {\n    color: green;\n}\n\n.odd {\n    background-color: #eeeeee;\n}\n\n.even {\n    background-color: #fafafa;\n}\n\n.exectime {\n    font-size: 0.8em;\n    font-style: italic;\n}\n\n#table_assigned_vars th {\n    color: blue;\n}\n\n#table_config_vars th {\n    color: maroon;\n}\n\n<\/style>\n<\/head>\n<body>\n\n<h1>Smarty Debug Console  -  Total Time 0.01196<\/h1>\n\n<h2>included templates &amp; config files (load time in seconds)<\/h2>\n\n<div>\n  <font color=brown>.\\templates\\form.tpl<\/font>\n  <span class=\"exectime\">\n   (compile 0.00000) (render 0.00075) (cache 0.00538)\n  <\/span>\n  <br>\n<\/div>\n\n<h2>assigned template variables<\/h2>\n\n<table id=\"table_assigned_vars\">\n           <tr class=\"even\">   \n       <th>$SCRIPT_NAME<\/th>\n       <td><b>Smarty_Variable Object (3)<\/b><br><b> -&gt;value<\/b> = &quot;/Smarty/index.php&quot;<br><b> -&gt;nocache<\/b> = <i>false<\/i><br><b> -&gt;scope<\/b> = &quot;Global&quot;<\/td><\/tr>\n           <tr class=\"odd\">   \n       <th>$output<\/th>\n       <td><b>Smarty_Variable Object (3)<\/b><br><b> -&gt;value<\/b> = <b>Array (6)<\/b><br>&nbsp;&nbsp;<b>LoadController<\/b> =&gt; &quot;helloworld&quot;<br>&nbsp;&nbsp;<b>LoadMethod<\/b> =&gt; &quot;default&quot;<br>&nbsp;&nbsp;<b>ajax<\/b> =&gt; &quot;True&quot;<br>&nbsp;&nbsp;<b>param<\/b> =&gt; <b>Array (1)<\/b><br>&nbsp;&nbsp;&nbsp;&nbsp;<b>default<\/b> =&gt; <b>Array (1)<\/b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>ModelsHelloWorld_getByeBye<\/b> =&gt; <b>Array (0)<\/b><br>&nbsp;&nbsp;<b>ModelsHelloWorld_isParamHello<\/b> =&gt; <i>false<\/i><br>&nbsp;&nbsp;<b>ModelsHelloWorld_getByeBye<\/b> =&gt; &quot;ByeBye&quot;<br><b> -&gt;nocache<\/b> = <i>false<\/i><br><b> -&gt;scope<\/b> = &quot;Smarty root&quot;<\/td><\/tr>\n    <\/table>\n\n<h2>assigned config file variables (outer template scope)<\/h2>\n\n<table id=\"table_config_vars\">\n    \n<\/table>\n<\/body>\n<\/html>\n");
+    _smarty_console.document.close();
+</script>

@@ -1,0 +1,1 @@
+Smarty: {$output.ModelsHelloWorld_getByeBye}
