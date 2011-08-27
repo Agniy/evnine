@@ -153,6 +153,8 @@ class ModelsValidation
 						}elseif ($validation[$title]['required']) {
 							$form_errors[$title][]=$validation[$title]['error'];
 						}
+					}elseif ($validation[$title]['default']){
+						$param_form_data[$to]=$validation[$title]['default'];
 					}
 		}
 				
