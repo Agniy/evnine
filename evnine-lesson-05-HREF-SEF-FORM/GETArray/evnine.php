@@ -1757,16 +1757,16 @@ function getURLFromArray($validate,$seo=false,$is_add=false) {
 									* TWIG: 
 									* {inURL.default.pre}{inURL.default.PathID}new_param{inURL.default.post}
 									* 
-									* >> &path_id[]=1&path_id[]=new_param
+									* >> &test_id[]=1&test_id[]=new_param
 									* 
 									* controller:
 									* 'public_methods' => array(
 									*  'ext_search' => array(
 									*   'inURLMethod' => array('ext_search'),
 									*   'validation'=> array(
-									*     'path_id' => array(
+									*     'test_id' => array(
 									*       ...
-									*       'to' => 'PathID',
+									*       'to' => 'TestID',
 									*       'inURLSave' => true
 									*       'is_array' => true,
 									*       ...

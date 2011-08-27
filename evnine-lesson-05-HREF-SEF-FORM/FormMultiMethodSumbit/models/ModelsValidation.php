@@ -38,7 +38,7 @@ class ModelsValidation
 	*/
 	function isValidModifierParamFormError(&$param) 
 	{ 
-		$param['array_name']='form_data';
+		$param['array_name']='REQUEST';
 		$isValid = $this->isValid(&$param);
 		unset($param['validation']);
 		unset($param['array_name']);
@@ -153,6 +153,8 @@ class ModelsValidation
 						}elseif ($validation[$title]['required']) {
 							$form_errors[$title][]=$validation[$title]['error'];
 						}
+					}elseif ($validation[$title]['default']){
+						$param_form_data[$to]=$validation[$title]['default'];
 					}
 		}
 				

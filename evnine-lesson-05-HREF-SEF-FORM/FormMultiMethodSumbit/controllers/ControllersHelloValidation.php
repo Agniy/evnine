@@ -8,13 +8,18 @@
  */
 class ControllersHelloValidation
 {
-	var $controller_menu_view;
+	var $controller;
 	// en: Array controller
 	/* ru: Базовый массив контроллера*/
 	function __construct($access_level){
 	// en: Initialize the controller with access levels
 	/* ru: Инициализируем контроллер передавая уровни доступа из конфига*/
-		$this->controller_menu_view = array(
+		$this->controller = array(
+		'private_methods'=>array(
+			'isValidModifierParamFormError_true'=>array(
+				'ModelsHelloWorld' => 'getContentFromFormData',
+			)
+		),
 			'public_methods' => array(
 					//Public methods are available for all
 					//Example: index.php?t=the controller&m=the public method
@@ -53,45 +58,45 @@ class ControllersHelloValidation
 							
 										/*Данные для валидации, передаются в метод isValidModifierParamFormError*/
 						
-							'path_id' => array(
-								'to'=>'PathID'//Variable is stored in an array $param['form_data']['PathID']
+							'test_id' => array(
+								'to'=>'TestID'//Variable is stored in an array $param['REQUEST']['TestID']
 															//Also used in the template if you need to pass parameter through URN (URI)
 								
-															/*Переменая сохраняется в массив $param['form_data']['PathID']*/
+															/*Переменая сохраняется в массив $param['REQUEST']['TestID']*/
 															/*Так же используется в шаблоне если нужно передать параметр через URN (URI)*/
 								
 								,'inURL' => true
 														//Passing a variable in the URN (URI) for the method.
-														//Get the variable name - path_id,
-														//Output by TWIG: inURL.default.PathID in the template will output &path_id=
-														//PHP: $controller['inURL']['default']['PathID'].'777' in the template &path_id=777
+														//Get the variable name - test_id,
+														//Output by TWIG: inURL.default.TestID in the template will output &test_id=
+														//PHP: $controller['inURL']['default']['TestID'].'777' in the template &test_id=777
 								
 														/*Передавить ли переменную в урл для данного метода*/
-														/*Вызвать получить значение переменной path_id, */
-														/*можно через TWIG: {{inURL.default.PathID}} в шаблоне &path_id=*/
-														/*PHP: $controller['inURL']['default']['PathID'].'777' в шаблоне будет вывод &path_id=777*/
+														/*Вызвать получить значение переменной test_id, */
+														/*можно через TWIG: {{inURL.default.TestID}} в шаблоне &test_id=*/
+														/*PHP: $controller['inURL']['default']['TestID'].'777' в шаблоне будет вывод &test_id=777*/
 								
 								,'inURLSave' => true
 															//Store a parameter in the multi-forms, default is false
 															//example when you want to save the settings from the prev URI
 															//In tamplate:
-															//TWIG:{{inURL.default.pre}}{{inURL.default.PathID}}VAR for method{{inURL.default.post}}
-															//PHP:$cntler['inURL']['default']['pre'].$cntler['inURL']['default']['PathID'].'VAR for method'.$cntler['inURL']['default']['post']
-															//The output: &path_id[]=1&path_id[]=...
+															//TWIG:{{inURL.default.pre}}{{inURL.default.TestID}}VAR for method{{inURL.default.post}}
+															//PHP:$cntler['inURL']['default']['pre'].$cntler['inURL']['default']['TestID'].'VAR for method'.$cntler['inURL']['default']['post']
+															//The output: &test_id[]=1&test_id[]=...
 								
 															/*Сохранить ли параметр в мульти формах, по умолчанию false*/
 															/*Пример когда нужно сохранить параметры из прошлого вызова*/
 															/*В шаблонезаторе: */
-															/*{inURL.default.pre}{inURL.default.PathID}наш параметр{inURL.default.post}*/
-															/*PHP:$cntler['inURL']['default']['pre'].$cntler['inURL']['default']['PathID'].'VAR for method'.$cntler['inURL']['default']['post']*/
-															/*На выходе: &path_id[]=1&path_id[]=...*/
+															/*{inURL.default.pre}{inURL.default.TestID}наш параметр{inURL.default.post}*/
+															/*PHP:$cntler['inURL']['default']['pre'].$cntler['inURL']['default']['TestID'].'VAR for method'.$cntler['inURL']['default']['post']*/
+															/*На выходе: &test_id[]=1&test_id[]=...*/
 								
 								,'is_array' => false
 															//Is the variable is an array? Default: false
-															//Example: &path_id[]=1&path_id[]=23
+															//Example: &test_id[]=1&test_id[]=23
 								
 															/*Является ли переменная массивом? по умолчанию false*/
-															/*Пример: &path_id[]=1&path_id[]=23*/
+															/*Пример: &test_id[]=1&test_id[]=23*/
 								,'type'=>'str'
 															//{options: str, email, pass, link, html (download htmlpurifier.org)} type validation variable}
 								
@@ -124,7 +129,7 @@ class ControllersHelloValidation
 						'this' => 'default',
 						'validation_multi_form' => array(//For URN generator
 							/*Для генератора урлов, массив должен быть заполнен*/
-							'path_id' => array('to'=>'PathID'),//Only for info
+							'test_id' => array('to'=>'TestID'),//Only for info
 																								 /*только для информации какие аргументы нужны методу*/
 						),
 					),
@@ -132,7 +137,7 @@ class ControllersHelloValidation
 						'this' => 'default',
 						'validation_multi_form' => array(//For URN generator
 							/*Для генератора урлов, массив должен быть заполнен*/
-							'path_id' => array('to'=>'PathID'),//Only for info
+							'test_id' => array('to'=>'TestID'),//Only for info
 																								 /*только для информации какие аргументы нужны методу*/
 						),
 					),
@@ -140,7 +145,7 @@ class ControllersHelloValidation
 						'this' => 'default',
 						'validation_multi_form' => array(//For URN generator
 							/*Для генератора урлов, массив должен быть заполнен*/
-							'path_id' => array('to'=>'PathID'),//Only for info
+							'test_id' => array('to'=>'TestID'),//Only for info
 																								 /*только для информации какие аргументы нужны методу*/
 						),
 					),
@@ -148,7 +153,7 @@ class ControllersHelloValidation
 						'this' => 'default',//Call this method default
 						'validation_multi_form' => array(//For URN generator
 							/*Для генератора урлов, массив должен быть заполнен*/
-							'path_id' => array('to'=>'PathID'),//Only for info
+							'test_id' => array('to'=>'TestID'),//Only for info
 																								 /*только для информации какие аргументы нужны методу*/
 						),
 					),

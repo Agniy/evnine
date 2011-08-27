@@ -7,7 +7,7 @@ $evnine = new Controller();
 $ctrlr = $evnine->getControllerForParam(
 	array(
 		'controller' => 'validation',
-		'form_data' => $_REQUEST,
+		'REQUEST' => $_REQUEST,
 		'ajax' => 'ajax',
 	)
 );
@@ -21,8 +21,8 @@ $ctrlr = $evnine->getControllerForParam(
 >
 <?php echo $ctrlr['inURL']['default']['inputs']; ?>
 <input type="text" 
-	value="<?php echo $ctrlr['REQUEST_OUT']['PathID']; ?>" 
-	name="<?php echo $ctrlr['inURL']['default']['PathID'] ?>"
+	value="<?php echo $ctrlr['REQUEST_OUT']['TestID']; ?>" 
+	name="<?php echo $ctrlr['inURL']['default']['TestID'] ?>"
 />
 <input 
 	type="submit"
@@ -58,4 +58,3 @@ $ctrlr = $evnine->getControllerForParam(
 print_r2($ctrlr, "array",false);
 
 ?>
-

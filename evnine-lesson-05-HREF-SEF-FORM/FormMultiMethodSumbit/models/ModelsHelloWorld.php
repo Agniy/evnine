@@ -38,7 +38,7 @@ function __construct($api){
  * @return void
  */
 function getContentFromFormData(&$param) {
-	return $param['form_data'];
+	return $param['REQUEST'];
 }
 
 }

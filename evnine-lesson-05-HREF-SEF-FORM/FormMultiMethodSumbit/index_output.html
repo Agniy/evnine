@@ -1,10 +1,10 @@
 
 <form 
 	method="get" 
-	action=?c=validation>
-<input type="hidden" name="default[c]" value="validation"/><input type="text" 
-	value="test multi form" 
-	name="path_id"
+	action=>
+<input type="text" 
+	value="" 
+	name="test_id"
 />
 <input 
 	type="submit"
@@ -80,6 +80,7 @@
 			</script>
 			
 			<style type="text/css">
+				pre{font-family:12px Arial;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-o-pre-wrap;white-space:-pre-wrap;word-wrap:break-word}
 				table.dBug_arrayNew,table.dBug_arrayOld,table.dBug_array,table.dBug_object,table.dBug_resource,table.dBug_resourceC,table.dBug_xml {
 					font-family:Verdana, Arial, Helvetica, sans-serif; color:#000000; font-size:12px;
 				}
@@ -101,7 +102,7 @@
 					{ cursor:pointer; }
 				
 				/* array */
-				table.dBug_array { background-color:#888888;}
+				table.dBug_array { background-color:#888888;position:relative;z-index:1000}
 				table.dBug_arrayNew { background-color:#888888;}
 				table.dBug_arrayOld { background-color:darkgray; }
 				table.dBug_array td { background-color:#FFFFFF; }
@@ -149,63 +150,15 @@
 				<td  class="dBug_arrayKeyBody">validation</td></tr>
 <tr>
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">LoadMethod</td>
-				<td  class="dBug_arrayKeyBody">submit_2</td></tr>
+				<td  class="dBug_arrayKeyBody">default</td></tr>
 <tr>
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">ajax</td>
 				<td  class="dBug_arrayKeyBody">True</td></tr>
-<tr>
-				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">REQUEST_IN</td>
-				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
-				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">default</td>
-				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
-				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">c</td>
-				<td  class="dBug_arrayKeyBody">validation</td></tr>
-</table></td></tr>
-<tr>
-				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">path_id</td>
-				<td  class="dBug_arrayKeyBody">test multi form</td></tr>
-</table></td></tr>
-<tr>
-				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">REQUEST_OUT</td>
-				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
-				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">PathID</td>
-				<td  class="dBug_arrayKeyBody">test multi form</td></tr>
-</table></td></tr>
-<tr>
-				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">ViewMethod</td>
-				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
-				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">submit_2</td>
-				<td  class="dBug_arrayKeyBody">submit_2</td></tr>
-</table></td></tr>
-<tr>
-				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">Class: &rArr;validation&nbsp;&nbsp;&nbsp;</br>Method: default</td>
-				<td  class="dBug_arrayKeyBody">&rArr;Extend Method <font color="orange"><b>validation::default</b></font> is load</td></tr>
 <tr>
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">param</td>
 				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">default</td>
 				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
-				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">param_out</td>
-				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
-				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">controller</td>
-				<td  class="dBug_arrayKeyBody">validation</td></tr>
-<tr>
-				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">form_data</td>
-				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
-				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">PathID</td>
-				<td  class="dBug_arrayKeyBody">test multi form</td></tr>
-</table></td></tr>
-<tr>
-				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">ajax</td>
-				<td  class="dBug_arrayKeyBody">TRUE</td></tr>
-<tr>
-				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">method</td>
-				<td  class="dBug_arrayKeyBody">default</td></tr>
-<tr>
-				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">form_error</td>
-				<td  class="dBug_arrayKeyBody">NULL</td></tr>
-</table></td></tr>
-<tr>
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">ModelsHelloWorld_getContentFromFormData</td>
 				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"></table></td></tr>
 </table></td></tr>
@@ -215,20 +168,14 @@
 				<td  class="dBug_arrayKeyBody">TRUE</td></tr>
 <tr>
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">ModelsHelloWorld_getContentFromFormData</td>
-				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
-				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">PathID</td>
-				<td  class="dBug_arrayKeyBody">test multi form</td></tr>
-</table></td></tr>
-<tr>
-				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">Class: &lArr;validation&nbsp;&nbsp;&nbsp;</br>Method: default</td>
-				<td  class="dBug_arrayKeyBody">&lArr;Extend Method <font color="orange"><b>validation::default</b></font> is unload</td></tr>
+				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"></table></td></tr>
 <tr>
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">inURL</td>
 				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">submit_1</td>
 				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">inputs</td>
-				<td  class="dBug_arrayKeyBody"><input type="hidden" name="path_id" value="test multi form"/></td></tr>
+				<td  class="dBug_arrayKeyBody">[empty]</td></tr>
 <tr>
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">submit</td>
 				<td  class="dBug_arrayKeyBody">submit[submit_1]</td></tr>
@@ -237,7 +184,7 @@
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">submit_2</td>
 				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">inputs</td>
-				<td  class="dBug_arrayKeyBody"><input type="hidden" name="path_id" value="test multi form"/></td></tr>
+				<td  class="dBug_arrayKeyBody">[empty]</td></tr>
 <tr>
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">submit</td>
 				<td  class="dBug_arrayKeyBody">submit[submit_2]</td></tr>
@@ -246,7 +193,7 @@
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">submit_3</td>
 				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">inputs</td>
-				<td  class="dBug_arrayKeyBody"><input type="hidden" name="path_id" value="test multi form"/></td></tr>
+				<td  class="dBug_arrayKeyBody">[empty]</td></tr>
 <tr>
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">submit</td>
 				<td  class="dBug_arrayKeyBody">submit[submit_3]</td></tr>
@@ -255,7 +202,7 @@
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">submit_4</td>
 				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">inputs</td>
-				<td  class="dBug_arrayKeyBody"><input type="hidden" name="path_id" value="test multi form"/></td></tr>
+				<td  class="dBug_arrayKeyBody">[empty]</td></tr>
 <tr>
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">submit</td>
 				<td  class="dBug_arrayKeyBody">submit[submit_4]</td></tr>
@@ -263,20 +210,14 @@
 <tr>
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">default</td>
 				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
-				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">PathID</td>
-				<td  class="dBug_arrayKeyBody">path_id</td></tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">TestID</td>
+				<td  class="dBug_arrayKeyBody">test_id</td></tr>
 <tr>
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">inputs</td>
-				<td  class="dBug_arrayKeyBody"><input type="hidden" name="default[c]" value="validation"/></td></tr>
+				<td  class="dBug_arrayKeyBody">[empty]</td></tr>
 <tr>
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">submit</td>
 				<td  class="dBug_arrayKeyBody">submit[default]</td></tr>
-<tr>
-				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">pre</td>
-				<td  class="dBug_arrayKeyBody">?c=validation</td></tr>
-<tr>
-				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">post</td>
-				<td  class="dBug_arrayKeyBody">[empty]</td></tr>
 </table></td></tr>
 </table></td></tr>
 </table>
