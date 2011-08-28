@@ -20,12 +20,12 @@ var $controller_alias;
 		'debug'=>true,
 	);
 	$this->controller_alias=array(
-		'helloworld'=>'ControllersHelloWorld',
+		'helloworld'=>array(
+			'class_name'=>'ControllersHelloWorld',
+			'path'=>'controllers'.DIRECTORY_SEPARATOR,
+		),
 	);
 	$this->class_path=array(
-		'ModelsHelloWorld'=>array(
-			'path'=>'models'.DIRECTORY_SEPARATOR,
-			),
 	);	
 	}
 }
