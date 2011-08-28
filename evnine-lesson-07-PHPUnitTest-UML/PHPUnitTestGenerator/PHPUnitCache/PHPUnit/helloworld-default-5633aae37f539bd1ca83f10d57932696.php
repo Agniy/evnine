@@ -1,0 +1,1 @@
+a:6:{s:14:"LoadControll1r";s:10:"helloworld";s:10:"LoadMethod";s:7:"default";s:4:"ajax";s:5:"False";s:10:"REQUEST_IN";a:2:{s:5:"test1";s:1:"1";s:5:"test3";s:2:"23";}s:11:"REQUEST_OUT";a:2:{s:5:"test1";s:1:"1";s:5:"test3";s:2:"23";}s:30:"ModelsHelloWorld_getHelloWorld";s:10:"HelloWorld";}
