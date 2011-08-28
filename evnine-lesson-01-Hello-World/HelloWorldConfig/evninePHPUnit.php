@@ -19,7 +19,7 @@
 		*/
 //$_SERVER["DOCUMENT_ROOT"]=''
 include_once('evnine.php');
-class evninePHPUnit extends Controller {
+class evninePHPUnit extends EvnineController {
 /**
 			* @assert ('getControllerForParam_helloworld_default_Test',$array,$param) == $array=($this->object->getControllerForParam($param=array( 'controller'=>'helloworld', 'method'=>'default')))
 			* @access public

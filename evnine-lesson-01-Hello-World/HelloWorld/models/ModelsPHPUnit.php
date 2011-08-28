@@ -13,7 +13,7 @@ var $evnine;
 function __construct($param){
 	set_time_limit ( '3000' );
 	ini_set("memory_limit","920M");
-	$this->evnine=new Controller();
+	$this->evnine=new EvnineController();
 	//$param
 }
 
@@ -194,7 +194,7 @@ function getPHPUnitCode(&$param) {
 		*/'."\r\n";
 	$php_unit_code.='//$_SERVER["DOCUMENT_ROOT"]=\'\''."\r\n";
 	$php_unit_code.='include_once(\'evnine.php\');'."\r\n";
-	$php_unit_code.='class evninePHPUnit extends Controller {'."\r\n";
+	$php_unit_code.='class evninePHPUnit extends EvnineController {'."\r\n";
 	$php_unit_code.='/*'.'*'."\r\n";
 	$all_count=count($param['getCountParamByParamTest']);
 	//$php_unit_code.='$all_count:'.$all_count;

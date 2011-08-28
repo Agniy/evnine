@@ -15,7 +15,7 @@
  * en: To inherit the configuration.
  * ru: Подключаем конфиг и наследуем от него настройки.
  */
-require_once('evnine.config.php');
+include_once('evnine.config.php');
 
 /** new Controller() extends Config
  * 
@@ -29,7 +29,7 @@ require_once('evnine.config.php');
  * @author ev9eniy.info
  * @updated 2011-06-01 17:53:02
  */
-class Controller extends Config
+class EvnineController extends EvnineConfig
 {
 
 	/** $this->api

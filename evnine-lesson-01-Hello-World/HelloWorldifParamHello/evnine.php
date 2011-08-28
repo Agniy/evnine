@@ -15,21 +15,21 @@
  * en: To inherit the configuration.
  * ru: Подключаем конфиг и наследуем от него настройки.
  */
-require_once('evnine.config.php');
+include_once('evnine.config.php');
 
-/** new Controller() extends Config
+/** new EvnineController() extends Config
  * 
  * en: The base controller.
  * ru: Базовый контроллер.
  * 
  * @uses Config
- * @package Controller
+ * @package EvnineController
  * @version 0.3
  * @copyright 2009-2011 
  * @author ev9eniy.info
  * @updated 2011-06-01 17:53:02
  */
-class Controller extends Config
+class EvnineController extends EvnineConfig
 {
 
 	/** $this->api
@@ -1951,7 +1951,7 @@ function setLoadController($set_controller) {
 			* );
 			* 
 			*/
-		$this->result['ControllerError'][]=__METHOD__.' ('.preg_replace("/.*\\\/","",__FILE__).', line:'.__LINE__.'): Controller "'.$set_controller. '" not found '.$this->current_controller_name.'';
+		$this->result['ControllerError'][]=__METHOD__.' ('.preg_replace("/.*\\\/","",__FILE__).', line:'.__LINE__.'): EvnineController "'.$set_controller. '" not found '.$this->current_controller_name.'';
 		$this->param['controller']=$this->current_controller_name = $this->param_const['default_controller'];
 	}else {
 	/**
@@ -2031,7 +2031,7 @@ function setLoadController($set_controller) {
  * 
  * /index.php
  * include_once('evnine.php');
- * $evnine = new Controller();
+ * $evnine = new EvnineController();
  * $result = $evnine->getControllerForParam(
  * array(
  *  'controller' => 'helloworld',
@@ -2139,7 +2139,7 @@ function getDataFromController($param,$debug=false) {
 		*
 		* /index.php
 		* include_once('evnine.php');
-		* $evnine = new Controller();
+		* $evnine = new EvnineController();
 		* $result = $evnine->getControllerForParam(
 		* array(
 		*  'controller' => 'helloworld',
@@ -2168,7 +2168,7 @@ function getDataFromController($param,$debug=false) {
 			* 
 			* /index.php
 			* include_once('evnine.php');
-			* $evnine = new Controller();
+			* $evnine = new EvnineController();
 			* $result = $evnine->getControllerForParam(
 			* array(
 			*  'controller' => 'helloworld',
@@ -2204,7 +2204,7 @@ function getDataFromController($param,$debug=false) {
 			* 
 			* /index.php
 			* include_once('evnine.php');
-			* $evnine = new Controller();
+			* $evnine = new EvnineController();
 			* $result = $evnine->getControllerForParam(
 			* array(
 			*  'ajax' => false,
