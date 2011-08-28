@@ -9,7 +9,7 @@ Three things in programming for the changes in life:
 ----
 		-no more if, switch, while, etc
 		only true-false
-		Is passed only one parameter for the method. (For UML to PHP generation)
+		Is passed only one parameter for the method. (For simple UML to PHP generation)
 
 2.	Easy debug 
 ----
@@ -39,7 +39,7 @@ Three things in programming for the changes in life:
 2.	Легкая отладка по точке вxода.
 ----
 		удобный вывод переменных (array, obj, xml) по print_r2 (c) Kwaku Otchere.
-		данные в процессе отладки и тестирования можно заморозить (Таблицы, Файлы, окружение, итд)
+		данные в процессе отладки и тестировании можно заморозить (Таблицы, Файлы, окружение, итд)
 		авто генерация входных параметров 
 		Юнит-тесты создаются сами и хранятся как стерилизованные объекты.
 		Имена в массиве ответа контроллера соответствуют путям к исходникам.

@@ -7,14 +7,15 @@
  * en: Total output error
  * ru: Общий вывод ошибок
  * error_reporting(E_ERROR|E_RECOVERABLE_ERROR|E_PARSE|E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR);
+ * error_reporting(0);
  */
-error_reporting(0);
+
 
 /** evnine.config.php
  * en: To inherit the configuration.
  * ru: Подключаем конфиг и наследуем от него настройки.
  */
-require('evnine.config.php');
+require_once('evnine.config.php');
 
 /** new Controller() extends Config
  * 
@@ -1757,16 +1758,16 @@ function getURLFromArray($validate,$seo=false,$is_add=false) {
 									* TWIG: 
 									* {inURL.default.pre}{inURL.default.PathID}new_param{inURL.default.post}
 									* 
-									* >> &path_id[]=1&path_id[]=new_param
+									* >> &test_id[]=1&test_id[]=new_param
 									* 
 									* controller:
 									* 'public_methods' => array(
 									*  'ext_search' => array(
 									*   'inURLMethod' => array('ext_search'),
 									*   'validation'=> array(
-									*     'path_id' => array(
+									*     'test_id' => array(
 									*       ...
-									*       'to' => 'PathID',
+									*       'to' => 'TestID',
 									*       'inURLSave' => true
 									*       'is_array' => true,
 									*       ...
@@ -1985,6 +1986,28 @@ function setLoadController($set_controller) {
 				$controller = $this->controller_alias[$this->current_controller_name];
 				$this->loaded_controller[$set_controller] = new $controller($this->access_level);
 				$this->current_controller=$this->loaded_controller[$set_controller]->controller;
+			}elseif (is_array($this->controller_alias[$this->current_controller_name])){
+			/**
+				* en: If the controller set a folder.
+				* ru: Если для контроллера задана отдельная папка.
+				*/
+				$controller_file = $this->path_to.$this->controller_alias[$this->current_controller_name]['path'].DIRECTORY_SEPARATOR.$this->controller_alias[$this->current_controller_name]['class_name'].'.php';
+				if (file_exists($controller_file)){
+					/**
+						* en: If the file exists the controller, init it.
+						* ru: Если файл контроллера существует, подключим его.
+						*/
+					include_once($controller_file);
+					$controller = $this->controller_alias[$this->current_controller_name]['class_name'];
+					$this->loaded_controller[$set_controller] = new $controller($this->access_level);
+					$this->current_controller=$this->loaded_controller[$set_controller]->controller;
+				}else {
+					/**
+						* en: If the controller file from array does not exist, set the error.
+						* ru: Если файла контроллера из массива не существует, выводим ошибку.
+						*/
+						$this->result['ControllerError'][]=__METHOD__.' ('.preg_replace("/.*\\\/","",__FILE__).', line:'.__LINE__.'): controller file [array case]"'.$controller_file. '" not exist ';
+				}
 			}else {
 			/**
 				* en: If the controller file does not exist, set the error.
@@ -2061,7 +2084,7 @@ function getDataFromController($param,$debug=false) {
 		$this->result['REQUEST_IN']=$this->param['REQUEST'];
 		$this->result['REQUEST_OUT']=array();
 	}
-	if (empty($this->result['View'])){
+	if (empty($this->result['inURLView'])){
 		if ($this->param['ajax']&&
 			!empty($this->current_controller['public_methods'][$this->param['method']]['inURLView'])
 		){
@@ -2083,7 +2106,7 @@ function getDataFromController($param,$debug=false) {
 			* )
 			* 
 			*/
-			$this->result['View']=$this->current_controller['public_methods'][$this->param['method']]['inURLView'];
+			$this->result['inURLView']=$this->current_controller['public_methods'][$this->param['method']]['inURLView'];
 		}elseif (!empty($this->current_controller['inURLView'])){
 		/**
 			* en: In all other cases, use the template specified by default.
@@ -2094,7 +2117,7 @@ function getDataFromController($param,$debug=false) {
 			*   'inURLView' => 'templates_example.php',
 			* )
 			*/
-			$this->result['View']=$this->current_controller['inURLView'];
+			$this->result['inURLView']=$this->current_controller['inURLView'];
 		}
 	}
 	if (empty($this->result['Title'])&&!empty($this->current_controller['title'])){
@@ -2152,13 +2175,6 @@ function getDataFromController($param,$debug=false) {
 			*  'method' => 'hi',
 			* )
 			*/
-		if ($this->param['method']!=='default'){
-		/**
-			* en: If this method is not the default method.
-			* ru: Если указанный метод не является методом по умолчанию.
-			*/
-			$this->result['ViewMethod'][$this->param['method']] = $this->param['method'];
-		}
 		if (!empty($this->current_controller['public_methods'][$this->param['method']]['inURLView'])){
 		/**
 			* en: If the method specified template.
@@ -2171,7 +2187,13 @@ function getDataFromController($param,$debug=false) {
 			*  ),
 			* )
 			*/
-			$this->result['ViewMethod'][$this->current_controller['public_methods'][$this->param['method']]['inURLView']]=$this->current_controller['public_methods'][$this->param['method']]['inURLView'];
+			$this->result['ViewMethod'][$this->param['method']]=$this->current_controller['public_methods'][$this->param['method']]['inURLView'];
+		}elseif ($this->param['method']!=='default'){
+		/**
+			* en: If this method is not the default method.
+			* ru: Если указанный метод не является методом по умолчанию.
+			*/
+			$this->result['ViewMethod'][$this->param['method']] = $this->param['method'];
 		}
 		$this->getPublicMethod($this->param);
 		$this->getAvailableTemplates($this->current_controller['templates'],$this->current_controller_name);
@@ -2242,7 +2264,10 @@ function getDataFromController($param,$debug=false) {
 				$this->result['&lArr;'.$parent.':parent-default'] = '&lArr;Parent Method <font color="orange">'.$parent.'::parent-default</font> is unload';
 				$this->param['method']= $save_method;
 				$this->param['controller']=$save_template;
-			}elseif (!empty($this->current_controller['public_methods']['default'])){
+			}elseif (
+				!empty($this->current_controller['public_methods']['default'])
+				&&$this->param['method']!=='default'
+			){
 			/**
 				* en: If the default method from the child controller is not specified.
 				* ru: Если в контроллере - ребенке не указан метод по умолчанию.
@@ -2272,7 +2297,24 @@ function getDataFromController($param,$debug=false) {
 					* ru: Загружаем метод по умолчания в контроллере - родителе.
 					*/
 				$this->param['method']='default';
+				$this->result['&rArr;'.$this->current_controller_name.':default'] = '&rArr;Method <font color="orange"><b>'.$this->current_controller_name.'::default</b></font> is load';
+				if (!empty($this->current_controller['public_methods'][$this->param['method']]['inURLView'])){
+				/**
+					* en: If the method specified template.
+					* ru: Если у метода указан шаблон.
+					* 
+					* /controllers/ControllersHelloWorld.php
+					* 'public_methods' => array(
+					*  'hi' => array(
+					*   'inURLView' => 'template_hi.php',
+					*  ),
+					* )
+					*/
+					$this->result['ViewMethod'][$this->param['method']]=$this->current_controller['public_methods'][$this->param['method']]['inURLView'];
+				}
+					
 				$this->getPublicMethod($this->param);
+				$this->result['&lArr;'.$this->current_controller_name.':default'] = '&lArr;Method <font color="orange"><b>'.$this->current_controller_name.'::default</b></font> is unload';
 			}
 			$this->getAvailableTemplates($this->current_controller['templates'],$this->current_controller_name);
 		}
@@ -2547,31 +2589,55 @@ function getMethodFromClass($methods_class,$methods_array) {
 			* en: If the method not exists in the list of aliases controllers. Display the error.
 			* ru: Если метода не существует в списке псевдонимов контроллеров. Выводим ошибку.
 			*/
-			$this->result['ControllerError'][]=__METHOD__.' ('.preg_replace("/.*\\\/","",__FILE__).', line:'.__LINE__.'):Extend controller not exist '.$methods_class.'';
+				if (
+					$methods_class['0']!=='M'&&
+					$methods_class['1']!=='o'&&
+					$methods_class['4']!=='l'
+				){
+				/**
+					* en: Exclude the case with the model.
+					* ru: Исключаем авто подстановку пути к модели.
+					* Models
+					* 012345
+					*/
+					$this->result['ControllerError'][]=__METHOD__.' ('.preg_replace("/.*\\\/","",__FILE__).', line:'.__LINE__.'):Extend controller not exist '.$methods_class.'';
+				}
 		}
-		$methods_class=$this->getFirstArrayKey($methods_array);
-		if (count($methods_array[$methods_class])>1){
-		/**
-			* en: If more than one method, reduces by one level.
-			* ru: Если методов больше одного, уменьшаем глубину на один уровень.
-			* 
-			* /controllers/ControllersHelloWorld.php
-			* >>'ModelsHelloWorld_isHello_true'=>array(
-			*    'ModelsHelloWorld' => array(
-			*     'getHelloWorld1',
-			*     'getHelloWorld2'
-			*    )
-			*   )
-			* 
-			* <<'ModelsHelloWorld' => array(
-			*     'getHelloWorld1',
-			*     'getHelloWorld2'
-			*    )
-			*/
-			$methods_array=$methods_array[$methods_class];
+		if ($methods_class['0']==='M'&&
+				$methods_class['3']==='e'
+		){
+			/**
+				* en: The case when the model in the configuration file is not specified.
+				* ru: Проверим случай когда модель в конфигурационном файле не указана.  
+				* Models
+				* 012345
+				*/
+				$this->isSetClassToLoadAndSetParam($methods_class,false);
+		} else {
+			$methods_class=$this->getFirstArrayKey($methods_array);
+			if (count($methods_array[$methods_class])>1){
+				/**
+					* en: If more than one method, reduces by one level.
+					* ru: Если методов больше одного, уменьшаем глубину на один уровень.
+					* 
+					* /controllers/ControllersHelloWorld.php
+					* >>'ModelsHelloWorld_isHello_true'=>array(
+					*    'ModelsHelloWorld' => array(
+					*     'getHelloWorld1',
+					*     'getHelloWorld2'
+					*    )
+					*   )
+					* 
+					* <<'ModelsHelloWorld' => array(
+					*     'getHelloWorld1',
+					*     'getHelloWorld2'
+					*    )
+					*/
+					$methods_array=$methods_array[$methods_class];
 			}
 		}
-		if (empty($this->loaded_class[$methods_class])){
+	}
+	if (empty($this->loaded_class[$methods_class])){
 		/**
 			* en: The class is not initialized.
 			* ru: Класс не инициализирован.
@@ -2610,9 +2676,9 @@ function getMethodFromClass($methods_class,$methods_array) {
 	* @access public
 	* @return boolean
 	*/
-function isSetClassToLoadAndSetParam($methods_class){
+function isSetClassToLoadAndSetParam($methods_class,$config_models=true){
 	$class_dir=$this->path_to.$this->class_path[$methods_class]['path'].DIRECTORY_SEPARATOR.$methods_class.'.php';
-	if (file_exists($class_dir)){
+	if ($config_models&&file_exists($class_dir)){
 		/**
 			* en: There exists an a class file? path taken from the config.
 			* ru: Если существует файл c классом, путь берем из конфига.
@@ -2625,6 +2691,14 @@ function isSetClassToLoadAndSetParam($methods_class){
 			*/
 			$this->param=array_merge($this->param,$this->class_path[$methods_class]['param']);
 		}
+		$this->loaded_class[$methods_class] = new $methods_class($this->loaded_class[$this->api]);
+		return true;
+	}elseif(!$config_models&&file_exists($this->path_to.'models'.DIRECTORY_SEPARATOR.$methods_class.'.php')){
+		/**
+			* en: The case of the installation path for the default model.
+			* ru: Случай с установкой пути для модели по умолчанию.  
+			*/
+		include_once($this->path_to.'models'.DIRECTORY_SEPARATOR.$methods_class.'.php');
 		$this->loaded_class[$methods_class] = new $methods_class($this->loaded_class[$this->api]);
 		return true;
 	}else {
@@ -3627,11 +3701,12 @@ function getControllerForParamTest($method,$array_init,$param){
 		* en: If the folder path to the cache is not specified.
 		* ru: Если путь папки для кэша не указан.
 		*/
-		return 'ERROR not exist in  evnine.config.php
-			$this->param_const=array(\'CacheDirPHPUnit\'=>\'CACHE_DIR\')';
+		$this->param_const['CacheDirPHPUnit']='test'.DIRECTORY_SEPARATOR.'PHPUnitCache'.DIRECTORY_SEPARATOR.'PHPUnit';
 	}
 	$methods_class='ModelsPHPUnit';
-	if ($this->isSetClassToLoadAndSetParam($methods_class)){
+	if ($this->isSetClassToLoadAndSetParam($methods_class,$use_config=false)
+			||$this->isSetClassToLoadAndSetParam($methods_class,$use_config=true)
+	){
 	/**
 		* en: Load model for testing.
 		* ru: Загружаем модель для тестирования.

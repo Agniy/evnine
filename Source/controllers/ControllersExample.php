@@ -50,6 +50,14 @@ class ControllersExample
 
 	function __construct($access_level){
 		$this->controller = array(
+			'inURLUnitTest' => array(
+			/**
+				* en: 
+				* ru: PHPUnit Test для всеx методов контроллера.
+				*/
+				'REQUEST' => array(),
+			),
+
 			'this'=> 'example', 
 			/**
 				* en: For convenience, the name of the controller.
@@ -273,7 +281,6 @@ class ControllersExample
 							*/
 					),
 					'inURLTemplate' => array(
-				//TODO 38% ------------------------------{ 25.08.2011 }------------------------------
 					/**
 						* en: Array for permanent links in the template on different methods.
 						* ru: Массив для постоянных ссылок в шаблоне на разные методы.
@@ -443,6 +450,17 @@ class ControllersExample
 							* ru: Перезаписываем приватный метод валидации
 							*/
 						),
+						'inURLUnitTest' => array(
+							'test_1'=>array(
+									'1',
+									array(
+										'test' => '1',
+										'test2' => '2',
+									)
+							),
+						),
+						'inURLExtController'=>'ext_controller',
+						'inURLExtMethod'=>'ext_method',
 				),
 				// END default method
 
