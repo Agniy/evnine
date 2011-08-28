@@ -2,7 +2,6 @@
 include_once '../evnine.php';
 include_once '../debug/evnine.debug.php';
 $php_unit_file='../evninePHPUnit.php';
-
 $phpunit_config=array(
 'controller_alias'=>array(
 		'php_unit_test'=>array(
@@ -11,7 +10,6 @@ $phpunit_config=array(
 		)
 	),
 );
-
 $evnine = new Controller();
 $evnine->controller_alias = array_merge($evnine->controller_alias,$phpunit_config['controller_alias']);
 $evnine->class_path=array_merge($evnine->class_path,$phpunit_config['class_path']);
@@ -23,9 +21,7 @@ $output = $evnine->getControllerForParam(
 		'evnine'=>$evnine
 	)
 );
-
 echo $output['ModelsPHPUnit_getPHPUnitCodeWithBR'];
-print_r2($output, "array",false);
 if (!file_exists($php_unit_file)){
 	file_put_contents($php_unit_file,$output['ModelsPHPUnit_getPHPUnitCode']);
 	$dir = (defined( '__DIR__' )?__DIR__:getcwd());
