@@ -10,7 +10,7 @@ $phpunit_config=array(
 		)
 	),
 );
-$evnine = new Controller();
+$evnine = new EvnineController();
 $evnine->controller_alias = array_merge($evnine->controller_alias,$phpunit_config['controller_alias']);
 $evnine->class_path=array_merge($evnine->class_path,$phpunit_config['class_path']);
 $evnine->path_to=$evnine->path_to.'..'.DIRECTORY_SEPARATOR;
