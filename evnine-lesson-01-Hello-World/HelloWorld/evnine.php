@@ -1757,16 +1757,16 @@ function getURLFromArray($validate,$seo=false,$is_add=false) {
 									* TWIG: 
 									* {inURL.default.pre}{inURL.default.PathID}new_param{inURL.default.post}
 									* 
-									* >> &path_id[]=1&path_id[]=new_param
+									* >> &test_id[]=1&test_id[]=new_param
 									* 
 									* controller:
 									* 'public_methods' => array(
 									*  'ext_search' => array(
 									*   'inURLMethod' => array('ext_search'),
 									*   'validation'=> array(
-									*     'path_id' => array(
+									*     'test_id' => array(
 									*       ...
-									*       'to' => 'PathID',
+									*       'to' => 'TestID',
 									*       'inURLSave' => true
 									*       'is_array' => true,
 									*       ...
@@ -2061,7 +2061,7 @@ function getDataFromController($param,$debug=false) {
 		$this->result['REQUEST_IN']=$this->param['REQUEST'];
 		$this->result['REQUEST_OUT']=array();
 	}
-	if (empty($this->result['View'])){
+	if (empty($this->result['inURLView'])){
 		if ($this->param['ajax']&&
 			!empty($this->current_controller['public_methods'][$this->param['method']]['inURLView'])
 		){
@@ -2083,7 +2083,7 @@ function getDataFromController($param,$debug=false) {
 			* )
 			* 
 			*/
-			$this->result['View']=$this->current_controller['public_methods'][$this->param['method']]['inURLView'];
+			$this->result['inURLView']=$this->current_controller['public_methods'][$this->param['method']]['inURLView'];
 		}elseif (!empty($this->current_controller['inURLView'])){
 		/**
 			* en: In all other cases, use the template specified by default.
@@ -2094,7 +2094,7 @@ function getDataFromController($param,$debug=false) {
 			*   'inURLView' => 'templates_example.php',
 			* )
 			*/
-			$this->result['View']=$this->current_controller['inURLView'];
+			$this->result['inURLView']=$this->current_controller['inURLView'];
 		}
 	}
 	if (empty($this->result['Title'])&&!empty($this->current_controller['title'])){
@@ -2152,13 +2152,6 @@ function getDataFromController($param,$debug=false) {
 			*  'method' => 'hi',
 			* )
 			*/
-		if ($this->param['method']!=='default'){
-		/**
-			* en: If this method is not the default method.
-			* ru: Если указанный метод не является методом по умолчанию.
-			*/
-			$this->result['ViewMethod'][$this->param['method']] = $this->param['method'];
-		}
 		if (!empty($this->current_controller['public_methods'][$this->param['method']]['inURLView'])){
 		/**
 			* en: If the method specified template.
@@ -2171,7 +2164,13 @@ function getDataFromController($param,$debug=false) {
 			*  ),
 			* )
 			*/
-			$this->result['ViewMethod'][$this->current_controller['public_methods'][$this->param['method']]['inURLView']]=$this->current_controller['public_methods'][$this->param['method']]['inURLView'];
+			$this->result['ViewMethod'][$this->param['method']]=$this->current_controller['public_methods'][$this->param['method']]['inURLView'];
+		}elseif ($this->param['method']!=='default'){
+		/**
+			* en: If this method is not the default method.
+			* ru: Если указанный метод не является методом по умолчанию.
+			*/
+			$this->result['ViewMethod'][$this->param['method']] = $this->param['method'];
 		}
 		$this->getPublicMethod($this->param);
 		$this->getAvailableTemplates($this->current_controller['templates'],$this->current_controller_name);
@@ -2242,7 +2241,10 @@ function getDataFromController($param,$debug=false) {
 				$this->result['&lArr;'.$parent.':parent-default'] = '&lArr;Parent Method <font color="orange">'.$parent.'::parent-default</font> is unload';
 				$this->param['method']= $save_method;
 				$this->param['controller']=$save_template;
-			}elseif (!empty($this->current_controller['public_methods']['default'])){
+			}elseif (
+				!empty($this->current_controller['public_methods']['default'])
+				&&$this->param['method']!=='default'
+			){
 			/**
 				* en: If the default method from the child controller is not specified.
 				* ru: Если в контроллере - ребенке не указан метод по умолчанию.
@@ -2272,7 +2274,24 @@ function getDataFromController($param,$debug=false) {
 					* ru: Загружаем метод по умолчания в контроллере - родителе.
 					*/
 				$this->param['method']='default';
+				$this->result['&rArr;'.$this->current_controller_name.':default'] = '&rArr;Method <font color="orange"><b>'.$this->current_controller_name.'::default</b></font> is load';
+				if (!empty($this->current_controller['public_methods'][$this->param['method']]['inURLView'])){
+				/**
+					* en: If the method specified template.
+					* ru: Если у метода указан шаблон.
+					* 
+					* /controllers/ControllersHelloWorld.php
+					* 'public_methods' => array(
+					*  'hi' => array(
+					*   'inURLView' => 'template_hi.php',
+					*  ),
+					* )
+					*/
+					$this->result['ViewMethod'][$this->param['method']]=$this->current_controller['public_methods'][$this->param['method']]['inURLView'];
+				}
+					
 				$this->getPublicMethod($this->param);
+				$this->result['&lArr;'.$this->current_controller_name.':default'] = '&lArr;Method <font color="orange"><b>'.$this->current_controller_name.'::default</b></font> is unload';
 			}
 			$this->getAvailableTemplates($this->current_controller['templates'],$this->current_controller_name);
 		}
