@@ -1,6 +1,6 @@
 <?php
 
-require_once 'C:\Documents and Settings\1\evnine\evnine-lesson-01-Hello-World\HelloWorldifParamHello\evninePHPUnit.php';
+require_once 'evninePHPUnit.php';
 
 /**
  * Test class for evninePHPUnit.
