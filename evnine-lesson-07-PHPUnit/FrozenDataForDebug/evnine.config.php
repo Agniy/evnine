@@ -1,5 +1,5 @@
 <?php
-class Config 
+class EvnineConfig 
 {
 
 	var $param_const;
@@ -7,7 +7,7 @@ class Config
 	var $api;
 	var $access_level;
 	var $class_path;
-	var $controller_menu_view;
+	var $controller_alias;
 
 	function __construct(){
 
@@ -32,7 +32,7 @@ class Config
 				/*По ментоду ->setResetForTest($param);*/
 
 		);
-		$this->controller_menu_view=array(
+		$this->controller_alias=array(
 			'helloworld'=>'ControllersHelloWorld',
 		);
 		$this->class_path=array(

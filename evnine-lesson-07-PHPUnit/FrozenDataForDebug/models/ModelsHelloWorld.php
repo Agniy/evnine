@@ -58,8 +58,22 @@ function getQueryFromTableEvnine() {
  * @access public
  * @return array
  */
-function getQueryFromTableEvnineAfterUpdate() {
-	return $this->getQueryFromTableEvnine();
+function getQueryFromTableEvnineAfterUpdate(&$param) {
+	$data=$this->getQueryFromTableEvnine();
+	$param['setResetForTest']=true;
+	return $data;
+	
+}
+
+/** getQueryFromTableEvnineAfterUpdateWithReset 
+ * 
+ * 
+ * @param mixed $param 
+ * @access public
+ * @return void
+ */
+function getQueryFromTableEvnineAfterUpdateWithReset(&$param) {
+	return $this->getQueryFromTableEvnine($param);
 }
 
 

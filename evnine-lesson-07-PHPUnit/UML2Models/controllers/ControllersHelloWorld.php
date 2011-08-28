@@ -1,5 +1,5 @@
 <?php
- /**
+/**
  * HelloWorld
  * @package Controller
  * @author *
@@ -21,13 +21,7 @@ class ControllersHelloWorld
 					//Пример вызова t=имя контроллера&m=публичный метод	
 					'default'=>array(//Default method is always executed unless you specify
 													 //Метод по умолчанию, выполняется всегда если не указан
-						'ModelsHelloWorld' => array(
-							'getContentFromFrozenFile',
-							'getQueryFromTableEvnine',//Call Method from class \models\ModelsHelloWorld->getQuery
-							'setUpdateTableEvnineModifierParamSetResetFalse',
-							'getQueryFromTableEvnineAfterUpdate',
-							'getQueryFromTableEvnineAfterUpdateWithReset'
-						), 
+						'ModelsHelloWorld' => 'getHelloWorld', //Call Method from class \models\ModelsHelloWorld->getHelloWorld
 					),
 			)
 		);

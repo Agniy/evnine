@@ -6,7 +6,7 @@
  * @version *
  * @updated *
  */
-class ControllersHelloWorld
+class ControllersPHPUnit
 {
 	var $controller;
 	// en: Array controller
@@ -21,17 +21,16 @@ class ControllersHelloWorld
 					//Пример вызова t=имя контроллера&m=публичный метод	
 					'default'=>array(//Default method is always executed unless you specify
 													 //Метод по умолчанию, выполняется всегда если не указан
-						'ModelsHelloWorld' => array(
-							'getContentFromFrozenFile',
-							'getQueryFromTableEvnine',//Call Method from class \models\ModelsHelloWorld->getQuery
-							'setUpdateTableEvnineModifierParamSetResetFalse',
-							'getQueryFromTableEvnineAfterUpdate',
-							'getQueryFromTableEvnineAfterUpdateWithReset'
-						), 
+						'ModelsPHPUnit' => array(
+							'getParamTest',
+							'getParamCaseByParamTest',
+							'getCountParamByParamTest',
+							'getPHPUnitCode',
+							'getPHPUnitCodeWithBR',
+						)
 					),
 			)
 		);
 	}
 } 
-
 ?>
