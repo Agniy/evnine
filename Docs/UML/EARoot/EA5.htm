@@ -1,0 +1,2060 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Controller</title>
+<link href="../css/ea.css" rel="stylesheet" type="text/css" />
+<script>
+function initPage(src) {
+	if(parent==this&&(this.location+"").indexOf('EARoot')!=-1)
+		document.location=(this.location+"").substring(0,(this.location+"").indexOf('EARoot'))+"index"+(this.location+"").substring((this.location+"").lastIndexOf('.'))+"?goto="+((this.location+"").substring((this.location+"").indexOf('EARoot')+7,(this.location+"").lastIndexOf('.')).replace(/\//g,':').replace(/EA/g,""));
+	else
+		parent.initPage(src);
+}
+</script>
+</head>
+<body onload="initPage(this);" class="Content">
+<div class="pageHeader"></div>
+<div class="PageBody">
+	<span class="ObjectTitle">Controller  : public   class</span>
+	<table border="0" cellpadding="0" cellspacing="0" class="ObjectDetails">
+		<tr>
+			<td width="15%" class="ObjectDetailsTopic">Created:</td>
+			<td width="85%" class="ObjectDetailsValue">28.08.2011 11:08:54</td>
+		</tr>
+		<tr>
+			<td class="ObjectDetailsTopic">Modified:</td>
+			<td class="ObjectDetailsValue">28.08.2011 11:08:54</td>
+		</tr>
+		<tr style="height: 10px"><td colspan="2"></td></tr>
+		<tr>
+			<td class="ObjectDetailsTopic"><img src="../images/plus03.gif" align="absmiddle" id="proj" onclick="parent.toggleData(this.id)" />Project:</td>
+			<td class="ObjectDetailsValue"></td>
+		</tr>
+		<tr id="proj00" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Author:</td>
+			<td class="ObjectDetailsValue">ev9eniy.info</td>
+		</tr>
+		<tr id="proj01" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Version:</td>
+			<td class="ObjectDetailsValue">0.3</td>
+		</tr>
+		<tr id="proj02" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Phase:</td>
+			<td class="ObjectDetailsValue">1.0</td>
+		</tr>
+		<tr id="proj03" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Status:</td>
+			<td class="ObjectDetailsValue">Proposed</td>
+		</tr>
+		<tr id="proj04" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Complexity:</td>
+			<td class="ObjectDetailsValue">Easy</td>
+		</tr>
+		<tr>
+			<td class="ObjectDetailsTopic"><img src="../images/plus03.gif" align="absmiddle" id="adv" onclick="parent.toggleData(this.id)" />Advanced:</td>
+			<td class="ObjectDetailsValue"></td>
+		</tr>
+		<tr id="adv00" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">UUID:</td>
+			<td class="ObjectDetailsValue">{36675098-7079-459d-8486-D5144031FAAE}</td>
+		</tr>
+		<tr id="adv01" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Appears In:</td>
+			<td class="ObjectDetailsValue"><a href="EA1.htm">UML2Models</a></td>
+		</tr>
+	</table>
+	<div class="ObjectDetailsNotes">new Controller() extends Config&#160; en: The base controller. ru: &#1041;&#1072;&#1079;&#1086;&#1074;&#1099;&#1081; &#1082;&#1086;&#1085;&#1090;&#1088;&#1086;&#1083;&#1083;&#1077;&#1088;. &lt;br /&gt;&lt;/p&gt;&lt;p&gt;@uses Config&lt;br /&gt;&lt;/p&gt;&lt;p&gt;@package Controller&lt;br /&gt;&lt;/p&gt;&lt;p&gt;@copyright 2009-2011&lt;br /&gt;&lt;/p&gt;</div>
+
+	<div class="TableGroup" id="TableGroup">
+		<ul class="ItemTitle">
+			<li onClick="parent.toggleItem('Attributes');" id="AttributesTitle">Attributes</li>
+			<li onClick="parent.toggleItem('Operations');" id="OperationsTitle">Operations</li>
+			<li onClick="parent.toggleItem('Links');" id="LinksTitle">Other Links</li>
+		</ul>
+<div class="ItemBody" id="AttributesTable">
+	<table border="0" cellspacing="0" cellpadding="0" class="Table">
+		<tr>
+			<td width="100%" class="TableHeading">Attribute</td>
+		</tr>
+						<tr>
+				<td width="100%" class="TableRow" valign="top"><i>public var</i><br /><strong>&nbsp;&nbsp;access_level</strong></td>
+			</tr>
+			<tr>
+				<td class="TableRowBottomDashed"  colspan="1">
+					<div class="DetailsDivParent"><img src="../images/minus03.gif" align="absmiddle" id="DetailsImageAttributes6" onclick="parent.toggleDiv('detailsDIVAttributes6','DetailsImageAttributes6')" />Details:
+						<div id="detailsDIVAttributes6" class="DetailsDiv" >
+						<i></i><div class="ObjectDetailsNotes"><table>
+	<tr>
+		<td valign="top">
+			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
+		</td>
+		<td>
+			$this-&gt;access_level en: Access levels are set at: ru: Уровни доступа заданы в: /evnine.config.php $this-&gt;access_level=array( &#39;guest&#39;=&gt;&#39;0&#39;, ); &lt;br /&gt;@var array&lt;br /&gt;@access public
+		</td>
+	</tr>
+</table></div>
+
+						</div>
+					</div>
+				</td>
+			</tr>			<tr>
+				<td width="100%" class="TableRow" valign="top"><i>public var</i><br /><strong>&nbsp;&nbsp;api</strong></td>
+			</tr>
+			<tr>
+				<td class="TableRowBottomDashed"  colspan="1">
+					<div class="DetailsDivParent"><img src="../images/minus03.gif" align="absmiddle" id="DetailsImageAttributes7" onclick="parent.toggleDiv('detailsDIVAttributes7','DetailsImageAttributes7')" />Details:
+						<div id="detailsDIVAttributes7" class="DetailsDiv" >
+						<i></i><div class="ObjectDetailsNotes"><table>
+	<tr>
+		<td valign="top">
+			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
+		</td>
+		<td>
+			$this-&gt;api&lt;br /&gt;@access public&lt;br /&gt;@var string&nbsp;<WBR> en: Alias API (MySQL, etc.) set in the $controller_alias of /evnine.config.php. ru: Название API (MySQL, итд) указанное в $controller_alias из /evnine.configphp evnine.config.php-&gt;api=&#39;ModelsMySQL&#39;; evnine.config.php-&gt;api=&#39;ModelsJoomla&#39;; evnine.config.php-&gt;api=&#39;ModelsBitrix&#39;;&nbsp;<WBR> en: The path to the class specified in the ru: Путь до класса задаётся в evnine.config.php-&gt;class_path=array( &#39;ModelsHelloWorld&#39;=&gt;array(&#39;path&#39;=&gt;&#39;/models/&#39;) ) &lt;br /&gt;@var string&lt;br /&gt;@access public
+		</td>
+	</tr>
+</table></div>
+
+						</div>
+					</div>
+				</td>
+			</tr>			<tr>
+				<td width="100%" class="TableRow" valign="top"><i>public var</i><br /><strong>&nbsp;&nbsp;class_path</strong></td>
+			</tr>
+			<tr>
+				<td class="TableRowBottomDashed"  colspan="1">
+					<div class="DetailsDivParent"><img src="../images/minus03.gif" align="absmiddle" id="DetailsImageAttributes8" onclick="parent.toggleDiv('detailsDIVAttributes8','DetailsImageAttributes8')" />Details:
+						<div id="detailsDIVAttributes8" class="DetailsDiv" >
+						<i></i><div class="ObjectDetailsNotes"><table>
+	<tr>
+		<td valign="top">
+			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
+		</td>
+		<td>
+			$this-&gt;class_path en: Path to the classes of models and variables are initialized by default en: IMPORTANT: A weighty priority have parameters passed to en: initializing the base controller ru: Путь до классов моделей и переменные инициализации по умолчанию ru: ВАЖНО: Весомым приоритетом обладают параметры, переданные ru: при инициализации базового контроллера $evnine-&gt;getControllerForParam( array(&#39;hello&#39;=&gt;&#39;config&#39;) )&nbsp;<WBR> en: Set in: ru: Задаются в: /evnine.config.php-&gt;class_path=array(&nbsp;<WBR> &#39;ModelsHelloWorld&#39;=&gt;array( en: class name is the same as the class file ru: Название класса, совпадает с названием файла класса ModelsHelloWorld.php = class ModelsHelloWorld&nbsp;<WBR> &#39;path&#39;=&gt;&#39;models&#39;.DIRECTORY_SEPARATOR, ru: путь до класса &#39;param&#39;=&gt;array( &#39;hello&#39;=&gt;&#39;config&#39;, ) ) ),
+		</td>
+	</tr>
+</table></div>
+
+						</div>
+					</div>
+				</td>
+			</tr>			<tr>
+				<td width="100%" class="TableRow" valign="top"><i>public var</i><br /><strong>&nbsp;&nbsp;controller_alias</strong></td>
+			</tr>
+			<tr>
+				<td class="TableRowBottomDashed"  colspan="1">
+					<div class="DetailsDivParent"><img src="../images/minus03.gif" align="absmiddle" id="DetailsImageAttributes9" onclick="parent.toggleDiv('detailsDIVAttributes9','DetailsImageAttributes9')" />Details:
+						<div id="detailsDIVAttributes9" class="DetailsDiv" >
+						<i></i><div class="ObjectDetailsNotes"><table>
+	<tr>
+		<td valign="top">
+			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
+		</td>
+		<td>
+			$this-&gt;controller_alias en: Aliases names controllers. In the folder /controllers/ ru: Псевдонимы названий контроллеров в папке /controllers/ ru: задаются в: /evnine.config.php $this-&gt;controller_alias=array( &#39;helloworld&#39;=&gt;&#39;ControllersHelloWorld&#39;, ); &lt;br /&gt;@var array&lt;br /&gt;@access public
+		</td>
+	</tr>
+</table></div>
+
+						</div>
+					</div>
+				</td>
+			</tr>			<tr>
+				<td width="100%" class="TableRow" valign="top"><i>public var</i><br /><strong>&nbsp;&nbsp;current_controller</strong></td>
+			</tr>
+			<tr>
+				<td class="TableRowBottomDashed"  colspan="1">
+					<div class="DetailsDivParent"><img src="../images/minus03.gif" align="absmiddle" id="DetailsImageAttributes10" onclick="parent.toggleDiv('detailsDIVAttributes10','DetailsImageAttributes10')" />Details:
+						<div id="detailsDIVAttributes10" class="DetailsDiv" >
+						<i></i><div class="ObjectDetailsNotes"><table>
+	<tr>
+		<td valign="top">
+			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
+		</td>
+		<td>
+			$this-&gt;current_controller en: Current controller. ru: Текущий контроллер &lt;br /&gt;@var string&lt;br /&gt;@access public
+		</td>
+	</tr>
+</table></div>
+
+						</div>
+					</div>
+				</td>
+			</tr>			<tr>
+				<td width="100%" class="TableRow" valign="top"><i>public var</i><br /><strong>&nbsp;&nbsp;current_controller_name</strong></td>
+			</tr>
+			<tr>
+				<td class="TableRowBottomDashed"  colspan="1">
+					<div class="DetailsDivParent"><img src="../images/minus03.gif" align="absmiddle" id="DetailsImageAttributes11" onclick="parent.toggleDiv('detailsDIVAttributes11','DetailsImageAttributes11')" />Details:
+						<div id="detailsDIVAttributes11" class="DetailsDiv" >
+						<i></i><div class="ObjectDetailsNotes"><table>
+	<tr>
+		<td valign="top">
+			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
+		</td>
+		<td>
+			$this-&gt;current_controller_name en: The name of the current controller. ru: Название текущего контроллера setLoadController($current_controller){ $this-&gt;$current_controller_name=$current_controller; } &lt;br /&gt;@var mixed&lt;br /&gt;@access public
+		</td>
+	</tr>
+</table></div>
+
+						</div>
+					</div>
+				</td>
+			</tr>			<tr>
+				<td width="100%" class="TableRow" valign="top"><i>public var</i><br /><strong>&nbsp;&nbsp;debug</strong></td>
+			</tr>
+			<tr>
+				<td class="TableRowBottomDashed"  colspan="1">
+					<div class="DetailsDivParent"><img src="../images/minus03.gif" align="absmiddle" id="DetailsImageAttributes12" onclick="parent.toggleDiv('detailsDIVAttributes12','DetailsImageAttributes12')" />Details:
+						<div id="detailsDIVAttributes12" class="DetailsDiv" >
+						<i></i><div class="ObjectDetailsNotes"><table>
+	<tr>
+		<td valign="top">
+			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
+		</td>
+		<td>
+			$this-&gt;debug en: To debug scripts ru: Для отладки скриптов &lt;br /&gt;@var boolean&lt;br /&gt;@access public
+		</td>
+	</tr>
+</table></div>
+
+						</div>
+					</div>
+				</td>
+			</tr>			<tr>
+				<td width="100%" class="TableRow" valign="top"><i>public var</i><br /><strong>&nbsp;&nbsp;isHasAccessSaveCheck</strong></td>
+			</tr>
+			<tr>
+				<td class="TableRowBottomDashed"  colspan="1">
+					<div class="DetailsDivParent"><img src="../images/minus03.gif" align="absmiddle" id="DetailsImageAttributes13" onclick="parent.toggleDiv('detailsDIVAttributes13','DetailsImageAttributes13')" />Details:
+						<div id="detailsDIVAttributes13" class="DetailsDiv" >
+						<i></i><div class="ObjectDetailsNotes"><table>
+	<tr>
+		<td valign="top">
+			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
+		</td>
+		<td>
+			$this-&gt;isHasAccessSaveCheck en: Is there access to the methods? Based on the level of user access. ru: Есть ли доступ к методам? Исходя из уровня доступа пользователя. &lt;br /&gt;@var boolean&lt;br /&gt;@access public
+		</td>
+	</tr>
+</table></div>
+
+						</div>
+					</div>
+				</td>
+			</tr>			<tr>
+				<td width="100%" class="TableRow" valign="top"><i>public var</i><br /><strong>&nbsp;&nbsp;loaded_class</strong></td>
+			</tr>
+			<tr>
+				<td class="TableRowBottomDashed"  colspan="1">
+					<div class="DetailsDivParent"><img src="../images/minus03.gif" align="absmiddle" id="DetailsImageAttributes14" onclick="parent.toggleDiv('detailsDIVAttributes14','DetailsImageAttributes14')" />Details:
+						<div id="detailsDIVAttributes14" class="DetailsDiv" >
+						<i></i><div class="ObjectDetailsNotes"><table>
+	<tr>
+		<td valign="top">
+			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
+		</td>
+		<td>
+			$this-&gt;loaded_class en: Loaded classes. ru: Загруженные классы &lt;br /&gt;@var array&lt;br /&gt;@access public
+		</td>
+	</tr>
+</table></div>
+
+						</div>
+					</div>
+				</td>
+			</tr>			<tr>
+				<td width="100%" class="TableRow" valign="top"><i>public var</i><br /><strong>&nbsp;&nbsp;loaded_controller</strong></td>
+			</tr>
+			<tr>
+				<td class="TableRowBottomDashed"  colspan="1">
+					<div class="DetailsDivParent"><img src="../images/minus03.gif" align="absmiddle" id="DetailsImageAttributes15" onclick="parent.toggleDiv('detailsDIVAttributes15','DetailsImageAttributes15')" />Details:
+						<div id="detailsDIVAttributes15" class="DetailsDiv" >
+						<i></i><div class="ObjectDetailsNotes"><table>
+	<tr>
+		<td valign="top">
+			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
+		</td>
+		<td>
+			$this-&gt;loaded_controller en: Loaded controllers. ru: Загруженные контроллеры &lt;br /&gt;@var mixed&lt;br /&gt;@access public
+		</td>
+	</tr>
+</table></div>
+
+						</div>
+					</div>
+				</td>
+			</tr>			<tr>
+				<td width="100%" class="TableRow" valign="top"><i>public var</i><br /><strong>&nbsp;&nbsp;param</strong></td>
+			</tr>
+			<tr>
+				<td class="TableRowBottomDashed"  colspan="1">
+					<div class="DetailsDivParent"><img src="../images/minus03.gif" align="absmiddle" id="DetailsImageAttributes16" onclick="parent.toggleDiv('detailsDIVAttributes16','DetailsImageAttributes16')" />Details:
+						<div id="detailsDIVAttributes16" class="DetailsDiv" >
+						<i></i><div class="ObjectDetailsNotes"><table>
+	<tr>
+		<td valign="top">
+			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
+		</td>
+		<td>
+			$this-&gt;param en: The parameters that are passed to each method ru: Параметры, которые передаются каждому методу &lt;br /&gt;@var array&lt;br /&gt;@access public
+		</td>
+	</tr>
+</table></div>
+
+						</div>
+					</div>
+				</td>
+			</tr>			<tr>
+				<td width="100%" class="TableRow" valign="top"><i>public var</i><br /><strong>&nbsp;&nbsp;path_to</strong></td>
+			</tr>
+			<tr>
+				<td class="TableRowBottomDashed"  colspan="1">
+					<div class="DetailsDivParent"><img src="../images/minus03.gif" align="absmiddle" id="DetailsImageAttributes17" onclick="parent.toggleDiv('detailsDIVAttributes17','DetailsImageAttributes17')" />Details:
+						<div id="detailsDIVAttributes17" class="DetailsDiv" >
+						<i></i><div class="ObjectDetailsNotes"><table>
+	<tr>
+		<td valign="top">
+			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
+		</td>
+		<td>
+			$this-&gt;path_to&nbsp;<WBR> en: Absolute path. en: Used to connect classes of models and controllers. en: IMPORTANT: All the controllers are in the folder /controllers/ ru: Абсолютный путь ru: Используется при подключении классов моделей и контроллеров ru: ВАЖНО: Все контроллеры находятся в папке /controllers/ &lt;br /&gt;@var string&lt;br /&gt;@access public
+		</td>
+	</tr>
+</table></div>
+
+						</div>
+					</div>
+				</td>
+			</tr>			<tr>
+				<td width="100%" class="TableRow" valign="top"><i>public var</i><br /><strong>&nbsp;&nbsp;result</strong></td>
+			</tr>
+			<tr>
+				<td class="TableRowBottomDashed"  colspan="1">
+					<div class="DetailsDivParent"><img src="../images/minus03.gif" align="absmiddle" id="DetailsImageAttributes18" onclick="parent.toggleDiv('detailsDIVAttributes18','DetailsImageAttributes18')" />Details:
+						<div id="detailsDIVAttributes18" class="DetailsDiv" >
+						<i></i><div class="ObjectDetailsNotes"><table>
+	<tr>
+		<td valign="top">
+			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
+		</td>
+		<td>
+			$this-&gt;result en: An array of responses. ru: Массив ответов методов &lt;br /&gt;@var array&lt;br /&gt;@access public
+		</td>
+	</tr>
+</table></div>
+
+						</div>
+					</div>
+				</td>
+			</tr>			<tr>
+				<td width="100%" class="TableRow" valign="top"><i>public var</i><br /><strong>&nbsp;&nbsp;sef_mode</strong></td>
+			</tr>
+			<tr>
+				<td class="TableRowBottomDashed"  colspan="1">
+					<div class="DetailsDivParent"><img src="../images/minus03.gif" align="absmiddle" id="DetailsImageAttributes19" onclick="parent.toggleDiv('detailsDIVAttributes19','DetailsImageAttributes19')" />Details:
+						<div id="detailsDIVAttributes19" class="DetailsDiv" >
+						<i></i><div class="ObjectDetailsNotes"><table>
+	<tr>
+		<td valign="top">
+			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
+		</td>
+		<td>
+			$this-&gt;sef_mode en: Flag of the SEF mode, set in the method $this-&gt;getControllerForParam en: when pass to the controller to parse the string SEF URN ru: Флаг работы в ЧПУ режиме, устанавливается в методе $this-&gt;getControllerForParam ru: при условии, если в параметрах передана строка для SEF разбора URN if (!empty($param[&#39;sef&#39;])) {$this-&gt;sef_mode=true;} &lt;br /&gt;@var bool&lt;br /&gt;@access public
+		</td>
+	</tr>
+</table></div>
+
+						</div>
+					</div>
+				</td>
+			</tr>
+	</table>
+</div>
+<div class="ItemBody" id="OperationsTable">
+	<table border="0" cellspacing="0" cellpadding="0" class="Table">
+		<tr>
+			<td width="100%" class="TableHeading">Operation</td>
+		</tr>
+						<tr>
+				<td width="100%" class="TableRow">
+					<i>public</i><br />
+					<strong>__construct</strong>():var
+				</td>
+			</tr>
+			<tr>
+				<td class="TableRowBottomDashed"  colspan="1">
+					<div class="DetailsDivParent"><img src="../images/minus03.gif" align="absmiddle" id="DetailsImageOperations20" onclick="parent.toggleDiv('detailsDIVOperations20','DetailsImageOperations20')" />Details:
+						<div id="detailsDIVOperations20" class="DetailsDiv" >
+					<i>Sequential  </i>
+					<table>
+						<tr>
+							<td valign = "top"><i></i><span style="margin-left: .7cm;"> </span></td>
+							<td></td>
+						</tr>
+					</table>
+					
+					
+					<div class="ObjectDetailsNotes"><table>
+	<tr>
+		<td valign="top">
+			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
+		</td>
+		<td>
+			__construct&nbsp;<WBR> en: The class constructor. ru: Конструктор класса &lt;br /&gt;@access protected&lt;br /&gt;@return void
+		</td>
+	</tr>
+</table></div>
+
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td width="100%" class="TableRow">
+					<i>public</i><br />
+					<strong>getAvailableTemplates</strong>(<br />
+					<a href="#" onclick="parent.toggleData('param{2D20EEE9-EB7C-47ee-A642-9EB0D02FB055}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{2D20EEE9-EB7C-47ee-A642-9EB0D02FB055}" border="0" />available_templ: var</a>, 
+					<table border="0" cellspacing="0" cellpadding="0" class="Table" style="padding: 4px 18px;">
+						<tr id="param{2D20EEE9-EB7C-47ee-A642-9EB0D02FB055}00" style="display: none;">
+							<td width="50"><strong>Default:</strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{2D20EEE9-EB7C-47ee-A642-9EB0D02FB055}01" style="display: none;">
+							<td width="50"><strong>Kind:</strong></td>
+							<td>in</td>
+						</tr>
+						<tr id="param{2D20EEE9-EB7C-47ee-A642-9EB0D02FB055}02" style="display: none;">
+							<td width="50"><strong>Stereotype: </strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{2D20EEE9-EB7C-47ee-A642-9EB0D02FB055}03" style="display: none;">
+							<td width="50"></td>
+							<td></td>
+						</tr>
+					</table>
+):var
+				</td>
+			</tr>
+			<tr>
+				<td class="TableRowBottomDashed"  colspan="1">
+					<div class="DetailsDivParent"><img src="../images/minus03.gif" align="absmiddle" id="DetailsImageOperations21" onclick="parent.toggleDiv('detailsDIVOperations21','DetailsImageOperations21')" />Details:
+						<div id="detailsDIVOperations21" class="DetailsDiv" >
+					<i>Sequential  </i>
+					<table>
+						<tr>
+							<td valign = "top"><i></i><span style="margin-left: .7cm;"> </span></td>
+							<td></td>
+						</tr>
+					</table>
+					
+					
+					<div class="ObjectDetailsNotes"><table>
+	<tr>
+		<td valign="top">
+			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
+		</td>
+		<td>
+			getAvailableTemplates($available_templ)&nbsp;<WBR> en: Display the available templates for the access level. ru: Отобразить доступные шаблоны для уровня доступа.&nbsp;<WBR> /controllers/ControllersHelloWorld.php &#39;templates&#39; =&gt; array( $access_level[&#39;admin&#39;]=&gt;array( &#39;AdminTemplate&#39;=&gt;&#39;AdminTemplate&#39; ), $access_level[&#39;user&#39;]=&gt;array( &#39;UserTemplate&#39;=&gt;&#39;UserTemplate&#39; ), $access_level[&#39;guest&#39;]=&gt;array( &#39;GuestTemplate&#39;=&gt;&#39;GuestTemplate&#39; ) ),&nbsp;<WBR> /evnine.config.php $this-&gt;access_level=array( &#39;admin&#39;=&gt;&#39;3&#39; ,&#39;user&#39;=&gt;&#39;2&#39; ,&#39;guest&#39;=&gt;&#39;1&#39; ); &lt;br /&gt;@param mixed $available_templ&lt;br /&gt;@access public&lt;br /&gt;@return void
+		</td>
+	</tr>
+</table></div>
+
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td width="100%" class="TableRow">
+					<i>public</i><br />
+					<strong>getControllerForParam</strong>(<br />
+					<a href="#" onclick="parent.toggleData('param{9DF76BDE-98C2-4fbd-AF02-6E73C2543410}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{9DF76BDE-98C2-4fbd-AF02-6E73C2543410}" border="0" />param: var</a>, 
+					<table border="0" cellspacing="0" cellpadding="0" class="Table" style="padding: 4px 18px;">
+						<tr id="param{9DF76BDE-98C2-4fbd-AF02-6E73C2543410}00" style="display: none;">
+							<td width="50"><strong>Default:</strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{9DF76BDE-98C2-4fbd-AF02-6E73C2543410}01" style="display: none;">
+							<td width="50"><strong>Kind:</strong></td>
+							<td>in</td>
+						</tr>
+						<tr id="param{9DF76BDE-98C2-4fbd-AF02-6E73C2543410}02" style="display: none;">
+							<td width="50"><strong>Stereotype: </strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{9DF76BDE-98C2-4fbd-AF02-6E73C2543410}03" style="display: none;">
+							<td width="50"></td>
+							<td></td>
+						</tr>
+					</table>
+):var
+				</td>
+			</tr>
+			<tr>
+				<td class="TableRowBottomDashed"  colspan="1">
+					<div class="DetailsDivParent"><img src="../images/minus03.gif" align="absmiddle" id="DetailsImageOperations22" onclick="parent.toggleDiv('detailsDIVOperations22','DetailsImageOperations22')" />Details:
+						<div id="detailsDIVOperations22" class="DetailsDiv" >
+					<i>Sequential  </i>
+					<table>
+						<tr>
+							<td valign = "top"><i></i><span style="margin-left: .7cm;"> </span></td>
+							<td></td>
+						</tr>
+					</table>
+					
+					
+					<div class="ObjectDetailsNotes"><table>
+	<tr>
+		<td valign="top">
+			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
+		</td>
+		<td>
+			getControllerForParam($param)&nbsp;<WBR> en: Get data from the controller to the parameters. ru: Получить данные из контроллера по параметрам. &lt;br /&gt;@access public&lt;br /&gt;@param array $param&lt;br /&gt;@return array
+		</td>
+	</tr>
+</table></div>
+
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td width="100%" class="TableRow">
+					<i>public</i><br />
+					<strong>getControllerForParamTest</strong>(<br />
+					<a href="#" onclick="parent.toggleData('param{75873474-DC5B-4fff-A879-CB69BE9585DD}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{75873474-DC5B-4fff-A879-CB69BE9585DD}" border="0" />method: var</a>, 
+					<table border="0" cellspacing="0" cellpadding="0" class="Table" style="padding: 4px 18px;">
+						<tr id="param{75873474-DC5B-4fff-A879-CB69BE9585DD}00" style="display: none;">
+							<td width="50"><strong>Default:</strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{75873474-DC5B-4fff-A879-CB69BE9585DD}01" style="display: none;">
+							<td width="50"><strong>Kind:</strong></td>
+							<td>in</td>
+						</tr>
+						<tr id="param{75873474-DC5B-4fff-A879-CB69BE9585DD}02" style="display: none;">
+							<td width="50"><strong>Stereotype: </strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{75873474-DC5B-4fff-A879-CB69BE9585DD}03" style="display: none;">
+							<td width="50"></td>
+							<td></td>
+						</tr>
+					</table>
+					<a href="#" onclick="parent.toggleData('param{677814CE-606E-4d27-AD88-CBA3CD1769BD}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{677814CE-606E-4d27-AD88-CBA3CD1769BD}" border="0" />array_init: var</a>, 
+					<table border="0" cellspacing="0" cellpadding="0" class="Table" style="padding: 4px 18px;">
+						<tr id="param{677814CE-606E-4d27-AD88-CBA3CD1769BD}00" style="display: none;">
+							<td width="50"><strong>Default:</strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{677814CE-606E-4d27-AD88-CBA3CD1769BD}01" style="display: none;">
+							<td width="50"><strong>Kind:</strong></td>
+							<td>in</td>
+						</tr>
+						<tr id="param{677814CE-606E-4d27-AD88-CBA3CD1769BD}02" style="display: none;">
+							<td width="50"><strong>Stereotype: </strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{677814CE-606E-4d27-AD88-CBA3CD1769BD}03" style="display: none;">
+							<td width="50"></td>
+							<td></td>
+						</tr>
+					</table>
+					<a href="#" onclick="parent.toggleData('param{212E399D-7079-4137-91FE-7330ECA573ED}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{212E399D-7079-4137-91FE-7330ECA573ED}" border="0" />param: var</a>, 
+					<table border="0" cellspacing="0" cellpadding="0" class="Table" style="padding: 4px 18px;">
+						<tr id="param{212E399D-7079-4137-91FE-7330ECA573ED}00" style="display: none;">
+							<td width="50"><strong>Default:</strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{212E399D-7079-4137-91FE-7330ECA573ED}01" style="display: none;">
+							<td width="50"><strong>Kind:</strong></td>
+							<td>in</td>
+						</tr>
+						<tr id="param{212E399D-7079-4137-91FE-7330ECA573ED}02" style="display: none;">
+							<td width="50"><strong>Stereotype: </strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{212E399D-7079-4137-91FE-7330ECA573ED}03" style="display: none;">
+							<td width="50"></td>
+							<td></td>
+						</tr>
+					</table>
+):var
+				</td>
+			</tr>
+			<tr>
+				<td class="TableRowBottomDashed"  colspan="1">
+					<div class="DetailsDivParent"><img src="../images/minus03.gif" align="absmiddle" id="DetailsImageOperations23" onclick="parent.toggleDiv('detailsDIVOperations23','DetailsImageOperations23')" />Details:
+						<div id="detailsDIVOperations23" class="DetailsDiv" >
+					<i>Sequential  </i>
+					<table>
+						<tr>
+							<td valign = "top"><i></i><span style="margin-left: .7cm;"> </span></td>
+							<td></td>
+						</tr>
+					</table>
+					
+					
+					<div class="ObjectDetailsNotes"><table>
+	<tr>
+		<td valign="top">
+			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
+		</td>
+		<td>
+			getControllerForParamTest($method,$array_init,$param)&nbsp;<WBR> en: A method for unit testing the controllers. ru: Метод для тестирования контроллеров.&nbsp;<WBR> /ClassNameTest.php&lt;br /&gt;@assert (&#39;getControllerForParam_helloworld_default_Test&#39;,$array,$param) == $array=($this-&gt;object-&gt;getControllerForParam($param=array( &#39;controller&#39;=&gt;&#39;helloworld&#39;, &#39;method&#39;=&gt;&#39;default&#39;))) function getControllerForParam_helloworld_default_Test($method,$array,$param) { $this-&gt;getControllerForParamTest($method,$array,$param); return $this-&gt;result; }&nbsp;<WBR> =&gt;cmd/sh: phpunit --skeleton-test &quot;NameTest.php&quot;&nbsp;<WBR> /ClassNameTestTest.php public function testGetControllerForParam_helloworld_default_Test() { $this-&gt;assertEquals( $array=($this-&gt;object-&gt;getControllerForParam($param=array( &#39;controller&#39;=&gt;&#39;helloworld&#39;, &#39;method&#39;=&gt;&#39;default&#39;))) , $this-&gt;object-&gt;getControllerForParam_helloworld_default_Test(&#39;getControllerForParam_helloworld_default_Test&#39;,$array,$param) ); } &lt;br /&gt;@param string $method en: The method for check. ru: Метод для проверки. &lt;br /&gt;@param array $array_init en: Array to store data from an external method call. ru: Массив для сохранения данных от внешнего вызова метода. &lt;br /&gt;@param array $param en: An array of initialization parameters. ru: Массив параметров инициализации. &lt;br /&gt;@access public&lt;br /&gt;@return void
+		</td>
+	</tr>
+</table></div>
+
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td width="100%" class="TableRow">
+					<i>public</i><br />
+					<strong>getDataFromController</strong>(<br />
+					<a href="#" onclick="parent.toggleData('param{1A3790D3-475B-46a9-8F58-517754371195}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{1A3790D3-475B-46a9-8F58-517754371195}" border="0" />param: var</a>, 
+					<table border="0" cellspacing="0" cellpadding="0" class="Table" style="padding: 4px 18px;">
+						<tr id="param{1A3790D3-475B-46a9-8F58-517754371195}00" style="display: none;">
+							<td width="50"><strong>Default:</strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{1A3790D3-475B-46a9-8F58-517754371195}01" style="display: none;">
+							<td width="50"><strong>Kind:</strong></td>
+							<td>in</td>
+						</tr>
+						<tr id="param{1A3790D3-475B-46a9-8F58-517754371195}02" style="display: none;">
+							<td width="50"><strong>Stereotype: </strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{1A3790D3-475B-46a9-8F58-517754371195}03" style="display: none;">
+							<td width="50"></td>
+							<td></td>
+						</tr>
+					</table>
+					<a href="#" onclick="parent.toggleData('param{39C0EA2D-D4BF-4346-893E-CF69EC6F1D50}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{39C0EA2D-D4BF-4346-893E-CF69EC6F1D50}" border="0" />debug: var</a>, 
+					<table border="0" cellspacing="0" cellpadding="0" class="Table" style="padding: 4px 18px;">
+						<tr id="param{39C0EA2D-D4BF-4346-893E-CF69EC6F1D50}00" style="display: none;">
+							<td width="50"><strong>Default:</strong></td>
+							<td>false</td>
+						</tr>
+						<tr id="param{39C0EA2D-D4BF-4346-893E-CF69EC6F1D50}01" style="display: none;">
+							<td width="50"><strong>Kind:</strong></td>
+							<td>in</td>
+						</tr>
+						<tr id="param{39C0EA2D-D4BF-4346-893E-CF69EC6F1D50}02" style="display: none;">
+							<td width="50"><strong>Stereotype: </strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{39C0EA2D-D4BF-4346-893E-CF69EC6F1D50}03" style="display: none;">
+							<td width="50"></td>
+							<td></td>
+						</tr>
+					</table>
+):var
+				</td>
+			</tr>
+			<tr>
+				<td class="TableRowBottomDashed"  colspan="1">
+					<div class="DetailsDivParent"><img src="../images/minus03.gif" align="absmiddle" id="DetailsImageOperations24" onclick="parent.toggleDiv('detailsDIVOperations24','DetailsImageOperations24')" />Details:
+						<div id="detailsDIVOperations24" class="DetailsDiv" >
+					<i>Sequential  </i>
+					<table>
+						<tr>
+							<td valign = "top"><i></i><span style="margin-left: .7cm;"> </span></td>
+							<td></td>
+						</tr>
+					</table>
+					
+					
+					<div class="ObjectDetailsNotes"><table>
+	<tr>
+		<td valign="top">
+			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
+		</td>
+		<td>
+			getDataFromController($param,$debug=false)&nbsp;<WBR> en: The basic method of obtaining data from the controller to the parameters. ru: Базовый метод получения данных из контроллера по параметрам.&nbsp;<WBR> /index.php include_once(&#39;evnine.php&#39;); $evnine = new Controller(); $result = $evnine-&gt;getControllerForParam( array( &#39;controller&#39; =&gt; &#39;helloworld&#39;, &#39;method&#39; =&gt; &#39;default&#39;, &#39;REQUEST&#39;=&gt;$_REQUEST, &#39;ajax&#39; =&gt; &#39;ajax&#39;, ) &lt;br /&gt;@param array $param en: Init parameters. ru: Параметры на входе. &lt;br /&gt;@param boolean $debug en: Debug mode. ru: Режим отладки. &lt;br /&gt;@access public&lt;br /&gt;@return void
+		</td>
+	</tr>
+</table></div>
+
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td width="100%" class="TableRow">
+					<i>public</i><br />
+					<strong>getDataFromMethod</strong>(<br />
+					<a href="#" onclick="parent.toggleData('param{82448F46-1F6D-48a7-B29B-4AE877C57166}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{82448F46-1F6D-48a7-B29B-4AE877C57166}" border="0" />methods_class: var</a>, 
+					<table border="0" cellspacing="0" cellpadding="0" class="Table" style="padding: 4px 18px;">
+						<tr id="param{82448F46-1F6D-48a7-B29B-4AE877C57166}00" style="display: none;">
+							<td width="50"><strong>Default:</strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{82448F46-1F6D-48a7-B29B-4AE877C57166}01" style="display: none;">
+							<td width="50"><strong>Kind:</strong></td>
+							<td>in</td>
+						</tr>
+						<tr id="param{82448F46-1F6D-48a7-B29B-4AE877C57166}02" style="display: none;">
+							<td width="50"><strong>Stereotype: </strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{82448F46-1F6D-48a7-B29B-4AE877C57166}03" style="display: none;">
+							<td width="50"></td>
+							<td></td>
+						</tr>
+					</table>
+					<a href="#" onclick="parent.toggleData('param{6AD16BF1-86F9-4900-802A-D1638B3E4039}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{6AD16BF1-86F9-4900-802A-D1638B3E4039}" border="0" />methods_array: var</a>, 
+					<table border="0" cellspacing="0" cellpadding="0" class="Table" style="padding: 4px 18px;">
+						<tr id="param{6AD16BF1-86F9-4900-802A-D1638B3E4039}00" style="display: none;">
+							<td width="50"><strong>Default:</strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{6AD16BF1-86F9-4900-802A-D1638B3E4039}01" style="display: none;">
+							<td width="50"><strong>Kind:</strong></td>
+							<td>in</td>
+						</tr>
+						<tr id="param{6AD16BF1-86F9-4900-802A-D1638B3E4039}02" style="display: none;">
+							<td width="50"><strong>Stereotype: </strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{6AD16BF1-86F9-4900-802A-D1638B3E4039}03" style="display: none;">
+							<td width="50"></td>
+							<td></td>
+						</tr>
+					</table>
+):var
+				</td>
+			</tr>
+			<tr>
+				<td class="TableRowBottomDashed"  colspan="1">
+					<div class="DetailsDivParent"><img src="../images/minus03.gif" align="absmiddle" id="DetailsImageOperations25" onclick="parent.toggleDiv('detailsDIVOperations25','DetailsImageOperations25')" />Details:
+						<div id="detailsDIVOperations25" class="DetailsDiv" >
+					<i>Sequential  </i>
+					<table>
+						<tr>
+							<td valign = "top"><i></i><span style="margin-left: .7cm;"> </span></td>
+							<td></td>
+						</tr>
+					</table>
+					
+					
+					<div class="ObjectDetailsNotes"><table>
+	<tr>
+		<td valign="top">
+			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
+		</td>
+		<td>
+			getDataFromMethod($methods_class,$methods_array)&nbsp;<WBR> en: Retrieve data from the class methods. ru: Получить данные из методов класса.&nbsp;<WBR> &#39;ModelsHelloWorld&#39; =&gt; array( &#39;getHelloWorld1&#39;, &#39;getHelloWorld2&#39; )&nbsp;<WBR> en: Get the data from the method. Based on the type of method. ru: Получаем данные от метода. Исходя из типа метода.&nbsp;<WBR> en: Methods only can start with is, get, set ru: Методы только могут начинаться с is, get, set&nbsp;<WBR> en: Stop processing if errors. ru: Останавливает обработку если допущены ошибки. &lt;br /&gt;@param string $methods_class en: Class to call methods. ru: Класс для вызова методов. &#39;ModelsHelloWorld&#39; =&gt; &#39;...&#39; &lt;br /&gt;@param array $methods_array en: An array of methods. ru: Массив методов. &#39;...&#39; =&gt; array( &#39;getHelloWorld1&#39; &#39;getHelloWorld2&#39; ) &lt;br /&gt;@access public&lt;br /&gt;@return void
+		</td>
+	</tr>
+</table></div>
+
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td width="100%" class="TableRow">
+					<i>public</i><br />
+					<strong>getFirstArrayKey</strong>(<br />
+					<a href="#" onclick="parent.toggleData('param{B6973514-965F-47a4-9B3A-68092F1F46A8}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{B6973514-965F-47a4-9B3A-68092F1F46A8}" border="0" />array: var</a>, 
+					<table border="0" cellspacing="0" cellpadding="0" class="Table" style="padding: 4px 18px;">
+						<tr id="param{B6973514-965F-47a4-9B3A-68092F1F46A8}00" style="display: none;">
+							<td width="50"><strong>Default:</strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{B6973514-965F-47a4-9B3A-68092F1F46A8}01" style="display: none;">
+							<td width="50"><strong>Kind:</strong></td>
+							<td>in</td>
+						</tr>
+						<tr id="param{B6973514-965F-47a4-9B3A-68092F1F46A8}02" style="display: none;">
+							<td width="50"><strong>Stereotype: </strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{B6973514-965F-47a4-9B3A-68092F1F46A8}03" style="display: none;">
+							<td width="50"></td>
+							<td><div class="ObjectDetailsNotes">$array</div>
+</td>
+						</tr>
+					</table>
+					<a href="#" onclick="parent.toggleData('param{7284F4B8-26E6-4552-BEA6-557FB0EDAE31}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{7284F4B8-26E6-4552-BEA6-557FB0EDAE31}" border="0" />get_value: var</a>, 
+					<table border="0" cellspacing="0" cellpadding="0" class="Table" style="padding: 4px 18px;">
+						<tr id="param{7284F4B8-26E6-4552-BEA6-557FB0EDAE31}00" style="display: none;">
+							<td width="50"><strong>Default:</strong></td>
+							<td>false</td>
+						</tr>
+						<tr id="param{7284F4B8-26E6-4552-BEA6-557FB0EDAE31}01" style="display: none;">
+							<td width="50"><strong>Kind:</strong></td>
+							<td>in</td>
+						</tr>
+						<tr id="param{7284F4B8-26E6-4552-BEA6-557FB0EDAE31}02" style="display: none;">
+							<td width="50"><strong>Stereotype: </strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{7284F4B8-26E6-4552-BEA6-557FB0EDAE31}03" style="display: none;">
+							<td width="50"></td>
+							<td></td>
+						</tr>
+					</table>
+):var
+				</td>
+			</tr>
+			<tr>
+				<td class="TableRowBottomDashed"  colspan="1">
+					<div class="DetailsDivParent"><img src="../images/minus03.gif" align="absmiddle" id="DetailsImageOperations26" onclick="parent.toggleDiv('detailsDIVOperations26','DetailsImageOperations26')" />Details:
+						<div id="detailsDIVOperations26" class="DetailsDiv" >
+					<i>Sequential  </i>
+					<table>
+						<tr>
+							<td valign = "top"><i></i><span style="margin-left: .7cm;"> </span></td>
+							<td></td>
+						</tr>
+					</table>
+					
+					
+					<div class="ObjectDetailsNotes"><table>
+	<tr>
+		<td valign="top">
+			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
+		</td>
+		<td>
+			getFirstArrayKey($array,$get_value=false)&nbsp;<WBR> en: Get the first element of the array as a key or value. ru: Получить первый элемент массива как ключ или значение. &lt;br /&gt;@param boolean $get_value&lt;br /&gt;@access public&lt;br /&gt;@return string
+		</td>
+	</tr>
+</table></div>
+
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td width="100%" class="TableRow">
+					<i>public</i><br />
+					<strong>getInputFormText</strong>(<br />
+					<a href="#" onclick="parent.toggleData('param{30DC3379-76A5-4095-9F2E-ADB9B7DE7B97}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{30DC3379-76A5-4095-9F2E-ADB9B7DE7B97}" border="0" />name: var</a>, 
+					<table border="0" cellspacing="0" cellpadding="0" class="Table" style="padding: 4px 18px;">
+						<tr id="param{30DC3379-76A5-4095-9F2E-ADB9B7DE7B97}00" style="display: none;">
+							<td width="50"><strong>Default:</strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{30DC3379-76A5-4095-9F2E-ADB9B7DE7B97}01" style="display: none;">
+							<td width="50"><strong>Kind:</strong></td>
+							<td>in</td>
+						</tr>
+						<tr id="param{30DC3379-76A5-4095-9F2E-ADB9B7DE7B97}02" style="display: none;">
+							<td width="50"><strong>Stereotype: </strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{30DC3379-76A5-4095-9F2E-ADB9B7DE7B97}03" style="display: none;">
+							<td width="50"></td>
+							<td></td>
+						</tr>
+					</table>
+					<a href="#" onclick="parent.toggleData('param{FBC0F9BE-6849-4b0b-8F90-AC61F67BAB2D}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{FBC0F9BE-6849-4b0b-8F90-AC61F67BAB2D}" border="0" />value: var</a>, 
+					<table border="0" cellspacing="0" cellpadding="0" class="Table" style="padding: 4px 18px;">
+						<tr id="param{FBC0F9BE-6849-4b0b-8F90-AC61F67BAB2D}00" style="display: none;">
+							<td width="50"><strong>Default:</strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{FBC0F9BE-6849-4b0b-8F90-AC61F67BAB2D}01" style="display: none;">
+							<td width="50"><strong>Kind:</strong></td>
+							<td>in</td>
+						</tr>
+						<tr id="param{FBC0F9BE-6849-4b0b-8F90-AC61F67BAB2D}02" style="display: none;">
+							<td width="50"><strong>Stereotype: </strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{FBC0F9BE-6849-4b0b-8F90-AC61F67BAB2D}03" style="display: none;">
+							<td width="50"></td>
+							<td></td>
+						</tr>
+					</table>
+					<a href="#" onclick="parent.toggleData('param{B9B40380-054C-41d2-A9FC-63F6D4D8C49B}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{B9B40380-054C-41d2-A9FC-63F6D4D8C49B}" border="0" />multi_form: var</a>, 
+					<table border="0" cellspacing="0" cellpadding="0" class="Table" style="padding: 4px 18px;">
+						<tr id="param{B9B40380-054C-41d2-A9FC-63F6D4D8C49B}00" style="display: none;">
+							<td width="50"><strong>Default:</strong></td>
+							<td>false</td>
+						</tr>
+						<tr id="param{B9B40380-054C-41d2-A9FC-63F6D4D8C49B}01" style="display: none;">
+							<td width="50"><strong>Kind:</strong></td>
+							<td>in</td>
+						</tr>
+						<tr id="param{B9B40380-054C-41d2-A9FC-63F6D4D8C49B}02" style="display: none;">
+							<td width="50"><strong>Stereotype: </strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{B9B40380-054C-41d2-A9FC-63F6D4D8C49B}03" style="display: none;">
+							<td width="50"></td>
+							<td></td>
+						</tr>
+					</table>
+):var
+				</td>
+			</tr>
+			<tr>
+				<td class="TableRowBottomDashed"  colspan="1">
+					<div class="DetailsDivParent"><img src="../images/minus03.gif" align="absmiddle" id="DetailsImageOperations27" onclick="parent.toggleDiv('detailsDIVOperations27','DetailsImageOperations27')" />Details:
+						<div id="detailsDIVOperations27" class="DetailsDiv" >
+					<i>Sequential  </i>
+					<table>
+						<tr>
+							<td valign = "top"><i></i><span style="margin-left: .7cm;"> </span></td>
+							<td></td>
+						</tr>
+					</table>
+					
+					
+					<div class="ObjectDetailsNotes"><table>
+	<tr>
+		<td valign="top">
+			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
+		</td>
+		<td>
+			getInputFormText($name, $str, $multi_form=false)&nbsp;<WBR> ru: Get to the form to input. en: Получить для формы значение input. &lt;br /&gt;@param string $name en: Parameter name in form. ru: Имя параметра в форме. &lt;br /&gt;@param string $value en: The value of the form. ru: Значение параметра в форме. &lt;br /&gt;@param string $multi_form ru: Name for the form, if you use the multiple form. en: Имя для параметров формы, если используется множественная форма. &lt;br /&gt;@access public&lt;br /&gt;@return string
+		</td>
+	</tr>
+</table></div>
+
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td width="100%" class="TableRow">
+					<i>public</i><br />
+					<strong>getInputsFromArray</strong>(<br />
+					<a href="#" onclick="parent.toggleData('param{7D5A46E8-BB38-48a0-A2AB-EB7E387707C4}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{7D5A46E8-BB38-48a0-A2AB-EB7E387707C4}" border="0" />validate: var</a>, 
+					<table border="0" cellspacing="0" cellpadding="0" class="Table" style="padding: 4px 18px;">
+						<tr id="param{7D5A46E8-BB38-48a0-A2AB-EB7E387707C4}00" style="display: none;">
+							<td width="50"><strong>Default:</strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{7D5A46E8-BB38-48a0-A2AB-EB7E387707C4}01" style="display: none;">
+							<td width="50"><strong>Kind:</strong></td>
+							<td>in</td>
+						</tr>
+						<tr id="param{7D5A46E8-BB38-48a0-A2AB-EB7E387707C4}02" style="display: none;">
+							<td width="50"><strong>Stereotype: </strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{7D5A46E8-BB38-48a0-A2AB-EB7E387707C4}03" style="display: none;">
+							<td width="50"></td>
+							<td></td>
+						</tr>
+					</table>
+					<a href="#" onclick="parent.toggleData('param{ED80EC20-8408-427c-8870-65A33A78D845}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{ED80EC20-8408-427c-8870-65A33A78D845}" border="0" />multi_form: var</a>, 
+					<table border="0" cellspacing="0" cellpadding="0" class="Table" style="padding: 4px 18px;">
+						<tr id="param{ED80EC20-8408-427c-8870-65A33A78D845}00" style="display: none;">
+							<td width="50"><strong>Default:</strong></td>
+							<td>false</td>
+						</tr>
+						<tr id="param{ED80EC20-8408-427c-8870-65A33A78D845}01" style="display: none;">
+							<td width="50"><strong>Kind:</strong></td>
+							<td>in</td>
+						</tr>
+						<tr id="param{ED80EC20-8408-427c-8870-65A33A78D845}02" style="display: none;">
+							<td width="50"><strong>Stereotype: </strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{ED80EC20-8408-427c-8870-65A33A78D845}03" style="display: none;">
+							<td width="50"></td>
+							<td></td>
+						</tr>
+					</table>
+):var
+				</td>
+			</tr>
+			<tr>
+				<td class="TableRowBottomDashed"  colspan="1">
+					<div class="DetailsDivParent"><img src="../images/minus03.gif" align="absmiddle" id="DetailsImageOperations28" onclick="parent.toggleDiv('detailsDIVOperations28','DetailsImageOperations28')" />Details:
+						<div id="detailsDIVOperations28" class="DetailsDiv" >
+					<i>Sequential  </i>
+					<table>
+						<tr>
+							<td valign = "top"><i></i><span style="margin-left: .7cm;"> </span></td>
+							<td></td>
+						</tr>
+					</table>
+					
+					
+					<div class="ObjectDetailsNotes"><table>
+	<tr>
+		<td valign="top">
+			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
+		</td>
+		<td>
+			getInputsFromArray($validate,$multi_form=false)&nbsp;<WBR> en: Get an array of validation - the value of options in the form. ru: Получить для массива валидации - значение параметров в форме.&nbsp;<WBR> &#39;public_methods&#39; =&gt; array( &#39;ext_search&#39; =&gt; array( &#39;inURLMethod&#39; =&gt; array(&#39;ext_search&#39;), &#39;validation_form&#39;=&gt; array( &#39;search&#39; =&gt; array( &#39;to&#39;=&gt;&#39;SearchTitle&#39;, &#39;inURL&#39; =&gt; true, &#39;type&#39;=&gt;&#39;str&#39;, &#39;required&#39;=&gt;&#39;true&#39;, &#39;error&#39;=&gt;&#39;search&#39;, &#39;min&#39;=&gt;&#39;3&#39;, &#39;max&#39; =&gt; &#39;250&#39; ) ) )&nbsp;<WBR> PHP [&#39;...&#39;]:&lt;br /&gt;&lt;form action=&quot;&lt;?=$result[inURL][ext_search][pre].$result[inURL][ext_search][post]?&gt;&quot; method=&quot;get&quot;&gt;&lt;br /&gt;&lt;?=$result[inURL][ext_search][inputs]?&gt;&lt;br /&gt;&lt;input name=&quot;&lt;?=$result[inURL][ext_search][SearchTitle]?&gt;&quot; value=&quot;&lt;?=$result[param_out][SearchTitle]?&gt;&quot; type=&quot;text&quot; /&gt;&lt;br /&gt;&lt;input name=&quot;&lt;?=$result[inURL][ext_search][submit]?&gt;&quot; type=&quot;submit&quot; value=&quot; &quot;/&gt;&lt;br /&gt;&lt;/form&gt;&nbsp;<WBR> TWIG:&lt;br /&gt;&lt;form action=&quot;{{ inURL.ext_search.pre }}{{ inURL.ext_search.post }}&quot; method=&quot;get&quot;&gt; {{ inURL.ext_search.inputs }}&lt;br /&gt;&lt;input id=&quot;search_ajax&quot; value=&quot;{{ param_out.SearchTitle }}&quot; name=&quot;{{ inURL.ext_search.SearchTitle }}&quot; type=&quot;text&quot; /&gt;&lt;br /&gt;&lt;input name=&quot;{{ inURL.ext_search.submit }}&quot; type=&quot;submit&quot; value=&quot; &quot;/&gt;&lt;br /&gt;&lt;/form&gt; &lt;br /&gt;@param array $validate&lt;br /&gt;@param string $multi_form ru: Name for the form, if you use the multiple form. en: Имя для параметров формы, если используется множественная форма. &lt;br /&gt;@access public&lt;br /&gt;@return array&nbsp;<WBR> en: Array with the parameters of the form. ru: Массив с параметрами формы.
+		</td>
+	</tr>
+</table></div>
+
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td width="100%" class="TableRow">
+					<i>public</i><br />
+					<strong>getinURLTemplate</strong>():var
+				</td>
+			</tr>
+			<tr>
+				<td class="TableRowBottomDashed"  colspan="1">
+					<div class="DetailsDivParent"><img src="../images/minus03.gif" align="absmiddle" id="DetailsImageOperations29" onclick="parent.toggleDiv('detailsDIVOperations29','DetailsImageOperations29')" />Details:
+						<div id="detailsDIVOperations29" class="DetailsDiv" >
+					<i>Sequential  </i>
+					<table>
+						<tr>
+							<td valign = "top"><i></i><span style="margin-left: .7cm;"> </span></td>
+							<td></td>
+						</tr>
+					</table>
+					
+					
+					<div class="ObjectDetailsNotes"><table>
+	<tr>
+		<td valign="top">
+			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
+		</td>
+		<td>
+			getinURLTemplate()&nbsp;<WBR> en: Different patterns can be obtained on the same call, different URN. en: (Alternate comment) en: Depending on the method, we get access en: in the same way to the URN of different methods. ru: Для разных шаблонов можно получать по одному и тому же вызову, разные URN. ru: (Альтернативный комментарий) ru: В зависимости от метода, получаем доступ ru: по одному и тому же ключу к URN разных методов.&nbsp;<WBR> PHP:&nbsp;<WBR> $result[inURLTemplate][info][pre] $result[inURLTemplate][info][post] PHP:&nbsp;<WBR> $result[inURLTemplate][error][pre] $result[inURLTemplate][error][post] TWIG: {{ inURLTemplate.info.pre }}{{ inURLTemplate.info.post }} TWIG: {{ inURLTemplate.error.pre }}{{ inURLTemplate.error.post }}&nbsp;<WBR> &#39;default&#39; =&gt; array( &#39;inURLTemplate&#39; =&gt; array( &#39;info&#39; =&gt; &#39;info_method&#39;, &#39;error&#39; =&gt; &#39;error_method&#39;, ), ),&nbsp;<WBR> echo $result[inURLTemplate][info][pre] &gt;&gt; ?m=info_method echo $result[inURLTemplate][error][pre] &gt;&gt; ?m=error_method&nbsp;<WBR> &#39;info_method&#39; =&gt; array( &#39;inURLTemplate&#39; =&gt; array( &#39;info&#39; =&gt; &#39;default&#39;, ), ),&nbsp;<WBR> echo $result[inURLTemplate][info][pre] &gt;&gt; ?m=default&nbsp;<WBR> &#39;error_method&#39; =&gt; array( &#39;inURLTemplate&#39; =&gt; array( &#39;info&#39; =&gt; &#39;error_method&#39;, ), )&nbsp;<WBR> echo $result[inURLTemplate][info][pre] &gt;&gt; ?m=error_method &lt;br /&gt;@access public&lt;br /&gt;@return void
+		</td>
+	</tr>
+</table></div>
+
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td width="100%" class="TableRow">
+					<i>public</i><br />
+					<strong>getMethodFromClass</strong>(<br />
+					<a href="#" onclick="parent.toggleData('param{F1DDB25C-CF8E-40f8-9199-E7979B5EB5F1}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{F1DDB25C-CF8E-40f8-9199-E7979B5EB5F1}" border="0" />methods_class: var</a>, 
+					<table border="0" cellspacing="0" cellpadding="0" class="Table" style="padding: 4px 18px;">
+						<tr id="param{F1DDB25C-CF8E-40f8-9199-E7979B5EB5F1}00" style="display: none;">
+							<td width="50"><strong>Default:</strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{F1DDB25C-CF8E-40f8-9199-E7979B5EB5F1}01" style="display: none;">
+							<td width="50"><strong>Kind:</strong></td>
+							<td>in</td>
+						</tr>
+						<tr id="param{F1DDB25C-CF8E-40f8-9199-E7979B5EB5F1}02" style="display: none;">
+							<td width="50"><strong>Stereotype: </strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{F1DDB25C-CF8E-40f8-9199-E7979B5EB5F1}03" style="display: none;">
+							<td width="50"></td>
+							<td></td>
+						</tr>
+					</table>
+					<a href="#" onclick="parent.toggleData('param{1B83512E-0EF5-44cb-B849-11A57E05DEAB}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{1B83512E-0EF5-44cb-B849-11A57E05DEAB}" border="0" />methods_array: var</a>, 
+					<table border="0" cellspacing="0" cellpadding="0" class="Table" style="padding: 4px 18px;">
+						<tr id="param{1B83512E-0EF5-44cb-B849-11A57E05DEAB}00" style="display: none;">
+							<td width="50"><strong>Default:</strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{1B83512E-0EF5-44cb-B849-11A57E05DEAB}01" style="display: none;">
+							<td width="50"><strong>Kind:</strong></td>
+							<td>in</td>
+						</tr>
+						<tr id="param{1B83512E-0EF5-44cb-B849-11A57E05DEAB}02" style="display: none;">
+							<td width="50"><strong>Stereotype: </strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{1B83512E-0EF5-44cb-B849-11A57E05DEAB}03" style="display: none;">
+							<td width="50"></td>
+							<td></td>
+						</tr>
+					</table>
+):var
+				</td>
+			</tr>
+			<tr>
+				<td class="TableRowBottomDashed"  colspan="1">
+					<div class="DetailsDivParent"><img src="../images/minus03.gif" align="absmiddle" id="DetailsImageOperations30" onclick="parent.toggleDiv('detailsDIVOperations30','DetailsImageOperations30')" />Details:
+						<div id="detailsDIVOperations30" class="DetailsDiv" >
+					<i>Sequential  </i>
+					<table>
+						<tr>
+							<td valign = "top"><i></i><span style="margin-left: .7cm;"> </span></td>
+							<td></td>
+						</tr>
+					</table>
+					
+					
+					<div class="ObjectDetailsNotes"><table>
+	<tr>
+		<td valign="top">
+			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
+		</td>
+		<td>
+			getMethodFromClass($methods_class,$methods_array) en: Call the methods in the class. ru: Вызвать методы в классах.&nbsp;<WBR> &#39;ModelsHelloWorld&#39; =&gt; array( &#39;getHelloWorld1&#39;, &#39;getHelloWorld2&#39; ) &lt;br /&gt;@param string $methods_class en: Class to call methods. ru: Класс для вызова методов. &#39;ModelsHelloWorld&#39; =&gt; &#39;...&#39; &lt;br /&gt;@param array $methods_array en: An array of methods. ru: Массив методов. &#39;...&#39; =&gt; array( &#39;getHelloWorld1&#39; &#39;getHelloWorld2&#39; ) &lt;br /&gt;@access public&lt;br /&gt;@return void
+		</td>
+	</tr>
+</table></div>
+
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td width="100%" class="TableRow">
+					<i>public</i><br />
+					<strong>getMethodURL</strong>(<br />
+					<a href="#" onclick="parent.toggleData('param{30DA496B-68D5-4237-8187-8272E5342210}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{30DA496B-68D5-4237-8187-8272E5342210}" border="0" />method: var</a>, 
+					<table border="0" cellspacing="0" cellpadding="0" class="Table" style="padding: 4px 18px;">
+						<tr id="param{30DA496B-68D5-4237-8187-8272E5342210}00" style="display: none;">
+							<td width="50"><strong>Default:</strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{30DA496B-68D5-4237-8187-8272E5342210}01" style="display: none;">
+							<td width="50"><strong>Kind:</strong></td>
+							<td>in</td>
+						</tr>
+						<tr id="param{30DA496B-68D5-4237-8187-8272E5342210}02" style="display: none;">
+							<td width="50"><strong>Stereotype: </strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{30DA496B-68D5-4237-8187-8272E5342210}03" style="display: none;">
+							<td width="50"></td>
+							<td></td>
+						</tr>
+					</table>
+					<a href="#" onclick="parent.toggleData('param{A67C6B05-27D9-4d9d-BB32-04890511DA61}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{A67C6B05-27D9-4d9d-BB32-04890511DA61}" border="0" />seo: var</a>, 
+					<table border="0" cellspacing="0" cellpadding="0" class="Table" style="padding: 4px 18px;">
+						<tr id="param{A67C6B05-27D9-4d9d-BB32-04890511DA61}00" style="display: none;">
+							<td width="50"><strong>Default:</strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{A67C6B05-27D9-4d9d-BB32-04890511DA61}01" style="display: none;">
+							<td width="50"><strong>Kind:</strong></td>
+							<td>in</td>
+						</tr>
+						<tr id="param{A67C6B05-27D9-4d9d-BB32-04890511DA61}02" style="display: none;">
+							<td width="50"><strong>Stereotype: </strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{A67C6B05-27D9-4d9d-BB32-04890511DA61}03" style="display: none;">
+							<td width="50"></td>
+							<td></td>
+						</tr>
+					</table>
+):var
+				</td>
+			</tr>
+			<tr>
+				<td class="TableRowBottomDashed"  colspan="1">
+					<div class="DetailsDivParent"><img src="../images/minus03.gif" align="absmiddle" id="DetailsImageOperations31" onclick="parent.toggleDiv('detailsDIVOperations31','DetailsImageOperations31')" />Details:
+						<div id="detailsDIVOperations31" class="DetailsDiv" >
+					<i>Sequential  </i>
+					<table>
+						<tr>
+							<td valign = "top"><i></i><span style="margin-left: .7cm;"> </span></td>
+							<td></td>
+						</tr>
+					</table>
+					
+					
+					<div class="ObjectDetailsNotes"><table>
+	<tr>
+		<td valign="top">
+			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
+		</td>
+		<td>
+			getMethodURL($method,$seo)&nbsp;<WBR> en: Get the URN of the method name. ru: Получить URN из названия метода. &lt;br /&gt;@param string $method&lt;br /&gt;@param string $seo&lt;br /&gt;@access public&lt;br /&gt;@return string
+		</td>
+	</tr>
+</table></div>
+
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td width="100%" class="TableRow">
+					<i>public</i><br />
+					<strong>getPrivateMethod</strong>(<br />
+					<a href="#" onclick="parent.toggleData('param{B895593D-B56D-4a2c-BCBD-0EBB130940AE}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{B895593D-B56D-4a2c-BCBD-0EBB130940AE}" border="0" />method: var</a>, 
+					<table border="0" cellspacing="0" cellpadding="0" class="Table" style="padding: 4px 18px;">
+						<tr id="param{B895593D-B56D-4a2c-BCBD-0EBB130940AE}00" style="display: none;">
+							<td width="50"><strong>Default:</strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{B895593D-B56D-4a2c-BCBD-0EBB130940AE}01" style="display: none;">
+							<td width="50"><strong>Kind:</strong></td>
+							<td>in</td>
+						</tr>
+						<tr id="param{B895593D-B56D-4a2c-BCBD-0EBB130940AE}02" style="display: none;">
+							<td width="50"><strong>Stereotype: </strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{B895593D-B56D-4a2c-BCBD-0EBB130940AE}03" style="display: none;">
+							<td width="50"></td>
+							<td></td>
+						</tr>
+					</table>
+):var
+				</td>
+			</tr>
+			<tr>
+				<td class="TableRowBottomDashed"  colspan="1">
+					<div class="DetailsDivParent"><img src="../images/minus03.gif" align="absmiddle" id="DetailsImageOperations32" onclick="parent.toggleDiv('detailsDIVOperations32','DetailsImageOperations32')" />Details:
+						<div id="detailsDIVOperations32" class="DetailsDiv" >
+					<i>Sequential  </i>
+					<table>
+						<tr>
+							<td valign = "top"><i></i><span style="margin-left: .7cm;"> </span></td>
+							<td></td>
+						</tr>
+					</table>
+					
+					
+					<div class="ObjectDetailsNotes"><table>
+	<tr>
+		<td valign="top">
+			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
+		</td>
+		<td>
+			getPrivateMethod($method) en: Call private method. ru: Запустить приватный метод. &lt;br /&gt;@param string $method&lt;br /&gt;@access public&lt;br /&gt;@return void
+		</td>
+	</tr>
+</table></div>
+
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td width="100%" class="TableRow">
+					<i>public</i><br />
+					<strong>getPublicMethod</strong>(<br />
+					<a href="#" onclick="parent.toggleData('param{94E57427-5BA1-4139-8612-A076B0A8CDE1}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{94E57427-5BA1-4139-8612-A076B0A8CDE1}" border="0" />param: var</a>, 
+					<table border="0" cellspacing="0" cellpadding="0" class="Table" style="padding: 4px 18px;">
+						<tr id="param{94E57427-5BA1-4139-8612-A076B0A8CDE1}00" style="display: none;">
+							<td width="50"><strong>Default:</strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{94E57427-5BA1-4139-8612-A076B0A8CDE1}01" style="display: none;">
+							<td width="50"><strong>Kind:</strong></td>
+							<td>in</td>
+						</tr>
+						<tr id="param{94E57427-5BA1-4139-8612-A076B0A8CDE1}02" style="display: none;">
+							<td width="50"><strong>Stereotype: </strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{94E57427-5BA1-4139-8612-A076B0A8CDE1}03" style="display: none;">
+							<td width="50"></td>
+							<td></td>
+						</tr>
+					</table>
+):var
+				</td>
+			</tr>
+			<tr>
+				<td class="TableRowBottomDashed"  colspan="1">
+					<div class="DetailsDivParent"><img src="../images/minus03.gif" align="absmiddle" id="DetailsImageOperations33" onclick="parent.toggleDiv('detailsDIVOperations33','DetailsImageOperations33')" />Details:
+						<div id="detailsDIVOperations33" class="DetailsDiv" >
+					<i>Sequential  </i>
+					<table>
+						<tr>
+							<td valign = "top"><i></i><span style="margin-left: .7cm;"> </span></td>
+							<td></td>
+						</tr>
+					</table>
+					
+					
+					<div class="ObjectDetailsNotes"><table>
+	<tr>
+		<td valign="top">
+			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
+		</td>
+		<td>
+			getPublicMethod($param) en: Call public method. ru: Запустить публичный метод &lt;br /&gt;@param array $param&lt;br /&gt;@access public&lt;br /&gt;@return void
+		</td>
+	</tr>
+</table></div>
+
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td width="100%" class="TableRow">
+					<i>public</i><br />
+					<strong>getSEFUrl</strong>(<br />
+					<a href="#" onclick="parent.toggleData('param{40B5F481-CEAB-4c52-A829-8DE547D5A88A}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{40B5F481-CEAB-4c52-A829-8DE547D5A88A}" border="0" />sef: var</a>, 
+					<table border="0" cellspacing="0" cellpadding="0" class="Table" style="padding: 4px 18px;">
+						<tr id="param{40B5F481-CEAB-4c52-A829-8DE547D5A88A}00" style="display: none;">
+							<td width="50"><strong>Default:</strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{40B5F481-CEAB-4c52-A829-8DE547D5A88A}01" style="display: none;">
+							<td width="50"><strong>Kind:</strong></td>
+							<td>in</td>
+						</tr>
+						<tr id="param{40B5F481-CEAB-4c52-A829-8DE547D5A88A}02" style="display: none;">
+							<td width="50"><strong>Stereotype: </strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{40B5F481-CEAB-4c52-A829-8DE547D5A88A}03" style="display: none;">
+							<td width="50"></td>
+							<td></td>
+						</tr>
+					</table>
+):var
+				</td>
+			</tr>
+			<tr>
+				<td class="TableRowBottomDashed"  colspan="1">
+					<div class="DetailsDivParent"><img src="../images/minus03.gif" align="absmiddle" id="DetailsImageOperations34" onclick="parent.toggleDiv('detailsDIVOperations34','DetailsImageOperations34')" />Details:
+						<div id="detailsDIVOperations34" class="DetailsDiv" >
+					<i>Sequential  </i>
+					<table>
+						<tr>
+							<td valign = "top"><i></i><span style="margin-left: .7cm;"> </span></td>
+							<td></td>
+						</tr>
+					</table>
+					
+					
+					<div class="ObjectDetailsNotes"><table>
+	<tr>
+		<td valign="top">
+			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
+		</td>
+		<td>
+			getSEFUrl($sef){ en: Get data from the SEF string. ru: Получить данные из ЧПУ строки&nbsp;<WBR> en: The case when the SEF for the controller. ru: Случай когда SEF для всего контроллера. /user=62/ en: Flag in the controller: ru: Флаг в контроллере: &#39;inURLSEF&#39; =&gt; true&nbsp;<WBR> en: And when the SEF method: ru: И когда ЧПУ для метода: /controller/method/62-User.html &#39;method&#39; =&gt; array( &#39;inURLSEF&#39; =&gt; array( &#39;user_id&#39; =&gt; &#39;&#39;,&#39;User&#39;,&#39;.&#39; =&gt; &#39;.html&#39;, ) ) &lt;br /&gt;@param string $sef&lt;br /&gt;@access public&lt;br /&gt;@return void
+		</td>
+	</tr>
+</table></div>
+
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td width="100%" class="TableRow">
+					<i>public</i><br />
+					<strong>getTemplateURL</strong>(<br />
+					<a href="#" onclick="parent.toggleData('param{1951F0C6-F01B-473d-8FFC-EC0D7248E326}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{1951F0C6-F01B-473d-8FFC-EC0D7248E326}" border="0" />tmpl: var</a>, 
+					<table border="0" cellspacing="0" cellpadding="0" class="Table" style="padding: 4px 18px;">
+						<tr id="param{1951F0C6-F01B-473d-8FFC-EC0D7248E326}00" style="display: none;">
+							<td width="50"><strong>Default:</strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{1951F0C6-F01B-473d-8FFC-EC0D7248E326}01" style="display: none;">
+							<td width="50"><strong>Kind:</strong></td>
+							<td>in</td>
+						</tr>
+						<tr id="param{1951F0C6-F01B-473d-8FFC-EC0D7248E326}02" style="display: none;">
+							<td width="50"><strong>Stereotype: </strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{1951F0C6-F01B-473d-8FFC-EC0D7248E326}03" style="display: none;">
+							<td width="50"></td>
+							<td></td>
+						</tr>
+					</table>
+					<a href="#" onclick="parent.toggleData('param{2570B824-05F3-457c-97DB-1565E32BF65B}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{2570B824-05F3-457c-97DB-1565E32BF65B}" border="0" />seo: var</a>, 
+					<table border="0" cellspacing="0" cellpadding="0" class="Table" style="padding: 4px 18px;">
+						<tr id="param{2570B824-05F3-457c-97DB-1565E32BF65B}00" style="display: none;">
+							<td width="50"><strong>Default:</strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{2570B824-05F3-457c-97DB-1565E32BF65B}01" style="display: none;">
+							<td width="50"><strong>Kind:</strong></td>
+							<td>in</td>
+						</tr>
+						<tr id="param{2570B824-05F3-457c-97DB-1565E32BF65B}02" style="display: none;">
+							<td width="50"><strong>Stereotype: </strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{2570B824-05F3-457c-97DB-1565E32BF65B}03" style="display: none;">
+							<td width="50"></td>
+							<td></td>
+						</tr>
+					</table>
+):var
+				</td>
+			</tr>
+			<tr>
+				<td class="TableRowBottomDashed"  colspan="1">
+					<div class="DetailsDivParent"><img src="../images/minus03.gif" align="absmiddle" id="DetailsImageOperations35" onclick="parent.toggleDiv('detailsDIVOperations35','DetailsImageOperations35')" />Details:
+						<div id="detailsDIVOperations35" class="DetailsDiv" >
+					<i>Sequential  </i>
+					<table>
+						<tr>
+							<td valign = "top"><i></i><span style="margin-left: .7cm;"> </span></td>
+							<td></td>
+						</tr>
+					</table>
+					
+					
+					<div class="ObjectDetailsNotes"><table>
+	<tr>
+		<td valign="top">
+			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
+		</td>
+		<td>
+			getTemplateURL($tmpl,$seo)&nbsp;<WBR> ru: Get the URN of the controller. en: Получить URN контроллера. &lt;br /&gt;@param string $tmpl&lt;br /&gt;@param string $seo&lt;br /&gt;@access public&lt;br /&gt;@return string
+		</td>
+	</tr>
+</table></div>
+
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td width="100%" class="TableRow">
+					<i>public</i><br />
+					<strong>getURL</strong>(<br />
+					<a href="#" onclick="parent.toggleData('param{05254215-B453-4246-8253-242B0D3D7970}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{05254215-B453-4246-8253-242B0D3D7970}" border="0" />seo: var</a>, 
+					<table border="0" cellspacing="0" cellpadding="0" class="Table" style="padding: 4px 18px;">
+						<tr id="param{05254215-B453-4246-8253-242B0D3D7970}00" style="display: none;">
+							<td width="50"><strong>Default:</strong></td>
+							<td>false</td>
+						</tr>
+						<tr id="param{05254215-B453-4246-8253-242B0D3D7970}01" style="display: none;">
+							<td width="50"><strong>Kind:</strong></td>
+							<td>in</td>
+						</tr>
+						<tr id="param{05254215-B453-4246-8253-242B0D3D7970}02" style="display: none;">
+							<td width="50"><strong>Stereotype: </strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{05254215-B453-4246-8253-242B0D3D7970}03" style="display: none;">
+							<td width="50"></td>
+							<td></td>
+						</tr>
+					</table>
+):var
+				</td>
+			</tr>
+			<tr>
+				<td class="TableRowBottomDashed"  colspan="1">
+					<div class="DetailsDivParent"><img src="../images/minus03.gif" align="absmiddle" id="DetailsImageOperations36" onclick="parent.toggleDiv('detailsDIVOperations36','DetailsImageOperations36')" />Details:
+						<div id="detailsDIVOperations36" class="DetailsDiv" >
+					<i>Sequential  </i>
+					<table>
+						<tr>
+							<td valign = "top"><i></i><span style="margin-left: .7cm;"> </span></td>
+							<td></td>
+						</tr>
+					</table>
+					
+					
+					<div class="ObjectDetailsNotes"><table>
+	<tr>
+		<td valign="top">
+			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
+		</td>
+		<td>
+			getURL($seo = false)&nbsp;<WBR> en: Get the URN for the methods in the controller en: Validation of the methods used by the controller ru: Получить URN для методов в контроллере ru: Используется валидация из методов контроллера&nbsp;<WBR> $this-&gt;controller = array( en: SEF mode flag in the controller. ru: Включение ЧПУ режима в контроллере. &#39;inURLSEF&#39; =&gt; false, ) &#39;inURLMethod&#39; =&gt; array( en: In the array are methods for which to create the URN. ru: В массиве указаны методы для которых нужно создать ссылки. ) &#39;public_methods&#39; =&gt; array( &#39;default&#39; =&gt; array( en: URLs are constructed on the basis of the validation parameters en: allowed in the method. en: By default, data is taken from the default method. ru: Урлы строятся исходя из валидации параметров допустимых в методе. ru: По умолчанию данные берутся из default метода &#39;validation&#39;=&gt; array() ) &#39;method&#39; =&gt; array( en: Further validation for the method. en: It shall contain URNs. en: These URNs used to generate the parameters. ru: Дополнительная валидация для метода. ru: В ней указываются урлы. ru: Эти урлы используются для генерации параметров. &#39;validation_add&#39;=&gt;array( &#39;date&#39; =&gt; array(&#39;inURL&#39; =&gt; true,&#39;to&#39;=&gt;&#39;Date&#39;,&#39;type&#39;=&gt;&#39;str&#39;,&#39;required&#39;=&gt;&#39;false&#39;,&#39;max&#39; =&gt; &#39;10&#39;,), ), )&nbsp;<WBR> en: The case where we want to specify an external controller. en: And the reference to the method in an external controller. ru: Случай, когда хотим указать внешний контроллер. ru: И ссылку на метод во внешнем контроллере. &#39;method&#39; =&gt; array( en: ru: ВАЖНО!!! Является обязательным для генерации ссылки &#39;inURLExtController&#39; =&gt; &#39;&#39;, &#39;method&#39; =&gt; &#39;&#39;, )&nbsp;<WBR> en: When the SEF method: ru: Когда ЧПУ для метода: /controller/method/62-User.html &#39;method&#39; =&gt; array( &#39;inURLSEF&#39; =&gt; array( &#39;user_id&#39; =&gt; &#39;&#39;,&#39;User&#39;,&#39;.&#39; =&gt; &#39;.html&#39;, ) ) &lt;br /&gt;@param boolean $seo&lt;br /&gt;@access public&lt;br /&gt;@return void
+		</td>
+	</tr>
+</table></div>
+
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td width="100%" class="TableRow">
+					<i>public</i><br />
+					<strong>getURLForTitleAndValue</strong>(<br />
+					<a href="#" onclick="parent.toggleData('param{992C575F-06E4-436a-9C25-A2A0FC733079}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{992C575F-06E4-436a-9C25-A2A0FC733079}" border="0" />array_out: var</a>, 
+					<table border="0" cellspacing="0" cellpadding="0" class="Table" style="padding: 4px 18px;">
+						<tr id="param{992C575F-06E4-436a-9C25-A2A0FC733079}00" style="display: none;">
+							<td width="50"><strong>Default:</strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{992C575F-06E4-436a-9C25-A2A0FC733079}01" style="display: none;">
+							<td width="50"><strong>Kind:</strong></td>
+							<td>inout</td>
+						</tr>
+						<tr id="param{992C575F-06E4-436a-9C25-A2A0FC733079}02" style="display: none;">
+							<td width="50"><strong>Stereotype: </strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{992C575F-06E4-436a-9C25-A2A0FC733079}03" style="display: none;">
+							<td width="50"></td>
+							<td></td>
+						</tr>
+					</table>
+					<a href="#" onclick="parent.toggleData('param{A57A93E1-6B21-42cb-9AE7-000C28C3810B}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{A57A93E1-6B21-42cb-9AE7-000C28C3810B}" border="0" />in_url: var</a>, 
+					<table border="0" cellspacing="0" cellpadding="0" class="Table" style="padding: 4px 18px;">
+						<tr id="param{A57A93E1-6B21-42cb-9AE7-000C28C3810B}00" style="display: none;">
+							<td width="50"><strong>Default:</strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{A57A93E1-6B21-42cb-9AE7-000C28C3810B}01" style="display: none;">
+							<td width="50"><strong>Kind:</strong></td>
+							<td>in</td>
+						</tr>
+						<tr id="param{A57A93E1-6B21-42cb-9AE7-000C28C3810B}02" style="display: none;">
+							<td width="50"><strong>Stereotype: </strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{A57A93E1-6B21-42cb-9AE7-000C28C3810B}03" style="display: none;">
+							<td width="50"></td>
+							<td></td>
+						</tr>
+					</table>
+					<a href="#" onclick="parent.toggleData('param{12238543-E759-466a-AB66-161FCFAF59F9}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{12238543-E759-466a-AB66-161FCFAF59F9}" border="0" />to: var</a>, 
+					<table border="0" cellspacing="0" cellpadding="0" class="Table" style="padding: 4px 18px;">
+						<tr id="param{12238543-E759-466a-AB66-161FCFAF59F9}00" style="display: none;">
+							<td width="50"><strong>Default:</strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{12238543-E759-466a-AB66-161FCFAF59F9}01" style="display: none;">
+							<td width="50"><strong>Kind:</strong></td>
+							<td>in</td>
+						</tr>
+						<tr id="param{12238543-E759-466a-AB66-161FCFAF59F9}02" style="display: none;">
+							<td width="50"><strong>Stereotype: </strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{12238543-E759-466a-AB66-161FCFAF59F9}03" style="display: none;">
+							<td width="50"></td>
+							<td></td>
+						</tr>
+					</table>
+					<a href="#" onclick="parent.toggleData('param{37EDBACA-C937-4bcb-9D86-955F524ED6B5}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{37EDBACA-C937-4bcb-9D86-955F524ED6B5}" border="0" />_title: var</a>, 
+					<table border="0" cellspacing="0" cellpadding="0" class="Table" style="padding: 4px 18px;">
+						<tr id="param{37EDBACA-C937-4bcb-9D86-955F524ED6B5}00" style="display: none;">
+							<td width="50"><strong>Default:</strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{37EDBACA-C937-4bcb-9D86-955F524ED6B5}01" style="display: none;">
+							<td width="50"><strong>Kind:</strong></td>
+							<td>in</td>
+						</tr>
+						<tr id="param{37EDBACA-C937-4bcb-9D86-955F524ED6B5}02" style="display: none;">
+							<td width="50"><strong>Stereotype: </strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{37EDBACA-C937-4bcb-9D86-955F524ED6B5}03" style="display: none;">
+							<td width="50"></td>
+							<td></td>
+						</tr>
+					</table>
+					<a href="#" onclick="parent.toggleData('param{DE64E4BE-6FB1-4966-A513-570EDF553432}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{DE64E4BE-6FB1-4966-A513-570EDF553432}" border="0" />REQUEST_OUT: var</a>, 
+					<table border="0" cellspacing="0" cellpadding="0" class="Table" style="padding: 4px 18px;">
+						<tr id="param{DE64E4BE-6FB1-4966-A513-570EDF553432}00" style="display: none;">
+							<td width="50"><strong>Default:</strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{DE64E4BE-6FB1-4966-A513-570EDF553432}01" style="display: none;">
+							<td width="50"><strong>Kind:</strong></td>
+							<td>in</td>
+						</tr>
+						<tr id="param{DE64E4BE-6FB1-4966-A513-570EDF553432}02" style="display: none;">
+							<td width="50"><strong>Stereotype: </strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{DE64E4BE-6FB1-4966-A513-570EDF553432}03" style="display: none;">
+							<td width="50"></td>
+							<td></td>
+						</tr>
+					</table>
+					<a href="#" onclick="parent.toggleData('param{0A57F083-C593-4c36-B53C-E5A4B26FB0AF}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{0A57F083-C593-4c36-B53C-E5A4B26FB0AF}" border="0" />seo: var</a>, 
+					<table border="0" cellspacing="0" cellpadding="0" class="Table" style="padding: 4px 18px;">
+						<tr id="param{0A57F083-C593-4c36-B53C-E5A4B26FB0AF}00" style="display: none;">
+							<td width="50"><strong>Default:</strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{0A57F083-C593-4c36-B53C-E5A4B26FB0AF}01" style="display: none;">
+							<td width="50"><strong>Kind:</strong></td>
+							<td>in</td>
+						</tr>
+						<tr id="param{0A57F083-C593-4c36-B53C-E5A4B26FB0AF}02" style="display: none;">
+							<td width="50"><strong>Stereotype: </strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{0A57F083-C593-4c36-B53C-E5A4B26FB0AF}03" style="display: none;">
+							<td width="50"></td>
+							<td></td>
+						</tr>
+					</table>
+):var
+				</td>
+			</tr>
+			<tr>
+				<td class="TableRowBottomDashed"  colspan="1">
+					<div class="DetailsDivParent"><img src="../images/minus03.gif" align="absmiddle" id="DetailsImageOperations37" onclick="parent.toggleDiv('detailsDIVOperations37','DetailsImageOperations37')" />Details:
+						<div id="detailsDIVOperations37" class="DetailsDiv" >
+					<i>Sequential  </i>
+					<table>
+						<tr>
+							<td valign = "top"><i></i><span style="margin-left: .7cm;"> </span></td>
+							<td></td>
+						</tr>
+					</table>
+					
+					
+					<div class="ObjectDetailsNotes"><table>
+	<tr>
+		<td valign="top">
+			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
+		</td>
+		<td>
+			getURLForTitleAndValue(&$array_out,$in_url,$to,$_title,$REQUEST_OUT,$seo)&nbsp;<WBR> en: Get the address part for the name and parameter value. ru: Получить адресную часть для имени и значения параметра. &lt;br /&gt;@param array $array_out&lt;br /&gt;@param boolean $in_url $_value[&#39;inURL&#39;]&lt;br /&gt;@param string $to&lt;br /&gt;@param string $_title&lt;br /&gt;@param array $REQUEST_OUT&lt;br /&gt;@param boolean or array $seo&lt;br /&gt;@access public&lt;br /&gt;@return void
+		</td>
+	</tr>
+</table></div>
+
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td width="100%" class="TableRow">
+					<i>public</i><br />
+					<strong>getURLFromArray</strong>(<br />
+					<a href="#" onclick="parent.toggleData('param{EF89E9CA-3ECA-4158-BF41-624F4E0D8302}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{EF89E9CA-3ECA-4158-BF41-624F4E0D8302}" border="0" />validate: var</a>, 
+					<table border="0" cellspacing="0" cellpadding="0" class="Table" style="padding: 4px 18px;">
+						<tr id="param{EF89E9CA-3ECA-4158-BF41-624F4E0D8302}00" style="display: none;">
+							<td width="50"><strong>Default:</strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{EF89E9CA-3ECA-4158-BF41-624F4E0D8302}01" style="display: none;">
+							<td width="50"><strong>Kind:</strong></td>
+							<td>in</td>
+						</tr>
+						<tr id="param{EF89E9CA-3ECA-4158-BF41-624F4E0D8302}02" style="display: none;">
+							<td width="50"><strong>Stereotype: </strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{EF89E9CA-3ECA-4158-BF41-624F4E0D8302}03" style="display: none;">
+							<td width="50"></td>
+							<td></td>
+						</tr>
+					</table>
+					<a href="#" onclick="parent.toggleData('param{ED0DA2F9-7E10-4888-861E-B4A7348F406D}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{ED0DA2F9-7E10-4888-861E-B4A7348F406D}" border="0" />seo: var</a>, 
+					<table border="0" cellspacing="0" cellpadding="0" class="Table" style="padding: 4px 18px;">
+						<tr id="param{ED0DA2F9-7E10-4888-861E-B4A7348F406D}00" style="display: none;">
+							<td width="50"><strong>Default:</strong></td>
+							<td>false</td>
+						</tr>
+						<tr id="param{ED0DA2F9-7E10-4888-861E-B4A7348F406D}01" style="display: none;">
+							<td width="50"><strong>Kind:</strong></td>
+							<td>in</td>
+						</tr>
+						<tr id="param{ED0DA2F9-7E10-4888-861E-B4A7348F406D}02" style="display: none;">
+							<td width="50"><strong>Stereotype: </strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{ED0DA2F9-7E10-4888-861E-B4A7348F406D}03" style="display: none;">
+							<td width="50"></td>
+							<td></td>
+						</tr>
+					</table>
+					<a href="#" onclick="parent.toggleData('param{8BFF884B-11F6-4e76-80F8-CDA6883513B4}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{8BFF884B-11F6-4e76-80F8-CDA6883513B4}" border="0" />is_add: var</a>, 
+					<table border="0" cellspacing="0" cellpadding="0" class="Table" style="padding: 4px 18px;">
+						<tr id="param{8BFF884B-11F6-4e76-80F8-CDA6883513B4}00" style="display: none;">
+							<td width="50"><strong>Default:</strong></td>
+							<td>false</td>
+						</tr>
+						<tr id="param{8BFF884B-11F6-4e76-80F8-CDA6883513B4}01" style="display: none;">
+							<td width="50"><strong>Kind:</strong></td>
+							<td>in</td>
+						</tr>
+						<tr id="param{8BFF884B-11F6-4e76-80F8-CDA6883513B4}02" style="display: none;">
+							<td width="50"><strong>Stereotype: </strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{8BFF884B-11F6-4e76-80F8-CDA6883513B4}03" style="display: none;">
+							<td width="50"></td>
+							<td></td>
+						</tr>
+					</table>
+):var
+				</td>
+			</tr>
+			<tr>
+				<td class="TableRowBottomDashed"  colspan="1">
+					<div class="DetailsDivParent"><img src="../images/minus03.gif" align="absmiddle" id="DetailsImageOperations38" onclick="parent.toggleDiv('detailsDIVOperations38','DetailsImageOperations38')" />Details:
+						<div id="detailsDIVOperations38" class="DetailsDiv" >
+					<i>Sequential  </i>
+					<table>
+						<tr>
+							<td valign = "top"><i></i><span style="margin-left: .7cm;"> </span></td>
+							<td></td>
+						</tr>
+					</table>
+					
+					
+					<div class="ObjectDetailsNotes"><table>
+	<tr>
+		<td valign="top">
+			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
+		</td>
+		<td>
+			getURLFromArray($validate,$seo=false,$is_add=false)&nbsp;<WBR> en: Get a URN from an array of validation. ru: Получить URN из массива проверки валидации &lt;br /&gt;@param array $validate&lt;br /&gt;@param boolean $seo&lt;br /&gt;@param boolean $is_add &lt;br /&gt;@access public&lt;br /&gt;@return void
+		</td>
+	</tr>
+</table></div>
+
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td width="100%" class="TableRow">
+					<i>public</i><br />
+					<strong>isGetMethodForAnswer</strong>(<br />
+					<a href="#" onclick="parent.toggleData('param{9A47A0C3-79AB-4cad-AF21-FB04122DB868}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{9A47A0C3-79AB-4cad-AF21-FB04122DB868}" border="0" />method: var</a>, 
+					<table border="0" cellspacing="0" cellpadding="0" class="Table" style="padding: 4px 18px;">
+						<tr id="param{9A47A0C3-79AB-4cad-AF21-FB04122DB868}00" style="display: none;">
+							<td width="50"><strong>Default:</strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{9A47A0C3-79AB-4cad-AF21-FB04122DB868}01" style="display: none;">
+							<td width="50"><strong>Kind:</strong></td>
+							<td>in</td>
+						</tr>
+						<tr id="param{9A47A0C3-79AB-4cad-AF21-FB04122DB868}02" style="display: none;">
+							<td width="50"><strong>Stereotype: </strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{9A47A0C3-79AB-4cad-AF21-FB04122DB868}03" style="display: none;">
+							<td width="50"></td>
+							<td></td>
+						</tr>
+					</table>
+					<a href="#" onclick="parent.toggleData('param{22EB684B-DEB9-4e3a-96B8-553D11796C7C}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{22EB684B-DEB9-4e3a-96B8-553D11796C7C}" border="0" />methods_case: var</a>, 
+					<table border="0" cellspacing="0" cellpadding="0" class="Table" style="padding: 4px 18px;">
+						<tr id="param{22EB684B-DEB9-4e3a-96B8-553D11796C7C}00" style="display: none;">
+							<td width="50"><strong>Default:</strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{22EB684B-DEB9-4e3a-96B8-553D11796C7C}01" style="display: none;">
+							<td width="50"><strong>Kind:</strong></td>
+							<td>in</td>
+						</tr>
+						<tr id="param{22EB684B-DEB9-4e3a-96B8-553D11796C7C}02" style="display: none;">
+							<td width="50"><strong>Stereotype: </strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{22EB684B-DEB9-4e3a-96B8-553D11796C7C}03" style="display: none;">
+							<td width="50"></td>
+							<td></td>
+						</tr>
+					</table>
+):var
+				</td>
+			</tr>
+			<tr>
+				<td class="TableRowBottomDashed"  colspan="1">
+					<div class="DetailsDivParent"><img src="../images/minus03.gif" align="absmiddle" id="DetailsImageOperations39" onclick="parent.toggleDiv('detailsDIVOperations39','DetailsImageOperations39')" />Details:
+						<div id="detailsDIVOperations39" class="DetailsDiv" >
+					<i>Sequential  </i>
+					<table>
+						<tr>
+							<td valign = "top"><i></i><span style="margin-left: .7cm;"> </span></td>
+							<td></td>
+						</tr>
+					</table>
+					
+					
+					<div class="ObjectDetailsNotes"><table>
+	<tr>
+		<td valign="top">
+			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
+		</td>
+		<td>
+			isGetMethodForAnswer($method,$methods_case) en: Answers on the methods of the question. ru: Обработка ответов на методы с вопросом.&nbsp;<WBR> /controllers/ControllersHelloWorld.php &#39;default&#39;=&gt;array( &#39;ModelsHelloWorld&#39;=&gt;&#39;isHello&#39;, )&lt;br /&gt;@param string $method&lt;br /&gt;@param boolean $methods_case&lt;br /&gt;@access public&lt;br /&gt;@return void
+		</td>
+	</tr>
+</table></div>
+
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td width="100%" class="TableRow">
+					<i>public</i><br />
+					<strong>isSetClassToLoadAndSetParam</strong>(<br />
+					<a href="#" onclick="parent.toggleData('param{9BEC3B8E-D24B-48c2-8788-C3B3DF92CE18}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{9BEC3B8E-D24B-48c2-8788-C3B3DF92CE18}" border="0" />methods_class: var</a>, 
+					<table border="0" cellspacing="0" cellpadding="0" class="Table" style="padding: 4px 18px;">
+						<tr id="param{9BEC3B8E-D24B-48c2-8788-C3B3DF92CE18}00" style="display: none;">
+							<td width="50"><strong>Default:</strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{9BEC3B8E-D24B-48c2-8788-C3B3DF92CE18}01" style="display: none;">
+							<td width="50"><strong>Kind:</strong></td>
+							<td>in</td>
+						</tr>
+						<tr id="param{9BEC3B8E-D24B-48c2-8788-C3B3DF92CE18}02" style="display: none;">
+							<td width="50"><strong>Stereotype: </strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{9BEC3B8E-D24B-48c2-8788-C3B3DF92CE18}03" style="display: none;">
+							<td width="50"></td>
+							<td></td>
+						</tr>
+					</table>
+):var
+				</td>
+			</tr>
+			<tr>
+				<td class="TableRowBottomDashed"  colspan="1">
+					<div class="DetailsDivParent"><img src="../images/minus03.gif" align="absmiddle" id="DetailsImageOperations40" onclick="parent.toggleDiv('detailsDIVOperations40','DetailsImageOperations40')" />Details:
+						<div id="detailsDIVOperations40" class="DetailsDiv" >
+					<i>Sequential  </i>
+					<table>
+						<tr>
+							<td valign = "top"><i></i><span style="margin-left: .7cm;"> </span></td>
+							<td></td>
+						</tr>
+					</table>
+					
+					
+					<div class="ObjectDetailsNotes"><table>
+	<tr>
+		<td valign="top">
+			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
+		</td>
+		<td>
+			isSetClassToLoadAndSetParam($methods_class)&nbsp;<WBR> en: The class is initialized? If not, load it and add the parameters from the config. ru: Загружен ли класс? Если нет, загрузим и добавим параметры из конфига. &lt;br /&gt;@param string $methods_class en: Name of class to load. ru: Название класса для загрузки.&nbsp;<WBR> en: The path to the class specified in the ru: Путь до класса задаётся в evnine.config.php-&gt;class_path=array( &#39;ModelsHelloWorld&#39;=&gt;array(&#39;path&#39;=&gt;&#39;/models/&#39;) ) &lt;br /&gt;@access public&lt;br /&gt;@return boolean
+		</td>
+	</tr>
+</table></div>
+
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td width="100%" class="TableRow">
+					<i>public</i><br />
+					<strong>isUserHasAccessForMethod</strong>(<br />
+					<a href="#" onclick="parent.toggleData('param{5797FE2D-1115-453b-92DC-BAB32439468C}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{5797FE2D-1115-453b-92DC-BAB32439468C}" border="0" />methods_class: var</a>, 
+					<table border="0" cellspacing="0" cellpadding="0" class="Table" style="padding: 4px 18px;">
+						<tr id="param{5797FE2D-1115-453b-92DC-BAB32439468C}00" style="display: none;">
+							<td width="50"><strong>Default:</strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{5797FE2D-1115-453b-92DC-BAB32439468C}01" style="display: none;">
+							<td width="50"><strong>Kind:</strong></td>
+							<td>in</td>
+						</tr>
+						<tr id="param{5797FE2D-1115-453b-92DC-BAB32439468C}02" style="display: none;">
+							<td width="50"><strong>Stereotype: </strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{5797FE2D-1115-453b-92DC-BAB32439468C}03" style="display: none;">
+							<td width="50"></td>
+							<td></td>
+						</tr>
+					</table>
+					<a href="#" onclick="parent.toggleData('param{EECD3D5D-C7F9-4e92-A881-BFAF08EAE1E8}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{EECD3D5D-C7F9-4e92-A881-BFAF08EAE1E8}" border="0" />methods_array_value: var</a>, 
+					<table border="0" cellspacing="0" cellpadding="0" class="Table" style="padding: 4px 18px;">
+						<tr id="param{EECD3D5D-C7F9-4e92-A881-BFAF08EAE1E8}00" style="display: none;">
+							<td width="50"><strong>Default:</strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{EECD3D5D-C7F9-4e92-A881-BFAF08EAE1E8}01" style="display: none;">
+							<td width="50"><strong>Kind:</strong></td>
+							<td>in</td>
+						</tr>
+						<tr id="param{EECD3D5D-C7F9-4e92-A881-BFAF08EAE1E8}02" style="display: none;">
+							<td width="50"><strong>Stereotype: </strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{EECD3D5D-C7F9-4e92-A881-BFAF08EAE1E8}03" style="display: none;">
+							<td width="50"></td>
+							<td></td>
+						</tr>
+					</table>
+):var
+				</td>
+			</tr>
+			<tr>
+				<td class="TableRowBottomDashed"  colspan="1">
+					<div class="DetailsDivParent"><img src="../images/minus03.gif" align="absmiddle" id="DetailsImageOperations41" onclick="parent.toggleDiv('detailsDIVOperations41','DetailsImageOperations41')" />Details:
+						<div id="detailsDIVOperations41" class="DetailsDiv" >
+					<i>Sequential  </i>
+					<table>
+						<tr>
+							<td valign = "top"><i></i><span style="margin-left: .7cm;"> </span></td>
+							<td></td>
+						</tr>
+					</table>
+					
+					
+					<div class="ObjectDetailsNotes"><table>
+	<tr>
+		<td valign="top">
+			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
+		</td>
+		<td>
+			isUserHasAccessForMethod($methods_class,$methods_array_value)&nbsp;<WBR> en: Is there access to a method for this user? ru: Есть ли доступ к методу у данного пользователя? &lt;br /&gt;@param string $methods_class&lt;br /&gt;@param string $methods_array_value&lt;br /&gt;@access public&lt;br /&gt;@return bool
+		</td>
+	</tr>
+</table></div>
+
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td width="100%" class="TableRow">
+					<i>public</i><br />
+					<strong>setInitController</strong>(<br />
+					<a href="#" onclick="parent.toggleData('param{59843659-C2F3-4f58-B17A-FD6951215D7B}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{59843659-C2F3-4f58-B17A-FD6951215D7B}" border="0" />init_array: var</a>, 
+					<table border="0" cellspacing="0" cellpadding="0" class="Table" style="padding: 4px 18px;">
+						<tr id="param{59843659-C2F3-4f58-B17A-FD6951215D7B}00" style="display: none;">
+							<td width="50"><strong>Default:</strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{59843659-C2F3-4f58-B17A-FD6951215D7B}01" style="display: none;">
+							<td width="50"><strong>Kind:</strong></td>
+							<td>in</td>
+						</tr>
+						<tr id="param{59843659-C2F3-4f58-B17A-FD6951215D7B}02" style="display: none;">
+							<td width="50"><strong>Stereotype: </strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{59843659-C2F3-4f58-B17A-FD6951215D7B}03" style="display: none;">
+							<td width="50"></td>
+							<td></td>
+						</tr>
+					</table>
+):var
+				</td>
+			</tr>
+			<tr>
+				<td class="TableRowBottomDashed"  colspan="1">
+					<div class="DetailsDivParent"><img src="../images/minus03.gif" align="absmiddle" id="DetailsImageOperations42" onclick="parent.toggleDiv('detailsDIVOperations42','DetailsImageOperations42')" />Details:
+						<div id="detailsDIVOperations42" class="DetailsDiv" >
+					<i>Sequential  </i>
+					<table>
+						<tr>
+							<td valign = "top"><i></i><span style="margin-left: .7cm;"> </span></td>
+							<td></td>
+						</tr>
+					</table>
+					
+					
+					<div class="ObjectDetailsNotes"><table>
+	<tr>
+		<td valign="top">
+			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
+		</td>
+		<td>
+			setInitController($init_array)&nbsp;<WBR> en: Get the class initialization. ru: Получить классы инициализации &lt;br /&gt;@param array $init_array&lt;br /&gt;@access public&lt;br /&gt;@return void
+		</td>
+	</tr>
+</table></div>
+
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td width="100%" class="TableRow">
+					<i>public</i><br />
+					<strong>setLoadController</strong>(<br />
+					<a href="#" onclick="parent.toggleData('param{A398EABF-9E34-4d0f-B3A6-4AEB10AE06A6}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{A398EABF-9E34-4d0f-B3A6-4AEB10AE06A6}" border="0" />set_controller: var</a>, 
+					<table border="0" cellspacing="0" cellpadding="0" class="Table" style="padding: 4px 18px;">
+						<tr id="param{A398EABF-9E34-4d0f-B3A6-4AEB10AE06A6}00" style="display: none;">
+							<td width="50"><strong>Default:</strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{A398EABF-9E34-4d0f-B3A6-4AEB10AE06A6}01" style="display: none;">
+							<td width="50"><strong>Kind:</strong></td>
+							<td>in</td>
+						</tr>
+						<tr id="param{A398EABF-9E34-4d0f-B3A6-4AEB10AE06A6}02" style="display: none;">
+							<td width="50"><strong>Stereotype: </strong></td>
+							<td></td>
+						</tr>
+						<tr id="param{A398EABF-9E34-4d0f-B3A6-4AEB10AE06A6}03" style="display: none;">
+							<td width="50"></td>
+							<td></td>
+						</tr>
+					</table>
+):var
+				</td>
+			</tr>
+			<tr>
+				<td class="TableRowBottomDashed"  colspan="1">
+					<div class="DetailsDivParent"><img src="../images/minus03.gif" align="absmiddle" id="DetailsImageOperations43" onclick="parent.toggleDiv('detailsDIVOperations43','DetailsImageOperations43')" />Details:
+						<div id="detailsDIVOperations43" class="DetailsDiv" >
+					<i>Sequential  </i>
+					<table>
+						<tr>
+							<td valign = "top"><i></i><span style="margin-left: .7cm;"> </span></td>
+							<td></td>
+						</tr>
+					</table>
+					
+					
+					<div class="ObjectDetailsNotes"><table>
+	<tr>
+		<td valign="top">
+			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
+		</td>
+		<td>
+			setLoadController($set_controller) en: Initialize the controllers. ru: Инициализируем контроллеры. &lt;br /&gt;@param string $set_controller en: Use the aliases names controllers. en: In the folder /controllers/ ru: Используем псевдонимы названий ru: контроллеров в папке /controllers/ ru: задаются в:&nbsp;<WBR> /evnine.config.php $this-&gt;controller_alias=array( &#39;helloworld&#39;=&gt;&#39;ControllersHelloWorld&#39;, ); &lt;br /&gt;@access public&lt;br /&gt;@return void
+		</td>
+	</tr>
+</table></div>
+
+						</div>
+					</div>
+				</td>
+			</tr>
+
+		</table>
+</div>		<div class="ItemBody" id="LinksTable">
+			<table align="center" border="0" cellspacing="0" cellpadding="0" class="Table">
+				<tr>
+					<td width="30%" class="TableHeading">Object</td>
+					<td width="15%" class="TableHeading">Type</td>
+					<td width="15%" class="TableHeading">Connection</td>
+					<td width="40%" class="TableHeading">Notes</td>
+				</tr>
+				<tr>
+					<td width="30%" class="TableRow" valign="top"><a href="EA4.htm">Config</a></td>
+					<td width="15%" class="TableRow" valign="top">Class</td>
+					<td width="15%" class="TableRow" valign="top">Generalization</td>
+					<td width="40%" class="TableRow" valign="top">&nbsp;</td>
+				</tr>
+				<tr>
+					<td width="30%" class="TableRow" valign="top"><a href="EA6.htm">controllers</a></td>
+					<td width="15%" class="TableRow" valign="top">Package</td>
+					<td width="15%" class="TableRow" valign="top">Dependency</td>
+					<td width="40%" class="TableRow" valign="top">&nbsp;</td>
+				</tr>
+				<tr>
+					<td width="30%" class="TableRow" valign="top"><a href="EA3.htm">$param</a></td>
+					<td width="15%" class="TableRow" valign="top">Object</td>
+					<td width="15%" class="TableRow" valign="top">Dependency</td>
+					<td width="40%" class="TableRow" valign="top">&nbsp;</td>
+				</tr>
+				<tr>
+					<td width="30%" class="TableRow" valign="top"><a href="EA7.htm">models</a></td>
+					<td width="15%" class="TableRow" valign="top">Package</td>
+					<td width="15%" class="TableRow" valign="top">Dependency</td>
+					<td width="40%" class="TableRow" valign="top">&nbsp;</td>
+				</tr>
+
+			</table>
+		</div>
+	</div>
+<div class="pageFooter"></div>
+ 
+</body>
+</html>
