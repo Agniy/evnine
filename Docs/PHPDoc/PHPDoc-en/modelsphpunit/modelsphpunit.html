@@ -1,0 +1,506 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
+<meta name="when" content="Mon, 05 Sep 2011 20:11:26 +0000">
+
+<link rel="stylesheet" type="text/css" href="../stylesheet.css">
+<link rel="start" href="../overview-summary.html">
+
+<title>ModelsPHPUnit (evnine)</title>
+
+</head>
+<body id="definition" onload="parent.document.title=document.title;">
+
+<div class="header">
+<h1>evnine</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="../modelsphpunit/package-summary.html">Namespace</a></li>
+<li class="active">Class</li>
+<li><a href="../modelsphpunit/package-tree.html">Tree</a></li>
+<li><a href="../overview-files.html">Files</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../todo-list.html">Todo</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../modelsphpunit\modelsphpunit.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<div class="qualifiedName">ModelsPHPUnit\ModelsPHPUnit</div>
+<a href="../source/models/modelsphpunit.php.html#line10" class="location">models\ModelsPHPUnit.php at line 10</a>
+
+<h1>Class ModelsPHPUnit</h1>
+
+<pre class="tree"><strong>ModelsPHPUnit</strong><br /></pre>
+
+<hr>
+
+<p class="signature">public  class <strong>ModelsPHPUnit</strong></p>
+
+<div class="comment" id="overview_description"><p>Model for testing models and controllers.<br></p></div>
+
+<dl>
+<dt>Author:</dt>
+<dd><p>ev9eniy</p></dd>
+<dt>Version:</dt>
+<dd><p>1.0</p></dd>
+<dt>Created:</dt>
+<dd><p>05-spt-2011 18:38:41</p></dd>
+</dl>
+<hr>
+
+<table id="summary_field">
+<tr><th colspan="2">Field Summary</th></tr>
+<tr>
+<td class="type"> object</td>
+<td class="description"><p class="name"><a href="#evnine">$evnine</a></p><p class="description"></p></td>
+</tr>
+</table>
+
+<table id="summary_constructor">
+<tr><th colspan="2">Constructor Summary</th></tr>
+<tr>
+<td class="type">protected  void</td>
+<td class="description"><p class="name"><a href="#__construct()">__construct</a>(array param)</p><p class="description">The constructor sets the environment variables.</p></td>
+</tr>
+</table>
+
+<table id="summary_method">
+<tr><th colspan="2">Method Summary</th></tr>
+<tr>
+<td class="type"> boolean</td>
+<td class="description"><p class="name"><a href="#getResetPHPUnit()">getResetPHPUnit</a>(array param)</p><p class="description">Clear all PHP Unit testing.</p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#getParamCaseByParamTest()">getParamCaseByParamTest</a>(array param)</p><p class="description">Determine the number of tests for the controllers.</p></td>
+</tr>
+<tr>
+<td class="type"> string</td>
+<td class="description"><p class="name"><a href="#getStringFromArray()">getStringFromArray</a>(array array, int count)</p><p class="description">Recursively convert an array into a string.</p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#getCountParamByParamTest()">getCountParamByParamTest</a>(array param)</p><p class="description">Count the number of tests.</p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#getParamTextName()">getParamTextName</a>(array param)</p><p class="description">Get a description of cases.</p></td>
+</tr>
+<tr>
+<td class="type"> string</td>
+<td class="description"><p class="name"><a href="#getNewString()">getNewString</a>(string after, string before, string title)</p><p class="description">Highlight the new string.</p></td>
+</tr>
+<tr>
+<td class="type"> string</td>
+<td class="description"><p class="name"><a href="#getPHPUnitCode()">getPHPUnitCode</a>(array param)</p><p class="description">Get the source for the generation of PHP Unit Test.</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#getPHPUnitCodeWithBR()">getPHPUnitCodeWithBR</a>(array param)</p><p class="description">Make a change of line breaks to the br.</p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#getParamTest()">getParamTest</a>(array param)</p><p class="description">Get a test from the controller.</p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#setInitParam()">setInitParam</a>(array &$case_array, string param_title, array &$param_array, boolean multi_case_flag, mixed case_array, mixed param_array)</p><p class="description">Cloning options for creating tests of the controller.</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#setGeneParam()">setGeneParam</a>(array case_array, array param_array)</p><p class="description">Generating options for all tests.</p></td>
+</tr>
+<tr>
+<td class="type">private  string</td>
+<td class="description"><p class="name"><a href="#_getFirstArrayKey()">_getFirstArrayKey</a>(array array, boolean get_value)</p><p class="description">Get the first element of the array as a key or value.</p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#getDataFromControllerByParam()">getDataFromControllerByParam</a>(array param)</p><p class="description">Get the answer from the controller to the generated parameters.</p></td>
+</tr>
+<tr>
+<td class="type">private  string</td>
+<td class="description"><p class="name"><a href="#_getMD5KeyForControllerAnswer()">_getMD5KeyForControllerAnswer</a>(array array)</p><p class="description">Get the key to the answer without the input and output parameters.</p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#getComparePHPUnitForControllers()">getComparePHPUnitForControllers</a>(array param)</p><p class="description">Compare the current controller with stored responses for PHPUnit.</p></td>
+</tr>
+<tr>
+<td class="type"> string</td>
+<td class="description"><p class="name"><a href="#getFileNameMD5ForParam()">getFileNameMD5ForParam</a>(string path, array param, string &$md5, bool md5)</p><p class="description">Get a folder and file name parameters.</p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#getFromCache()">getFromCache</a>(string file_name, array array_data, boolean reset)</p><p class="description">Get the data from cache</p></td>
+</tr>
+<tr>
+<td class="type"> string</td>
+<td class="description"><p class="name"><a href="#getSerData()">getSerData</a>(string file_name, array param)</p><p class="description">Get data from a file.</p></td>
+</tr>
+<tr>
+<td class="type">private  string</td>
+<td class="description"><p class="name"><a href="#_getMultiImplode()">_getMultiImplode</a>(string pieces)</p><p class="description">Combines the line in the array.</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#_setCreateDir()">_setCreateDir</a>(string dir_name, mixed file_dir)</p><p class="description">Create a folder tree.</p></td>
+</tr>
+<tr>
+<td class="type"> string</td>
+<td class="description"><p class="name"><a href="#setSerData()">setSerData</a>(string file_name, array str, boolean reset)</p><p class="description">Save the data.</p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#getModelsAndControllerModifierTimeFromCache()">getModelsAndControllerModifierTimeFromCache</a>(array param)</p><p class="description">Get a time of change models and controllers.</p></td>
+</tr>
+<tr>
+<td class="type">private  string</td>
+<td class="description"><p class="name"><a href="#_getModifierFileTime()">_getModifierFileTime</a>(string file_path)</p><p class="description">Get file modification time.</p></td>
+</tr>
+</table>
+
+<h2 id="detail_field">Field Detail</h2>
+<a href="../source/models/modelsphpunit.php.html#line19" class="location">models\ModelsPHPUnit.php at line 19</a>
+
+<h3 id="evnine">evnine</h3>
+<code class="signature">public  object <strong>$evnine</strong> = false</code>
+<div class="details">
+<p><p>An object with a reference to the EvnineController.<br></p></p></div>
+
+<hr>
+
+<h2 id="detail_method">Constructor Detail</h2>
+<a href="../source/models/modelsphpunit.php.html#line29" class="location">models\ModelsPHPUnit.php at line 29</a>
+
+<h3 id="__construct()">__construct</h3>
+<code class="signature">protected  void <strong>__construct</strong>(array param)</code>
+<div class="details">
+<p>The constructor sets the environment variables.<br></p><dl>
+<dt>Parameters:</dt>
+<dd>&nbsp;<span style="color: #000088;">$param</span> <span style="color: #339933;">-</span> An <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> of parameters<span style="color: #339933;">.</span></dd>
+</dl>
+</div>
+
+<hr>
+
+<h2 id="detail_method">Method Detail</h2>
+<a href="../source/models/modelsphpunit.php.html#line44" class="location">models\ModelsPHPUnit.php at line 44</a>
+
+<h3 id="getResetPHPUnit()">getResetPHPUnit</h3>
+<code class="signature">public  boolean <strong>getResetPHPUnit</strong>(array param)</code>
+<div class="details">
+<p>Clear all PHP Unit testing.<br>
+ This method renames a folder with the php unit test results.<br></p><dl>
+<dt>Parameters:</dt>
+<dd>&nbsp;<span style="color: #000088;">$param</span> <span style="color: #339933;">-</span> An <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> of parameters<span style="color: #339933;">.</span></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/models/modelsphpunit.php.html#line58" class="location">models\ModelsPHPUnit.php at line 58</a>
+
+<h3 id="getParamCaseByParamTest()">getParamCaseByParamTest</h3>
+<code class="signature">public  array <strong>getParamCaseByParamTest</strong>(array param)</code>
+<div class="details">
+<p>Determine the number of tests for the controllers.<br></p><dl>
+<dt>Parameters:</dt>
+<dd>&nbsp;<span style="color: #000088;">$param</span> <span style="color: #339933;">-</span> An <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> of parameters<span style="color: #339933;">.</span></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/models/modelsphpunit.php.html#line94" class="location">models\ModelsPHPUnit.php at line 94</a>
+
+<h3 id="getStringFromArray()">getStringFromArray</h3>
+<code class="signature">public  string <strong>getStringFromArray</strong>(array array, int count)</code>
+<div class="details">
+<p>Recursively convert an array into a string.<br></p><dl>
+<dt>Parameters:</dt>
+<dd><p></p></dd>
+<dd>&nbsp;<span style="color: #000088;">$count</span> <span style="color: #339933;">-</span> Meter depth<span style="color: #339933;">.</span></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/models/modelsphpunit.php.html#line123" class="location">models\ModelsPHPUnit.php at line 123</a>
+
+<h3 id="getCountParamByParamTest()">getCountParamByParamTest</h3>
+<code class="signature">public  array <strong>getCountParamByParamTest</strong>(array param)</code>
+<div class="details">
+<p>Count the number of tests.<br></p><dl>
+<dt>Parameters:</dt>
+<dd>&nbsp;<span style="color: #000088;">$param</span> <span style="color: #339933;">-</span> An <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> of parameters<span style="color: #339933;">.</span></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/models/modelsphpunit.php.html#line143" class="location">models\ModelsPHPUnit.php at line 143</a>
+
+<h3 id="getParamTextName()">getParamTextName</h3>
+<code class="signature">public  array <strong>getParamTextName</strong>(array param)</code>
+<div class="details">
+<p>Get a description of cases.<br></p><dl>
+<dt>Parameters:</dt>
+<dd>&nbsp;<span style="color: #000088;">$param</span> <span style="color: #339933;">-</span> An <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> of parameters<span style="color: #339933;">.</span></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/models/modelsphpunit.php.html#line182" class="location">models\ModelsPHPUnit.php at line 182</a>
+
+<h3 id="getNewString()">getNewString</h3>
+<code class="signature">public  string <strong>getNewString</strong>(string after, string before, string title)</code>
+<div class="details">
+<p>Highlight the new string.<br></p></div>
+
+<hr>
+
+<a href="../source/models/modelsphpunit.php.html#line198" class="location">models\ModelsPHPUnit.php at line 198</a>
+
+<h3 id="getPHPUnitCode()">getPHPUnitCode</h3>
+<code class="signature">public  string <strong>getPHPUnitCode</strong>(array param)</code>
+<div class="details">
+<p>Get the source for the generation of PHP Unit Test.<br></p><dl>
+<dt>Parameters:</dt>
+<dd>&nbsp;<span style="color: #000088;">$param</span> <span style="color: #339933;">-</span> An <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> of parameters<span style="color: #339933;">.</span></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/models/modelsphpunit.php.html#line269" class="location">models\ModelsPHPUnit.php at line 269</a>
+
+<h3 id="getPHPUnitCodeWithBR()">getPHPUnitCodeWithBR</h3>
+<code class="signature">public  void <strong>getPHPUnitCodeWithBR</strong>(array param)</code>
+<div class="details">
+<p>Make a change of line breaks to the br.<br></p><dl>
+<dt>Parameters:</dt>
+<dd>&nbsp;<span style="color: #000088;">$param</span> <span style="color: #339933;">-</span> An <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> of parameters<span style="color: #339933;">.</span></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/models/modelsphpunit.php.html#line282" class="location">models\ModelsPHPUnit.php at line 282</a>
+
+<h3 id="getParamTest()">getParamTest</h3>
+<code class="signature">public  array <strong>getParamTest</strong>(array param)</code>
+<div class="details">
+<p>Get a test from the controller.<br></p><dl>
+<dt>Parameters:</dt>
+<dd>&nbsp;<span style="color: #000088;">$param</span> <span style="color: #339933;">-</span> An <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> of parameters<span style="color: #339933;">.</span></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/models/modelsphpunit.php.html#line350" class="location">models\ModelsPHPUnit.php at line 350</a>
+
+<h3 id="setInitParam()">setInitParam</h3>
+<code class="signature">public  array <strong>setInitParam</strong>(array &$case_array, string param_title, array &$param_array, boolean multi_case_flag, mixed case_array, mixed param_array)</code>
+<div class="details">
+<p>Cloning options for creating tests of the controller.<br></p></div>
+
+<hr>
+
+<a href="../source/models/modelsphpunit.php.html#line376" class="location">models\ModelsPHPUnit.php at line 376</a>
+
+<h3 id="setGeneParam()">setGeneParam</h3>
+<code class="signature">public  void <strong>setGeneParam</strong>(array case_array, array param_array)</code>
+<div class="details">
+<p>Generating options for all tests.<br></p></div>
+
+<hr>
+
+<a href="../source/models/modelsphpunit.php.html#line411" class="location">models\ModelsPHPUnit.php at line 411</a>
+
+<h3 id="_getFirstArrayKey()">_getFirstArrayKey</h3>
+<code class="signature">private  string <strong>_getFirstArrayKey</strong>(array array, boolean get_value)</code>
+<div class="details">
+<p>Get the first element of the array as a key or value.<br></p><dl>
+<dt>Parameters:</dt>
+<dd>&nbsp;<span style="color: #000088;">$array</span> <span style="color: #339933;">-</span> An input <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #339933;">.</span></dd>
+<dd>&nbsp;<span style="color: #000088;">$get_value</span> <span style="color: #339933;">-</span> Is first value?</dd>
+<dt>Assert:</dt>
+<dd>&nbsp;<span style="color: #009900;">&#40;</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'TEST'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'0'</span><span style="color: #339933;">,</span><span style="color: #0000ff;">'TEST2'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'1'</span><span style="color: #339933;">,</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span> <span style="color: #339933;">==</span> TEST</dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/models/modelsphpunit.php.html#line436" class="location">models\ModelsPHPUnit.php at line 436</a>
+
+<h3 id="getDataFromControllerByParam()">getDataFromControllerByParam</h3>
+<code class="signature">public  array <strong>getDataFromControllerByParam</strong>(array param)</code>
+<div class="details">
+<p>Get the answer from the controller to the generated parameters.<br></p><dl>
+<dt>Parameters:</dt>
+<dd>&nbsp;<span style="color: #000088;">$param</span> <span style="color: #339933;">-</span> An <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> of parameters<span style="color: #339933;">.</span></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/models/modelsphpunit.php.html#line521" class="location">models\ModelsPHPUnit.php at line 521</a>
+
+<h3 id="_getMD5KeyForControllerAnswer()">_getMD5KeyForControllerAnswer</h3>
+<code class="signature">private  string <strong>_getMD5KeyForControllerAnswer</strong>(array array)</code>
+<div class="details">
+<p>Get the key to the answer without the input and output parameters.<br></p></div>
+
+<hr>
+
+<a href="../source/models/modelsphpunit.php.html#line540" class="location">models\ModelsPHPUnit.php at line 540</a>
+
+<h3 id="getComparePHPUnitForControllers()">getComparePHPUnitForControllers</h3>
+<code class="signature">public  array <strong>getComparePHPUnitForControllers</strong>(array param)</code>
+<div class="details">
+<p>Compare the current controller with stored responses for PHPUnit.<br></p><dl>
+<dt>Parameters:</dt>
+<dd>&nbsp;<span style="color: #000088;">$param</span> <span style="color: #339933;">-</span> An <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> of parameters<span style="color: #339933;">.</span></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/models/modelsphpunit.php.html#line586" class="location">models\ModelsPHPUnit.php at line 586</a>
+
+<h3 id="getFileNameMD5ForParam()">getFileNameMD5ForParam</h3>
+<code class="signature">public  string <strong>getFileNameMD5ForParam</strong>(string path, array param, string &$md5, bool md5)</code>
+<div class="details">
+<p>Get a folder and file name parameters.<br></p><dl>
+<dt>Parameters:</dt>
+<dd><p></p></dd>
+<dd>&nbsp;<span style="color: #000088;">$param</span> <span style="color: #339933;">-</span> An <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> of parameters<span style="color: #339933;">.</span></dd>
+<dd><p></p></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/models/modelsphpunit.php.html#line602" class="location">models\ModelsPHPUnit.php at line 602</a>
+
+<h3 id="getFromCache()">getFromCache</h3>
+<code class="signature">public  array <strong>getFromCache</strong>(string file_name, array array_data, boolean reset)</code>
+<div class="details">
+<p>Get the data from cache<br></p></div>
+
+<hr>
+
+<a href="../source/models/modelsphpunit.php.html#line625" class="location">models\ModelsPHPUnit.php at line 625</a>
+
+<h3 id="getSerData()">getSerData</h3>
+<code class="signature">public  string <strong>getSerData</strong>(string file_name, array param)</code>
+<div class="details">
+<p>Get data from a file.<br></p><dl>
+<dt>Parameters:</dt>
+<dd><p></p></dd>
+<dd>&nbsp;<span style="color: #000088;">$param</span> <span style="color: #339933;">-</span> An <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> of parameters<span style="color: #339933;">.</span></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/models/modelsphpunit.php.html#line639" class="location">models\ModelsPHPUnit.php at line 639</a>
+
+<h3 id="_getMultiImplode()">_getMultiImplode</h3>
+<code class="signature">private  string <strong>_getMultiImplode</strong>(string pieces)</code>
+<div class="details">
+<p>Combines the line in the array.<br></p></div>
+
+<hr>
+
+<a href="../source/models/modelsphpunit.php.html#line664" class="location">models\ModelsPHPUnit.php at line 664</a>
+
+<h3 id="_setCreateDir()">_setCreateDir</h3>
+<code class="signature">public  void <strong>_setCreateDir</strong>(string dir_name, mixed file_dir)</code>
+<div class="details">
+<p>Create a folder tree.<br></p></div>
+
+<hr>
+
+<a href="../source/models/modelsphpunit.php.html#line680" class="location">models\ModelsPHPUnit.php at line 680</a>
+
+<h3 id="setSerData()">setSerData</h3>
+<code class="signature">public  string <strong>setSerData</strong>(string file_name, array str, boolean reset)</code>
+<div class="details">
+<p>Save the data.<br></p></div>
+
+<hr>
+
+<a href="../source/models/modelsphpunit.php.html#line704" class="location">models\ModelsPHPUnit.php at line 704</a>
+
+<h3 id="getModelsAndControllerModifierTimeFromCache()">getModelsAndControllerModifierTimeFromCache</h3>
+<code class="signature">public  array <strong>getModelsAndControllerModifierTimeFromCache</strong>(array param)</code>
+<div class="details">
+<p>Get a time of change models and controllers.<br></p><dl>
+<dt>Parameters:</dt>
+<dd>&nbsp;<span style="color: #000088;">$param</span> <span style="color: #339933;">-</span> An <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> of parameters<span style="color: #339933;">.</span></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/models/modelsphpunit.php.html#line743" class="location">models\ModelsPHPUnit.php at line 743</a>
+
+<h3 id="_getModifierFileTime()">_getModifierFileTime</h3>
+<code class="signature">private  string <strong>_getModifierFileTime</strong>(string file_path)</code>
+<div class="details">
+<p>Get file modification time.<br></p><dl>
+<dt>See Also:</dt>
+<dd><p><code><a href="http://www.php.net/manual/en/function.filemtime.php">http://www.php.net/manual/en/function.filemtime.php</a></code></p></dd>
+</dl>
+</div>
+
+<hr>
+
+<div class="header">
+<h1>evnine</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="../modelsphpunit/package-summary.html">Namespace</a></li>
+<li class="active">Class</li>
+<li><a href="../modelsphpunit/package-tree.html">Tree</a></li>
+<li><a href="../overview-files.html">Files</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../todo-list.html">Todo</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../modelsphpunit\modelsphpunit.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<p id="footer"></p>
+
+</body>
+
+</html>

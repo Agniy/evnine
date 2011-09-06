@@ -1,0 +1,303 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
+<meta name="when" content="Mon, 05 Sep 2011 20:10:11 +0000">
+
+<link rel="stylesheet" type="text/css" href="../stylesheet.css">
+<link rel="start" href="../overview-summary.html">
+
+<title>evnine.config.php (evnine)</title>
+
+</head>
+<body id="file" onload="parent.document.title=document.title;">
+
+<div class="header">
+<h1>evnine</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li>Package</li><li>Class</li><li>Tree</li><li><a href="../overview-files.html">Files</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../todo-list.html">Todo</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../source\evnine.config.php.html" target="_top">No frames</a>
+</div>
+<hr>
+
+<h1>evnine.config.php</h1>
+<hr>
+
+<a name="line1"></a><span style="color: #000000; font-weight: bold;">&lt;?php</span><br />
+<a name="line2"></a><span style="color: #009933; font-style: italic;">/**<br />
+<a name="line3"></a>&nbsp;* <br />
+<a name="line4"></a>&nbsp;* Конфигурационный файл.<br />
+<a name="line5"></a>&nbsp;* <br />
+<a name="line6"></a>&nbsp;* Альтернативный способ задания конфигурации.<br />
+<a name="line7"></a>&nbsp;* <br />
+<a name="line8"></a>&nbsp;* /index.php<br />
+<a name="line9"></a>&nbsp;*&nbsp; &nbsp; &nbsp; include_once 'evnine.php';<br />
+<a name="line10"></a>&nbsp;*&nbsp; &nbsp; &nbsp; class EvnineConfig{<br />
+<a name="line11"></a>&nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; function __construct(){<br />
+<a name="line12"></a>&nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $this-&gt;controller_alias=array(<br />
+<a name="line13"></a>&nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 'helloworld'=&gt;'ControllersHelloWorld'<br />
+<a name="line14"></a>&nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; );<br />
+<a name="line15"></a>&nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br />
+<a name="line16"></a>&nbsp;*&nbsp; &nbsp; &nbsp; &nbsp;}<br />
+<a name="line17"></a>&nbsp;*&nbsp; &nbsp; &nbsp; $evnine = new EvnineController();<br />
+<a name="line18"></a>&nbsp;* <br />
+<a name="line19"></a>&nbsp;* @package EvnineConfig <br />
+<a name="line20"></a>&nbsp;* @version 1<br />
+<a name="line21"></a>&nbsp;* @copyright 2009-2012 ev9eniy.info<br />
+<a name="line22"></a>&nbsp;* @author ev9eniy.info<br />
+<a name="line23"></a>&nbsp;*/</span><br />
+<a name="line24"></a><span style="color: #000000; font-weight: bold;">class</span> EvnineConfig <br />
+<a name="line25"></a><span style="color: #009900;">&#123;</span><br />
+<a name="line26"></a>&nbsp; &nbsp; &nbsp; &nbsp; <br />
+<a name="line27"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009933; font-style: italic;">/**<br />
+<a name="line28"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Уровни доступа заданы в:<br />
+<a name="line29"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* /evnine.config.php<br />
+<a name="line30"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; $this-&gt;access_level=array(<br />
+<a name="line31"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 'admin'=&gt;'2',<br />
+<a name="line32"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 'user'=&gt;'1',<br />
+<a name="line33"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 'guest'=&gt;'0',<br />
+<a name="line34"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; );<br />
+<a name="line35"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; <br />
+<a name="line36"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @see EvnineController.isUserHasAccessForMethod<br />
+<a name="line37"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @see Controllers.__construct<br />
+<a name="line38"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @see EvnineController.access_level<br />
+<a name="line39"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @see EvnineConfig.access_level<br />
+<a name="line40"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @var array<br />
+<a name="line41"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @access public<br />
+<a name="line42"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</span><br />
+<a name="line43"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">var</span> <span style="color: #000088;">$access_level</span><span style="color: #339933;">;</span><br />
+<a name="line44"></a><br />
+<a name="line45"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009933; font-style: italic;">/**<br />
+<a name="line46"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Название API (MySQL, итд)<br />
+<a name="line47"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* <br />
+<a name="line48"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* /evnine.config.php<br />
+<a name="line49"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; $this-&gt;api='ModelsMySQL';<br />
+<a name="line50"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; <br />
+<a name="line51"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Путь до класса задаётся в: <br />
+<a name="line52"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* /evnine.config.php<br />
+<a name="line53"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; &nbsp;$class_path=array(<br />
+<a name="line54"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 'ModelsMySQL'=&gt;array(<br />
+<a name="line55"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 'path'=&gt;'models/'<br />
+<a name="line56"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 'param'=&gt;array(<br />
+<a name="line57"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 'host' =&gt; 'localhost'<br />
+<a name="line58"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 'login' =&gt; 'root',<br />
+<a name="line59"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 'pass' =&gt; 'pass',<br />
+<a name="line60"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; )<br />
+<a name="line61"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; )<br />
+<a name="line62"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; )<br />
+<a name="line63"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; <br />
+<a name="line64"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Объявляться:<br />
+<a name="line65"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* /evnine.php<br />
+<a name="line66"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; if ($this-&gt;isSetClassToLoadAndSetParam($this-&gt;api)){<br />
+<a name="line67"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $this-&gt;loaded_class[$this-&gt;api]-&gt;setInitAPI($this-&gt;param);<br />
+<a name="line68"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; }<br />
+<a name="line69"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; <br />
+<a name="line70"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* /models/ModelsMySQL.php<br />
+<a name="line71"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; function setInitAPI($param) {<br />
+<a name="line72"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $this-&gt;mysql=mysql_connect($param['host'],$param['login'],$param['pass']);<br />
+<a name="line73"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; }<br />
+<a name="line74"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*<br />
+<a name="line75"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @see EvnineController.__construct<br />
+<a name="line76"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @see ModelsMySQL.setInitAPI<br />
+<a name="line77"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @see EvnineController.api<br />
+<a name="line78"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @see EvnineConfig.api<br />
+<a name="line79"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @var string<br />
+<a name="line80"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @access public<br />
+<a name="line81"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</span><br />
+<a name="line82"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">var</span> <span style="color: #000088;">$api</span><span style="color: #339933;">;</span><br />
+<a name="line83"></a><br />
+<a name="line84"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009933; font-style: italic;">/**<br />
+<a name="line85"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Путь до классов моделей и переменные инициализации по умолчанию<br />
+<a name="line86"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* <br />
+<a name="line87"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Вызываются модели в контроллерах:<br />
+<a name="line88"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* /controllers/Controllers.php<br />
+<a name="line89"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; $this-&gt;controller=array(<br />
+<a name="line90"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ModelsHelloWorld =&gt; 'getHelloWorld'<br />
+<a name="line91"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; )<br />
+<a name="line92"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; <br />
+<a name="line93"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* ВАЖНО:<br />
+<a name="line94"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Без указания пути, считается что все модели лежат в /models/<br />
+<a name="line95"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; <br />
+<a name="line96"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Так же могут быть заданы в:<br />
+<a name="line97"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* /evnine.config.php<br />
+<a name="line98"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; $this-&gt;class_path=array(<br />
+<a name="line99"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 'ModelsHelloWorld'=&gt;array(<br />
+<a name="line100"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Название класса, совпадает с названием файла класса<br />
+<a name="line101"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // ModelsHelloWorld.php = class ModelsHelloWorld<br />
+<a name="line102"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 'path'=&gt;'models'.DIRECTORY_SEPARATOR,<br />
+<a name="line103"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;// Путь до класса.<br />
+<a name="line104"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 'param'=&gt;array(<br />
+<a name="line105"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Параметры которые передаются при инициализации класса.<br />
+<a name="line106"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 'hello'=&gt;'config',<br />
+<a name="line107"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; )<br />
+<a name="line108"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; )<br />
+<a name="line109"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* )<br />
+<a name="line110"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* <br />
+<a name="line111"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* ВАЖНО: Весомым приоритетом обладают параметры, переданные <br />
+<a name="line112"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* при инициализации базового контроллера<br />
+<a name="line113"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; $evnine-&gt;getControllerForParam(<br />
+<a name="line114"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; array(<br />
+<a name="line115"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 'hello'=&gt;'supper_config'<br />
+<a name="line116"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; )<br />
+<a name="line117"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; )<br />
+<a name="line118"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &lt;&lt; supper_config<br />
+<a name="line119"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* <br />
+<a name="line120"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @see Controllers.controller<br />
+<a name="line121"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @see EvnineController.getDataFromMethod<br />
+<a name="line122"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @see EvnineController.class_path<br />
+<a name="line123"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @see EvnineConfig.class_path<br />
+<a name="line124"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @var array<br />
+<a name="line125"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @access public<br />
+<a name="line126"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</span><br />
+<a name="line127"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">var</span> <span style="color: #000088;">$class_path</span><span style="color: #339933;">;</span><br />
+<a name="line128"></a>&nbsp; &nbsp; &nbsp; &nbsp; <br />
+<a name="line129"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009933; font-style: italic;">/**<br />
+<a name="line130"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Псевдонимы названий контроллеров в папке /controllers/ <br />
+<a name="line131"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* задаются в: <br />
+<a name="line132"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* /evnine.config.php<br />
+<a name="line133"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; $this-&gt;controller_alias=array(<br />
+<a name="line134"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 'helloworld'=&gt;'ControllersHelloWorld',<br />
+<a name="line135"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; );<br />
+<a name="line136"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* <br />
+<a name="line137"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Альтернативный вариант с указанием пути.<br />
+<a name="line138"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* /evnine.config.php<br />
+<a name="line139"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; 'helloworld'=&gt;array(<br />
+<a name="line140"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 'class_name'=&gt;'ControllersHelloWorld',<br />
+<a name="line141"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 'path'=&gt;'controllers'.DIRECTORY_SEPARATOR,<br />
+<a name="line142"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; )<br />
+<a name="line143"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*<br />
+<a name="line144"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @see EvnineController.setLoadController &nbsp;<br />
+<a name="line145"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @see EvnineController.controller_alias<br />
+<a name="line146"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @see EvnineConfig.controller_alias<br />
+<a name="line147"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @var array<br />
+<a name="line148"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @access public<br />
+<a name="line149"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</span><br />
+<a name="line150"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">var</span> <span style="color: #000088;">$controller_alias</span><span style="color: #339933;">;</span><br />
+<a name="line151"></a><br />
+<a name="line152"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009933; font-style: italic;">/**<br />
+<a name="line153"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Параметры инициализации. <br />
+<a name="line154"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Передаются во все методы.<br />
+<a name="line155"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*<br />
+<a name="line156"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* /evnine.config.php<br />
+<a name="line157"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; $this-&gt;param_const=array(<br />
+<a name="line158"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Контроллер по умолчанию.<br />
+<a name="line159"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // &gt;&gt; /?c=m=&amp;param=777<br />
+<a name="line160"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // &lt;&lt; /?c=default_controllerm=default&amp;param=777<br />
+<a name="line161"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 'default_controller'=&gt;'default_controller',<br />
+<a name="line162"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Режим отладки. <br />
+<a name="line163"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Нужен для отслеживания изменения в $param от метода к методу.<br />
+<a name="line164"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 'debug'=&gt;true,<br />
+<a name="line165"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Общая папка для кэша.<br />
+<a name="line166"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 'CacheDir'=&gt;'PHPUnitCache',<br />
+<a name="line167"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Папка для хранения PHPUnit тестов.<br />
+<a name="line168"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 'CacheDirPHPUnit'=&gt;'PHPUnitCache'.DIRECTORY_SEPARATOR.'PHPUnit',<br />
+<a name="line169"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Папка для хранения промежуточных данных.<br />
+<a name="line170"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 'CacheDirControllerForParam'=&gt;'PHPUnitCache'.DIRECTORY_SEPARATOR.'getControllerForParam',<br />
+<a name="line171"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; ) <br />
+<a name="line172"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @see EvnineController.getDataFromMethod<br />
+<a name="line173"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @see EvnineController.param_const<br />
+<a name="line174"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @see EvnineConfig.param_const<br />
+<a name="line175"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @var array<br />
+<a name="line176"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @access public<br />
+<a name="line177"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</span><br />
+<a name="line178"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">var</span> <span style="color: #000088;">$param_const</span><span style="color: #339933;">;</span><br />
+<a name="line179"></a><br />
+<a name="line180"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009933; font-style: italic;">/**<br />
+<a name="line181"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Абсолютный путь<br />
+<a name="line182"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Используется при подключении классов моделей и контроллеров<br />
+<a name="line183"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* <br />
+<a name="line184"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @var string<br />
+<a name="line185"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @access public<br />
+<a name="line186"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @see EvnineController.path_to<br />
+<a name="line187"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @see EvnineConfig.path_to<br />
+<a name="line188"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</span><br />
+<a name="line189"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">var</span> <span style="color: #000088;">$path_to</span><span style="color: #339933;">;</span><br />
+<a name="line190"></a><br />
+<a name="line191"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">function</span> __construct<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span><br />
+<a name="line192"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">path_to</span><span style="color: #339933;">=</span><span style="color: #009900;">&#40;</span><a href="http://www.php.net/defined"><span style="color: #990000;">defined</span></a><span style="color: #009900;">&#40;</span> <span style="color: #0000ff;">'__DIR__'</span> <span style="color: #009900;">&#41;</span>?__DIR__<span style="color: #339933;">:</span><a href="http://www.php.net/getcwd"><span style="color: #990000;">getcwd</span></a><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">.</span><span style="color: #009900; font-weight: bold;">DIRECTORY_SEPARATOR</span><span style="color: #339933;">;</span><br />
+<a name="line193"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009933; font-style: italic;">/**<br />
+<a name="line194"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Автоматическое определение текущего пути.<br />
+<a name="line195"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</span><br />
+<a name="line196"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">api</span><span style="color: #339933;">=</span><span style="color: #0000ff;">'ModelsMySQL'</span><span style="color: #339933;">;</span><br />
+<a name="line197"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009933; font-style: italic;">/**<br />
+<a name="line198"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Название API (MySQL, итд)<br />
+<a name="line199"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</span><br />
+<a name="line200"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">access_level</span><span style="color: #339933;">=</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+<a name="line201"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009933; font-style: italic;">/**<br />
+<a name="line202"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Уровни доступа.<br />
+<a name="line203"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</span><br />
+<a name="line204"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'admin'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'3'</span><span style="color: #339933;">,</span><br />
+<a name="line205"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'moderator'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'2'</span><span style="color: #339933;">,</span><br />
+<a name="line206"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'user'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'1'</span><span style="color: #339933;">,</span><br />
+<a name="line207"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'guest'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'0'</span><span style="color: #339933;">,</span><br />
+<a name="line208"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line209"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">param_const</span><span style="color: #339933;">=</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+<a name="line210"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009933; font-style: italic;">/**<br />
+<a name="line211"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Параметры инициализации. <br />
+<a name="line212"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</span><br />
+<a name="line213"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'default_controller'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'default_controller'</span><span style="color: #339933;">,</span><br />
+<a name="line214"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'debug'</span><span style="color: #339933;">=&gt;</span>true<span style="color: #339933;">,</span><br />
+<a name="line215"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line216"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">controller_alias</span><span style="color: #339933;">=</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+<a name="line217"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009933; font-style: italic;">/**<br />
+<a name="line218"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Псевдонимы названий контроллеров в папке /controllers/ <br />
+<a name="line219"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</span><br />
+<a name="line220"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'helloworld'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'ControllersHelloWorld'</span><span style="color: #339933;">,</span><br />
+<a name="line221"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'helloworld'</span><span style="color: #339933;">=&gt;</span>array<span style="color: #009900;">&#40;</span><br />
+<a name="line222"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'class_name'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'ControllersHelloWorld'</span><span style="color: #339933;">,</span><br />
+<a name="line223"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'path'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'controllers'</span><span style="color: #339933;">.</span><span style="color: #009900; font-weight: bold;">DIRECTORY_SEPARATOR</span><span style="color: #339933;">,</span><br />
+<a name="line224"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><br />
+<a name="line225"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line226"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">class_path</span><span style="color: #339933;">=</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+<a name="line227"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009933; font-style: italic;">/**<br />
+<a name="line228"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Путь до классов моделей и переменные инициализации по умолчанию<br />
+<a name="line229"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</span><br />
+<a name="line230"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'ModelsMySQL'</span> <span style="color: #339933;">=&gt;</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+<a name="line231"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'param'</span><span style="color: #339933;">=&gt;</span>array<span style="color: #009900;">&#40;</span><br />
+<a name="line232"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'host'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'localhost'</span><span style="color: #339933;">,</span><br />
+<a name="line233"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'login'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'root'</span><span style="color: #339933;">,</span><br />
+<a name="line234"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'pass'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'root'</span><span style="color: #339933;">,</span><br />
+<a name="line235"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'db'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'information_schema'</span><br />
+<a name="line236"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><span style="color: #339933;">,</span><br />
+<a name="line237"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'path'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'/models/'</span><br />
+<a name="line238"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><span style="color: #339933;">,</span><br />
+<a name="line239"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line240"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line241"></a><span style="color: #009900;">&#125;</span><br />
+<a name="line242"></a><span style="color: #000000; font-weight: bold;">?&gt;</span><br />
+<a name="line243"></a>&nbsp;
+<div class="header">
+<h1>evnine</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li>Package</li><li>Class</li><li>Tree</li><li><a href="../overview-files.html">Files</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../todo-list.html">Todo</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../source\evnine.config.php.html" target="_top">No frames</a>
+</div>
+<hr>
+
+<p id="footer"></p>
+
+</body>
+
+</html>

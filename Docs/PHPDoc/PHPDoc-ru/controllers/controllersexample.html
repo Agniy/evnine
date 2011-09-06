@@ -1,0 +1,188 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
+<meta name="when" content="Mon, 05 Sep 2011 20:09:06 +0000">
+
+<link rel="stylesheet" type="text/css" href="../stylesheet.css">
+<link rel="start" href="../overview-summary.html">
+
+<title>ControllersExample (evnine)</title>
+
+</head>
+<body id="definition" onload="parent.document.title=document.title;">
+
+<div class="header">
+<h1>evnine</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="../controllers/package-summary.html">Namespace</a></li>
+<li class="active">Class</li>
+<li><a href="../controllers/package-tree.html">Tree</a></li>
+<li><a href="../overview-files.html">Files</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../todo-list.html">Todo</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../controllers\controllersexample.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<div class="qualifiedName">Controllers\ControllersExample</div>
+<a href="../source/controllers/controllersexample.php.html#line28" class="location">controllers\ControllersExample.php at line 28</a>
+
+<h1>Class ControllersExample</h1>
+
+<pre class="tree"><strong>ControllersExample</strong><br /></pre>
+
+<hr>
+
+<p class="signature">public  class <strong>ControllersExample</strong></p>
+
+<div class="comment" id="overview_description">&nbsp;Пример контроллера с вариантами параметров<span style="color: #339933;">.</span><br />
+&nbsp;<br />
+&nbsp;Имя контроллера обязательно совпадает с название класса и именем файла<span style="color: #339933;">.</span><br />
+&nbsp;<br />
+&nbsp;<span style="color: #000000; font-weight: bold;">class</span> ControllersExample <span style="color: #339933;">==</span> ControllersExample<span style="color: #339933;">.</span>php<br />
+&nbsp;<span style="color: #339933;">/</span>controllers<span style="color: #339933;">/</span>ControllersExample<span style="color: #339933;">.</span>php<br />
+&nbsp;<br />
+&nbsp;Определятся в конфигурационном файле<span style="color: #339933;">:</span><br />
+&nbsp;<span style="color: #339933;">/</span>evnine<span style="color: #339933;">.</span>config<span style="color: #339933;">.</span>php<br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">controller_alias</span><span style="color: #339933;">=</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'example'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'ControllersExample'</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+&nbsp;<br />
+&nbsp;Альтернативный вариант с указанием пути<span style="color: #339933;">.</span><br />
+&nbsp;<span style="color: #339933;">/</span>evnine<span style="color: #339933;">.</span>config<span style="color: #339933;">.</span>php<br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'helloworld'</span><span style="color: #339933;">=&gt;</span>array<span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'class_name'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'ControllersHelloWorld'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'path'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'controllers'</span><span style="color: #339933;">.</span><span style="color: #009900; font-weight: bold;">DIRECTORY_SEPARATOR</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span></div>
+
+<dl>
+<dt>Author:</dt>
+<dd><p>ev9eniy.info</p></dd>
+<dt>Version:</dt>
+<dd><p>2</p></dd>
+<dt>Updated:</dt>
+<dd><p>31.08.2011</p></dd>
+</dl>
+<hr>
+
+<table id="summary_field">
+<tr><th colspan="2">Field Summary</th></tr>
+<tr>
+<td class="type"> array Массив контроллера.<br></td>
+<td class="description"><p class="name"><a href="#controller">$controller</a></p><p class="description"></p></td>
+</tr>
+</table>
+
+<table id="summary_constructor">
+<tr><th colspan="2">Constructor Summary</th></tr>
+<tr>
+<td class="type">protected  void</td>
+<td class="description"><p class="name"><a href="#__construct()">__construct</a>(array access_level)</p><p class="description">Конструктор класса инициализируем с уровнем доступа.</p></td>
+</tr>
+</table>
+
+<h2 id="detail_field">Field Detail</h2>
+<a href="../source/controllers/controllersexample.php.html#line55" class="location">controllers\ControllersExample.php at line 55</a>
+
+<h3 id="controller">controller</h3>
+<code class="signature">public  array Массив контроллера.<br> <strong>$controller</strong> = false</code>
+<div class="details">
+<p>&nbsp;Альтернативный способ определения контроллера через YAML<br />
+<br />
+&nbsp;<span style="color: #b1b100;">if</span> <span style="color: #009900;">&#40;</span><span style="color: #339933;">!</span><a href="http://www.php.net/class_exists"><span style="color: #990000;">class_exists</span></a><span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'sfYamlParser'</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">//</span> <span style="color: #339933;">/</span>libs<span style="color: #339933;">/</span>ymal<span style="color: #339933;">/</span>sfYamlParser<span style="color: #339933;">.</span>php<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="color: #b1b100;">require_once</span><span style="color: #009900;">&#40;</span><a href="http://www.php.net/dirname"><span style="color: #990000;">dirname</span></a><span style="color: #009900;">&#40;</span><span style="color: #009900; font-weight: bold;">__FILE__</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">.</span><span style="color: #0000ff;">'/../libs/yaml/sfYamlParser.php'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+&nbsp;<span style="color: #009900;">&#125;</span><br />
+&nbsp;<span style="color: #000000; font-weight: bold;">class</span> ControllersHelloWorld <span style="color: #000000; font-weight: bold;">extends</span> sfYamlParser <br />
+&nbsp;<span style="color: #009900;">&#123;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">var</span> <span style="color: #000088;">$controller</span><span style="color: #339933;">;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">function</span> __construct<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">controller</span><span style="color: #339933;">=</span><span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">parse</span><span style="color: #009900;">&#40;</span><br />
+&nbsp;<span style="color: #339933;">&lt;&lt;&lt;</span>YAML<br />
+&nbsp;public_methods<span style="color: #339933;">:</span><br />
+&nbsp; <span style="color: #b1b100;">default</span><span style="color: #339933;">:</span> <br />
+&nbsp; &nbsp;ModelsHelloWorld<span style="color: #339933;">:</span> getHelloWorld<br />
+&nbsp;YAML<br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+&nbsp;<span style="color: #009900;">&#125;</span> </p><dl>
+<dt>See Also:</dt>
+<dd><p><code><a href="http://components.symfony-project.org/yaml/installation">http://components.symfony-project.org/yaml/installation</a></code></p></dd>
+</dl>
+</div>
+
+<hr>
+
+<h2 id="detail_method">Constructor Detail</h2>
+<a href="../source/controllers/controllersexample.php.html#line79" class="location">controllers\ControllersExample.php at line 79</a>
+
+<h3 id="__construct()">__construct</h3>
+<code class="signature">protected  void <strong>__construct</strong>(array access_level)</code>
+<div class="details">
+<p>Конструктор класса инициализируем с уровнем доступа.<br></p><dl>
+<dt>Parameters:</dt>
+<dd>&nbsp;<span style="color: #000088;">$access_level</span> <span style="color: #339933;">-</span> <br />
+&nbsp;Уровень доступа задаётся в<span style="color: #339933;">:</span><br />
+&nbsp;<span style="color: #339933;">/</span>evnine<span style="color: #339933;">.</span>config<span style="color: #339933;">.</span>php<br />
+&nbsp;<span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">access_level</span><span style="color: #339933;">=</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp;<span style="color: #0000ff;">'admin'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'2'</span><span style="color: #339933;">,</span><br />
+&nbsp;<span style="color: #0000ff;">'user'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'1'</span><span style="color: #339933;">,</span><br />
+&nbsp;<span style="color: #0000ff;">'guest'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'0'</span><span style="color: #339933;">,</span><br />
+&nbsp;<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+&nbsp;Контроллер устанавливается в<span style="color: #339933;">:</span><br />
+&nbsp;<span style="color: #339933;">/</span>evnine<span style="color: #339933;">.</span>php<br />
+&nbsp;<span style="color: #000000; font-weight: bold;">new</span> <span style="color: #000088;">$controller</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">access_level</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+&nbsp;</dd>
+<dt>See Also:</dt>
+<dd><p><code><a href="../evnineconfig/evnineconfig.html#access_level">EvnineConfig.access_level</a></code></p></dd>
+<dt>See Also:</dt>
+<dd><p><a href="../evninecontroller/evninecontroller.html#setLoadController()">EvnineController.setLoadController</a></p></dd>
+</dl>
+</div>
+
+<hr>
+
+<div class="header">
+<h1>evnine</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="../controllers/package-summary.html">Namespace</a></li>
+<li class="active">Class</li>
+<li><a href="../controllers/package-tree.html">Tree</a></li>
+<li><a href="../overview-files.html">Files</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../todo-list.html">Todo</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../controllers\controllersexample.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<p id="footer"></p>
+
+</body>
+
+</html>

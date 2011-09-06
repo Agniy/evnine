@@ -1,0 +1,506 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
+<meta name="when" content="Mon, 05 Sep 2011 20:10:06 +0000">
+
+<link rel="stylesheet" type="text/css" href="../stylesheet.css">
+<link rel="start" href="../overview-summary.html">
+
+<title>ModelsPHPUnit (evnine)</title>
+
+</head>
+<body id="definition" onload="parent.document.title=document.title;">
+
+<div class="header">
+<h1>evnine</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="../modelsphpunit/package-summary.html">Namespace</a></li>
+<li class="active">Class</li>
+<li><a href="../modelsphpunit/package-tree.html">Tree</a></li>
+<li><a href="../overview-files.html">Files</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../todo-list.html">Todo</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../modelsphpunit\modelsphpunit.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<div class="qualifiedName">ModelsPHPUnit\ModelsPHPUnit</div>
+<a href="../source/models/modelsphpunit.php.html#line10" class="location">models\ModelsPHPUnit.php at line 10</a>
+
+<h1>Class ModelsPHPUnit</h1>
+
+<pre class="tree"><strong>ModelsPHPUnit</strong><br /></pre>
+
+<hr>
+
+<p class="signature">public  class <strong>ModelsPHPUnit</strong></p>
+
+<div class="comment" id="overview_description"><p>Модель для тестирования моделей и контроллеров. <br></p></div>
+
+<dl>
+<dt>Author:</dt>
+<dd><p>ev9eniy</p></dd>
+<dt>Version:</dt>
+<dd><p>1.0</p></dd>
+<dt>Created:</dt>
+<dd><p>05-spt-2011 18:38:41</p></dd>
+</dl>
+<hr>
+
+<table id="summary_field">
+<tr><th colspan="2">Field Summary</th></tr>
+<tr>
+<td class="type"> object</td>
+<td class="description"><p class="name"><a href="#evnine">$evnine</a></p><p class="description"></p></td>
+</tr>
+</table>
+
+<table id="summary_constructor">
+<tr><th colspan="2">Constructor Summary</th></tr>
+<tr>
+<td class="type">protected  void</td>
+<td class="description"><p class="name"><a href="#__construct()">__construct</a>(array param)</p><p class="description">Конструктор устанавливает переменные окружения.</p></td>
+</tr>
+</table>
+
+<table id="summary_method">
+<tr><th colspan="2">Method Summary</th></tr>
+<tr>
+<td class="type"> boolean</td>
+<td class="description"><p class="name"><a href="#getResetPHPUnit()">getResetPHPUnit</a>(array param)</p><p class="description">Сбросить все PHP Unit тесты.</p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#getParamCaseByParamTest()">getParamCaseByParamTest</a>(array param)</p><p class="description">Определить количество тестов для контроллеров.</p></td>
+</tr>
+<tr>
+<td class="type"> string</td>
+<td class="description"><p class="name"><a href="#getStringFromArray()">getStringFromArray</a>(array array, int count)</p><p class="description">Рекурсивно преобразовать массив в строку.</p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#getCountParamByParamTest()">getCountParamByParamTest</a>(array param)</p><p class="description">Посчитать количество тестов.</p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#getParamTextName()">getParamTextName</a>(array param)</p><p class="description">Получить описание случаев.</p></td>
+</tr>
+<tr>
+<td class="type"> string</td>
+<td class="description"><p class="name"><a href="#getNewString()">getNewString</a>(string after, string before, string title)</p><p class="description">Выделить строку, если новая.</p></td>
+</tr>
+<tr>
+<td class="type"> string</td>
+<td class="description"><p class="name"><a href="#getPHPUnitCode()">getPHPUnitCode</a>(array param)</p><p class="description">Получить исходник для генерации PHP Unit Test.</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#getPHPUnitCodeWithBR()">getPHPUnitCodeWithBR</a>(array param)</p><p class="description">Сделать замену переноса строк на br.</p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#getParamTest()">getParamTest</a>(array param)</p><p class="description">Получить тесты из контроллера.</p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#setInitParam()">setInitParam</a>(array &$case_array, string param_title, array &$param_array, boolean multi_case_flag, mixed case_array, mixed param_array)</p><p class="description">Клонирование параметров для создания тестов контроллера.</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#setGeneParam()">setGeneParam</a>(array case_array, array param_array)</p><p class="description">Генерирование параметров для всех случаев.</p></td>
+</tr>
+<tr>
+<td class="type">private  string</td>
+<td class="description"><p class="name"><a href="#_getFirstArrayKey()">_getFirstArrayKey</a>(array array, boolean get_value)</p><p class="description">Получить первый элемент массива как ключ или значение.</p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#getDataFromControllerByParam()">getDataFromControllerByParam</a>(array param)</p><p class="description">Получить ответ от контроллера по параметрам.</p></td>
+</tr>
+<tr>
+<td class="type">private  string</td>
+<td class="description"><p class="name"><a href="#_getMD5KeyForControllerAnswer()">_getMD5KeyForControllerAnswer</a>(array array)</p><p class="description">Получить ключ для ответа без учёта параметров на входе выходе и переходов.</p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#getComparePHPUnitForControllers()">getComparePHPUnitForControllers</a>(array param)</p><p class="description">Сравнить текущие ответы контроллеров с сохраненными для PHPUnit.</p></td>
+</tr>
+<tr>
+<td class="type"> string</td>
+<td class="description"><p class="name"><a href="#getFileNameMD5ForParam()">getFileNameMD5ForParam</a>(string path, array param, string &$md5, bool md5)</p><p class="description">Получить папку и имя файла для параметров.</p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#getFromCache()">getFromCache</a>(string file_name, array array_data, boolean reset)</p><p class="description">Сделать выборку из кэша.</p></td>
+</tr>
+<tr>
+<td class="type"> string</td>
+<td class="description"><p class="name"><a href="#getSerData()">getSerData</a>(string file_name, array param)</p><p class="description">Получить данные из файла.</p></td>
+</tr>
+<tr>
+<td class="type">private  string</td>
+<td class="description"><p class="name"><a href="#_getMultiImplode()">_getMultiImplode</a>(string pieces)</p><p class="description">Объединяет строки в массиве.</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#_setCreateDir()">_setCreateDir</a>(string dir_name, mixed file_dir)</p><p class="description">Создать древо папок.</p></td>
+</tr>
+<tr>
+<td class="type"> string</td>
+<td class="description"><p class="name"><a href="#setSerData()">setSerData</a>(string file_name, array str, boolean reset)</p><p class="description">Сохранить данные.</p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#getModelsAndControllerModifierTimeFromCache()">getModelsAndControllerModifierTimeFromCache</a>(array param)</p><p class="description">Получить время изменения моделей и контроллеров.</p></td>
+</tr>
+<tr>
+<td class="type">private  string</td>
+<td class="description"><p class="name"><a href="#_getModifierFileTime()">_getModifierFileTime</a>(string file_path)</p><p class="description">Получить время модификации файла.</p></td>
+</tr>
+</table>
+
+<h2 id="detail_field">Field Detail</h2>
+<a href="../source/models/modelsphpunit.php.html#line19" class="location">models\ModelsPHPUnit.php at line 19</a>
+
+<h3 id="evnine">evnine</h3>
+<code class="signature">public  object <strong>$evnine</strong> = false</code>
+<div class="details">
+<p><p>Объект с ссылкой на evnine контроллер.<br></p></p></div>
+
+<hr>
+
+<h2 id="detail_method">Constructor Detail</h2>
+<a href="../source/models/modelsphpunit.php.html#line29" class="location">models\ModelsPHPUnit.php at line 29</a>
+
+<h3 id="__construct()">__construct</h3>
+<code class="signature">protected  void <strong>__construct</strong>(array param)</code>
+<div class="details">
+<p>Конструктор устанавливает переменные окружения.<br></p><dl>
+<dt>Parameters:</dt>
+<dd>&nbsp;<span style="color: #000088;">$param</span> <span style="color: #339933;">-</span> Основной массив параметров<span style="color: #339933;">.</span></dd>
+</dl>
+</div>
+
+<hr>
+
+<h2 id="detail_method">Method Detail</h2>
+<a href="../source/models/modelsphpunit.php.html#line44" class="location">models\ModelsPHPUnit.php at line 44</a>
+
+<h3 id="getResetPHPUnit()">getResetPHPUnit</h3>
+<code class="signature">public  boolean <strong>getResetPHPUnit</strong>(array param)</code>
+<div class="details">
+<p>Сбросить все PHP Unit тесты.<br>
+ Метод переименовывает папку с результатами тестов.<br></p><dl>
+<dt>Parameters:</dt>
+<dd>&nbsp;<span style="color: #000088;">$param</span> <span style="color: #339933;">-</span> Основной массив параметров<span style="color: #339933;">.</span></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/models/modelsphpunit.php.html#line58" class="location">models\ModelsPHPUnit.php at line 58</a>
+
+<h3 id="getParamCaseByParamTest()">getParamCaseByParamTest</h3>
+<code class="signature">public  array <strong>getParamCaseByParamTest</strong>(array param)</code>
+<div class="details">
+<p>Определить количество тестов для контроллеров.<br></p><dl>
+<dt>Parameters:</dt>
+<dd>&nbsp;<span style="color: #000088;">$param</span> <span style="color: #339933;">-</span> Основной массив параметров<span style="color: #339933;">.</span></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/models/modelsphpunit.php.html#line94" class="location">models\ModelsPHPUnit.php at line 94</a>
+
+<h3 id="getStringFromArray()">getStringFromArray</h3>
+<code class="signature">public  string <strong>getStringFromArray</strong>(array array, int count)</code>
+<div class="details">
+<p>Рекурсивно преобразовать массив в строку.<br></p><dl>
+<dt>Parameters:</dt>
+<dd><p></p></dd>
+<dd>&nbsp;<span style="color: #000088;">$count</span> <span style="color: #339933;">-</span> Счётчик глубины<span style="color: #339933;">.</span></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/models/modelsphpunit.php.html#line123" class="location">models\ModelsPHPUnit.php at line 123</a>
+
+<h3 id="getCountParamByParamTest()">getCountParamByParamTest</h3>
+<code class="signature">public  array <strong>getCountParamByParamTest</strong>(array param)</code>
+<div class="details">
+<p>Посчитать количество тестов.<br></p><dl>
+<dt>Parameters:</dt>
+<dd>&nbsp;<span style="color: #000088;">$param</span> <span style="color: #339933;">-</span> Основной массив параметров<span style="color: #339933;">.</span></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/models/modelsphpunit.php.html#line143" class="location">models\ModelsPHPUnit.php at line 143</a>
+
+<h3 id="getParamTextName()">getParamTextName</h3>
+<code class="signature">public  array <strong>getParamTextName</strong>(array param)</code>
+<div class="details">
+<p>Получить описание случаев.<br></p><dl>
+<dt>Parameters:</dt>
+<dd>&nbsp;<span style="color: #000088;">$param</span> <span style="color: #339933;">-</span> Основной массив параметров<span style="color: #339933;">.</span></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/models/modelsphpunit.php.html#line182" class="location">models\ModelsPHPUnit.php at line 182</a>
+
+<h3 id="getNewString()">getNewString</h3>
+<code class="signature">public  string <strong>getNewString</strong>(string after, string before, string title)</code>
+<div class="details">
+<p>Выделить строку, если новая.<br></p></div>
+
+<hr>
+
+<a href="../source/models/modelsphpunit.php.html#line198" class="location">models\ModelsPHPUnit.php at line 198</a>
+
+<h3 id="getPHPUnitCode()">getPHPUnitCode</h3>
+<code class="signature">public  string <strong>getPHPUnitCode</strong>(array param)</code>
+<div class="details">
+<p>Получить исходник для генерации PHP Unit Test.<br></p><dl>
+<dt>Parameters:</dt>
+<dd>&nbsp;<span style="color: #000088;">$param</span> <span style="color: #339933;">-</span> Основной массив параметров<span style="color: #339933;">.</span></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/models/modelsphpunit.php.html#line269" class="location">models\ModelsPHPUnit.php at line 269</a>
+
+<h3 id="getPHPUnitCodeWithBR()">getPHPUnitCodeWithBR</h3>
+<code class="signature">public  void <strong>getPHPUnitCodeWithBR</strong>(array param)</code>
+<div class="details">
+<p>Сделать замену переноса строк на br.<br></p><dl>
+<dt>Parameters:</dt>
+<dd>&nbsp;<span style="color: #000088;">$param</span> <span style="color: #339933;">-</span> Основной массив параметров<span style="color: #339933;">.</span></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/models/modelsphpunit.php.html#line282" class="location">models\ModelsPHPUnit.php at line 282</a>
+
+<h3 id="getParamTest()">getParamTest</h3>
+<code class="signature">public  array <strong>getParamTest</strong>(array param)</code>
+<div class="details">
+<p>Получить тесты из контроллера.<br></p><dl>
+<dt>Parameters:</dt>
+<dd>&nbsp;<span style="color: #000088;">$param</span> <span style="color: #339933;">-</span> Основной массив параметров<span style="color: #339933;">.</span></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/models/modelsphpunit.php.html#line350" class="location">models\ModelsPHPUnit.php at line 350</a>
+
+<h3 id="setInitParam()">setInitParam</h3>
+<code class="signature">public  array <strong>setInitParam</strong>(array &$case_array, string param_title, array &$param_array, boolean multi_case_flag, mixed case_array, mixed param_array)</code>
+<div class="details">
+<p>Клонирование параметров для создания тестов контроллера.<br></p></div>
+
+<hr>
+
+<a href="../source/models/modelsphpunit.php.html#line376" class="location">models\ModelsPHPUnit.php at line 376</a>
+
+<h3 id="setGeneParam()">setGeneParam</h3>
+<code class="signature">public  void <strong>setGeneParam</strong>(array case_array, array param_array)</code>
+<div class="details">
+<p>Генерирование параметров для всех случаев.<br></p></div>
+
+<hr>
+
+<a href="../source/models/modelsphpunit.php.html#line413" class="location">models\ModelsPHPUnit.php at line 413</a>
+
+<h3 id="_getFirstArrayKey()">_getFirstArrayKey</h3>
+<code class="signature">private  string <strong>_getFirstArrayKey</strong>(array array, boolean get_value)</code>
+<div class="details">
+<p>Получить первый элемент массива как ключ или значение.<br></p><dl>
+<dt>Parameters:</dt>
+<dd>&nbsp;<span style="color: #000088;">$array</span> <span style="color: #339933;">-</span> Массив для обработки<span style="color: #339933;">.</span></dd>
+<dd>&nbsp;<span style="color: #000088;">$get_value</span> <span style="color: #339933;">-</span> Нужно значение массива?</dd>
+<dt>Assert:</dt>
+<dd>&nbsp;<span style="color: #009900;">&#40;</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'TEST'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'0'</span><span style="color: #339933;">,</span><span style="color: #0000ff;">'TEST2'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'1'</span><span style="color: #339933;">,</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span> <span style="color: #339933;">==</span> TEST</dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/models/modelsphpunit.php.html#line438" class="location">models\ModelsPHPUnit.php at line 438</a>
+
+<h3 id="getDataFromControllerByParam()">getDataFromControllerByParam</h3>
+<code class="signature">public  array <strong>getDataFromControllerByParam</strong>(array param)</code>
+<div class="details">
+<p>Получить ответ от контроллера по параметрам.<br></p><dl>
+<dt>Parameters:</dt>
+<dd>&nbsp;<span style="color: #000088;">$param</span> <span style="color: #339933;">-</span> Основной массив параметров<span style="color: #339933;">.</span></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/models/modelsphpunit.php.html#line525" class="location">models\ModelsPHPUnit.php at line 525</a>
+
+<h3 id="_getMD5KeyForControllerAnswer()">_getMD5KeyForControllerAnswer</h3>
+<code class="signature">private  string <strong>_getMD5KeyForControllerAnswer</strong>(array array)</code>
+<div class="details">
+<p>Получить ключ для ответа без учёта параметров на входе выходе и переходов.<br></p></div>
+
+<hr>
+
+<a href="../source/models/modelsphpunit.php.html#line544" class="location">models\ModelsPHPUnit.php at line 544</a>
+
+<h3 id="getComparePHPUnitForControllers()">getComparePHPUnitForControllers</h3>
+<code class="signature">public  array <strong>getComparePHPUnitForControllers</strong>(array param)</code>
+<div class="details">
+<p>Сравнить текущие ответы контроллеров с сохраненными для PHPUnit.<br></p><dl>
+<dt>Parameters:</dt>
+<dd>&nbsp;<span style="color: #000088;">$param</span> <span style="color: #339933;">-</span> Основной массив параметров<span style="color: #339933;">.</span></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/models/modelsphpunit.php.html#line591" class="location">models\ModelsPHPUnit.php at line 591</a>
+
+<h3 id="getFileNameMD5ForParam()">getFileNameMD5ForParam</h3>
+<code class="signature">public  string <strong>getFileNameMD5ForParam</strong>(string path, array param, string &$md5, bool md5)</code>
+<div class="details">
+<p>Получить папку и имя файла для параметров.<br></p><dl>
+<dt>Parameters:</dt>
+<dd><p></p></dd>
+<dd>&nbsp;<span style="color: #000088;">$param</span> <span style="color: #339933;">-</span> Основной массив параметров<span style="color: #339933;">.</span></dd>
+<dd><p></p></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/models/modelsphpunit.php.html#line607" class="location">models\ModelsPHPUnit.php at line 607</a>
+
+<h3 id="getFromCache()">getFromCache</h3>
+<code class="signature">public  array <strong>getFromCache</strong>(string file_name, array array_data, boolean reset)</code>
+<div class="details">
+<p>Сделать выборку из кэша.<br></p></div>
+
+<hr>
+
+<a href="../source/models/modelsphpunit.php.html#line634" class="location">models\ModelsPHPUnit.php at line 634</a>
+
+<h3 id="getSerData()">getSerData</h3>
+<code class="signature">public  string <strong>getSerData</strong>(string file_name, array param)</code>
+<div class="details">
+<p>Получить данные из файла.<br></p><dl>
+<dt>Parameters:</dt>
+<dd><p></p></dd>
+<dd>&nbsp;<span style="color: #000088;">$param</span> <span style="color: #339933;">-</span> Основной массив параметров<span style="color: #339933;">.</span></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/models/modelsphpunit.php.html#line648" class="location">models\ModelsPHPUnit.php at line 648</a>
+
+<h3 id="_getMultiImplode()">_getMultiImplode</h3>
+<code class="signature">private  string <strong>_getMultiImplode</strong>(string pieces)</code>
+<div class="details">
+<p>Объединяет строки в массиве.<br></p></div>
+
+<hr>
+
+<a href="../source/models/modelsphpunit.php.html#line673" class="location">models\ModelsPHPUnit.php at line 673</a>
+
+<h3 id="_setCreateDir()">_setCreateDir</h3>
+<code class="signature">public  void <strong>_setCreateDir</strong>(string dir_name, mixed file_dir)</code>
+<div class="details">
+<p>Создать древо папок.<br></p></div>
+
+<hr>
+
+<a href="../source/models/modelsphpunit.php.html#line689" class="location">models\ModelsPHPUnit.php at line 689</a>
+
+<h3 id="setSerData()">setSerData</h3>
+<code class="signature">public  string <strong>setSerData</strong>(string file_name, array str, boolean reset)</code>
+<div class="details">
+<p>Сохранить данные.<br></p></div>
+
+<hr>
+
+<a href="../source/models/modelsphpunit.php.html#line713" class="location">models\ModelsPHPUnit.php at line 713</a>
+
+<h3 id="getModelsAndControllerModifierTimeFromCache()">getModelsAndControllerModifierTimeFromCache</h3>
+<code class="signature">public  array <strong>getModelsAndControllerModifierTimeFromCache</strong>(array param)</code>
+<div class="details">
+<p>Получить время изменения моделей и контроллеров.<br></p><dl>
+<dt>Parameters:</dt>
+<dd>&nbsp;<span style="color: #000088;">$param</span> <span style="color: #339933;">-</span> Основной массив параметров<span style="color: #339933;">.</span></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/models/modelsphpunit.php.html#line752" class="location">models\ModelsPHPUnit.php at line 752</a>
+
+<h3 id="_getModifierFileTime()">_getModifierFileTime</h3>
+<code class="signature">private  string <strong>_getModifierFileTime</strong>(string file_path)</code>
+<div class="details">
+<p>Получить время модификации файла.<br></p><dl>
+<dt>See Also:</dt>
+<dd><p><code><a href="http://www.php.net/manual/en/function.filemtime.php">http://www.php.net/manual/en/function.filemtime.php</a></code></p></dd>
+</dl>
+</div>
+
+<hr>
+
+<div class="header">
+<h1>evnine</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="../modelsphpunit/package-summary.html">Namespace</a></li>
+<li class="active">Class</li>
+<li><a href="../modelsphpunit/package-tree.html">Tree</a></li>
+<li><a href="../overview-files.html">Files</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../todo-list.html">Todo</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../modelsphpunit\modelsphpunit.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<p id="footer"></p>
+
+</body>
+
+</html>

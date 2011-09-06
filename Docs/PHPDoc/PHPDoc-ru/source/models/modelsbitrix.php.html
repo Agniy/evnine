@@ -1,0 +1,892 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
+<meta name="when" content="Mon, 05 Sep 2011 20:10:20 +0000">
+
+<link rel="stylesheet" type="text/css" href="../stylesheet.css">
+<link rel="start" href="../overview-summary.html">
+
+<title>models\ModelsBitrix.php (evnine)</title>
+
+</head>
+<body id="file" onload="parent.document.title=document.title;">
+
+<div class="header">
+<h1>evnine</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li>Package</li><li>Class</li><li>Tree</li><li><a href="../overview-files.html">Files</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../todo-list.html">Todo</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../source\models\modelsbitrix.php.html" target="_top">No frames</a>
+</div>
+<hr>
+
+<h1>models\ModelsBitrix.php</h1>
+<hr>
+
+<a name="line1"></a><span style="color: #000000; font-weight: bold;">&lt;?php</span><br />
+<a name="line2"></a><br />
+<a name="line3"></a><span style="color: #009933; font-style: italic;">/**<br />
+<a name="line4"></a>&nbsp;* Класс для разбора данных из инфоблока.<br />
+<a name="line5"></a>&nbsp;* &nbsp;<br />
+<a name="line6"></a>&nbsp;* class ModelsBitrixInfoBlockParser{<br />
+<a name="line7"></a>&nbsp;*&nbsp; &nbsp; &nbsp; function parseAllData ($product, $arProps)<br />
+<a name="line8"></a>&nbsp;*&nbsp; &nbsp; &nbsp; {<br />
+<a name="line9"></a>&nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $full_value = array();<br />
+<a name="line10"></a>&nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $full_value['NAME'] = $product-&gt;fields['NAME'];<br />
+<a name="line11"></a>&nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $full_value['ID'] = $product-&gt;fields['ID'];<br />
+<a name="line12"></a>&nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; foreach ($arProps as $arProps_title =&gt; $arProps_value)<br />
+<a name="line13"></a>&nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $full_value[$arProps_title] = $arProps_value['VALUE'];<br />
+<a name="line14"></a>&nbsp;*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return $full_value;<br />
+<a name="line15"></a>&nbsp;*&nbsp; &nbsp; &nbsp; }<br />
+<a name="line16"></a>&nbsp;* }<br />
+<a name="line17"></a>&nbsp;*/</span><br />
+<a name="line18"></a><span style="color: #b1b100;">if</span> <span style="color: #009900;">&#40;</span><span style="color: #339933;">!</span><a href="http://www.php.net/class_exists"><span style="color: #990000;">class_exists</span></a><span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'ModelsBitrixInfoBlockParser'</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span><br />
+<a name="line19"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">include_once</span> <span style="color: #0000ff;">'ModelsBitrixInfoBlockParser.php'</span><span style="color: #339933;">;</span><br />
+<a name="line20"></a><span style="color: #009900;">&#125;</span><span style="color: #b1b100;">else</span> <span style="color: #009900;">&#123;</span><br />
+<a name="line21"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">class</span> ModelsBitrixInfoBlockParser<span style="color: #009900;">&#123;</span><span style="color: #009900;">&#125;</span> <br />
+<a name="line22"></a><span style="color: #009900;">&#125;</span><br />
+<a name="line23"></a><br />
+<a name="line24"></a><span style="color: #009933; font-style: italic;">/**<br />
+<a name="line25"></a>&nbsp;* Модель работы с API Bitrix. <br />
+<a name="line26"></a>&nbsp;* Базовый метод для извлечения данных getAllFromAPI.<br />
+<a name="line27"></a>&nbsp;* <br />
+<a name="line28"></a>&nbsp;* @link ModelsBitrixAPI.getAllFromAPI<br />
+<a name="line29"></a>&nbsp;* @see ModelsBitrixAPI.parseAllData<br />
+<a name="line30"></a>&nbsp;* @package ModelsBitrixAPI<br />
+<a name="line31"></a>&nbsp;* @uses ModelsBitrixInfoBlockParser<br />
+<a name="line32"></a>&nbsp;* @author ev9eniy<br />
+<a name="line33"></a>&nbsp;* @version 4<br />
+<a name="line34"></a>&nbsp;* @updated 02-sep-2011 18:00:57<br />
+<a name="line35"></a>&nbsp;*/</span><br />
+<a name="line36"></a><span style="color: #000000; font-weight: bold;">class</span> ModelsBitrix <span style="color: #000000; font-weight: bold;">extends</span> ModelsBitrixInfoBlockParser<br />
+<a name="line37"></a><span style="color: #009900;">&#123;</span><br />
+<a name="line38"></a><br />
+<a name="line39"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009933; font-style: italic;">/**<br />
+<a name="line40"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Конструктор класса.<br />
+<a name="line41"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* <br />
+<a name="line42"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @param array $param <br />
+<a name="line43"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @access protected<br />
+<a name="line44"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @return void<br />
+<a name="line45"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</span><br />
+<a name="line46"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">function</span> setInitAPI<span style="color: #009900;">&#40;</span><span style="color: #000088;">$param</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span><br />
+<a name="line47"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">initCIBlock</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line48"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line49"></a>&nbsp; &nbsp; &nbsp; &nbsp; <br />
+<a name="line50"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009933; font-style: italic;">/**<br />
+<a name="line51"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Инициализация модуля инфоблоков.<br />
+<a name="line52"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* <br />
+<a name="line53"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @access public<br />
+<a name="line54"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @return void<br />
+<a name="line55"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</span><br />
+<a name="line56"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">function</span> initCIBlock <span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><br />
+<a name="line57"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#123;</span><br />
+<a name="line58"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">if</span> <span style="color: #009900;">&#40;</span><span style="color: #339933;">!</span><a href="http://www.php.net/class_exists"><span style="color: #990000;">class_exists</span></a><span style="color: #009900;">&#40;</span><span style="color: #0000ff;">&quot;CIBlockSection&quot;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span><br />
+<a name="line59"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; CModule<span style="color: #339933;">::</span><span style="color: #004000;">IncludeModule</span><span style="color: #009900;">&#40;</span><span style="color: #0000ff;">&quot;iblock&quot;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line60"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line61"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line62"></a><br />
+<a name="line63"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009933; font-style: italic;">/**<br />
+<a name="line64"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Инициализация модуля форм.<br />
+<a name="line65"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* <br />
+<a name="line66"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @access public<br />
+<a name="line67"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @return void<br />
+<a name="line68"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</span><br />
+<a name="line69"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">function</span> initCForm<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><br />
+<a name="line70"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#123;</span><br />
+<a name="line71"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">if</span> <span style="color: #009900;">&#40;</span><span style="color: #339933;">!</span><a href="http://www.php.net/class_exists"><span style="color: #990000;">class_exists</span></a><span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'CForm'</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span><br />
+<a name="line72"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; CModule<span style="color: #339933;">::</span><span style="color: #004000;">IncludeModule</span><span style="color: #009900;">&#40;</span><span style="color: #0000ff;">&quot;form&quot;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line73"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line74"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line75"></a>&nbsp; &nbsp; &nbsp; &nbsp; <br />
+<a name="line76"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009933; font-style: italic;">/**<br />
+<a name="line77"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*<br />
+<a name="line78"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Получение данных из кэша с установкой триггеров.<br />
+<a name="line79"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* <br />
+<a name="line80"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @param array $param <br />
+<a name="line81"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Основной массив параметров.<br />
+<a name="line82"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @param string $function_callback <br />
+<a name="line83"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Функция для обратного вызова<br />
+<a name="line84"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @param string $cache_key<br />
+<a name="line85"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Ключ для кэша <br />
+<a name="line86"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @access public<br />
+<a name="line87"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @return array<br />
+<a name="line88"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</span><br />
+<a name="line89"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">function</span> getFromCacheFunction<span style="color: #009900;">&#40;</span><span style="color: #000088;">$param</span><span style="color: #339933;">,</span><span style="color: #000088;">$function_callback</span><span style="color: #339933;">,</span><span style="color: #000088;">$cache_key</span><span style="color: #339933;">=</span><span style="color: #0000ff;">''</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span><br />
+<a name="line90"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$cache</span> <span style="color: #339933;">=</span> <span style="color: #000000; font-weight: bold;">new</span> CPHPCache<span style="color: #339933;">;</span><br />
+<a name="line91"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$cache_dir</span><span style="color: #339933;">=</span> <span style="color: #000088;">$param</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'arParams'</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'CACHE_PATH'</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">.</span><span style="color: #0000ff;">'/'</span><span style="color: #339933;">.</span><span style="color: #000088;">$function_callback</span><span style="color: #339933;">;</span><br />
+<a name="line92"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">if</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$cache</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">InitCache</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$param</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'arParams'</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">&quot;CACHE_TIME&quot;</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">,</span> <span style="color: #000088;">$function_callback</span><span style="color: #339933;">.</span><span style="color: #000088;">$cache_key</span><span style="color: #339933;">,</span> <span style="color: #000088;">$cache_dir</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><br />
+<a name="line93"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#123;</span><br />
+<a name="line94"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">if</span> <span style="color: #009900;">&#40;</span><span style="color: #000088;">$param</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'isPHPUnitDebug'</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span><br />
+<a name="line95"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$array</span><span style="color: #339933;">=</span><span style="color: #000088;">$cache</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">GetVars</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line96"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$array</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'#cache'</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">=</span><span style="color: #000088;">$function_callback</span><span style="color: #339933;">;</span><br />
+<a name="line97"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">return</span> <span style="color: #000088;">$array</span><span style="color: #339933;">;</span><br />
+<a name="line98"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><span style="color: #b1b100;">else</span> <span style="color: #009900;">&#123;</span><br />
+<a name="line99"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">return</span> <span style="color: #000088;">$cache</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">GetVars</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line100"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line101"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span> <span style="color: #b1b100;">else</span> <span style="color: #009900;">&#123;</span><br />
+<a name="line102"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">global</span> <span style="color: #000088;">$CACHE_MANAGER</span><span style="color: #339933;">;</span><br />
+<a name="line103"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$cache</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">StartDataCache</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$param</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'arParams'</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">&quot;CACHE_TIME&quot;</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">,</span><span style="color: #000088;">$function_callback</span><span style="color: #339933;">.</span><span style="color: #000088;">$cache_key</span><span style="color: #339933;">,</span> <span style="color: #000088;">$cache_dir</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line104"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$CACHE_MANAGER</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">StartTagCache</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$cache_dir</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line105"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$array</span> <span style="color: #339933;">=</span> <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #000088;">$function_callback</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$param</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line106"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$CACHE_MANAGER</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">RegisterTag</span><span style="color: #009900;">&#40;</span><span style="color: #0000ff;">&quot;iblock_id_new&quot;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line107"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$CACHE_MANAGER</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">EndTagCache</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line108"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$cache</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">EndDataCache</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$array</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line109"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">return</span> <span style="color: #000088;">$array</span><span style="color: #339933;">;</span>&nbsp; <br />
+<a name="line110"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line111"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line112"></a><br />
+<a name="line113"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009933; font-style: italic;">/**<br />
+<a name="line114"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Универсальный метод для получения данных из API<br />
+<a name="line115"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* <br />
+<a name="line116"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @param array &nbsp;<br />
+<a name="line117"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* $param = array(<br />
+<a name="line118"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &nbsp;'$arOrder'=&gt;array()<br />
+<a name="line119"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* ,'$arFilter'=&gt;array()<br />
+<a name="line120"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* ,'$arGroupBy'=&gt;array()<br />
+<a name="line121"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &nbsp;,'$arNavStartParams'=&gt;array()<br />
+<a name="line122"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &nbsp;,'$arSelectFields'=&gt;array()<br />
+<a name="line123"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* ,'set_cache'=&gt;true<br />
+<a name="line124"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &nbsp; &nbsp;// Триггер очистки кэша по IBLOCK_ID<br />
+<a name="line125"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &nbsp; &nbsp;// обязательно указать $param['$arFilter']['IBLOCK_ID']<br />
+<a name="line126"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* ,'set_parser'=&gt;''<br />
+<a name="line127"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &nbsp; &nbsp;// Callback функция для обработки данных, <br />
+<a name="line128"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &nbsp; &nbsp;// задаётся в models/ModelsBitrixInfoBlockParser.php <br />
+<a name="line129"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* ,'get_section'=&gt;false<br />
+<a name="line130"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &nbsp; &nbsp;// Получить данные секций, по умолчанию берутся эл-ты<br />
+<a name="line131"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* ,'get_sef'=&gt;''<br />
+<a name="line132"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &nbsp; &nbsp;// Нуru: жен ли метод для форматирования URL?<br />
+<a name="line133"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &nbsp; &nbsp;// get_sef=true GetNextElement(false,false)<br />
+<a name="line134"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &nbsp; &nbsp;// get_sef=false Fetch(false,false)<br />
+<a name="line135"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* ,'set_sef'=&gt;''<br />
+<a name="line136"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &nbsp; &nbsp;// Использовать свой адрес ЧПУ <br />
+<a name="line137"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &nbsp; &nbsp;// 'set_sef'=&gt;#SECTION_ID#/#ELEMENT_ID#<br />
+<a name="line138"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &nbsp; &nbsp;// SetUrlTemplates(&quot;&quot;, $param['set_sef']);<br />
+<a name="line139"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* ,'get_prop'=&gt;false<br />
+<a name="line140"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &nbsp; &nbsp;// Получить свойства эл-тов, <br />
+<a name="line141"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &nbsp; &nbsp;// если указана секция, то 'get_prop'=false<br />
+<a name="line142"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* ,'set_key_id'=&gt;false<br />
+<a name="line143"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &nbsp; &nbsp;// Какой использовать ключ для формирования массива<br />
+<a name="line144"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &nbsp; &nbsp;// Пример: На входе: <br />
+<a name="line145"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &nbsp; &nbsp;// &gt;&gt; 'set_key_id'=&gt;'ID',<br />
+<a name="line146"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &nbsp; &nbsp;// На выходе:<br />
+<a name="line147"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &nbsp; &nbsp;// &lt;&lt; array(<br />
+<a name="line148"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &nbsp; &nbsp;// &nbsp;555=&gt;array('ID'='555',array(..))<br />
+<a name="line149"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &nbsp; &nbsp;// &nbsp;777=&gt;array('ID'='7',array(..))<br />
+<a name="line150"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &nbsp; &nbsp;// )<br />
+<a name="line151"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* ,'get_first'=&gt;false<br />
+<a name="line152"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &nbsp; &nbsp;// Вернуть первый эл-т массива без ключа<br />
+<a name="line153"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &nbsp; &nbsp;// По умолчанию, на входе:<br />
+<a name="line154"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &nbsp; &nbsp;// &gt;&gt; array(<br />
+<a name="line155"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &nbsp; &nbsp;// &nbsp;'0'=&gt;array('ID'='555',array(..)),<br />
+<a name="line156"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &nbsp; &nbsp;// &nbsp;'1'=&gt;array('ID'='777',array(..))<br />
+<a name="line157"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &nbsp; &nbsp;// )<br />
+<a name="line158"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &nbsp; &nbsp;// C ключом ,<br />
+<a name="line159"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &nbsp; &nbsp;// &gt;&gt; 'get_first'=&gt;true<br />
+<a name="line160"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &nbsp; &nbsp;// на выходе:<br />
+<a name="line161"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &nbsp; &nbsp;// &lt;&lt; array('ID'='555',array(..))<br />
+<a name="line162"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* )<br />
+<a name="line163"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* <br />
+<a name="line164"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @access public<br />
+<a name="line165"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @return array<br />
+<a name="line166"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</span><br />
+<a name="line167"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">function</span> getAllFromAPI<span style="color: #009900;">&#40;</span><span style="color: #000088;">$param</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span><br />
+<a name="line168"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$array_out</span><span style="color: #339933;">=</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line169"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">if</span> <span style="color: #009900;">&#40;</span><span style="color: #000088;">$param</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'set_cache'</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span><br />
+<a name="line170"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">global</span> <span style="color: #000088;">$CACHE_MANAGER</span><span style="color: #339933;">;</span><br />
+<a name="line171"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$CACHE_MANAGER</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">RegisterTag</span><span style="color: #009900;">&#40;</span><span style="color: #0000ff;">&quot;iblock_id_&quot;</span><span style="color: #339933;">.</span><span style="color: #000088;">$param</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'$arFilter'</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'IBLOCK_ID'</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line172"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line173"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">if</span> <span style="color: #009900;">&#40;</span><span style="color: #000088;">$param</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'set_parser'</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span><br />
+<a name="line174"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$callback</span><span style="color: #339933;">=</span> <span style="color: #000088;">$param</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'set_parser'</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">;</span><br />
+<a name="line175"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><span style="color: #b1b100;">else</span> <span style="color: #009900;">&#123;</span><br />
+<a name="line176"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$callback</span><span style="color: #339933;">=</span><span style="color: #009900; font-weight: bold;">false</span><span style="color: #339933;">;</span><br />
+<a name="line177"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line178"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">if</span> <span style="color: #009900;">&#40;</span><span style="color: #000088;">$param</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'get_section'</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span><br />
+<a name="line179"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$items</span><span style="color: #339933;">=</span>CIBlockSection<span style="color: #339933;">::</span><span style="color: #004000;">GetList</span><span style="color: #009900;">&#40;</span><br />
+<a name="line180"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$arOrder</span><span style="color: #339933;">=</span><span style="color: #000088;">$param</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'$arOrder'</span><span style="color: #009900;">&#93;</span><br />
+<a name="line181"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><span style="color: #000088;">$arFilter</span><span style="color: #339933;">=</span><span style="color: #000088;">$param</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'$arFilter'</span><span style="color: #009900;">&#93;</span><br />
+<a name="line182"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><span style="color: #000088;">$arNavStartParams</span><span style="color: #339933;">=</span><span style="color: #000088;">$param</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'$arNavStartParams'</span><span style="color: #009900;">&#93;</span><br />
+<a name="line183"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">//,</span><span style="color: #000088;">$arSelectFields</span><span style="color: #339933;">=</span><span style="color: #000088;">$param</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'$arSelectFields'</span><span style="color: #009900;">&#93;</span><br />
+<a name="line184"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line185"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><span style="color: #b1b100;">else</span> <span style="color: #009900;">&#123;</span><br />
+<a name="line186"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$items</span><span style="color: #339933;">=</span>CIBlockElement<span style="color: #339933;">::</span><span style="color: #004000;">GetList</span><span style="color: #009900;">&#40;</span><br />
+<a name="line187"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$arOrder</span><span style="color: #339933;">=</span><span style="color: #000088;">$param</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'$arOrder'</span><span style="color: #009900;">&#93;</span><br />
+<a name="line188"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><span style="color: #000088;">$arFilter</span><span style="color: #339933;">=</span><span style="color: #000088;">$param</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'$arFilter'</span><span style="color: #009900;">&#93;</span><br />
+<a name="line189"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><span style="color: #000088;">$arGroupBy</span><span style="color: #339933;">=</span><span style="color: #000088;">$param</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'$arGroupBy'</span><span style="color: #009900;">&#93;</span><br />
+<a name="line190"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><span style="color: #000088;">$arNavStartParams</span><span style="color: #339933;">=</span><span style="color: #000088;">$param</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'$arNavStartParams'</span><span style="color: #009900;">&#93;</span><br />
+<a name="line191"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><span style="color: #000088;">$arSelectFields</span><span style="color: #339933;">=</span><span style="color: #000088;">$param</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'$arSelectFields'</span><span style="color: #009900;">&#93;</span><br />
+<a name="line192"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line193"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line194"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">if</span> <span style="color: #009900;">&#40;</span><span style="color: #000088;">$param</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'set_sef'</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span><br />
+<a name="line195"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$items</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">SetUrlTemplates</span><span style="color: #009900;">&#40;</span><span style="color: #0000ff;">&quot;&quot;</span><span style="color: #339933;">,</span> <span style="color: #000088;">$param</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'set_sef'</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line196"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line197"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$count</span> <span style="color: #339933;">=</span> <span style="color: #cc66cc;">0</span><span style="color: #339933;">;</span><br />
+<a name="line198"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">if</span> <span style="color: #009900;">&#40;</span><span style="color: #000088;">$param</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'get_prop'</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">||</span><span style="color: #000088;">$param</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'get_sef'</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span><br />
+<a name="line199"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">while</span> <span style="color: #009900;">&#40;</span><span style="color: #000088;">$item</span> <span style="color: #339933;">=</span> <span style="color: #000088;">$items</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">GetNextElement</span><span style="color: #009900;">&#40;</span><span style="color: #009900; font-weight: bold;">false</span><span style="color: #339933;">,</span><span style="color: #009900; font-weight: bold;">false</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><br />
+<a name="line200"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#123;</span><br />
+<a name="line201"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">if</span> <span style="color: #009900;">&#40;</span><span style="color: #000088;">$param</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'get_prop'</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">&amp;&amp;!</span><span style="color: #000088;">$param</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'get_section'</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span><br />
+<a name="line202"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$props</span> <span style="color: #339933;">=</span> <span style="color: #000088;">$item</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">GetProperties</span><span style="color: #009900;">&#40;</span><span style="color: #009900; font-weight: bold;">false</span><span style="color: #339933;">,</span><span style="color: #009900; font-weight: bold;">false</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line203"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><span style="color: #b1b100;">else</span> <span style="color: #009900;">&#123;</span><br />
+<a name="line204"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$props</span><span style="color: #339933;">=</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line205"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line206"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">if</span> <span style="color: #009900;">&#40;</span><span style="color: #000088;">$callback</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span><br />
+<a name="line207"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$tmp</span> <span style="color: #339933;">=</span> <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #000088;">$callback</span><span style="color: #009900;">&#40;</span><br />
+<a name="line208"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$item</span><span style="color: #339933;">,</span><br />
+<a name="line209"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$props</span><span style="color: #339933;">,</span><br />
+<a name="line210"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$param</span><br />
+<a name="line211"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line212"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><span style="color: #b1b100;">else</span> <span style="color: #009900;">&#123;</span><br />
+<a name="line213"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">if</span> <span style="color: #009900;">&#40;</span><span style="color: #000088;">$param</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'get_prop'</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span><br />
+<a name="line214"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$item</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'props'</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">=</span><span style="color: #000088;">$props</span><span style="color: #339933;">;</span><br />
+<a name="line215"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line216"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$tmp</span> <span style="color: #339933;">=</span> <span style="color: #000088;">$item</span><span style="color: #339933;">;</span><br />
+<a name="line217"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line218"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">if</span> <span style="color: #009900;">&#40;</span><span style="color: #000088;">$param</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'set_key_id'</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span><br />
+<a name="line219"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$array_out</span><span style="color: #009900;">&#91;</span><span style="color: #000088;">$tmp</span><span style="color: #009900;">&#91;</span><span style="color: #000088;">$param</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'set_key_id'</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">=</span> <span style="color: #000088;">$tmp</span><span style="color: #339933;">;</span><br />
+<a name="line220"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://www.php.net/unset"><span style="color: #990000;">unset</span></a><span style="color: #009900;">&#40;</span><span style="color: #000088;">$array_out</span><span style="color: #009900;">&#91;</span><span style="color: #000088;">$tmp</span><span style="color: #009900;">&#91;</span><span style="color: #000088;">$param</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'set_key_id'</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#91;</span><span style="color: #000088;">$param</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'set_key_id'</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line221"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><span style="color: #b1b100;">else</span> <span style="color: #009900;">&#123;</span><br />
+<a name="line222"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$array_out</span><span style="color: #009900;">&#91;</span><span style="color: #000088;">$count</span><span style="color: #009900;">&#93;</span> <span style="color: #339933;">=</span> <span style="color: #000088;">$tmp</span><span style="color: #339933;">;</span><br />
+<a name="line223"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line224"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$count</span><span style="color: #339933;">++;</span><br />
+<a name="line225"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line226"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><span style="color: #b1b100;">else</span> <span style="color: #009900;">&#123;</span><br />
+<a name="line227"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">while</span> <span style="color: #009900;">&#40;</span><span style="color: #000088;">$item</span> <span style="color: #339933;">=</span> <span style="color: #000088;">$items</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">Fetch</span><span style="color: #009900;">&#40;</span><span style="color: #009900; font-weight: bold;">false</span><span style="color: #339933;">,</span><span style="color: #009900; font-weight: bold;">false</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><br />
+<a name="line228"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#123;</span><br />
+<a name="line229"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">if</span> <span style="color: #009900;">&#40;</span><span style="color: #000088;">$callback</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span><br />
+<a name="line230"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$tmp</span> <span style="color: #339933;">=</span> <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #000088;">$callback</span><span style="color: #009900;">&#40;</span><br />
+<a name="line231"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$item</span><span style="color: #339933;">,</span><br />
+<a name="line232"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$props</span><span style="color: #339933;">,</span><br />
+<a name="line233"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$param</span><br />
+<a name="line234"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line235"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><span style="color: #b1b100;">else</span> <span style="color: #009900;">&#123;</span><br />
+<a name="line236"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">if</span> <span style="color: #009900;">&#40;</span><span style="color: #000088;">$param</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'get_prop'</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span><br />
+<a name="line237"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$item</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'props'</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">=</span><span style="color: #000088;">$props</span><span style="color: #339933;">;</span><br />
+<a name="line238"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line239"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$tmp</span> <span style="color: #339933;">=</span> <span style="color: #000088;">$item</span><span style="color: #339933;">;</span><br />
+<a name="line240"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line241"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">if</span> <span style="color: #009900;">&#40;</span><span style="color: #000088;">$param</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'set_key_id'</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span><br />
+<a name="line242"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$array_out</span><span style="color: #009900;">&#91;</span><span style="color: #000088;">$tmp</span><span style="color: #009900;">&#91;</span><span style="color: #000088;">$param</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'set_key_id'</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">=</span> <span style="color: #000088;">$tmp</span><span style="color: #339933;">;</span><br />
+<a name="line243"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://www.php.net/unset"><span style="color: #990000;">unset</span></a><span style="color: #009900;">&#40;</span><span style="color: #000088;">$array_out</span><span style="color: #009900;">&#91;</span><span style="color: #000088;">$tmp</span><span style="color: #009900;">&#91;</span><span style="color: #000088;">$param</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'set_key_id'</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#91;</span><span style="color: #000088;">$param</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'set_key_id'</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line244"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><span style="color: #b1b100;">else</span> <span style="color: #009900;">&#123;</span><br />
+<a name="line245"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$array_out</span><span style="color: #009900;">&#91;</span><span style="color: #000088;">$count</span><span style="color: #009900;">&#93;</span> <span style="color: #339933;">=</span> <span style="color: #000088;">$tmp</span><span style="color: #339933;">;</span><br />
+<a name="line246"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line247"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$count</span><span style="color: #339933;">++;</span><br />
+<a name="line248"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line249"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line250"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">if</span> <span style="color: #009900;">&#40;</span><span style="color: #000088;">$param</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'get_first'</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span><br />
+<a name="line251"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">return</span> <span style="color: #000088;">$array_out</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'0'</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">;</span><br />
+<a name="line252"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line253"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">return</span> <span style="color: #000088;">$array_out</span><span style="color: #339933;">;</span><br />
+<a name="line254"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line255"></a><br />
+<a name="line256"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009933; font-style: italic;">/**<br />
+<a name="line257"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Получение данных из API через SQL запрос.<br />
+<a name="line258"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* <br />
+<a name="line259"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @param string $query <br />
+<a name="line260"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @access public<br />
+<a name="line261"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @return array<br />
+<a name="line262"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</span><br />
+<a name="line263"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">function</span> getQuery<span style="color: #009900;">&#40;</span><span style="color: #000088;">$query</span><span style="color: #009900;">&#41;</span> <br />
+<a name="line264"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#123;</span><br />
+<a name="line265"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">return</span> <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">getQueryFromBitrixAPI</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$query</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line266"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line267"></a>&nbsp; &nbsp; &nbsp; &nbsp; <br />
+<a name="line268"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009933; font-style: italic;">/**<br />
+<a name="line269"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Получить ответ из базы используя API.<br />
+<a name="line270"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* <br />
+<a name="line271"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @param string $query <br />
+<a name="line272"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @access public<br />
+<a name="line273"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @return array<br />
+<a name="line274"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</span><br />
+<a name="line275"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">function</span> getQueryFromBitrixAPI<span style="color: #009900;">&#40;</span><span style="color: #000088;">$query</span><span style="color: #009900;">&#41;</span> <br />
+<a name="line276"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#123;</span><br />
+<a name="line277"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">global</span> <span style="color: #000088;">$DB</span><span style="color: #339933;">;</span><br />
+<a name="line278"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$results</span><span style="color: #339933;">=</span><span style="color: #000088;">$DB</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">Query</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$query</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line279"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$array_out</span><span style="color: #339933;">=</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line280"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">while</span> <span style="color: #009900;">&#40;</span><span style="color: #000088;">$row</span> <span style="color: #339933;">=</span> <span style="color: #000088;">$results</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">Fetch</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><br />
+<a name="line281"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://www.php.net/array_push"><span style="color: #990000;">array_push</span></a><span style="color: #009900;">&#40;</span><span style="color: #000088;">$array_out</span><span style="color: #339933;">,</span> <span style="color: #000088;">$row</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line282"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">return</span> <span style="color: #000088;">$array_out</span><span style="color: #339933;">;</span><br />
+<a name="line283"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line284"></a>&nbsp; &nbsp; &nbsp; &nbsp; <br />
+<a name="line285"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009933; font-style: italic;">/**<br />
+<a name="line286"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Получить первый ответ из массива. <br />
+<a name="line287"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* <br />
+<a name="line288"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @param string $query <br />
+<a name="line289"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @access public<br />
+<a name="line290"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @return array<br />
+<a name="line291"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</span><br />
+<a name="line292"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">function</span> getQueryFirstArrayValue<span style="color: #009900;">&#40;</span><span style="color: #000088;">$query</span><span style="color: #009900;">&#41;</span> <br />
+<a name="line293"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#123;</span><br />
+<a name="line294"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$query</span> <span style="color: #339933;">=</span> <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">query</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$query</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line295"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">return</span> <span style="color: #000088;">$query</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'0'</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">;</span><br />
+<a name="line296"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line297"></a>&nbsp; &nbsp; &nbsp; &nbsp; <br />
+<a name="line298"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009933; font-style: italic;">/**<br />
+<a name="line299"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Получить логический ответ по запросу true - false.<br />
+<a name="line300"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* <br />
+<a name="line301"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @param string $query <br />
+<a name="line302"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @access public<br />
+<a name="line303"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @return boolean<br />
+<a name="line304"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</span><br />
+<a name="line305"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">function</span> getQueryTrueOrFalse<span style="color: #009900;">&#40;</span><span style="color: #000088;">$query</span><span style="color: #009900;">&#41;</span> <br />
+<a name="line306"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#123;</span><br />
+<a name="line307"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$query</span> <span style="color: #339933;">=</span> <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">query</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$query</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line308"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">if</span> <span style="color: #009900;">&#40;</span><a href="http://www.php.net/isset"><span style="color: #990000;">isset</span></a><span style="color: #009900;">&#40;</span><span style="color: #000088;">$query</span><span style="color: #009900;">&#91;</span><span style="color: #cc66cc;">0</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span><br />
+<a name="line309"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">return</span> <span style="color: #009900; font-weight: bold;">true</span><span style="color: #339933;">;</span><br />
+<a name="line310"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><span style="color: #b1b100;">else</span> <span style="color: #009900;">&#123;</span><br />
+<a name="line311"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">return</span> <span style="color: #009900; font-weight: bold;">false</span><span style="color: #339933;">;</span><br />
+<a name="line312"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span> &nbsp; &nbsp; &nbsp; <br />
+<a name="line313"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line314"></a>&nbsp; &nbsp; &nbsp; &nbsp; <br />
+<a name="line315"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009933; font-style: italic;">/**<br />
+<a name="line316"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Получить массив ответа или false, если ответа нет.<br />
+<a name="line317"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* <br />
+<a name="line318"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @param string $query <br />
+<a name="line319"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @access public<br />
+<a name="line320"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @return boolean|array<br />
+<a name="line321"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</span><br />
+<a name="line322"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">function</span> getQueryOrFalse<span style="color: #009900;">&#40;</span><span style="color: #000088;">$query</span><span style="color: #009900;">&#41;</span> <br />
+<a name="line323"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#123;</span><br />
+<a name="line324"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$query</span> <span style="color: #339933;">=</span> <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">query</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$query</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line325"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">if</span> <span style="color: #009900;">&#40;</span><a href="http://www.php.net/isset"><span style="color: #990000;">isset</span></a><span style="color: #009900;">&#40;</span><span style="color: #000088;">$query</span><span style="color: #009900;">&#91;</span><span style="color: #cc66cc;">0</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span><br />
+<a name="line326"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">return</span> <span style="color: #000088;">$query</span><span style="color: #339933;">;</span><br />
+<a name="line327"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><span style="color: #b1b100;">else</span> <span style="color: #009900;">&#123;</span><br />
+<a name="line328"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">return</span> <span style="color: #009900; font-weight: bold;">false</span><span style="color: #339933;">;</span><br />
+<a name="line329"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span> &nbsp; &nbsp; &nbsp; <br />
+<a name="line330"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line331"></a>&nbsp; &nbsp; &nbsp; &nbsp; <br />
+<a name="line332"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009933; font-style: italic;">/**<br />
+<a name="line333"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Получить последний ID из таблицы.<br />
+<a name="line334"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* <br />
+<a name="line335"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @param string $table <br />
+<a name="line336"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @access public<br />
+<a name="line337"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @return int<br />
+<a name="line338"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</span><br />
+<a name="line339"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">function</span> getLastID<span style="color: #009900;">&#40;</span><span style="color: #000088;">$table</span><span style="color: #009900;">&#41;</span><br />
+<a name="line340"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#123;</span><br />
+<a name="line341"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$query</span> <span style="color: #339933;">=</span> <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">query</span><span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'SHOW TABLE STATUS LIKE \''</span><span style="color: #339933;">.</span><span style="color: #000088;">$table</span><span style="color: #339933;">.</span><span style="color: #0000ff;">'\';'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line342"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">return</span> <span style="color: #000088;">$query</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'0'</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'Auto_increment'</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">;</span><br />
+<a name="line343"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line344"></a>&nbsp; &nbsp; &nbsp; &nbsp; <br />
+<a name="line345"></a>&nbsp; &nbsp; &nbsp; &nbsp; <br />
+<a name="line346"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009933; font-style: italic;">/**<br />
+<a name="line347"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Установить кодировку соединения UTF-8<br />
+<a name="line348"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* <br />
+<a name="line349"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @access public<br />
+<a name="line350"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @return void<br />
+<a name="line351"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</span><br />
+<a name="line352"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">function</span> setCharacterToUTF8<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span><br />
+<a name="line353"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">return</span> <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">query</span><span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'set character_set_client=\'utf8\',character_set_connection=\'utf8\', character_set_database=\'utf8\', &nbsp; character_set_results=\'utf8\',character_set_server=\'utf8\';'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line354"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line355"></a>&nbsp; &nbsp; &nbsp; &nbsp; <br />
+<a name="line356"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009933; font-style: italic;">/**<br />
+<a name="line357"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Получить текущую кодировку.<br />
+<a name="line358"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* <br />
+<a name="line359"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @access public<br />
+<a name="line360"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @return array<br />
+<a name="line361"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</span><br />
+<a name="line362"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">function</span> getCharset<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span><br />
+<a name="line363"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">return</span> <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">query</span><span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'show VARIABLES like \'%char%\''</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line364"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line365"></a>&nbsp; &nbsp; &nbsp; &nbsp; <br />
+<a name="line366"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009933; font-style: italic;">/**<br />
+<a name="line367"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Помощь при выборке данных.<br />
+<a name="line368"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* <br />
+<a name="line369"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &gt;&gt; array(<br />
+<a name="line370"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* '0' =&gt; 'A',<br />
+<a name="line371"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* '1' =&gt; 'B',<br />
+<a name="line372"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* )<br />
+<a name="line373"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &lt;&lt; 'A','B'<br />
+<a name="line374"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* <br />
+<a name="line375"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @param array $array <br />
+<a name="line376"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @access public<br />
+<a name="line377"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @return string<br />
+<a name="line378"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</span><br />
+<a name="line379"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">function</span> getInQueryFor<span style="color: #009900;">&#40;</span><span style="color: #000088;">$array</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span><br />
+<a name="line380"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">return</span> <span style="color: #0000ff;">&quot;'&quot;</span><span style="color: #339933;">.</span><a href="http://www.php.net/implode"><span style="color: #990000;">implode</span></a><span style="color: #009900;">&#40;</span><span style="color: #0000ff;">&quot;','&quot;</span><span style="color: #339933;">,</span> <span style="color: #000088;">$array</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">.</span><span style="color: #0000ff;">&quot;'&quot;</span><span style="color: #339933;">;</span><br />
+<a name="line381"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line382"></a>&nbsp; &nbsp; &nbsp; &nbsp; <br />
+<a name="line383"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009933; font-style: italic;">/**<br />
+<a name="line384"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Помощь при выборке данных.<br />
+<a name="line385"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* <br />
+<a name="line386"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &gt;&gt; array(<br />
+<a name="line387"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; '0' =&gt; 'A',<br />
+<a name="line388"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; '1' =&gt; 'B',<br />
+<a name="line389"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* )<br />
+<a name="line390"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &gt;&gt; key = ' id like '<br />
+<a name="line391"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &gt;&gt; $case = ' OR '<br />
+<a name="line392"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &lt;&lt; ( id like A OR id like B )<br />
+<a name="line393"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* <br />
+<a name="line394"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @param array $array <br />
+<a name="line395"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @param string $key<br />
+<a name="line396"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @param string $case<br />
+<a name="line397"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @access public<br />
+<a name="line398"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @return string<br />
+<a name="line399"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</span><br />
+<a name="line400"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">function</span> getImplodeArrayWithKey<span style="color: #009900;">&#40;</span><span style="color: #000088;">$array</span><span style="color: #339933;">,</span><span style="color: #000088;">$key</span><span style="color: #339933;">,</span><span style="color: #000088;">$case</span><span style="color: #339933;">=</span><span style="color: #0000ff;">&quot; OR &quot;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span><br />
+<a name="line401"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">return</span> <span style="color: #0000ff;">&quot;(&quot;</span><span style="color: #339933;">.</span><span style="color: #000088;">$key</span><span style="color: #339933;">.</span><a href="http://www.php.net/implode"><span style="color: #990000;">implode</span></a><span style="color: #009900;">&#40;</span><span style="color: #000088;">$case</span><span style="color: #339933;">.</span><span style="color: #000088;">$key</span><span style="color: #339933;">,</span> <span style="color: #000088;">$array</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">.</span><span style="color: #0000ff;">&quot;)&quot;</span><span style="color: #339933;">;</span><br />
+<a name="line402"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line403"></a>&nbsp; &nbsp; &nbsp; &nbsp; <br />
+<a name="line404"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009933; font-style: italic;">/**<br />
+<a name="line405"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Помощь при выборке данных.<br />
+<a name="line406"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* <br />
+<a name="line407"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &gt;&gt; array(<br />
+<a name="line408"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; '0' =&gt; 'A',<br />
+<a name="line409"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; '1' =&gt; 'B',<br />
+<a name="line410"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* )<br />
+<a name="line411"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &lt;&lt; array(<br />
+<a name="line412"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; '0' =&gt; &quot;like 'A'&quot;,<br />
+<a name="line413"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; '1' =&gt; &quot;like 'B'&quot;,<br />
+<a name="line414"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* )<br />
+<a name="line415"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* <br />
+<a name="line416"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @param array $array <br />
+<a name="line417"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @access public<br />
+<a name="line418"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @return array<br />
+<a name="line419"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</span><br />
+<a name="line420"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">function</span> getCompareArrayByKey<span style="color: #009900;">&#40;</span><span style="color: #000088;">$array</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span><br />
+<a name="line421"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$array_count</span> <span style="color: #339933;">=</span> <a href="http://www.php.net/count"><span style="color: #990000;">count</span></a><span style="color: #009900;">&#40;</span><span style="color: #000088;">$array</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line422"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$where</span> <span style="color: #339933;">=</span> <span style="color: #0000ff;">''</span><span style="color: #339933;">;</span><br />
+<a name="line423"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">for</span> <span style="color: #009900;">&#40;</span> <span style="color: #000088;">$i</span> <span style="color: #339933;">=</span> <span style="color: #cc66cc;">0</span><span style="color: #339933;">;</span> <span style="color: #000088;">$i</span> <span style="color: #339933;">&lt;</span> <span style="color: #000088;">$array_count</span><span style="color: #339933;">;</span> <span style="color: #000088;">$i</span><span style="color: #339933;">++</span> <span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span><br />
+<a name="line424"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$key</span> <span style="color: #339933;">=</span> <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">getFirstArrayKey</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$array</span><span style="color: #009900;">&#91;</span><span style="color: #000088;">$i</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line425"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$where</span><span style="color: #009900;">&#91;</span><span style="color: #009900;">&#93;</span> <span style="color: #339933;">=</span> <span style="color: #0000ff;">' like \''</span><span style="color: #339933;">.</span><span style="color: #000088;">$array</span><span style="color: #009900;">&#91;</span><span style="color: #000088;">$i</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#91;</span><span style="color: #000088;">$key</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">.</span><span style="color: #0000ff;">'\''</span><span style="color: #339933;">;</span><br />
+<a name="line426"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line427"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">return</span> <span style="color: #000088;">$where</span><span style="color: #339933;">;</span><br />
+<a name="line428"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line429"></a>&nbsp; &nbsp; &nbsp; &nbsp; <br />
+<a name="line430"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009933; font-style: italic;">/**<br />
+<a name="line431"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Помощь при выборке данных.<br />
+<a name="line432"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* <br />
+<a name="line433"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &gt;&gt; $like_title = array('OR' =&gt; 'id')<br />
+<a name="line434"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &gt;&gt; $same = 'LIKE'<br />
+<a name="line435"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &gt;&gt; array(<br />
+<a name="line436"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; '0' =&gt; 'A',<br />
+<a name="line437"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; '1' =&gt; 'B',<br />
+<a name="line438"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* )<br />
+<a name="line439"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &gt;&gt; $prefix='%+',$postfix='+%'<br />
+<a name="line440"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* <br />
+<a name="line441"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &lt;&lt; id LIKE '%A%' OR id LIKE '%B%'<br />
+<a name="line442"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* <br />
+<a name="line443"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @param string $like_title <br />
+<a name="line444"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @param array $array <br />
+<a name="line445"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @param string $prefix <br />
+<a name="line446"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @param string $postfix <br />
+<a name="line447"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @access public<br />
+<a name="line448"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @return string<br />
+<a name="line449"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</span><br />
+<a name="line450"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">function</span> getLikeQueryByArray<span style="color: #009900;">&#40;</span><span style="color: #000088;">$like_title</span><span style="color: #339933;">,</span><span style="color: #000088;">$same</span><span style="color: #339933;">=</span><span style="color: #0000ff;">'LIKE'</span><span style="color: #339933;">,</span><span style="color: #000088;">$array</span><span style="color: #339933;">,</span><span style="color: #000088;">$prefix</span><span style="color: #339933;">=</span><span style="color: #0000ff;">'%+'</span><span style="color: #339933;">,</span><span style="color: #000088;">$postfix</span><span style="color: #339933;">=</span><span style="color: #0000ff;">'+%'</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span><br />
+<a name="line451"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$array_count</span> <span style="color: #339933;">=</span> <a href="http://www.php.net/count"><span style="color: #990000;">count</span></a><span style="color: #009900;">&#40;</span><span style="color: #000088;">$array</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line452"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$where</span> <span style="color: #339933;">=</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line453"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$key</span> <span style="color: #339933;">=</span> <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">getFirstArrayKey</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$like_title</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line454"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">for</span> <span style="color: #009900;">&#40;</span> <span style="color: #000088;">$i</span> <span style="color: #339933;">=</span> <span style="color: #cc66cc;">0</span><span style="color: #339933;">;</span> <span style="color: #000088;">$i</span> <span style="color: #339933;">&lt;</span> <span style="color: #000088;">$array_count</span><span style="color: #339933;">;</span> <span style="color: #000088;">$i</span><span style="color: #339933;">++</span> <span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span><br />
+<a name="line455"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$where</span><span style="color: #009900;">&#91;</span><span style="color: #009900;">&#93;</span> <span style="color: #339933;">=</span> <span style="color: #000088;">$like_title</span><span style="color: #009900;">&#91;</span><span style="color: #000088;">$key</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">.</span><span style="color: #0000ff;">' '</span><span style="color: #339933;">.</span><span style="color: #000088;">$same</span><span style="color: #339933;">.</span><span style="color: #0000ff;">' \''</span><span style="color: #339933;">.</span><span style="color: #000088;">$prefix</span><span style="color: #339933;">.</span><span style="color: #000088;">$array</span><span style="color: #009900;">&#91;</span><span style="color: #000088;">$i</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">.</span><span style="color: #000088;">$postfix</span><span style="color: #339933;">.</span><span style="color: #0000ff;">'\''</span><span style="color: #339933;">;</span><br />
+<a name="line456"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line457"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">return</span> <a href="http://www.php.net/implode"><span style="color: #990000;">implode</span></a><span style="color: #009900;">&#40;</span><span style="color: #000088;">$key</span><span style="color: #339933;">,</span><span style="color: #000088;">$where</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line458"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line459"></a>&nbsp; &nbsp; &nbsp; &nbsp; <br />
+<a name="line460"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009933; font-style: italic;">/**<br />
+<a name="line461"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Установить ключом массива ID.<br />
+<a name="line462"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* <br />
+<a name="line463"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &gt;&gt; array(<br />
+<a name="line464"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; '0' =&gt; array('id'=&gt;'77','key'='value'),<br />
+<a name="line465"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; '1' =&gt; array('id'=&gt;'55','key'='value'),<br />
+<a name="line466"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* )<br />
+<a name="line467"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &lt;&lt; array(<br />
+<a name="line468"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; '77' =&gt; array('id'=&gt;'77','key'='value'),<br />
+<a name="line469"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*&nbsp; &nbsp; &nbsp; '55' =&gt; array('id'=&gt;'55','key'='value'),<br />
+<a name="line470"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* )<br />
+<a name="line471"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* <br />
+<a name="line472"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @param array $query <br />
+<a name="line473"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @param string $key <br />
+<a name="line474"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @access public<br />
+<a name="line475"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @return array<br />
+<a name="line476"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</span><br />
+<a name="line477"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">function</span> getArrayKeyForArrayQuery<span style="color: #009900;">&#40;</span><span style="color: #000088;">$query</span><span style="color: #339933;">,</span><span style="color: #000088;">$key</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span><br />
+<a name="line478"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$query_count</span> <span style="color: #339933;">=</span> <a href="http://www.php.net/count"><span style="color: #990000;">count</span></a><span style="color: #009900;">&#40;</span><span style="color: #000088;">$query</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line479"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$tmp</span><span style="color: #339933;">=</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line480"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">for</span> <span style="color: #009900;">&#40;</span> <span style="color: #000088;">$i</span> <span style="color: #339933;">=</span> <span style="color: #cc66cc;">0</span><span style="color: #339933;">;</span> <span style="color: #000088;">$i</span> <span style="color: #339933;">&lt;</span> <span style="color: #000088;">$query_count</span><span style="color: #339933;">;</span> <span style="color: #000088;">$i</span><span style="color: #339933;">++</span> <span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span><br />
+<a name="line481"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$tmp</span><span style="color: #009900;">&#91;</span><span style="color: #000088;">$query</span><span style="color: #009900;">&#91;</span><span style="color: #000088;">$i</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#91;</span><span style="color: #000088;">$key</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">=</span><span style="color: #000088;">$query</span><span style="color: #009900;">&#91;</span><span style="color: #000088;">$i</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">;</span><br />
+<a name="line482"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line483"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">return</span> <span style="color: #000088;">$tmp</span><span style="color: #339933;">;</span><br />
+<a name="line484"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line485"></a>&nbsp; &nbsp; &nbsp; &nbsp; <br />
+<a name="line486"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009933; font-style: italic;">/**<br />
+<a name="line487"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Сброс после каждого теста.<br />
+<a name="line488"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</span><br />
+<a name="line489"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">function</span> setResetForTest<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span><br />
+<a name="line490"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line491"></a>&nbsp; &nbsp; &nbsp; &nbsp; <br />
+<a name="line492"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009933; font-style: italic;">/**<br />
+<a name="line493"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Получить результаты формы.<br />
+<a name="line494"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* <br />
+<a name="line495"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @link http://dev.1c-bitrix.ru/api_help/form/classes/cformresult/getlist.php <br />
+<a name="line496"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @param int $form_id <br />
+<a name="line497"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @param array $by<br />
+<a name="line498"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @param array $order <br />
+<a name="line499"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @param array $filter <br />
+<a name="line500"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @param array $is_filtered <br />
+<a name="line501"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @access public<br />
+<a name="line502"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @return array<br />
+<a name="line503"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</span><br />
+<a name="line504"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">function</span> getFormResult<span style="color: #009900;">&#40;</span><span style="color: #000088;">$form_id</span><span style="color: #339933;">,</span><span style="color: #000088;">$callback</span><span style="color: #339933;">=</span><span style="color: #0000ff;">''</span><span style="color: #339933;">,</span><span style="color: #000088;">$by</span><span style="color: #339933;">,</span><span style="color: #000088;">$order</span><span style="color: #339933;">,</span><span style="color: #000088;">$filter</span><span style="color: #339933;">,</span><span style="color: #000088;">$is_filtered</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span><br />
+<a name="line505"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">initCForm</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line506"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$array_out</span><span style="color: #339933;">=</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line507"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$rsResults</span><span style="color: #339933;">=</span>CFormResult<span style="color: #339933;">::</span><span style="color: #004000;">GetList</span><span style="color: #009900;">&#40;</span><br />
+<a name="line508"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$form_id</span><br />
+<a name="line509"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><span style="color: #000088;">$by</span><br />
+<a name="line510"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><span style="color: #000088;">$order</span><br />
+<a name="line511"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><span style="color: #000088;">$filter</span><br />
+<a name="line512"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><span style="color: #000088;">$is_filtered</span><br />
+<a name="line513"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line514"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$count</span><span style="color: #339933;">=</span><span style="color: #cc66cc;">0</span><span style="color: #339933;">;</span><br />
+<a name="line515"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">while</span> <span style="color: #009900;">&#40;</span><span style="color: #000088;">$arResult</span> <span style="color: #339933;">=</span> <span style="color: #000088;">$rsResults</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">Fetch</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span><br />
+<a name="line516"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$count</span> <span style="color: #339933;">++;</span><br />
+<a name="line517"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">if</span> <span style="color: #009900;">&#40;</span><span style="color: #000088;">$callback</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span><br />
+<a name="line518"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$array_out</span><span style="color: #009900;">&#91;</span><span style="color: #000088;">$count</span><span style="color: #009900;">&#93;</span> <span style="color: #339933;">=</span> <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #000088;">$callback</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$arResult</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line519"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><span style="color: #b1b100;">else</span> <span style="color: #009900;">&#123;</span><br />
+<a name="line520"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$array_out</span><span style="color: #009900;">&#91;</span><span style="color: #000088;">$count</span><span style="color: #009900;">&#93;</span> <span style="color: #339933;">=</span> <span style="color: #000088;">$arResult</span><span style="color: #339933;">;</span><br />
+<a name="line521"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line522"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line523"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">return</span> <span style="color: #000088;">$array_out</span><span style="color: #339933;">;</span><br />
+<a name="line524"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line525"></a>&nbsp; &nbsp; &nbsp; &nbsp; <br />
+<a name="line526"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009933; font-style: italic;">/**<br />
+<a name="line527"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Получить массив результатов формы.<br />
+<a name="line528"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* <br />
+<a name="line529"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @param int $FORM_ID <br />
+<a name="line530"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @param string $SEARCH <br />
+<a name="line531"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @access public<br />
+<a name="line532"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @return array<br />
+<a name="line533"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</span><br />
+<a name="line534"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">function</span> getFormResultIDArrayForValue<span style="color: #009900;">&#40;</span><span style="color: #000088;">$FORM_ID</span><span style="color: #339933;">,</span> <span style="color: #000088;">$SEARCH</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span><br />
+<a name="line535"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">global</span> <span style="color: #000088;">$DB</span><span style="color: #339933;">;</span><br />
+<a name="line536"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$rsResults</span> <span style="color: #339933;">=</span> <span style="color: #000088;">$DB</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">Query</span><span style="color: #009900;">&#40;</span><span style="color: #0000ff;">&quot;<br />
+<a name="line537"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; SELECT <br />
+<a name="line538"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; RESULT_ID <br />
+<a name="line539"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; FROM b_form_result_answer<br />
+<a name="line540"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; WHERE FORM_ID = &quot;</span><span style="color: #339933;">.</span><span style="color: #000088;">$FORM_ID</span><span style="color: #339933;">.</span><span style="color: #0000ff;">&quot;<br />
+<a name="line541"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; AND USER_TEXT_SEARCH = '&quot;</span><span style="color: #339933;">.</span><span style="color: #000088;">$DB</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">ForSQL</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$SEARCH</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">.</span><span style="color: #0000ff;">&quot;'&quot;</span><br />
+<a name="line542"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line543"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$count</span><span style="color: #339933;">=</span><span style="color: #cc66cc;">0</span><span style="color: #339933;">;</span><br />
+<a name="line544"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$array_out</span><span style="color: #339933;">=</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line545"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">while</span> <span style="color: #009900;">&#40;</span><span style="color: #000088;">$arResult</span> <span style="color: #339933;">=</span> <span style="color: #000088;">$rsResults</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">Fetch</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span><br />
+<a name="line546"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$count</span><span style="color: #339933;">++;</span><br />
+<a name="line547"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$array_out</span><span style="color: #009900;">&#91;</span><span style="color: #000088;">$count</span><span style="color: #009900;">&#93;</span> <span style="color: #339933;">=</span> <span style="color: #000088;">$arResult</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'RESULT_ID'</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">;</span><br />
+<a name="line548"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line549"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">return</span> <span style="color: #000088;">$array_out</span><span style="color: #339933;">;</span><br />
+<a name="line550"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line551"></a>&nbsp; &nbsp; &nbsp; &nbsp; <br />
+<a name="line552"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009933; font-style: italic;">/**<br />
+<a name="line553"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Получить ответы на вопросы формы.<br />
+<a name="line554"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* <br />
+<a name="line555"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @link http://dev.1c-bitrix.ru/api_help/form/classes/cform/getresultanswerarray.php<br />
+<a name="line556"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @param int $form_id <br />
+<a name="line557"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @param string $callback <br />
+<a name="line558"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @param array $filter <br />
+<a name="line559"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @param boolean $only_one_result<br />
+<a name="line560"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @access public<br />
+<a name="line561"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @return void<br />
+<a name="line562"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</span><br />
+<a name="line563"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">function</span> getFormResultAnswer<span style="color: #009900;">&#40;</span><span style="color: #000088;">$form_id</span><span style="color: #339933;">,</span><span style="color: #000088;">$callback</span><span style="color: #339933;">=</span><span style="color: #0000ff;">''</span><span style="color: #339933;">,</span><span style="color: #000088;">$filter</span><span style="color: #339933;">,</span><span style="color: #000088;">$only_one_result</span><span style="color: #339933;">=</span><span style="color: #009900; font-weight: bold;">true</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span><br />
+<a name="line564"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">initCForm</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line565"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$array_out</span><span style="color: #339933;">=</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line566"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; CForm<span style="color: #339933;">::</span><span style="color: #004000;">GetResultAnswerArray</span><span style="color: #009900;">&#40;</span><br />
+<a name="line567"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$form_id</span><br />
+<a name="line568"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><span style="color: #000088;">$columns</span><br />
+<a name="line569"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><span style="color: #000088;">$answers</span><br />
+<a name="line570"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><span style="color: #000088;">$answers2</span><br />
+<a name="line571"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><span style="color: #000088;">$filter</span><br />
+<a name="line572"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line573"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">if</span> <span style="color: #009900;">&#40;</span><span style="color: #000088;">$only_one_result</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span><br />
+<a name="line574"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">return</span> <span style="color: #000088;">$answers2</span><span style="color: #009900;">&#91;</span><span style="color: #000088;">$filter</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'RESULT_ID'</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">;</span><br />
+<a name="line575"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><span style="color: #b1b100;">else</span> <span style="color: #009900;">&#123;</span><br />
+<a name="line576"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">return</span> <span style="color: #000088;">$answers2</span><span style="color: #339933;">;</span><br />
+<a name="line577"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line578"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line579"></a>&nbsp; &nbsp; &nbsp; &nbsp; <br />
+<a name="line580"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009933; font-style: italic;">/**<br />
+<a name="line581"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Добавляем элемент в инфоблок.<br />
+<a name="line582"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* <br />
+<a name="line583"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @param int $id <br />
+<a name="line584"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @param string $name <br />
+<a name="line585"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @param array $property <br />
+<a name="line586"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @access public<br />
+<a name="line587"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @return string<br />
+<a name="line588"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</span><br />
+<a name="line589"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">function</span> ElementAdd <span style="color: #009900;">&#40;</span><span style="color: #000088;">$id</span><span style="color: #339933;">,</span> <span style="color: #000088;">$name</span><span style="color: #339933;">,</span> <span style="color: #000088;">$property</span> <span style="color: #339933;">=</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><br />
+<a name="line590"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#123;</span><br />
+<a name="line591"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">global</span> <span style="color: #000088;">$USER</span><span style="color: #339933;">;</span><br />
+<a name="line592"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$section</span> <span style="color: #339933;">=</span> <span style="color: #000000; font-weight: bold;">new</span> CIBlockElement<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line593"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$arLoadProductArray</span> <span style="color: #339933;">=</span> <a href="http://www.php.net/array"><span style="color: #990000;">Array</span></a><span style="color: #009900;">&#40;</span><br />
+<a name="line594"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">&quot;MODIFIED_BY&quot;</span> <span style="color: #339933;">=&gt;</span> <span style="color: #000088;">$USER</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">GetID</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">,</span><br />
+<a name="line595"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">&quot;IBLOCK_ID&quot;</span> <span style="color: #339933;">=&gt;</span> <span style="color: #000088;">$id</span><span style="color: #339933;">,</span><br />
+<a name="line596"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">&quot;PROPERTY_VALUES&quot;</span> <span style="color: #339933;">=&gt;</span> <span style="color: #000088;">$property</span><span style="color: #339933;">,</span><br />
+<a name="line597"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">&quot;NAME&quot;</span> <span style="color: #339933;">=&gt;</span> <span style="color: #000088;">$name</span><span style="color: #339933;">,</span><br />
+<a name="line598"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">&quot;PREVIEW_TEXT&quot;</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">&quot;&quot;</span><span style="color: #339933;">,</span><br />
+<a name="line599"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">&quot;DETAIL_TEXT&quot;</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">&quot;&quot;</span><span style="color: #339933;">,</span><br />
+<a name="line600"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">&quot;DETAIL_PICTURE&quot;</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">&quot;&quot;</span><br />
+<a name="line601"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line602"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">if</span> <span style="color: #009900;">&#40;</span><span style="color: #000088;">$PRODUCT_ID</span> <span style="color: #339933;">=</span> <span style="color: #000088;">$section</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">Add</span><span style="color: #009900;">&#40;</span><br />
+<a name="line603"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$arLoadProductArray</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><br />
+<a name="line604"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$msg</span> <span style="color: #339933;">=</span> <span style="color: #0000ff;">'OK'</span><span style="color: #339933;">;</span><br />
+<a name="line605"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">else</span><br />
+<a name="line606"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$msg</span> <span style="color: #339933;">=</span> <span style="color: #000088;">$section</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">LAST_ERROR</span><span style="color: #339933;">;</span><br />
+<a name="line607"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">return</span> <span style="color: #000088;">$msg</span><span style="color: #339933;">;</span><br />
+<a name="line608"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line609"></a>&nbsp; &nbsp; &nbsp; &nbsp; <br />
+<a name="line610"></a>&nbsp; &nbsp; &nbsp; &nbsp; <br />
+<a name="line611"></a>&nbsp; &nbsp; &nbsp; &nbsp; <br />
+<a name="line612"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009933; font-style: italic;">/**<br />
+<a name="line613"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Удаляем элемент.<br />
+<a name="line614"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* <br />
+<a name="line615"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @param int $id <br />
+<a name="line616"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @access public<br />
+<a name="line617"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @return string<br />
+<a name="line618"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</span><br />
+<a name="line619"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">function</span> ElementDelete <span style="color: #009900;">&#40;</span><span style="color: #000088;">$id</span><span style="color: #009900;">&#41;</span><br />
+<a name="line620"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#123;</span><br />
+<a name="line621"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">global</span> <span style="color: #000088;">$DB</span><span style="color: #339933;">;</span><br />
+<a name="line622"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$DB</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">StartTransaction</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line623"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$error</span> <span style="color: #339933;">=</span> <span style="color: #0000ff;">''</span><span style="color: #339933;">;</span><br />
+<a name="line624"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">if</span> <span style="color: #009900;">&#40;</span><span style="color: #339933;">!</span> CIBlockElement<span style="color: #339933;">::</span><span style="color: #004000;">Delete</span><span style="color: #009900;">&#40;</span><br />
+<a name="line625"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$id</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><br />
+<a name="line626"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#123;</span><br />
+<a name="line627"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$error</span> <span style="color: #339933;">=</span> <span style="color: #0000ff;">'Error!'</span><span style="color: #339933;">;</span><br />
+<a name="line628"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$DB</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">Rollback</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line629"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span> <span style="color: #b1b100;">else</span><br />
+<a name="line630"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$DB</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">Commit</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line631"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">return</span> <span style="color: #000088;">$error</span><span style="color: #339933;">;</span><br />
+<a name="line632"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line633"></a>&nbsp; &nbsp; &nbsp; &nbsp; <br />
+<a name="line634"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009933; font-style: italic;">/**<br />
+<a name="line635"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Обновляем элемент.<br />
+<a name="line636"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* <br />
+<a name="line637"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @param int $id <br />
+<a name="line638"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @param array $property <br />
+<a name="line639"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @access public<br />
+<a name="line640"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @return string<br />
+<a name="line641"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</span><br />
+<a name="line642"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">function</span> ElementUpdate <span style="color: #009900;">&#40;</span><span style="color: #000088;">$id</span><span style="color: #339933;">,</span> <span style="color: #000088;">$property</span><span style="color: #009900;">&#41;</span><br />
+<a name="line643"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#123;</span><br />
+<a name="line644"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">global</span> <span style="color: #000088;">$USER</span><span style="color: #339933;">;</span><br />
+<a name="line645"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$arLoadProductArray</span> <span style="color: #339933;">=</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line646"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$section</span> <span style="color: #339933;">=</span> <span style="color: #000000; font-weight: bold;">new</span> CIBlockElement<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line647"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">if</span> <span style="color: #009900;">&#40;</span><span style="color: #000088;">$property</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'NAME'</span><span style="color: #009900;">&#93;</span> <span style="color: #339933;">!=</span> <span style="color: #0000ff;">''</span><span style="color: #009900;">&#41;</span><br />
+<a name="line648"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$arLoadProductArray</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'NAME'</span><span style="color: #009900;">&#93;</span> <span style="color: #339933;">=</span> <span style="color: #000088;">$property</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'NAME'</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">;</span><br />
+<a name="line649"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$arLoadProductArray</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'MODIFIED_BY'</span><span style="color: #009900;">&#93;</span> <span style="color: #339933;">=</span> <span style="color: #000088;">$USER</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">GetID</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line650"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$arLoadProductArray</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'PROPERTY_VALUES'</span><span style="color: #009900;">&#93;</span> <span style="color: #339933;">=</span> <span style="color: #000088;">$property</span><span style="color: #339933;">;</span><br />
+<a name="line651"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$res</span> <span style="color: #339933;">=</span> <span style="color: #000088;">$section</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">Update</span><span style="color: #009900;">&#40;</span><br />
+<a name="line652"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$id</span><span style="color: #339933;">,</span><br />
+<a name="line653"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$arLoadProductArray</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line654"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">if</span> <span style="color: #009900;">&#40;</span><span style="color: #000088;">$res</span> <span style="color: #339933;">==</span> <span style="color: #cc66cc;">1</span><span style="color: #009900;">&#41;</span><br />
+<a name="line655"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#123;</span><br />
+<a name="line656"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$msg</span> <span style="color: #339933;">=</span> <span style="color: #0000ff;">'OK'</span><span style="color: #339933;">;</span><br />
+<a name="line657"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span> <span style="color: #b1b100;">else</span><br />
+<a name="line658"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#123;</span><br />
+<a name="line659"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$msg</span> <span style="color: #339933;">=</span> <span style="color: #000088;">$section</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">LAST_ERROR</span><span style="color: #339933;">;</span><br />
+<a name="line660"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line661"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">return</span> <span style="color: #000088;">$msg</span><span style="color: #339933;">;</span><br />
+<a name="line662"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line663"></a>&nbsp; &nbsp; &nbsp; &nbsp; <br />
+<a name="line664"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009933; font-style: italic;">/**<br />
+<a name="line665"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Получить ID секции по коду.<br />
+<a name="line666"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* <br />
+<a name="line667"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @param int $IBLOCK_ID <br />
+<a name="line668"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @param string $SECTION_CODE <br />
+<a name="line669"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @access public<br />
+<a name="line670"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @return int<br />
+<a name="line671"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</span><br />
+<a name="line672"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">function</span> getSectionIDBySectionCode<span style="color: #009900;">&#40;</span><span style="color: #000088;">$IBLOCK_ID</span><span style="color: #339933;">,</span> <span style="color: #000088;">$SECTION_CODE</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span><br />
+<a name="line673"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">global</span> <span style="color: #000088;">$DB</span><span style="color: #339933;">;</span><br />
+<a name="line674"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$res</span> <span style="color: #339933;">=</span> <span style="color: #000088;">$DB</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">Query</span><span style="color: #009900;">&#40;</span><span style="color: #0000ff;">&quot;<br />
+<a name="line675"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; SELECT ID<br />
+<a name="line676"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; FROM b_iblock_section<br />
+<a name="line677"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; WHERE IBLOCK_ID = &quot;</span><span style="color: #339933;">.</span><span style="color: #000088;">$IBLOCK_ID</span><span style="color: #339933;">.</span><span style="color: #0000ff;">&quot;<br />
+<a name="line678"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; AND CODE = '&quot;</span><span style="color: #339933;">.</span><span style="color: #000088;">$DB</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">ForSQL</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$SECTION_CODE</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">.</span><span style="color: #0000ff;">&quot;'&quot;</span><br />
+<a name="line679"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line680"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$SECTION_ID</span> <span style="color: #339933;">=</span> <span style="color: #000088;">$res</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">Fetch</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line681"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">return</span> <span style="color: #000088;">$SECTION_ID</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'ID'</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">;</span><br />
+<a name="line682"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line683"></a><br />
+<a name="line684"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009933; font-style: italic;">/**<br />
+<a name="line685"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Выбор всех секций в инфоблоке по ID.<br />
+<a name="line686"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* <br />
+<a name="line687"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @deprecated<br />
+<a name="line688"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Метод будет удален в связи с добавлением метода getAllFromAPI.<br />
+<a name="line689"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @see ModelsBitrixAPI.getAllFromAPI<br />
+<a name="line690"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @return array<br />
+<a name="line691"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</span><br />
+<a name="line692"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">function</span> getAllSectionArrayByID <span style="color: #009900;">&#40;</span><br />
+<a name="line693"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$idblock</span><span style="color: #339933;">,</span> <br />
+<a name="line694"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$idsection</span><span style="color: #339933;">,</span> <br />
+<a name="line695"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$callback</span><span style="color: #339933;">,</span> <br />
+<a name="line696"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$arFilter</span><span style="color: #339933;">,</span> <br />
+<a name="line697"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$arSelectFields</span><span style="color: #339933;">,</span> <br />
+<a name="line698"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$arOrder</span><span style="color: #339933;">,</span> <br />
+<a name="line699"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$key_is_id</span><span style="color: #339933;">=</span><span style="color: #009900; font-weight: bold;">false</span><span style="color: #009900;">&#41;</span><br />
+<a name="line700"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#123;</span><br />
+<a name="line701"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">return</span> <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">getAllFromAPI</span><span style="color: #009900;">&#40;</span><br />
+<a name="line702"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+<a name="line703"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'$arOrder'</span><span style="color: #339933;">=&gt;</span><span style="color: #000088;">$arOrde</span><br />
+<a name="line704"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><span style="color: #0000ff;">'$arFilter'</span><span style="color: #339933;">=&gt;</span><span style="color: #000088;">$arFilter</span><br />
+<a name="line705"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><span style="color: #0000ff;">'$arSelectFields'</span><span style="color: #339933;">=&gt;</span><span style="color: #000088;">$arSelectFields</span><br />
+<a name="line706"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><span style="color: #0000ff;">'set_cache'</span><span style="color: #339933;">=&gt;</span><span style="color: #000088;">$set_cache</span><br />
+<a name="line707"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><span style="color: #0000ff;">'set_parser'</span><span style="color: #339933;">=&gt;</span><span style="color: #000088;">$callback</span><br />
+<a name="line708"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><span style="color: #0000ff;">'get_section'</span><span style="color: #339933;">=&gt;</span>true<br />
+<a name="line709"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><span style="color: #0000ff;">'set_key_id'</span><span style="color: #339933;">=&gt;</span><span style="color: #000088;">$key_is_id</span><br />
+<a name="line710"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><br />
+<a name="line711"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line712"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line713"></a><br />
+<a name="line714"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009933; font-style: italic;">/**<br />
+<a name="line715"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Получить все элементы по ID инфоблока.<br />
+<a name="line716"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* <br />
+<a name="line717"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @deprecated<br />
+<a name="line718"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Метод будет удален в связи с добавлением метода getAllFromAPI.<br />
+<a name="line719"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @see ModelsBitrixAPI.getAllFromAPI<br />
+<a name="line720"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @return array<br />
+<a name="line721"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</span><br />
+<a name="line722"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">function</span> getAllElementArrayByID <span style="color: #009900;">&#40;</span><br />
+<a name="line723"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$idblock</span><br />
+<a name="line724"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><span style="color: #000088;">$idsection</span><br />
+<a name="line725"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><span style="color: #000088;">$callback</span><br />
+<a name="line726"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><span style="color: #000088;">$arFilter</span><br />
+<a name="line727"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><span style="color: #000088;">$arSelectFields</span><br />
+<a name="line728"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><span style="color: #000088;">$data</span><br />
+<a name="line729"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><span style="color: #000088;">$key_is_id</span><span style="color: #339933;">=</span><span style="color: #009900; font-weight: bold;">false</span><br />
+<a name="line730"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><span style="color: #000088;">$arOrde</span><br />
+<a name="line731"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><span style="color: #000088;">$arGroupBy</span><span style="color: #339933;">=</span><span style="color: #009900; font-weight: bold;">false</span><br />
+<a name="line732"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><span style="color: #000088;">$arNavStartParams</span><span style="color: #339933;">=</span><span style="color: #009900; font-weight: bold;">false</span><br />
+<a name="line733"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><span style="color: #000088;">$get_prop</span><span style="color: #339933;">=</span><span style="color: #009900; font-weight: bold;">true</span><br />
+<a name="line734"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><span style="color: #000088;">$get_first_array_key</span><span style="color: #339933;">=</span><span style="color: #009900; font-weight: bold;">false</span><br />
+<a name="line735"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><span style="color: #000088;">$set_cache</span><span style="color: #339933;">=</span><span style="color: #009900; font-weight: bold;">false</span><br />
+<a name="line736"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><span style="color: #000088;">$set_url_templates</span><span style="color: #339933;">=</span><span style="color: #009900; font-weight: bold;">false</span><br />
+<a name="line737"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><br />
+<a name="line738"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#123;</span><br />
+<a name="line739"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">return</span> <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">getAllFromAPI</span><span style="color: #009900;">&#40;</span><br />
+<a name="line740"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+<a name="line741"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'$arOrder'</span><span style="color: #339933;">=&gt;</span><span style="color: #000088;">$arOrde</span><br />
+<a name="line742"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><span style="color: #0000ff;">'$arFilter'</span><span style="color: #339933;">=&gt;</span><span style="color: #000088;">$arFilter</span><br />
+<a name="line743"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><span style="color: #0000ff;">'$arGroupBy'</span><span style="color: #339933;">=&gt;</span><span style="color: #000088;">$arGroupBy</span><br />
+<a name="line744"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><span style="color: #0000ff;">'$arNavStartParams'</span><span style="color: #339933;">=&gt;</span><span style="color: #000088;">$arNavStartParams</span><br />
+<a name="line745"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><span style="color: #0000ff;">'$arSelectFields'</span><span style="color: #339933;">=&gt;</span><span style="color: #000088;">$arSelectFields</span><br />
+<a name="line746"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><span style="color: #0000ff;">'set_cache'</span><span style="color: #339933;">=&gt;</span><span style="color: #000088;">$set_cache</span><br />
+<a name="line747"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><span style="color: #0000ff;">'set_parser'</span><span style="color: #339933;">=&gt;</span><span style="color: #000088;">$callback</span><br />
+<a name="line748"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><span style="color: #0000ff;">'get_section'</span><span style="color: #339933;">=&gt;</span>false<br />
+<a name="line749"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><span style="color: #0000ff;">'set_sef'</span><span style="color: #339933;">=&gt;</span><span style="color: #000088;">$set_url_templates</span><br />
+<a name="line750"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><span style="color: #0000ff;">'get_prop'</span><span style="color: #339933;">=&gt;</span><span style="color: #000088;">$get_prop</span><br />
+<a name="line751"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><span style="color: #0000ff;">'set_key_id'</span><span style="color: #339933;">=&gt;</span><span style="color: #000088;">$key_is_id</span><br />
+<a name="line752"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><span style="color: #0000ff;">'get_first'</span><span style="color: #339933;">=&gt;</span><span style="color: #000088;">$get_first_array_key</span><span style="color: #339933;">,</span><br />
+<a name="line753"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><br />
+<a name="line754"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line755"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line756"></a>&nbsp; &nbsp; &nbsp; &nbsp; <br />
+<a name="line757"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009933; font-style: italic;">/**<br />
+<a name="line758"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* <br />
+<a name="line759"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Получить первый элемент массива как ключ или значение.<br />
+<a name="line760"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* <br />
+<a name="line761"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @param array $array <br />
+<a name="line762"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Массив для обработки.<br />
+<a name="line763"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*<br />
+<a name="line764"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @param boolean $get_value <br />
+<a name="line765"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Нужно значение массива?<br />
+<a name="line766"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* <br />
+<a name="line767"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @access public<br />
+<a name="line768"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @return string<br />
+<a name="line769"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</span><br />
+<a name="line770"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">function</span> getFirstArrayKey<span style="color: #009900;">&#40;</span><span style="color: #000088;">$array</span><span style="color: #339933;">,</span><span style="color: #000088;">$get_value</span><span style="color: #339933;">=</span><span style="color: #009900; font-weight: bold;">false</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span><br />
+<a name="line771"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$tmp</span> <span style="color: #339933;">=</span> <a href="http://www.php.net/each"><span style="color: #990000;">each</span></a><span style="color: #009900;">&#40;</span><span style="color: #000088;">$array</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line772"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://www.php.net/list"><span style="color: #990000;">list</span></a><span style="color: #009900;">&#40;</span><span style="color: #000088;">$key</span><span style="color: #339933;">,</span> <span style="color: #000088;">$value</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">=</span><span style="color: #000088;">$tmp</span><span style="color: #339933;">;</span><br />
+<a name="line773"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">if</span> <span style="color: #009900;">&#40;</span><span style="color: #339933;">!</span><span style="color: #000088;">$get_value</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span><br />
+<a name="line774"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009933; font-style: italic;">/**<br />
+<a name="line775"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Если нужен ключ.<br />
+<a name="line776"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</span><br />
+<a name="line777"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">return</span> <span style="color: #000088;">$key</span><span style="color: #339933;">;</span><br />
+<a name="line778"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><span style="color: #b1b100;">else</span> <span style="color: #009900;">&#123;</span><br />
+<a name="line779"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009933; font-style: italic;">/**<br />
+<a name="line780"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Если нужно получить значение параметра.<br />
+<a name="line781"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</span><br />
+<a name="line782"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">return</span> <span style="color: #000088;">$value</span><span style="color: #339933;">;</span><br />
+<a name="line783"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line784"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line785"></a>&nbsp; &nbsp; &nbsp; &nbsp; <br />
+<a name="line786"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009933; font-style: italic;">/**<br />
+<a name="line787"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Повторно сохранить файл с выводом данных о нём.<br />
+<a name="line788"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* <br />
+<a name="line789"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @param int $id <br />
+<a name="line790"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @access public<br />
+<a name="line791"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @return array<br />
+<a name="line792"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</span><br />
+<a name="line793"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">function</span> getIMGbyIDToSave <span style="color: #009900;">&#40;</span><span style="color: #000088;">$id</span><span style="color: #009900;">&#41;</span><br />
+<a name="line794"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#123;</span><br />
+<a name="line795"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">return</span> CFile<span style="color: #339933;">::</span><span style="color: #004000;">MakeFileArray</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$id</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line796"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line797"></a>&nbsp; &nbsp; &nbsp; &nbsp; <br />
+<a name="line798"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009933; font-style: italic;">/**<br />
+<a name="line799"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Получить адреса файлов по ID.<br />
+<a name="line800"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* <br />
+<a name="line801"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @param array $id <br />
+<a name="line802"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @access public<br />
+<a name="line803"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @return array<br />
+<a name="line804"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</span><br />
+<a name="line805"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">function</span> getIMGbyFileIDToSRC<span style="color: #009900;">&#40;</span><span style="color: #000088;">$id</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span><br />
+<a name="line806"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">if</span> <span style="color: #009900;">&#40;</span><a href="http://www.php.net/is_array"><span style="color: #990000;">is_array</span></a><span style="color: #009900;">&#40;</span><span style="color: #000088;">$id</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span><br />
+<a name="line807"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">foreach</span> <span style="color: #009900;">&#40;</span><span style="color: #000088;">$id</span> <span style="color: #b1b100;">as</span> <span style="color: #000088;">$id_title</span> <span style="color: #339933;">=&gt;</span> <span style="color: #000088;">$id_value</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span><br />
+<a name="line808"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$file_tmp</span> <span style="color: #339933;">=</span> CFile<span style="color: #339933;">::</span><span style="color: #004000;">GetFileArray</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$id_value</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line809"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$file</span><span style="color: #009900;">&#91;</span><span style="color: #000088;">$id_title</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">=</span><span style="color: #000088;">$file_tmp</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'SRC'</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">;</span><br />
+<a name="line810"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line811"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><span style="color: #b1b100;">else</span> <span style="color: #009900;">&#123;</span><br />
+<a name="line812"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$file_tmp</span> <span style="color: #339933;">=</span> CFile<span style="color: #339933;">::</span><span style="color: #004000;">GetFileArray</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$id</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line813"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$file</span><span style="color: #339933;">=</span><span style="color: #000088;">$file_tmp</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'SRC'</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">;</span><br />
+<a name="line814"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line815"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">return</span> <span style="color: #000088;">$file</span><span style="color: #339933;">;</span><br />
+<a name="line816"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line817"></a>&nbsp; &nbsp; &nbsp; &nbsp; <br />
+<a name="line818"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009933; font-style: italic;">/**<br />
+<a name="line819"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Получить длину UTF8 строки.<br />
+<a name="line820"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* <br />
+<a name="line821"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @param mixed $str <br />
+<a name="line822"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @access public<br />
+<a name="line823"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* @return void<br />
+<a name="line824"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</span><br />
+<a name="line825"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">function</span> getStrlenUTF8<span style="color: #009900;">&#40;</span><span style="color: #000088;">$str</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span><br />
+<a name="line826"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">if</span> <span style="color: #009900;">&#40;</span><a href="http://www.php.net/function_exists"><span style="color: #990000;">function_exists</span></a><span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'mb_strlen'</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span> <br />
+<a name="line827"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">return</span> <a href="http://www.php.net/mb_strlen"><span style="color: #990000;">mb_strlen</span></a><span style="color: #009900;">&#40;</span><span style="color: #000088;">$str</span><span style="color: #339933;">,</span> <span style="color: #0000ff;">'utf-8'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line828"></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">return</span> <a href="http://www.php.net/strlen"><span style="color: #990000;">strlen</span></a><span style="color: #009900;">&#40;</span><a href="http://www.php.net/utf8_decode"><span style="color: #990000;">utf8_decode</span></a><span style="color: #009900;">&#40;</span><span style="color: #000088;">$str</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+<a name="line829"></a>&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+<a name="line830"></a><span style="color: #009900;">&#125;</span><br />
+<a name="line831"></a><span style="color: #000000; font-weight: bold;">?&gt;</span><br />
+<a name="line832"></a>&nbsp;
+<div class="header">
+<h1>evnine</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li>Package</li><li>Class</li><li>Tree</li><li><a href="../overview-files.html">Files</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../todo-list.html">Todo</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../source\models\modelsbitrix.php.html" target="_top">No frames</a>
+</div>
+<hr>
+
+<p id="footer"></p>
+
+</body>
+
+</html>

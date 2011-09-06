@@ -1,0 +1,348 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
+<meta name="when" content="Mon, 05 Sep 2011 20:09:11 +0000">
+
+<link rel="stylesheet" type="text/css" href="../stylesheet.css">
+<link rel="start" href="../overview-summary.html">
+
+<title>EvnineConfig (evnine)</title>
+
+</head>
+<body id="definition" onload="parent.document.title=document.title;">
+
+<div class="header">
+<h1>evnine</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="../evnineconfig/package-summary.html">Namespace</a></li>
+<li class="active">Class</li>
+<li><a href="../evnineconfig/package-tree.html">Tree</a></li>
+<li><a href="../overview-files.html">Files</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../todo-list.html">Todo</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../evnineconfig\evnineconfig.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<div class="qualifiedName">EvnineConfig\EvnineConfig</div>
+<a href="../source/evnine.config.php.html#line24" class="location">evnine.config.php at line 24</a>
+
+<h1>Class EvnineConfig</h1>
+
+<pre class="tree"><strong>EvnineConfig</strong><br /></pre>
+
+<dl>
+<dt>All Known Subclasses:</dt>
+<dd><a href="../evninecontroller/evninecontroller.html">EvnineController\EvnineController</a> </dd>
+</dl>
+
+<hr>
+
+<p class="signature">public  class <strong>EvnineConfig</strong></p>
+
+<div class="comment" id="overview_description">&nbsp;Конфигурационный файл<span style="color: #339933;">.</span><br />
+&nbsp;<br />
+&nbsp;Альтернативный способ задания конфигурации<span style="color: #339933;">.</span><br />
+&nbsp;<br />
+&nbsp;<span style="color: #339933;">/</span>index<span style="color: #339933;">.</span>php<br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">include_once</span> <span style="color: #0000ff;">'evnine.php'</span><span style="color: #339933;">;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">class</span> EvnineConfig<span style="color: #009900;">&#123;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">function</span> __construct<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">controller_alias</span><span style="color: #339933;">=</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'helloworld'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'ControllersHelloWorld'</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="color: #009900;">&#125;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$evnine</span> <span style="color: #339933;">=</span> <span style="color: #000000; font-weight: bold;">new</span> EvnineController<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></div>
+
+<dl>
+<dt>Version:</dt>
+<dd><p>1</p></dd>
+<dt>Copyright:</dt>
+<dd><p>2009-2012 ev9eniy.info</p></dd>
+<dt>Author:</dt>
+<dd><p>ev9eniy.info</p></dd>
+</dl>
+<hr>
+
+<table id="summary_field">
+<tr><th colspan="2">Field Summary</th></tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#access_level">$access_level</a></p><p class="description"></p></td>
+</tr>
+<tr>
+<td class="type"> string</td>
+<td class="description"><p class="name"><a href="#api">$api</a></p><p class="description"></p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#class_path">$class_path</a></p><p class="description"></p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#controller_alias">$controller_alias</a></p><p class="description"></p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#param_const">$param_const</a></p><p class="description"></p></td>
+</tr>
+<tr>
+<td class="type"> string</td>
+<td class="description"><p class="name"><a href="#path_to">$path_to</a></p><p class="description"></p></td>
+</tr>
+</table>
+
+<table id="summary_constructor">
+<tr><th colspan="2">Constructor Summary</th></tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#__construct()">__construct</a>()</p></td>
+</tr>
+</table>
+
+<h2 id="detail_field">Field Detail</h2>
+<a href="../source/evnine.config.php.html#line43" class="location">evnine.config.php at line 43</a>
+
+<h3 id="access_level">access_level</h3>
+<code class="signature">public  array <strong>$access_level</strong></code>
+<div class="details">
+<p>&nbsp;Уровни доступа заданы в<span style="color: #339933;">:</span><br />
+&nbsp;<span style="color: #339933;">/</span>evnine<span style="color: #339933;">.</span>config<span style="color: #339933;">.</span>php<br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">access_level</span><span style="color: #339933;">=</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'admin'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'2'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'user'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'1'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'guest'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'0'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></p><dl>
+<dt>See Also:</dt>
+<dd><p><a href="../evninecontroller/evninecontroller.html#isUserHasAccessForMethod()">EvnineController.isUserHasAccessForMethod</a></p></dd>
+<dd><p><a href="../controllers/controllersexample.html#__construct()">Controllers.__construct</a></p></dd>
+<dd><p><a href="../evninecontroller/evninecontroller.html#access_level">EvnineController.access_level</a></p></dd>
+<dd><p><a href="../evnineconfig/evnineconfig.html#access_level">EvnineConfig.access_level</a></p></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/evnine.config.php.html#line82" class="location">evnine.config.php at line 82</a>
+
+<h3 id="api">api</h3>
+<code class="signature">public  string <strong>$api</strong></code>
+<div class="details">
+<p>&nbsp;Название API <span style="color: #009900;">&#40;</span><a href="http://www.php.net/mysql"><span style="color: #990000;">MySQL</span></a><span style="color: #339933;">,</span> итд<span style="color: #009900;">&#41;</span><br />
+&nbsp;<br />
+&nbsp;<span style="color: #339933;">/</span>evnine<span style="color: #339933;">.</span>config<span style="color: #339933;">.</span>php<br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">api</span><span style="color: #339933;">=</span><span style="color: #0000ff;">'ModelsMySQL'</span><span style="color: #339933;">;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <br />
+&nbsp;Путь до класса задаётся в<span style="color: #339933;">:</span> <br />
+&nbsp;<span style="color: #339933;">/</span>evnine<span style="color: #339933;">.</span>config<span style="color: #339933;">.</span>php<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="color: #000088;">$class_path</span><span style="color: #339933;">=</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'ModelsMySQL'</span><span style="color: #339933;">=&gt;</span>array<span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'path'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'models/'</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'param'</span><span style="color: #339933;">=&gt;</span>array<span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'host'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'localhost'</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'login'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'root'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'pass'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'pass'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <br />
+&nbsp;Объявляться<span style="color: #339933;">:</span><br />
+&nbsp;<span style="color: #339933;">/</span>evnine<span style="color: #339933;">.</span>php<br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">if</span> <span style="color: #009900;">&#40;</span><span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">isSetClassToLoadAndSetParam</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">api</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">loaded_class</span><span style="color: #009900;">&#91;</span><span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">api</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">setInitAPI</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">param</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <br />
+&nbsp;<span style="color: #339933;">/</span>models<span style="color: #339933;">/</span>ModelsMySQL<span style="color: #339933;">.</span>php<br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">function</span> setInitAPI<span style="color: #009900;">&#40;</span><span style="color: #000088;">$param</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">mysql</span><span style="color: #339933;">=</span><a href="http://www.php.net/mysql_connect"><span style="color: #990000;">mysql_connect</span></a><span style="color: #009900;">&#40;</span><span style="color: #000088;">$param</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'host'</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">,</span><span style="color: #000088;">$param</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'login'</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">,</span><span style="color: #000088;">$param</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'pass'</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span></p><dl>
+<dt>See Also:</dt>
+<dd><p><a href="../evninecontroller/evninecontroller.html#__construct()">EvnineController.__construct</a></p></dd>
+<dd><p>ModelsMySQL.setInitAPI</p></dd>
+<dd><p><a href="../evninecontroller/evninecontroller.html#api">EvnineController.api</a></p></dd>
+<dd><p><a href="../evnineconfig/evnineconfig.html#api">EvnineConfig.api</a></p></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/evnine.config.php.html#line127" class="location">evnine.config.php at line 127</a>
+
+<h3 id="class_path">class_path</h3>
+<code class="signature">public  array <strong>$class_path</strong></code>
+<div class="details">
+<p>&nbsp;Путь до классов моделей и переменные инициализации по умолчанию<br />
+&nbsp;<br />
+&nbsp;Вызываются модели в контроллерах<span style="color: #339933;">:</span><br />
+&nbsp;<span style="color: #339933;">/</span>controllers<span style="color: #339933;">/</span>Controllers<span style="color: #339933;">.</span>php<br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">controller</span><span style="color: #339933;">=</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ModelsHelloWorld <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'getHelloWorld'</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <br />
+&nbsp;ВАЖНО<span style="color: #339933;">:</span><br />
+&nbsp;Без указания пути<span style="color: #339933;">,</span> считается что все модели лежат в <span style="color: #339933;">/</span>models<span style="color: #339933;">/</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <br />
+&nbsp;Так же могут быть заданы в<span style="color: #339933;">:</span><br />
+&nbsp;<span style="color: #339933;">/</span>evnine<span style="color: #339933;">.</span>config<span style="color: #339933;">.</span>php<br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">class_path</span><span style="color: #339933;">=</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'ModelsHelloWorld'</span><span style="color: #339933;">=&gt;</span>array<span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">//</span> Название класса<span style="color: #339933;">,</span> совпадает с названием файла класса<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">//</span> ModelsHelloWorld<span style="color: #339933;">.</span>php <span style="color: #339933;">=</span> <span style="color: #000000; font-weight: bold;">class</span> ModelsHelloWorld<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'path'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'models'</span><span style="color: #339933;">.</span><span style="color: #009900; font-weight: bold;">DIRECTORY_SEPARATOR</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="color: #339933;">//</span> Путь до класса<span style="color: #339933;">.</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'param'</span><span style="color: #339933;">=&gt;</span>array<span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">//</span> Параметры которые передаются при инициализации класса<span style="color: #339933;">.</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'hello'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'config'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><br />
+&nbsp;<span style="color: #009900;">&#41;</span><br />
+&nbsp;<br />
+&nbsp;ВАЖНО<span style="color: #339933;">:</span> Весомым приоритетом обладают параметры<span style="color: #339933;">,</span> переданные <br />
+&nbsp;при инициализации базового контроллера<br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$evnine</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">getControllerForParam</span><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'hello'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'supper_config'</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><br />
+&nbsp;<span style="color: #339933;">&lt;&lt;</span> supper_config</p><dl>
+<dt>See Also:</dt>
+<dd><p><a href="../controllers/controllersexample.html#controller">Controllers.controller</a></p></dd>
+<dd><p><a href="../evninecontroller/evninecontroller.html#getDataFromMethod()">EvnineController.getDataFromMethod</a></p></dd>
+<dd><p><a href="../evninecontroller/evninecontroller.html#class_path">EvnineController.class_path</a></p></dd>
+<dd><p><a href="../evnineconfig/evnineconfig.html#class_path">EvnineConfig.class_path</a></p></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/evnine.config.php.html#line150" class="location">evnine.config.php at line 150</a>
+
+<h3 id="controller_alias">controller_alias</h3>
+<code class="signature">public  array <strong>$controller_alias</strong></code>
+<div class="details">
+<p>&nbsp;Псевдонимы названий контроллеров в папке <span style="color: #339933;">/</span>controllers<span style="color: #339933;">/</span> <br />
+&nbsp;задаются в<span style="color: #339933;">:</span> <br />
+&nbsp;<span style="color: #339933;">/</span>evnine<span style="color: #339933;">.</span>config<span style="color: #339933;">.</span>php<br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">controller_alias</span><span style="color: #339933;">=</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'helloworld'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'ControllersHelloWorld'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+&nbsp;<br />
+&nbsp;Альтернативный вариант с указанием пути<span style="color: #339933;">.</span><br />
+&nbsp;<span style="color: #339933;">/</span>evnine<span style="color: #339933;">.</span>config<span style="color: #339933;">.</span>php<br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'helloworld'</span><span style="color: #339933;">=&gt;</span>array<span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'class_name'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'ControllersHelloWorld'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'path'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'controllers'</span><span style="color: #339933;">.</span><span style="color: #009900; font-weight: bold;">DIRECTORY_SEPARATOR</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span></p><dl>
+<dt>See Also:</dt>
+<dd><p><a href="../evninecontroller/evninecontroller.html#setLoadController()">EvnineController.setLoadController</a></p></dd>
+<dd><p><a href="../evninecontroller/evninecontroller.html#controller_alias">EvnineController.controller_alias</a></p></dd>
+<dd><p><a href="../evnineconfig/evnineconfig.html#controller_alias">EvnineConfig.controller_alias</a></p></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/evnine.config.php.html#line178" class="location">evnine.config.php at line 178</a>
+
+<h3 id="param_const">param_const</h3>
+<code class="signature">public  array <strong>$param_const</strong></code>
+<div class="details">
+<p>&nbsp;Параметры инициализации<span style="color: #339933;">.</span> <br />
+&nbsp;Передаются во все методы<span style="color: #339933;">.</span><br />
+<br />
+&nbsp;<span style="color: #339933;">/</span>evnine<span style="color: #339933;">.</span>config<span style="color: #339933;">.</span>php<br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">param_const</span><span style="color: #339933;">=</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">//</span> Контроллер по умолчанию<span style="color: #339933;">.</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">//</span> <span style="color: #339933;">&gt;&gt;</span> <span style="color: #339933;">/</span>?c<span style="color: #339933;">=</span>m<span style="color: #339933;">=&amp;</span>param<span style="color: #339933;">=</span><span style="color: #cc66cc;">777</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">//</span> <span style="color: #339933;">&lt;&lt;</span> <span style="color: #339933;">/</span>?c<span style="color: #339933;">=</span>default_controllerm<span style="color: #339933;">=</span>default<span style="color: #339933;">&amp;</span>param<span style="color: #339933;">=</span><span style="color: #cc66cc;">777</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'default_controller'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'default_controller'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">//</span> Режим отладки<span style="color: #339933;">.</span> <br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">//</span> Нужен для отслеживания изменения в <span style="color: #000088;">$param</span> от метода к методу<span style="color: #339933;">.</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'debug'</span><span style="color: #339933;">=&gt;</span>true<span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">//</span> Общая папка для кэша<span style="color: #339933;">.</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'CacheDir'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'PHPUnitCache'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">//</span> Папка для хранения PHPUnit тестов<span style="color: #339933;">.</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'CacheDirPHPUnit'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'PHPUnitCache'</span><span style="color: #339933;">.</span><span style="color: #009900; font-weight: bold;">DIRECTORY_SEPARATOR</span><span style="color: #339933;">.</span><span style="color: #0000ff;">'PHPUnit'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">//</span> Папка для хранения промежуточных данных<span style="color: #339933;">.</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'CacheDirControllerForParam'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'PHPUnitCache'</span><span style="color: #339933;">.</span><span style="color: #009900; font-weight: bold;">DIRECTORY_SEPARATOR</span><span style="color: #339933;">.</span><span style="color: #0000ff;">'getControllerForParam'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span> </p><dl>
+<dt>See Also:</dt>
+<dd><p><a href="../evninecontroller/evninecontroller.html#getDataFromMethod()">EvnineController.getDataFromMethod</a></p></dd>
+<dd><p><a href="../evninecontroller/evninecontroller.html#param_const">EvnineController.param_const</a></p></dd>
+<dd><p><a href="../evnineconfig/evnineconfig.html#param_const">EvnineConfig.param_const</a></p></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/evnine.config.php.html#line189" class="location">evnine.config.php at line 189</a>
+
+<h3 id="path_to">path_to</h3>
+<code class="signature">public  string <strong>$path_to</strong></code>
+<div class="details">
+<p><p>Абсолютный путь<br>
+ Используется при подключении классов моделей и контроллеров<br></p></p><dl>
+<dt>See Also:</dt>
+<dd><p><a href="../evninecontroller/evninecontroller.html#path_to">EvnineController.path_to</a></p></dd>
+<dd><p><a href="../evnineconfig/evnineconfig.html#path_to">EvnineConfig.path_to</a></p></dd>
+</dl>
+</div>
+
+<hr>
+
+<h2 id="detail_method">Constructor Detail</h2>
+<a href="../source/evnine.config.php.html#line191" class="location">evnine.config.php at line 191</a>
+
+<h3 id="__construct()">__construct</h3>
+<code class="signature">public  void <strong>__construct</strong>()</code>
+<div class="details">
+</div>
+
+<hr>
+
+<div class="header">
+<h1>evnine</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="../evnineconfig/package-summary.html">Namespace</a></li>
+<li class="active">Class</li>
+<li><a href="../evnineconfig/package-tree.html">Tree</a></li>
+<li><a href="../overview-files.html">Files</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../todo-list.html">Todo</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../evnineconfig\evnineconfig.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<p id="footer"></p>
+
+</body>
+
+</html>

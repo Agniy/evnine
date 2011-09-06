@@ -1,0 +1,1305 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
+<meta name="when" content="Mon, 05 Sep 2011 20:11:07 +0000">
+
+<link rel="stylesheet" type="text/css" href="../stylesheet.css">
+<link rel="start" href="../overview-summary.html">
+
+<title>EvnineController (evnine)</title>
+
+</head>
+<body id="definition" onload="parent.document.title=document.title;">
+
+<div class="header">
+<h1>evnine</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="../evninecontroller/package-summary.html">Namespace</a></li>
+<li class="active">Class</li>
+<li><a href="../evninecontroller/package-tree.html">Tree</a></li>
+<li><a href="../overview-files.html">Files</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../todo-list.html">Todo</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../evninecontroller\evninecontroller.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<div class="qualifiedName">EvnineController\EvnineController</div>
+<a href="../source/evnine.php.html#line22" class="location">evnine.php at line 22</a>
+
+<h1>Class EvnineController</h1>
+
+<pre class="tree"><a href="../evnineconfig/evnineconfig.html">EvnineConfig</a><br>    L-<strong>EvnineController</strong><br /></pre>
+
+<hr>
+
+<p class="signature">public  class <strong>EvnineController</strong><br>extends <a href="../evnineconfig/evnineconfig.html">EvnineConfig</a>
+
+</p>
+
+<div class="comment" id="overview_description"><p>To inherit the configuration.<br>
+ 
+ Total output error<br>
+ error_reporting(E_ERROR|E_RECOVERABLE_ERROR|E_PARSE|E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR);<br>
+ Do not display errors<br>
+ error_reporting(0);<br></p></div>
+
+<dl>
+<dt>Version:</dt>
+<dd><p>1</p></dd>
+<dt>Copyright:</dt>
+<dd><p>2009-2012 ev9eniy.info</p></dd>
+<dt>Author:</dt>
+<dd><p>ev9eniy.info</p></dd>
+</dl>
+<hr>
+
+<table id="summary_field">
+<tr><th colspan="2">Field Summary</th></tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#access_level">$access_level</a></p><p class="description"></p></td>
+</tr>
+<tr>
+<td class="type"> string</td>
+<td class="description"><p class="name"><a href="#api">$api</a></p><p class="description"></p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#class_path">$class_path</a></p><p class="description"></p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#controller_alias">$controller_alias</a></p><p class="description"></p></td>
+</tr>
+<tr>
+<td class="type"> string</td>
+<td class="description"><p class="name"><a href="#current_controller">$current_controller</a></p><p class="description"></p></td>
+</tr>
+<tr>
+<td class="type"> string</td>
+<td class="description"><p class="name"><a href="#current_controller_name">$current_controller_name</a></p><p class="description"></p></td>
+</tr>
+<tr>
+<td class="type"> boolean</td>
+<td class="description"><p class="name"><a href="#debug">$debug</a></p><p class="description"></p></td>
+</tr>
+<tr>
+<td class="type"> boolean</td>
+<td class="description"><p class="name"><a href="#isHasAccessSaveCheck">$isHasAccessSaveCheck</a></p><p class="description"></p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#loaded_class">$loaded_class</a></p><p class="description"></p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#loaded_controller">$loaded_controller</a></p><p class="description"></p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#param">$param</a></p><p class="description"></p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#param_const">$param_const</a></p><p class="description"></p></td>
+</tr>
+<tr>
+<td class="type"> string</td>
+<td class="description"><p class="name"><a href="#path_to">$path_to</a></p><p class="description"></p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#result">$result</a></p><p class="description"></p></td>
+</tr>
+<tr>
+<td class="type"> bool</td>
+<td class="description"><p class="name"><a href="#sef_mode">$sef_mode</a></p><p class="description"></p></td>
+</tr>
+</table>
+
+<table class="inherit">
+<tr><th colspan="2">Fields inherited from EvnineConfig\EvnineConfig</th></tr>
+<tr><td><a href="../evnineconfig/evnineconfig.html#access_level">access_level</a>, <a href="../evnineconfig/evnineconfig.html#api">api</a>, <a href="../evnineconfig/evnineconfig.html#class_path">class_path</a>, <a href="../evnineconfig/evnineconfig.html#controller_alias">controller_alias</a>, <a href="../evnineconfig/evnineconfig.html#param_const">param_const</a>, <a href="../evnineconfig/evnineconfig.html#path_to">path_to</a></td></tr></table>
+
+<table id="summary_constructor">
+<tr><th colspan="2">Constructor Summary</th></tr>
+<tr>
+<td class="type">protected  void</td>
+<td class="description"><p class="name"><a href="#__construct()">__construct</a>()</p><p class="description">The class constructor.</p></td>
+</tr>
+</table>
+
+<table id="summary_method">
+<tr><th colspan="2">Method Summary</th></tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#getControllerForParam()">getControllerForParam</a>(array param)</p><p class="description">Get data from the controller.</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#getURNbySEF()">getURNbySEF</a>(string sef)</p><p class="description">Get data from the SEF string.</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#getURL()">getURL</a>(boolean seo)</p><p class="description">Get the URN for the methods in the controller.</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#getURNTemplate()">getURNTemplate</a>()</p><p class="description">Constant references to the template on different methods.</p></td>
+</tr>
+<tr>
+<td class="type"> string</td>
+<td class="description"><p class="name"><a href="#getControllerURN()">getControllerURN</a>(string contoller_name, string seo)</p><p class="description">Get the URN of the controller.</p></td>
+</tr>
+<tr>
+<td class="type"> string</td>
+<td class="description"><p class="name"><a href="#getMethodURN()">getMethodURN</a>(string contoller_name, string seo, mixed method)</p><p class="description">Get the URN of the method name.</p></td>
+</tr>
+<tr>
+<td class="type"> string</td>
+<td class="description"><p class="name"><a href="#getInputFormText()">getInputFormText</a>(string name, string value, string multi_form)</p><p class="description">Get to the form input from string.</p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#getInputsFromArray()">getInputsFromArray</a>(array validate, string multi_form)</p><p class="description">Get to the form input from validation array.</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#getURLFromArray()">getURLFromArray</a>(array validate, boolean seo, boolean is_add)</p><p class="description">Get a URN from an array of validation.</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#getURNForTitleAndValue()">getURNForTitleAndValue</a>(array array_out, boolean in_url, string to, string _title, array REQUEST_OUT, boolean|array seo)</p><p class="description">Get the URN part for the name and parameter value.</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#setLoadController()">setLoadController</a>(string set_controller)</p><p class="description">Initialize the controller.</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#getDataFromController()">getDataFromController</a>(array param, boolean debug)</p><p class="description">The basic method to get data from the controller with parameters.</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#getAvailableTemplates()">getAvailableTemplates</a>(array available_templ)</p><p class="description">Display the available templates for the access level.</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#getMethodFromClass()">getMethodFromClass</a>(string methods_class, array methods_array)</p><p class="description">Call the methods in the class.</p></td>
+</tr>
+<tr>
+<td class="type"> boolean</td>
+<td class="description"><p class="name"><a href="#isSetClassToLoadAndSetParam()">isSetClassToLoadAndSetParam</a>(string methods_class, boolean config_models)</p><p class="description">The class is initialized? If not, load it and add the parameters from the config.</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#getDataFromMethod()">getDataFromMethod</a>(string methods_class, array methods_array)</p><p class="description">Get data from the class methods.</p></td>
+</tr>
+<tr>
+<td class="type"> bool</td>
+<td class="description"><p class="name"><a href="#isUserHasAccessForMethod()">isUserHasAccessForMethod</a>(string methods_class, string methods_array_value)</p><p class="description">Is there access to a method for this user?</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#isGetMethodForAnswer()">isGetMethodForAnswer</a>(string method, boolean methods_case)</p><p class="description">Select the method for answer.</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#getPublicMethod()">getPublicMethod</a>(array param)</p><p class="description">Call public method.</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#getPrivateMethod()">getPrivateMethod</a>(string method)</p><p class="description">Call private method.</p></td>
+</tr>
+<tr>
+<td class="type"> string</td>
+<td class="description"><p class="name"><a href="#getFirstArrayKey()">getFirstArrayKey</a>(array array, boolean get_value)</p><p class="description">Get the first element of the array as a key or value.</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#getControllerForParamTest()">getControllerForParamTest</a>(string method, array array_init, array param)</p><p class="description">A method for testing an controllers.</p></td>
+</tr>
+</table>
+
+<table class="inherit">
+<tr><th colspan="2">Methods inherited from EvnineConfig\EvnineConfig</th></tr>
+<tr><td><a href="../evnineconfig/evnineconfig.html#__construct()">__construct</a></td></tr></table>
+
+<h2 id="detail_field">Field Detail</h2>
+<a href="../source/evnine.php.html#line41" class="location">evnine.php at line 41</a>
+
+<h3 id="access_level">access_level</h3>
+<code class="signature">public  array <strong>$access_level</strong></code>
+<div class="details">
+<p>&nbsp;Access levels are set at<span style="color: #339933;">:</span><br />
+&nbsp;<span style="color: #339933;">/</span>evnine<span style="color: #339933;">.</span>config<span style="color: #339933;">.</span>php<br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">access_level</span><span style="color: #339933;">=</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'admin'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'2'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'user'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'1'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'guest'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'0'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></p><dl>
+<dt>See Also:</dt>
+<dd><p><a href="../evninecontroller/evninecontroller.html#isUserHasAccessForMethod()">EvnineController.isUserHasAccessForMethod</a></p></dd>
+<dd><p><a href="../controllers/controllersexample.html#__construct()">Controllers.__construct</a></p></dd>
+<dd><p><a href="../evninecontroller/evninecontroller.html#access_level">EvnineController.access_level</a></p></dd>
+<dd><p><a href="../evnineconfig/evnineconfig.html#access_level">EvnineConfig.access_level</a></p></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/evnine.php.html#line80" class="location">evnine.php at line 80</a>
+
+<h3 id="api">api</h3>
+<code class="signature">public  string <strong>$api</strong></code>
+<div class="details">
+<p>&nbsp;Alias API <span style="color: #009900;">&#40;</span><a href="http://www.php.net/mysql"><span style="color: #990000;">MySQL</span></a><span style="color: #339933;">,</span> etc<span style="color: #339933;">.</span><span style="color: #009900;">&#41;</span> <br />
+&nbsp;<br />
+&nbsp;<span style="color: #339933;">/</span>evnine<span style="color: #339933;">.</span>config<span style="color: #339933;">.</span>php<br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">api</span><span style="color: #339933;">=</span><span style="color: #0000ff;">'ModelsMySQL'</span><span style="color: #339933;">;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <br />
+&nbsp;The path to the <span style="color: #000000; font-weight: bold;">class</span> specified in the<span style="color: #339933;">:</span><br />
+&nbsp;<span style="color: #339933;">/</span>evnine<span style="color: #339933;">.</span>config<span style="color: #339933;">.</span>php<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="color: #000088;">$class_path</span><span style="color: #339933;">=</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'ModelsMySQL'</span><span style="color: #339933;">=&gt;</span>array<span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'path'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'models/'</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'param'</span><span style="color: #339933;">=&gt;</span>array<span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'host'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'localhost'</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'login'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'root'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'pass'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'pass'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <br />
+&nbsp;Initialize<span style="color: #339933;">:</span><br />
+&nbsp;<span style="color: #339933;">/</span>evnine<span style="color: #339933;">.</span>php<br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">if</span> <span style="color: #009900;">&#40;</span><span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">isSetClassToLoadAndSetParam</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">api</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">loaded_class</span><span style="color: #009900;">&#91;</span><span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">api</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">setInitAPI</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">param</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <br />
+&nbsp;<span style="color: #339933;">/</span>models<span style="color: #339933;">/</span>ModelsMySQL<span style="color: #339933;">.</span>php<br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">function</span> setInitAPI<span style="color: #009900;">&#40;</span><span style="color: #000088;">$param</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">mysql</span><span style="color: #339933;">=</span><a href="http://www.php.net/mysql_connect"><span style="color: #990000;">mysql_connect</span></a><span style="color: #009900;">&#40;</span><span style="color: #000088;">$param</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'host'</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">,</span><span style="color: #000088;">$param</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'login'</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">,</span><span style="color: #000088;">$param</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'pass'</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span></p><dl>
+<dt>See Also:</dt>
+<dd><p><a href="../evninecontroller/evninecontroller.html#__construct()">EvnineController.__construct</a></p></dd>
+<dd><p>ModelsMySQL.setInitAPI</p></dd>
+<dd><p><a href="../evninecontroller/evninecontroller.html#api">EvnineController.api</a></p></dd>
+<dd><p><a href="../evnineconfig/evnineconfig.html#api">EvnineConfig.api</a></p></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/evnine.php.html#line125" class="location">evnine.php at line 125</a>
+
+<h3 id="class_path">class_path</h3>
+<code class="signature">public  array <strong>$class_path</strong></code>
+<div class="details">
+<p>&nbsp;Path to the classes of models and variables are initialized by <span style="color: #b1b100;">default</span><br />
+&nbsp;<br />
+&nbsp;Caused by a model in the controller<span style="color: #339933;">:</span><br />
+&nbsp;<span style="color: #339933;">/</span>controllers<span style="color: #339933;">/</span>Controllers<span style="color: #339933;">.</span>php<br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">controller</span><span style="color: #339933;">=</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ModelsHelloWorld <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'getHelloWorld'</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <br />
+&nbsp;IMPORTANT<span style="color: #339933;">:</span><br />
+&nbsp;Without specifying the path<span style="color: #339933;">,</span> all the models set in <span style="color: #339933;">/</span>models<span style="color: #339933;">/</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <br />
+&nbsp;Also<span style="color: #339933;">,</span> may set in<span style="color: #339933;">:</span><br />
+&nbsp;<span style="color: #339933;">/</span>evnine<span style="color: #339933;">.</span>config<span style="color: #339933;">.</span>php<br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">class_path</span><span style="color: #339933;">=</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'ModelsHelloWorld'</span><span style="color: #339933;">=&gt;</span>array<span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">//</span> <span style="color: #000000; font-weight: bold;">class</span> name is the same <span style="color: #b1b100;">as</span> the <span style="color: #000000; font-weight: bold;">class</span> <a href="http://www.php.net/file"><span style="color: #990000;">file</span></a><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">//</span> ModelsHelloWorld<span style="color: #339933;">.</span>php <span style="color: #339933;">=</span> <span style="color: #000000; font-weight: bold;">class</span> ModelsHelloWorld<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'path'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'models'</span><span style="color: #339933;">.</span><span style="color: #009900; font-weight: bold;">DIRECTORY_SEPARATOR</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="color: #339933;">//</span> Path to <span style="color: #000000; font-weight: bold;">class</span><span style="color: #339933;">.</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'param'</span><span style="color: #339933;">=&gt;</span>array<span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">//</span> Parameters are passed to initialize the <span style="color: #000000; font-weight: bold;">class</span><span style="color: #339933;">.</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'hello'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'config'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><br />
+&nbsp;<span style="color: #009900;">&#41;</span><br />
+&nbsp;<br />
+&nbsp;IMPORTANT<span style="color: #339933;">:</span> A weighty priority have parameters passed to<br />
+&nbsp;initializing the base controller<br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$evnine</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">getControllerForParam</span><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'hello'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'supper_config'</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><br />
+&nbsp;<span style="color: #339933;">&lt;&lt;</span> supper_config</p><dl>
+<dt>See Also:</dt>
+<dd><p><a href="../controllers/controllersexample.html#controller">Controllers.controller</a></p></dd>
+<dd><p><a href="../evninecontroller/evninecontroller.html#getDataFromMethod()">EvnineController.getDataFromMethod</a></p></dd>
+<dd><p><a href="../evninecontroller/evninecontroller.html#class_path">EvnineController.class_path</a></p></dd>
+<dd><p><a href="../evnineconfig/evnineconfig.html#class_path">EvnineConfig.class_path</a></p></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/evnine.php.html#line148" class="location">evnine.php at line 148</a>
+
+<h3 id="controller_alias">controller_alias</h3>
+<code class="signature">public  array <strong>$controller_alias</strong></code>
+<div class="details">
+<p>&nbsp;Aliases names controllers<span style="color: #339933;">.</span> In the folder <span style="color: #339933;">/</span>controllers<span style="color: #339933;">/</span><br />
+&nbsp;<a href="http://www.php.net/define"><span style="color: #990000;">Define</span></a> in<span style="color: #339933;">:</span><br />
+&nbsp;<span style="color: #339933;">/</span>evnine<span style="color: #339933;">.</span>config<span style="color: #339933;">.</span>php<br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">controller_alias</span><span style="color: #339933;">=</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'helloworld'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'ControllersHelloWorld'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+&nbsp;<br />
+&nbsp;The alternative with set the path<span style="color: #339933;">.</span><br />
+&nbsp;<span style="color: #339933;">/</span>evnine<span style="color: #339933;">.</span>config<span style="color: #339933;">.</span>php<br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'helloworld'</span><span style="color: #339933;">=&gt;</span>array<span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'class_name'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'ControllersHelloWorld'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'path'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'controllers'</span><span style="color: #339933;">.</span><span style="color: #009900; font-weight: bold;">DIRECTORY_SEPARATOR</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span></p><dl>
+<dt>See Also:</dt>
+<dd><p><a href="../evninecontroller/evninecontroller.html#setLoadController()">EvnineController.setLoadController</a></p></dd>
+<dd><p><a href="../evninecontroller/evninecontroller.html#controller_alias">EvnineController.controller_alias</a></p></dd>
+<dd><p>Controllers.controller_alias</p></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/evnine.php.html#line234" class="location">evnine.php at line 234</a>
+
+<h3 id="current_controller">current_controller</h3>
+<code class="signature">public  string <strong>$current_controller</strong></code>
+<div class="details">
+<p><p>Current controller.<br></p></p></div>
+
+<hr>
+
+<a href="../source/evnine.php.html#line226" class="location">evnine.php at line 226</a>
+
+<h3 id="current_controller_name">current_controller_name</h3>
+<code class="signature">public  string <strong>$current_controller_name</strong></code>
+<div class="details">
+<p>&nbsp;The name of the <a href="http://www.php.net/current"><span style="color: #990000;">current</span></a> controller<span style="color: #339933;">.</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; setLoadController<span style="color: #009900;">&#40;</span><span style="color: #000088;">$current_controller</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #000088;">$current_controller_name</span><span style="color: #339933;">=</span><span style="color: #000088;">$current_controller</span><span style="color: #339933;">;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span></p><dl>
+<dt>See Also:</dt>
+<dd><p><a href="../evninecontroller/evninecontroller.html#setLoadController()">EvnineController.setLoadController</a></p></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/evnine.php.html#line283" class="location">evnine.php at line 283</a>
+
+<h3 id="debug">debug</h3>
+<code class="signature">public  boolean <strong>$debug</strong></code>
+<div class="details">
+<p><p>To debug scripts<br></p></p><dl>
+<dt>See Also:</dt>
+<dd><p><a href="../evninecontroller/evninecontroller.html#__construct()">EvnineController.__construct</a></p></dd>
+<dd><p><a href="../evninecontroller/evninecontroller.html#getDataFromMethod()">EvnineController.getDataFromMethod</a></p></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/evnine.php.html#line214" class="location">evnine.php at line 214</a>
+
+<h3 id="isHasAccessSaveCheck">isHasAccessSaveCheck</h3>
+<code class="signature">public  boolean <strong>$isHasAccessSaveCheck</strong></code>
+<div class="details">
+<p><p>Is there access to the methods? Based on the level of user access.<br></p></p><dl>
+<dt>See Also:</dt>
+<dd><p><a href="../evninecontroller/evninecontroller.html#isUserHasAccessForMethod()">EvnineController.isUserHasAccessForMethod</a></p></dd>
+<dd><p><a href="../evninecontroller/evninecontroller.html#getDataFromMethod()">EvnineController.getDataFromMethod</a></p></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/evnine.php.html#line262" class="location">evnine.php at line 262</a>
+
+<h3 id="loaded_class">loaded_class</h3>
+<code class="signature">public  array <strong>$loaded_class</strong></code>
+<div class="details">
+<p><p>Loaded classes.<br></p></p><dl>
+<dt>See Also:</dt>
+<dd><p><a href="../evninecontroller/evninecontroller.html#isSetClassToLoadAndSetParam()">EvnineController.isSetClassToLoadAndSetParam</a></p></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/evnine.php.html#line243" class="location">evnine.php at line 243</a>
+
+<h3 id="loaded_controller">loaded_controller</h3>
+<code class="signature">public  array <strong>$loaded_controller</strong></code>
+<div class="details">
+<p><p>Loaded controllers.<br></p></p><dl>
+<dt>See Also:</dt>
+<dd><p><a href="../evninecontroller/evninecontroller.html#setLoadController()">EvnineController.setLoadController</a></p></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/evnine.php.html#line253" class="location">evnine.php at line 253</a>
+
+<h3 id="param">param</h3>
+<code class="signature">public  array <strong>$param</strong></code>
+<div class="details">
+<p>&nbsp;The parameters that are passed to <a href="http://www.php.net/each"><span style="color: #990000;">each</span></a> method<br />
+&nbsp;<span style="color: #000088;">$param</span> <span style="color: #339933;">=</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><span style="color: #000088;">$param_init</span><span style="color: #339933;">,</span><span style="color: #000088;">$param_const</span><span style="color: #009900;">&#41;</span></p><dl>
+<dt>See Also:</dt>
+<dd><p><a href="../evninecontroller/evninecontroller.html#getDataFromController()">EvnineController.getDataFromController</a></p></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/evnine.php.html#line176" class="location">evnine.php at line 176</a>
+
+<h3 id="param_const">param_const</h3>
+<code class="signature">public  array <strong>$param_const</strong></code>
+<div class="details">
+<p>&nbsp;Initialization parameters<span style="color: #339933;">.</span><br />
+&nbsp;Transmitted to all methods<span style="color: #339933;">.</span><br />
+<br />
+&nbsp;<span style="color: #339933;">/</span>evnine<span style="color: #339933;">.</span>config<span style="color: #339933;">.</span>php<br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">param_const</span><span style="color: #339933;">=</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">//</span> The <span style="color: #b1b100;">default</span> controller<span style="color: #339933;">.</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">//</span> <span style="color: #339933;">&gt;&gt;</span> <span style="color: #339933;">/</span>?c<span style="color: #339933;">=</span>m<span style="color: #339933;">=&amp;</span>param<span style="color: #339933;">=</span><span style="color: #cc66cc;">777</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">//</span> <span style="color: #339933;">&lt;&lt;</span> <span style="color: #339933;">/</span>?c<span style="color: #339933;">=</span>default_controllerm<span style="color: #339933;">=</span>default<span style="color: #339933;">&amp;</span>param<span style="color: #339933;">=</span><span style="color: #cc66cc;">777</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'default_controller'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'default_controller'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">//</span> Debug mode<span style="color: #339933;">.</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">//</span> We need to track changes in the <span style="color: #000088;">$param</span> from method to method<span style="color: #339933;">.</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'debug'</span><span style="color: #339933;">=&gt;</span>true<span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">//</span> A shared folder <span style="color: #b1b100;">for</span> the cache<span style="color: #339933;">.</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'CacheDir'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'PHPUnitCache'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">//</span> Folder to store the PHPUnit tests<span style="color: #339933;">.</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'CacheDirPHPUnit'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'PHPUnitCache'</span><span style="color: #339933;">.</span><span style="color: #009900; font-weight: bold;">DIRECTORY_SEPARATOR</span><span style="color: #339933;">.</span><span style="color: #0000ff;">'PHPUnit'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">//</span> Folder to store temporary data<span style="color: #339933;">.</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'CacheDirControllerForParam'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'PHPUnitCache'</span><span style="color: #339933;">.</span><span style="color: #009900; font-weight: bold;">DIRECTORY_SEPARATOR</span><span style="color: #339933;">.</span><span style="color: #0000ff;">'getControllerForParam'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span> </p><dl>
+<dt>See Also:</dt>
+<dd><p><a href="../evninecontroller/evninecontroller.html#getDataFromMethod()">EvnineController.getDataFromMethod</a></p></dd>
+<dd><p><a href="../evninecontroller/evninecontroller.html#param_const">EvnineController.param_const</a></p></dd>
+<dd><p><a href="../evnineconfig/evnineconfig.html#param_const">EvnineConfig.param_const</a></p></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/evnine.php.html#line187" class="location">evnine.php at line 187</a>
+
+<h3 id="path_to">path_to</h3>
+<code class="signature">public  string <strong>$path_to</strong></code>
+<div class="details">
+<p><p>Absolute path.<br>
+ Used to connect classes of models and controllers.<br></p></p><dl>
+<dt>See Also:</dt>
+<dd><p><a href="../evninecontroller/evninecontroller.html#path_to">EvnineController.path_to</a></p></dd>
+<dd><p><a href="../evnineconfig/evnineconfig.html#path_to">EvnineConfig.path_to</a></p></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/evnine.php.html#line273" class="location">evnine.php at line 273</a>
+
+<h3 id="result">result</h3>
+<code class="signature">public  array <strong>$result</strong></code>
+<div class="details">
+<p>&nbsp;<a href="http://www.php.net/array"><span style="color: #990000;">Array</span></a> response of the controller contains all the class_method calls<span style="color: #339933;">.</span><br />
+&nbsp;<br />
+&nbsp;<span style="color: #000088;">$result</span> <span style="color: #339933;">=</span> <span style="color: #000088;">$evnine</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">getControllerForParam</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span></p><dl>
+<dt>See Also:</dt>
+<dd><p><a href="../evninecontroller/evninecontroller.html#getControllerForParam()">EvnineController.getControllerForParam</a></p></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/evnine.php.html#line203" class="location">evnine.php at line 203</a>
+
+<h3 id="sef_mode">sef_mode</h3>
+<code class="signature">public  bool <strong>$sef_mode</strong></code>
+<div class="details">
+<p>&nbsp;Flag of the SEF mode<span style="color: #339933;">.</span> <br />
+&nbsp;Set in the method <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">getControllerForParam</span><br />
+&nbsp;when pass to the controller to parse the string SEF<span style="color: #339933;">.</span><br />
+&nbsp;<br />
+&nbsp;<span style="color: #339933;">/</span>evnine<span style="color: #339933;">.</span>php<br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">if</span> <span style="color: #009900;">&#40;</span><span style="color: #339933;">!</span><a href="http://www.php.net/empty"><span style="color: #990000;">empty</span></a><span style="color: #009900;">&#40;</span><span style="color: #000088;">$param</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'sef'</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">sef_mode</span><span style="color: #339933;">=</span><span style="color: #009900; font-weight: bold;">true</span><span style="color: #339933;">;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span></p><dl>
+<dt>See Also:</dt>
+<dd><p><a href="../evninecontroller/evninecontroller.html#getControllerForParam()">EvnineController.getControllerForParam</a></p></dd>
+</dl>
+</div>
+
+<hr>
+
+<h2 id="detail_method">Constructor Detail</h2>
+<a href="../source/evnine.php.html#line292" class="location">evnine.php at line 292</a>
+
+<h3 id="__construct()">__construct</h3>
+<code class="signature">protected  void <strong>__construct</strong>()</code>
+<div class="details">
+<p>The class constructor.<br></p></div>
+
+<hr>
+
+<h2 id="detail_method">Method Detail</h2>
+<a href="../source/evnine.php.html#line335" class="location">evnine.php at line 335</a>
+
+<h3 id="getControllerForParam()">getControllerForParam</h3>
+<code class="signature">public  array <strong>getControllerForParam</strong>(array param)</code>
+<div class="details">
+&nbsp;Get data from the controller<span style="color: #339933;">.</span><br />
+&nbsp;<span style="color: #339933;">/</span>index<span style="color: #339933;">.</span>php<br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">include_once</span> <span style="color: #0000ff;">'evnine.php'</span><span style="color: #339933;">;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$evnine</span> <span style="color: #339933;">=</span> <span style="color: #000000; font-weight: bold;">new</span> EvnineController<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><dl>
+<dt>Parameters:</dt>
+<dd>&nbsp;<span style="color: #000088;">$param</span> <span style="color: #339933;">-</span> <span style="color: #339933;">/</span>index<span style="color: #339933;">.</span>php<br />
+&nbsp;<span style="color: #000088;">$result</span> <span style="color: #339933;">=</span> <span style="color: #000088;">$evnine</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">getControllerForParam</span><span style="color: #009900;">&#40;</span><br />
+&nbsp;<span style="color: #000088;">$param</span> <span style="color: #339933;">=</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp;<span style="color: #0000ff;">'controller'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'controller'</span><br />
+&nbsp;<span style="color: #339933;">,</span><span style="color: #0000ff;">'method'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'method'</span><br />
+&nbsp;<span style="color: #339933;">,</span><span style="color: #0000ff;">'REQUEST'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #000088;">$_REQUEST</span><br />
+&nbsp;<span style="color: #339933;">,</span><span style="color: #0000ff;">'ajax'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #000088;">$_REQUEST</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'ajax'</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">,</span><br />
+&nbsp;<span style="color: #339933;">,</span><span style="color: #0000ff;">'sef'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #000088;">$_REQUEST</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'sef'</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">,</span><br />
+&nbsp;<span style="color: #009900;">&#41;</span><br />
+&nbsp;<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+&nbsp;</dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/evnine.php.html#line539" class="location">evnine.php at line 539</a>
+
+<h3 id="getURNbySEF()">getURNbySEF</h3>
+<code class="signature">public  void <strong>getURNbySEF</strong>(string sef)</code>
+<div class="details">
+&nbsp;Get data from the SEF string<span style="color: #339933;">.</span><br />
+<br />
+&nbsp;SEF mode can be of two types<span style="color: #339933;">.</span><br />
+&nbsp; <br />
+&nbsp;<span style="color: #cc66cc;">1</span><span style="color: #339933;">.</span> When the SEF <span style="color: #b1b100;">for</span> the controller<span style="color: #339933;">.</span><br />
+&nbsp;<span style="color: #339933;">&lt;&lt;</span> <span style="color: #339933;">/</span>controller<span style="color: #339933;">/</span>method<span style="color: #339933;">/</span>param<span style="color: #339933;">=</span>value<span style="color: #339933;">/</span>param<span style="color: #339933;">=</span>value<span style="color: #339933;">/</span><br />
+&nbsp;<br />
+&nbsp;<span style="color: #339933;">/</span>controllers<span style="color: #339933;">/</span>ControllersExample<span style="color: #339933;">.</span>php<br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">controller</span> <span style="color: #339933;">=</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'inURLSEF'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900; font-weight: bold;">true</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><br />
+<br />
+&nbsp;<span style="color: #cc66cc;">2</span><span style="color: #339933;">.</span> When the SEF method<span style="color: #339933;">:</span><br />
+&nbsp;<span style="color: #339933;">&lt;&lt;</span> <span style="color: #339933;">/</span>controller<span style="color: #339933;">/</span>method<span style="color: #339933;">/</span><span style="color: #cc66cc;">62</span><span style="color: #339933;">-</span>User<span style="color: #339933;">.</span>html <br />
+&nbsp;<br />
+&nbsp;<span style="color: #339933;">/</span>controllers<span style="color: #339933;">/</span>ControllersExample<span style="color: #339933;">.</span>php<br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">controller</span> <span style="color: #339933;">=</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'inURLSEF'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900; font-weight: bold;">false</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'public_methods'</span> <span style="color: #339933;">=&gt;</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'method'</span> <span style="color: #339933;">=&gt;</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'inURLSEF'</span> <span style="color: #339933;">=&gt;</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'user_id'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">''</span><span style="color: #339933;">,</span><span style="color: #0000ff;">'User'</span><span style="color: #339933;">,</span><span style="color: #0000ff;">'.'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'.html'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><dl>
+<dt>See Also:</dt>
+<dd><p><a href="../controllers/controllersexample.html#controller">Controllers.controller</a></p></dd>
+<dt>Parameters:</dt>
+<dd>&nbsp;<span style="color: #000088;">$sef</span> <span style="color: #339933;">-</span> SEF string<span style="color: #339933;">.</span><br />
+&nbsp;Get from<span style="color: #339933;">:</span><br />
+&nbsp;<span style="color: #339933;">/.</span>htaccess<br />
+&nbsp;<span style="color: #339933;">&lt;</span>IfModule mod_rewrite<span style="color: #339933;">.</span>c<span style="color: #339933;">&gt;</span><br />
+&nbsp;RewriteEngine On<br />
+&nbsp;RewriteRule ^<span style="color: #009900;">&#40;</span><span style="color: #339933;">.*</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">.</span><span style="color: #009900;">&#40;</span>body<span style="color: #339933;">|</span>ajax<span style="color: #339933;">|</span>html<span style="color: #009900;">&#41;</span>$ index<span style="color: #339933;">.</span>php?sef<span style="color: #339933;">=</span>$<span style="color:#800080;">1</span><span style="color: #339933;">&amp;</span>ajax<span style="color: #339933;">=</span>$<span style="color:#800080;">2</span> <span style="color: #009900;">&#91;</span>NC<span style="color: #339933;">,</span>L<span style="color: #009900;">&#93;</span><br />
+&nbsp;<span style="color: #339933;">&lt;/</span>IfModule<span style="color: #339933;">&gt;</span> <br />
+&nbsp;<span style="color: #339933;">/</span>index<span style="color: #339933;">.</span>php<br />
+&nbsp;<span style="color: #000088;">$result</span> <span style="color: #339933;">=</span> <span style="color: #000088;">$evnine</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">getControllerForParam</span><span style="color: #009900;">&#40;</span><br />
+&nbsp;<span style="color: #000088;">$param</span> <span style="color: #339933;">=</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp;<span style="color: #339933;">,</span><span style="color: #0000ff;">'ajax'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #000088;">$_REQUEST</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'ajax'</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">,</span><br />
+&nbsp;<span style="color: #339933;">,</span><span style="color: #0000ff;">'sef'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #000088;">$_REQUEST</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'sef'</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">,</span><br />
+&nbsp;<span style="color: #009900;">&#41;</span><br />
+&nbsp;<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span> <br />
+&nbsp;</dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/evnine.php.html#line673" class="location">evnine.php at line 673</a>
+
+<h3 id="getURL()">getURL</h3>
+<code class="signature">public  void <strong>getURL</strong>(boolean seo)</code>
+<div class="details">
+&nbsp;Get the URN <span style="color: #b1b100;">for</span> the methods in the controller<span style="color: #339933;">.</span><br />
+&nbsp;Validation of the methods used by the controller<span style="color: #339933;">.</span><br />
+&nbsp;<br />
+&nbsp;<span style="color: #339933;">/</span>controllers<span style="color: #339933;">/</span>ControllersExample<span style="color: #339933;">.</span>php<br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">controller</span> <span style="color: #339933;">=</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'inURLSEF'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900; font-weight: bold;">false</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">//</span> SEF mode in the controller<span style="color: #339933;">.</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">//</span> <span style="color: #b1b100;">If</span> the SEF mode <span style="color: #b1b100;">for</span> the controller<span style="color: #339933;">,</span> the ending URN <span style="color: #339933;">-</span> index<span style="color: #339933;">.</span>html<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">//</span> <span style="color: #b1b100;">Default</span><span style="color: #339933;">:</span> <span style="color: #009900; font-weight: bold;">false</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">//</span> <span style="color: #339933;">&gt;&gt;</span> <span style="color: #0000ff;">'inURLSEF'</span><span style="color: #339933;">=&gt;</span> <span style="color: #009900; font-weight: bold;">true</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">//</span> <span style="color: #339933;">&lt;&lt;</span> <span style="color: #339933;">/</span>controller<span style="color: #339933;">/</span>method<span style="color: #339933;">/</span>param<span style="color: #339933;">=</span>value<span style="color: #339933;">/</span>param<span style="color: #339933;">=</span>value<span style="color: #339933;">/</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'inURLMethod'</span> <span style="color: #339933;">=&gt;</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">//</span> In the <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> are methods <span style="color: #b1b100;">for</span> which to create the URN<span style="color: #339933;">.</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'default'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'public_methods'</span> <span style="color: #339933;">=&gt;</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'default'</span> <span style="color: #339933;">=&gt;</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">//</span> URNs are constructed on the basis of the validation parameters <br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">//</span> allowed in the method<span style="color: #339933;">.</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">//</span> By <span style="color: #b1b100;">default</span><span style="color: #339933;">,</span> data is taken from the <span style="color: #b1b100;">default</span> method<span style="color: #339933;">.</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'validation'</span><span style="color: #339933;">=&gt;</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'method'</span> <span style="color: #339933;">=&gt;</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span>&nbsp; &nbsp; &nbsp; <br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">//</span> Further validation <span style="color: #b1b100;">for</span> the method<span style="color: #339933;">.</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">//</span> It shall contain URNs<span style="color: #339933;">.</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">//</span> These URNs used to generate the parameters<span style="color: #339933;">.</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'validation_add'</span><span style="color: #339933;">=&gt;</span>array<span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'date'</span> <span style="color: #339933;">=&gt;</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'inURL'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900; font-weight: bold;">true</span><span style="color: #339933;">,</span><span style="color: #0000ff;">'to'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'Date'</span><span style="color: #339933;">,</span><span style="color: #0000ff;">'type'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'str'</span><span style="color: #339933;">,</span><span style="color: #0000ff;">'required'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'false'</span><span style="color: #339933;">,</span><span style="color: #0000ff;">'max'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'10'</span><span style="color: #339933;">,</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'ext_method_and_controller'</span> <span style="color: #339933;">=&gt;</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">//</span> <span style="color: #b1b100;">If</span> you want to specify an external controller in the URN<span style="color: #339933;">.</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">//</span> And the method in an external controller<span style="color: #339933;">.</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'inURLExtController'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'ext_controller'</span><span style="color: #339933;">,</span> <br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'inURLExtMethod'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'ext_method'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'sef_method'</span> <span style="color: #339933;">=&gt;</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">//</span> <span style="color: #b1b100;">If</span> you want to <span style="color: #000000; font-weight: bold;">use</span> the SEF in the method<span style="color: #339933;">.</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">//</span> <span style="color: #339933;">&lt;&lt;</span> <span style="color: #339933;">/</span>controller<span style="color: #339933;">/</span>method<span style="color: #339933;">/</span><span style="color: #cc66cc;">62</span><span style="color: #339933;">-</span>User<span style="color: #339933;">.</span>html <br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'inURLSEF'</span> <span style="color: #339933;">=&gt;</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'user_id'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">''</span><span style="color: #339933;">,</span><span style="color: #0000ff;">'User'</span><span style="color: #339933;">,</span><span style="color: #0000ff;">'.'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'.html'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><br />
+<br />
+&nbsp;<span style="color: #339933;">/</span>controllers<span style="color: #339933;">/</span>ControllersExample<span style="color: #339933;">.</span>php<dl>
+<dt>See Also:</dt>
+<dd><p><a href="../controllers/controllersexample.html#controller">Controllers.controller</a></p></dd>
+<dd><p><a href="../evninecontroller/evninecontroller.html#getControllerForParam()">EvnineController.getControllerForParam</a></p></dd>
+<dt>Parameters:</dt>
+<dd>&nbsp;<span style="color: #000088;">$seo</span> <span style="color: #339933;">-</span> Flag of the SEF mode<span style="color: #339933;">.</span> </dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/evnine.php.html#line1146" class="location">evnine.php at line 1146</a>
+
+<h3 id="getURNTemplate()">getURNTemplate</h3>
+<code class="signature">public  void <strong>getURNTemplate</strong>()</code>
+<div class="details">
+&nbsp;<a href="http://www.php.net/constant"><span style="color: #990000;">Constant</span></a> references to the template on different methods<span style="color: #339933;">.</span><br />
+&nbsp;<br />
+&nbsp;Depending on the method<span style="color: #339933;">,</span> we get access<br />
+&nbsp;in the same way to the URN of different methods<span style="color: #339933;">.</span><br />
+&nbsp;<br />
+&nbsp;<span style="color: #339933;">/</span>controllers<span style="color: #339933;">/</span>ControllersExample<span style="color: #339933;">.</span>php<br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'inURLTemplate'</span> <span style="color: #339933;">=&gt;</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'info'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'info_method'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><span style="color: #339933;">,</span><br />
+&nbsp;<span style="color: #339933;">&gt;&gt;</span> <span style="color: #b1b100;">echo</span> <span style="color: #000088;">$result</span><span style="color: #009900;">&#91;</span>inURLTemplate<span style="color: #009900;">&#93;</span><span style="color: #009900;">&#91;</span>info<span style="color: #009900;">&#93;</span><span style="color: #009900;">&#91;</span>pre<span style="color: #009900;">&#93;</span> <br />
+&nbsp;<span style="color: #339933;">&lt;&lt;</span> ?m<span style="color: #339933;">=</span>info_method<br />
+&nbsp;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'inURLTemplate'</span> <span style="color: #339933;">=&gt;</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'info'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'error_method'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><span style="color: #339933;">,</span><br />
+&nbsp;<span style="color: #339933;">&gt;&gt;</span> <span style="color: #b1b100;">echo</span> <span style="color: #000088;">$result</span><span style="color: #009900;">&#91;</span>inURLTemplate<span style="color: #009900;">&#93;</span><span style="color: #009900;">&#91;</span>info<span style="color: #009900;">&#93;</span><span style="color: #009900;">&#91;</span>pre<span style="color: #009900;">&#93;</span> <br />
+&nbsp;<span style="color: #339933;">&lt;&lt;</span> ?m<span style="color: #339933;">=</span>error_method<br />
+&nbsp;<br />
+&nbsp;PHP<span style="color: #339933;">:</span> &nbsp;<span style="color: #000088;">$result</span><span style="color: #009900;">&#91;</span>inURLTemplate<span style="color: #009900;">&#93;</span><span style="color: #009900;">&#91;</span>info<span style="color: #009900;">&#93;</span><span style="color: #009900;">&#91;</span>pre<span style="color: #009900;">&#93;</span> <span style="color: #000088;">$result</span><span style="color: #009900;">&#91;</span>inURLTemplate<span style="color: #009900;">&#93;</span><span style="color: #009900;">&#91;</span>info<span style="color: #009900;">&#93;</span><span style="color: #009900;">&#91;</span>post<span style="color: #009900;">&#93;</span><br />
+&nbsp;TWIG<span style="color: #339933;">:</span> <span style="color: #009900;">&#123;</span><span style="color: #009900;">&#123;</span> inURLTemplate<span style="color: #339933;">.</span>info<span style="color: #339933;">.</span>pre <span style="color: #009900;">&#125;</span><span style="color: #009900;">&#125;</span><span style="color: #009900;">&#123;</span><span style="color: #009900;">&#123;</span> inURLTemplate<span style="color: #339933;">.</span>info<span style="color: #339933;">.</span>post <span style="color: #009900;">&#125;</span><span style="color: #009900;">&#125;</span><dl>
+<dt>See Also:</dt>
+<dd><p><a href="../controllers/controllersexample.html#controller">Controllers.controller</a></p></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/evnine.php.html#line1206" class="location">evnine.php at line 1206</a>
+
+<h3 id="getControllerURN()">getControllerURN</h3>
+<code class="signature">public  string <strong>getControllerURN</strong>(string contoller_name, string seo)</code>
+<div class="details">
+<p>Get the URN of the controller.<br></p><dl>
+<dt>Parameters:</dt>
+<dd>&nbsp;<span style="color: #000088;">$contoller_name</span> <span style="color: #339933;">-</span> Controller name</dd>
+<dd>&nbsp;<span style="color: #000088;">$seo</span> <span style="color: #339933;">-</span> <span style="color: #000000; font-weight: bold;">Use</span> SEF?</dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/evnine.php.html#line1240" class="location">evnine.php at line 1240</a>
+
+<h3 id="getMethodURN()">getMethodURN</h3>
+<code class="signature">public  string <strong>getMethodURN</strong>(string contoller_name, string seo, mixed method)</code>
+<div class="details">
+<p>Get the URN of the method name.<br></p><dl>
+<dt>Parameters:</dt>
+<dd>&nbsp;<span style="color: #000088;">$contoller_name</span> <span style="color: #339933;">-</span> Method name<span style="color: #339933;">.</span></dd>
+<dd>&nbsp;<span style="color: #000088;">$seo</span> <span style="color: #339933;">-</span> <span style="color: #000000; font-weight: bold;">Use</span> SEF?</dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/evnine.php.html#line1278" class="location">evnine.php at line 1278</a>
+
+<h3 id="getInputFormText()">getInputFormText</h3>
+<code class="signature">public  string <strong>getInputFormText</strong>(string name, string value, string multi_form)</code>
+<div class="details">
+<p>Get to the form input from string.<br></p><dl>
+<dt>Parameters:</dt>
+<dd>&nbsp;<span style="color: #000088;">$name</span> <span style="color: #339933;">-</span> Parameter name in form<span style="color: #339933;">.</span> </dd>
+<dd>&nbsp;<span style="color: #000088;">$value</span> <span style="color: #339933;">-</span> The value of the form<span style="color: #339933;">.</span></dd>
+<dd>&nbsp;<span style="color: #000088;">$multi_form</span> <span style="color: #339933;">-</span> Name <span style="color: #b1b100;">for</span> the form<span style="color: #339933;">,</span> <span style="color: #b1b100;">if</span> you <span style="color: #000000; font-weight: bold;">use</span> the multiple form<span style="color: #339933;">.</span></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/evnine.php.html#line1350" class="location">evnine.php at line 1350</a>
+
+<h3 id="getInputsFromArray()">getInputsFromArray</h3>
+<code class="signature">public  array <strong>getInputsFromArray</strong>(array validate, string multi_form)</code>
+<div class="details">
+&nbsp;Get to the form input from validation <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #339933;">.</span><br />
+&nbsp;<br />
+&nbsp;<span style="color: #339933;">&gt;&gt;</span> <span style="color: #339933;">&lt;</span> ?<span style="color: #339933;">=</span><span style="color: #000088;">$result</span><span style="color: #009900;">&#91;</span>inURL<span style="color: #009900;">&#93;</span><span style="color: #009900;">&#91;</span>ext_search<span style="color: #009900;">&#93;</span><span style="color: #009900;">&#91;</span>inputs<span style="color: #009900;">&#93;</span>? <span style="color: #339933;">&gt;</span><br />
+&nbsp;<span style="color: #339933;">&lt;&lt;</span> <span style="color: #339933;">&lt;</span>input name<span style="color: #339933;">=</span><span style="color: #0000ff;">&quot;last_search&quot;</span> type<span style="color: #339933;">=</span><span style="color: #0000ff;">&quot;hidden&quot;</span> value<span style="color: #339933;">=</span><span style="color: #0000ff;">&quot;inURLFalse&quot;</span> <span style="color: #339933;">/&gt;</span><br />
+<br />
+&nbsp;<span style="color: #339933;">/</span>controller<span style="color: #339933;">/</span>ControllersExample<span style="color: #339933;">.</span>php<br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'public_methods'</span> <span style="color: #339933;">=&gt;</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'ext_search'</span> <span style="color: #339933;">=&gt;</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'inURLMethod'</span> <span style="color: #339933;">=&gt;</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'ext_search'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'validation_form'</span><span style="color: #339933;">=&gt;</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'search'</span> <span style="color: #339933;">=&gt;</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'to'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'SearchTitle'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'inURL'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900; font-weight: bold;">true</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'type'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'str'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'required'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'true'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'error'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'search'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'min'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'3'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'max'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'250'</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'last_search'</span> <span style="color: #339933;">=&gt;</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'to'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'LastSearch'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'inURL'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900; font-weight: bold;">false</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><br />
+&nbsp;<br />
+&nbsp;PHP<span style="color: #339933;">:</span><br />
+&nbsp;<span style="color: #339933;">&lt;</span>form action<span style="color: #339933;">=</span><span style="color: #0000ff;">&quot;&lt; ?=<span style="color: #006699; font-weight: bold;">$result[inURL]</span>[ext_search][pre].<span style="color: #006699; font-weight: bold;">$result[inURL]</span>[ext_search][post]? &gt;&quot;</span> method<span style="color: #339933;">=</span><span style="color: #0000ff;">&quot;get&quot;</span><span style="color: #339933;">&gt;</span> <br />
+&nbsp; <span style="color: #339933;">&lt;</span> ?<span style="color: #339933;">=</span><span style="color: #000088;">$result</span><span style="color: #009900;">&#91;</span>inURL<span style="color: #009900;">&#93;</span><span style="color: #009900;">&#91;</span>ext_search<span style="color: #009900;">&#93;</span><span style="color: #009900;">&#91;</span>inputs<span style="color: #009900;">&#93;</span>? <span style="color: #339933;">&gt;</span><br />
+&nbsp; <span style="color: #339933;">&lt;</span>input name<span style="color: #339933;">=</span><span style="color: #0000ff;">&quot;&lt; ?=<span style="color: #006699; font-weight: bold;">$result[inURL]</span>[ext_search][SearchTitle]? &gt;&quot;</span> value<span style="color: #339933;">=</span><span style="color: #0000ff;">&quot;&lt; ?=<span style="color: #006699; font-weight: bold;">$result[param_out]</span>[SearchTitle]? &gt;&quot;</span> type<span style="color: #339933;">=</span><span style="color: #0000ff;">&quot;text&quot;</span> <span style="color: #339933;">/&gt;</span><br />
+&nbsp; <span style="color: #339933;">&lt;</span>input name<span style="color: #339933;">=</span><span style="color: #0000ff;">&quot;&lt; ?=<span style="color: #006699; font-weight: bold;">$result[inURL]</span>[ext_search][submit]? &gt;&quot;</span> type<span style="color: #339933;">=</span><span style="color: #0000ff;">&quot;submit&quot;</span> value<span style="color: #339933;">=</span><span style="color: #0000ff;">&quot; &quot;</span><span style="color: #339933;">/&gt;</span><br />
+&nbsp;<span style="color: #339933;">&lt;/</span>form<span style="color: #339933;">&gt;</span><br />
+<br />
+&nbsp;TWIG<span style="color: #339933;">:</span><br />
+&nbsp;<span style="color: #339933;">&lt;</span>form action<span style="color: #339933;">=</span><span style="color: #0000ff;">&quot;{{ inURL.ext_search.pre }}{{ inURL.ext_search.post }}&quot;</span> method<span style="color: #339933;">=</span><span style="color: #0000ff;">&quot;get&quot;</span><span style="color: #339933;">&gt;</span> <br />
+&nbsp; <span style="color: #009900;">&#123;</span><span style="color: #009900;">&#123;</span> inURL<span style="color: #339933;">.</span>ext_search<span style="color: #339933;">.</span>inputs <span style="color: #009900;">&#125;</span><span style="color: #009900;">&#125;</span><br />
+&nbsp; <span style="color: #339933;">&lt;</span>input id<span style="color: #339933;">=</span><span style="color: #0000ff;">&quot;search_ajax&quot;</span> value<span style="color: #339933;">=</span><span style="color: #0000ff;">&quot;{{ param_out.SearchTitle }}&quot;</span> name<span style="color: #339933;">=</span><span style="color: #0000ff;">&quot;{{ inURL.ext_search.SearchTitle }}&quot;</span> type<span style="color: #339933;">=</span><span style="color: #0000ff;">&quot;text&quot;</span> <span style="color: #339933;">/&gt;</span><br />
+&nbsp; <span style="color: #339933;">&lt;</span>input name<span style="color: #339933;">=</span><span style="color: #0000ff;">&quot;{{ inURL.ext_search.submit }}&quot;</span> type<span style="color: #339933;">=</span><span style="color: #0000ff;">&quot;submit&quot;</span> value<span style="color: #339933;">=</span><span style="color: #0000ff;">&quot; &quot;</span><span style="color: #339933;">/&gt;</span><br />
+&nbsp;<span style="color: #339933;">&lt;/</span>form<span style="color: #339933;">&gt;</span><dl>
+<dt>Parameters:</dt>
+<dd>&nbsp;<span style="color: #000088;">$validate</span> <span style="color: #339933;">-</span> <a href="http://www.php.net/array"><span style="color: #990000;">Array</span></a> with the parameters of the form<span style="color: #339933;">.</span></dd>
+<dd>&nbsp;<span style="color: #000088;">$multi_form</span> <span style="color: #339933;">-</span> Name <span style="color: #b1b100;">for</span> the form<span style="color: #339933;">,</span> <span style="color: #b1b100;">if</span> you <span style="color: #000000; font-weight: bold;">use</span> the multiple form<span style="color: #339933;">.</span><br />
+&nbsp;<span style="color: #339933;">&lt;</span>input name<span style="color: #339933;">=</span><span style="color: #0000ff;">&quot;multi_form_method[last_search]&quot;</span> type<span style="color: #339933;">=</span><span style="color: #0000ff;">&quot;hidden&quot;</span> value<span style="color: #339933;">=</span><span style="color: #0000ff;">&quot;inURLFalse&quot;</span> <span style="color: #339933;">/&gt;</span><br />
+&nbsp;</dd>
+<dt>See Also:</dt>
+<dd><p><a href="../controllers/controllersexample.html#controller">Controllers.controller</a></p></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/evnine.php.html#line1494" class="location">evnine.php at line 1494</a>
+
+<h3 id="getURLFromArray()">getURLFromArray</h3>
+<code class="signature">public  void <strong>getURLFromArray</strong>(array validate, boolean seo, boolean is_add)</code>
+<div class="details">
+<p>Get a URN from an array of validation.<br></p><dl>
+<dt>Parameters:</dt>
+<dd>&nbsp;<span style="color: #000088;">$validate</span> <span style="color: #339933;">-</span> <a href="http://www.php.net/array"><span style="color: #990000;">Array</span></a> with the parameters of the form<span style="color: #339933;">.</span></dd>
+<dd>&nbsp;<span style="color: #000088;">$seo</span> <span style="color: #339933;">-</span> <span style="color: #000000; font-weight: bold;">Use</span> SEF?</dd>
+<dd>&nbsp;<span style="color: #000088;">$is_add</span> <span style="color: #339933;">-</span> Parameter added to the <a href="http://www.php.net/current"><span style="color: #990000;">current</span></a> URN?<br />
+&nbsp;<span style="color: #339933;">&gt;&gt;</span> <span style="color: #000088;">$is_add</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">false</span><br />
+&nbsp;<span style="color: #339933;">&lt;&lt;</span> ?param<span style="color: #339933;">=</span>value<br />
+&nbsp;<span style="color: #339933;">&gt;&gt;</span> <span style="color: #000088;">$is_add</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">true</span><br />
+&nbsp;<span style="color: #339933;">&lt;&lt;</span> <span style="color: #339933;">&amp;</span>param<span style="color: #339933;">=</span>value<br />
+&nbsp;</dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/evnine.php.html#line1787" class="location">evnine.php at line 1787</a>
+
+<h3 id="getURNForTitleAndValue()">getURNForTitleAndValue</h3>
+<code class="signature">public  void <strong>getURNForTitleAndValue</strong>(array array_out, boolean in_url, string to, string _title, array REQUEST_OUT, boolean|array seo)</code>
+<div class="details">
+&nbsp;Get the URN part <span style="color: #b1b100;">for</span> the name and parameter value<span style="color: #339933;">.</span><br />
+&nbsp;<br />
+&nbsp;<span style="color: #339933;">/</span>controller<span style="color: #339933;">/</span>ControllersExample<span style="color: #339933;">.</span>php<br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'search'</span> <span style="color: #339933;">=&gt;</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'to'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'SearchTitle'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'inURL'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900; font-weight: bold;">true</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'type'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'str'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'required'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'true'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'error'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'search'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'min'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'3'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'max'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'250'</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><span style="color: #339933;">,</span><dl>
+<dt>Parameters:</dt>
+<dd>&nbsp;<span style="color: #000088;">$array_out</span> <span style="color: #339933;">-</span> Reference to an <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> of data after processing<span style="color: #339933;">.</span></dd>
+<dd>&nbsp;<span style="color: #000088;">$in_url</span> <span style="color: #339933;">-</span> <span style="color: #b1b100;">For</span> the substitution of references<span style="color: #339933;">.</span><br />
+&nbsp;<span style="color: #339933;">&gt;&gt;</span>inURL <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">true</span><span style="color: #339933;">,</span> <br />
+&nbsp;<span style="color: #339933;">&gt;&gt;</span>REQUEST <span style="color: #339933;">=</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span>path_id <span style="color: #339933;">=&gt;</span> <span style="color: #cc66cc;">777</span><span style="color: #009900;">&#41;</span><br />
+&nbsp;<span style="color: #339933;">&gt;&gt;</span><span style="color: #000088;">$result</span><span style="color: #009900;">&#91;</span>inURL<span style="color: #009900;">&#93;</span><span style="color: #009900;">&#91;</span><span style="color: #b1b100;">default</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#91;</span>PathID<span style="color: #009900;">&#93;</span><br />
+&nbsp;<span style="color: #339933;">&lt;&lt;</span> <span style="color: #339933;">&amp;</span>path_id<span style="color: #339933;">=</span><br />
+&nbsp;<span style="color: #009900; font-weight: bold;">false</span> <span style="color: #339933;">-</span> by <span style="color: #b1b100;">default</span><br />
+&nbsp;<span style="color: #339933;">&gt;&gt;</span>inURL <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">false</span> <br />
+&nbsp;<span style="color: #339933;">&gt;&gt;</span>REQUEST <span style="color: #339933;">=</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span>path_id <span style="color: #339933;">=&gt;</span> <span style="color: #cc66cc;">777</span><span style="color: #009900;">&#41;</span><br />
+&nbsp;<span style="color: #339933;">&gt;&gt;</span><span style="color: #000088;">$result</span><span style="color: #009900;">&#91;</span>inURL<span style="color: #009900;">&#93;</span><span style="color: #009900;">&#91;</span><span style="color: #b1b100;">default</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#91;</span>PathID<span style="color: #009900;">&#93;</span><br />
+&nbsp;<span style="color: #339933;">&lt;&lt;</span> <span style="color: #339933;">&amp;</span>path_id<span style="color: #339933;">=</span><span style="color: #cc66cc;">777</span><br />
+&nbsp;</dd>
+<dd>&nbsp;<span style="color: #000088;">$to</span> <span style="color: #339933;">-</span> Stored in the variable <span style="color: #000088;">$param</span><span style="color: #009900;">&#91;</span>REQUEST<span style="color: #009900;">&#93;</span><span style="color: #009900;">&#91;</span>path_id<span style="color: #009900;">&#93;</span><br />
+&nbsp;An <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> of references to URN will be available on a <a href="http://www.php.net/key"><span style="color: #990000;">key</span></a> <span style="color: #000088;">$result</span> <span style="color: #009900;">&#91;</span>inURL<span style="color: #009900;">&#93;</span><span style="color: #009900;">&#91;</span>PathID<span style="color: #009900;">&#93;</span><br />
+&nbsp;</dd>
+<dd>&nbsp;<span style="color: #000088;">$_title</span> <span style="color: #339933;">-</span> The <a href="http://www.php.net/key"><span style="color: #990000;">key</span></a> to validation under which to store the variable<span style="color: #339933;">.</span><br />
+&nbsp;<span style="color: #0000ff;">'search'</span> <span style="color: #339933;">=&gt;</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><br />
+&nbsp;</dd>
+<dd>&nbsp;<span style="color: #000088;">$REQUEST_OUT</span> <span style="color: #339933;">-</span> Parameter from the output to the substitution<span style="color: #339933;">.</span></dd>
+<dd>&nbsp;<span style="color: #000088;">$seo</span> <span style="color: #339933;">-</span> <span style="color: #000000; font-weight: bold;">Use</span> SEF?</dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/evnine.php.html#line1884" class="location">evnine.php at line 1884</a>
+
+<h3 id="setLoadController()">setLoadController</h3>
+<code class="signature">public  void <strong>setLoadController</strong>(string set_controller)</code>
+<div class="details">
+&nbsp;Initialize the controller<span style="color: #339933;">.</span><br />
+&nbsp;<br />
+&nbsp;<a href="http://www.php.net/define"><span style="color: #990000;">Define</span></a> in<span style="color: #339933;">:</span><br />
+&nbsp;<span style="color: #339933;">/</span>evnine<span style="color: #339933;">.</span>config<span style="color: #339933;">.</span>php<br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">controller_alias</span><span style="color: #339933;">=</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'helloworld'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'ControllersHelloWorld'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+&nbsp;<br />
+&nbsp;The alternative with set the path<span style="color: #339933;">.</span><br />
+&nbsp;<span style="color: #339933;">/</span>evnine<span style="color: #339933;">.</span>config<span style="color: #339933;">.</span>php<br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'helloworld'</span><span style="color: #339933;">=&gt;</span>array<span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'class_name'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'ControllersHelloWorld'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'path'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'controllers'</span><span style="color: #339933;">.</span><span style="color: #009900; font-weight: bold;">DIRECTORY_SEPARATOR</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><dl>
+<dt>See Also:</dt>
+<dd><p><a href="../evninecontroller/evninecontroller.html#controller_alias">EvnineController.controller_alias</a></p></dd>
+<dd><p>Controllers.controller_alias</p></dd>
+<dt>Parameters:</dt>
+<dd>&nbsp;<span style="color: #000088;">$set_controller</span> <span style="color: #339933;">-</span> Aliases names controllers<span style="color: #339933;">.</span></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/evnine.php.html#line2009" class="location">evnine.php at line 2009</a>
+
+<h3 id="getDataFromController()">getDataFromController</h3>
+<code class="signature">public  void <strong>getDataFromController</strong>(array param, boolean debug)</code>
+<div class="details">
+&nbsp;The basic method to get data from the controller with parameters<span style="color: #339933;">.</span><br />
+&nbsp;<br />
+&nbsp;<span style="color: #339933;">/</span>index<span style="color: #339933;">.</span>php<br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">include_once</span><span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'evnine.php'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$evnine</span> <span style="color: #339933;">=</span> <span style="color: #000000; font-weight: bold;">new</span> EvnineController<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$result</span> <span style="color: #339933;">=</span> <span style="color: #000088;">$evnine</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">getControllerForParam</span><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$param</span> <span style="color: #339933;">=</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="color: #0000ff;">'controller'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'controller'</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><span style="color: #0000ff;">'method'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'method'</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><span style="color: #0000ff;">'REQUEST'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #000088;">$_REQUEST</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><span style="color: #0000ff;">'ajax'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #000088;">$_REQUEST</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'ajax'</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><span style="color: #0000ff;">'sef'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #000088;">$_REQUEST</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'sef'</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><dl>
+<dt>Parameters:</dt>
+<dd>&nbsp;<span style="color: #000088;">$param</span> <span style="color: #339933;">-</span> Init parameters<span style="color: #339933;">.</span></dd>
+<dd>&nbsp;<span style="color: #000088;">$debug</span> <span style="color: #339933;">-</span> Debug mode<span style="color: #339933;">.</span></dd>
+<dt>See Also:</dt>
+<dd><p><a href="../evnineconfig/evnineconfig.html#__construct()">EvnineConfig.__construct</a></p></dd>
+<dd><p><a href="../controllers/controllersexample.html#controller">Controllers.controller</a></p></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/evnine.php.html#line2301" class="location">evnine.php at line 2301</a>
+
+<h3 id="getAvailableTemplates()">getAvailableTemplates</h3>
+<code class="signature">public  void <strong>getAvailableTemplates</strong>(array available_templ)</code>
+<div class="details">
+&nbsp;Display the available templates <span style="color: #b1b100;">for</span> the access level<span style="color: #339933;">.</span><br />
+&nbsp;<br />
+&nbsp;<span style="color: #339933;">/</span>evnine<span style="color: #339933;">.</span>config<span style="color: #339933;">.</span>php<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">access_level</span><span style="color: #339933;">=</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'admin'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'2'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'user'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'1'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'guest'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'0'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<br />
+&nbsp;<span style="color: #339933;">/</span>controllers<span style="color: #339933;">/</span>ControllersHelloWorld<span style="color: #339933;">.</span>php<br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'templates'</span> <span style="color: #339933;">=&gt;</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">//</span> Access to the mapping of the template<span style="color: #339933;">.</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">//</span> Depends on the users access<span style="color: #339933;">.</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; access_level<span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'admin'</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">=&gt;</span>array<span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'menu'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'admin_menu'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; access_level<span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'user'</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">=&gt;</span>array<span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'menu'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'user_menu'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; access_level<span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'guest'</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">=&gt;</span>array<span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'menu'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'guest_menu'</span><span style="color: #009900;">&#41;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <br />
+&nbsp;<span style="color: #339933;">&gt;&gt;</span> <span style="color: #000088;">$access_level</span><span style="color: #339933;">=</span><span style="color: #0000ff;">'user'</span><br />
+&nbsp;<span style="color: #339933;">&lt;&lt;</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'menu'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'user_menu'</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'menu'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'guest_menu'</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><br />
+&nbsp;<span style="color: #339933;">&gt;&gt;</span> <span style="color: #000088;">$access_level</span><span style="color: #339933;">=</span><span style="color: #0000ff;">'guest'</span><br />
+&nbsp;<span style="color: #339933;">&lt;&lt;</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'menu'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'guest_menu'</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><dl>
+<dt>See Also:</dt>
+<dd><p><a href="../controllers/controllersexample.html#controller">Controllers.controller</a></p></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/evnine.php.html#line2361" class="location">evnine.php at line 2361</a>
+
+<h3 id="getMethodFromClass()">getMethodFromClass</h3>
+<code class="signature">public  void <strong>getMethodFromClass</strong>(string methods_class, array methods_array)</code>
+<div class="details">
+&nbsp;Call the methods in the <span style="color: #000000; font-weight: bold;">class</span><span style="color: #339933;">.</span><br />
+&nbsp;<br />
+&nbsp;<span style="color: #339933;">/</span>controllers<span style="color: #339933;">/</span>ControllersExample<span style="color: #339933;">.</span>php<br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'ModelsHelloWorld'</span> <span style="color: #339933;">=&gt;</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'getHelloWorld1'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'getHelloWorld2'</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><dl>
+<dt>Parameters:</dt>
+<dd>&nbsp;<span style="color: #000088;">$methods_class</span> <span style="color: #339933;">-</span> <span style="color: #000000; font-weight: bold;">Class</span> to call methods<span style="color: #339933;">.</span><br />
+&nbsp;<span style="color: #0000ff;">'ModelsHelloWorld'</span><span style="color: #339933;">=&gt;</span><br />
+&nbsp;</dd>
+<dd>&nbsp;<span style="color: #000088;">$methods_array</span> <span style="color: #339933;">-</span> An <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> of methods<span style="color: #339933;">.</span><br />
+&nbsp;<span style="color: #339933;">=&gt;</span>array<span style="color: #009900;">&#40;</span><br />
+&nbsp;<span style="color: #0000ff;">'getHelloWorld1'</span><br />
+&nbsp;<span style="color: #0000ff;">'getHelloWorld2'</span><br />
+&nbsp;<span style="color: #009900;">&#41;</span><br />
+&nbsp;</dd>
+<dt>See Also:</dt>
+<dd><p><a href="../controllers/controllersexample.html#controller">Controllers.controller</a></p></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/evnine.php.html#line2588" class="location">evnine.php at line 2588</a>
+
+<h3 id="isSetClassToLoadAndSetParam()">isSetClassToLoadAndSetParam</h3>
+<code class="signature">public  boolean <strong>isSetClassToLoadAndSetParam</strong>(string methods_class, boolean config_models)</code>
+<div class="details">
+&nbsp;The <span style="color: #000000; font-weight: bold;">class</span> is initialized? <span style="color: #b1b100;">If</span> not<span style="color: #339933;">,</span> load it and add the parameters from the config<span style="color: #339933;">.</span><br />
+&nbsp;<br />
+&nbsp;The path to the <span style="color: #000000; font-weight: bold;">class</span> specified in the<br />
+&nbsp;<span style="color: #339933;">/</span>evnine<span style="color: #339933;">.</span>config<span style="color: #339933;">.</span>php<br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">class_path</span><span style="color: #339933;">=</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'ModelsHelloWorld'</span><span style="color: #339933;">=&gt;</span>array<span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'path'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'/models/'</span><span style="color: #009900;">&#41;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><br />
+&nbsp;IMPORTANT<span style="color: #339933;">:</span><br />
+&nbsp;Without specifying the path<span style="color: #339933;">,</span> all the models set in <span style="color: #339933;">/</span>models<span style="color: #339933;">/</span><dl>
+<dt>Parameters:</dt>
+<dd>&nbsp;<span style="color: #000088;">$methods_class</span> <span style="color: #339933;">-</span> Name of <span style="color: #000000; font-weight: bold;">class</span> to load<span style="color: #339933;">.</span></dd>
+<dd>&nbsp;<span style="color: #000088;">$config_models</span> <span style="color: #339933;">-</span> <span style="color: #009900; font-weight: bold;">true</span> <span style="color: #339933;">-</span> get the path of the configuration <a href="http://www.php.net/file"><span style="color: #990000;">file</span></a><span style="color: #339933;">.</span><br />
+&nbsp;<span style="color: #009900; font-weight: bold;">false</span> <span style="color: #339933;">-</span> <span style="color: #000000; font-weight: bold;">use</span> the path to a <span style="color: #b1b100;">default</span> model <span style="color: #339933;">/</span>models<span style="color: #339933;">/</span><br />
+&nbsp;</dd>
+<dt>See Also:</dt>
+<dd><p><a href="../evnineconfig/evnineconfig.html#__construct()">EvnineConfig.__construct</a></p></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/evnine.php.html#line2655" class="location">evnine.php at line 2655</a>
+
+<h3 id="getDataFromMethod()">getDataFromMethod</h3>
+<code class="signature">public  void <strong>getDataFromMethod</strong>(string methods_class, array methods_array)</code>
+<div class="details">
+&nbsp;Get data from the <span style="color: #000000; font-weight: bold;">class</span> methods<span style="color: #339933;">.</span><br />
+&nbsp;<br />
+&nbsp;<span style="color: #339933;">/</span>controllers<span style="color: #339933;">/</span>ControllersExample<span style="color: #339933;">.</span>php<br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'ModelsHelloWorld'</span> <span style="color: #339933;">=&gt;</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'getHelloWorld1'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'getHelloWorld2'</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <br />
+&nbsp;Methods can start with is<span style="color: #339933;">,</span> get<span style="color: #339933;">,</span> set<br />
+&nbsp;<br />
+&nbsp;Based on the type of method<span style="color: #339933;">.</span><br />
+&nbsp;Get the data from the method<span style="color: #339933;">.</span> <br />
+<br />
+&nbsp;is <span style="color: #339933;">-</span> to check it?<br />
+&nbsp;get <span style="color: #339933;">-</span> get the data<span style="color: #339933;">.</span><br />
+&nbsp;set <span style="color: #339933;">-</span> set the data<br />
+&nbsp;ModifierParam at the <a href="http://www.php.net/end"><span style="color: #990000;">end</span></a> <span style="color: #339933;">-</span> it means changing parameter by the <span style="color: #339933;">&amp;</span>link<span style="color: #339933;">.</span><dl>
+<dt>Parameters:</dt>
+<dd>&nbsp;<span style="color: #000088;">$methods_class</span> <span style="color: #339933;">-</span> <span style="color: #000000; font-weight: bold;">Class</span> to call methods<span style="color: #339933;">.</span><br />
+&nbsp;<span style="color: #0000ff;">'ModelsHelloWorld'</span> <span style="color: #339933;">=&gt;</span><br />
+&nbsp;</dd>
+<dd>&nbsp;<span style="color: #000088;">$methods_array</span> <span style="color: #339933;">-</span> An <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> of methods<span style="color: #339933;">.</span><br />
+&nbsp;<span style="color: #339933;">=&gt;</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp;<span style="color: #0000ff;">'getHelloWorld1'</span><br />
+&nbsp;<span style="color: #0000ff;">'getHelloWorld2'</span><br />
+&nbsp;<span style="color: #009900;">&#41;</span><br />
+&nbsp;</dd>
+<dt>See Also:</dt>
+<dd><p><a href="../controllers/controllersexample.html#controller">Controllers.controller</a></p></dd>
+<dt>See Also:</dt>
+<dd><p><code><a href="../evnineconfig/evnineconfig.html#class_path">EvnineConfig.class_path</a></code></p></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/evnine.php.html#line3033" class="location">evnine.php at line 3033</a>
+
+<h3 id="isUserHasAccessForMethod()">isUserHasAccessForMethod</h3>
+<code class="signature">public  bool <strong>isUserHasAccessForMethod</strong>(string methods_class, string methods_array_value)</code>
+<div class="details">
+&nbsp;Is there access to a method <span style="color: #b1b100;">for</span> this user?<br />
+&nbsp;<br />
+&nbsp;<span style="color: #0000ff;">'ModelsHelloWorld'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'getHelloWorld1'</span><dl>
+<dt>Parameters:</dt>
+<dd>&nbsp;<span style="color: #000088;">$methods_class</span> <span style="color: #339933;">-</span> <span style="color: #000000; font-weight: bold;">Class</span> to call methods<span style="color: #339933;">.</span><br />
+&nbsp;<span style="color: #0000ff;">'ModelsHelloWorld'</span> <span style="color: #339933;">=&gt;</span><br />
+&nbsp;</dd>
+<dd>&nbsp;<span style="color: #000088;">$methods_array_value</span> <span style="color: #339933;">-</span> Method Name<br />
+&nbsp;<span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'getHelloWorld1'</span><br />
+&nbsp;</dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/evnine.php.html#line3290" class="location">evnine.php at line 3290</a>
+
+<h3 id="isGetMethodForAnswer()">isGetMethodForAnswer</h3>
+<code class="signature">public  void <strong>isGetMethodForAnswer</strong>(string method, boolean methods_case)</code>
+<div class="details">
+&nbsp;Select the method <span style="color: #b1b100;">for</span> answer<span style="color: #339933;">.</span><br />
+&nbsp;<br />
+&nbsp;<span style="color: #339933;">/</span>controllers<span style="color: #339933;">/</span>ControllersHelloWorld<span style="color: #339933;">.</span>php<br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'default'</span><span style="color: #339933;">=&gt;</span>array<span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'ModelsHelloWorld'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'isHello'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="color: #009900;">&#41;</span><dl>
+<dt>Parameters:</dt>
+<dd>&nbsp;<span style="color: #000088;">$method</span> <span style="color: #339933;">-</span> Method name<span style="color: #339933;">.</span><br />
+&nbsp;<span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'isHello'</span><br />
+&nbsp;</dd>
+<dd>&nbsp;<span style="color: #000088;">$methods_case</span> <span style="color: #339933;">-</span> The method answer <br />
+&nbsp;<span style="color: #009900; font-weight: bold;">true</span> <span style="color: #339933;">=</span> <span style="color: #cc66cc;">1</span><br />
+&nbsp;<span style="color: #009900; font-weight: bold;">false</span> <span style="color: #339933;">=</span> <span style="color: #cc66cc;">0</span> <span style="color: #339933;">=</span> <span style="color: #0000ff;">''</span><br />
+&nbsp;</dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/evnine.php.html#line3358" class="location">evnine.php at line 3358</a>
+
+<h3 id="getPublicMethod()">getPublicMethod</h3>
+<code class="signature">public  void <strong>getPublicMethod</strong>(array param)</code>
+<div class="details">
+<p>Call public method.<br></p><dl>
+<dt>See Also:</dt>
+<dd><p><code><a href="../controllers/controllersexample.html#controller">Controllers.controller</a></code></p></dd>
+<dt>Parameters:</dt>
+<dd>&nbsp;<span style="color: #000088;">$param</span> <span style="color: #339933;">-</span> Parameters from the input<span style="color: #339933;">.</span></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/evnine.php.html#line3406" class="location">evnine.php at line 3406</a>
+
+<h3 id="getPrivateMethod()">getPrivateMethod</h3>
+<code class="signature">public  void <strong>getPrivateMethod</strong>(string method)</code>
+<div class="details">
+<p>Call private method.<br></p><dl>
+<dt>See Also:</dt>
+<dd><p><code><a href="../controllers/controllersexample.html#controller">Controllers.controller</a></code></p></dd>
+<dt>Parameters:</dt>
+<dd>&nbsp;<span style="color: #000088;">$method</span> <span style="color: #339933;">-</span> <span style="color: #000000; font-weight: bold;">Private</span> method<span style="color: #339933;">.</span></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/evnine.php.html#line3472" class="location">evnine.php at line 3472</a>
+
+<h3 id="getFirstArrayKey()">getFirstArrayKey</h3>
+<code class="signature">public  string <strong>getFirstArrayKey</strong>(array array, boolean get_value)</code>
+<div class="details">
+<p>Get the first element of the array as a key or value.<br></p><dl>
+<dt>Parameters:</dt>
+<dd>&nbsp;<span style="color: #000088;">$array</span> <span style="color: #339933;">-</span> An input <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #339933;">.</span></dd>
+<dd>&nbsp;<span style="color: #000088;">$get_value</span> <span style="color: #339933;">-</span> Is first value?</dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/evnine.php.html#line3571" class="location">evnine.php at line 3571</a>
+
+<h3 id="getControllerForParamTest()">getControllerForParamTest</h3>
+<code class="signature">public  void <strong>getControllerForParamTest</strong>(string method, array array_init, array param)</code>
+<div class="details">
+&nbsp;A method <span style="color: #b1b100;">for</span> testing an controllers<span style="color: #339933;">.</span><br />
+&nbsp;<br />
+&nbsp;Required to operate<span style="color: #339933;">:</span> ModelsPHPUnit<br />
+&nbsp;And the call sequence<span style="color: #339933;">:</span><br />
+<br />
+&nbsp;<span style="color: #339933;">/</span>controllers<span style="color: #339933;">/</span>ControllersPHPUnit<span style="color: #339933;">.</span>php <br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'ModelsPHPUnit'</span> <span style="color: #339933;">=&gt;</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'getParamTest'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'getParamCaseByParamTest'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'getCountParamByParamTest'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'getPHPUnitCode'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><br />
+<br />
+&nbsp;Options to configure<span style="color: #339933;">:</span><br />
+&nbsp;<span style="color: #339933;">/</span>evnine<span style="color: #339933;">.</span>config<span style="color: #339933;">.</span>php<br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">controller_alias</span><span style="color: #339933;">=</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'php_unit_test'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'ControllersPHPUnit'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">param_const</span><span style="color: #339933;">=</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">//</span> A shared folder <span style="color: #b1b100;">for</span> the cache<span style="color: #339933;">.</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'CacheDir'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'PHPUnitCache'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">//</span> Folder to store the PHPUnit tests<span style="color: #339933;">.</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'CacheDirPHPUnit'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'PHPUnitCache'</span><span style="color: #339933;">.</span><span style="color: #009900; font-weight: bold;">DIRECTORY_SEPARATOR</span><span style="color: #339933;">.</span><span style="color: #0000ff;">'PHPUnit'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">//</span> Folder to store temporary data<span style="color: #339933;">.</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'CacheDirControllerForParam'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'PHPUnitCache'</span><span style="color: #339933;">.</span><span style="color: #009900; font-weight: bold;">DIRECTORY_SEPARATOR</span><span style="color: #339933;">.</span><span style="color: #0000ff;">'getControllerForParam'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span> <br />
+&nbsp; &nbsp; &nbsp; &nbsp; <br />
+&nbsp;Initialization<span style="color: #339933;">:</span><br />
+&nbsp;<span style="color: #339933;">/</span>index<span style="color: #339933;">.</span>php <br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">include_once</span> <span style="color: #0000ff;">'evnine.php'</span><span style="color: #339933;">;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$evnine</span> <span style="color: #339933;">=</span> <span style="color: #000000; font-weight: bold;">new</span> EvnineController<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$output</span> <span style="color: #339933;">=</span> <span style="color: #000088;">$evnine</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">getControllerForParam</span><span style="color: #009900;">&#40;</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'controller'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'php_unit_test'</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$php_unit_file</span><span style="color: #339933;">=</span><span style="color: #0000ff;">'evninePHPUnit.php'</span><span style="color: #339933;">;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">if</span> <span style="color: #009900;">&#40;</span><span style="color: #339933;">!</span><a href="http://www.php.net/file_exists"><span style="color: #990000;">file_exists</span></a><span style="color: #009900;">&#40;</span><span style="color: #000088;">$php_unit_file</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://www.php.net/file_put_contents"><span style="color: #990000;">file_put_contents</span></a><span style="color: #009900;">&#40;</span><span style="color: #000088;">$php_unit_file</span><span style="color: #339933;">,</span><span style="color: #000088;">$output</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'ModelsPHPUnit_getPHPUnitCode'</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$dir</span> <span style="color: #339933;">=</span> <span style="color: #009900;">&#40;</span><a href="http://www.php.net/defined"><span style="color: #990000;">defined</span></a><span style="color: #009900;">&#40;</span> <span style="color: #0000ff;">'__DIR__'</span> <span style="color: #009900;">&#41;</span>?__DIR__<span style="color: #339933;">:</span><a href="http://www.php.net/getcwd"><span style="color: #990000;">getcwd</span></a><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$exec</span><span style="color: #339933;">=</span> <span style="color: #0000ff;">'phpunit --skeleton-test &quot;evninePHPUnit&quot; &quot;'</span><span style="color: #339933;">.</span><span style="color: #000088;">$dir</span><span style="color: #339933;">.</span><span style="color: #0000ff;">'evninePHPUnit.php&quot;'</span><span style="color: #339933;">;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://www.php.net/exec"><span style="color: #990000;">exec</span></a><span style="color: #009900;">&#40;</span><span style="color: #000088;">$exec</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <br />
+&nbsp;<span style="color: #339933;">&gt;&gt;</span> <span style="color: #000088;">$output</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'ModelsPHPUnit_getPHPUnitCode'</span><span style="color: #009900;">&#93;</span><br />
+&nbsp;<span style="color: #339933;">&lt;&lt;</span><br />
+&nbsp;<span style="color: #339933;">/</span>evninePHPUnit<span style="color: #339933;">.</span>php<br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">//@</span><a href="http://www.php.net/assert"><span style="color: #990000;">assert</span></a> <span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'getControllerForParam_helloworld_default_Test'</span><span style="color: #339933;">,</span><span style="color: #000088;">$array</span><span style="color: #339933;">,</span><span style="color: #000088;">$param</span><span style="color: #009900;">&#41;</span> <span style="color: #339933;">==</span> <span style="color: #000088;">$array</span><span style="color: #339933;">=</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">object</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">getControllerForParam</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$param</span><span style="color: #339933;">=</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span> <span style="color: #0000ff;">'controller'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'helloworld'</span><span style="color: #339933;">,</span> <span style="color: #0000ff;">'method'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'default'</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">function</span> getControllerForParam_helloworld_default_Test<span style="color: #009900;">&#40;</span><span style="color: #000088;">$method</span><span style="color: #339933;">,</span><span style="color: #000088;">$array</span><span style="color: #339933;">,</span><span style="color: #000088;">$param</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">return</span> <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">getControllerForParamTest</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$method</span><span style="color: #339933;">,</span><span style="color: #000088;">$array</span><span style="color: #339933;">,</span><span style="color: #000088;">$param</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><br />
+&nbsp;<br />
+&nbsp;<span style="color: #339933;">&gt;&gt;</span> wget http<span style="color: #339933;">://</span>pear<span style="color: #339933;">.</span>php<span style="color: #339933;">.</span>net<span style="color: #339933;">/</span>go<span style="color: #339933;">-</span>pear<span style="color: #339933;">.</span>phar<br />
+&nbsp;<span style="color: #339933;">&gt;&gt;</span> sudo php go<span style="color: #339933;">-</span>pear<span style="color: #339933;">.</span>phar<br />
+&nbsp;<span style="color: #339933;">&gt;&gt;</span> pear channel<span style="color: #339933;">-</span>discover pear<span style="color: #339933;">.</span>phpunit<span style="color: #339933;">.</span>de<br />
+&nbsp;<span style="color: #339933;">&gt;&gt;</span> pear install phpunit<span style="color: #339933;">/</span>PHPUnit<br />
+&nbsp;<span style="color: #339933;">&gt;&gt;</span> cmd<span style="color: #339933;">/</span>sh<span style="color: #339933;">:</span> phpunit <span style="color: #339933;">--</span>skeleton<span style="color: #339933;">-</span>test <span style="color: #0000ff;">&quot;evninePHPUnit&quot;</span> <span style="color: #339933;">/</span>OR_SET_PATH_TO<span style="color: #339933;">/</span>evninePHPUnit<span style="color: #339933;">.</span>php<br />
+&nbsp;<br />
+&nbsp;<span style="color: #339933;">&lt;&lt;</span><br />
+&nbsp;<span style="color: #339933;">/</span>evninePHPUnitTest<span style="color: #339933;">.</span>php<br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> testGetControllerForParam_helloworld_default_Test<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#123;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">assertEquals</span><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$array</span><span style="color: #339933;">=</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">object</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">getControllerForParam</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$param</span><span style="color: #339933;">=</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span> <span style="color: #0000ff;">'controller'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'helloworld'</span><span style="color: #339933;">,</span> <span style="color: #0000ff;">'method'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'default'</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">object</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">getControllerForParam_helloworld_default_Test</span><span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'getControllerForParam_helloworld_default_Test'</span><span style="color: #339933;">,</span><span style="color: #000088;">$array</span><span style="color: #339933;">,</span><span style="color: #000088;">$param</span><span style="color: #009900;">&#41;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><dl>
+<dt>See Also:</dt>
+<dd><p><code><a href="../modelsphpunit/modelsphpunit.html">ModelsPHPUnit</a></code></p></dd>
+<dt>See Also:</dt>
+<dd><p><a href="../evnineconfig/evnineconfig.html#class_path">EvnineConfig.class_path</a></p></dd>
+<dt>Parameters:</dt>
+<dd>&nbsp;<span style="color: #000088;">$method</span> <span style="color: #339933;">-</span> The method <span style="color: #b1b100;">for</span> check<span style="color: #339933;">.</span></dd>
+<dd>&nbsp;<span style="color: #000088;">$array_init</span> <span style="color: #339933;">-</span> <a href="http://www.php.net/array"><span style="color: #990000;">Array</span></a> to store data from an external method call<span style="color: #339933;">.</span><br />
+&nbsp;To optimize performance<span style="color: #339933;">.</span><br />
+&nbsp;</dd>
+<dd>&nbsp;<span style="color: #000088;">$param</span> <span style="color: #339933;">-</span> An <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> of initialization parameters<span style="color: #339933;">.</span></dd>
+</dl>
+</div>
+
+<hr>
+
+<div class="header">
+<h1>evnine</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="../evninecontroller/package-summary.html">Namespace</a></li>
+<li class="active">Class</li>
+<li><a href="../evninecontroller/package-tree.html">Tree</a></li>
+<li><a href="../overview-files.html">Files</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../todo-list.html">Todo</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../evninecontroller\evninecontroller.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<p id="footer"></p>
+
+</body>
+
+</html>

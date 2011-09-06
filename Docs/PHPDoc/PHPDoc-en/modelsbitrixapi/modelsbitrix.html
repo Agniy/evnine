@@ -1,0 +1,629 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
+<meta name="when" content="Mon, 05 Sep 2011 20:11:11 +0000">
+
+<link rel="stylesheet" type="text/css" href="../stylesheet.css">
+<link rel="start" href="../overview-summary.html">
+
+<title>ModelsBitrix (evnine)</title>
+
+</head>
+<body id="definition" onload="parent.document.title=document.title;">
+
+<div class="header">
+<h1>evnine</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="../modelsbitrixapi/package-summary.html">Namespace</a></li>
+<li class="active">Class</li>
+<li><a href="../modelsbitrixapi/package-tree.html">Tree</a></li>
+<li><a href="../overview-files.html">Files</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../todo-list.html">Todo</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../modelsbitrixapi\modelsbitrix.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<div class="qualifiedName">ModelsBitrixAPI\ModelsBitrix</div>
+<a href="../source/models/modelsbitrix.php.html#line36" class="location">models\ModelsBitrix.php at line 36</a>
+
+<h1>Class ModelsBitrix</h1>
+
+<pre class="tree"><a href="../modelsbitrixapi/modelsbitrixinfoblockparser.html">ModelsBitrixInfoBlockParser</a><br>    L-<strong>ModelsBitrix</strong><br /></pre>
+
+<hr>
+
+<p class="signature">public  class <strong>ModelsBitrix</strong><br>extends <a href="../modelsbitrixapi/modelsbitrixinfoblockparser.html">ModelsBitrixInfoBlockParser</a>
+
+</p>
+
+<div class="comment" id="overview_description"><p>Model of working with API Bitrix.<br>
+ The basic method for extracting data getAllFromAPI.<br></p></div>
+
+<dl>
+<dt>See Also:</dt>
+<dd><p><code><a href="../modelsbitrixapi/modelsbitrix.html#getAllFromAPI()">ModelsBitrixAPI.getAllFromAPI</a></code></p></dd>
+<dt>See Also:</dt>
+<dd><p><a href="../modelsbitrixapi/modelsbitrixinfoblockparser.html#parseAllData()">ModelsBitrixAPI.parseAllData</a></p></dd>
+<dt>Uses:</dt>
+<dd><p>ModelsBitrixInfoBlockParser</p></dd>
+<dt>Author:</dt>
+<dd><p>ev9eniy</p></dd>
+<dt>Version:</dt>
+<dd><p>4</p></dd>
+<dt>Updated:</dt>
+<dd><p>02-sep-2011 18:00:57</p></dd>
+</dl>
+<hr>
+
+<table id="summary_method">
+<tr><th colspan="2">Method Summary</th></tr>
+<tr>
+<td class="type">protected  void</td>
+<td class="description"><p class="name"><a href="#setInitAPI()">setInitAPI</a>(array param)</p><p class="description">The class constructor.</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#initCIBlock()">initCIBlock</a>()</p><p class="description">Initialize the module iblock. </p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#initCForm()">initCForm</a>()</p><p class="description">Initialize the module forms.</p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#getFromCacheFunction()">getFromCacheFunction</a>(array param, string function_callback, string cache_key)</p><p class="description">Getting data from the cache with setting triggers.</p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#getAllFromAPI()">getAllFromAPI</a>(array param)</p><p class="description">A universal method for get data from the API.</p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#getQuery()">getQuery</a>(string query)</p><p class="description">Get data from Database by API.</p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#getQueryFromBitrixAPI()">getQueryFromBitrixAPI</a>(string query)</p><p class="description">Get the answer from the database using the API.</p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#getQueryFirstArrayValue()">getQueryFirstArrayValue</a>(string query)</p><p class="description">Get the first element of the array.</p></td>
+</tr>
+<tr>
+<td class="type"> boolean</td>
+<td class="description"><p class="name"><a href="#getQueryTrueOrFalse()">getQueryTrueOrFalse</a>(string query)</p><p class="description">Get a boolean answer based on a query true - false.</p></td>
+</tr>
+<tr>
+<td class="type"> boolean|array</td>
+<td class="description"><p class="name"><a href="#getQueryOrFalse()">getQueryOrFalse</a>(string query)</p><p class="description">Get the array response, or false, if the answer is no.</p></td>
+</tr>
+<tr>
+<td class="type"> int</td>
+<td class="description"><p class="name"><a href="#getLastID()">getLastID</a>(string table)</p><p class="description">Get the latest ID from the table.</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#setCharacterToUTF8()">setCharacterToUTF8</a>()</p><p class="description">Set the connection character UTF-8</p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#getCharset()">getCharset</a>()</p><p class="description">Get the current charset.</p></td>
+</tr>
+<tr>
+<td class="type"> string</td>
+<td class="description"><p class="name"><a href="#getInQueryFor()">getInQueryFor</a>(array array)</p><p class="description">The SQL query assistant.</p></td>
+</tr>
+<tr>
+<td class="type"> string</td>
+<td class="description"><p class="name"><a href="#getImplodeArrayWithKey()">getImplodeArrayWithKey</a>(array array, string key, string case)</p><p class="description">The SQL query assistant.</p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#getCompareArrayByKey()">getCompareArrayByKey</a>(array array)</p><p class="description">The SQL query assistant.</p></td>
+</tr>
+<tr>
+<td class="type"> string</td>
+<td class="description"><p class="name"><a href="#getLikeQueryByArray()">getLikeQueryByArray</a>(string like_title, array array, string prefix, string postfix, str same)</p><p class="description">The SQL query assistant.</p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#getArrayKeyForArrayQuery()">getArrayKeyForArrayQuery</a>(array query, string key)</p><p class="description">Set the array value as key for an array.</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#setResetForTest()">setResetForTest</a>()</p><p class="description">Reset For PHPUnitTest.</p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#getFormResult()">getFormResult</a>(int form_id, array by, array order, array filter, array is_filtered, str callback)</p><p class="description">Get form results.</p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#getFormResultIDArrayForValue()">getFormResultIDArrayForValue</a>(int FORM_ID, string SEARCH)</p><p class="description">Get an array of results forms.</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#getFormResultAnswer()">getFormResultAnswer</a>(int form_id, string callback, array filter, boolean only_one_result)</p><p class="description">Get answers to questions of form.</p></td>
+</tr>
+<tr>
+<td class="type"> string</td>
+<td class="description"><p class="name"><a href="#ElementAdd()">ElementAdd</a>(int id, string name, array property)</p><p class="description">Add the element to iblock.  </p></td>
+</tr>
+<tr>
+<td class="type"> string</td>
+<td class="description"><p class="name"><a href="#ElementDelete()">ElementDelete</a>(int id)</p><p class="description">Delete the item.</p></td>
+</tr>
+<tr>
+<td class="type"> string</td>
+<td class="description"><p class="name"><a href="#ElementUpdate()">ElementUpdate</a>(int id, array property)</p><p class="description">Update the element.</p></td>
+</tr>
+<tr>
+<td class="type"> int</td>
+<td class="description"><p class="name"><a href="#getSectionIDBySectionCode()">getSectionIDBySectionCode</a>(int IBLOCK_ID, string SECTION_CODE)</p><p class="description">Get the section ID by the code.</p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#getAllSectionArrayByID()">getAllSectionArrayByID</a>(mixed idblock, mixed idsection, mixed callback, mixed arFilter, mixed arSelectFields, mixed arOrder, bool key_is_id)</p><p class="description">Select all the sections in the iblock by ID.</p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#getAllElementArrayByID()">getAllElementArrayByID</a>(mixed idblock, mixed idsection, mixed callback, mixed arFilter, mixed arSelectFields, mixed data, bool key_is_id, mixed arOrde, bool arGroupBy, bool arNavStartParams, bool get_prop, bool get_first_array_key, bool set_cache, bool set_url_templates)</p><p class="description">Get all the items from the iblock by ID. </p></td>
+</tr>
+<tr>
+<td class="type"> string</td>
+<td class="description"><p class="name"><a href="#getFirstArrayKey()">getFirstArrayKey</a>(array array, boolean get_value)</p><p class="description">Get the first element of the array as a key or value.</p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#getIMGbyIDToSave()">getIMGbyIDToSave</a>(int id)</p><p class="description">Re save the file with info.</p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#getIMGbyFileIDToSRC()">getIMGbyFileIDToSRC</a>(array id)</p><p class="description">Get the file URL by ID.</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#getStrlenUTF8()">getStrlenUTF8</a>(mixed str)</p><p class="description">Get the length of the UTF8 string.</p></td>
+</tr>
+</table>
+
+<table class="inherit">
+<tr><th colspan="2">Methods inherited from ModelsBitrixAPI\ModelsBitrixInfoBlockParser</th></tr>
+<tr><td><a href="../modelsbitrixapi/modelsbitrixinfoblockparser.html#parseAllData()">parseAllData</a></td></tr></table>
+
+<h2 id="detail_method">Method Detail</h2>
+<a href="../source/models/modelsbitrix.php.html#line46" class="location">models\ModelsBitrix.php at line 46</a>
+
+<h3 id="setInitAPI()">setInitAPI</h3>
+<code class="signature">protected  void <strong>setInitAPI</strong>(array param)</code>
+<div class="details">
+<p>The class constructor.<br></p></div>
+
+<hr>
+
+<a href="../source/models/modelsbitrix.php.html#line56" class="location">models\ModelsBitrix.php at line 56</a>
+
+<h3 id="initCIBlock()">initCIBlock</h3>
+<code class="signature">public  void <strong>initCIBlock</strong>()</code>
+<div class="details">
+<p>Initialize the module iblock. <br></p></div>
+
+<hr>
+
+<a href="../source/models/modelsbitrix.php.html#line69" class="location">models\ModelsBitrix.php at line 69</a>
+
+<h3 id="initCForm()">initCForm</h3>
+<code class="signature">public  void <strong>initCForm</strong>()</code>
+<div class="details">
+<p>Initialize the module forms.<br></p></div>
+
+<hr>
+
+<a href="../source/models/modelsbitrix.php.html#line86" class="location">models\ModelsBitrix.php at line 86</a>
+
+<h3 id="getFromCacheFunction()">getFromCacheFunction</h3>
+<code class="signature">public  array <strong>getFromCacheFunction</strong>(array param, string function_callback, string cache_key)</code>
+<div class="details">
+<p>Getting data from the cache with setting triggers.<br></p></div>
+
+<hr>
+
+<a href="../source/models/modelsbitrix.php.html#line148" class="location">models\ModelsBitrix.php at line 148</a>
+
+<h3 id="getAllFromAPI()">getAllFromAPI</h3>
+<code class="signature">public  array <strong>getAllFromAPI</strong>(array param)</code>
+<div class="details">
+<p>A universal method for get data from the API.<br></p><dl>
+<dt>Parameters:</dt>
+<dd>&nbsp;<span style="color: #000088;">$param</span> <span style="color: #339933;">-</span> <span style="color: #339933;">=</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp;<span style="color: #0000ff;">'$arOrder'</span><span style="color: #339933;">=&gt;</span>array<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><br />
+&nbsp;<span style="color: #339933;">,</span><span style="color: #0000ff;">'$arFilter'</span><span style="color: #339933;">=&gt;</span>array<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><br />
+&nbsp;<span style="color: #339933;">,</span><span style="color: #0000ff;">'$arGroupBy'</span><span style="color: #339933;">=&gt;</span>array<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><br />
+&nbsp;<span style="color: #339933;">,</span><span style="color: #0000ff;">'$arNavStartParams'</span><span style="color: #339933;">=&gt;</span>array<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><br />
+&nbsp;<span style="color: #339933;">,</span><span style="color: #0000ff;">'$arSelectFields'</span><span style="color: #339933;">=&gt;</span>array<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><br />
+&nbsp;<span style="color: #339933;">,</span><span style="color: #0000ff;">'set_cache'</span><span style="color: #339933;">=&gt;</span>true<br />
+&nbsp;<span style="color: #339933;">,</span><span style="color: #0000ff;">'set_parser'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">''</span><br />
+&nbsp;<span style="color: #339933;">,</span><span style="color: #0000ff;">'get_section'</span><span style="color: #339933;">=&gt;</span>false<br />
+&nbsp;<span style="color: #339933;">,</span><span style="color: #0000ff;">'get_sef'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">''</span><br />
+&nbsp;<span style="color: #339933;">//</span> get_sef<span style="color: #339933;">=</span><span style="color: #009900; font-weight: bold;">true</span> GetNextElement<span style="color: #009900;">&#40;</span><span style="color: #009900; font-weight: bold;">false</span><span style="color: #339933;">,</span><span style="color: #009900; font-weight: bold;">false</span><span style="color: #009900;">&#41;</span><br />
+&nbsp;<span style="color: #339933;">//</span> get_sef<span style="color: #339933;">=</span><span style="color: #009900; font-weight: bold;">false</span> Fetch<span style="color: #009900;">&#40;</span><span style="color: #009900; font-weight: bold;">false</span><span style="color: #339933;">,</span><span style="color: #009900; font-weight: bold;">false</span><span style="color: #009900;">&#41;</span><br />
+&nbsp;<span style="color: #339933;">,</span><span style="color: #0000ff;">'set_sef'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">''</span><br />
+&nbsp;<span style="color: #339933;">//</span> <span style="color: #0000ff;">'set_sef'</span><span style="color: #339933;">=&gt;</span><span style="color: #666666; font-style: italic;">#SECTION_ID#/#ELEMENT_ID#<br />
+</span> <span style="color: #339933;">//</span> SetUrlTemplates<span style="color: #009900;">&#40;</span><span style="color: #0000ff;">&quot;&quot;</span><span style="color: #339933;">,</span> <span style="color: #000088;">$param</span><span style="color: #009900;">&#91;</span><span style="color: #0000ff;">'set_sef'</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span><br />
+&nbsp;<span style="color: #339933;">,</span><span style="color: #0000ff;">'get_prop'</span><span style="color: #339933;">=&gt;</span>false<br />
+&nbsp;<span style="color: #339933;">,</span><span style="color: #0000ff;">'set_key_id'</span><span style="color: #339933;">=&gt;</span>false<br />
+&nbsp;<span style="color: #339933;">//</span> <span style="color: #339933;">&gt;&gt;</span> <span style="color: #0000ff;">'set_key_id'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'ID'</span><span style="color: #339933;">,</span><br />
+&nbsp;<span style="color: #339933;">//</span> <span style="color: #339933;">&lt;&lt;</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp;<span style="color: #339933;">//</span> <span style="color: #cc66cc;">555</span><span style="color: #339933;">=&gt;</span>array<span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'ID'</span><span style="color: #339933;">=</span><span style="color: #0000ff;">'555'</span><span style="color: #339933;">,</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><span style="color: #339933;">..</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><br />
+&nbsp;<span style="color: #339933;">//</span> <span style="color: #cc66cc;">777</span><span style="color: #339933;">=&gt;</span>array<span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'ID'</span><span style="color: #339933;">=</span><span style="color: #0000ff;">'7'</span><span style="color: #339933;">,</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><span style="color: #339933;">..</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><br />
+&nbsp;<span style="color: #339933;">//</span> <span style="color: #009900;">&#41;</span><br />
+&nbsp;<span style="color: #339933;">,</span><span style="color: #0000ff;">'get_first'</span><span style="color: #339933;">=&gt;</span>false<br />
+&nbsp;<span style="color: #339933;">//</span> <span style="color: #339933;">&gt;&gt;</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp;<span style="color: #339933;">//</span> <span style="color: #0000ff;">'0'</span><span style="color: #339933;">=&gt;</span>array<span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'ID'</span><span style="color: #339933;">=</span><span style="color: #0000ff;">'555'</span><span style="color: #339933;">,</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><span style="color: #339933;">..</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">,</span><br />
+&nbsp;<span style="color: #339933;">//</span> <span style="color: #0000ff;">'1'</span><span style="color: #339933;">=&gt;</span>array<span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'ID'</span><span style="color: #339933;">=</span><span style="color: #0000ff;">'777'</span><span style="color: #339933;">,</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><span style="color: #339933;">..</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><br />
+&nbsp;<span style="color: #339933;">//</span> <span style="color: #009900;">&#41;</span><br />
+&nbsp;<span style="color: #339933;">//</span> <span style="color: #339933;">&gt;&gt;</span> <span style="color: #0000ff;">'get_first'</span><span style="color: #339933;">=&gt;</span>true<br />
+&nbsp;<span style="color: #339933;">//</span> <span style="color: #339933;">&lt;&lt;</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'ID'</span><span style="color: #339933;">=</span><span style="color: #0000ff;">'555'</span><span style="color: #339933;">,</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><span style="color: #339933;">..</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><br />
+&nbsp;<span style="color: #009900;">&#41;</span><br />
+&nbsp;</dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/models/modelsbitrix.php.html#line244" class="location">models\ModelsBitrix.php at line 244</a>
+
+<h3 id="getQuery()">getQuery</h3>
+<code class="signature">public  array <strong>getQuery</strong>(string query)</code>
+<div class="details">
+<p>Get data from Database by API.<br></p></div>
+
+<hr>
+
+<a href="../source/models/modelsbitrix.php.html#line256" class="location">models\ModelsBitrix.php at line 256</a>
+
+<h3 id="getQueryFromBitrixAPI()">getQueryFromBitrixAPI</h3>
+<code class="signature">public  array <strong>getQueryFromBitrixAPI</strong>(string query)</code>
+<div class="details">
+<p>Get the answer from the database using the API.<br></p></div>
+
+<hr>
+
+<a href="../source/models/modelsbitrix.php.html#line273" class="location">models\ModelsBitrix.php at line 273</a>
+
+<h3 id="getQueryFirstArrayValue()">getQueryFirstArrayValue</h3>
+<code class="signature">public  array <strong>getQueryFirstArrayValue</strong>(string query)</code>
+<div class="details">
+<p>Get the first element of the array.<br></p></div>
+
+<hr>
+
+<a href="../source/models/modelsbitrix.php.html#line286" class="location">models\ModelsBitrix.php at line 286</a>
+
+<h3 id="getQueryTrueOrFalse()">getQueryTrueOrFalse</h3>
+<code class="signature">public  boolean <strong>getQueryTrueOrFalse</strong>(string query)</code>
+<div class="details">
+<p>Get a boolean answer based on a query true - false.<br></p></div>
+
+<hr>
+
+<a href="../source/models/modelsbitrix.php.html#line303" class="location">models\ModelsBitrix.php at line 303</a>
+
+<h3 id="getQueryOrFalse()">getQueryOrFalse</h3>
+<code class="signature">public  boolean|array <strong>getQueryOrFalse</strong>(string query)</code>
+<div class="details">
+<p>Get the array response, or false, if the answer is no.<br></p></div>
+
+<hr>
+
+<a href="../source/models/modelsbitrix.php.html#line320" class="location">models\ModelsBitrix.php at line 320</a>
+
+<h3 id="getLastID()">getLastID</h3>
+<code class="signature">public  int <strong>getLastID</strong>(string table)</code>
+<div class="details">
+<p>Get the latest ID from the table.<br></p></div>
+
+<hr>
+
+<a href="../source/models/modelsbitrix.php.html#line333" class="location">models\ModelsBitrix.php at line 333</a>
+
+<h3 id="setCharacterToUTF8()">setCharacterToUTF8</h3>
+<code class="signature">public  void <strong>setCharacterToUTF8</strong>()</code>
+<div class="details">
+<p>Set the connection character UTF-8<br></p></div>
+
+<hr>
+
+<a href="../source/models/modelsbitrix.php.html#line343" class="location">models\ModelsBitrix.php at line 343</a>
+
+<h3 id="getCharset()">getCharset</h3>
+<code class="signature">public  array <strong>getCharset</strong>()</code>
+<div class="details">
+<p>Get the current charset.<br></p></div>
+
+<hr>
+
+<a href="../source/models/modelsbitrix.php.html#line360" class="location">models\ModelsBitrix.php at line 360</a>
+
+<h3 id="getInQueryFor()">getInQueryFor</h3>
+<code class="signature">public  string <strong>getInQueryFor</strong>(array array)</code>
+<div class="details">
+&nbsp;The SQL query assistant<span style="color: #339933;">.</span><br />
+&nbsp;<br />
+&nbsp;<span style="color: #339933;">&gt;&gt;</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp;<span style="color: #0000ff;">'0'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'A'</span><span style="color: #339933;">,</span><br />
+&nbsp;<span style="color: #0000ff;">'1'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'B'</span><span style="color: #339933;">,</span><br />
+&nbsp;<span style="color: #009900;">&#41;</span><br />
+&nbsp;<span style="color: #339933;">&lt;&lt;</span> <span style="color: #0000ff;">'A'</span><span style="color: #339933;">,</span><span style="color: #0000ff;">'B'</span></div>
+
+<hr>
+
+<a href="../source/models/modelsbitrix.php.html#line381" class="location">models\ModelsBitrix.php at line 381</a>
+
+<h3 id="getImplodeArrayWithKey()">getImplodeArrayWithKey</h3>
+<code class="signature">public  string <strong>getImplodeArrayWithKey</strong>(array array, string key, string case)</code>
+<div class="details">
+&nbsp;The SQL query assistant<span style="color: #339933;">.</span><br />
+&nbsp;<br />
+&nbsp;<span style="color: #339933;">&gt;&gt;</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'0'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'A'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'1'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'B'</span><span style="color: #339933;">,</span><br />
+&nbsp;<span style="color: #009900;">&#41;</span><br />
+&nbsp;<span style="color: #339933;">&gt;&gt;</span> <a href="http://www.php.net/key"><span style="color: #990000;">key</span></a> <span style="color: #339933;">=</span> <span style="color: #0000ff;">' id like '</span><br />
+&nbsp;<span style="color: #339933;">&gt;&gt;</span> <span style="color: #000088;">$case</span> <span style="color: #339933;">=</span> <span style="color: #0000ff;">' OR '</span><br />
+&nbsp;<span style="color: #339933;">&lt;&lt;</span> <span style="color: #009900;">&#40;</span> id like A OR id like B <span style="color: #009900;">&#41;</span></div>
+
+<hr>
+
+<a href="../source/models/modelsbitrix.php.html#line401" class="location">models\ModelsBitrix.php at line 401</a>
+
+<h3 id="getCompareArrayByKey()">getCompareArrayByKey</h3>
+<code class="signature">public  array <strong>getCompareArrayByKey</strong>(array array)</code>
+<div class="details">
+&nbsp;The SQL query assistant<span style="color: #339933;">.</span><br />
+&nbsp;<br />
+&nbsp;<span style="color: #339933;">&gt;&gt;</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'0'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'A'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'1'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'B'</span><span style="color: #339933;">,</span><br />
+&nbsp;<span style="color: #009900;">&#41;</span><br />
+&nbsp;<span style="color: #339933;">&lt;&lt;</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'0'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">&quot;like 'A'&quot;</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'1'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">&quot;like 'B'&quot;</span><span style="color: #339933;">,</span><br />
+&nbsp;<span style="color: #009900;">&#41;</span></div>
+
+<hr>
+
+<a href="../source/models/modelsbitrix.php.html#line431" class="location">models\ModelsBitrix.php at line 431</a>
+
+<h3 id="getLikeQueryByArray()">getLikeQueryByArray</h3>
+<code class="signature">public  string <strong>getLikeQueryByArray</strong>(string like_title, array array, string prefix, string postfix, str same)</code>
+<div class="details">
+&nbsp;The SQL query assistant<span style="color: #339933;">.</span><br />
+&nbsp;<br />
+&nbsp;<span style="color: #339933;">&gt;&gt;</span> <span style="color: #000088;">$like_title</span> <span style="color: #339933;">=</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'OR'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'id'</span><span style="color: #009900;">&#41;</span><br />
+&nbsp;<span style="color: #339933;">&gt;&gt;</span> <span style="color: #000088;">$same</span> <span style="color: #339933;">=</span> <span style="color: #0000ff;">'LIKE'</span><br />
+&nbsp;<span style="color: #339933;">&gt;&gt;</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'0'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'A'</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'1'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'B'</span><span style="color: #339933;">,</span><br />
+&nbsp;<span style="color: #009900;">&#41;</span><br />
+&nbsp;<span style="color: #339933;">&gt;&gt;</span> <span style="color: #000088;">$prefix</span><span style="color: #339933;">=</span><span style="color: #0000ff;">'%+'</span><span style="color: #339933;">,</span><span style="color: #000088;">$postfix</span><span style="color: #339933;">=</span><span style="color: #0000ff;">'+%'</span><br />
+&nbsp;<br />
+&nbsp;<span style="color: #339933;">&lt;&lt;</span> id LIKE <span style="color: #0000ff;">'%A%'</span> OR id LIKE <span style="color: #0000ff;">'%B%'</span></div>
+
+<hr>
+
+<a href="../source/models/modelsbitrix.php.html#line458" class="location">models\ModelsBitrix.php at line 458</a>
+
+<h3 id="getArrayKeyForArrayQuery()">getArrayKeyForArrayQuery</h3>
+<code class="signature">public  array <strong>getArrayKeyForArrayQuery</strong>(array query, string key)</code>
+<div class="details">
+&nbsp;Set the <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> value <span style="color: #b1b100;">as</span> <a href="http://www.php.net/key"><span style="color: #990000;">key</span></a> <span style="color: #b1b100;">for</span> an <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #339933;">.</span><br />
+&nbsp;<br />
+&nbsp;<span style="color: #339933;">&gt;&gt;</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'0'</span> <span style="color: #339933;">=&gt;</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'id'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'77'</span><span style="color: #339933;">,</span><span style="color: #0000ff;">'key'</span><span style="color: #339933;">=</span><span style="color: #0000ff;">'value'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'1'</span> <span style="color: #339933;">=&gt;</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'id'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'55'</span><span style="color: #339933;">,</span><span style="color: #0000ff;">'key'</span><span style="color: #339933;">=</span><span style="color: #0000ff;">'value'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">,</span><br />
+&nbsp;<span style="color: #009900;">&#41;</span><br />
+&nbsp;<span style="color: #339933;">&lt;&lt;</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'77'</span> <span style="color: #339933;">=&gt;</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'id'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'77'</span><span style="color: #339933;">,</span><span style="color: #0000ff;">'key'</span><span style="color: #339933;">=</span><span style="color: #0000ff;">'value'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">,</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'55'</span> <span style="color: #339933;">=&gt;</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'id'</span><span style="color: #339933;">=&gt;</span><span style="color: #0000ff;">'55'</span><span style="color: #339933;">,</span><span style="color: #0000ff;">'key'</span><span style="color: #339933;">=</span><span style="color: #0000ff;">'value'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">,</span><br />
+&nbsp;<span style="color: #009900;">&#41;</span></div>
+
+<hr>
+
+<a href="../source/models/modelsbitrix.php.html#line470" class="location">models\ModelsBitrix.php at line 470</a>
+
+<h3 id="setResetForTest()">setResetForTest</h3>
+<code class="signature">public  void <strong>setResetForTest</strong>()</code>
+<div class="details">
+<p>Reset For PHPUnitTest.<br></p></div>
+
+<hr>
+
+<a href="../source/models/modelsbitrix.php.html#line485" class="location">models\ModelsBitrix.php at line 485</a>
+
+<h3 id="getFormResult()">getFormResult</h3>
+<code class="signature">public  array <strong>getFormResult</strong>(int form_id, array by, array order, array filter, array is_filtered, str callback)</code>
+<div class="details">
+<p>Get form results.<br></p><dl>
+<dt>See Also:</dt>
+<dd><p><code><a href="http://dev.1c-bitrix.ru/api_help/form/classes/cformresult/getlist.php">http://dev.1c-bitrix.ru/api_help/form/classes/cformresult/getlist.php</a></code></p></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/models/modelsbitrix.php.html#line515" class="location">models\ModelsBitrix.php at line 515</a>
+
+<h3 id="getFormResultIDArrayForValue()">getFormResultIDArrayForValue</h3>
+<code class="signature">public  array <strong>getFormResultIDArrayForValue</strong>(int FORM_ID, string SEARCH)</code>
+<div class="details">
+<p>Get an array of results forms.<br></p></div>
+
+<hr>
+
+<a href="../source/models/modelsbitrix.php.html#line544" class="location">models\ModelsBitrix.php at line 544</a>
+
+<h3 id="getFormResultAnswer()">getFormResultAnswer</h3>
+<code class="signature">public  void <strong>getFormResultAnswer</strong>(int form_id, string callback, array filter, boolean only_one_result)</code>
+<div class="details">
+<p>Get answers to questions of form.<br></p><dl>
+<dt>See Also:</dt>
+<dd><p><code><a href="http://dev.1c-bitrix.ru/api_help/form/classes/cform/getresultanswerarray.php">http://dev.1c-bitrix.ru/api_help/form/classes/cform/getresultanswerarray.php</a></code></p></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/models/modelsbitrix.php.html#line570" class="location">models\ModelsBitrix.php at line 570</a>
+
+<h3 id="ElementAdd()">ElementAdd</h3>
+<code class="signature">public  string <strong>ElementAdd</strong>(int id, string name, array property)</code>
+<div class="details">
+<p>Add the element to iblock.  <br></p></div>
+
+<hr>
+
+<a href="../source/models/modelsbitrix.php.html#line600" class="location">models\ModelsBitrix.php at line 600</a>
+
+<h3 id="ElementDelete()">ElementDelete</h3>
+<code class="signature">public  string <strong>ElementDelete</strong>(int id)</code>
+<div class="details">
+<p>Delete the item.<br></p></div>
+
+<hr>
+
+<a href="../source/models/modelsbitrix.php.html#line623" class="location">models\ModelsBitrix.php at line 623</a>
+
+<h3 id="ElementUpdate()">ElementUpdate</h3>
+<code class="signature">public  string <strong>ElementUpdate</strong>(int id, array property)</code>
+<div class="details">
+<p>Update the element.<br></p></div>
+
+<hr>
+
+<a href="../source/models/modelsbitrix.php.html#line653" class="location">models\ModelsBitrix.php at line 653</a>
+
+<h3 id="getSectionIDBySectionCode()">getSectionIDBySectionCode</h3>
+<code class="signature">public  int <strong>getSectionIDBySectionCode</strong>(int IBLOCK_ID, string SECTION_CODE)</code>
+<div class="details">
+<p>Get the section ID by the code.<br></p></div>
+
+<hr>
+
+<a href="../source/models/modelsbitrix.php.html#line673" class="location">models\ModelsBitrix.php at line 673</a>
+
+<h3 id="getAllSectionArrayByID()">getAllSectionArrayByID</h3>
+<code class="signature">public  array <strong>getAllSectionArrayByID</strong>(mixed idblock, mixed idsection, mixed callback, mixed arFilter, mixed arSelectFields, mixed arOrder, bool key_is_id)</code>
+<div class="details">
+<p>Select all the sections in the iblock by ID.<br></p><dl>
+<dt>Deprecated:</dt>
+<dd><p>The method will be removed due to the addition method getAllFromAPI.<br></p></dd>
+<dt>See Also:</dt>
+<dd><p><a href="../modelsbitrixapi/modelsbitrix.html#getAllFromAPI()">ModelsBitrixAPI.getAllFromAPI</a></p></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/models/modelsbitrix.php.html#line696" class="location">models\ModelsBitrix.php at line 696</a>
+
+<h3 id="getAllElementArrayByID()">getAllElementArrayByID</h3>
+<code class="signature">public  array <strong>getAllElementArrayByID</strong>(mixed idblock, mixed idsection, mixed callback, mixed arFilter, mixed arSelectFields, mixed data, bool key_is_id, mixed arOrde, bool arGroupBy, bool arNavStartParams, bool get_prop, bool get_first_array_key, bool set_cache, bool set_url_templates)</code>
+<div class="details">
+<p>Get all the items from the iblock by ID. <br></p><dl>
+<dt>Deprecated:</dt>
+<dd><p>The method will be removed due to the addition method getAllFromAPI.<br></p></dd>
+<dt>See Also:</dt>
+<dd><p><a href="../modelsbitrixapi/modelsbitrix.html#getAllFromAPI()">ModelsBitrixAPI.getAllFromAPI</a></p></dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/models/modelsbitrix.php.html#line729" class="location">models\ModelsBitrix.php at line 729</a>
+
+<h3 id="getFirstArrayKey()">getFirstArrayKey</h3>
+<code class="signature">public  string <strong>getFirstArrayKey</strong>(array array, boolean get_value)</code>
+<div class="details">
+<p>Get the first element of the array as a key or value.<br></p><dl>
+<dt>Parameters:</dt>
+<dd>&nbsp;<span style="color: #000088;">$array</span> <span style="color: #339933;">-</span> An input <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a><span style="color: #339933;">.</span></dd>
+<dd>&nbsp;<span style="color: #000088;">$get_value</span> <span style="color: #339933;">-</span> Is first value?</dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/models/modelsbitrix.php.html#line752" class="location">models\ModelsBitrix.php at line 752</a>
+
+<h3 id="getIMGbyIDToSave()">getIMGbyIDToSave</h3>
+<code class="signature">public  array <strong>getIMGbyIDToSave</strong>(int id)</code>
+<div class="details">
+<p>Re save the file with info.<br></p></div>
+
+<hr>
+
+<a href="../source/models/modelsbitrix.php.html#line764" class="location">models\ModelsBitrix.php at line 764</a>
+
+<h3 id="getIMGbyFileIDToSRC()">getIMGbyFileIDToSRC</h3>
+<code class="signature">public  array <strong>getIMGbyFileIDToSRC</strong>(array id)</code>
+<div class="details">
+<p>Get the file URL by ID.<br></p></div>
+
+<hr>
+
+<a href="../source/models/modelsbitrix.php.html#line784" class="location">models\ModelsBitrix.php at line 784</a>
+
+<h3 id="getStrlenUTF8()">getStrlenUTF8</h3>
+<code class="signature">public  void <strong>getStrlenUTF8</strong>(mixed str)</code>
+<div class="details">
+<p>Get the length of the UTF8 string.<br></p></div>
+
+<hr>
+
+<div class="header">
+<h1>evnine</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="../modelsbitrixapi/package-summary.html">Namespace</a></li>
+<li class="active">Class</li>
+<li><a href="../modelsbitrixapi/package-tree.html">Tree</a></li>
+<li><a href="../overview-files.html">Files</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../todo-list.html">Todo</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../modelsbitrixapi\modelsbitrix.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<p id="footer"></p>
+
+</body>
+
+</html>
