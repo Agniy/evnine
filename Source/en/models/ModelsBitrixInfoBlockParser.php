@@ -1,7 +1,6 @@
 <?php
 /**
- * en: Model of parsing the data.
- * ru: Модель парсинга данных.
+ * Model of parsing the data.
  * @author ev9eniy
  * @version 2.0
  * @package ModelsBitrixAPI
@@ -10,15 +9,12 @@
 class ModelsBitrixInfoBlockParser
 {
 	/**
-	 * en: Helper function - an analysis of data from the information block.
-	 * ru: Вспомогательная функция - разбор данныx из инфоблока.
+	 * Helper function - an analysis of data from the information block.
 	 * 
 	 * @param array|object $arProduct 
-	 * en: Basic data.
-	 * ru: Основные данные.
+	 * Basic data.
 	 * @param array|object $arProps 
-	 * en: Properties.
-	 * ru: Свойства.
+	 * Properties.
 	 * @access public
 	 * @return array
 	 */

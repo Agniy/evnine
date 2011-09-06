@@ -1,8 +1,7 @@
 <?php
-/** new EvnineController() extends Config
+/**
  * 
- * en: The base controller.
- * ru: Базовый контроллер.
+ * The base controller.
  * 
  * @uses EvnineConfig 
  * @package EvnineController
@@ -11,24 +10,20 @@
  * @author ev9eniy.info
  * @updated 2011-06-01 17:53:02
  */
-/** evnine.config.php
- * en: To inherit the configuration.
- * ru: Подключаем конфиг и наследуем от него настройки.
+/**
+ * To inherit the configuration.
  * 
- * en: Total output error
- * ru: Общий вывод ошибок
+ * Total output error
  * error_reporting(E_ERROR|E_RECOVERABLE_ERROR|E_PARSE|E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR);
- * en: Do not display errors
- * ru: Не выводить ошибки
+ * Do not display errors
  * error_reporting(0);
  */
 include_once('evnine.config.php');
 class EvnineController extends EvnineConfig
 {
 	
-	/** $this->access_level
-	 * en: Access levels are set at:
-	 * ru: Уровни доступа заданы в:
+	/**
+	 * Access levels are set at:
 	 * /evnine.config.php
 	 *	$this->access_level=array(
 	 *		'admin'=>'2',
@@ -45,15 +40,13 @@ class EvnineController extends EvnineConfig
 	 */
 	var $access_level;
 
-	/** $this->api
-	 * en: Alias API (MySQL, etc.) 
-	 * ru: Название API (MySQL, итд)
+	/**
+	 * Alias API (MySQL, etc.) 
 	 * 
 	 * /evnine.config.php
 	 *	$this->api='ModelsMySQL';
 	 *	
-	 * en: The path to the class specified in the:
-	 * ru: Путь до класса задаётся в: 
+	 * The path to the class specified in the:
 	 * /evnine.config.php
 	 *	 $class_path=array(
 	 *		'ModelsMySQL'=>array(
@@ -66,8 +59,7 @@ class EvnineController extends EvnineConfig
 	 *		)
 	 *	)
 	 *	
-	 * en: Initialize:
-	 * ru: Объявляться:
+	 * Initialize:
 	 * /evnine.php
 	 *	if ($this->isSetClassToLoadAndSetParam($this->api)){
 	 *		$this->loaded_class[$this->api]->setInitAPI($this->param);
@@ -87,45 +79,35 @@ class EvnineController extends EvnineConfig
 	 */
 	var $api;
 
-	/** $this->class_path
-	 * en: Path to the classes of models and variables are initialized by default
-	 * ru: Путь до классов моделей и переменные инициализации по умолчанию
+	/**
+	 * Path to the classes of models and variables are initialized by default
 	 * 
-	 * en: Caused by a model in the controller:
-	 * ru: Вызываются модели в контроллерах:
+	 * Caused by a model in the controller:
 	 * /controllers/Controllers.php
 	 *	$this->controller=array(
 	 *		ModelsHelloWorld => 'getHelloWorld'
 	 *	)
 	 *	
-	 * en: IMPORTANT:
-	 * en: Without specifying the path, all the models set in /models/
-	 * ru: ВАЖНО:
-	 * ru: Без указания пути, считается что все модели лежат в /models/
+	 * IMPORTANT:
+	 * Without specifying the path, all the models set in /models/
 	 *	
-	 * en: Also, may set in:
-	 * ru: Так же могут быть заданы в:
+	 * Also, may set in:
 	 * /evnine.config.php
 	 *	$this->class_path=array(
 	 *		'ModelsHelloWorld'=>array(
-	 *		// en: class name is the same as the class file
-	 *		// ru: Название класса, совпадает с названием файла класса
+	 *		// class name is the same as the class file
 	 *		// ModelsHelloWorld.php = class ModelsHelloWorld
 	 *		'path'=>'models'.DIRECTORY_SEPARATOR,
-	 *		 // en: Path to class.
-	 *		 // ru: Путь до класса.
+	 *		 // Path to class.
 	 *		'param'=>array(
-	 *			// en: Parameters are passed to initialize the class.
-	 *			// ru: Параметры которые передаются при инициализации класса.
+	 *			// Parameters are passed to initialize the class.
 	 *			'hello'=>'config',
 	 *		)
 	 *	)
 	 * )
 	 * 
-	 * en: IMPORTANT: A weighty priority have parameters passed to
-	 * en: initializing the base controller
-	 * ru: ВАЖНО: Весомым приоритетом обладают параметры, переданные 
-	 * ru: при инициализации базового контроллера
+	 * IMPORTANT: A weighty priority have parameters passed to
+	 * initializing the base controller
 	 *	$evnine->getControllerForParam(
 	 *		array(
 	 *			'hello'=>'supper_config'
@@ -142,18 +124,15 @@ class EvnineController extends EvnineConfig
 	 */
 	var $class_path;
 	
-	/** $this->controller_alias
-	 * en: Aliases names controllers. In the folder /controllers/
-	 * en: Define in:
-	 * ru: Псевдонимы названий контроллеров в папке /controllers/ 
-	 * ru: задаются в: 
+	/**
+	 * Aliases names controllers. In the folder /controllers/
+	 * Define in:
 	 * /evnine.config.php
 	 *	$this->controller_alias=array(
 	 *		'helloworld'=>'ControllersHelloWorld',
 	 *	);
 	 * 
-	 * en: The alternative with set the path.
-	 * ru: Альтернативный вариант с указанием пути.
+	 * The alternative with set the path.
 	 * /evnine.config.php
 	 *	'helloworld'=>array(
 	 *		'class_name'=>'ControllersHelloWorld',
@@ -168,32 +147,24 @@ class EvnineController extends EvnineConfig
 	 */
 	var $controller_alias;
 
-	/** $this->param_const
-	 * en: Initialization parameters.
-	 * en: Transmitted to all methods.
-	 * ru: Параметры инициализации. 
-	 * ru: Передаются во все методы.
+	/**
+	 * Initialization parameters.
+	 * Transmitted to all methods.
 	 *
 	 * /evnine.config.php
 	 *	$this->param_const=array(
-	 *		// en: The default controller.
-	 *		// ru: Контроллер по умолчанию.
+	 *		// The default controller.
 	 *		// >> /?c=m=&param=777
 	 *		// << /?c=default_controllerm=default&param=777
 	 *		'default_controller'=>'default_controller',
-	 *		// en: Debug mode.
-	 *		// en: We need to track changes in the $param from method to method.
-	 *		// ru: Режим отладки. 
-	 *		// ru: Нужен для отслеживания изменения в $param от метода к методу.
+	 *		// Debug mode.
+	 *		// We need to track changes in the $param from method to method.
 	 *		'debug'=>true,
-	 *		// en: A shared folder for the cache.
-	 *		// ru: Общая папка для кэша.
+	 *		// A shared folder for the cache.
 	 *		'CacheDir'=>'PHPUnitCache',
-	 *		// en: Folder to store the PHPUnit tests.
-	 *		// ru: Папка для хранения PHPUnit тестов.
+	 *		// Folder to store the PHPUnit tests.
 	 *		'CacheDirPHPUnit'=>'PHPUnitCache'.DIRECTORY_SEPARATOR.'PHPUnit',
-	 *		// en: Folder to store temporary data.
-	 *		// ru: Папка для хранения промежуточных данных.
+	 *		// Folder to store temporary data.
 	 *		'CacheDirControllerForParam'=>'PHPUnitCache'.DIRECTORY_SEPARATOR.'getControllerForParam',
 	 *	) 
 	 * @see EvnineController.getDataFromMethod
@@ -204,11 +175,9 @@ class EvnineController extends EvnineConfig
 	 */
 	var $param_const;
 
-	/** $this->path_to 
-	 * en: Absolute path.
-	 * en: Used to connect classes of models and controllers.
-	 * ru: Абсолютный путь
-	 * ru: Используется при подключении классов моделей и контроллеров
+	/**
+	 * Absolute path.
+	 * Used to connect classes of models and controllers.
 	 * 
 	 * @var string
 	 * @access public
@@ -217,13 +186,10 @@ class EvnineController extends EvnineConfig
 	 */
 	var $path_to;
 
-	/** $this->sef_mode
-	 * en: Flag of the SEF mode. 
-	 * en: Set in the method $this->getControllerForParam
-	 * en: when pass to the controller to parse the string SEF.
-	 * ru: Флаг работы в ЧПУ режиме. 
-	 * ru: Устанавливается в методе $this->getControllerForParam
-	 * ru: при условии, если в параметрах передана строка для разбора ЧПУ
+	/**
+	 * Flag of the SEF mode. 
+	 * Set in the method $this->getControllerForParam
+	 * when pass to the controller to parse the string SEF.
 	 * 
 	 * /evnine.php
 	 *	if (!empty($param['sef'])) {
@@ -237,9 +203,8 @@ class EvnineController extends EvnineConfig
 	var $sef_mode;
 
 
-	/** $this->isHasAccessSaveCheck
-	 * en: Is there access to the methods? Based on the level of user access.
-	 * ru: Есть ли доступ к методам? Исходя из уровня доступа пользователя.
+	/**
+	 * Is there access to the methods? Based on the level of user access.
 	 * 
 	 * @see EvnineController.isUserHasAccessForMethod
 	 * @see EvnineController.getDataFromMethod
@@ -248,9 +213,8 @@ class EvnineController extends EvnineConfig
 	 */
 	var $isHasAccessSaveCheck;
 
-	/** $this->current_controller_name
-	 * en: The name of the current controller.
-	 * ru: Название текущего контроллера
+	/**
+	 * The name of the current controller.
 	 *	setLoadController($current_controller){
 	 *		$this->$current_controller_name=$current_controller;
 	 *	}
@@ -261,18 +225,16 @@ class EvnineController extends EvnineConfig
 	 */
 	var $current_controller_name;
 
-	/** $this->current_controller
-	 * en: Current controller.
-	 * ru: Текущий контроллер
+	/**
+	 * Current controller.
 	 * 
 	 * @var string
 	 * @access public
 	 */
 	var $current_controller;
 
-	/** $this->loaded_controller
-	 * en: Loaded controllers.
-	 * ru: Загруженные контроллеры
+	/**
+	 * Loaded controllers.
 	 * 
 	 * @see EvnineController.setLoadController 
 	 * @var array
@@ -280,9 +242,8 @@ class EvnineController extends EvnineConfig
 	 */
 	var $loaded_controller;
 
-	/** $this->param
-	 * en: The parameters that are passed to each method
-	 * ru: Параметры, которые передаются каждому методу
+	/**
+	 * The parameters that are passed to each method
 	 * $param = array($param_init,$param_const)
 	 * 
 	 * @see EvnineController.getDataFromController
@@ -291,9 +252,8 @@ class EvnineController extends EvnineConfig
 	 */
 	var $param;
 
-	/** $this->loaded_class
-	 * en: Loaded classes.
-	 * ru: Загруженные классы
+	/**
+	 * Loaded classes.
 	 * 
 	 * @see EvnineController.isSetClassToLoadAndSetParam 
 	 * @var array
@@ -301,9 +261,8 @@ class EvnineController extends EvnineConfig
 	 */
 	var $loaded_class;
 
-	/** $this->result
-	 * en: Array response of the controller contains all the class_method calls.
-	 * ru: Массив ответа контроллера, содержит все вызванные методы.
+	/**
+	 * Array response of the controller contains all the class_method calls.
 	 * 
 	 * $result = $evnine->getControllerForParam()
 	 * 
@@ -313,9 +272,8 @@ class EvnineController extends EvnineConfig
 	 */
 	var $result;
 
-	/** $this->debug
-	 * en: To debug scripts
-	 * ru: Для отладки скриптов
+	/**
+	 * To debug scripts
 	 * 
 	 * @see EvnineController.__construct
 	 * @see EvnineController.getDataFromMethod
@@ -324,10 +282,9 @@ class EvnineController extends EvnineConfig
 	 */
 	var $debug;
 
-/** __construct 
+/**
  * 
- * en: The class constructor.
- * ru: Конструктор класса
+ * The class constructor.
  * 
  * @access protected
  * @return void
@@ -338,29 +295,25 @@ function __construct(){
 	parent::__construct();
 	if (!empty($this->api)){
 		/**
-		 * en: Initialize the API
-		 * ru: Инициализируем API
+		 * Initialize the API
 		 */
 	if ($this->isSetClassToLoadAndSetParam($this->api)){
 		/**
-		 * en: The class is initialized? If not, load it and add the parameters from the config.
-		 * ru: Загружен ли класс? Если нет, загрузим и добавим параметры из конфига.
+		 * The class is initialized? If not, load it and add the parameters from the config.
 		 */
 			$this->loaded_class[$this->api]->setInitAPI($this->param);
 		}
 	}
 	/**
-	 * en: evnine.debug.php function getForDebugArrayDiff()
-	 * ru: Проверяем наличия функции для сравнения массивов.
+	 * evnine.debug.php function getForDebugArrayDiff()
 	 */
 	if ($this->param_const['debug']&&function_exists('getForDebugArrayDiff')){
 		$this->param_const['debug_param_diff']=true;
 	}
 }
 
-/** getControllerForParam($param)
- * en: Get data from the controller.
- * ru: Получить данные из контроллера по параметрам.
+/**
+ * Get data from the controller.
  * /index.php
  *	include_once 'evnine.php';
  *	$evnine = new EvnineController();
@@ -382,8 +335,7 @@ function __construct(){
 function getControllerForParam($param) {
 	if (!empty($param['sef'])) {
 		/**
-		 * en: In the SEF? Defined in:
-		 * ru: Если есть строка для ЧПУ. Определяется в:
+		 * In the SEF? Defined in:
 		 * .htaccess
 		 * <IfModule mod_rewrite.c>
 		 * RewriteEngine On
@@ -391,33 +343,28 @@ function getControllerForParam($param) {
 		 * </IfModule>	
 		 */
 		/**
-		 * en: Get data from the SEF string.
-		 * ru: Получить данные из ЧПУ строки
+		 * Get data from the SEF string.
 		 */
 		$sef = $this->getURNbySEF($param['sef']);
 		unset($param['sef']);
 		/**
-		 * en: Set SEF flag.
-		 * ru: Установить метку что адреса нужно обрабатывать в ЧПУ режиме
+		 * Set SEF flag.
 		 */
 		$this->sef_mode=true;
 		unset($param['REQUEST']['sef']);
 		/**
-		 * en: Set data from parse SEF.
-		 * ru: Установить параметры из ЧПУ
+		 * Set data from parse SEF.
 		 */
 		$param['method']=$sef['method'];
 		$param['controller']=$sef['controller'];
 		/**
-		 * en: Merge data from SEF and POST.
-		 * ru: Объединить данные, если данные передаются POST и GET одновременно 
+		 * Merge data from SEF and POST.
 		 */
 		$param['REQUEST']=array_merge($param['REQUEST'],$sef['REQUEST']);
 	}
 	if (!empty($param['REQUEST']['submit'])){
 		/**
-		 * en: The case is processed multiple forms
-		 * ru: Случай когда обрабатываем несколько форм
+		 * The case is processed multiple forms
 		 */
 		if ($first_key=(
 			is_array($param['REQUEST']['submit'])
@@ -427,22 +374,19 @@ function getControllerForParam($param) {
 			$param['REQUEST']['submit'])
 		){
 		/**
-		 * en: Obtain the method of the first key from the name of the submit button
-		 * ru: Получаем метод по первому ключу из имени кнопки submit
+		 * Obtain the method of the first key from the name of the submit button
 		 */
 			unset($param['REQUEST']['submit']);
 			if (!empty($param['REQUEST'][$first_key]['c'])){
 			/**
-			 * en: Obtain the values of the controller
-			 * ru: Получаем значения контроллера
+			 * Obtain the values of the controller
 			 */
 				$param['controller']=$param['REQUEST'][$first_key]['c'];
 				unset($param['REQUEST'][$first_key]['c']);
 			}
 			if (!empty($param['REQUEST'][$first_key]['m'])){
 			/**
-			 * en: Obtain the values of the method
-			 * ru: Получаем значения метода
+			 * Obtain the values of the method
 			 */
 				$param['method']=$param['REQUEST'][$first_key]['m'];
 				unset($param['REQUEST'][$first_key]['m']);
@@ -451,10 +395,8 @@ function getControllerForParam($param) {
 			}
 			if (count($param['REQUEST'][$first_key])>0){
 			/**
-			 * en: If the method of any linked data
-			 * en: merge them to the main parameters
-			 * ru: Если к методу привязанные какие-либо данные, 
-			 * ru: переносим их в основные параметры
+			 * If the method of any linked data
+			 * merge them to the main parameters
 			 */
 				foreach ($param['REQUEST'][$first_key] as $_title =>$_value){
 					$param[$_title]= $_value;
@@ -463,80 +405,67 @@ function getControllerForParam($param) {
 		}
 	}elseif(empty($param['method'])) {
 		/**
-		 * en: If the method is not specified
-		 * ru: Если метод не указан
+		 * If the method is not specified
 		 */
 		$param['method']='default';
 	}
 	$this->result=array();
 	if (empty($this->result['LoadController'])){
 		/**
-		 * en: In the results of the data set is first initialized:
-		 * ru: В результаты работы устанавливаем данные первой инициализации:
+		 * In the results of the data set is first initialized:
 		 */
 		$this->result['LoadController']=$param['controller'];
 		$this->result['LoadMethod']=$param['method'];
 	}
 	/**
-	 * en: Type of operation AJAX
-	 * ru: Тип режима работы AJAX
+	 * Type of operation AJAX
 	 */
 	if ($param['ajax'][0]==='b') {
 		/**
-		 * en: When you want to send only the body
-		 * ru: Случай, когда нужно отправить только тело 
+		 * When you want to send only the body
 		 * HTML <body>...</body>
 		 */
 		$this->result['ajax']='Body';
 		$param['ajax']=false;
 	}elseif ($param['ajax'][0]==='a'){
 		/**
-		 * en: The case where you want to run a method in AJAX mode
-		 * ru: Случай, когда нужно запускать метод в AJAX режиме
+		 * The case where you want to run a method in AJAX mode
 		 */
 		$this->result['ajax']='True';
 		$param['ajax']=true;
 	}else {
 		/**
-		 * en: Case in which call default method in the controller
-		 * ru: Случай, когда выполняется default метод в контроллере
+		 * Case in which call default method in the controller
 		 */
 		$this->result['ajax']='False';
 		$param['ajax']=false;
 	}
 	/**
-	 * en: Obtain data from the master controller to the parameters
-	 * ru: Получим данные из главного контроллера
+	 * Obtain data from the master controller to the parameters
 	 */
 	$this->getDataFromController($param);
 	/**
-	 * en: Reset method
-	 * ru: Сбросить данные о методе, так как в процессе работы метод может меняться.
+	 * Reset method
 	 */
 	$this->param['method']=$param['method'];
 	/**
-	 * en: Get the URN for the methods in the controller
-	 * en: Validation of the methods used by the controller
-	 * ru: Получить URN для методов в контроллере
-	 * ru: Используется валидация из методов контроллера
+	 * Get the URN for the methods in the controller
+	 * Validation of the methods used by the controller
 	 */
 	$this->getURL();
 	if ($this->param_const['debug_param_diff']){
 	/**
-	 * en: For debug
-	 * ru: Для отладки, удалим параметры на выходе
+	 * For debug
 	 */
 		unset($this->result['param'][$this->param['method']]['param_out']);
 		if (empty($this->result['param'][$this->param['method']])){
 		/**
-		 * en: If the array is empty.
-		 * ru: Если массив пуст.
+		 * If the array is empty.
 		 */
 			unset($this->result['param'][$this->param['method']]);
 			if (empty($this->result['param'])){
 			/**
-			 * en: If the array is empty.
-			 * ru: Если массив пуст.
+			 * If the array is empty.
 			 */
 				unset($this->result['param']);
 			}
@@ -544,10 +473,8 @@ function getControllerForParam($param) {
 	}
 	if ($this->param_const['param_out']){
 	/**
-	 * en: When you need to pass parameters to another controller.
-	 * en: For use in model view.
-	 * ru: Когда нужно передать параметры в другой контроллер.
-	 * ru: Для использования в модели вида.
+	 * When you need to pass parameters to another controller.
+	 * For use in model view.
 	 * $this->param_const=array(
 	 *  'param_out'=>true
 	 * )
@@ -558,15 +485,12 @@ function getControllerForParam($param) {
 	return $this->result;
 }
 
-/** getURNbySEF($sef){
- * en: Get data from the SEF string.
- * ru: Получить данные из ЧПУ строки.
+/**
+ * Get data from the SEF string.
  *
- * en: SEF mode can be of two types.
- * ru: ЧПУ режим может быть двух типов.
+ * SEF mode can be of two types.
  *  
- * en: 1. When the SEF for the controller.
- * ru: 1. Когда SEF для всего контроллера.
+ * 1. When the SEF for the controller.
  * << /controller/method/param=value/param=value/
  * 
  * /controllers/ControllersExample.php
@@ -574,8 +498,7 @@ function getControllerForParam($param) {
  *		'inURLSEF' => true
  *	)
  *
- * en: 2. When the SEF method:
- * ru: 2. Когда ЧПУ только для метода:
+ * 2. When the SEF method:
  * << /controller/method/62-User.html 
  * 
  * /controllers/ControllersExample.php
@@ -592,11 +515,9 @@ function getControllerForParam($param) {
  * @see Controllers.controller
  * 
  * @param string $sef 
- * en: SEF string.
- * ru: ЧПУ строка.
+ * SEF string.
  * 
- * en: Get from:
- * ru: Передаётся из:
+ * Get from:
  * 
  * /.htaccess
  *	<IfModule mod_rewrite.c>
@@ -622,8 +543,7 @@ function getURNbySEF($sef){
 	$param['controller']=$split['0'];
 	if ($split[$split_count-1]==='index'){
 		/**
-		 * en: If the SEF mode for the controller, the ending URN - index.html
-		 * ru: Если ЧПУ режим для всего контроллера, есть окончание URN - index.html
+		 * If the SEF mode for the controller, the ending URN - index.html
 		 */
 		for ( $i = 1; $i < $split_count-1; $i++ ) {
 			$form_data_split = split('=',$split[$i]);
@@ -646,44 +566,37 @@ function getURNbySEF($sef){
 		}
 	}else {
 		/**
-		 * en: If the SEF mode for the method.
-		 * ru: Если ЧПУ режим для метода.
+		 * If the SEF mode for the method.
 		 * /62-user.html
 		 */
 		if ($split_count==3){
 		/**
-		 * en: The case where there is a controller and method.
-		 * ru: Случай, когда есть и контроллер и метод
+		 * The case where there is a controller and method.
 		 */
 			$param['method']=$split['1'];
 			$split_form_data = split('-',$split['2']);
 		}elseif($split_count==2) {
 		/**
-		 * en: The case where the method is not specified.
-		 * ru: Случай, когда метод не указан
+		 * The case where the method is not specified.
 		 */
 			$split_form_data = split('-',$split['1']);
 			$param['method']='default';
 		}
 		$split_count=count($split_form_data);
 		/**
-		 * en: Load the controller. To parse the variable SEF.
-		 * ru: Загрузим контроллер. Для разбора переменных ЧПУ.
+		 * Load the controller. To parse the variable SEF.
 		 */
 		$this->setLoadController($param['controller']);
 		if (!empty($this->current_controller['public_methods'][$param['method']]['inURLSEF'])){
 		/**
-		 * en: If there is data to parse the SEF 
-		 * en: In the method of the controller.
-		 * ru: Если есть данные для разбора ЧПУ 
-		 * ru: в методе контроллера.
+		 * If there is data to parse the SEF 
+		 * In the method of the controller.
 		 */
 			$i=0;
 			foreach ($this->current_controller['public_methods'][$param['method']]['inURLSEF'] as $_title =>$_value)if ($_title!=='.'){
 				if ($_title==='date'){
 					/**
-					 * en: The date in SEF.
-					 * ru: Учтём дату в ЧПУ. 
+					 * The date in SEF.
 					 * 1901-11-10, 10-11-2014  
 					 */
 					$param['REQUEST'][$_title] = $split_form_data[$i].'-'.$split_form_data[$i+1].'-'.$split_form_data[$i+2];
@@ -698,61 +611,47 @@ function getURNbySEF($sef){
 	return $param;
 }
 
-/** getURL($seo = false) 
+/**
  * 
- * en: Get the URN for the methods in the controller.
- * en: Validation of the methods used by the controller.
- * ru: Получить URN для методов в контроллере.
- * ru: Используется валидация из методов контроллера.
+ * Get the URN for the methods in the controller.
+ * Validation of the methods used by the controller.
  * 
  * /controllers/ControllersExample.php
  *	$this->controller = array(
  *		'inURLSEF' => false,
- *		// en: SEF mode in the controller.
- *		// en: If the SEF mode for the controller, the ending URN - index.html
- *		// en: Default: false
- *		// ru: ЧПУ режим в контроллере.
- *		// ru: Если ЧПУ режим для всего контроллера, есть окончание В URN - index.html
- *		// ru: По умолчанию false
+ *		// SEF mode in the controller.
+ *		// If the SEF mode for the controller, the ending URN - index.html
+ *		// Default: false
  *		// >> 'inURLSEF'=> true
  *		// << /controller/method/param=value/param=value/
  *	),
  *	'inURLMethod' => array(
- *		// en: In the array are methods for which to create the URN.
- *		// ru: В массиве указаны методы для которых нужно создать ссылки.
+ *		// In the array are methods for which to create the URN.
  *		'default',
  *	),
  *	'public_methods' => array(
  *		'default' => array(
- *			// en: URNs are constructed on the basis of the validation parameters 
- *			// en: allowed in the method.
- *			// en: By default, data is taken from the default method.
- *			// ru: URN строятся исходя из валидации параметров допустимых в методе.
- *			// ru: По умолчанию данные берутся из default метода
+ *			// URNs are constructed on the basis of the validation parameters 
+ *			// allowed in the method.
+ *			// By default, data is taken from the default method.
  *			'validation'=> array()
  *		)
  *		'method' => array(	
- *			// en: Further validation for the method.
- *			// en: It shall contain URNs.
- *			// en: These URNs used to generate the parameters.
- *			// ru: Дополнительная валидация для метода.
- *			// ru: В ней указываются URN.
- *			// ru: Эти URNы используются для генерации параметров.
+ *			// Further validation for the method.
+ *			// It shall contain URNs.
+ *			// These URNs used to generate the parameters.
  *			'validation_add'=>array(
  *				'date' => array('inURL' => true,'to'=>'Date','type'=>'str','required'=>'false','max' => '10',),
  *			),
  *		)
  *		'ext_method_and_controller' => array(
- *			// en: If you want to specify an external controller in the URN.
- *			// en: And the method in an external controller.
- *			// ru: Если хотим указать внешний контроллер в URN.
- *			// ru: И метод во внешнем контроллере.
+ *			// If you want to specify an external controller in the URN.
+ *			// And the method in an external controller.
  *			'inURLExtController' => 'ext_controller', 
  *			'inURLExtMethod' => 'ext_method',
  *		)
  *		'sef_method' => array(
- *			// en: If you want to use the SEF in the method.
- *			// ru: Если хотим использовать ЧПУ в методе.
+ *			// If you want to use the SEF in the method.
  *			// << /controller/method/62-User.html 
  *			'inURLSEF' => array(
  *				'user_id' => '','User','.' => '.html',
@@ -765,8 +664,7 @@ function getURNbySEF($sef){
  * 
  * @see Controllers.controller
  * @param boolean $seo 
- * en: Flag of the SEF mode. 
- * ru: Флаг работы в ЧПУ режиме. 
+ * Flag of the SEF mode. 
  * 
  * @see EvnineController.getControllerForParam
  * @access public
@@ -775,32 +673,26 @@ function getURNbySEF($sef){
 function getURL($seo=false) {
 	if ($this->current_controller['inURLSEF']){
 	/**
-	 * en: The case when the SEF for the controller.
-	 * ru: Случай когда SEF для всего контроллера.
+	 * The case when the SEF for the controller.
 	 */
 		$seo= true;
 	}
 	$default = $this->getURLFromArray(
 	/**
-	 * en: Get a URN from an array of validation.
-	 * ru: Получить URN из массива проверки валидации
+	 * Get a URN from an array of validation.
 	 */
 		$this->current_controller['public_methods']['default']['validation'],$seo
 	);
 	/**
-	 * en: Create a basic part of the URN.
-	 * en: In stating the controller and method.
-	 * ru: Создаётся базовая часть URN.
-	 * ru: В котором указывается контроллер и метод.
+	 * Create a basic part of the URN.
+	 * In stating the controller and method.
 	 */
 	$urn_base= $this->getControllerURN($this->param['controller'],$seo);
 	//
 	if ($seo){
 	/**
-	 * en: If the mode for the SEF controller.
-	 * en: Set the postfix string end of each URN.
-	 * ru: Если включен режим ЧПУ для всего контроллера.
-	 * ru: Установим строку завершения каждого URN.
+	 * If the mode for the SEF controller.
+	 * Set the postfix string end of each URN.
 	 * TODO user for the param['seo_end_url']
 	 */
 		if (empty($this->param['sef_url'])){
@@ -810,23 +702,19 @@ function getURL($seo=false) {
 			}
 	}else {
 	/**
-	 * en: Do not use postfix URN.
-	 * ru: Не используем дополнения URN.
+	 * Do not use postfix URN.
 	 */
 		$postfix='';
 	}
 	/**
-	 * en: SEF mode flag for the method.
-	 * ru: Флаг ЧПУ режима для метода.
+	 * SEF mode flag for the method.
 	 */
 	$seo_flag_save='';
 	if (!empty($this->current_controller['public_methods']['default']['inURLMethod'])/*&&$this->param['ajax']==false*/){
 	/**
-	 * en: If the default method is an array of methods for reference.
-	 * ru: Если в методе по умолчанию, указаны методы на которые делать ссылки.
+	 * If the default method is an array of methods for reference.
 	 * 'inURLMethod' => array(
 	 * //en: Array to generate the URN (URI) to the method
-	 * //ru: Массив для генерации ссылок по методу
 	 *  'default',
 	 * )
 	 */
@@ -836,10 +724,8 @@ function getURL($seo=false) {
 		$url_method = $this->current_controller['public_methods']['default']['inURLMethod'];
 		if(!empty($this->current_controller['public_methods'][$this->param['method']]['inURLMethod_add'])){
 		/**
-		 * en: If there is a current method for adding an array.
-		 * en: Merge arrays default method and the method to add.
-		 * ru: Если существует в текущем методе массив для добавления
-		 * ru: Объединить массивы метода по умолчанию и метода для добавления.
+		 * If there is a current method for adding an array.
+		 * Merge arrays default method and the method to add.
 		 * 'default' => array(
 		 *  'inURLMethod' => array(
 		 *   'default'
@@ -857,10 +743,8 @@ function getURL($seo=false) {
 			);
 		}elseif(!empty($this->current_controller['public_methods'][$this->param['method']]['inURLMethod'])){
 		/**
-		 * en: The case when the current method, you specify a new array of methods to generate links.
-		 * en: Replace the array of methods to generate.
-		 * ru: Случай когда в текущем методе указан новый массив методов для генерации ссылок.
-		 * ru: Заменим массив методов для генерации.
+		 * The case when the current method, you specify a new array of methods to generate links.
+		 * Replace the array of methods to generate.
 		 * 'default' => array(
 		 *  'inURLMethod' => array(
 		 *   'default'
@@ -877,10 +761,8 @@ function getURL($seo=false) {
 		}
 	}elseif(!empty($this->current_controller['public_methods'][$this->param['method']]['inURLMethod_add'])){
 	/**
-	 * en: The case when is not specified, the default method.
-	 * en: We use an array of methods specified in the current method for add.
-	 * ru: Случай когда не указан метод по умолчанию.
-	 * ru: Используем массив методов указанный в текущем методе для добавления.
+	 * The case when is not specified, the default method.
+	 * We use an array of methods specified in the current method for add.
 	 * 'default' => array(),
 	 * 'current_method' => array(
 	 *  'inURLMethod_add' => array(
@@ -891,8 +773,7 @@ function getURL($seo=false) {
 		$url_method = $this->current_controller['public_methods'][$this->param['method']]['inURLMethod_add'];
 	}elseif(!empty($this->current_controller['public_methods'][$this->param['method']]['inURLMethod'])){
 	/**
-	 * en: In the case when the specified array of methods to overwrite.
-	 * ru: В случае когда указан массив методов для перезаписи.
+	 * In the case when the specified array of methods to overwrite.
 	 * 'default' => array(),
 	 * 'current_method' => array(
 	 *  'inURLMethod' => array(
@@ -905,8 +786,7 @@ function getURL($seo=false) {
 	$count = count($url_method);
 	for ( $i = 0; $i < $count; $i++ ) {
 	/**
-	 * en: For all methods, which create a URN.
-	 * ru: Для всех методов которым создаём URN
+	 * For all methods, which create a URN.
 	 */
 			$method = $url_method[$i];
 			if (
@@ -916,19 +796,15 @@ function getURL($seo=false) {
 				empty($this->current_controller['public_methods'][$method])
 			){
 			/**
-			 * en: Skipping processing of the case:
-			 * en: When there is no access to the method.
-			 * en: When this method is not specified.
-			 * ru: Пропускаем обработку в случае:
-			 * ru: Когда нет доступа к методу.
-			 * ru: Когда метод не задан.
+			 * Skipping processing of the case:
+			 * When there is no access to the method.
+			 * When this method is not specified.
 			 */
 				continue;
 			}
 		if (!empty($this->current_controller['public_methods'][$method]['inURLSEF'])){
 			/**
-			 * en: If there is a SEF for the method. Work in the SEO mode.
-			 * ru: Если есть ЧПУ для метода, установим флаг работы в СЕО режиме.
+			 * If there is a SEF for the method. Work in the SEO mode.
 			 * 'current_method' => array(
 			 *  'inURLSEF' => array(
 			 *   'user_id' => '','User','.' => '.html',
@@ -942,13 +818,11 @@ function getURL($seo=false) {
 			$seo=$this->current_controller['public_methods'][$method]['inURLSEF'];
 		}
 			/**
-			 * en: Proceed to generate a URN to the parameters of validation.
-			 * ru: Переходим к генерации URN по параметрам валидации.
+			 * Proceed to generate a URN to the parameters of validation.
 			 */
 		if (!empty($this->current_controller['public_methods'][$method]['validation_add'])){
 			/**
-			 * en: When validating the method with the addition of validation by default.
-			 * ru: Когда валидация в методе с добавлением к валидации по умолчанию.
+			 * When validating the method with the addition of validation by default.
 			 * 'current_method' => array(
 			 *  'inURLMethod' => array('current_method'),
 			 *  'validation_add' => array(),
@@ -957,13 +831,10 @@ function getURL($seo=false) {
 			$this->result['inURL'][$method]=$this->getURLFromArray($this->current_controller['public_methods'][$method]['validation_add'],$seo);
 				if($seo&&$seo!==true){
 				/**
-				 * en: If there is a SEF for the method.
-				 * en: And SEO mode is not for the controller.
-				 * ru: Если есть ЧПУ для метода.
-				 * ru: И СЕО режим не для всего контроллера.
+				 * If there is a SEF for the method.
+				 * And SEO mode is not for the controller.
 				 * 
-				 * en: Generate a link to the controller and method.
-				 * ru: Генерируем ссылку для контроллера и метода.
+				 * Generate a link to the controller and method.
 				 */
 					$this->result['inURL'][$method]['pre']=
 						$this->getControllerURN($this->param['controller'],$seo)
@@ -972,8 +843,7 @@ function getURL($seo=false) {
 					$this->result['inURL'][$method]['post']=$this->current_controller['public_methods'][$method]['inURLSEF']['.'];
 				} else {
 				/**
-				 * en: If the standard mode of generating URN.
-				 * ru: Если стандартный режим генерации URN.
+				 * If the standard mode of generating URN.
 				 */
 					$this->result['inURL'][$method]['pre']=$urn_base.$this->getMethodURN($method,$seo,true).$this->result['inURL'][$method]['pre'];
 					$this->result['inURL'][$method]['pre'].=$default['pre'];
@@ -981,8 +851,7 @@ function getURL($seo=false) {
 				}
 		}elseif (!empty($this->current_controller['public_methods'][$method]['validation'])) {
 			/**
-			 * en: When validation of the method overwrites the entire validation.
-			 * ru: Когда валидация в методе перезаписывает всю валидацию.
+			 * When validation of the method overwrites the entire validation.
 			 * 
 			 * 'current_method' => array(
 			 *  'inURLMethod' => array('current_method'),
@@ -991,8 +860,7 @@ function getURL($seo=false) {
 			 */
 			if(!empty($this->current_controller['public_methods'][$method]['inURLExtController'])) {
 				/**
-				 * en: Case when a URN to specify a different controller.
-				 * ru: Случай когда в URN нужно указать другой контроллер.
+				 * Case when a URN to specify a different controller.
 				 * 
 				 * 'current_method' => array(
 				 *  'inURLExtController' => 'other_controller',
@@ -1002,8 +870,7 @@ function getURL($seo=false) {
 				 */
 					$this->result['inURL'][$method]=$this->getURLFromArray($this->current_controller['public_methods'][$method]['validation'],$seo);
 				/**
-				 * en: Generate a link to an external controller and method.
-				 * ru: Генерируем ссылку для внешнего контроллера и метода
+				 * Generate a link to an external controller and method.
 				 */
 					$this->result['inURL'][$method]['pre']=
 						$this->getControllerURN($this->current_controller['public_methods'][$method]['inURLExtController'],$seo)
@@ -1012,20 +879,16 @@ function getURL($seo=false) {
 					$this->result['inURL'][$method]['post']=$postfix;
 			}else {
 			/**
-			 * en: If not specified an external controller.
-			 * ru: Если не указан внешний контроллер
+			 * If not specified an external controller.
 			 */
 				if($seo&&$seo!==true){//Если в методе указан ЧПУ
 				/**
-				 * en: If there is a SEF for the method.
-				 * en: And SEO mode is not for the controller.
-				 * ru: Если есть ЧПУ для метода.
-				 * ru: И СЕО режим не для всего контроллера.
+				 * If there is a SEF for the method.
+				 * And SEO mode is not for the controller.
 				 */
 					$this->result['inURL'][$method]=$this->getURLFromArray($this->current_controller['public_methods'][$method]['validation'],$seo);
 				/**
-				 * en: Generate a link to the controller and method.
-				 * ru: Генерируем ссылку для контроллера и метода.
+				 * Generate a link to the controller and method.
 				 */
 					$this->result['inURL'][$method]['pre']=
 						 $this->getControllerURN($this->param['controller'],$seo)
@@ -1034,13 +897,11 @@ function getURL($seo=false) {
 					$this->result['inURL'][$method]['post']=$this->current_controller['public_methods'][$method]['inURLSEF']['.'];
 				}else {
 					/**
-				 * en: If the standard mode of generating URN.
-				 * ru: Если стандартный режим генерации URN.
+				 * If the standard mode of generating URN.
 				 */
 					if ($method!=='default'){
 					/**
-					 * en: If the method is not by default, we use to generate the validation.
-					 * ru: Если метод не по умолчанию, используем для генерации валидацию.
+					 * If the method is not by default, we use to generate the validation.
 					 * 
 					 * 'current_method' => array(
 					 *  'inURLMethod' => array('current_method'),
@@ -1056,8 +917,7 @@ function getURL($seo=false) {
 			}
 		}elseif (!empty($this->current_controller['public_methods'][$method]['validation_form'])) {
 			/**
-			 * en: When data are needed for the form, not by URN. Used validation form.
-			 * ru: Когда нужны данные для формы, не для ссылки. Используются валидация формы.
+			 * When data are needed for the form, not by URN. Used validation form.
 			 * 
 			 * 'current_method' => array(
 			 *  'inURLMethod' => array('current_method'),
@@ -1068,8 +928,7 @@ function getURL($seo=false) {
 					$this->getInputsFromArray($this->current_controller['public_methods'][$method]['validation_form']);
 				if(!empty($this->current_controller['public_methods'][$method]['inURLExtController'])) {
 				/**
-				 * en: Case when a URN to specify a different controller.
-				 * ru: Случай когда в URN нужно указать другой контроллер.
+				 * Case when a URN to specify a different controller.
 				 * 
 				 * 'current_method' => array(
 				 *  'inURLExtController' => 'other_controller',
@@ -1082,8 +941,7 @@ function getURL($seo=false) {
 					.$this->getInputFormText('m',$this->current_controller['public_methods'][$method]['inURLExtMethod'])
 					.$this->result['inURL'][$method]['inputs'];
 					/**
-					 * en: Generate a link to the controller and method.
-					 * ru: Генерируем ссылку для контроллера и метода.
+					 * Generate a link to the controller and method.
 					 */
 					$this->result['inURL'][$method]['pre']=
 						$this->getControllerURN($this->current_controller['public_methods'][$method]['inURLExtController'],$seo)
@@ -1091,8 +949,7 @@ function getURL($seo=false) {
 				$this->result['inURL'][$method]['post']=$postfix;
 			} else {
 				/**
-				 * en: If not specified an external controller.
-				 * ru: Если не указан внешний контроллер
+				 * If not specified an external controller.
 				 */
 				$this->result['inURL'][$method]['inputs']=
 					$this->getInputFormText('c',$this->param['controller'])
@@ -1108,10 +965,8 @@ function getURL($seo=false) {
 			$this->result['inURL'][$method]['post']=$postfix;
 		}elseif (!empty($this->current_controller['public_methods'][$method]['validation_multi_form'])) {
 			/**
-			 * en: When data are needed for multiple methods in one form, not by reference.
-			 * en: Used multiple forms of validation.
-			 * ru: Когда нужны данные для нескольких методов в одной форме, не для ссылки. 
-			 * ru: Используются валидация множественной формы.
+			 * When data are needed for multiple methods in one form, not by reference.
+			 * Used multiple forms of validation.
 			 * 
 			 * 'current_method' => array(
 			 *  'inURLMethod' => array('current_method'),
@@ -1123,11 +978,9 @@ function getURL($seo=false) {
 			$this->result['inURL'][$method]['submit']='submit['.$method.']';		
 			if(!empty($this->current_controller['public_methods'][$method]['inURLExtController'])){ 
 				/**
-				 * en: Case when a URN to specify a different controller.
-				 * ru: Случай когда в URN нужно указать другой контроллер.
+				 * Case when a URN to specify a different controller.
 				 *
-				 * en: Generate a input to the controller and method.
-				 * ru: Генерируем input для контроллера и метода.
+				 * Generate a input to the controller and method.
 				 * 
 				 * 'current_method' => array(
 				 *  'inURLExtController' => 'other_controller',
@@ -1140,8 +993,7 @@ function getURL($seo=false) {
 						.$this->getInputFormText('m',$this->current_controller['public_methods'][$method]['inURLExtMethod'],$method)
 						.$this->result['inURL'][$method]['inputs'];
 					/**
-					 * en: Generate a link to the controller and method.
-					 * ru: Генерируем ссылку для контроллера и метода.
+					 * Generate a link to the controller and method.
 					 */
 					$this->result['inURL'][$method]['pre']=
 						$this->getControllerURN($this->current_controller['public_methods'][$method]['inURLExtController'],$seo)
@@ -1149,8 +1001,7 @@ function getURL($seo=false) {
 					$this->result['inURL'][$method]['post']=$postfix;
 				}else{
 				/**
-				 * en: If not specified an external controller.
-				 * ru: Если не указан внешний контроллер
+				 * If not specified an external controller.
 				 * 
 				 * 'current_method' => array(
 				 *  'inURLMethod' => array('current_method'),
@@ -1162,10 +1013,8 @@ function getURL($seo=false) {
 				}
 		} else {
 			/**
-			 * en: The case where no data are for the generation of validation links.
-			 * en: Use the validation of the method by default.
-			 * ru: Случай, когда не указаны данные для генерации ссылок из валидации.
-			 * ru: Используем валидацию из метода по умолчанию
+			 * The case where no data are for the generation of validation links.
+			 * Use the validation of the method by default.
 			 *
 			 * 'default' => array(
 			 *  'validation' => array(),
@@ -1179,8 +1028,7 @@ function getURL($seo=false) {
 			 */
 			if(!empty($this->current_controller['public_methods'][$method]['inURLExtController'])) {
 			/**
-			 * en: Case when a URN to specify a different controller.
-			 * ru: Случай когда в URN нужно указать другой контроллер.
+			 * Case when a URN to specify a different controller.
 			 * 
 			 * 'default' => array(
 			 *  'validation' => array(),
@@ -1192,8 +1040,7 @@ function getURL($seo=false) {
 			 *  'inURLMethod' => array('current_method'),
 			 *  )
 			 *  
-			 * en: Generate a link to the controller and method.
-			 * ru: Генерируем ссылку для контроллера и метода.
+			 * Generate a link to the controller and method.
 			 */
 				$this->result['inURL'][$method]['pre']=
 					$this->getControllerURN($this->current_controller['public_methods'][$method]['inURLExtController'],$seo)
@@ -1201,8 +1048,7 @@ function getURL($seo=false) {
 				$this->result['inURL'][$method]['post']=$postfix;
 			}else {
 			/**
-			 * en: If not specified an external controller.
-			 * ru: Если не указан внешний контроллер
+			 * If not specified an external controller.
 			 * 
 			 * 'default' => array(
 			 *  'validation' => array(),
@@ -1216,13 +1062,10 @@ function getURL($seo=false) {
 			 */
 			if($seo&&$seo!==true){
 				/**
-				 * en: If there is a SEF for the method.
-				 * en: And SEO mode is not for the controller.
-				 * ru: Если есть ЧПУ для метода.
-				 * ru: И СЕО режим не для всего контроллера.
+				 * If there is a SEF for the method.
+				 * And SEO mode is not for the controller.
 				 * 
-				 * en: Generate a link to the controller and method.
-				 * ru: Генерируем ссылку для контроллера и метода.
+				 * Generate a link to the controller and method.
 				 */
 					$this->result['inURL'][$method]=$this->getURLFromArray($this->current_controller['public_methods'][$method]['validation'],$seo);
 					$this->result['inURL'][$method]['pre']=
@@ -1232,8 +1075,7 @@ function getURL($seo=false) {
 					$this->result['inURL'][$method]['post']=$this->current_controller['public_methods'][$method]['inURLSEF']['.'];
 				}else {
 				/**
-				 * en: If the standard mode of generating URN.
-				 * ru: Если стандартный режим генерации URN.
+				 * If the standard mode of generating URN.
 				 */
 					$this->result['inURL'][$method]['pre']=$urn_base.$this->getMethodURN($method,$seo).$default['pre'];
 					$this->result['inURL'][$method]['post']=$postfix;
@@ -1242,10 +1084,8 @@ function getURL($seo=false) {
 		}
 		if (count($this->result['inURL'][$method]['replace'])>0){
 		/**
-		 * en: If the URN has a default of the parameters.
-		 * en: Replace the current method's parameters.
-		 * ru: Если в URN по умолчанию уже есть часть параметров.
-		 * ru: Заменяем на текущие параметры метода.
+		 * If the URN has a default of the parameters.
+		 * Replace the current method's parameters.
 		 * 
 		 * 'default' => array(
 		 *  'inURLMethod' => array('current_method'),
@@ -1264,13 +1104,10 @@ function getURL($seo=false) {
 		}
 		if($seo&&$seo!==true){
 		/**
-		 * en: If there is a SEF for the method.
-		 * en: And SEO mode is not for the controller.
-		 * ru: Если есть ЧПУ для метода.
-		 * ru: И СЕО режим не для всего контроллера.
+		 * If there is a SEF for the method.
+		 * And SEO mode is not for the controller.
 		 * 
-		 * en: Reset SEO flag.
-		 * ru: Сбрасываем флаг
+		 * Reset SEO flag.
 		 */
 			$seo=$seo_flag_save;
 			$seo_flag_save= '';
@@ -1279,15 +1116,12 @@ function getURL($seo=false) {
 	$this->getURNTemplate();
 }
 
-/** getURNTemplate()
+/**
  * 
- * en: Constant references to the template on different methods.
- * ru: Постоянные ссылки в шаблоне на разные методы.
+ * Constant references to the template on different methods.
  * 
- * en: Depending on the method, we get access
- * en: in the same way to the URN of different methods.
- * ru: В зависимости от метода, получаем доступ 
- * ru: по одному и тому же ключу к URN разных методов.
+ * Depending on the method, we get access
+ * in the same way to the URN of different methods.
  * 
  * /controllers/ControllersExample.php
  *	'inURLTemplate' => array(
@@ -1312,8 +1146,7 @@ function getURL($seo=false) {
 function getURNTemplate(){
 	if (!empty($this->current_controller['public_methods'][$this->param['method']]['inURLTemplate'])){
 	/**
-	 * en: If you have an array of URN variables in the current method.
-	 * ru: Если есть массив переменных ссылок в текущем методе.
+	 * If you have an array of URN variables in the current method.
 	 * 
 	 * 'info_method' => array(
 	 *  'inURLTemplate' => array(
@@ -1326,8 +1159,7 @@ function getURNTemplate(){
 		}
 		if(!empty($this->current_controller['public_methods']['default']['inURLTemplate'])){
 		/**
-		 * en: If you have an array of URN variables in the method by default.
-		 * ru: Если есть массив переменных ссылок в методе по умолчанию.
+		 * If you have an array of URN variables in the method by default.
 		 * 
 		 * 'default' => array(
 		 *  'inURLTemplate' => array('info' => 'default'),
@@ -1344,10 +1176,8 @@ function getURNTemplate(){
 		}
 	}elseif(!empty($this->current_controller['public_methods']['default']['inURLTemplate'])){
 	/**
-	 * en: The case when this method there is no variable URN, 
-	 * en: but there is a method by default.
-	 * ru: Случай когда в текущем методе нет переменных ссылок, 
-	 * ru: но есть в методе по умолчанию.
+	 * The case when this method there is no variable URN, 
+	 * but there is a method by default.
 	 * 
 	 * 'default' => array(
 	 *  'inURLTemplate' => array('info' => 'default'),
@@ -1362,39 +1192,32 @@ function getURNTemplate(){
 	}
 }
 
-/** getControllerURN($contoller_name,$seo)
+/**
  * 
- * en: Get the URN of the controller.
- * ru: Получить URN контроллера.
+ * Get the URN of the controller.
  * 
  * @param string $contoller_name 
- * en: Controller name
- * ru: Название контроллера.
+ * Controller name
  * @param string $seo 
- * en: Use SEF?
- * ru: Использовать ЧПУ?
+ * Use SEF?
  * @access public
  * @return string
  */
 function getControllerURN($contoller_name,$seo) {
 	if ($seo){
 		/**
-		 * en: If a general method for SEF controller, use /param=value/
-		 * ru: Если общий метод ЧПУ для контроллера, используем /param=value/
+		 * If a general method for SEF controller, use /param=value/
 		 */
 		$urn_base='/'.$contoller_name;
 	} else {
 		/**
-		 * en: If the SEF mode is not used.
-		 * ru: Если ЧПУ режим не используется.
+		 * If the SEF mode is not used.
 		 */
 		$urn_base='?c='.$contoller_name;
 		if ($this->sef_mode){
 		/**
-		 * en: Flag of the SEF mode, set in the method $this->getControllerForParam
-		 * en: when pass to the controller to parse the string SEF URN
-		 * ru: Флаг работы в ЧПУ режиме, устанавливается в методе $this->getControllerForParam
-		 * ru: при условии, если в параметрах передана строка для SEF разбора URN
+		 * Flag of the SEF mode, set in the method $this->getControllerForParam
+		 * when pass to the controller to parse the string SEF URN
 		 * if (!empty($param['sef'])) {$this->sef_mode=true;}
 		 * TODO ADD name from config
 		 */
@@ -1404,37 +1227,31 @@ function getControllerURN($contoller_name,$seo) {
 	return $urn_base;
 }
 
-/** getMethodURN($method,$seo)
- * en: Get the URN of the method name.
- * ru: Получить URN из названия метода. 
+/**
+ * Get the URN of the method name.
  * 
  * @param string $contoller_name 
- * en: Method name.
- * ru: Название метода.
+ * Method name.
  * @param string $seo 
- * en: Use SEF?
- * ru: Использовать ЧПУ?
+ * Use SEF?
  * @access public
  * @return string
  */
 function getMethodURN($method,$seo) {
 	if (empty($method)){
 	/**
-	 * en: If the method is not specified, the method will be used by default.
-	 * ru: Если метод не указан, будет использован метод по умолчанию.
+	 * If the method is not specified, the method will be used by default.
 	 */
 		return '';
 	}else {
 		if ($seo){
 		/**
-		 * en: If a general method for SEF controller, use /param=value/
-		 * ru: Если общий метод ЧПУ для контроллера, используем /param=value/
+		 * If a general method for SEF controller, use /param=value/
 		 */
 			$urn_base.='/'.$method;
 		}else {
 		/**
-		 * en: If the SEF mode is not used.
-		 * ru: Если ЧПУ режим не используется.
+		 * If the SEF mode is not used.
 		 */
 			$urn_base.='&m='.$method;
 		}
@@ -1442,22 +1259,18 @@ function getMethodURN($method,$seo) {
 	return $urn_base;
 }
 
-/** getInputFormText($name, $str, $multi_form=false)
+/**
  * 
- * en: Get to the form input from string.
- * ru: Получить для формы значение input.
+ * Get to the form input from string.
  * 
  * @param string $name 
- * en: Parameter name in form. 
- * ru: Имя параметра в форме.
+ * Parameter name in form. 
  * 
  * @param string $value 
- * en: The value of the form.
- * ru: Значение параметра в форме.
+ * The value of the form.
  * 
  * @param string $multi_form 
- * en: Name for the form, if you use the multiple form.
- * ru: Имя для параметров формы, если используется множественная форма.
+ * Name for the form, if you use the multiple form.
  * 
  * @access public
  * @return string
@@ -1465,15 +1278,13 @@ function getMethodURN($method,$seo) {
 function getInputFormText($name,$value,$multi_form=false){
 	if (empty($value)) {
 	/**
-	 * en: If the value of a form not specified stop processing.
-	 * ru: Если значение для формы не указано останавливаем обработку.
+	 * If the value of a form not specified stop processing.
 	 */
 		return;
 	}else {
 		if ($multi_form){
 		/**
-		 * en: Name for the form, if you use the multiple form.
-		 * ru: Имя для параметров формы, если используется множественная форма.
+		 * Name for the form, if you use the multiple form.
 		 */
 			$name=$multi_form.'['.$name.']';
 		}
@@ -1481,10 +1292,9 @@ function getInputFormText($name,$value,$multi_form=false){
 	}
 }
 
-/** getInputsFromArray($validate,$multi_form=false)
+/**
  *
- * en: Get to the form input from validation array.
- * ru: Получить для массива валидации значение параметров в форме.
+ * Get to the form input from validation array.
  * 
  * >> < ?=$result[inURL][ext_search][inputs]? >
  * << <input name="last_search" type="hidden" value="inURLFalse" />
@@ -1526,12 +1336,10 @@ function getInputFormText($name,$value,$multi_form=false){
  * </form>
  *
  * @param array $validate 
- * en: Array with the parameters of the form.
- * ru: Массив с параметрами формы.
+ * Array with the parameters of the form.
  * 
  * @param string $multi_form
- * en: Name for the form, if you use the multiple form.
- * ru: Имя для параметров формы, если используется множественная форма.
+ * Name for the form, if you use the multiple form.
  * <input name="multi_form_method[last_search]" type="hidden" value="inURLFalse" />
  * 
  * @see Controllers.controller
@@ -1547,8 +1355,7 @@ function getInputsFromArray($validate,$multi_form=false) {
 		$REQUEST_OUT=$this->result['REQUEST_OUT'][$_value['to']];
 		if ($_value['inURL']){
 		/**
-		 * en: When specified as an input (user or template) parameter.
-		 * ru: Если данный параметр из валидации указан в шаблоне как параметр ввода.
+		 * When specified as an input (user or template) parameter.
 		 * 
 		 * PHP:
 		 * <a href="< ?=$result[inURL][ext_search][pre]? >< ?=$result[inURL][ext_search][oldSearch]? >test 1< ?=$result[inURL][ext_search][post]? >">test 1</a>
@@ -1577,46 +1384,38 @@ function getInputsFromArray($validate,$multi_form=false) {
 		 */
 			if ($_value['is_array']){
 			/**
-			 * en: If the parameter is an array. &param[]=1&param[]=2
-			 * ru: Если параметр является массивом. Используем запись вида &param[]=1&param[]=2
+			 * If the parameter is an array. &param[]=1&param[]=2
 			 */
 				$_title.='[]';
 			}
 			$array_out[$_value['to']]=$_title;
 			if (!empty($this->result['REQUEST_OUT'][$_value['to']])){
 				/**
-				 * en: If the parameter is the output there.
-				 * ru: Если параметр на выходе существует.
+				 * If the parameter is the output there.
 				 * 
-				 * en: Create an array of options for replacing a URN by default.
-				 * ru: Создаём массив параметров для замены в URN по умолчанию.
+				 * Create an array of options for replacing a URN by default.
 				 */
 				if ($seo===true){
 				/**
-				 * en: If a general method for SEF controller, use /param=value/
-				 * ru: Если общий метод ЧПУ для контроллера, используем /param=value/
+				 * If a general method for SEF controller, use /param=value/
 				 */
 					$array_out['replace'][$_value['to']]='/'.$_title.'='.$REQUEST_OUT;
 				}elseif($seo&&$seo!==true){
 				/**
-				 * en: If there is a SEF for the method.
-				 * en: And SEO mode is not for the controller.
-				 * ru: Если есть ЧПУ для метода.
-				 * ru: И СЕО режим не для всего контроллера.
+				 * If there is a SEF for the method.
+				 * And SEO mode is not for the controller.
 				 */
 					$array_out['replace'][$_value['to']]=$REQUEST_OUT;
 				}else {
 				/**
-				 * en: If the standard mode of generating URN.
-				 * ru: Если стандартный режим генерации URN.
+				 * If the standard mode of generating URN.
 				 */
 					$array_out['replace'][$_value['to']]='&'.$_title.'='.$REQUEST_OUT;
 				}
 			}
 		}else {
 			/**
-			 * en: If not specified in the template as an input parameter.
-			 * ru: Если параметр не указан в шаблоне как параметр ввода.
+			 * If not specified in the template as an input parameter.
 			 * 
 			 * 'public_methods' => array(
 			 *  'ext_search' => array(
@@ -1632,21 +1431,18 @@ function getInputsFromArray($validate,$multi_form=false) {
 			 */
 			if (!empty($this->result['REQUEST_OUT'][$_value['to']])){
 				/**
-				 * en: If the parameter is the output there.
-				 * ru: Если параметр на выходе существует.
+				 * If the parameter is the output there.
 				 */
 					//TODO check without multi_form=true if ($multi_form&&$_value['multi_form']){
 				if ($multi_form){
 				/**
-				 * en: If you use the multiple form.
-				 * ru: Если используется множественная форма.
+				 * If you use the multiple form.
 				 */
 					$pre_fix=$multi_form.'[';$post_fix= ']';
 				}
 				if ($_value['is_array']){
 				/**
-				 * en: If the parameter is an array.
-				 * ru: Если параметр является массивом.
+				 * If the parameter is an array.
 				 * 
 				 * <input name="controller[method][]"/>
 				 */
@@ -1655,8 +1451,7 @@ function getInputsFromArray($validate,$multi_form=false) {
 					}
 				}else {
 					/**
-					 * en: If it is not an array.
-					 * ru: Если параметр не массив.
+					 * If it is not an array.
 					 * <input name="controller[method]"/>
 					 */
 					$inputs.='<input type="hidden" name="'.$pre_fix.$_title.$post_fix.'" value="'.$this->result['REQUEST_OUT'][$_value['to']].'"/>';
@@ -1664,8 +1459,7 @@ function getInputsFromArray($validate,$multi_form=false) {
 				//TODO check without multi_form=true if ($multi_form&&$_value['multi_form']){
 				if ($multi_form){
 				/**
-				 * en: If you use the multiple form.
-				 * ru: Если используется множественная форма.
+				 * If you use the multiple form.
 				 */
 					$pre_fix=$post_fix= '';
 				}
@@ -1676,22 +1470,18 @@ function getInputsFromArray($validate,$multi_form=false) {
 	return $array_out;
 }
 
-/** getURLFromArray($validate,$seo=false,$is_add=false)
+/**
  * 
- * en: Get a URN from an array of validation.
- * ru: Получить URN из массива проверки валидации
+ * Get a URN from an array of validation.
  * 
  * @param array $validate 
- * en: Array with the parameters of the form.
- * ru: Массив с параметрами формы.
+ * Array with the parameters of the form.
  *
  * @param boolean $seo 
- * en: Use SEF?
- * ru: Использовать ЧПУ?
+ * Use SEF?
  * 
  * @param boolean $is_add 
- * en: Parameter added to the current URN?
- * ru: Параметр добавляться к текущему URN?
+ * Parameter added to the current URN?
  * >> $is_add = false
  * << ?param=value
  * 
@@ -1704,15 +1494,12 @@ function getInputsFromArray($validate,$multi_form=false) {
 function getURLFromArray($validate,$seo=false,$is_add=false) {
 	if($seo&&$seo!==true){
 	/**
-	 * en: If there is a SEF for the method.
-	 * en: And SEO mode is not for the controller.
-	 * ru: Если есть ЧПУ для метода.
-	 * ru: И СЕО режим не для всего контроллера.
+	 * If there is a SEF for the method.
+	 * And SEO mode is not for the controller.
 	 */
 		foreach ($seo as $seo_title =>$seo_value) if ($seo_title!=='.'){
 			/**
-			 * en: For each element of the SEO, do if the key is not the point.
-			 * ru: Для каждого эл-та для SEO, выполнить если ключ не является точкой.
+			 * For each element of the SEO, do if the key is not the point.
 			 * 
 			 * 'current_method' => array(
 			 *  'inURLSEF' => array(
@@ -1722,8 +1509,7 @@ function getURLFromArray($validate,$seo=false,$is_add=false) {
 			 */
 			if ($validate[$seo_title]['inURL']){
 				/**
-				 * en: When specified as an input (user or template) parameter.
-				 * ru: Если данный параметр из валидации указан в шаблоне как параметр ввода.
+				 * When specified as an input (user or template) parameter.
 				 * 
 				 * PHP:
 				 * <a href="< ?=$result[inURL][ext_search][pre]? >< ?=$result[inURL][ext_search][oldSearch]? >test 1< ?=$result[inURL][ext_search][post]? >">test 1</a>
@@ -1753,10 +1539,8 @@ function getURLFromArray($validate,$seo=false,$is_add=false) {
 				$array_out[$validate[$seo_title]['to']]='-';
 				if (!empty($this->result['REQUEST_OUT'][$validate[$seo_title]['to']])){
 				/**
-				 * en: If the URN has a default of the parameters.
-				 * en: Replace the current method's parameters.
-				 * ru: Если в URN по умолчанию уже есть часть параметров.
-				 * ru: Заменяем на текущие параметры метода.
+				 * If the URN has a default of the parameters.
+				 * Replace the current method's parameters.
 				 * 
 				 * 'default' => array(
 				 *  'inURLMethod' => array('current_method'),
@@ -1771,8 +1555,7 @@ function getURLFromArray($validate,$seo=false,$is_add=false) {
 				}
 			}else {
 			/**
-			 * en: If not specified in the template as an input parameter.
-			 * ru: Если параметр не указан в шаблоне как параметр ввода.
+			 * If not specified in the template as an input parameter.
 			 * 
 			 * 'public_methods' => array(
 			 *  'ext_search' => array(
@@ -1788,23 +1571,19 @@ function getURLFromArray($validate,$seo=false,$is_add=false) {
 			 */
 				if (empty($array_out['pre'])) {
 				/**
-				 * en: For the initial formation of the URN.
-				 * en: If the value is empty. Use the slash.
-				 * ru: При начальном формирование URN. 
-				 * ru: Если значение пустое. Используем слэш.
+				 * For the initial formation of the URN.
+				 * If the value is empty. Use the slash.
 				 */
 					$array_out['pre'].= '/';
 				}else {
 				/**
-				 * en: In all other cases.
-				 * ru: Во всех остальных случаях.
+				 * In all other cases.
 				 */
 					$array_out['pre'].= '-';
 				}
 				if (!empty($seo_value)){
 					/**
-					 * en: If the value for the SEF is not empty, use it.
-					 * ru: Если значение для ЧПУ не пустое, используем его.
+					 * If the value for the SEF is not empty, use it.
 					 * 
 					 * 'current_method' => array(
 					 *  'inURLSEF' => array(
@@ -1817,8 +1596,7 @@ function getURLFromArray($validate,$seo=false,$is_add=false) {
 						$array_out['pre'].= $seo_value;
 				} else {
 				/**
-				 * en: Or use the value of the parameters output from the controller.
-				 * ru: Либо используем значение параметров выхода из контроллера.
+				 * Or use the value of the parameters output from the controller.
 				 */
 					$array_out['pre'].=$this->result['REQUEST_OUT'][$validate[$seo_title]['to']];
 				}
@@ -1826,18 +1604,15 @@ function getURLFromArray($validate,$seo=false,$is_add=false) {
 		}
 		if (empty($array_out['pre'])) {
 			/**
-			 * en: For the initial formation of the URN.
-			 * en: If the value is empty. Use the slash.
-			 * ru: При начальном формирование URN. 
-			 * ru: Если значение пустое. Используем слэш.
+			 * For the initial formation of the URN.
+			 * If the value is empty. Use the slash.
 			 */
 			$array_out['pre'].= '/';
 		}
 		return $array_out;  
 	}else {
 		/**
-		 * en: If the method does not use SEF.
-		 * ru: Если в методе не используется ЧПУ.
+		 * If the method does not use SEF.
 		 * 
 		 * 'current_method' => array(
 		 *  'inURLSEF' => NULL,
@@ -1850,10 +1625,8 @@ function getURLFromArray($validate,$seo=false,$is_add=false) {
 			$REQUEST_OUT = $this->result['REQUEST_OUT'][$_value['to']];
 			if (!empty($REQUEST_OUT)||$_value['inURL']){
 				/**
-				 * en: When specified as an input (user or template) parameter.
-				 * en: Or is there a setting on the output of the controller.
-				 * ru: Если данный параметр из валидации указан в шаблоне как параметр ввода.
-				 * ru: Или существует параметр на выходе из контроллера.
+				 * When specified as an input (user or template) parameter.
+				 * Or is there a setting on the output of the controller.
 				 * 
 				 * PHP:
 				 * <a href="< ?=$result[inURL][ext_search][pre]? >< ?=$result[inURL][ext_search][oldSearch]? >test 1< ?=$result[inURL][ext_search][post]? >">test 1</a>
@@ -1882,35 +1655,29 @@ function getURLFromArray($validate,$seo=false,$is_add=false) {
 				 */
 				if ($_value['is_array']){
 				/**
-				 * en: If the parameter is an array. &param[]=1&param[]=2
-				 * ru: Если параметр является массивом. Используем запись вида &param[]=1&param[]=2
+				 * If the parameter is an array. &param[]=1&param[]=2
 				 */
 					$save_key= '';
 					$param_count = count($REQUEST_OUT);
 					$_title=$_title.'[]';
 					if ($param_count<=1){
 					/**
-					 * en: If there are no parameters on the output or just one.
-					 * ru: Если нет параметров на выходе или только один.
-					 * en: Get the URN part for the name and parameter value.
-					 * ru: Получить адресную часть для имени и значения параметра.
+					 * If there are no parameters on the output or just one.
+					 * Get the URN part for the name and parameter value.
 					 */
 						$this->getURNForTitleAndValue($array_out,$_value['inURL'],$_value['to'],$_title,$REQUEST_OUT[0],$seo);
 						$key = $this->getFirstArrayKey($array_out['replace']);
 						$save_key.= $array_out['replace'][$key];
 					}else {
 					/**
-					 * en: If the parameters of the output is more than one.
-					 * ru: Если параметров на выходе больше одного.
+					 * If the parameters of the output is more than one.
 					 */
 						for ( $i = 0; $i < $param_count; $i++ ) {
 							$this->getURNForTitleAndValue($array_out,$_value['inURL'],$_value['to'],$_title,$REQUEST_OUT[$i],$seo);
 							if ($_value["inURLSave"]){
 								/**
-								 * en: If you want to save the settings in multi-forms. Default is false.
-								 * en: An example of when you want to save the settings from the last load.
-								 * ru: Если нужно сохранить параметры в мульти формах. По умолчанию false.
-								 * ru: Пример, когда нужно сохранить параметры из прошлого вызова.
+								 * If you want to save the settings in multi-forms. Default is false.
+								 * An example of when you want to save the settings from the last load.
 								 *
 								 * $result[REQUEST_OUT][PathID]=1;
 								 * 
@@ -1936,8 +1703,7 @@ function getURLFromArray($validate,$seo=false,$is_add=false) {
 								 *   )
 								 * ) 
 								 *
-								 * en: Get the URN part for the name and parameter value.
-								 * ru: Получить адресную часть для имени и значения параметра.
+								 * Get the URN part for the name and parameter value.
 								 */
 								$key = $this->getFirstArrayKey($array_out['replace']);
 								$save_key.= $array_out['replace'][$key];
@@ -1946,17 +1712,14 @@ function getURLFromArray($validate,$seo=false,$is_add=false) {
 					}
 					if ($_value["inURLSave"]){
 					/**
-					 * en: When you want to save the settings from the last load.
-					 * en: Remove the options for a replacement.
-					 * ru: Когда нужно сохранить параметры из прошлого вызова.
-					 * ru: Удаляем параметры для замены.
+					 * When you want to save the settings from the last load.
+					 * Remove the options for a replacement.
 					 */
 						unset($array_out['replace']);
 					}
 				}else {
 				/**
-				 * en: Get the URN part for the name and parameter value.
-				 * ru: Получить адресную часть для имени и значения параметра.
+				 * Get the URN part for the name and parameter value.
 				 */
 					$this->getURNForTitleAndValue($array_out,$_value['inURL'],$_value['to'],$_title,$REQUEST_OUT,$seo);
 				}
@@ -1966,10 +1729,9 @@ function getURLFromArray($validate,$seo=false,$is_add=false) {
 	return $array_out;
 }
 
-/** getURNForTitleAndValue(&$array_out,$in_url,$to,$_title,$REQUEST_OUT,$seo)
+/**
  * 
- * en: Get the URN part for the name and parameter value.
- * ru: Получить адресную часть для имени и значения параметра.
+ * Get the URN part for the name and parameter value.
  * 
  * /controller/ControllersExample.php
  *	'search' => array(
@@ -1983,13 +1745,11 @@ function getURLFromArray($validate,$seo=false,$is_add=false) {
  *	),
  *
  * @param array $array_out 
- * en: Reference to an array of data after processing.
- * ru: Ссылка на массив с данными после обработки.
+ * Reference to an array of data after processing.
  * 
  * @param boolean $in_url 
  * 
- * en: For the substitution of references.
- * ru: Для подстановки части ссылки.
+ * For the substitution of references.
  * 
  * >>inURL = true, 
  * >>REQUEST = array(path_id => 777)
@@ -1998,8 +1758,7 @@ function getURLFromArray($validate,$seo=false,$is_add=false) {
  * << &path_id=
  * 
  * 
- * en: false - by default
- * ru: false - по умолчанию.
+ * false - by default
  * 
  * >>inURL = false 
  * >>REQUEST = array(path_id => 777)
@@ -2008,24 +1767,19 @@ function getURLFromArray($validate,$seo=false,$is_add=false) {
  * << &path_id=777
  * 
  * @param string $to 
- * en: Stored in the variable $param[REQUEST][path_id]
- * en: An array of references to URN will be available on a key $result [inURL][PathID]
- * ru: Переменная сохраняться в $param[REQUEST][path_id]
- * ru: Массив для ссылки URN будет доступен по ключу $result[inURL][PathID]
+ * Stored in the variable $param[REQUEST][path_id]
+ * An array of references to URN will be available on a key $result [inURL][PathID]
  *
  * @param string $_title 
- * en: The key to validation under which to store the variable.
- * ru: Ключ в валидации, под каким хранить переменную.
+ * The key to validation under which to store the variable.
  * 
  * 'search' => array()
  * 
  * @param array $REQUEST_OUT 
- * en: Parameter from the output to the substitution.
- * ru: Параметр с выхода для подстановки.
+ * Parameter from the output to the substitution.
  * 
  * @param boolean|array $seo 
- * en: Use SEF?
- * ru: Использовать ЧПУ?
+ * Use SEF?
  * 
  * @access public
  * @return void
@@ -2033,8 +1787,7 @@ function getURLFromArray($validate,$seo=false,$is_add=false) {
 function getURNForTitleAndValue(&$array_out,$in_url,$to,$_title,$REQUEST_OUT,$seo){
 	if ($in_url){
 		/**
-		 * en: When specified as an input (user or template) parameter.
-		 * ru: Если данный параметр из валидации указан в шаблоне как параметр ввода.
+		 * When specified as an input (user or template) parameter.
 		 * 
 		 * 'public_methods' => array(
 		 *  'ext_search' => array(
@@ -2051,39 +1804,32 @@ function getURNForTitleAndValue(&$array_out,$in_url,$to,$_title,$REQUEST_OUT,$se
 		 */
 			if ($seo===true){
 			/**
-			 * en: If a general method for SEF controller, use /param=value/
-			 * ru: Если общий метод ЧПУ для контроллера, используем /param=value/
+			 * If a general method for SEF controller, use /param=value/
 			 */
 				$array_out[$to]='/'.$_title.'=';
 				if (!empty($REQUEST_OUT)){
 					/**
-					 * en: If the URN has a default of the parameters.
-					 * en: Replace the current method's parameters.
-					 * ru: Если в URN по умолчанию уже есть часть параметров.
-					 * ru: Заменяем на текущие параметры метода.
+					 * If the URN has a default of the parameters.
+					 * Replace the current method's parameters.
 					 */
 					$array_out['replace'][$to]='/'.$_title.'='.$REQUEST_OUT;
 				}
 			}else {
 				/**
-				 * en: If the standard mode of generating URN.
-				 * ru: Если стандартный режим генерации URN.
+				 * If the standard mode of generating URN.
 				 */
 				$array_out[$to]='&'.$_title.'=';
 				if (!empty($REQUEST_OUT)){
 					/**
-					 * en: If the URN has a default of the parameters.
-					 * en: Replace the current method's parameters.
-					 * ru: Если в URN по умолчанию уже есть часть параметров.
-					 * ru: Заменяем на текущие параметры метода.
+					 * If the URN has a default of the parameters.
+					 * Replace the current method's parameters.
 					 */
 					$array_out['replace'][$to]='&'.$_title.'='.$REQUEST_OUT;
 				}
 			}
 		}else {
 			/**
-			 * en: If not specified in the template as an input parameter.
-			 * ru: Если параметр не указан в шаблоне как параметр ввода.
+			 * If not specified in the template as an input parameter.
 			 * 
 			 * 'public_methods' => array(
 			 *  'ext_search' => array(
@@ -2099,35 +1845,29 @@ function getURNForTitleAndValue(&$array_out,$in_url,$to,$_title,$REQUEST_OUT,$se
 			 */
 				if  ($seo===true){
 				/**
-				 * en: If there is a SEF for the method.
-				 * en: And SEO mode is not for the controller.
-				 * ru: Если есть ЧПУ для метода.
-				 * ru: И СЕО режим не для всего контроллера.
+				 * If there is a SEF for the method.
+				 * And SEO mode is not for the controller.
 				 */
 					$array_out['pre'].='/'.$_title.'='.$REQUEST_OUT;
 				}else {
 					/**
-					 * en: If the standard mode of generating URN.
-					 * ru: Если стандартный режим генерации URN.
+					 * If the standard mode of generating URN.
 					 */
 					$array_out['pre'].='&'.$_title.'='.$REQUEST_OUT;
 				}
 			}
 }
 
-/** setLoadController($set_controller) 
- * en: Initialize the controller.
- * ru: Инициализируем контроллер.
+/**
+ * Initialize the controller.
  * 
- * en: Define in:
- * ru: задаётся в: 
+ * Define in:
  * /evnine.config.php
  *	$this->controller_alias=array(
  *		'helloworld'=>'ControllersHelloWorld',
  *	);
  * 
- * en: The alternative with set the path.
- * ru: Альтернативный вариант с указанием пути.
+ * The alternative with set the path.
  * /evnine.config.php
  *	'helloworld'=>array(
  *		'class_name'=>'ControllersHelloWorld',
@@ -2137,16 +1877,14 @@ function getURNForTitleAndValue(&$array_out,$in_url,$to,$_title,$REQUEST_OUT,$se
  * @see Controllers.controller_alias
  * 
  * @param string $set_controller
- * en: Aliases names controllers.
- * ru: Псевдонимы названий контроллеров.
+ * Aliases names controllers.
  * @access public
  * @return void
  */
 function setLoadController($set_controller) {
 	if ($this->current_controller_name===$set_controller&&!empty($set_controller)){
 	/**
-	 * en: If the controller has been initialized and is now used.
-	 * ru: Если контроллер уже инициализирован и сейчас используется.
+	 * If the controller has been initialized and is now used.
 	 */
 		return;
 	}
@@ -2154,10 +1892,8 @@ function setLoadController($set_controller) {
 		empty($this->controller_alias[$set_controller])
 	){
 		/**
-		 * en: If the controller is not specified /evnine.config.php.
-		 * en: Use the controller specified by default.
-		 * ru: В случае если контроллер не указан /evnine.config.php 
-		 * ru: используем контроллер указанный по умолчанию
+		 * If the controller is not specified /evnine.config.php.
+		 * Use the controller specified by default.
 		 * $this->param_const['default_controller']
 		 * 
 		 * /evnine.config.php:
@@ -2173,8 +1909,7 @@ function setLoadController($set_controller) {
 		$this->param['controller']=$this->current_controller_name = $this->param_const['default_controller'];
 	}else {
 	/**
-	 * en: If the controller is specified.
-	 * ru: Если контроллер указан.
+	 * If the controller is specified.
 	 * /evnine.config.php:
 	 * $this->controller_alias=array(
 	 *  'controller_shorcut'=>'Controllers',
@@ -2184,47 +1919,40 @@ function setLoadController($set_controller) {
 	}
 	if (empty($this->loaded_controller[$set_controller])){
 	/**
-	 * en: If the controller is not loaded.
-	 * ru: Если контроллер ещё не был загружен
+	 * If the controller is not loaded.
 	 */
 		if (empty($this->result['LoadController'])){
 			/**
-			 * en: Set to answer evnin, which controller is init first.
-			 * ru: Устанавливаем для ответа evnine, какой контроллер запущен первым.
+			 * Set to answer evnin, which controller is init first.
 			 */
 			$this->result['LoadController']=$this->current_controller_name;
 		}
 			$controller_file = $this->path_to.'controllers'.DIRECTORY_SEPARATOR.$this->controller_alias[$this->current_controller_name].'.php';
 			if (file_exists($controller_file)){
 			/**
-			 * en: If the file exists the controller.
-			 * ru: Если файл контроллера существует.
+			 * If the file exists the controller.
 			 */
 				$controller = $this->controller_alias[$this->current_controller_name];
 			}elseif (is_array($this->controller_alias[$this->current_controller_name])){
 			/**
-			 * en: If the controller set a folder.
-			 * ru: Если для контроллера задана отдельная папка.
+			 * If the controller set a folder.
 			 */
 				$controller_file = $this->path_to.$this->controller_alias[$this->current_controller_name]['path'].DIRECTORY_SEPARATOR.$this->controller_alias[$this->current_controller_name]['class_name'].'.php';
 				if (file_exists($controller_file)){
 					/**
-					 * en: If the file exists the controller.
-					 * ru: Если файл контроллера существует.
+					 * If the file exists the controller.
 					 */
 					$controller = $this->controller_alias[$this->current_controller_name]['class_name'];
 				}else {
 					/**
-					 * en: If the controller file from array does not exist, set the error.
-					 * ru: Если файла контроллера из массива не существует, выводим ошибку.
+					 * If the controller file from array does not exist, set the error.
 					 */
 					$this->result['ControllerError'][]=__METHOD__.' ('.preg_replace("/.*\\\/","",__FILE__).', line:'.__LINE__.'): controller file [array case]"'.$controller_file. '" not exist ';
 					return;
 				}
 			}else {
 			/**
-			 * en: If the controller file does not exist, set the error.
-			 * ru: Если файла контроллера не существует, выводим ошибку.
+			 * If the controller file does not exist, set the error.
 			 */
 				$this->result['ControllerError'][]=__METHOD__.' ('.preg_replace("/.*\\\/","",__FILE__).', line:'.__LINE__.'): controller file "'.$controller_file. '" not exist ';
 				return;
@@ -2232,31 +1960,27 @@ function setLoadController($set_controller) {
 			include_once($controller_file);
 			try {
 			/**
-			 * en: Try to get the data.
-			 * ru: Пробуем получить данные.
+			 * Try to get the data.
 			 */
 				$this->loaded_controller[$set_controller] = new $controller($this->access_level);
 			} catch (InvalidArgumentException $e){
 			/**
-			 * en: If you receive an error, save it in an array of parameters.
-			 * ru: Если получили ошибку, сохраним её в массив параметров.
+			 * If you receive an error, save it in an array of parameters.
 			 */
 				$this->result['ControllerError'][]=__METHOD__.' ('.preg_replace("/.*\\\/","",__FILE__).', line:'.__LINE__.'): catch errors in the controller file "'.$controller_file. '"  <b>'.$e->getMessage().'</b>';
 			}
 			$this->current_controller=$this->loaded_controller[$set_controller]->controller;
 		}elseif(!empty($this->loaded_controller[$set_controller])) {
 		/**
-		 * en: If the controller has already been loaded, use it as current.
-		 * ru: Если контроллер уже был загружен, используем его как текущий.
+		 * If the controller has already been loaded, use it as current.
 		 */
 			$this->current_controller=$this->loaded_controller[$set_controller]->controller;
 		}
 }
 
-/** getDataFromController($param,$debug=false)
+/**
  * 
- * en: The basic method to get data from the controller with parameters.
- * ru: Базовый метод получения данных из контроллера по параметрам.
+ * The basic method to get data from the controller with parameters.
  * 
  * /index.php
  *	include_once('evnine.php');
@@ -2272,12 +1996,10 @@ function setLoadController($set_controller) {
  *	);
  * 
  * @param array $param 
- * en: Init parameters.
- * ru: Параметры на входе.
+ * Init parameters.
  * 
  * @param boolean $debug 
- * en: Debug mode.
- * ru: Для отладки.
+ * Debug mode.
  *
  * @see EvnineConfig.__construct
  * @see Controllers.controller
@@ -2290,8 +2012,7 @@ function getDataFromController($param,$debug=false) {
 	foreach ($param as $param_title =>$param_value){
 		//TODO check the case if (isset($param[$param_title]))
 		/**
-		 * en: Add the passed parameters to the parameters of /evnine.config.php
-		 * ru: Добавляем переданные параметры к параметрам из /evnine.config.php 
+		 * Add the passed parameters to the parameters of /evnine.config.php
 		 * 
 		 * /evnine.config.php
 		 *  $this->param_const=array(
@@ -2311,8 +2032,7 @@ function getDataFromController($param,$debug=false) {
 	//}
 	if (!empty($this->param['REQUEST'])){
 	/**
-	 * en: If the specified data input.
-	 * ru: Если указаны данные на входе.
+	 * If the specified data input.
 	 */
 		$this->result['REQUEST_IN']=$this->param['REQUEST'];
 		$this->result['REQUEST_OUT']=array();
@@ -2322,8 +2042,7 @@ function getDataFromController($param,$debug=false) {
 			!empty($this->current_controller['public_methods'][$this->param['method']]['inURLView'])
 		){
 		/**
-		 * en: If you are using AJAX and a template to display the view in the controller.
-		 * ru: Если используем AJAX и есть шаблон для отображения вида в контроллере.
+		 * If you are using AJAX and a template to display the view in the controller.
 		 * 
 		 * /index.php
 		 * $evnine->getControllerForParam(
@@ -2342,8 +2061,7 @@ function getDataFromController($param,$debug=false) {
 			$this->result['inURLView']=$this->current_controller['public_methods'][$this->param['method']]['inURLView'];
 		}elseif (!empty($this->current_controller['inURLView'])){
 		/**
-		 * en: In all other cases, use the template specified by default.
-		 * ru: Во всех остальных случаях, используем шаблон указанный по умолчанию.
+		 * In all other cases, use the template specified by default.
 		 * 
 		 * /controllers/ControllersHelloWorld.php
 		 * $this->controller = array(
@@ -2355,8 +2073,7 @@ function getDataFromController($param,$debug=false) {
 	}
 	if (empty($this->result['Title'])&&!empty($this->current_controller['title'])){
 	/**
-	 * en: Case when it is necessary to set <title> </ title> by the controller.
-	 * ru: Случай когда нужно передать содержимое <title></title> через контроллер.
+	 * Case when it is necessary to set <title> </ title> by the controller.
 	 * 
 	 * /controllers/ControllersHelloWorld.php
 	 * $this->controller = array(
@@ -2367,8 +2084,7 @@ function getDataFromController($param,$debug=false) {
 	}
 	if (empty($this->param['method'])){
 	/**
-	 * en: If the method of loading is not specified.
-	 * ru: Если метод при загрузке не указан.
+	 * If the method of loading is not specified.
 	 *
 	 * /index.php
 	 * include_once('evnine.php');
@@ -2381,8 +2097,7 @@ function getDataFromController($param,$debug=false) {
 	 */
 		if (isset($this->current_controller['public_methods']['default'])){
 		/**
-		 * en: If the default method exists, use it.
-		 * ru: Если метод по умолчанию существует, используем его.
+		 * If the default method exists, use it.
 		 * 
 		 * /controllers/ControllersHelloWorld.php
 		 * 'public_methods' => array(
@@ -2395,8 +2110,7 @@ function getDataFromController($param,$debug=false) {
 		$this->getAvailableTemplates($this->current_controller['templates'],$this->current_controller_name);
 	}else {
 		/**
-		 * en: If the method of loading is specified.
-		 * ru: Если метод при загрузке указан.
+		 * If the method of loading is specified.
 		 * 
 		 * /index.php
 		 *	include_once('evnine.php');
@@ -2409,8 +2123,7 @@ function getDataFromController($param,$debug=false) {
 		 */
 		if (!empty($this->current_controller['public_methods'][$this->param['method']]['inURLView'])){
 		/**
-		 * en: If the method specified template.
-		 * ru: Если у метода указан шаблон.
+		 * If the method specified template.
 		 * 
 		 * /controllers/ControllersHelloWorld.php
 		 * 'public_methods' => array(
@@ -2422,8 +2135,7 @@ function getDataFromController($param,$debug=false) {
 			$this->result['ViewMethod'][$this->param['method']]=$this->current_controller['public_methods'][$this->param['method']]['inURLView'];
 		}elseif ($this->param['method']!=='default'){
 		/**
-		 * en: If this method is not the default method.
-		 * ru: Если указанный метод не является методом по умолчанию.
+		 * If this method is not the default method.
 		 */
 			$this->result['ViewMethod'][$this->param['method']] = $this->param['method'];
 		}
@@ -2431,8 +2143,7 @@ function getDataFromController($param,$debug=false) {
 		$this->getAvailableTemplates($this->current_controller['templates'],$this->current_controller_name);
 		if ($this->param['ajax']===false){
 		/**
-		 * en: If the flag is to work through AJAX is not specified.
-		 * ru: Если флаг работы через AJAX не указан.
+		 * If the flag is to work through AJAX is not specified.
 		 * 
 		 * /index.php
 		 * include_once('evnine.php');
@@ -2446,15 +2157,13 @@ function getDataFromController($param,$debug=false) {
 		 */
 			$this->isHasAccessSaveCheck=true;
 			/**
-			 * en: If it works in a sub controller, and method of the parent was denied access.
-			 * ru: Если работает в под контроллере, и у родительского метода был закрыт доступ.
+			 * If it works in a sub controller, and method of the parent was denied access.
 			 */
 			if ($this->current_controller['page_level']!=0
 					&&!empty($this->current_controller['parent']))
 			{
 			/**
-			 * en: Check the depth of the controller, if you specify a parent load it.
-			 * ru: Проверяем глубину контроллера, если указан родитель подгружаем его.
+			 * Check the depth of the controller, if you specify a parent load it.
 			 * 
 			 * /evnine.config.php
 			 * * $this->controller_alias=array(
@@ -2489,8 +2198,7 @@ function getDataFromController($param,$debug=false) {
 				$this->param['method']= 'default';
 				$this->param['controller']=$this->current_controller['parent'];
 				/**
-				 * en: Load controller parent.
-				 * ru: Загружаем контроллер родителя.
+				 * Load controller parent.
 				 */
 				$this->getDataFromController($this->param,false);
 				$this->result['&lArr;'.$parent.':parent-default'] = '&lArr;Parent Method <font color="orange">'.$parent.'::parent-default</font> is unload';
@@ -2501,8 +2209,7 @@ function getDataFromController($param,$debug=false) {
 				&&$this->param['method']!=='default'
 			){
 			/**
-			 * en: If the default method from the child controller is not specified.
-			 * ru: Если в контроллере - ребенке не указан метод по умолчанию.
+			 * If the default method from the child controller is not specified.
 			 * 
 			 * /controllers/ControllersHelloWorld.php
 			 * $this->controller = array(
@@ -2524,15 +2231,13 @@ function getDataFromController($param,$debug=false) {
 			 * )
 			 */
 				/**
-				 * en: Load the default method in the controller parent.
-				 * ru: Загружаем метод по умолчания в контроллере - родителе.
+				 * Load the default method in the controller parent.
 				 */
 				$this->param['method']='default';
 				$this->result['&rArr;'.$this->current_controller_name.':default'] = '&rArr;Method <font color="orange"><b>'.$this->current_controller_name.'::default</b></font> is load';
 				if (!empty($this->current_controller['public_methods'][$this->param['method']]['inURLView'])){
 				/**
-				 * en: If the method specified template.
-				 * ru: Если у метода указан шаблон.
+				 * If the method specified template.
 				 * 
 				 * /controllers/ControllersHelloWorld.php
 				 * 'public_methods' => array(
@@ -2551,18 +2256,16 @@ function getDataFromController($param,$debug=false) {
 	}
 	if (!empty($this->param['REQUEST'])){
 	/**
-	 * en: If the specified data input.
-	 * ru: Если указаны данные на входе.
+	 * If the specified data input.
 	 */
 		$this->result['REQUEST_OUT']=$this->param['REQUEST'];		
 	}
 }
 
 
-/** getAvailableTemplates($available_templ) 
+/**
  * 
- * en: Display the available templates for the access level.
- * ru: Отобразить доступные шаблоны для уровня доступа.
+ * Display the available templates for the access level.
  * 
  * /evnine.config.php
  *	 $this->access_level=array(
@@ -2573,10 +2276,8 @@ function getDataFromController($param,$debug=false) {
  *	 
  * /controllers/ControllersHelloWorld.php
  *	'templates' => array(
- *		// en: Access to the mapping of the template.
- *		// en: Depends on the users access.
- *		// ru: Доступ к отображению частей шаблона.
- *		// ru: Зависит от доступа пользователя.
+ *		// Access to the mapping of the template.
+ *		// Depends on the users access.
  *		access_level['admin']=>array('menu'=>'admin_menu'),
  *		access_level['user']=>array('menu'=>'user_menu'),
  *		access_level['guest']=>array('menu'=>'guest_menu')
@@ -2600,25 +2301,21 @@ function getDataFromController($param,$debug=false) {
 function getAvailableTemplates($available_templ) {
 	if (count($available_templ)==0){
 	/**
-	 * en: If templates are not specified, will stop work.
-	 * ru: Если шаблоны не указаны, остановим работу.
+	 * If templates are not specified, will stop work.
 	 */
 		return true;
 	}
 	if (!isset($this->result['Templates'])){
 	/**
-	 * en: To merge the two arrays of templates for key initialize an array.
-	 * ru: Для объединения двух массивов шаблонов, инициализируем по ключу как массив.
+	 * To merge the two arrays of templates for key initialize an array.
 	 */
 		$this->result['Templates']=array();
 	}
 	for ( $i = 0; $i <= $this->param['PermissionLevel']; $i++ ) {
 		if (!empty($available_templ[$i])){
 		/**
-		 * en: Check the user level for the template.
-		 * en: Used $param['PermissionLevel'], you can check via the method in the controller.
-		 * ru: Проверяем для указания шаблону только доступному уровню пользователя.
-		 * ru: Используется $param['PermissionLevel'], проверит можно через метод в контроллере.
+		 * Check the user level for the template.
+		 * Used $param['PermissionLevel'], you can check via the method in the controller.
 		 * 
 		 * /controllers/ControllersHelloWorld.php
 		 * 'access'=>array(
@@ -2637,9 +2334,8 @@ function getAvailableTemplates($available_templ) {
 	}
 }
 
-/** getMethodFromClass($methods_class,$methods_array)
- * en: Call the methods in the class.
- * ru: Вызвать методы в классах.
+/**
+ * Call the methods in the class.
  * 
  * /controllers/ControllersExample.php
  *	'ModelsHelloWorld' => array(
@@ -2648,13 +2344,11 @@ function getAvailableTemplates($available_templ) {
  *	)
  * 
  * @param string $methods_class 
- * en: Class to call methods.
- * ru: Класс для вызова методов.
+ * Class to call methods.
  * 'ModelsHelloWorld'=>
  * 
  * @param array $methods_array 
- * en: An array of methods.
- * ru: Массив методов.
+ * An array of methods.
  * =>array(
  *  'getHelloWorld1'
  *  'getHelloWorld2'
@@ -2667,8 +2361,7 @@ function getAvailableTemplates($available_templ) {
 function getMethodFromClass($methods_class,$methods_array) {
 	if (!is_array($methods_array)){
 	/**
-	 * en: If the method is not an array. Creates an array for processing.
-	 * ru: Если метод не в массиве. Создаём массив для обработки.
+	 * If the method is not an array. Creates an array for processing.
 	 * >>'ModelsHelloWorld' => 'getHelloWorld1',
 	 * <<'ModelsHelloWorld' => array('getHelloWorld1'),
 	 */
@@ -2676,36 +2369,25 @@ function getMethodFromClass($methods_class,$methods_array) {
 	}
 	if (
 	/**
-	 * en: Skip the processing of technical information, validate, view, access, etc.
-	 * ru: Пропускаем обработку технической информации, валидацию, вид, доступ итд
+	 * Skip the processing of technical information, validate, view, access, etc.
 	 */
 		($methods_class[9]==='n'&&$methods_class[4]==='d'&&$methods_class[0]==='v')
 		/**
-		 * en: Skip the 'validation' 
-		 * ru:           0123456789
-		 * ru: Пропускаем 'validation' 
-		 * ru:             0123456789
+		 * Skip the 'validation' 
 		 */
 		||
 		($methods_class[4]==='L'&&$methods_class[2]==='U'&&$methods_class[0]==='i')
 		/**
-		 * en: Skip the 'inURL...' 
-		 * ru:           01234
-		 * ru: Пропускаем 'inURL...' 
-		 * ru:             01234
+		 * Skip the 'inURL...' 
 		 */
 		||
 		($methods_class[5]==='s'&&$methods_class[3]==='e'&&$methods_class[0]==='a')
 		/**
-		 * en: Skip the 'access' 
-		 * ru:           012345
-		 * ru: Пропускаем 'access' 
-		 * ru:             012345
+		 * Skip the 'access' 
 		 */
 	){ 
 	/**
-	 * en: Skip the processing of technical information, validate, view, access, etc.
-	 * ru: Пропускаем обработку технической информации, валидацию, вид, доступ итд
+	 * Skip the processing of technical information, validate, view, access, etc.
 	 */
 		return false;
 	}
@@ -2716,37 +2398,30 @@ function getMethodFromClass($methods_class,$methods_array) {
 		$methods_class[$methods_class_count-5]==='_'
 	){
 	/**
-	 * en: Processing possible cases of response methods.
-	 * ru: Обработка возможных случаев ответов методов и заглушка.
+	 * Processing possible cases of response methods.
 	 * 
 	 * class_method_case
 	 * 
 	 * _case = _false
 	 *         654321
-	 * en: The case of negative response to the method.
-	 * ru: Случай отрицательного ответа на метод class_isMethod
+	 * The case of negative response to the method.
 	 * 
 	 * _case = _true
 	 *         54321
-	 * en: The case of a positive response to the method.
-	 * ru: Случай положительного ответа на метод class_isMethod
+	 * The case of a positive response to the method.
 	 *         
 	 * _case = _dont_load
 	 *              54321
-	 * en: Blanks from the initialization method in the class.
-	 * en: class_method_dont_load - This means that the method - class method will not load.
-	 * ru: Заглушка от инициализации метода в классе. 
-	 * ru: class_method_dont_load - Это значит что метод - class_method загружаться не будет.
+	 * Blanks from the initialization method in the class.
+	 * class_method_dont_load - This means that the method - class method will not load.
 	 */
 		if (preg_match("/_false$|_true$|_dont_load$/",$methods_class,$tmp)){
 			/**
-			 * en: Checking the possible cases.
-			 * ru: Проверка возможных случаев.
+			 * Checking the possible cases.
 			 */
 				if ($tmp[0]=='_dont_load'){
 				/**
-				 * en: In order not to load duplicate methods.
-				 * ru: Чтобы не загружать методы дублирующие друг друга.
+				 * In order not to load duplicate methods.
 				 * 
 				 * /controllers/ControllersNews.php
 				 * 'public_methods' => array(
@@ -2769,18 +2444,14 @@ function getMethodFromClass($methods_class,$methods_array) {
 	}
 	if (!isset($this->class_path[$methods_class])){
 	/**
-	 * en: If the method does not exist.
-	 * en: Trying to determine what the case.
-	 * en: This is in reference to themselves or a reference to an external controller.
-	 * ru: Если метода не существует. 
-	 * ru: Пытаемся определить какой случай.
-	 * ru: Это ссылка на себя или ссылка на внешний контроллер.
+	 * If the method does not exist.
+	 * Trying to determine what the case.
+	 * This is in reference to themselves or a reference to an external controller.
 	 * 
 	 */
 		if ($methods_class==='this'){
 		/**
-		 * en: When a reference to the current controller.
-		 * ru: Когда указана ссылка на текущий контроллер.
+		 * When a reference to the current controller.
 		 *
 		 * /controllers/ControllersHelloWorld.php
 		 * 'public_methods' => array(
@@ -2794,10 +2465,8 @@ function getMethodFromClass($methods_class,$methods_array) {
 		}
 		if (isset($this->controller_alias[$methods_class])){
 		/**
-		 * en: If the method exists in the list of aliases controllers.
-		 * en: The case when a reference to an external controller.
-		 * ru: Если метод существует в списке псевдонимов контроллеров.
-		 * ru: Случай когда ссылка на внешний контроллер.
+		 * If the method exists in the list of aliases controllers.
+		 * The case when a reference to an external controller.
 		 * 
 		 * /evnine.config.php
 		 * $this->controller_alias=array(
@@ -2816,8 +2485,7 @@ function getMethodFromClass($methods_class,$methods_array) {
 			$this->result['&rArr;'.$methods_class.':'.$this->param['method']] = '&rArr;Extend Method <font color="orange">'.$methods_class.'::'.$this->param['method'].'</font> is load';
 			$this->getDataFromController($this->param,false);
 			/**
-			 * en: Load the controller with parameters.
-			 * ru: Загружаем контроллер с параметрами.
+			 * Load the controller with parameters.
 			 */
 			$this->result['&lArr;'.$methods_class.':'.$this->param['method']] = '&lArr;Extend Method <font color="orange">'.$methods_class.'::'.$this->param['method'].'</font> is unload';
 			$this->current_controller_name = $this->param['controller']=$save_param['controller'];
@@ -2827,8 +2495,7 @@ function getMethodFromClass($methods_class,$methods_array) {
 			return true;
 		}else {
 		/**
-		 * en: If the method not exists in the list of aliases controllers. Display the error.
-		 * ru: Если метода не существует в списке псевдонимов контроллеров. Выводим ошибку.
+		 * If the method not exists in the list of aliases controllers. Display the error.
 		 */
 				if (
 					$methods_class['0']!=='M'&&
@@ -2836,8 +2503,7 @@ function getMethodFromClass($methods_class,$methods_array) {
 					$methods_class['4']!=='l'
 				){
 				/**
-				 * en: Exclude the case with the model.
-				 * ru: Исключаем авто подстановку пути к модели.
+				 * Exclude the case with the model.
 				 * Models
 				 * 012345
 				 */
@@ -2848,8 +2514,7 @@ function getMethodFromClass($methods_class,$methods_array) {
 				$methods_class['3']==='e'
 		){
 			/**
-			 * en: The case when the model in the configuration file is not specified.
-			 * ru: Проверим случай когда модель в конфигурационном файле не указана.  
+			 * The case when the model in the configuration file is not specified.
 			 * Models
 			 * 012345
 			 */
@@ -2858,8 +2523,7 @@ function getMethodFromClass($methods_class,$methods_array) {
 			$methods_class=$this->getFirstArrayKey($methods_array);
 			if (count($methods_array[$methods_class])>1){
 				/**
-				 * en: If more than one method, reduces by one level.
-				 * ru: Если методов больше одного, уменьшаем глубину на один уровень.
+				 * If more than one method, reduces by one level.
 				 * 
 				 * /controllers/ControllersHelloWorld.php
 				 * >>'ModelsHelloWorld_isHello_true'=>array(
@@ -2880,52 +2544,42 @@ function getMethodFromClass($methods_class,$methods_array) {
 	}
 	if (empty($this->loaded_class[$methods_class])){
 		/**
-		 * en: The class is not initialized.
-		 * ru: Класс не инициализирован.
+		 * The class is not initialized.
 		 */
 			if ($this->isSetClassToLoadAndSetParam($methods_class)&&!empty($methods_class)){
 			/**
-			 * en: The class is initialized? If not, load it and add the parameters from the config.
-			 * ru: Загружен ли класс? Если нет, загрузим и добавим параметры из конфига.
+			 * The class is initialized? If not, load it and add the parameters from the config.
 			 */
 				$this->getDataFromMethod($methods_class,$methods_array);
 			}
 		}else{
 		/**
-		 * en: Initialized a class?
-		 * ru: Инициализирован ли класс?
+		 * Initialized a class?
 		 */
 			$this->getDataFromMethod($methods_class,$methods_array);
 		}
 }
 
-/** isSetClassToLoadAndSetParam($methods_class,$config_models)
+/**
  * 
- * en: The class is initialized? If not, load it and add the parameters from the config.
- * ru: Загружен ли класс? Если нет, загрузим и добавим параметры из конфига.
+ * The class is initialized? If not, load it and add the parameters from the config.
  * 
- * en: The path to the class specified in the
- * ru: Путь до класса задаётся в 
+ * The path to the class specified in the
  * /evnine.config.php
  *	$this->class_path=array(
  *		'ModelsHelloWorld'=>array('path'=>'/models/')
  *	)
- * en: IMPORTANT:
- * en: Without specifying the path, all the models set in /models/
- * ru: ВАЖНО:
- * ru: Без указания пути, считается что все модели лежат в /models/
+ * IMPORTANT:
+ * Without specifying the path, all the models set in /models/
  * 
  * @param string $methods_class  
- * en: Name of class to load.
- * ru: Название класса для загрузки.
+ * Name of class to load.
  * 
  * @param boolean $config_models
  * 
- * en: true - get the path of the configuration file.
- * ru: true - получить путь из конфигурационного файла.
+ * true - get the path of the configuration file.
  * 
- * en: false - use the path to a default model /models/
- * ru: false - использовать путь к модели по умолчанию /models/
+ * false - use the path to a default model /models/
  * 
  * @see EvnineConfig.__construct
  * @access public
@@ -2935,14 +2589,12 @@ function isSetClassToLoadAndSetParam($methods_class,$config_models=true){
 	$class_dir=$this->path_to.$this->class_path[$methods_class]['path'].DIRECTORY_SEPARATOR.$methods_class.'.php';
 	if ($config_models&&file_exists($class_dir)){
 		/**
-		 * en: There exists an a class file? path taken from the config.
-		 * ru: Если существует файл c классом, путь берем из конфига.
+		 * There exists an a class file? path taken from the config.
 		 */
 		include_once($class_dir);
 		if (count($this->class_path[$methods_class]['param'])>0){
 		/**
-		 * en: If parameters are specified in the config file, add them to an array of main parameters.
-		 * ru: Если в конфиге указаны параметры, добавим их в массив основных параметров.
+		 * If parameters are specified in the config file, add them to an array of main parameters.
 		 */
 			$this->param=array_merge($this->param,$this->class_path[$methods_class]['param']);
 		}
@@ -2950,26 +2602,23 @@ function isSetClassToLoadAndSetParam($methods_class,$config_models=true){
 		return true;
 	}elseif(!$config_models&&file_exists($this->path_to.'models'.DIRECTORY_SEPARATOR.$methods_class.'.php')){
 		/**
-		 * en: The case of the installation path for the default model.
-		 * ru: Случай с установкой пути для модели по умолчанию.  
+		 * The case of the installation path for the default model.
 		 */
 		include_once($this->path_to.'models'.DIRECTORY_SEPARATOR.$methods_class.'.php');
 		$this->loaded_class[$methods_class] = new $methods_class($this->loaded_class[$this->api]);
 		return true;
 	}else {
 		/**
-		 * en: Display the error, the class is not loaded.
-		 * ru: Выводим ошибку, класс не найден.
+		 * Display the error, the class is not loaded.
 		 */
 		$this->result['ControllerError'][]=__METHOD__.' ('.preg_replace("/.*\\\/","",__FILE__).', line:'.__LINE__.'):Class not found <br />'.$class_dir.'';
 		return false;
 	}
 }
 
-/** getDataFromMethod($methods_class,$methods_array)
+/**
  * 
- * en: Get data from the class methods.
- * ru: Получить данные из методов класса.
+ * Get data from the class methods.
  * 
  * /controllers/ControllersExample.php
  *	'ModelsHelloWorld' => array(
@@ -2977,30 +2626,22 @@ function isSetClassToLoadAndSetParam($methods_class,$config_models=true){
  *		'getHelloWorld2'
  *	)
  *	
- * en: Methods can start with is, get, set
- * ru: Методы могут начинаться с is, get, set. Окончание ModifierParam 
+ * Methods can start with is, get, set
  * 
- * en: Based on the type of method.
- * en: Get the data from the method. 
- * ru: Исходя из типа метода, получаем данные от метода. 
+ * Based on the type of method.
+ * Get the data from the method. 
  *
- * en: is - to check it?
- * ru: is - проверить правда ли?
- * en: get - get the data.
- * ru: get - получить данные.
- * en: set - set the data
- * ru: set - установить данные
- * en: ModifierParam at the end - it means changing parameter by the &link.
- * ru: ModifierParam в конце - значит изменяет по ссылке параметр.
+ * is - to check it?
+ * get - get the data.
+ * set - set the data
+ * ModifierParam at the end - it means changing parameter by the &link.
  *
  * @param string $methods_class 
- * en: Class to call methods.
- * ru: Класс для вызова методов.
+ * Class to call methods.
  * 'ModelsHelloWorld' =>
  * 
  * @param array $methods_array 
- * en: An array of methods.
- * ru: Массив методов.
+ * An array of methods.
  * => array(
  *	'getHelloWorld1'
  *	 'getHelloWorld2'
@@ -3014,25 +2655,20 @@ function isSetClassToLoadAndSetParam($methods_class,$config_models=true){
 function getDataFromMethod($methods_class,$methods_array){
 	if ($this->isHasAccessSaveCheck||$methods_class==='ModelsErrors'){
 		/**
-		 * en: Is there access to the methods? 
-		 * en: Perhaps there is no access and want to show the error?
-		 * ru: Есть ли доступ к методам? 
-		 * ru: Возможно доступа нет и хотим показать ошибку?
+		 * Is there access to the methods? 
+		 * Perhaps there is no access and want to show the error?
 		 */
 		foreach ($methods_array as $methods_array_title =>$methods_array_value){
 		/**
-		 * en: For each method, we set the key to the answer.
-		 * ru: Для каждого метода, получим ключ для ответа.
+		 * For each method, we set the key to the answer.
 		 * 'ModelsHelloWorld_getHelloWorld1'=>array()
 		 */
 		$array_key= $methods_class.'_'.$methods_array_value;
 		if (!isset($this->result[$array_key]))
 		{
 		/**
-		 * en: Each method is run only once!
-		 * en: But you can get around in the class:
-		 * ru: Каждый метод запускается только один раз!
-		 * ru: Но можно обойти в классе:
+		 * Each method is run only once!
+		 * But you can get around in the class:
 		 * 
 		 * /models/ModelsHelloWorld.php
 		 * function getFirstInitMethod($param){
@@ -3042,38 +2678,32 @@ function getDataFromMethod($methods_class,$methods_array){
 		 *  $this->getFirstInitMethod($param);
 		 * }
 		 * 
-		 * en: Is there access to a method for this user?
-		 * ru: Есть ли доступ к методу у данного пользователя?
+		 * Is there access to a method for this user?
 		 */
 			$isUserHasAccessForMethod = $this->isUserHasAccessForMethod($methods_class,$methods_array_value);
 			if ($isUserHasAccessForMethod==='skip'){
 			/**
-			 * en: In the case where a particular method of access not, skip it.
-			 * ru: В случае когда к конкретному методу доступа нет, пропускаем его.
+			 * In the case where a particular method of access not, skip it.
 			 */
 				$this->result[$array_key.'_no_access'] = 'no_access';
 				continue;
 			}elseif(!$isUserHasAccessForMethod) {
 			/**
-			 * en: In the case where there is no access.
-			 * ru: В случае когда доступа нет.
+			 * In the case where there is no access.
 			 */
 				return false;
 			}
 			if ($this->param["setResetForTest"]==true){
 			/**
-			 * en: For debugging, when you need to reset the data before get the answer.
-			 * en: It is necessary to PHPUnitTest.
-			 * ru: Для отладки, когда нужно сбросить данные перед получением ответа.
-			 * ru: Нужно для PHPUnitTest
+			 * For debugging, when you need to reset the data before get the answer.
+			 * It is necessary to PHPUnitTest.
 			 */
 				if ((method_exists($this->loaded_class[$methods_class],'setResetForTest'))){
 					$this->loaded_class[$methods_class]->setResetForTest($this->param);
 					$this->result[$methods_class.'_'.$methods_array_value.'_'.'setResetForTest']=true;
 				}else {
 				/**
-				 * en: If the method to reset does not exist, we display an error.
-				 * ru: Если метода для сброса не существует, выведем ошибку.
+				 * If the method to reset does not exist, we display an error.
 				 */
 					$this->result['ControllerError'][]= __METHOD__.' ('.preg_replace("/.*\\\/","",__FILE__).', line:'.__LINE__.'):NOT Exist: '.$methods_class.'_'.'setResetForTest';
 				}
@@ -3087,8 +2717,7 @@ function getDataFromMethod($methods_class,$methods_array){
 				)
 			){
 			/**
-			 * en: If you want to handle the error.
-			 * ru: Если нужно обработать ошибку.
+			 * If you want to handle the error.
 			 * getError 
 			 * 01234567
 			 * getInfo
@@ -3101,8 +2730,7 @@ function getDataFromMethod($methods_class,$methods_array){
 			 */
 			if (preg_match("/->/",$methods_array_value,$tmp)){
 				/**
-				 * en: If the type is an error in the method.
-				 * ru: Если указан тип ошибки в методе.
+				 * If the type is an error in the method.
 				 * /controllers/ControllersHelloWorld.php
 				 * 'ModelsHelloWorld' => array(
 				 *   'getError->not_hello'
@@ -3114,8 +2742,7 @@ function getDataFromMethod($methods_class,$methods_array){
 					 * >> 'getError->not_hello'
 					 * << array(0 => 'getError',1 => 'not_hello',)
 					 * 
-					 * en: If the error is, set it to value.
-					 * ru: Если ошибка есть, установим её в параметр. 
+					 * If the error is, set it to value.
 					 * 
 					 * )
 					 */
@@ -3127,8 +2754,7 @@ function getDataFromMethod($methods_class,$methods_array){
 			}
 			if ($methods_class==='ModelsValidation'){
 			/**
-			 * en: If the class contains a method call to validate the data.
-			 * ru: Если класс для вызова метода содержит валидацию данных.
+			 * If the class contains a method call to validate the data.
 			 * 'method' => array(
 			 *  'validation'=>array(
 			 *   'date' => array('to'=>'Date','type'=>'str','required'=>'false','max' => '10'),
@@ -3138,32 +2764,26 @@ function getDataFromMethod($methods_class,$methods_array){
 			 *    'isValidModifierParamFormError_false'=>array(),
 			 *    'isValidModifierParamFormError_true'=>array(),
 			 * )
-			 * en: Define the method to use for validation.
-			 * ru: Определим какой метод использовать для валидации.
+			 * Define the method to use for validation.
 			 */
 				if (empty($this->param['method'])&&
 						!empty($this->current_controller['public_methods']['default'])
 					){
 				/**
-				 * en: If you do not specify an initialization method and in 
-				 * en: the current controller is the default method.
-				 * ru: Если не указан метод инициализации и 
-				 * ru: в текущем контроллере есть метод по умолчанию.
+				 * If you do not specify an initialization method and in 
+				 * the current controller is the default method.
 				 * 
 				 */
 					$method_valid='default';
 				}else {
 				/**
-				 * en: If you specify an initialization method.
-				 * ru: Если указан метод инициализации.
+				 * If you specify an initialization method.
 				 */
 					$method_valid=$this->param['method'];
 				}
 				if (!empty($this->current_controller['public_methods'][$method_valid]['validation'])){
 				/**
-				 * en: If the method is a validation of the array overwriting the default.
-				 * ru: Если в методе есть массива валидации перезаписывающий метод по умолчанию. 
-				 * ru: Метод по умолчанию находится в методе default
+				 * If the method is a validation of the array overwriting the default.
 				 * 'public_methods' => array(
 				 *  'default' => array(
 				 *    'validation'=>array(
@@ -3180,12 +2800,9 @@ function getDataFromMethod($methods_class,$methods_array){
 					$this->param['validation']= $this->current_controller['public_methods'][$method_valid]['validation'];
 				}elseif (!empty($this->current_controller['public_methods'][$method_valid]['validation_form'])) {
 				/**
-				 * en: If the method is a validation of the array form, 
-				 * en: overwriting the default.
-				 * en: _form - when data is transferred via the form.
-				 * ru: Если в методе есть массива валидации формы, 
-				 * ru: перезаписывающий метод по умолчанию. 
-				 * ru: _form - когда данные передаются через форму.
+				 * If the method is a validation of the array form, 
+				 * overwriting the default.
+				 * _form - when data is transferred via the form.
 				 * 
 				 * /models/ModelsHelloWorld.php
 				 * 'public_methods' => array(
@@ -3222,12 +2839,9 @@ function getDataFromMethod($methods_class,$methods_array){
 					$this->param['validation']= $this->current_controller['public_methods'][$method_valid]['validation_form'];
 				}elseif (!empty($this->current_controller['public_methods'][$method_valid]['validation_multi_form'])) {
 				/**
-				 * en: If the method is an array of multiple forms of validation, 
-				 * en: overwriting the default.
-				 * en: _multi_form - when the same form can be transferred to any other method.
-				 * ru: Если в методе есть массива валидации множественной формы, 
-				 * ru: перезаписывающий метод по умолчанию. 
-				 * ru: _multi_form - когда одна и та же форма может передаваться в любой другой метод.
+				 * If the method is an array of multiple forms of validation, 
+				 * overwriting the default.
+				 * _multi_form - when the same form can be transferred to any other method.
 				 * 
 				 * /models/ModelsHelloWorld.php
 				 * ...
@@ -3250,10 +2864,8 @@ function getDataFromMethod($methods_class,$methods_array){
 					$this->param['validation']= $this->current_controller['public_methods'][$method_valid]['validation_multi_form'];
 				}elseif (!empty($this->current_controller['public_methods']['default']['validation'])) {
 				/**
-				 * en: When combine validation of the default method and 
-				 * en: validation data for a particular method.
-				 * ru: Когда объединяем валидацию из метода по умолчанию и 
-				 * ru: валидацию данных для конкретного метода.
+				 * When combine validation of the default method and 
+				 * validation data for a particular method.
 				 * 
 				 * /models/ModelsHelloWorld.php
 				 * 'public_methods' => array(
@@ -3272,8 +2884,7 @@ function getDataFromMethod($methods_class,$methods_array){
 					$this->param['validation']= $this->current_controller['public_methods']['default']['validation'];
 					if (!empty($this->current_controller['public_methods'][$method_valid]['validation_add'])){
 					/**
-					 * en: If there are additional options in the validation of a particular method.
-					 * ru: Если есть дополнительные параметры в валидации конкретного метода.
+					 * If there are additional options in the validation of a particular method.
 					 * 
 					 * /models/ModelsHelloWorld.php
 					 * 'public_methods' => array(
@@ -3291,10 +2902,8 @@ function getDataFromMethod($methods_class,$methods_array){
 					}
 				}elseif (!empty($this->current_controller['public_methods'][$method_valid]['validation_add'])) {
 				/**
-				 * en: In the case where the method has no default data for validation, 
-				 * en: but there are add-on for validating.
-				 * ru: В случае когда в методе по умолчанию нет данных для валидации, 
-				 * ru: но есть добавление для валидации.
+				 * In the case where the method has no default data for validation, 
+				 * but there are add-on for validating.
 				 * 
 				 * /models/ModelsHelloWorld.php
 				 * 'public_methods' => array(
@@ -3313,62 +2922,53 @@ function getDataFromMethod($methods_class,$methods_array){
 			if (method_exists($this->loaded_class[$methods_class],$methods_array_value)){
 				try{
 				/**
-				 * en: If there is method in the class. Try to get the data.
-				 * ru: Если метод в классе существует. Пробуем получить данные.
+				 * If there is method in the class. Try to get the data.
 				 */
 					$answer = $this->loaded_class[$methods_class]->$methods_array_value($this->param);
 				} catch (Exception $e) {
 				/**
-				 * en: If you receive an error, save it in an array of parameters.
-				 * ru: Если получили ошибку, сохраним её в массив параметров.
+				 * If you receive an error, save it in an array of parameters.
 				 */
 					$answer=$this->param['info']=$e->getMessage();
 				}
 			}else {
 			/**
-			 * en: If the method in the class does not exists, display an error.
-			 * ru: Если метод в классе не существует. Покажем ошибку.
+			 * If the method in the class does not exists, display an error.
 			 */
 				$this->result['ControllerError'][]=$answer=__METHOD__.' ('.preg_replace("/.*\\\/","",__FILE__).', line:'.__LINE__.'): Extend method not exist '.$methods_array_value.'';
 			}
 			if ($this->param['debug_param_diff']){
 			/**
-			 * en: If debugging is to compare the parameters of the method in the method is on.
-			 * ru: Если отладка для сравнения параметров из метода в метод включена.
+			 * If debugging is to compare the parameters of the method in the method is on.
 			 */
 				if (isset($this->result['param'][$this->param['method']]['param_out'])){
 				/**
-				 * en: If there are parameters of the previous method, we can compare them.
-				 * ru: Если существуют параметры от предыдущего метода, сравним их.
+				 * If there are parameters of the previous method, we can compare them.
 				 */
 					$this->result['param'][$this->param['method']][$array_key] = getForDebugArrayDiff($this->param,$this->result['param'][$this->param['method']]['param_out']);
 					$this->result['param'][$this->param['method']]['param_out'] = $this->param;
 				}else {
 				/**
-				 * en: If the parameters of the previous method not save them.
-				 * ru: Если параметров от предыдущего метода нет, сохраним их.
+				 * If the parameters of the previous method not save them.
 				 */
 					$this->result['param'][$this->param['method']]['param_out'] = $this->param;
 				}
 			}
 			if (!empty($this->param['info'])){
 			/**
-			 * en: If the parameter is an error message. Append the message to the array response.
-			 * ru: Если в параметрах есть сообщение об ошибке. Допишем это сообщение в массив ответа от evnine.
+			 * If the parameter is an error message. Append the message to the array response.
 			 */
 				$this->result[$array_key][$this->param['info']] = $answer;
 			}else {
 			/**
-			 * en: If there is no data in error, save the data to answer evnine.
-			 * ru: Если данных по ошибке нет, сохраним данные для ответа evnine.
+			 * If there is no data in error, save the data to answer evnine.
 			 */
 				$this->result[$array_key] = $answer;
 			}
 			if ($methods_array_value[0]=='i'&&
 				$methods_array_value[1]=='s'){
 				/**
-				 * en: If the method contains an item, use the method to handle the cases.
-				 * ru: Если метод содержит вопрос, используем метод для обработки случаев.
+				 * If the method contains an item, use the method to handle the cases.
 				 * isHello
 				 * 01
 				 * 
@@ -3388,16 +2988,13 @@ function getDataFromMethod($methods_class,$methods_array){
 				//TODO check elseif (empty($this->result[$array_key])) { $this->result[$array_key]='';}
 		}elseif($methods_array_value[0]=='i'&&$methods_array_value[1]=='s') {
 		/**
-		 * en: Each method is run only once!
-		 * en: But if the method contains a request to check conditions.
-		 * ru: Каждый метод запускается только один раз!
-		 * ru: Но, если метод содержит запрос на проверку условия.
+		 * Each method is run only once!
+		 * But if the method contains a request to check conditions.
 		 *
 		 * isHello
 		 * 01
 		 * 
-		 * en: We use the last answer to the check and method for processing cases.
-		 * ru: Используем прошлый ответ на проверку и метод для обработки случаев.
+		 * We use the last answer to the check and method for processing cases.
 		 * 
 		 * /controllers/ControllersHelloWorld.php
 		 * 'default'=>array(
@@ -3416,21 +3013,18 @@ function getDataFromMethod($methods_class,$methods_array){
 	}
 }
 
-/** isUserHasAccessForMethod($methods_class,$methods_array_value)
+/**
  * 
- * en: Is there access to a method for this user?
- * ru: Есть ли доступ к методу у данного пользователя?
+ * Is there access to a method for this user?
  * 
  * 'ModelsHelloWorld' => 'getHelloWorld1'
  * 
  * @param string $methods_class 
- * en: Class to call methods.
- * ru: Класс для вызова методов.
+ * Class to call methods.
  * 'ModelsHelloWorld' =>
  * 
  * @param string $methods_array_value 
- * en: Method Name
- * ru: Название метода.
+ * Method Name
  * => 'getHelloWorld1'
  *
  * @access public
@@ -3439,8 +3033,7 @@ function getDataFromMethod($methods_class,$methods_array){
 function isUserHasAccessForMethod($methods_class,$methods_array_value) {
 	if ($methods_class==='ModelsErrors'){
 	/**
-	 * en: If the class is to display the error, we give permission.
-	 * ru: Если класс для вывода ошибки, даём разрешение.
+	 * If the class is to display the error, we give permission.
 	 */
 		return true;
 	}
@@ -3450,8 +3043,7 @@ function isUserHasAccessForMethod($methods_class,$methods_array_value) {
 		&&isset($this->param['PermissionLevel'])
 	){
 	/**
-	 * en: Verify access to a particular method.
-	 * ru: Проверим доступ для конкретного метода.
+	 * Verify access to a particular method.
 	 * 
 	 * /controllers/ControllersHelloWorld.php
 	 * 'access'=>array(
@@ -3462,10 +3054,8 @@ function isUserHasAccessForMethod($methods_class,$methods_array_value) {
 	 */
 		if ($this->param['PermissionLevel']>=$this->current_controller['access'][$class_with_method]['access_level']){
 		/**
-		 * en: Return the access is, when the method specified in the controller and
-		 * en: current user level, above or equal to the minimum.
-		 * ru: Возвращаем доступ есть, когда метод в контроллере указан и 
-		 * ru: уровень текущего пользователя, выше или равен минимальному.
+		 * Return the access is, when the method specified in the controller and
+		 * current user level, above or equal to the minimum.
 		 * 
 		 * >>$this->param['PermissionLevel'] = $access_level['admin'];
 		 * >>$class_with_method = 'Models::Method';
@@ -3488,8 +3078,7 @@ function isUserHasAccessForMethod($methods_class,$methods_array_value) {
 			return true;
 		}else {
 		/**
-		 * en: In the case where there is no access, save data for later verification. 
-		 * ru: В случае когда доступа нет, сохраняем данные для последующей проверки доступа.
+		 * In the case where there is no access, save data for later verification. 
 		 * 
 		 * /controllers/ControllersHelloWorld.php
 		 * 'access'=>array(
@@ -3504,10 +3093,8 @@ function isUserHasAccessForMethod($methods_class,$methods_array_value) {
 			$level_for_check=$this->current_controller['access'][$class_with_method]['access_level'];
 			if (empty($run_method_case)){
 			/**
-			 * en: In the case where a particular method is not specified a method to check access.
-			 * en: Skip it.
-			 * ru: В случае когда к конкретному методу не указан метод для проверки доступа.
-			 * ru: Пропускаем его.
+			 * In the case where a particular method is not specified a method to check access.
+			 * Skip it.
 			 * /controllers/ControllersHelloWorld.php
 			 *  'Models::Method'=>array(
 			 *    'access_level'=>$access_level['admin']
@@ -3519,10 +3106,8 @@ function isUserHasAccessForMethod($methods_class,$methods_array_value) {
 		}
 	}else {
 	/**
-	 * en: If access to a particular method is not specified.
-	 * en: Set the method to verify access.
-	 * ru: Если доступ для конкретного метода не указан.
-	 * ru: Проверим, есть ли метод для проверки доступ.
+	 * If access to a particular method is not specified.
+	 * Set the method to verify access.
 	 * 
 	 * /controllers/ControllersHelloWorld.php
 	 * 'access'=>array(
@@ -3535,12 +3120,9 @@ function isUserHasAccessForMethod($methods_class,$methods_array_value) {
 			empty($this->current_controller['access'])
 		){
 		/**
-		 * en: Make a check when the user level,
-		 * en: above or equal to the minimum by default.
-		 * en: Or access an array is empty.
-		 * ru: Делаем проверку, когда уровень пользователя, 
-		 * ru: выше или равен минимальному по умолчанию.
-		 * ru: Или массив доступа пустой.
+		 * Make a check when the user level,
+		 * above or equal to the minimum by default.
+		 * Or access an array is empty.
 		 * 
 		 * >>$this->param['PermissionLevel'] = $access_level['admin'];
 		 * /controllers/ControllersHelloWorld.php
@@ -3554,21 +3136,18 @@ function isUserHasAccessForMethod($methods_class,$methods_array_value) {
 		 */
 			if(empty($this->param['method'])){
 			/**
-			 * en: If the method is not specified, use the default method.
-			 * ru: Если метод не указан, используем метод по умолчанию.
+			 * If the method is not specified, use the default method.
 			 */
 				$method='default';
 			}else {
 			/**
-			 * en: If the method is specified, use it for check.
-			 * ru: Если метод указан, используем его для проверки. 
+			 * If the method is specified, use it for check.
 			 */
 				$method=$this->param['method'];
 			}
 			if (isset($this->current_controller['public_methods'][$method]["access"]['default_access_level'])){
 			/**
-			 * en: Case where access is specified in the method.
-			 * ru: Случай когда доступ указан в методе.
+			 * Case where access is specified in the method.
 			 * 
 			 * /controllers/ControllersHelloWorld.php
 			 * 'default'=>array(
@@ -3582,10 +3161,8 @@ function isUserHasAccessForMethod($methods_class,$methods_array_value) {
 				$access_for= 'controller';
 				if ($this->param['PermissionLevel']>=$this->current_controller['public_methods'][$method]["access"]['default_access_level']){
 				/**
-				 * en: Return the access is, when the access method is specified and
-				 * en: current user level, above or equal to the minimum.
-				 * ru: Возвращаем доступ есть, когда доступ в методе указан и 
-				 * ru: уровень текущего пользователя, выше или равен минимальному.
+				 * Return the access is, when the access method is specified and
+				 * current user level, above or equal to the minimum.
 				 *
 				 * >>$this->param['PermissionLevel'] = $access_level['admin'];
 				 * 
@@ -3601,10 +3178,8 @@ function isUserHasAccessForMethod($methods_class,$methods_array_value) {
 					return true;
 				}else {
 				/**
-				 * en: If access to a particular method is not specified.
-				 * en: Set the method to verify access.
-				 * ru: Если доступ для конкретного метода не указан.
-				 * ru: Проверим, есть ли метод для проверки доступ.
+				 * If access to a particular method is not specified.
+				 * Set the method to verify access.
 				 * 
 				 * /controllers/ControllersHelloWorld.php
 				 * 'default'=>array(
@@ -3618,10 +3193,8 @@ function isUserHasAccessForMethod($methods_class,$methods_array_value) {
 					$level_for_check=$this->current_controller['public_methods'][$method]['access']['default_access_level'];
 					if ($run_method_case==''){
 					/**
-					 * en: In the case where a particular method is not specified a method to check access.
-					 * en: Return not have access.
-					 * ru: В случае когда к конкретному методу не указан метод для проверки доступа.
-					 * ru: Возвращаем доступа нет.
+					 * In the case where a particular method is not specified a method to check access.
+					 * Return not have access.
 					 * 
 					 * /controllers/ControllersHelloWorld.php
 					 * 'default'=>array(
@@ -3635,12 +3208,9 @@ function isUserHasAccessForMethod($methods_class,$methods_array_value) {
 				}
 			}else {
 			/**
-			 * en: The case when there is no access method.
-			 * en: Affirm that there is access.
-			 * en: Because the check has previously been reported.
-			 * ru: Случай когда доступ в методе отсутствует.
-			 * ru: Подтверждаем что доступ есть, 
-			 * ru: так как до этого проверили общий доступ для контроллера.
+			 * The case when there is no access method.
+			 * Affirm that there is access.
+			 * Because the check has previously been reported.
 			 * 
 			 * /controllers/ControllersHelloWorld.php
 			 * 'default'=>array(
@@ -3651,8 +3221,7 @@ function isUserHasAccessForMethod($methods_class,$methods_array_value) {
 			}
 		}else {
 		/**
-		 * en: In the case where there is no access, save data for later verification.
-		 * ru: В случае когда доступа нет, сохраняем данные для последующей проверки.
+		 * In the case where there is no access, save data for later verification.
 		 * 
 		 * >>$this->param['PermissionLevel'] = $access_level['guest'];
 		 * 
@@ -3672,53 +3241,44 @@ function isUserHasAccessForMethod($methods_class,$methods_array_value) {
 		}
 	}
 	/**
-	 * en: When there is no access, run the method specified by default for the access check.
-	 * ru: Когда доступа нет, запускаем метод указанный по умолчанию для проверки доступа.
+	 * When there is no access, run the method specified by default for the access check.
 	 */
 	$this->getPrivateMethod($run_method_case);
 	if ($this->param['PermissionLevel']<$level_for_check){
 	/**
-	 * en: Check after the launch, may change the level of access method.
-	 * en: And now have access to.
-	 * ru: Проверяем после запуска, возможно метод изменил уровень доступа.
-	 * ru: И сейчас уже есть доступ.
+	 * Check after the launch, may change the level of access method.
+	 * And now have access to.
 	 * 
-	 * en: We provide access to the case when there is no such an error.
-	 * ru: Выполняем случай когда доступа нет, например выводим ошибку.
+	 * We provide access to the case when there is no such an error.
 	 */
 		$this->isGetMethodForAnswer($run_method_case,false);
 		/**
-		 * en: Set for an access check only once.
-		 * ru: Устанавливаем для проверки доступа только один раз.
+		 * Set for an access check only once.
 		 */
 		$this->isHasAccessSaveCheck=false;
 		return false;
 	}else {
 	/**
-	 * en: Return not have access.
-	 * ru: Возвращаем доступа нет.
+	 * Return not have access.
 	 */
 		$this->isGetMethodForAnswer($run_method_case,true);
 	}
 	return true;
 }
 
-/** isGetMethodForAnswer($method,$methods_case)
- * en: Select the method for answer.
- * ru: Обработка ответов методов с вопросом.
+/**
+ * Select the method for answer.
  * 
  * /controllers/ControllersHelloWorld.php
  *	'default'=>array(
  *		'ModelsHelloWorld'=>'isHello',
  *	 )
  * @param string $method
- * en: Method name.
- * ru: Название метода.
+ * Method name.
  * =>'isHello'
  * 
  * @param boolean $methods_case 
- * en: The method answer 
- * ru: Ответ метода.
+ * The method answer 
  * 
  * true = 1
  * 
@@ -3732,21 +3292,18 @@ function isGetMethodForAnswer($method,$methods_case) {
 		$methods_case==''||$methods_case==0
 	){
 	/**
-	 * en: If the answer is no.
-	 * ru: Если ответа нет.
+	 * If the answer is no.
 	 */
 		if ($method==='isValidModifierParamFormError'){
 		/**
-		 * en: If the method for testing, validation, deny access.
-		 * ru: Если метод для проверки валидации, запрещаем доступ.
+		 * If the method for testing, validation, deny access.
 		 */
 			$this->isHasAccessSaveCheck=false;//TODO check
 		}
 		$case= '_false';
 	}else {
 	/**
-	 * en: If the answer is correct, set the key.
-	 * ru: Если ответ верный, установим ключ.
+	 * If the answer is correct, set the key.
 	 */
 		$case= '_true';
 	}
@@ -3754,8 +3311,7 @@ function isGetMethodForAnswer($method,$methods_case) {
 		&&!empty($this->current_controller['methods_case'][$method.$case])
 	){
 	/**
-	 * en: If the value of the method is an array of cases methods.
-	 * ru: Если значение метода есть в массиве случаев методов.
+	 * If the value of the method is an array of cases methods.
 	 * 
 	 * /controllers/ControllersHelloWorld.php
 	 * 'methods_case' =>array(
@@ -3771,10 +3327,8 @@ function isGetMethodForAnswer($method,$methods_case) {
 		$method = $this->current_controller['methods_case'][$method.$case];
 	}else {
 	/**
-	 * en: If the value of the method is not in the array of cases methods.
-	 * en: Use the key to access the current method.
-	 * ru: Если значение метода отсутствует в массиве случаев методов.
-	 * ru: Используем ключ для доступа в текущем методе.
+	 * If the value of the method is not in the array of cases methods.
+	 * Use the key to access the current method.
 	 * 
 	 * /controllers/ControllersHelloWorld.php
 	 * 'methods_case' =>array(
@@ -3785,21 +3339,18 @@ function isGetMethodForAnswer($method,$methods_case) {
 		$method = $method.$case;
 	}
 	/**
-	 * en: Call private method.
-	 * ru: Запустить приватный метод.
+	 * Call private method.
 	 */
 	$this->getPrivateMethod($method);
 }
 
-/** getPublicMethod($param)
- * en: Call public method.
- * ru: Запустить публичный метод
+/**
+ * Call public method.
  * 
  * @link Controllers.controller
  * 
  * @param array $param 
- * en: Parameters from the input.
- * ru: Параметры со входа.
+ * Parameters from the input.
  * 
  * @access public
  * @return void
@@ -3807,39 +3358,33 @@ function isGetMethodForAnswer($method,$methods_case) {
 function getPublicMethod($param) {
 	if (!empty($this->current_controller['public_methods'][$param['method']])){
 	/**
-	 * en: If the public method exists.
-	 * ru: Если метод существует.
+	 * If the public method exists.
 	 */
 		foreach ($this->current_controller['public_methods'][$param['method']] as $_title =>$_value){
 		/**
-		 * en: Call the methods in the class.
-		 * ru: Вызвать методы в классах.
+		 * Call the methods in the class.
 		 */
 			$this->getMethodFromClass($_title,$_value);
 		}
 	}else {
 	/**
-	 * en: If there is no public method. Display an error..
-	 * ru: Если публичного метода не существует. Выведем ошибку.
+	 * If there is no public method. Display an error..
 	 */
 		$this->result['ControllerError'][]=__METHOD__.' ('.preg_replace("/.*\\\/","",__FILE__).', line:'.__LINE__.'): Method '.$param['method'].' not found in '.$this->current_controller_name.'';
 		if (!isset($this->current_controller)){
 		/**
-		 * en: If the controller does not exist. Display an error..
-		 * ru: Если контроллера так же не существует. Выведем ошибку.
+		 * If the controller does not exist. Display an error..
 		 */
 			$this->result['ControllerError'][]=__METHOD__.' ('.preg_replace("/.*\\\/","",__FILE__).', line:'.__LINE__.'): Array $controller is not exist: <br />/controller/'.$this->controller_alias[$this->current_template].'.php <br /> var $controller;<br />function __construct($access_level){<br /> $this->controller = array(...);<br />;}';
 		}
 		if (!empty($this->current_controller['public_methods']['default'])){
 		/**
-		 * en: If there is a default method.
-		 * ru: Если есть метод по умолчанию.
+		 * If there is a default method.
 		 */
 			$param['method']='default';
 			foreach ($this->current_controller['public_methods'][$param['method']] as $_title =>$_value){
 			/**
-			 * en: Call the methods in the class.
-			 * ru: Вызвать методы в классах.
+			 * Call the methods in the class.
 			 */
 				$this->getMethodFromClass($_title,$_value);
 			}
@@ -3847,15 +3392,13 @@ function getPublicMethod($param) {
 	}
 }
 
-/** getPrivateMethod($method)
- * en: Call private method.
- * ru: Запустить приватный метод.
+/**
+ * Call private method.
  * 
  * @link Controllers.controller
  * 
  * @param string $method 
- * en: Private method.
- * ru: Приватный метод.
+ * Private method.
  * 
  * @access public
  * @return void
@@ -3863,10 +3406,8 @@ function getPublicMethod($param) {
 function getPrivateMethod($method){
 	if (!empty($this->current_controller['public_methods'][$this->param['method']][$method])){
 	/**
-	 * en: If there is a public method in the controller will use it.
-	 * en: Has a higher priority than if given as a private method.
-	 * ru: Если существует публичный метод в данном контроллере будем использовать его.
-	 * ru: Имеет приоритет выше, чем если указан как приватный метод.
+	 * If there is a public method in the controller will use it.
+	 * Has a higher priority than if given as a private method.
 	 * 
 	 * /controllers/ControllersHelloWorld.php
 	 * 'private_methods'=>array(
@@ -3883,8 +3424,7 @@ function getPrivateMethod($method){
 		$methods_callback = $this->current_controller['public_methods'][$this->param['method']][$method];
 	}elseif (!empty($this->current_controller['private_methods'][$method])){
 	/**
-	 * en: If there is a private method. We use it to call.
-	 * ru: Если приватный метод существует. Будем использовать его для вызова.
+	 * If there is a private method. We use it to call.
 	 * /controllers/ControllersHelloWorld.php
 	 * 'private_methods'=>array(
 	 *  'isValid_false'=>'',
@@ -3898,15 +3438,13 @@ function getPrivateMethod($method){
 		$methods_callback = $this->current_controller['private_methods'][$method];
 	}else {
 	/**
-	 * en: If the method does not exist. Display an error.
-	 * ru: Если метод не существуем. Покажем ошибку.
+	 * If the method does not exist. Display an error.
 	 */
 		$this->result['ControllerError'][]=__METHOD__.' ('.preg_replace("/.*\\\/","",__FILE__).', line:'.__LINE__.'): In controller "'.$this->current_controller_name.'" not found Method "'.$method.'"';	
 	} 
 	foreach ($methods_callback as $method_title =>$method_value){
 	/**
-	 * en: Call each class method.
-	 * ru: Запускаем каждый метод класса.
+	 * Call each class method.
 	 * 'isValid_false'=>array(
 	 *   'ModelsErrors'=>'getError',
 	 *  ),
@@ -3918,18 +3456,15 @@ function getPrivateMethod($method){
 	}
 }
 
-/** getFirstArrayKey($array,$get_value=false)
+/**
  * 
- * en: Get the first element of the array as a key or value.
- * ru: Получить первый элемент массива как ключ или значение.
+ * Get the first element of the array as a key or value.
  * 
  * @param array $array 
- * en: An input array.
- * ru: Массив для обработки.
+ * An input array.
  *
  * @param boolean $get_value 
- * en: Is first value?
- * ru: Нужно значение массива?
+ * Is first value?
  * 
  * @access public
  * @return string
@@ -3939,28 +3474,23 @@ function getFirstArrayKey($array,$get_value=false) {
 	list($key, $value)=$tmp;
 	if (!$get_value){
 	/**
-	 * en: If you need a key.
-	 * ru: Если нужен ключ.
+	 * If you need a key.
 	 */
 		return $key;
 	}else {
 	/**
-	 * en: If you want to get the value.
-	 * ru: Если нужно получить значение параметра.
+	 * If you want to get the value.
 	 */
 		return $value;
 	}
 }
 
-/** getControllerForParamTest($method,$array_init,$param)
+/**
  *
- * en: A method for testing an controllers.
- * ru: Метод для тестирования контроллеров.
+ * A method for testing an controllers.
  * 
- * en: Required to operate: ModelsPHPUnit
- * ru: Для работы обязательна модель: ModelsPHPUnit
- * en: And the call sequence:
- * ru: И последовательность вызова:
+ * Required to operate: ModelsPHPUnit
+ * And the call sequence:
  *
  * /controllers/ControllersPHPUnit.php 
  *	'ModelsPHPUnit' => array(
@@ -3970,26 +3500,21 @@ function getFirstArrayKey($array,$get_value=false) {
  *		'getPHPUnitCode',
  *	)
  *
- * en: Options to configure:
- * ru: Параметры для настройки:
+ * Options to configure:
  * /evnine.config.php
  *	$this->controller_alias=array(
  *		'php_unit_test'=>'ControllersPHPUnit',
  *	);
  *	$this->param_const=array(
- *		// en: A shared folder for the cache.
- *		// ru: Общая папка для кэша.
+ *		// A shared folder for the cache.
  *		'CacheDir'=>'PHPUnitCache',
- *		// en: Folder to store the PHPUnit tests.
- *		// ru: Папка для хранения PHPUnit тестов.
+ *		// Folder to store the PHPUnit tests.
  *		'CacheDirPHPUnit'=>'PHPUnitCache'.DIRECTORY_SEPARATOR.'PHPUnit',
- *		// en: Folder to store temporary data.
- *		// ru: Папка для хранения промежуточных данных.
+ *		// Folder to store temporary data.
  *		'CacheDirControllerForParam'=>'PHPUnitCache'.DIRECTORY_SEPARATOR.'getControllerForParam',
  *	) 
  *	
- * en: Initialization:
- * ru: Инициализация:
+ * Initialization:
  * /index.php 
  *	include_once 'evnine.php';
  *	$evnine = new EvnineController();
@@ -4031,18 +3556,14 @@ function getFirstArrayKey($array,$get_value=false) {
  * @see EvnineConfig.class_path
  * 
  * @param string $method 
- * en: The method for check.
- * ru: Метод для проверки.
+ * The method for check.
  * 
  * @param array $array_init 
- * en: Array to store data from an external method call.
- * en: To optimize performance.
- * ru: Массив для сохранения данных от внешнего вызова метода.
- * ru: Для оптимизации скорости работы.
+ * Array to store data from an external method call.
+ * To optimize performance.
  * 
  * @param array $param 
- * en: An array of initialization parameters.
- * ru: Массив параметров инициализации.
+ * An array of initialization parameters.
  * 
  * @access public
  * @return void
@@ -4050,8 +3571,7 @@ function getFirstArrayKey($array,$get_value=false) {
 function getControllerForParamTest($method,$array_init,$param){
 	if (empty($this->param_const['CacheDirPHPUnit'])){
 	/**
-	 * en: If the folder path to the cache is not specified.
-	 * ru: Если путь папки для кэша не указан.
+	 * If the folder path to the cache is not specified.
 	 */
 		$this->param_const['CacheDirPHPUnit']='test'.DIRECTORY_SEPARATOR.'PHPUnitCache'.DIRECTORY_SEPARATOR.'PHPUnit';
 	}
@@ -4060,8 +3580,7 @@ function getControllerForParamTest($method,$array_init,$param){
 			||$this->isSetClassToLoadAndSetParam($methods_class,$use_config=true)
 	){
 	/**
-	 * en: Load model for testing.
-	 * ru: Загружаем модель для тестирования.
+	 * Load model for testing.
 	 * //evnine.config.ph
 	 * 'ViewsUnitPHP'=>array(
 	 *  'path'=>'views'.DIRECTORY_SEPARATOR,
@@ -4073,25 +3592,21 @@ function getControllerForParamTest($method,$array_init,$param){
 		$array = $this->loaded_class[$methods_class]->getSerData($file_name,$param);
 		if (empty($array)){
 		/**
-		 * en: If the data from the cache is not received.
-		 * ru: Если данные из кэша не получили.
+		 * If the data from the cache is not received.
 		 */
 			if (!empty($array_init)){
 			/**
-			 * en: If the controller has already received the data, we use them.
-			 * ru: Если от контроллера уже были получены данные, используем их.
+			 * If the controller has already received the data, we use them.
 			 */
 				$array = $array_init;
 			}elseif (method_exists($this,$method)){
 			/**
-			 * en: Run method in the current class.
-			 * ru: Запрашиваем метод в текущем классе. 
+			 * Run method in the current class.
 			 */
 				$array = $this->$method($param);
 			}
 			/**
-			 * en: Save in the cache.
-			 * ru: Сохраняем в кэше.
+			 * Save in the cache.
 			 */
 			$this->loaded_class[$methods_class]->setSerData($file_name,$array,true);
 		}
@@ -4100,8 +3615,7 @@ function getControllerForParamTest($method,$array_init,$param){
 		return $array;
 	}else {
 	/**
-	 * en: If the test model does not exist. Display an error. 
-	 * ru: Если модели тестирования не существует. Выводим ошибку.
+	 * If the test model does not exist. Display an error. 
 	 */
 		ob_end_flush();
 		return 'ERROR not exist in  evnine.config.php

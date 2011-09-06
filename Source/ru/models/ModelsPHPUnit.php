@@ -1,7 +1,6 @@
 <?php
 /**
- * en: Model for testing models and controllers.
- * ru: Модель для тестирования моделей и контроллеров. 
+ * Модель для тестирования моделей и контроллеров. 
  * 
  * @package ModelsPHPUnit
  * @author ev9eniy
@@ -11,22 +10,19 @@
 class ModelsPHPUnit
 {
 
-	/** $this->evnine 
-	 * en: An object with a reference to the EvnineController.
-	 * ru: Объект с ссылкой на evnine контроллер.
+	/**
+	 * Объект с ссылкой на evnine контроллер.
 	 * 
 	 * @var object
 	 * @access public
 	 */
 	var $evnine;
 	
-	/** __construct($param)
-	 * en: The constructor sets the environment variables.
-	 * ru: Конструктор устанавливает переменные окружения.
+	/**
+	 * Конструктор устанавливает переменные окружения.
 	 * 
 	 * @param array $param 
-	 * en: An array of parameters.
-	 * ru: Основной массив параметров.
+	 * Основной массив параметров.
 	 * @access protected
 	 * @return void
 	 */
@@ -36,15 +32,12 @@ class ModelsPHPUnit
 		$this->evnine=new EvnineController();
 	}
 	
-	/** getResetPHPUnit($param)
-	 * en: Clear all PHP Unit testing.
-	 * en: This method renames a folder with the php unit test results.
-	 * ru: Сбросить все PHP Unit тесты.
-	 * ru: Метод переименовывает папку с результатами тестов.
+	/**
+	 * Сбросить все PHP Unit тесты.
+	 * Метод переименовывает папку с результатами тестов.
 	 * 
 	 * @param array $param 
-	 * en: An array of parameters.
-	 * ru: Основной массив параметров.
+	 * Основной массив параметров.
 	 * @access public
 	 * @return boolean
 	 */
@@ -54,34 +47,29 @@ class ModelsPHPUnit
 		return (rename($dir_from,$dir_to)?$dir_from.$dir_to:'reset_error');
 	}
 	
-	/** getParamCaseByParamTest(&$param)
-	 * en: Determine the number of tests for the controllers.
-	 * ru: Определить количество тестов для контроллеров.
+	/**
+	 * Определить количество тестов для контроллеров.
 	 * 
 	 * @param array $param 
-	 * en: An array of parameters.
-	 * ru: Основной массив параметров.
+	 * Основной массив параметров.
 	 * @access public
 	 * @return array
 	 */
 	function getParamCaseByParamTest(&$param){
 		$case_all=array();
 		/**
-		 * en: Reset all the case.
-		 * ru: Сбрасываем все случаи.
+		 * Сбрасываем все случаи.
 		 */
 		$case_count = 1;
 		/**
-		 * en: Test count.
-		 * ru: Счётчик теста.
+		 * Счётчик теста.
 		 */
 		foreach ($param["getParamTest"] as $param_id =>$param_array){
 			$multi_case_flag=true;
 			$case_array=array();
 			foreach ($param_array as $param_title =>$param_case_array){
 				/**
-				 * en: Save the first case.
-				 * ru: Сохраняем первый случай.
+				 * Сохраняем первый случай.
 				 */
 				$this->setInitParam($case_array,$param_title,$param_array,$multi_case_flag);
 			}
@@ -94,14 +82,12 @@ class ModelsPHPUnit
 		return $param['getParamCaseByParamTest']=$case_all;
 	}
 	
-	/** getStringFromArray($array,$count)
-	 * en: Recursively convert an array into a string.
-	 * ru: Рекурсивно преобразовать массив в строку.
+	/**
+	 * Рекурсивно преобразовать массив в строку.
 	 * 
 	 * @param array $array 
 	 * @param int $count 
-	 * en: Meter depth.
-	 * ru: Счётчик глубины.
+	 * Счётчик глубины.
 	 * @access public
 	 * @return string
 	 */
@@ -126,13 +112,11 @@ class ModelsPHPUnit
 		return $array_str;
 	}
 	
-	/** getCountParamByParamTest(&$param)
-	 * en: Count the number of tests.
-	 * ru: Посчитать количество тестов.
+	/**
+	 * Посчитать количество тестов.
 	 * 
 	 * @param array $param 
-	 * en: An array of parameters.
-	 * ru: Основной массив параметров.
+	 * Основной массив параметров.
 	 * @access public
 	 * @return array
 	 */
@@ -148,13 +132,11 @@ class ModelsPHPUnit
 		return $param["getCountParamByParamTest"] = $array;
 	}
 	
-	/** getParamTextName(&$param )
-	 * en: Get a description of cases.
-	 * ru: Получить описание случаев.
+	/**
+	 * Получить описание случаев.
 	 * 
 	 * @param array $param 
-	 * en: An array of parameters.
-	 * ru: Основной массив параметров.
+	 * Основной массив параметров.
 	 * @access public
 	 * @return array
 	 */
@@ -188,9 +170,8 @@ class ModelsPHPUnit
 		return $param['getParamTextName']=$msg;
 	}
 	
-	/** getNewString($after,$before,$title)
-	 * en: Highlight the new string.
-	 * ru: Выделить строку, если новая.
+	/**
+	 * Выделить строку, если новая.
 	 * 
 	 * @param string $after 
 	 * @param string $before 
@@ -206,13 +187,11 @@ class ModelsPHPUnit
 		}
 	}
 	
-	/** getPHPUnitCode($param)
-	 * en: Get the source for the generation of PHP Unit Test.
-	 * ru: Получить исходник для генерации PHP Unit Test.
+	/**
+	 * Получить исходник для генерации PHP Unit Test.
 	 * 
 	 * @param array $param 
-	 * en: An array of parameters.
-	 * ru: Основной массив параметров.
+	 * Основной массив параметров.
 	 * @access public
 	 * @return string
 	 */
@@ -279,13 +258,11 @@ class ModelsPHPUnit
 		return $param['php_unit']=$php_unit_code;
 	}
 	
-	/** getPHPUnitCodeWithBR($param)
-	 * en: Make a change of line breaks to the br.
-	 * ru: Сделать замену переноса строк на br.
+	/**
+	 * Сделать замену переноса строк на br.
 	 * 
 	 * @param array $param 
-	 * en: An array of parameters.
-	 * ru: Основной массив параметров.
+	 * Основной массив параметров.
 	 * @access public
 	 * @return void
 	 */
@@ -294,13 +271,11 @@ class ModelsPHPUnit
 	}
 	
 	
-	/** getParamTest(&$param)
-	 * en: Get a test from the controller.
-	 * ru: Получить тесты из контроллера.
+	/**
+	 * Получить тесты из контроллера.
 	 * 
 	 * @param array $param 
-	 * en: An array of parameters.
-	 * ru: Основной массив параметров.
+	 * Основной массив параметров.
 	 * @access public
 	 * @return array
 	 */
@@ -314,8 +289,7 @@ class ModelsPHPUnit
 			$php_unit_param_for_all = $php_unit_param=array();
 			$param_out=array();
 			/**
-			 * en: For each model
-			 * ru: Для каждой модели 
+			 * Для каждой модели 
 			 */
 			foreach ($controller_evnine->controller_alias as $controller_config_alias =>$controller_class_name)
 				if ($param['controller']!==$controller_config_alias){
@@ -363,9 +337,8 @@ class ModelsPHPUnit
 	}
 	
 	
-	/** setInitParam(&$case_array,$param_title,&$param_array,&$multi_case_flag)
-	 * en: Cloning options for creating tests of the controller.
-	 * ru: Клонирование параметров для создания тестов контроллера.
+	/**
+	 * Клонирование параметров для создания тестов контроллера.
 	 * 
 	 * @param array &$case_array 
 	 * @param string $param_title 
@@ -392,9 +365,8 @@ class ModelsPHPUnit
 		}
 	}
 
-	/** setGeneParam(&$case_array,$param_array)
-	 * en: Generating options for all tests.
-	 * ru: Генерирование параметров для всех случаев.
+	/**
+	 * Генерирование параметров для всех случаев.
 	 * 
 	 * @param array $case_array 
 	 * @param array $param_array 
@@ -406,7 +378,7 @@ class ModelsPHPUnit
 		foreach ($param_array as $param_title =>$param_array_out){
 			$j_count = 1;
 			$param_count=count($param_array_out);
-			// ru: Делаем копии текущих случаев в зависимости от кол-во новых параметоров
+			// Делаем копии текущих случаев в зависимости от кол-во новых параметоров
 			for ( $i = 1; $i <= $param_count; $i++ ) {
 				for ( $j = 1; $j <= $case_count; $j++ ) {
 					$case_array[$j_count]=$case_array[$j];
@@ -415,7 +387,7 @@ class ModelsPHPUnit
 			}
 			$save_i=1;
 			$count=0;
-			// ru: Заполняем параметры случаями
+			// Заполняем параметры случаями
 			foreach ($param_array_out as $param_array_title =>$param_array_value){
 				$count++;
 				for ( $i = $save_i; $i <= $case_count*$count; $i++ ){
@@ -427,16 +399,13 @@ class ModelsPHPUnit
 		}
 	}
 	
-	/** getFirstArrayKey($array,$get_value=false)
-	 * en: Get the first element of the array as a key or value.
-	 * ru: Получить первый элемент массива как ключ или значение.
+	/**
+	 * Получить первый элемент массива как ключ или значение.
 	 * 
 	 * @param array $array 
-	 * en: An input array.
-	 * ru: Массив для обработки.
+	 * Массив для обработки.
 	 * @param boolean $get_value 
-	 * en: Is first value?
-	 * ru: Нужно значение массива?
+	 * Нужно значение массива?
 	 * @assert (array('TEST'=>'0','TEST2'=>'1',)) == TEST
 	 * @access private
 	 * @return string
@@ -446,27 +415,23 @@ class ModelsPHPUnit
 		list($key, $value)=$tmp;
 		if (!$get_value){
 		/**
-		 * en: If you need a key.
-		 * ru: Если нужен ключ.
+		 * Если нужен ключ.
 		 */
 			return $key;
 		}else {
 		/**
-		 * en: If you want to get the value.
-		 * ru: Если нужно получить значение параметра.
+		 * Если нужно получить значение параметра.
 		 */
 			return $value;
 		}
 	}
 
 	
-	/** getDataFromControllerByParam($param)
-	 * en: Get the answer from the controller to the generated parameters.
-	 * ru: Получить ответ от контроллера по параметрам.
+	/**
+	 * Получить ответ от контроллера по параметрам.
 	 * 
 	 * @param array $param 
-	 * en: An array of parameters.
-	 * ru: Основной массив параметров.
+	 * Основной массив параметров.
 	 * @access public
 	 * @return array
 	 */
@@ -493,8 +458,8 @@ class ModelsPHPUnit
 					);
 				}else {
 				/**
-				 * ru: Случай для учёта обновления модели или контроллера
-				 * ru: Если что-то изменилось, обновим кэш.
+				 * Случай для учёта обновления модели или контроллера
+				 * Если что-то изменилось, обновим кэш.
 				 */
 					$controller = $this->evnine->controller_alias[$array[$param_id]['LoadController']];
 					if ($param['modifier_time'][$controller]['updated']){
@@ -550,9 +515,8 @@ class ModelsPHPUnit
 		return $param['getDataFromControllerByParam']=$array;
 	}
 	
-	/** _getMD5KeyForControllerAnswer($param)
-	 * en: Get the key to the answer without the input and output parameters.
-	 * ru: Получить ключ для ответа без учёта параметров на входе выходе и переходов.
+	/**
+	 * Получить ключ для ответа без учёта параметров на входе выходе и переходов.
 	 * 
 	 * @param array $array 
 	 * @access private
@@ -569,13 +533,11 @@ class ModelsPHPUnit
 	}
 	
 	
-	/** getComparePHPUnitForControllers(&$param)
-	 * en: Compare the current controller with stored responses for PHPUnit.
-	 * ru: Сравнить текущие ответы контроллеров с сохраненными для PHPUnit.
+	/**
+	 * Сравнить текущие ответы контроллеров с сохраненными для PHPUnit.
 	 * 
 	 * @param array $param 
-	 * en: An array of parameters.
-	 * ru: Основной массив параметров.
+	 * Основной массив параметров.
 	 * @access public
 	 * @return array
 	 */
@@ -588,7 +550,7 @@ class ModelsPHPUnit
 				);
 				$array[$param_id]= false;
 			}else {
-				// ru: Сравнение MD5 двух ответов
+				// Сравнение MD5 двух ответов
 				if (md5($this->_getMultiImplode($array_tmp))!==
 					md5($this->_getMultiImplode($param['getDataFromControllerByParam'][$param_id]))
 				){
@@ -616,14 +578,12 @@ class ModelsPHPUnit
 		return $param['PHPUnitCompare'] = $array;
 	}
 	
-	/** getFileNameMD5ForParam($path,$param,&$md5=false)
-	 * en: Get a folder and file name parameters.
-	 * ru: Получить папку и имя файла для параметров.
+	/**
+	 * Получить папку и имя файла для параметров.
 	 * 
 	 * @param string $path 
 	 * @param array $param 
-	 * en: An array of parameters.
-	 * ru: Основной массив параметров.
+	 * Основной массив параметров.
 	 * @param string &$md5 
 	 * @access public
 	 * @return string
@@ -635,9 +595,8 @@ class ModelsPHPUnit
 		return $path.DIRECTORY_SEPARATOR.$param['controller'].'-'.$param['method'].'-'.$md5.'.php';
 	}
 	
-	/** getFromCache($file_name,$array_data=false,$reset=false)
-	 * en: Get the data from cache
-	 * ru: Сделать выборку из кэша.
+	/**
+	 * Сделать выборку из кэша.
 	 * 
 	 * @param string $file_name 
 	 * @param array $array_data 
@@ -646,32 +605,30 @@ class ModelsPHPUnit
 	 * @return array
 	 */
 	function getFromCache($file_name,$array_data=false,$reset=false){
-			// ru: Если нужно сбросить кэш по флагу
+			// Если нужно сбросить кэш по флагу
 			if($reset==true&&!isset($array_data)){
 				return false;
 			}
-			// ru: Получаем данные из кэша
+			// Получаем данные из кэша
 			$array = $this->getSerData($file_name);
 			if (empty($array)&&isset($array_data)||$reset===true){//||$reset==true
-				// ru: Сохраняем в кэш
+				// Сохраняем в кэш
 				$this->setSerData($file_name,$array_data,$reset);
 				$array=$array_data;
 			}
 			if (empty($array)){
 				$array=false;
 			}
-			// ru: Очищаем все данные
+			// Очищаем все данные
 			return $array;
 	}
 	
-	/** getSerData($file_name,$param) 
-	 * en: Get data from a file.
-	 * ru: Получить данные из файла.
+	/**
+	 * Получить данные из файла.
 	 * 
 	 * @param string $file_name
 	 * @param array $param 
-	 * en: An array of parameters.
-	 * ru: Основной массив параметров.
+	 * Основной массив параметров.
 	 * @return string
 	 */
 		function getSerData($file_name,$param) 
@@ -681,9 +638,8 @@ class ModelsPHPUnit
 			return unserialize(file_get_contents($file_name));
 		}
 	
-	/** _getMultiImplode($pieces)
-	 * en: Combines the line in the array.
-	 * ru: Объединяет строки в массиве.
+	/**
+	 * Объединяет строки в массиве.
 	 * 
 	 * @param string $pieces 
 	 * @access private
@@ -707,9 +663,8 @@ class ModelsPHPUnit
 		return $string;
 	}
 	
-	/** _setCreateDir($file_dir)
-	 * en: Create a folder tree.
-	 * ru: Создать древо папок.
+	/**
+	 * Создать древо папок.
 	 * 
 	 * @param string $dir_name 
 	 * @access private
@@ -722,9 +677,8 @@ class ModelsPHPUnit
 		}
 	}
 	
-	/** setSerData($file_name, $str, $reset=false) 
-	 * en: Save the data.
-	 * ru: Сохранить данные.
+	/**
+	 * Сохранить данные.
 	 * 
 	 * @param string $file_name 
 	 * @param array $str 
@@ -748,13 +702,11 @@ class ModelsPHPUnit
 			return $str;
 		}
 	
-	/** getModelsAndControllerModifierTimeFromCache(&$param)
-	 * en: Get a time of change models and controllers.
-	 * ru: Получить время изменения моделей и контроллеров.
+	/**
+	 * Получить время изменения моделей и контроллеров.
 	 * 
 	 * @param array $param 
-	 * en: An array of parameters.
-	 * ru: Основной массив параметров.
+	 * Основной массив параметров.
 	 * @access public
 	 * @return array
 	 */
@@ -789,9 +741,8 @@ class ModelsPHPUnit
 		return $param['modifier_time']=$array;
 	}
 	
-	/** _getModifierFileTime($file_path){
-	 * en: Get file modification time.
-	 * ru: Получить время модификации файла.
+	/**
+	 * Получить время модификации файла.
 	 * 
 	 * @link http://www.php.net/manual/en/function.filemtime.php
 	 * @param string $file_path 

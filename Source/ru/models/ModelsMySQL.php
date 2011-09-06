@@ -1,8 +1,7 @@
 <?php
 
-/** ModelsBase
- * en: The model works with the database.
- * ru: Модель работы с базой данных.
+/**
+ * Модель работы с базой данных.
  * 
  * @package ModelsMySQLAPI
  * @author ev9eniy
@@ -11,18 +10,16 @@
  */
 class ModelsMySQL
 {
-	/** $this->mysql 
-	 * en: Link to the database connection.
-	 * ru: Ссылка на соединение с базой.
+	/**
+	 * Ссылка на соединение с базой.
 	 * 
 	 * @var object
 	 * @access public
 	 */
 	var $mysql;
 	
-	/** setInitAPI($param)
-	 * en: The class constructor.
-	 * ru: Конструктор класса.
+	/**
+	 * Конструктор класса.
 	 * 
 	 * @param array $param 
 	 * @access protected
@@ -35,9 +32,8 @@ class ModelsMySQL
 		}
 	}
 	
-	/** getQuery($query)
-	 * en: Get data from Database.
-	 * ru: Получить данные из базы. 
+	/**
+	 * Получить данные из базы. 
 	 * 
 	 * @param string $query 
 	 * @access public
@@ -48,9 +44,8 @@ class ModelsMySQL
 		return $this->getQueryFromMySQL($query);
 	}
 	
-	/** getQueryFromMySQL($query) 
-	 * en: Get the answer from the database..
-	 * ru: Получить ответ из базы.
+	/**
+	 * Получить ответ из базы.
 	 * 
 	 * @param string $query 
 	 * @access public
@@ -69,9 +64,8 @@ class ModelsMySQL
 		return $array_out;
 	}
 	
-	/** getQueryFirstArrayValue($query) 
-	 * en: Get the first element of the array.
-	 * ru: Получить первый ответ из массива. 
+	/**
+	 * Получить первый ответ из массива. 
 	 * 
 	 * @param string $query 
 	 * @access public
@@ -83,9 +77,8 @@ class ModelsMySQL
 		return $query['0'];
 	}
 	
-	/** getQueryTrueOrFalse($query) 
-	 * en: Get a boolean answer based on a query true - false.
-	 * ru: Получить логический ответ по запросу true - false.
+	/**
+	 * Получить логический ответ по запросу true - false.
 	 * 
 	 * @param string $query 
 	 * @access public
@@ -101,9 +94,8 @@ class ModelsMySQL
 		}	
 	}
 	
-	/** getQueryOrFalse($query) 
-	 * en: Get the answer or false.
-	 * ru: Получить ответ или false.
+	/**
+	 * Получить ответ или false.
 	 * 
 	 * @param string $query 
 	 * @access public
@@ -119,9 +111,8 @@ class ModelsMySQL
 		}	
 	}
 	
-	/** getLastID($table)
-	 * en: Get the latest ID from the table.
-	 * ru: Получить последний ID из таблицы.
+	/**
+	 * Получить последний ID из таблицы.
 	 * 
 	 * @param string $table 
 	 * @access public
@@ -134,9 +125,8 @@ class ModelsMySQL
 	}
 	
 	
-	/** setCharacterToUTF8()
-	 * en: Set the connection character UTF-8
-	 * ru: Установить кодировку соединения UTF-8
+	/**
+	 * Установить кодировку соединения UTF-8
 	 * 
 	 * @access public
 	 * @return void
@@ -145,9 +135,8 @@ class ModelsMySQL
 		return $this->query('set character_set_client=\'utf8\',character_set_connection=\'utf8\', character_set_database=\'utf8\',   character_set_results=\'utf8\',character_set_server=\'utf8\';');
 	}
 	
-	/** getCharset(){
-	 * en: Get the current charset.
-	 * ru: Получить текущую кодировку.
+	/**
+	 * Получить текущую кодировку.
 	 * 
 	 * @access public
 	 * @return array
@@ -156,9 +145,8 @@ class ModelsMySQL
 		return $this->query('show VARIABLES like \'%char%\'');
 	}
 	
-	/** getInQueryFor($array)
-	 * en: The SQL query assistant.
-	 * ru: Помощь при выборке данных.
+	/**
+	 * Помощь при выборке данных.
 	 * 
 	 * >> array(
 	 * '0' => 'A',
@@ -173,9 +161,8 @@ class ModelsMySQL
 	function getInQueryFor($array) {
 		return "'".implode("','", $array)."'";
 	}
-	/** getImplodeArrayWithKey($array,$key,$cases=" OR ") {
-	 * en: The SQL query assistant.
-	 * ru: Помощь при выборке данных.
+	/**
+	 * Помощь при выборке данных.
 	 * 
 	 * >> array(
 	 *	'0' => 'A',
@@ -195,9 +182,8 @@ class ModelsMySQL
 		return "(".$key.implode($case.$key, $array).")";
 	}
 	
-	/** getCompareArrayByKey($array)
-	 * en: The SQL query assistant.
-	 * ru: Помощь при выборке данных.
+	/**
+	 * Помощь при выборке данных.
 	 * 
 	 * >> array(
 	 *	'0' => 'A',
@@ -222,9 +208,8 @@ class ModelsMySQL
 		return $where;
 	}
 	
-	/** getLikeQueryByArray($like_title,$same='LIKE',$array,$prefix='%+',$postfix='+%')
-	 * en: The SQL query assistant.
-	 * ru: Помощь при выборке данных.
+	/**
+	 * Помощь при выборке данных.
 	 * 
 	 * >> $like_title = array('OR' => 'id')
 	 * >> $same = 'LIKE'
@@ -254,9 +239,8 @@ class ModelsMySQL
 		return implode($key,$where);
 	}
 	
-	/** getArrayKeyForArrayQuery($query,$key)
-	 * en: Set the array key ID.
-	 * ru: Установить ключом массива ID.
+	/**
+	 * Установить ключом массива ID.
 	 * 
 	 * >> array(
 	 *	'0' => array('id'=>'77','key'='value'),
@@ -282,23 +266,19 @@ class ModelsMySQL
 	}
 	
 	/**
-	 * en: Reset For PHPUnitTest.
-	 * ru: Сброс после каждого теста.
+	 * Сброс после каждого теста.
 	 */
 	function setResetForTest(){
 	}
 
-	/** getFirstArrayKey($array,$get_value=false)
-	 * en: Get the first element of the array as a key or value.
-	 * ru: Получить первый элемент массива как ключ или значение.
+	/**
+	 * Получить первый элемент массива как ключ или значение.
 	 * 
 	 * @param array $array 
-	 * en: An input array.
-	 * ru: Массив для обработки.
+	 * Массив для обработки.
 	 *
 	 * @param boolean $get_value = false 
-	 * en: Is first value?
-	 * ru: Нужно значение массива?
+	 * Нужно значение массива?
 	 * 
 	 * @access public
 	 * @return string
@@ -308,14 +288,12 @@ class ModelsMySQL
 		list($key, $value)=$tmp;
 		if (!$get_value){
 		/**
-		 * en: If you need a key.
-		 * ru: Если нужен ключ.
+		 * Если нужен ключ.
 		 */
 			return $key;
 		}else {
 		/**
-		 * en: If you want to get the value.
-		 * ru: Если нужно получить значение параметра.
+		 * Если нужно получить значение параметра.
 		 */
 			return $value;
 		}

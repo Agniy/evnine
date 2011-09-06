@@ -1,8 +1,7 @@
 <?php
 
-/** class ModelsValidation
- * en: Model for validation.
- * ru: Модель для проверки валидации.
+/**
+ * Model for validation.
  *
  * @package ModelsValidation
  * @author ev9eniy
@@ -12,9 +11,8 @@
 class ModelsValidation
 {
 
-	/** $_valid_input
-	 * en: Type of validation may be set in the model.
-	 * ru: Тип валидации, может быть указан в модели.
+	/**
+	 * Type of validation may be set in the model.
 	 * 
 	 *	array(
 	 *		'controller:method' => array(
@@ -27,9 +25,8 @@ class ModelsValidation
 	 */
 	private $_valid_input;
 		
-	/** __construct($api)
-	 * en: Constructor with initialization.
-	 * ru: Конструктор с инициализацией.
+	/**
+	 * Constructor with initialization.
 	 * 
 	 * @param object $api 
 	 * @access protected
@@ -39,9 +36,8 @@ class ModelsValidation
 		$this->_valid_input=array();
 	}
 
-	/** isValidModifierParamFormError(&$param) 
-	 * en: A method for checking the input data.
-	 * ru: Метод проверки входных данных.
+	/**
+	 * A method for checking the input data.
 	 * 
 	 * >> array(
 	 *	$param['REQUEST'] => array(
@@ -55,8 +51,7 @@ class ModelsValidation
 	 * << &param['REQUEST']['TestID']='777'
 	 * 
 	 * @param array $param 
-	 * en: Array data.
-	 * ru: Массив данных.
+	 * Array data.
 	 * 
 	 * @see EvnineConfig.controller  
 	 * @see EvnineController.getDataFromMethod
@@ -72,13 +67,11 @@ class ModelsValidation
 		return $isValid ;
 	}
 	
-	/** isValid(&$param)
-	 * en: The primary method of checking data for validity.
-	 * ru: Основной метод проверки данных на валидность.
+	/**
+	 * The primary method of checking data for validity.
 	 * 
 	 * @param array $param 
-	 * en: Array data.
-	 * ru: Массив данных.
+	 * Array data.
 	 * 
 	 * @see EvnineConfig.controller  
 	 * @access private
@@ -184,9 +177,8 @@ class ModelsValidation
 		}
 	}
 
-	/** getStrlenUTF8($str)
-	 * en: Get the length of the UTF8 string.
-	 * ru: Получить длину UTF8 строки.
+	/**
+	 * Get the length of the UTF8 string.
 	 * 
 	 * @param mixed $str 
 	 * @access public
@@ -199,8 +191,7 @@ class ModelsValidation
 	}
 
 	/**
-		* en: Reset For PHPUnitTest.
-		* ru: Сброс после каждого теста.
+		* Reset For PHPUnitTest.
 		*/
 	function setResetForTest(){
 	}

@@ -1,8 +1,7 @@
 <?php
 
-/** ModelsErrors
- * en: Model for Errors
- * ru: Модель для отображения ошибок.
+/**
+ * Model for Errors
  *
  * @package ModelsValidation
  * @author ev9eniy
@@ -12,14 +11,12 @@
 class ModelsErrors
 {
 	/**
-	 * en: Array for errors.
-	 * ru: Массив ошибок.
+	 * Array for errors.
 	 */
 	var $_errors_array;
 
-	/** __construct 
-	 * en: The constructor set the error messages.
-	 * ru: Конструктор устанавливающий сообщения об ошибках.
+	/**
+	 * The constructor set the error messages.
 	 * 
 	 * @access protected
 	 * @return void
@@ -30,34 +27,28 @@ class ModelsErrors
 		);
 	}
 
-	/** getError(&$param)  
-	 * en: Get an detailed description for the error.
-	 * ru: Получить из массива ошибок подробное описание.
+	/**
+	 * Get an detailed description for the error.
 	 *
-	 * en: Error can be set in several ways:
-	 * ru: Ошибку можно установить несколькими способами:
+	 * Error can be set in several ways:
 	 * 
-	 * en: 1. A method call.
-	 * ru: 1. Установка через вызов метода.
+	 * 1. A method call.
 	 *	ModelsError=>getError->alternative_way_of_setting_errors
 	 * 
-	 * en: 2. Error validation in an array form_error.
-	 * ru: 2. Ошибку валидации, через массив form_error.
+	 * 2. Error validation in an array form_error.
 	 * /controllers/ControllersExample.php
 	 *	'validation' => array(
 	 *		'test_id' => array('to'=>'TestID','error' => 'set_errors')
 	 *	)
 	 * 
-	 * en: 3. By the throw exception.
-	 * ru: 3. Через исключение в методе.
+	 * 3. By the throw exception.
 	 *	class Models {
 	 *		function method($param){
 	 *			throw new Exception('set_error');
 	 *		}
 	 *	}
 	 *	
-	 * en: 4. Directly for the array of param.
-	 * ru: 4. Напрямую через массив info в параметрах.
+	 * 4. Directly for the array of param.
 	 *	class Models {
 	 *		function method(&$param){
 	 *			$param['info']='set_error';
@@ -66,8 +57,7 @@ class ModelsErrors
 	 * 
 	 * @see Controllers.controller
 	 * @param array $param 
-	 * en: Array data.
-	 * ru: Массив данных.
+	 * Array data.
 	 * 
 	 * @access public
 	 * @return array|string
@@ -105,8 +95,7 @@ class ModelsErrors
 	}
 	
 	/**
-	 * en: Reset For PHPUnitTest
-	 * ru: Сброс после каждого теста
+	 * Reset For PHPUnitTest
 	 */
 	function setResetForTest(){
 	}

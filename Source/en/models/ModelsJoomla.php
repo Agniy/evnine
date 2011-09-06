@@ -1,43 +1,64 @@
 <?php
-
-/** ModelsBase
- * en: The model works with the database.
- * ru: Модель работы с базой данных.
+/**
+ * The model works with Joomla.
  * 
- * @package ModelsMySQLAPI
+ * @package ModelsJoomlaAPI
  * @author ev9eniy
- * @version 1.0
- * @updated 05-sep-2011 18:25:57
+ * @version 2.0
+ * @updated 03-sep-2011 18:25:57
  */
-class ModelsMySQL
+
+class ModelsJoomla
 {
-	/** $this->mysql 
-	 * en: Link to the database connection.
-	 * ru: Ссылка на соединение с базой.
+	/**
+	 * Link to the database connection.
 	 * 
 	 * @var object
 	 * @access public
 	 */
 	var $mysql;
+
+	/**
+	 * Is there access to joomla.
+	 * 
+	 * @var boolean
+	 * @access public
+	 */
+	var $isJoomla=false;
 	
-	/** setInitAPI($param)
-	 * en: The class constructor.
-	 * ru: Конструктор класса.
+	/**
+	 * Checking environment. Is joomla running?.
+	 * 
+	 * @access protected
+	 * @return void
+	 */
+	function __construct() 
+	{
+		if (defined( '_JEXEC' )){
+			$this->isJoomla=true;
+		}
+	}
+	
+	/**
+	 * The class constructor.
 	 * 
 	 * @param array $param 
 	 * @access protected
 	 * @return void
 	 */
 	function setInitAPI($param) {
-		$this->mysql=mysql_connect($param['host'],$param['login'],$param['pass']);
-		if (!mysql_select_db($param['db'],$this->mysql)) {
-			die("MySQL Error");
+		if ($this->isJoomla){
+			$this->mysql = JFactory::getDBO();
+		} else {
+			$this->mysql=mysql_connect($param['host'],$param['login'],$param['pass']);
+			if (!mysql_select_db($param['db'],$this->mysql)) {
+				die("MySQL Error");
+			}
 		}
 	}
 	
-	/** getQuery($query)
-	 * en: Get data from Database.
-	 * ru: Получить данные из базы. 
+	/**
+	 * Get data from database.
 	 * 
 	 * @param string $query 
 	 * @access public
@@ -45,12 +66,15 @@ class ModelsMySQL
 	 */
 	function getQuery($query) 
 	{
-		return $this->getQueryFromMySQL($query);
+		if ($this->isJoomla){
+			return $this->getQueryJoomlaAPI($query);
+		}else {
+			return $this->getQueryFromMySQL($query);
+		}
 	}
 	
-	/** getQueryFromMySQL($query) 
-	 * en: Get the answer from the database..
-	 * ru: Получить ответ из базы.
+	/**
+	 * Get the answer from the database.
 	 * 
 	 * @param string $query 
 	 * @access public
@@ -69,9 +93,21 @@ class ModelsMySQL
 		return $array_out;
 	}
 	
-	/** getQueryFirstArrayValue($query) 
-	 * en: Get the first element of the array.
-	 * ru: Получить первый ответ из массива. 
+	
+	/**
+	 * Get data from joomla API.
+	 * 
+	 * @param string query
+	 */
+		function getQueryJoomlaAPI($query) 
+		{
+			$this->mysql->setQuery($query);
+			return $this->mysql->loadAssocList();
+		}
+	
+	
+	/**
+	 * Get the first element of the array.
 	 * 
 	 * @param string $query 
 	 * @access public
@@ -83,9 +119,8 @@ class ModelsMySQL
 		return $query['0'];
 	}
 	
-	/** getQueryTrueOrFalse($query) 
-	 * en: Get a boolean answer based on a query true - false.
-	 * ru: Получить логический ответ по запросу true - false.
+	/**
+	 * Get a boolean answer based on a query true - false.
 	 * 
 	 * @param string $query 
 	 * @access public
@@ -101,9 +136,8 @@ class ModelsMySQL
 		}	
 	}
 	
-	/** getQueryOrFalse($query) 
-	 * en: Get the answer or false.
-	 * ru: Получить ответ или false.
+	/**
+	 * Get the answer or false.
 	 * 
 	 * @param string $query 
 	 * @access public
@@ -119,9 +153,8 @@ class ModelsMySQL
 		}	
 	}
 	
-	/** getLastID($table)
-	 * en: Get the latest ID from the table.
-	 * ru: Получить последний ID из таблицы.
+	/**
+	 * Get the latest ID from the table.
 	 * 
 	 * @param string $table 
 	 * @access public
@@ -134,9 +167,8 @@ class ModelsMySQL
 	}
 	
 	
-	/** setCharacterToUTF8()
-	 * en: Set the connection character UTF-8
-	 * ru: Установить кодировку соединения UTF-8
+	/**
+	 * Set the connection character UTF-8
 	 * 
 	 * @access public
 	 * @return void
@@ -145,9 +177,8 @@ class ModelsMySQL
 		return $this->query('set character_set_client=\'utf8\',character_set_connection=\'utf8\', character_set_database=\'utf8\',   character_set_results=\'utf8\',character_set_server=\'utf8\';');
 	}
 	
-	/** getCharset(){
-	 * en: Get the current charset.
-	 * ru: Получить текущую кодировку.
+	/**
+	 * Get the current charset.
 	 * 
 	 * @access public
 	 * @return array
@@ -156,9 +187,8 @@ class ModelsMySQL
 		return $this->query('show VARIABLES like \'%char%\'');
 	}
 	
-	/** getInQueryFor($array)
-	 * en: The SQL query assistant.
-	 * ru: Помощь при выборке данных.
+	/**
+	 * The SQL query assistant.
 	 * 
 	 * >> array(
 	 * '0' => 'A',
@@ -173,9 +203,8 @@ class ModelsMySQL
 	function getInQueryFor($array) {
 		return "'".implode("','", $array)."'";
 	}
-	/** getImplodeArrayWithKey($array,$key,$cases=" OR ") {
-	 * en: The SQL query assistant.
-	 * ru: Помощь при выборке данных.
+	/**
+	 * The SQL query assistant.
 	 * 
 	 * >> array(
 	 *	'0' => 'A',
@@ -195,9 +224,8 @@ class ModelsMySQL
 		return "(".$key.implode($case.$key, $array).")";
 	}
 	
-	/** getCompareArrayByKey($array)
-	 * en: The SQL query assistant.
-	 * ru: Помощь при выборке данных.
+	/**
+	 * The SQL query assistant.
 	 * 
 	 * >> array(
 	 *	'0' => 'A',
@@ -222,9 +250,8 @@ class ModelsMySQL
 		return $where;
 	}
 	
-	/** getLikeQueryByArray($like_title,$same='LIKE',$array,$prefix='%+',$postfix='+%')
-	 * en: The SQL query assistant.
-	 * ru: Помощь при выборке данных.
+	/**
+	 * The SQL query assistant.
 	 * 
 	 * >> $like_title = array('OR' => 'id')
 	 * >> $same = 'LIKE'
@@ -254,9 +281,8 @@ class ModelsMySQL
 		return implode($key,$where);
 	}
 	
-	/** getArrayKeyForArrayQuery($query,$key)
-	 * en: Set the array key ID.
-	 * ru: Установить ключом массива ID.
+	/**
+	 * Set the array key ID.
 	 * 
 	 * >> array(
 	 *	'0' => array('id'=>'77','key'='value'),
@@ -282,23 +308,19 @@ class ModelsMySQL
 	}
 	
 	/**
-	 * en: Reset For PHPUnitTest.
-	 * ru: Сброс после каждого теста.
+	 * Reset For PHPUnitTest.
 	 */
 	function setResetForTest(){
 	}
 
-	/** getFirstArrayKey($array,$get_value=false)
-	 * en: Get the first element of the array as a key or value.
-	 * ru: Получить первый элемент массива как ключ или значение.
+	/**
+	 * Get the first element of the array as a key or value.
 	 * 
 	 * @param array $array 
-	 * en: An input array.
-	 * ru: Массив для обработки.
+	 * An input array.
 	 *
 	 * @param boolean $get_value = false 
-	 * en: Is first value?
-	 * ru: Нужно значение массива?
+	 * Is first value?
 	 * 
 	 * @access public
 	 * @return string
@@ -308,18 +330,15 @@ class ModelsMySQL
 		list($key, $value)=$tmp;
 		if (!$get_value){
 		/**
-		 * en: If you need a key.
-		 * ru: Если нужен ключ.
+		 * If you need a key.
 		 */
 			return $key;
 		}else {
 		/**
-		 * en: If you want to get the value.
-		 * ru: Если нужно получить значение параметра.
+		 * If you want to get the value.
 		 */
 			return $value;
 		}
 	}
-
 }
 ?>

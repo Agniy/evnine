@@ -1,8 +1,7 @@
 <?php
 
 /**
- * en: A class to parse the data from the information block.
- * ru: Класс для разбора данных из инфоблока.
+ * Класс для разбора данных из инфоблока.
  *  
  * class ModelsBitrixInfoBlockParser{
  *	function parseAllData ($product, $arProps)
@@ -23,10 +22,8 @@ if (!class_exists('ModelsBitrixInfoBlockParser')){
 }
 
 /**
- * en: Model of working with API Bitrix.
- * en: The basic method for extracting data getAllFromAPI.
- * ru: Модель работы с API Bitrix. 
- * ru: Базовый метод для извлечения данных getAllFromAPI.
+ * Модель работы с API Bitrix. 
+ * Базовый метод для извлечения данных getAllFromAPI.
  * 
  * @link ModelsBitrixAPI.getAllFromAPI
  * @see ModelsBitrixAPI.parseAllData
@@ -39,9 +36,8 @@ if (!class_exists('ModelsBitrixInfoBlockParser')){
 class ModelsBitrix extends ModelsBitrixInfoBlockParser
 {
 
-	/** __construct.
-	 * en: The class constructor.
-	 * ru: Конструктор класса.
+	/**
+	 * Конструктор класса.
 	 * 
 	 * @param array $param 
 	 * @access protected
@@ -51,9 +47,8 @@ class ModelsBitrix extends ModelsBitrixInfoBlockParser
 		$this->initCIBlock();
 	}
 	
-	/** initCIBlock()
-	 * en: Initialize the module iblock. 
-	 * ru: Инициализация модуля инфоблоков.
+	/**
+	 * Инициализация модуля инфоблоков.
 	 * 
 	 * @access public
 	 * @return void
@@ -66,8 +61,7 @@ class ModelsBitrix extends ModelsBitrixInfoBlockParser
 	}
 
 	/**
-	 * en: Initialize the module forms.
-	 * ru: Инициализация модуля форм.
+	 * Инициализация модуля форм.
 	 * 
 	 * @access public
 	 * @return void
@@ -79,17 +73,16 @@ class ModelsBitrix extends ModelsBitrixInfoBlockParser
 		}
 	}
 	
-	/** getFromCacheFunction
+	/**
 	 *
-	 * en: Getting data from the cache with setting triggers.
-	 * ru: Получение данных из кэша с установкой триггеров.
+	 * Получение данных из кэша с установкой триггеров.
 	 * 
 	 * @param array $param 
-	 * ru: Основной массив параметров.
+	 * Основной массив параметров.
 	 * @param string $function_callback 
-	 * ru: Функция для обратного вызова
+	 * Функция для обратного вызова
 	 * @param string $cache_key
-	 * ru: Ключ для кэша 
+	 * Ключ для кэша 
 	 * @access public
 	 * @return array
 	 */
@@ -117,9 +110,8 @@ class ModelsBitrix extends ModelsBitrixInfoBlockParser
 		}
 	}
 
-	/** getAllFromAPI($param)
-	 * en: A universal method for get data from the API.
-	 * ru: Универсальный метод для получения данных из API
+	/**
+	 * Универсальный метод для получения данных из API
 	 * 
 	 * @param array  
 	 * $param = array(
@@ -129,43 +121,43 @@ class ModelsBitrix extends ModelsBitrixInfoBlockParser
 	 *  ,'$arNavStartParams'=>array()
 	 *  ,'$arSelectFields'=>array()
 	 * ,'set_cache'=>true
-	 *    // ru: Триггер очистки кэша по IBLOCK_ID
-	 *    // ru: обязательно указать $param['$arFilter']['IBLOCK_ID']
+	 *    // Триггер очистки кэша по IBLOCK_ID
+	 *    // обязательно указать $param['$arFilter']['IBLOCK_ID']
 	 * ,'set_parser'=>''
-	 *    // ru: Callback функция для обработки данных, 
-	 *    // ru: задаётся в models/ModelsBitrixInfoBlockParser.php 
+	 *    // Callback функция для обработки данных, 
+	 *    // задаётся в models/ModelsBitrixInfoBlockParser.php 
 	 * ,'get_section'=>false
-	 *    // ru: Получить данные секций, по умолчанию берутся эл-ты
+	 *    // Получить данные секций, по умолчанию берутся эл-ты
 	 * ,'get_sef'=>''
 	 *    // Нуru: жен ли метод для форматирования URL?
 	 *    // get_sef=true GetNextElement(false,false)
 	 *    // get_sef=false Fetch(false,false)
 	 * ,'set_sef'=>''
-	 *    // ru: Использовать свой адрес ЧПУ 
+	 *    // Использовать свой адрес ЧПУ 
 	 *    // 'set_sef'=>#SECTION_ID#/#ELEMENT_ID#
 	 *    // SetUrlTemplates("", $param['set_sef']);
 	 * ,'get_prop'=>false
-	 *    // ru: Получить свойства эл-тов, 
-	 *    // ru: если указана секция, то 'get_prop'=false
+	 *    // Получить свойства эл-тов, 
+	 *    // если указана секция, то 'get_prop'=false
 	 * ,'set_key_id'=>false
-	 *    // ru: Какой использовать ключ для формирования массива
-	 *    // ru: Пример: На входе: 
+	 *    // Какой использовать ключ для формирования массива
+	 *    // Пример: На входе: 
 	 *    // >> 'set_key_id'=>'ID',
-	 *    // ru: На выходе:
+	 *    // На выходе:
 	 *    // << array(
 	 *    //  555=>array('ID'='555',array(..))
 	 *    //  777=>array('ID'='7',array(..))
 	 *    // )
 	 * ,'get_first'=>false
-	 *    // ru: Вернуть первый эл-т массива без ключа
-	 *    // ru: По умолчанию, на входе:
+	 *    // Вернуть первый эл-т массива без ключа
+	 *    // По умолчанию, на входе:
 	 *    // >> array(
 	 *    //  '0'=>array('ID'='555',array(..)),
 	 *    //  '1'=>array('ID'='777',array(..))
 	 *    // )
-	 *    // ru: C ключом ,
+	 *    // C ключом ,
 	 *    // >> 'get_first'=>true
-	 *    // ru: на выходе:
+	 *    // на выходе:
 	 *    // << array('ID'='555',array(..))
 	 * )
 	 * 
@@ -261,9 +253,8 @@ class ModelsBitrix extends ModelsBitrixInfoBlockParser
 		return $array_out;
 	}
 
-	/** getQuery($query)
-	 * en: Get data from Database by API.
-	 * ru: Получение данных из API через SQL запрос.
+	/**
+	 * Получение данных из API через SQL запрос.
 	 * 
 	 * @param string $query 
 	 * @access public
@@ -274,9 +265,8 @@ class ModelsBitrix extends ModelsBitrixInfoBlockParser
 		return $this->getQueryFromBitrixAPI($query);
 	}
 	
-	/** getQueryFromBitrixAPI($query) 
-	 * en: Get the answer from the database using the API.
-	 * ru: Получить ответ из базы используя API.
+	/**
+	 * Получить ответ из базы используя API.
 	 * 
 	 * @param string $query 
 	 * @access public
@@ -292,9 +282,8 @@ class ModelsBitrix extends ModelsBitrixInfoBlockParser
 		return $array_out;
 	}
 	
-	/** getQueryFirstArrayValue($query) 
-	 * en: Get the first element of the array.
-	 * ru: Получить первый ответ из массива. 
+	/**
+	 * Получить первый ответ из массива. 
 	 * 
 	 * @param string $query 
 	 * @access public
@@ -306,9 +295,8 @@ class ModelsBitrix extends ModelsBitrixInfoBlockParser
 		return $query['0'];
 	}
 	
-	/** getQueryTrueOrFalse($query) 
-	 * en: Get a boolean answer based on a query true - false.
-	 * ru: Получить логический ответ по запросу true - false.
+	/**
+	 * Получить логический ответ по запросу true - false.
 	 * 
 	 * @param string $query 
 	 * @access public
@@ -324,9 +312,8 @@ class ModelsBitrix extends ModelsBitrixInfoBlockParser
 		}	
 	}
 	
-	/** getQueryOrFalse($query) 
-	 * en: Get the array response, or false, if the answer is no.
-	 * ru: Получить массив ответа или false, если ответа нет.
+	/**
+	 * Получить массив ответа или false, если ответа нет.
 	 * 
 	 * @param string $query 
 	 * @access public
@@ -342,9 +329,8 @@ class ModelsBitrix extends ModelsBitrixInfoBlockParser
 		}	
 	}
 	
-	/** getLastID($table)
-	 * en: Get the latest ID from the table.
-	 * ru: Получить последний ID из таблицы.
+	/**
+	 * Получить последний ID из таблицы.
 	 * 
 	 * @param string $table 
 	 * @access public
@@ -357,9 +343,8 @@ class ModelsBitrix extends ModelsBitrixInfoBlockParser
 	}
 	
 	
-	/** setCharacterToUTF8()
-	 * en: Set the connection character UTF-8
-	 * ru: Установить кодировку соединения UTF-8
+	/**
+	 * Установить кодировку соединения UTF-8
 	 * 
 	 * @access public
 	 * @return void
@@ -368,9 +353,8 @@ class ModelsBitrix extends ModelsBitrixInfoBlockParser
 		return $this->query('set character_set_client=\'utf8\',character_set_connection=\'utf8\', character_set_database=\'utf8\',   character_set_results=\'utf8\',character_set_server=\'utf8\';');
 	}
 	
-	/** getCharset(){
-	 * en: Get the current charset.
-	 * ru: Получить текущую кодировку.
+	/**
+	 * Получить текущую кодировку.
 	 * 
 	 * @access public
 	 * @return array
@@ -379,9 +363,8 @@ class ModelsBitrix extends ModelsBitrixInfoBlockParser
 		return $this->query('show VARIABLES like \'%char%\'');
 	}
 	
-	/** getInQueryFor($array)
-	 * en: The SQL query assistant.
-	 * ru: Помощь при выборке данных.
+	/**
+	 * Помощь при выборке данных.
 	 * 
 	 * >> array(
 	 * '0' => 'A',
@@ -397,9 +380,8 @@ class ModelsBitrix extends ModelsBitrixInfoBlockParser
 		return "'".implode("','", $array)."'";
 	}
 	
-	/** getImplodeArrayWithKey($array,$key,$cases=" OR ") {
-	 * en: The SQL query assistant.
-	 * ru: Помощь при выборке данных.
+	/**
+	 * Помощь при выборке данных.
 	 * 
 	 * >> array(
 	 *	'0' => 'A',
@@ -419,9 +401,8 @@ class ModelsBitrix extends ModelsBitrixInfoBlockParser
 		return "(".$key.implode($case.$key, $array).")";
 	}
 	
-	/** getCompareArrayByKey($array)
-	 * en: The SQL query assistant.
-	 * ru: Помощь при выборке данных.
+	/**
+	 * Помощь при выборке данных.
 	 * 
 	 * >> array(
 	 *	'0' => 'A',
@@ -446,9 +427,8 @@ class ModelsBitrix extends ModelsBitrixInfoBlockParser
 		return $where;
 	}
 	
-	/** getLikeQueryByArray($like_title,$array,$prefix='%+',$postfix='+%')
-	 * en: The SQL query assistant.
-	 * ru: Помощь при выборке данных.
+	/**
+	 * Помощь при выборке данных.
 	 * 
 	 * >> $like_title = array('OR' => 'id')
 	 * >> $same = 'LIKE'
@@ -477,9 +457,8 @@ class ModelsBitrix extends ModelsBitrixInfoBlockParser
 		return implode($key,$where);
 	}
 	
-	/** getArrayKeyForArrayQuery($query,$key)
-	 * en: Set the array value as key for an array.
-	 * ru: Установить ключом массива ID.
+	/**
+	 * Установить ключом массива ID.
 	 * 
 	 * >> array(
 	 *	'0' => array('id'=>'77','key'='value'),
@@ -505,15 +484,13 @@ class ModelsBitrix extends ModelsBitrixInfoBlockParser
 	}
 	
 	/**
-	 * en: Reset For PHPUnitTest.
-	 * ru: Сброс после каждого теста.
+	 * Сброс после каждого теста.
 	 */
 	function setResetForTest(){
 	}
 	
-	/** getFormResult($form_id,$callback='',$by,$order,$filter,$is_filtered){
-	 * en: Get form results.
-	 * ru: Получить результаты формы.
+	/**
+	 * Получить результаты формы.
 	 * 
 	 * @link http://dev.1c-bitrix.ru/api_help/form/classes/cformresult/getlist.php 
 	 * @param int $form_id 
@@ -546,9 +523,8 @@ class ModelsBitrix extends ModelsBitrixInfoBlockParser
 		return $array_out;
 	}
 	
-	/** getFormResultIDArrayForValue($FORM_ID, $SEARCH)
-	 * en: Get an array of results forms.
-	 * ru: Получить массив результатов формы.
+	/**
+	 * Получить массив результатов формы.
 	 * 
 	 * @param int $FORM_ID 
 	 * @param string $SEARCH 
@@ -573,9 +549,8 @@ class ModelsBitrix extends ModelsBitrixInfoBlockParser
 			return $array_out;
 		}
 	
-	/** getFormResultAnswer($form_id,$callback='',$filter,$only_one_result=true){
-	 * en: Get answers to questions of form.
-	 * ru: Получить ответы на вопросы формы.
+	/**
+	 * Получить ответы на вопросы формы.
 	 * 
 	 * @link http://dev.1c-bitrix.ru/api_help/form/classes/cform/getresultanswerarray.php
 	 * @param int $form_id 
@@ -602,9 +577,8 @@ class ModelsBitrix extends ModelsBitrixInfoBlockParser
 		}
 	}
 	
-	/** ElementAdd ($id, $name, $property = array())
-	 * en: Add the element to iblock.  
-	 * ru: Добавляем элемент в инфоблок.
+	/**
+	 * Добавляем элемент в инфоблок.
 	 * 
 	 * @param int $id 
 	 * @param string $name 
@@ -635,9 +609,8 @@ class ModelsBitrix extends ModelsBitrixInfoBlockParser
 	
 	
 	
-	/** ElementDelete($id)
-	 * en: Delete the item.
-	 * ru: Удаляем элемент.
+	/**
+	 * Удаляем элемент.
 	 * 
 	 * @param int $id 
 	 * @access public
@@ -658,9 +631,8 @@ class ModelsBitrix extends ModelsBitrixInfoBlockParser
 		return $error;
 	}
 	
-	/** ElementUpdate ($id, $property)
-	 * en: Update the element.
-	 * ru: Обновляем элемент.
+	/**
+	 * Обновляем элемент.
 	 * 
 	 * @param int $id 
 	 * @param array $property 
@@ -689,9 +661,8 @@ class ModelsBitrix extends ModelsBitrixInfoBlockParser
 		return $msg;
 	}
 	
-	/** getSectionIDBySectionCode($IBLOCK_ID, $SECTION_CODE)
-	 * en: Get the section ID by the code.
-	 * ru: Получить ID секции по коду.
+	/**
+	 * Получить ID секции по коду.
 	 * 
 	 * @param int $IBLOCK_ID 
 	 * @param string $SECTION_CODE 
@@ -710,13 +681,11 @@ class ModelsBitrix extends ModelsBitrixInfoBlockParser
 		return $SECTION_ID['ID'];
 	}
 
-	/** getAllSectionArrayByID()
-	 * en: Select all the sections in the iblock by ID.
-	 * ru: Выбор всех секций в инфоблоке по ID.
+	/**
+	 * Выбор всех секций в инфоблоке по ID.
 	 * 
 	 * @deprecated
-	 * en: The method will be removed due to the addition method getAllFromAPI.
-	 * ru: Метод будет удален в связи с добавлением метода getAllFromAPI.
+	 * Метод будет удален в связи с добавлением метода getAllFromAPI.
 	 * @see ModelsBitrixAPI.getAllFromAPI
 	 * @return array
 	 */
@@ -742,13 +711,11 @@ class ModelsBitrix extends ModelsBitrixInfoBlockParser
 		);
 	}
 
-	/** getAllElementArrayByID()
-	 * en: Get all the items from the iblock by ID. 
-	 * ru: Получить все элементы по ID инфоблока.
+	/**
+	 * Получить все элементы по ID инфоблока.
 	 * 
 	 * @deprecated
-	 * en: The method will be removed due to the addition method getAllFromAPI.
-	 * ru: Метод будет удален в связи с добавлением метода getAllFromAPI.
+	 * Метод будет удален в связи с добавлением метода getAllFromAPI.
 	 * @see ModelsBitrixAPI.getAllFromAPI
 	 * @return array
 	 */
@@ -787,18 +754,15 @@ class ModelsBitrix extends ModelsBitrixInfoBlockParser
 		);
 	}
 	
-	/** getFirstArrayKey($array,$get_value=false)
+	/**
 	 * 
-	 * en: Get the first element of the array as a key or value.
-	 * ru: Получить первый элемент массива как ключ или значение.
+	 * Получить первый элемент массива как ключ или значение.
 	 * 
 	 * @param array $array 
-	 * en: An input array.
-	 * ru: Массив для обработки.
+	 * Массив для обработки.
 	 *
 	 * @param boolean $get_value 
-	 * en: Is first value?
-	 * ru: Нужно значение массива?
+	 * Нужно значение массива?
 	 * 
 	 * @access public
 	 * @return string
@@ -808,22 +772,19 @@ class ModelsBitrix extends ModelsBitrixInfoBlockParser
 		list($key, $value)=$tmp;
 		if (!$get_value){
 		/**
-		 * en: If you need a key.
-		 * ru: Если нужен ключ.
+		 * Если нужен ключ.
 		 */
 			return $key;
 		}else {
 		/**
-		 * en: If you want to get the value.
-		 * ru: Если нужно получить значение параметра.
+		 * Если нужно получить значение параметра.
 		 */
 			return $value;
 		}
 	}
 	
-	/** getIMGbyIDToSave ($id)
-	 * en: Re save the file with info.
-	 * ru: Повторно сохранить файл с выводом данных о нём.
+	/**
+	 * Повторно сохранить файл с выводом данных о нём.
 	 * 
 	 * @param int $id 
 	 * @access public
@@ -834,9 +795,8 @@ class ModelsBitrix extends ModelsBitrixInfoBlockParser
 		return CFile::MakeFileArray($id);
 	}
 	
-	/** getIMGbyFileIDToSRC($id)
-	 * en: Get the file URL by ID.
-	 * ru: Получить адреса файлов по ID.
+	/**
+	 * Получить адреса файлов по ID.
 	 * 
 	 * @param array $id 
 	 * @access public
@@ -855,9 +815,8 @@ class ModelsBitrix extends ModelsBitrixInfoBlockParser
 		return $file;
 	}
 	
-	/** getStrlenUTF8($str)
-	 * en: Get the length of the UTF8 string.
-	 * ru: Получить длину UTF8 строки.
+	/**
+	 * Получить длину UTF8 строки.
 	 * 
 	 * @param mixed $str 
 	 * @access public
