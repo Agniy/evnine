@@ -1,0 +1,3 @@
+title flag set wait...
+start /MIN /WAIT CMD /C php_split_and_make_doc_tmp.cmd
+echo %TIME% >"D:\Freelance\evnine\Source\split_to_lang\xrefresh_flag_update"
