@@ -195,6 +195,20 @@ class EvnineConfig
 	 *		// en: Folder to store temporary data.
 	 *		// ru: Папка для хранения промежуточных данных.
 	 *		'CacheDirControllerForParam'=>'PHPUnitCache'.DIRECTORY_SEPARATOR.'getControllerForParam',
+	 * 		//en: To save parameters to exit.
+	 * 		//en: It is necessary for using several processing models.
+	 * 		//en: Data from the processing model output to the input of the visual model.
+	 * 		//ru: Для сохранения всех параметров на выходе.
+	 * 		//ru: Нужно при использования нескольких моделей обработки данных.
+	 * 		//ru: Пример: Создает данные модель обработки данных, а за вид визуальная модель.
+	 * 		//ru: Тогда данные со выхода модели обработки поступают на вход визуальной модели.
+	 *		//$model_data = $evnine->getControllerForParam(
+	 *		//	array('controller' => 'param_gen_models')
+	 *		//);
+	 *		//$output = $evnine->getControllerForParam(
+	 *		//	array_merge($out['param_out'],array('controller'=>'param_gen_view'))
+	 *		//);
+	 * 		'param_out'=>true,
 	 *	) 
 	 * @see EvnineController.getDataFromMethod
 	 * @see EvnineController.param_const

@@ -219,57 +219,74 @@ class ModelsPHPUnit
 	function getPHPUnitCode(&$param) {
 		$php_unit_code= '<'.'?'.'php'."\r\n";
 		$php_unit_code.= '';
-		$php_unit_code.='/**
-		 * Auto generator skeleton PHP Unit tests for the controller.
-		 * cmd/sh: phpunit --skeleton-test "evninePHPUnit"
-		 * 
-		 * PHP Unit install:
-		 * #http://www.phpunit.de/manual/3.0/en/installation.html
-		 * #http://pear.php.net/manual/en/installation.getting.php
-		 * 
-		 * wget http://pear.php.net/go-pear.phar
-		 * sudo php go-pear.phar
-		 * pear channel-discover pear.phpunit.de
-		 * pear install phpunit/PHPUnit
-		 * 
-		 * @filename evninePHPUnit.php
-		 * @package PHPUnitTest
-		 * @author evnine
-		 * @updated '.date('Y-m-d',time()).'
-		 */'."\r\n";
+		$php_unit_code.='/**'."\r\n"
+		.' * Auto generator skeleton PHP Unit tests for the controller.'."\r\n"
+		.' * cmd/sh: phpunit --skeleton-test "evninePHPUnit"'."\r\n"
+		.' * '."\r\n"
+		.' * PHP Unit install:'."\r\n"
+		.' * #http://www.phpunit.de/manual/3.0/en/installation.html'."\r\n"
+		.' * #http://pear.php.net/manual/en/installation.getting.php'."\r\n"
+		.' * '."\r\n"
+		.' * wget http://pear.php.net/go-pear.phar'."\r\n"
+		.' * sudo php go-pear.phar'."\r\n"
+		.' * pear channel-discover pear.phpunit.de'."\r\n"
+		.' * pear install phpunit/PHPUnit'."\r\n"
+		.' * '."\r\n"
+		.' * @filename evninePHPUnit.php'."\r\n"
+		.' * @package PHPUnitTest'."\r\n"
+		.' * @author evnine'."\r\n"
+		.' * @updated '.date('Y-m-d',time())."\r\n"
+		.' */'."\r\n";
 		$php_unit_code.='//$_SERVER["DOCUMENT_ROOT"]=\'\''."\r\n";
 		$php_unit_code.='include_once(\'evnine.php\');'."\r\n";
 		$php_unit_code.='class evninePHPUnit extends EvnineController {'."\r\n";
 		$php_unit_code.='/*'.'*'."\r\n";
 		$all_count=count($param['getCountParamByParamTest']);
+		$if_open = true;
 		if (!empty($param['getCountParamByParamTest']))
 		foreach ($param['getCountParamByParamTest'] as $count =>$param_array){
 			$php_function='getControllerForParam_'.$param_array['controller'].'_'.$param_array['method'].'_Test';
 			if ($save_function!=$php_function&&$save_function!=''){
 				if ($save_function!=''){
-					$php_unit_code.="\t\t\t".'*/'."\r\n";
+					$php_unit_code.=" ".'* @access public'."\r\n";
+					$php_unit_code.=" ".'* @param param'."\r\n";
+					$php_unit_code.=" ".'* @return array'."\r\n";
+					$php_unit_code.=" ".'*/'."\r\n";
+					$if_open=false;
 				}
-				$php_unit_code.= 'function '.$save_function.'($method,$array,$param) {'."\r\n".
-					"\t\t".'$this->getControllerForParamTest($method,$array,$param);'."\r\n".
-					"\t\t".'$this->result;'."\r\n"
+				$php_unit_code.= 'function '.$save_function.'($method,$array,$param) {'."\r\n"
+					."\t\t\t".'return $this->getControllerForParamTest($method,$array,$param);'."\r\n"
 					.'}'."\r\n";
+				$if_open=false;
 				if ($all_count!=$count){
 					$php_unit_code.="\r\n";
 					$php_unit_code.='/*'.'*'."\r\n";
+					$if_open=true;
 				}
 			}
-			$php_unit_code.="\t\t\t".'* @assert (\''.$php_function.'\',$array,$param) == ';
+			if (!$if_open){
+				$php_unit_code.='/*'.'*'."\r\n";
+				$if_open=true;
+			}
+			//echo '#$all_count: <pre>'; if(function_exists(print_r2)) print_r2($all_count); else print_r($all_count);echo "</pre><br />\r\n";
+			//echo '#$count: <pre>'; if(function_exists(print_r2)) print_r2($count); else print_r($count);echo "</pre><br />\r\n";
+			$php_unit_code.=" ".'* @assert (\''.$php_function.'\',$array,$param) == ';
 			$php_unit_code.='$array=($this->object->getControllerForParam(';
 			$php_unit_code.='$param='.$this->getStringFromArray($param_array).'))'."\r\n";
 			$save_function=$php_function;
 		}
 		if ($php_function!=''){
-				$php_unit_code.="\t\t\t".'* @access public'."\r\n";
-				$php_unit_code.="\t\t\t".'* @param param'."\r\n";
-				$php_unit_code.="\t\t\t".'* @return array'."\r\n";
-				$php_unit_code.="\t\t\t".'*'.'/'."\r\n";
+				if (!$if_open){
+					$php_unit_code.='/*'.'*'."\r\n";
+					$if_open=true;
+				}
+				//$php_unit_code.='/*'.'*'."\r\n";
+				$php_unit_code.=" ".'* @access public'."\r\n";
+				$php_unit_code.=" ".'* @param param'."\r\n";
+				$php_unit_code.=" ".'* @return array'."\r\n";
+				$php_unit_code.=" ".'*'.'/'."\r\n";
 				$php_unit_code.= 'function '.$php_function.'($method,$array,$param) {'."\r\n"
-					."\t\t\t".'return  $this->getControllerForParamTest($method,$array,$param);'."\r\n"
+					."\t\t\t".'return $this->getControllerForParamTest($method,$array,$param);'."\r\n"
 					.'}'."\r\n";
 		}else {
 			$php_unit_code.='*'.'/'."\r\n";	
@@ -377,7 +394,12 @@ class ModelsPHPUnit
 	function setInitParam(&$case_array,$param_title,&$param_array,&$multi_case_flag){
 		$count = count($param_array[$param_title]);
 		if ($count>0){
-			$case_array['1'][$param_title]=$param_array[$param_title][$this->_getFirstArrayKey($param_array[$param_title])];
+			$key = $this->_getFirstArrayKey($param_array[$param_title]);
+			if ((int)$key>0||$key=='0'){
+				$case_array['1'][$param_title]=$param_array[$param_title][$this->_getFirstArrayKey($param_array[$param_title])];
+			}else {
+				$case_array['1'][$param_title][$key]=$param_array[$param_title][$key];
+			}
 			if ($count==1){
 				unset($param_array[$param_title]);
 			}
