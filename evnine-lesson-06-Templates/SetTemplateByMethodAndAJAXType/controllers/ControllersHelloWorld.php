@@ -15,6 +15,9 @@ class ControllersHelloWorld
 	// en: Initialize the controller with access levels
 	/* ru: Инициализируем контроллер передавая уровни доступа из конфига*/
 		$this->controller = array(
+			'inURLUnitTest' => array(
+				'ajax' => array('false','ajax'),
+			),
 					'page_level'=>'',
 					// en: Depth of the controller, for the parents controller load
 					/* ru: Глубина контроллера, для случая подгрузки родителей*/

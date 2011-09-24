@@ -7,7 +7,7 @@ class Config
 	var $api;
 	var $access_level;
 	var $class_path;
-	var $controller_menu_view;
+	var $controller_alias;
 
 	function __construct(){
 		$this->path_to=$_SERVER["DOCUMENT_ROOT"].DIRECTORY_SEPARATOR.'components'.DIRECTORY_SEPARATOR.'com_evnine'.DIRECTORY_SEPARATOR;
@@ -19,7 +19,7 @@ class Config
 			'default_controller'=>'default_controller',
 			'debug'=>true,
 		);
-		$this->controller_menu_view=array(
+		$this->controller_alias=array(
 			'helloworld'=>'ControllersHelloWorld',
 		);
 		$this->class_path=array(

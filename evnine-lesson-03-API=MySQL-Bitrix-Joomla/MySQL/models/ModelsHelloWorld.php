@@ -20,7 +20,7 @@ class ModelsHelloWorld
 
 	function getQuery($param) {
 		$array=array();
-		$array['databases']=$this->api->getQuery('show databases');
+		$array['databases']=$this->api->getQuery('select 2*2 as answer');
 		$array['query_error']=$this->api->getQuery('fasdfas');
 		return $array;
 	}

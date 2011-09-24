@@ -10,7 +10,7 @@ $output = $evnine->getControllerForParam(
 	)
 );
 echo $output['ModelsPHPUnit_getPHPUnitCodeWithBR'];
-print_r2($output, "array",false);
+print_r2($output);
 if (!file_exists($php_unit_file)){
 	file_put_contents($php_unit_file,$output['ModelsPHPUnit_getPHPUnitCode']);
 	$dir = (defined( '__DIR__' )?__DIR__:getcwd());

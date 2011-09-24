@@ -15,6 +15,11 @@ class ControllersHelloWorld
 	// en: Initialize the controller with access levels
 	/* ru: Инициализируем контроллер передавая уровни доступа из конфига*/
 		$this->controller = array(
+			'inURLUnitTest' => array(
+				'ajax' => 'ajax',
+				'REQUEST' => array('test_id' => '777'),
+			),
+
 			'inURLSEF'=> false,
 			// en: The SEF URL in the controller mode, the default is false
 			// ru: Включене ЧПУ режима в контроллере, по умолчанию false

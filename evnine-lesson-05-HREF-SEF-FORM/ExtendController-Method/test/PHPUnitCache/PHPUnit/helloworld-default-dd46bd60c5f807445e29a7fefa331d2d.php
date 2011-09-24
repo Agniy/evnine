@@ -1,0 +1,1 @@
+a:4:{s:14:"LoadController";s:10:"helloworld";s:10:"LoadMethod";s:7:"default";s:4:"ajax";s:5:"False";s:5:"inURL";a:1:{s:7:"default";a:2:{s:3:"pre";s:30:"?c=ext_controller&m=ext_method";s:4:"post";s:0:"";}}}

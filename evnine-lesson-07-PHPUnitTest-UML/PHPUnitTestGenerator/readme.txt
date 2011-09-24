@@ -6,8 +6,8 @@ ru: Генератор PHP Unit Test по параметрам в контрол
 	'CacheDirControllerForParam'=>'PHPUnitCache'.DIRECTORY_SEPARATOR.'getControllerForParam',
 	'CacheDir'=>'PHPUnitCache',
 
-en:
-ru: Метод в контроллере для получения сериализованных данных. 
+en: Method in the controller for the stored data from the last call.
+ru: Метод в контроллере для получения сохраненных данных с прошлого вызова. 
 /evnine.php
 function getControllerForParamTest($method,$array_init,$param){
 		...
@@ -20,8 +20,8 @@ function getControllerForParamTest($method,$array_init,$param){
 		...
 }
 
-en:
-ru: Сформированный класс тестов по результатом входных параметров.
+en: The class of tests for the generator PHPUnitTest.
+ru: Класс тестов для генератора PHPUnitTest.
 /evninePHPUnitTest.php
 	cmd/sh: phpunit --skeleton-test "evninePHPUnitTest"
 	
@@ -43,8 +43,8 @@ ru: Сформированный класс тестов по результат
 		return $this->result;
 	}
 	
-en:
-ru: PHPUnit класс для сверки сохраненных и данных полученных из контроллера.
+en: PHPUnitTest class to validate the data stored from the last call and the current from the controller.
+ru: PHPUnitTest класс для сверки данных сохраненных от прошлого вызова и текущих из контроллера.
 /evninePHPUnitTestTest.php
 	Test class for evninePHPUnitTest.
 	public function testGetControllerForParam_helloworld_default_Test()
@@ -56,7 +56,9 @@ ru: PHPUnit класс для сверки сохраненных и данны�
 			);
 		}
 	}
-
+	
+en: Calling the controller tests.
+ru: Вызов контроллера тестов.
 /index.php
 $output = $evnine->getControllerForParam(
 	array(
@@ -65,7 +67,7 @@ $output = $evnine->getControllerForParam(
 	)
 );
 
-en:
+en: Tests for the methods listed inURLUnitTest.
 ru: Тесты для методов указаны inURLUnitTest.
 /controllers/ControllersHelloWorld.php
 	'public_methods' => array(
@@ -86,14 +88,14 @@ ru: Тесты для методов указаны inURLUnitTest.
 			),
 	)
 
-en:
+en: Controller to check the other controllers.
 ru: Контроллера для опроса других контроллеров
 /controllers/ControllersPHPUnit.php
 
-en:
-ru: Модель для генерации тестов
+en: Model for test generation.
+ru: Модель для генерации тестов.
 /models/ModelsPHPUnit.php
 
-en:
-ru: Для хранения всех тестов
+en: To store all the tests.
+ru: Для хранения всех тестов.
 /PHPUnitCache/PHPUnit

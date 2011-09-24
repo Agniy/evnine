@@ -1,0 +1,1 @@
+a:6:{s:14:"LoadController";s:10:"helloworld";s:10:"LoadMethod";s:7:"default";s:4:"ajax";s:4:"True";s:46:"ModelsValidation_isValidModifierParamFormError";b:1;s:30:"ModelsHelloWorld_getHelloWorld";s:10:"HelloWorld";s:5:"inURL";a:1:{s:7:"default";a:3:{s:6:"TestID";s:9:"&test_id=";s:3:"pre";s:23:"?c=helloworld&m=default";s:4:"post";s:0:"";}}}

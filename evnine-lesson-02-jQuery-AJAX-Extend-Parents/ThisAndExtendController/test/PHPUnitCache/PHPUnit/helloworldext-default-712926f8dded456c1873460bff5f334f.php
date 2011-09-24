@@ -1,0 +1,1 @@
+a:4:{s:14:"LoadController";s:13:"helloworldext";s:10:"LoadMethod";s:7:"default";s:4:"ajax";s:5:"False";s:33:"ModelsHelloWorld_getHelloWorldExt";s:12:"hello world!";}

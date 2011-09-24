@@ -3,7 +3,7 @@ ru: Пример подключения модуля с API в компонен�
 
 en: Entry point.
 ru: Точка входа.
-\helloworld\index.php
+/helloworld/index.php
 	<?$APPLICATION->IncludeComponent("evnine:evnine", "evnine", Array(
 			'IBLOCK_ID' => '',
 			'CACHE_TIME'=>'36000',
@@ -13,18 +13,18 @@ ru: Точка входа.
 
 en: Unique key Cache.
 ru: Ключи уникальности кэша.
-\bitrix\components\evnine\evnine\component.php
+/bitrix/components/evnine/evnine/component.php
 	$ADDITIONAL_CACHE_ID[] = $arNavParams["PAGEN"];
 	$ADDITIONAL_CACHE_ID[] = $arNavParams["SIZEN"];
 	
 en: Executed only if the cache is outdated.
 ru: Исполняются только если устарел кэш.
-\bitrix\components\evnine\evnine\templates\evnine\result_modifier.php
-\bitrix\components\evnine\evnine\templates\evnine\template.php
+/bitrix/components/evnine/evnine/templates/evnine/result_modifier.php
+/bitrix/components/evnine/evnine/templates/evnine/template.php
 
 en: Executed at every load.
 ru: Исполняются при каждой загрузке.
-\bitrix\components\evnine\evnine\templates\evnine\result_nc.php
+/bitrix/components/evnine/evnine/templates/evnine/result_nc.php
 	require_once($_SERVER["DOCUMENT_ROOT"].'/bitrix/modules/evnine/classes/general/evnine.php');
 	$evnine = new Controller();
 	$arResult = $evnine->getControllerForParam(
@@ -38,13 +38,13 @@ ru: Исполняются при каждой загрузке.
 
 en: Debugging output.
 ru: Шаблон. Вывод отладки.
-\bitrix\components\evnine\evnine\templates\evnine\template_nc.php
+/bitrix/components/evnine/evnine/templates/evnine/template_nc.php
 	print_r2($arResult);
 
 en: Get all the items. Uses an internal cache. Trigger IBLOCK_ID.
 ru: Вызов метода получения всех эл-тов с учётом внутреннего кэша, 
 ru: триггер обновления ставится на IBLOCK_ID.
-\bitrix\modules\evnine\classes\general\ModelsHelloWorld.php
+/bitrix/modules/evnine/classes/general/ModelsHelloWorld.php
 class ModelsHelloWorld extends ModelsBitrix 
 {
 	function getQuery($param) {
@@ -60,7 +60,7 @@ class ModelsHelloWorld extends ModelsBitrix
 	}
 }
 
-\bitrix\modules\evnine\classes\general\evnine.config.php
+/bitrix/modules/evnine/classes/general/evnine.config.php
 	$this->path_to=$_SERVER["DOCUMENT_ROOT"].'/bitrix/modules/evnine/classes/general/';
 	$this->api='ModelsBitrix';
 	$this->class_path=array(
@@ -71,7 +71,7 @@ class ModelsHelloWorld extends ModelsBitrix
 
 en: Basic model of working with API
 ru: Базовая модель работы с API
-\bitrix\modules\evnine\classes\general\models\ModelsBitrix.php
+/bitrix/modules/evnine/classes/general/models/ModelsBitrix.php
 /** 
   $param=array(
   '$arOrder'=>array()
@@ -126,7 +126,7 @@ function getAllFromAPI($param){}
 
 en: Set callback functions to parse data.
 ru: Набор callback функций для разбора данных.
-\bitrix\modules\evnine\classes\general\models\ModelsBitrixInfoBlockParser.php
+/bitrix/modules/evnine/classes/general/models/ModelsBitrixInfoBlockParser.php
 	function parseData ($product, $arProps)
 	{
 		$full_value = array();
@@ -138,7 +138,7 @@ ru: Набор callback функций для разбора данных.
 
 en: For debug.
 ru: Для отладки.
-\php_interface\init.php
+/php_interface/init.php
 	include($_SERVER["DOCUMENT_ROOT"].'/bitrix/php_interface/print_r.php');
 
-\php_interface\print_r.php
+/php_interface/print_r.php

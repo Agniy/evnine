@@ -15,6 +15,9 @@ class ControllersHelloValidation
 	// en: Initialize the controller with access levels
 	/* ru: Инициализируем контроллер передавая уровни доступа из конфига*/
 		$this->controller = array(
+			'inURLUnitTest' => array(
+				'ajax' => array('false','true'),
+			),
 			'public_methods' => array(
 					//Public methods are available for all
 					//Example: index.php?t=the controller&m=the public method

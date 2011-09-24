@@ -15,6 +15,11 @@ class ControllersHelloWorld
 	// en: Initialize the controller with access levels
 	/* ru: Инициализируем контроллер передавая уровни доступа из конфига*/
 		$this->controller = array(
+			'inURLUnitTest' => array(
+				'ajax' => 'ajax',
+				'REQUEST' => array('test_id' => '777')
+			),
+
 			'public_methods' => array(
 					// en: Public methods are available for all	
 					// Example: index.php?t=the controller&m=the public method

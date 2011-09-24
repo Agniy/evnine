@@ -1,0 +1,1 @@
+a:6:{s:14:"LoadController";s:10:"helloworld";s:10:"LoadMethod";s:7:"default";s:4:"ajax";s:4:"True";s:10:"REQUEST_IN";a:2:{i:0;s:1:"3";i:1;s:1:"4";}s:11:"REQUEST_OUT";a:2:{i:0;s:1:"3";i:1;s:1:"4";}s:5:"inURL";a:1:{s:7:"default";a:3:{s:6:"PathID";s:9:"&path_id=";s:3:"pre";s:23:"?c=helloworld&m=default";s:4:"post";s:0:"";}}}

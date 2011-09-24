@@ -15,6 +15,10 @@ class ControllersHelloWorld
 	// en: Initialize the controller with access levels
 	/* ru: Инициализируем контроллер передавая уровни доступа из конфига*/
 		$this->controller = array(
+			'inURLUnitTest' => array(
+				'ajax' => 'true',
+			),
+
 			'private_methods' => array(
 				// en: Private methods are not available for outside calls.
 				// en: available only when a call from the public methods.

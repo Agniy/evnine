@@ -7,7 +7,7 @@ ru: Пример смены ссылке в шаблоне в зависимос
 	$output = $evnine->getControllerForParam(
 		array(
 			'controller' => 'helloworld',
-			'ajax' => 'false',
+			'method'=>'default',
 		)
 	);
 /controllers/ControllersHelloWorld.php
@@ -26,7 +26,6 @@ ru: Пример смены ссылке в шаблоне в зависимос
 		array(
 			'controller' => 'helloworld',
 			'method'=>'default2',
-			'ajax' => 'false',
 		)
 	);
 

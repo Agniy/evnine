@@ -15,6 +15,9 @@ class ControllersHelloWorld
 	// en: Initialize the controller with access levels
 	/* ru: Инициализируем контроллер передавая уровни доступа из конфига*/
 		$this->controller = array(
+			'inURLUnitTest' => array(
+				'ajax' => 'ajax',
+			),
 			'inURLSEF'=> true,
 			// en: The SEF URL in the controller mode, the default is false
 			// en: helloworld/default/test_id=insert_by_script/index.html

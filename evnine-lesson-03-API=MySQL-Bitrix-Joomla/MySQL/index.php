@@ -1,15 +1,13 @@
 <?php
-include_once('evnine.php');
+include_once 'evnine.php';
 include_once 'debug/evnine.debug.php';
 
-$evnine = new Controller();
+$evnine = new EvnineController();
 $output = $evnine->getControllerForParam(
 	array(
 		'controller' => 'helloworld',
-//		'method' => 'default',
-		//'REQUEST'=>$_REQUEST,
 		'ajax' => 'ajax',
 	)
 );
-new dBug($output, "array",false);
+print_r2($output);
 ?>

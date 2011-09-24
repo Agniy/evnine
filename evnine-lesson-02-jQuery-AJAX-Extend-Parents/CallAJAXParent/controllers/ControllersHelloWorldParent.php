@@ -24,6 +24,9 @@ class ControllersHelloWorldParent
 					'this'=> 'helloworld',
 					// en: The name of the current controller of evnine.config.php not used 
 					/* ru: Имя текущего контроллера из evnine.config.php для удобства, не используется*/
+			'inURLUnitTest' => array(
+				'ajax' => array('false','true'),
+			),
 
 			'public_methods' => array(//en: Public methods are available for all
 	

@@ -15,6 +15,10 @@ class ControllersHelloValidation
 	// en: Initialize the controller with access levels
 	/* ru: Инициализируем контроллер передавая уровни доступа из конфига*/
 		$this->controller = array(
+			'inURLUnitTest' => array(
+				'ajax' => 'ajax',
+			),
+
 		'private_methods'=>array(
 			'isValidModifierParamFormError_true'=>array(
 				'ModelsHelloWorld' => 'getContentFromFormData',

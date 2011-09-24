@@ -18,6 +18,7 @@ class ControllersHelloWorld
 	/* ru: Инициализируем контроллер передавая уровни доступа из конфига*/
 		$this->controller = array(
 			'inURLUnitTest' => array(
+					'debug'=>'false',
 					'all' => 'all',
 				'REQUEST'=>array(
 					array('test_id'=>'1'),

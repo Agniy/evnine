@@ -1,0 +1,1 @@
+a:5:{s:14:"LoadController";s:10:"helloworld";s:10:"LoadMethod";s:7:"default";s:4:"ajax";s:5:"False";s:5:"inURL";a:1:{s:8:"default2";a:3:{s:6:"TestID";s:9:"&test_id=";s:3:"pre";s:24:"?c=helloworld&m=default2";s:4:"post";s:0:"";}}s:13:"inURLTemplate";a:1:{s:4:"info";a:3:{s:6:"TestID";s:9:"&test_id=";s:3:"pre";s:24:"?c=helloworld&m=default2";s:4:"post";s:0:"";}}}

@@ -1,5 +1,5 @@
 <?php
-class Config 
+class EvnineConfig 
 {
 
 var $param_const;

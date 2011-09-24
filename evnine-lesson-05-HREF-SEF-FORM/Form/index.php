@@ -1,9 +1,9 @@
 <?php
-error_reporting(2046);
+error_reporting(0);
 include_once 'evnine.php';
 include_once 'debug/evnine.debug.php';
 
-$evnine = new Controller();
+$evnine = new EvnineController();
 $ctrlr = $evnine->getControllerForParam(
 	array(
 		'controller' => 'validation',
@@ -11,7 +11,6 @@ $ctrlr = $evnine->getControllerForParam(
 		'ajax' => 'ajax',
 	)
 );
-
 
 ?>
 
@@ -29,10 +28,6 @@ $ctrlr = $evnine->getControllerForParam(
 	value="submit"
 />
 </form>
-
-
 <?php
-
 print_r2($ctrlr, "array",false);
-
 ?>

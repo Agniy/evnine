@@ -70,7 +70,7 @@ jQuery(document).ready(function(){
 $.evNav({
 	debugToConsole                    :true,
 	debugPrefixString                 :'|	',
-	scriptForAJAXCallAndSetAnchore    :'/evnine-lesson-02-jQuery-AJAX/HelloAJAXJQuery/index.php',
+	scriptForAJAXCallAndSetAnchore    :'/evnine-lesson-02-jQuery-AJAX-Extend-Parents/HelloAJAXJQuery/index.php',
 	functionsForAJAXIndicator         : {
 		On:function($options){if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,4)+"$options.functionsForAJAXIndicator.On()");},
 		Off:function($options){if ($options.debugToConsole) console.warn(jQuery.evDev.getTab($options.debugPrefixString,1)+"$options.functionsForAJAXIndicator.Off()");}

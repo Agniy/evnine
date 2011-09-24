@@ -25,6 +25,7 @@ var $controller;
 	$this->controller_alias=array(
 		'helloworld'=>'ControllersHelloWorld',
 		'php_unit_test'=>'ControllersPHPUnit',
+		'self_php_unit_test'=>'ControllersPHPUnitForTest',
 	);
 	$this->class_path=array(
 		'ModelsHelloWorld'=>array(

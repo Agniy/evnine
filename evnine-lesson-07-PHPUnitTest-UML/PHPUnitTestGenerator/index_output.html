@@ -1,35 +1,4 @@
-&lt;?php
-<br />/**<br />
-		* Auto generator skeleton PHP Unit tests for the controller.<br />
-		* cmd/sh: phpunit --skeleton-test "evninePHPUnitTest"<br />
-		* <br />
-		* PHP Unit install:<br />
-		* #http://www.phpunit.de/manual/3.0/en/installation.html<br />
-		* #http://pear.php.net/manual/en/installation.getting.php<br />
-		* <br />
-		* wget http://pear.php.net/go-pear.phar<br />
-		* sudo php go-pear.phar<br />
-		* pear channel-discover pear.phpunit.de<br />
-		* pear install phpunit/PHPUnit<br />
-		* <br />
-		* @filename evninePHPUnitTest.php<br />
-		* @package PHPUnitTest<br />
-		* @author evnine<br />
-		* @updated 2011-08-28<br />
-		*/<br />//$_SERVER["DOCUMENT_ROOT"]=''<br />include_once('evnine.php');<br />class evninePHPUnitTest extends Controller {<br />/**
-<br />&nbsp;&nbsp;&nbsp;* @assert ('getControllerForParam_helloworld_default_Test',$array,$param) == $array=($this->object->getControllerForParam($param=array( 'controller'=>'helloworld', 'method'=>'default', 'for_all'=>'all', 'test_1'=>'1')))
-<br />&nbsp;&nbsp;&nbsp;* @assert ('getControllerForParam_helloworld_default_Test',$array,$param) == $array=($this->object->getControllerForParam($param=array( 'controller'=>'helloworld', 'method'=>'default', 'for_all'=>'all', 'test_1'=>array( 'test'=>'1', 'test2'=>'2'))))
-<br />&nbsp;&nbsp;&nbsp;*/
-<br />function getControllerForParam_helloworld_default_Test($method,$array,$param) {
-<br />&nbsp;&nbsp;$this->getControllerForParamTest($method,$array,$param);
-<br />&nbsp;&nbsp;return $this->result;
-<br />}
-<br />&nbsp;&nbsp;&nbsp;* @assert ('getControllerForParam_helloworld_default_no_inURLUnitTest_Test',$array,$param) == $array=($this->object->getControllerForParam($param=array( 'controller'=>'helloworld', 'method'=>'default_no_inURLUnitTest', 'for_all'=>'all', 'REQUEST'=>array( ), 'ajax'=>array( ))))
-<br />&nbsp;&nbsp;&nbsp;* @access public<br />&nbsp;&nbsp;&nbsp;* @param param<br />&nbsp;&nbsp;&nbsp;* @return array<br />&nbsp;&nbsp;&nbsp;*/<br />function getControllerForParam_helloworld_default_no_inURLUnitTest_Test($method,$array,$param) {
-<br />&nbsp;&nbsp;$this->getControllerForParamTest($method,$array,$param);
-<br />&nbsp;&nbsp;return $this->result;
-<br />}
-<br />}<br />?>			<script language="JavaScript">
+<?php<br>/**<br> * Auto generator skeleton PHP Unit tests for the controller.<br> * cmd/sh: phpunit --skeleton-test "evninePHPUnit"<br> * <br> * PHP Unit install:<br> * #http://www.phpunit.de/manual/3.0/en/installation.html<br> * #http://pear.php.net/manual/en/installation.getting.php<br> * <br> * wget http://pear.php.net/go-pear.phar<br> * sudo php go-pear.phar<br> * pear channel-discover pear.phpunit.de<br> * pear install phpunit/PHPUnit<br> * <br> * @filename evninePHPUnit.php<br> * @package PHPUnitTest<br> * @author evnine<br> * @updated 2011-09-24<br> */<br>//$_SERVER["DOCUMENT_ROOT"]=''<br>include_once('evnine.php');<br>class evninePHPUnit extends EvnineController {<br>/**<br> * @assert ('getControllerForParam_helloworld_default_Test',$array,$param) == $array=($this->object->getControllerForParam($param=array( 'controller'=>'helloworld', 'method'=>'default', 'for_all'=>'all', 'REQUEST'=>array( 'test1'=>'1', 'test3'=>'23'))))<br> * @assert ('getControllerForParam_helloworld_default_Test',$array,$param) == $array=($this->object->getControllerForParam($param=array( 'controller'=>'helloworld', 'method'=>'default', 'for_all'=>'all', 'REQUEST'=>array( 'test2'=>'1'))))<br> * @access public<br> * @param param<br> * @return array<br> */<br>function getControllerForParam_helloworld_default_Test($method,$array,$param) {<br>			return $this->getControllerForParamTest($method,$array,$param);<br>}<br><br>/**<br> * @assert ('getControllerForParam_helloworld_default_no_inURLUnitTest_Test',$array,$param) == $array=($this->object->getControllerForParam($param=array( 'controller'=>'helloworld', 'method'=>'default_no_inURLUnitTest', 'for_all'=>'all')))<br> * @access public<br> * @param param<br> * @return array<br> */<br>function getControllerForParam_helloworld_default_no_inURLUnitTest_Test($method,$array,$param) {<br>			return $this->getControllerForParamTest($method,$array,$param);<br>}<br>/**<br> * @assert ('getControllerForParam_self_php_unit_test_default_Test',$array,$param) == $array=($this->object->getControllerForParam($param=array( 'controller'=>'self_php_unit_test', 'method'=>'default')))<br> * @access public<br> * @param param<br> * @return array<br> */<br>function getControllerForParam_self_php_unit_test_default_Test($method,$array,$param) {<br>			return $this->getControllerForParamTest($method,$array,$param);<br>}<br>}<br>?>			<script language="JavaScript">
 			/* code modified from ColdFusion's cfdump code */
 				function dBug_toggleRow(source) {
 					var target = (document.all) ? source.parentElement.cells[1] : source.parentNode.lastChild;
@@ -170,8 +139,14 @@
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayNewKey">for_all</td>
 				<td  class="dBug_arrayNewKeyBody">all</td></tr>
 <tr>
-				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayNewKey">test_1</td>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayNewKey">REQUEST</td>
+				<td  class="dBug_arrayNewKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_arrayNew"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayNewKey">test1</td>
 				<td  class="dBug_arrayNewKeyBody">1</td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayNewKey">test3</td>
+				<td  class="dBug_arrayNewKeyBody">23</td></tr>
+</table></td></tr>
 </table></td></tr>
 <tr>
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayNewKey">2</td>
@@ -185,13 +160,10 @@
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayNewKey">for_all</td>
 				<td  class="dBug_arrayNewKeyBody">all</td></tr>
 <tr>
-				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayNewKey">test_1</td>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayNewKey">REQUEST</td>
 				<td  class="dBug_arrayNewKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_arrayNew"><tr>
-				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayNewKey">test</td>
-				<td  class="dBug_arrayNewKeyBody">1</td></tr>
-<tr>
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayNewKey">test2</td>
-				<td  class="dBug_arrayNewKeyBody">2</td></tr>
+				<td  class="dBug_arrayNewKeyBody">1</td></tr>
 </table></td></tr>
 </table></td></tr>
 </table></td></tr>
@@ -208,12 +180,18 @@
 <tr>
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayNewKey">for_all</td>
 				<td  class="dBug_arrayNewKeyBody">all</td></tr>
+</table></td></tr>
+</table></td></tr>
 <tr>
-				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayNewKey">REQUEST</td>
-				<td  class="dBug_arrayNewKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_arrayNew"></table></td></tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayNewKey">3</td>
+				<td  class="dBug_arrayNewKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_arrayNew"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayNewKey">1</td>
+				<td  class="dBug_arrayNewKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_arrayNew"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayNewKey">controller</td>
+				<td  class="dBug_arrayNewKeyBody">self_php_unit_test</td></tr>
 <tr>
-				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayNewKey">ajax</td>
-				<td  class="dBug_arrayNewKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_arrayNew"></table></td></tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayNewKey">method</td>
+				<td  class="dBug_arrayNewKeyBody">default</td></tr>
 </table></td></tr>
 </table></td></tr>
 </table></td></tr>
@@ -234,8 +212,14 @@
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayNewKey">for_all</td>
 				<td  class="dBug_arrayNewKeyBody">all</td></tr>
 <tr>
-				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayNewKey">test_1</td>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayNewKey">REQUEST</td>
+				<td  class="dBug_arrayNewKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_arrayNew"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayNewKey">test1</td>
 				<td  class="dBug_arrayNewKeyBody">1</td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayNewKey">test3</td>
+				<td  class="dBug_arrayNewKeyBody">23</td></tr>
+</table></td></tr>
 </table></td></tr>
 <tr>
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayNewKey">2</td>
@@ -249,13 +233,10 @@
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayNewKey">for_all</td>
 				<td  class="dBug_arrayNewKeyBody">all</td></tr>
 <tr>
-				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayNewKey">test_1</td>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayNewKey">REQUEST</td>
 				<td  class="dBug_arrayNewKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_arrayNew"><tr>
-				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayNewKey">test</td>
-				<td  class="dBug_arrayNewKeyBody">1</td></tr>
-<tr>
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayNewKey">test2</td>
-				<td  class="dBug_arrayNewKeyBody">2</td></tr>
+				<td  class="dBug_arrayNewKeyBody">1</td></tr>
 </table></td></tr>
 </table></td></tr>
 <tr>
@@ -269,17 +250,78 @@
 <tr>
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayNewKey">for_all</td>
 				<td  class="dBug_arrayNewKeyBody">all</td></tr>
+</table></td></tr>
 <tr>
-				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayNewKey">REQUEST</td>
-				<td  class="dBug_arrayNewKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_arrayNew"></table></td></tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayNewKey">4</td>
+				<td  class="dBug_arrayNewKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_arrayNew"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayNewKey">controller</td>
+				<td  class="dBug_arrayNewKeyBody">self_php_unit_test</td></tr>
 <tr>
-				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayNewKey">ajax</td>
-				<td  class="dBug_arrayNewKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_arrayNew"></table></td></tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayNewKey">method</td>
+				<td  class="dBug_arrayNewKeyBody">default</td></tr>
 </table></td></tr>
 </table></td></tr>
 </table></td></tr>
 <tr>
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">ModelsPHPUnit_getPHPUnitCode</td>
+				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_arrayNew"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayNewKey">php_unit</td>
+				<td  class="dBug_arrayNewKeyBody"><pre>&lt;?php
+/**
+ * Auto generator skeleton PHP Unit tests for the controller.
+ * cmd/sh: phpunit --skeleton-test &quot;evninePHPUnit&quot;
+ * 
+ * PHP Unit install:
+ * #http://www.phpunit.de/manual/3.0/en/installation.html
+ * #http://pear.php.net/manual/en/installation.getting.php
+ * 
+ * wget http://pear.php.net/go-pear.phar
+ * sudo php go-pear.phar
+ * pear channel-discover pear.phpunit.de
+ * pear install phpunit/PHPUnit
+ * 
+ * @filename evninePHPUnit.php
+ * @package PHPUnitTest
+ * @author evnine
+ * @updated 2011-09-24
+ */
+//$_SERVER[&quot;DOCUMENT_ROOT&quot;]=''
+include_once('evnine.php');
+class evninePHPUnit extends EvnineController {
+/**
+ * @assert ('getControllerForParam_helloworld_default_Test',$array,$param) == $array=($this-&gt;object-&gt;getControllerForParam($param=array( 'controller'=&gt;'helloworld', 'method'=&gt;'default', 'for_all'=&gt;'all', 'REQUEST'=&gt;array( 'test1'=&gt;'1', 'test3'=&gt;'23'))))
+ * @assert ('getControllerForParam_helloworld_default_Test',$array,$param) == $array=($this-&gt;object-&gt;getControllerForParam($param=array( 'controller'=&gt;'helloworld', 'method'=&gt;'default', 'for_all'=&gt;'all', 'REQUEST'=&gt;array( 'test2'=&gt;'1'))))
+ * @access public
+ * @param param
+ * @return array
+ */
+function getControllerForParam_helloworld_default_Test($method,$array,$param) {
+			return $this-&gt;getControllerForParamTest($method,$array,$param);
+}
+
+/**
+ * @assert ('getControllerForParam_helloworld_default_no_inURLUnitTest_Test',$array,$param) == $array=($this-&gt;object-&gt;getControllerForParam($param=array( 'controller'=&gt;'helloworld', 'method'=&gt;'default_no_inURLUnitTest', 'for_all'=&gt;'all')))
+ * @access public
+ * @param param
+ * @return array
+ */
+function getControllerForParam_helloworld_default_no_inURLUnitTest_Test($method,$array,$param) {
+			return $this-&gt;getControllerForParamTest($method,$array,$param);
+}
+/**
+ * @assert ('getControllerForParam_self_php_unit_test_default_Test',$array,$param) == $array=($this-&gt;object-&gt;getControllerForParam($param=array( 'controller'=&gt;'self_php_unit_test', 'method'=&gt;'default')))
+ * @access public
+ * @param param
+ * @return array
+ */
+function getControllerForParam_self_php_unit_test_default_Test($method,$array,$param) {
+			return $this-&gt;getControllerForParamTest($method,$array,$param);
+}
+}
+?&gt;</pre></td></tr>
+</table></td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">ModelsPHPUnit_getPHPUnitCodeWithBR</td>
 				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"></table></td></tr>
 </table></td></tr>
 </table></td></tr>
@@ -306,18 +348,21 @@
 				<td  class="dBug_arrayKeyBody">all</td></tr>
 </table></td></tr>
 <tr>
-				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">test_1</td>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">REQUEST</td>
 				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">0</td>
+				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">test1</td>
 				<td  class="dBug_arrayKeyBody">1</td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">test3</td>
+				<td  class="dBug_arrayKeyBody">23</td></tr>
+</table></td></tr>
 <tr>
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">1</td>
 				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
-				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">test</td>
-				<td  class="dBug_arrayKeyBody">1</td></tr>
-<tr>
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">test2</td>
-				<td  class="dBug_arrayKeyBody">2</td></tr>
+				<td  class="dBug_arrayKeyBody">1</td></tr>
 </table></td></tr>
 </table></td></tr>
 </table></td></tr>
@@ -341,17 +386,20 @@
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">0</td>
 				<td  class="dBug_arrayKeyBody">all</td></tr>
 </table></td></tr>
-<tr>
-				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">REQUEST</td>
-				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
-				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">0</td>
-				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"></table></td></tr>
 </table></td></tr>
 <tr>
-				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">ajax</td>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">2</td>
+				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">controller</td>
 				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">0</td>
-				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"></table></td></tr>
+				<td  class="dBug_arrayKeyBody">self_php_unit_test</td></tr>
+</table></td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">method</td>
+				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">0</td>
+				<td  class="dBug_arrayKeyBody">default</td></tr>
 </table></td></tr>
 </table></td></tr>
 </table></td></tr>
@@ -371,8 +419,14 @@
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">for_all</td>
 				<td  class="dBug_arrayKeyBody">all</td></tr>
 <tr>
-				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">test_1</td>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">REQUEST</td>
+				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">test1</td>
 				<td  class="dBug_arrayKeyBody">1</td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">test3</td>
+				<td  class="dBug_arrayKeyBody">23</td></tr>
+</table></td></tr>
 </table></td></tr>
 <tr>
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">2</td>
@@ -386,13 +440,10 @@
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">for_all</td>
 				<td  class="dBug_arrayKeyBody">all</td></tr>
 <tr>
-				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">test_1</td>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">REQUEST</td>
 				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
-				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">test</td>
-				<td  class="dBug_arrayKeyBody">1</td></tr>
-<tr>
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">test2</td>
-				<td  class="dBug_arrayKeyBody">2</td></tr>
+				<td  class="dBug_arrayKeyBody">1</td></tr>
 </table></td></tr>
 </table></td></tr>
 </table></td></tr>
@@ -409,12 +460,18 @@
 <tr>
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">for_all</td>
 				<td  class="dBug_arrayKeyBody">all</td></tr>
+</table></td></tr>
+</table></td></tr>
 <tr>
-				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">REQUEST</td>
-				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"></table></td></tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">3</td>
+				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">1</td>
+				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">controller</td>
+				<td  class="dBug_arrayKeyBody">self_php_unit_test</td></tr>
 <tr>
-				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">ajax</td>
-				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"></table></td></tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">method</td>
+				<td  class="dBug_arrayKeyBody">default</td></tr>
 </table></td></tr>
 </table></td></tr>
 </table></td></tr>
@@ -432,8 +489,14 @@
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">for_all</td>
 				<td  class="dBug_arrayKeyBody">all</td></tr>
 <tr>
-				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">test_1</td>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">REQUEST</td>
+				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">test1</td>
 				<td  class="dBug_arrayKeyBody">1</td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">test3</td>
+				<td  class="dBug_arrayKeyBody">23</td></tr>
+</table></td></tr>
 </table></td></tr>
 <tr>
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">2</td>
@@ -447,13 +510,10 @@
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">for_all</td>
 				<td  class="dBug_arrayKeyBody">all</td></tr>
 <tr>
-				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">test_1</td>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">REQUEST</td>
 				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
-				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">test</td>
-				<td  class="dBug_arrayKeyBody">1</td></tr>
-<tr>
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">test2</td>
-				<td  class="dBug_arrayKeyBody">2</td></tr>
+				<td  class="dBug_arrayKeyBody">1</td></tr>
 </table></td></tr>
 </table></td></tr>
 <tr>
@@ -467,46 +527,73 @@
 <tr>
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">for_all</td>
 				<td  class="dBug_arrayKeyBody">all</td></tr>
+</table></td></tr>
 <tr>
-				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">REQUEST</td>
-				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"></table></td></tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">4</td>
+				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"><tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">controller</td>
+				<td  class="dBug_arrayKeyBody">self_php_unit_test</td></tr>
 <tr>
-				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">ajax</td>
-				<td  class="dBug_arrayKeyBody"><table cellspacing=2 cellpadding=3 class="dBug_array"></table></td></tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">method</td>
+				<td  class="dBug_arrayKeyBody">default</td></tr>
 </table></td></tr>
 </table></td></tr>
 <tr>
 				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">ModelsPHPUnit_getPHPUnitCode</td>
-				<td  class="dBug_arrayKeyBody">&lt;?php
-<br />/**<br />
-		* Auto generator skeleton PHP Unit tests for the controller.<br />
-		* cmd/sh: phpunit --skeleton-test "evninePHPUnitTest"<br />
-		* <br />
-		* PHP Unit install:<br />
-		* #http://www.phpunit.de/manual/3.0/en/installation.html<br />
-		* #http://pear.php.net/manual/en/installation.getting.php<br />
-		* <br />
-		* wget http://pear.php.net/go-pear.phar<br />
-		* sudo php go-pear.phar<br />
-		* pear channel-discover pear.phpunit.de<br />
-		* pear install phpunit/PHPUnit<br />
-		* <br />
-		* @filename evninePHPUnitTest.php<br />
-		* @package PHPUnitTest<br />
-		* @author evnine<br />
-		* @updated 2011-08-28<br />
-		*/<br />//$_SERVER["DOCUMENT_ROOT"]=''<br />include_once('evnine.php');<br />class evninePHPUnitTest extends Controller {<br />/**
-<br />&nbsp;&nbsp;&nbsp;* @assert ('getControllerForParam_helloworld_default_Test',$array,$param) == $array=($this->object->getControllerForParam($param=array( 'controller'=>'helloworld', 'method'=>'default', 'for_all'=>'all', 'test_1'=>'1')))
-<br />&nbsp;&nbsp;&nbsp;* @assert ('getControllerForParam_helloworld_default_Test',$array,$param) == $array=($this->object->getControllerForParam($param=array( 'controller'=>'helloworld', 'method'=>'default', 'for_all'=>'all', 'test_1'=>array( 'test'=>'1', 'test2'=>'2'))))
-<br />&nbsp;&nbsp;&nbsp;*/
-<br />function getControllerForParam_helloworld_default_Test($method,$array,$param) {
-<br />&nbsp;&nbsp;$this->getControllerForParamTest($method,$array,$param);
-<br />&nbsp;&nbsp;return $this->result;
-<br />}
-<br />&nbsp;&nbsp;&nbsp;* @assert ('getControllerForParam_helloworld_default_no_inURLUnitTest_Test',$array,$param) == $array=($this->object->getControllerForParam($param=array( 'controller'=>'helloworld', 'method'=>'default_no_inURLUnitTest', 'for_all'=>'all', 'REQUEST'=>array( ), 'ajax'=>array( ))))
-<br />&nbsp;&nbsp;&nbsp;* @access public<br />&nbsp;&nbsp;&nbsp;* @param param<br />&nbsp;&nbsp;&nbsp;* @return array<br />&nbsp;&nbsp;&nbsp;*/<br />function getControllerForParam_helloworld_default_no_inURLUnitTest_Test($method,$array,$param) {
-<br />&nbsp;&nbsp;$this->getControllerForParamTest($method,$array,$param);
-<br />&nbsp;&nbsp;return $this->result;
-<br />}
-<br />}<br />?></td></tr>
+				<td  class="dBug_arrayKeyBody"><pre>&lt;?php
+/**
+ * Auto generator skeleton PHP Unit tests for the controller.
+ * cmd/sh: phpunit --skeleton-test &quot;evninePHPUnit&quot;
+ * 
+ * PHP Unit install:
+ * #http://www.phpunit.de/manual/3.0/en/installation.html
+ * #http://pear.php.net/manual/en/installation.getting.php
+ * 
+ * wget http://pear.php.net/go-pear.phar
+ * sudo php go-pear.phar
+ * pear channel-discover pear.phpunit.de
+ * pear install phpunit/PHPUnit
+ * 
+ * @filename evninePHPUnit.php
+ * @package PHPUnitTest
+ * @author evnine
+ * @updated 2011-09-24
+ */
+//$_SERVER[&quot;DOCUMENT_ROOT&quot;]=''
+include_once('evnine.php');
+class evninePHPUnit extends EvnineController {
+/**
+ * @assert ('getControllerForParam_helloworld_default_Test',$array,$param) == $array=($this-&gt;object-&gt;getControllerForParam($param=array( 'controller'=&gt;'helloworld', 'method'=&gt;'default', 'for_all'=&gt;'all', 'REQUEST'=&gt;array( 'test1'=&gt;'1', 'test3'=&gt;'23'))))
+ * @assert ('getControllerForParam_helloworld_default_Test',$array,$param) == $array=($this-&gt;object-&gt;getControllerForParam($param=array( 'controller'=&gt;'helloworld', 'method'=&gt;'default', 'for_all'=&gt;'all', 'REQUEST'=&gt;array( 'test2'=&gt;'1'))))
+ * @access public
+ * @param param
+ * @return array
+ */
+function getControllerForParam_helloworld_default_Test($method,$array,$param) {
+			return $this-&gt;getControllerForParamTest($method,$array,$param);
+}
+
+/**
+ * @assert ('getControllerForParam_helloworld_default_no_inURLUnitTest_Test',$array,$param) == $array=($this-&gt;object-&gt;getControllerForParam($param=array( 'controller'=&gt;'helloworld', 'method'=&gt;'default_no_inURLUnitTest', 'for_all'=&gt;'all')))
+ * @access public
+ * @param param
+ * @return array
+ */
+function getControllerForParam_helloworld_default_no_inURLUnitTest_Test($method,$array,$param) {
+			return $this-&gt;getControllerForParamTest($method,$array,$param);
+}
+/**
+ * @assert ('getControllerForParam_self_php_unit_test_default_Test',$array,$param) == $array=($this-&gt;object-&gt;getControllerForParam($param=array( 'controller'=&gt;'self_php_unit_test', 'method'=&gt;'default')))
+ * @access public
+ * @param param
+ * @return array
+ */
+function getControllerForParam_self_php_unit_test_default_Test($method,$array,$param) {
+			return $this-&gt;getControllerForParamTest($method,$array,$param);
+}
+}
+?&gt;</pre></td></tr>
+<tr>
+				<td valign="top" onClick='dBug_toggleRow(this)' class="dBug_arrayKey">ModelsPHPUnit_getPHPUnitCodeWithBR</td>
+				<td  class="dBug_arrayKeyBody"><pre>&lt;?php&lt;br&gt;/**&lt;br&gt; * Auto generator skeleton PHP Unit tests for the controller.&lt;br&gt; * cmd/sh: phpunit --skeleton-test &quot;evninePHPUnit&quot;&lt;br&gt; * &lt;br&gt; * PHP Unit install:&lt;br&gt; * #http://www.phpunit.de/manual/3.0/en/installation.html&lt;br&gt; * #http://pear.php.net/manual/en/installation.getting.php&lt;br&gt; * &lt;br&gt; * wget http://pear.php.net/go-pear.phar&lt;br&gt; * sudo php go-pear.phar&lt;br&gt; * pear channel-discover pear.phpunit.de&lt;br&gt; * pear install phpunit/PHPUnit&lt;br&gt; * &lt;br&gt; * @filename evninePHPUnit.php&lt;br&gt; * @package PHPUnitTest&lt;br&gt; * @author evnine&lt;br&gt; * @updated 2011-09-24&lt;br&gt; */&lt;br&gt;//$_SERVER[&quot;DOCUMENT_ROOT&quot;]=''&lt;br&gt;include_once('evnine.php');&lt;br&gt;class evninePHPUnit extends EvnineController {&lt;br&gt;/**&lt;br&gt; * @assert ('getControllerForParam_helloworld_default_Test',$array,$param) == $array=($this-&gt;object-&gt;getControllerForParam($param=array( 'controller'=&gt;'helloworld', 'method'=&gt;'default', 'for_all'=&gt;'all', 'REQUEST'=&gt;array( 'test1'=&gt;'1', 'test3'=&gt;'23'))))&lt;br&gt; * @assert ('getControllerForParam_helloworld_default_Test',$array,$param) == $array=($this-&gt;object-&gt;getControllerForParam($param=array( 'controller'=&gt;'helloworld', 'method'=&gt;'default', 'for_all'=&gt;'all', 'REQUEST'=&gt;array( 'test2'=&gt;'1'))))&lt;br&gt; * @access public&lt;br&gt; * @param param&lt;br&gt; * @return array&lt;br&gt; */&lt;br&gt;function getControllerForParam_helloworld_default_Test($method,$array,$param) {&lt;br&gt;			return $this-&gt;getControllerForParamTest($method,$array,$param);&lt;br&gt;}&lt;br&gt;&lt;br&gt;/**&lt;br&gt; * @assert ('getControllerForParam_helloworld_default_no_inURLUnitTest_Test',$array,$param) == $array=($this-&gt;object-&gt;getControllerForParam($param=array( 'controller'=&gt;'helloworld', 'method'=&gt;'default_no_inURLUnitTest', 'for_all'=&gt;'all')))&lt;br&gt; * @access public&lt;br&gt; * @param param&lt;br&gt; * @return array&lt;br&gt; */&lt;br&gt;function getControllerForParam_helloworld_default_no_inURLUnitTest_Test($method,$array,$param) {&lt;br&gt;			return $this-&gt;getControllerForParamTest($method,$array,$param);&lt;br&gt;}&lt;br&gt;/**&lt;br&gt; * @assert ('getControllerForParam_self_php_unit_test_default_Test',$array,$param) == $array=($this-&gt;object-&gt;getControllerForParam($param=array( 'controller'=&gt;'self_php_unit_test', 'method'=&gt;'default')))&lt;br&gt; * @access public&lt;br&gt; * @param param&lt;br&gt; * @return array&lt;br&gt; */&lt;br&gt;function getControllerForParam_self_php_unit_test_default_Test($method,$array,$param) {&lt;br&gt;			return $this-&gt;getControllerForParamTest($method,$array,$param);&lt;br&gt;}&lt;br&gt;}&lt;br&gt;?&gt;</pre></td></tr>
 </table>
