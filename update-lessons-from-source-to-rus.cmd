@@ -1,6 +1,6 @@
+cls
 call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-01-Hello-World\HelloWorld" "ru"
 call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-01-Hello-World\HelloWorldConfig" "ru"
-exit
 call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-01-Hello-World\HelloWorldifParamHello" "ru"
 call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-01-Hello-World\HelloWorldParamDiff" "ru"
 call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-01-Hello-World\HelloWorldYAML" "ru"
