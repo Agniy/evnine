@@ -168,6 +168,16 @@ class EvnineConfig
 	 *		'CacheDirPHPUnit'=>'PHPUnitCache'.DIRECTORY_SEPARATOR.'PHPUnit',
 	 *		// Folder to store temporary data.
 	 *		'CacheDirControllerForParam'=>'PHPUnitCache'.DIRECTORY_SEPARATOR.'getControllerForParam',
+	 * 		//en: To save parameters to exit.
+	 * 		//en: It is necessary for using several processing models.
+	 * 		//en: Data from the processing model output to the input of the visual model.
+	 *		//$model_data = $evnine->getControllerForParam(
+	 *		//	array('controller' => 'param_gen_models')
+	 *		//);
+	 *		//$output = $evnine->getControllerForParam(
+	 *		//	array_merge($out['param_out'],array('controller'=>'param_gen_view'))
+	 *		//);
+	 * 		'param_out'=>true,
 	 *	) 
 	 * @see EvnineController.getDataFromMethod
 	 * @see EvnineController.param_const

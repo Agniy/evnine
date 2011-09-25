@@ -1,10 +1,10 @@
 title split src and make doc
-set PATH_TO_THIS=split_to_lang/
+set PATH_TO_THIS=update-script/phpdoc-cmd/
 set PATH_TO_SCRIPT=%PATH_TO_THIS%
 set PATH_TO_RU=ru
 set PATH_TO_EN=en
 set SPLIT_MODE=WITH_BR
-cd ..
+cd ../..
 mkdir "%PATH_TO_RU%"
 mkdir "%PATH_TO_RU%/controllers"
 mkdir "%PATH_TO_RU%/test"
@@ -18,6 +18,8 @@ call %PATH_TO_THIS%php_split_en_ru.sh.cmd index.php "" "%PATH_TO_SCRIPT%" %SPLIT
 call %PATH_TO_THIS%php_split_en_ru.sh.cmd ModelsInfo.php models/ "%PATH_TO_SCRIPT%" %SPLIT_MODE%
 call %PATH_TO_THIS%php_split_en_ru.sh.cmd evnine.php "" "%PATH_TO_SCRIPT%" %SPLIT_MODE%
 call %PATH_TO_THIS%php_split_en_ru.sh.cmd evnine.config.php "" "%PATH_TO_SCRIPT%" %SPLIT_MODE%
+call %PATH_TO_THIS%php_split_en_ru.sh.cmd phpunit.php test/ "%PATH_TO_SCRIPT%" %SPLIT_MODE%
+call %PATH_TO_THIS%php_split_en_ru.sh.cmd ControllersPHPUnit.php test/ "%PATH_TO_SCRIPT%" %SPLIT_MODE%
 call %PATH_TO_THIS%php_split_en_ru.sh.cmd ControllersExample.php controllers/ "%PATH_TO_SCRIPT%" %SPLIT_MODE%
 call %PATH_TO_THIS%php_split_en_ru.sh.cmd ModelsBitrix.php models/ "%PATH_TO_SCRIPT%" %SPLIT_MODE%
 call %PATH_TO_THIS%php_split_en_ru.sh.cmd ModelsBitrixInfoBlockParser.php models/ "%PATH_TO_SCRIPT%" %SPLIT_MODE%

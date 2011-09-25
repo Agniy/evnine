@@ -1,5 +1,5 @@
 title split src and make doc
-set PATH_TO_THIS=split_to_lang/
+set PATH_TO_THIS=update-script/phpdoc-cmd/
 set PATH_TO_SCRIPT=%PATH_TO_THIS%
 set PATH_TO_RU=ru
 set PATH_TO_EN=en
