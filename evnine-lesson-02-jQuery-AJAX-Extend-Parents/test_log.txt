@@ -1,0 +1,25 @@
+25.09.2011 
+------------------------[ CallAJAXParent ]------------------------  
+PHPUnit 3.5.0 by Sebastian Bergmann.
+
+......
+
+Time: 1 second, Memory: 4.25Mb
+
+OK (6 tests, 6 assertions)
+------------------------[ jQueryAJAXAnchorNavigation ]------------------------  
+PHPUnit 3.5.0 by Sebastian Bergmann.
+
+..........
+
+Time: 0 seconds, Memory: 4.50Mb
+
+OK (10 tests, 10 assertions)
+------------------------[ ThisAndExtendController ]------------------------  
+PHPUnit 3.5.0 by Sebastian Bergmann.
+
+...
+
+Time: 0 seconds, Memory: 4.25Mb
+
+OK (3 tests, 3 assertions)

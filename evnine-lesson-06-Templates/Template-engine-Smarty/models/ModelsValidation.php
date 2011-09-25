@@ -1,74 +1,93 @@
 <?php
 
-/**
- * ModelsValidation
+/** class ModelsValidation
+ * en: Model for validation.
+ * ru: Модель для проверки валидации.
  *
- * @package ModelsBase
+ * @package ModelsValidation
  * @author ev9eniy
- * @version 1.0
- * @created 07-apr-2010 11:03:39
+ * @version 2
+ * @created 02-sep-2011 11:03:39
  */
-
 class ModelsValidation
 {
 
-	private $_valid_input;
-
-	/**
-	 * Constructor
+	/** $_valid_input
+	 * en: Type of validation may be set in the model.
+	 * ru: Тип валидации, может быть указан в модели.
 	 * 
+	 *	array(
+	 *		'controller:method' => array(
+	 *			'test_id' => array('to'=>'TestID','type'=>'int','required'=>'false','max' => '10') 
+	 *		)
+	 *	)
+	 * 
+	 * @var string
+	 * @access private
 	 */
-	function __construct($database){
-		$this->database=$database;//Сохраняем досту
-		$this->init();
-	}
-
-	function init() 
-	{
+	private $_valid_input;
+		
+	/** __construct($api)
+	 * en: Constructor with initialization.
+	 * ru: Конструктор с инициализацией.
+	 * 
+	 * @param object $api 
+	 * @access protected
+	 * @return void
+	 */
+	function __construct(){
 		$this->_valid_input=array();
 	}
 
-
-	/**
-	* isValidModifierParamFormError 
-	* 
-	* @param mixed $param 
-	* @access public
-	* @return void
-	*/
+	/** isValidModifierParamFormError(&$param) 
+	 * en: A method for checking the input data.
+	 * ru: Метод проверки входных данных.
+	 * 
+	 * >> array(
+	 *	$param['REQUEST'] => array(
+	 *		'test_id'=>'777',
+	 *	)
+	 * )
+	 * >> $param['validation'] => array(
+	 *	'test_id' => array('to'=>'TestID','type'=>'int')
+	 * )
+	 * << true
+	 * << &param['REQUEST']['TestID']='777'
+	 * 
+	 * @param array $param 
+	 * en: Array data.
+	 * ru: Массив данных.
+	 * 
+	 * @see EvnineConfig.controller  
+	 * @see EvnineController.getDataFromMethod
+	 * @access public
+	 * @return boolean
+	 */
 	function isValidModifierParamFormError(&$param) 
 	{ 
 		$param['array_name']='REQUEST';
-		$isValid = $this->isValid(&$param);
+		$isValid = $this->_isValid($param);
 		unset($param['validation']);
 		unset($param['array_name']);
 		return $isValid ;
 	}
 	
-	/**
-	 * getStrlenUTF8 
+	/** isValid(&$param)
+	 * en: The primary method of checking data for validity.
+	 * ru: Основной метод проверки данных на валидность.
 	 * 
-	 * @param mixed $str 
-	 * @access public
-	 * @return void
-	 */
-	function getStrlenUTF8($str){
-		if (function_exists('mb_strlen')) 
-			return mb_strlen($str, 'utf-8');
-		return strlen(utf8_decode($str));
-	}
-
-	
-	/**
-	 * isRequestValid?
+	 * @param array $param 
+	 * en: Array data.
+	 * ru: Массив данных.
 	 * 
-	 * @assert ($param) == $this->object->getDataForTest('isValidModifierParamFormError',$param=array('test'=>'test'))
-	 * @param param
+	 * @see EvnineConfig.controller  
+	 * @access private
+	 * @return boolean
 	 */
-	function isValid(&$param) 
+	function _isValid(&$param) 
 	{ 
 		$param_form_data=array();
-		$key_template=$param["template"].(!empty($param["method"])?'::':'::default').$param["method"];
+		$key_template=$param["controller"].(!empty($param["method"])?'::':'::default').$param["method"];
 		if (isset($param['validation'])){
 			$validation=$param['validation'];
 		}else {
@@ -124,7 +143,6 @@ class ModelsValidation
 							break;								
 					*/
 					}
-
 					$to_strlen = $this->getStrlenUTF8($param_form_data[$to]);
 					if ($validation[$title]['required']){
 						if ($validation[$title]['is_array']){
@@ -153,9 +171,10 @@ class ModelsValidation
 						}elseif ($validation[$title]['required']) {
 							$form_errors[$title][]=$validation[$title]['error'];
 						}
+					}elseif ($validation[$title]['default']){
+						$param_form_data[$to]=$validation[$title]['default'];
 					}
 		}
-				
 		$param['form_error']=$form_errors;
 		$param[$param['array_name']]=$param_form_data;
 		if (count($form_errors)>0){
@@ -165,14 +184,25 @@ class ModelsValidation
 		}
 	}
 
-	/**
-	 * ForUnitTestReset
-	 *
-	 * @assert ($param) == $this->object->getDataForTest('setResetForTest',$param=array('test'=>'test'))
+	/** getStrlenUTF8($str)
+	 * en: Get the length of the UTF8 string.
+	 * ru: Получить длину UTF8 строки.
+	 * 
+	 * @param mixed $str 
+	 * @access public
+	 * @return void
 	 */
-	function setResetForTest() 
-	{	 
+	function getStrlenUTF8($str){
+		if (function_exists('mb_strlen')) 
+			return mb_strlen($str, 'utf-8');
+		return strlen(utf8_decode($str));
 	}
 
+	/**
+		* en: Reset For PHPUnitTest.
+		* ru: Сброс после каждого теста.
+		*/
+	function setResetForTest(){
+	}
 }
 ?>

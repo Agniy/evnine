@@ -1,0 +1,41 @@
+25.09.2011 
+------------------------[ Creator-PHP-PHPShort-Twig ]------------------------  
+PHPUnit 3.5.0 by Sebastian Bergmann.
+
+....
+
+Time: 0 seconds, Memory: 4.25Mb
+
+OK (4 tests, 4 assertions)
+------------------------[ OneKeyForAllURLTemplates ]------------------------  
+PHPUnit 3.5.0 by Sebastian Bergmann.
+
+..
+
+Time: 1 second, Memory: 4.25Mb
+
+OK (2 tests, 2 assertions)
+------------------------[ SetTemplateByMethodAndAJAXType ]------------------------  
+PHPUnit 3.5.0 by Sebastian Bergmann.
+
+....
+
+Time: 1 second, Memory: 4.25Mb
+
+OK (4 tests, 4 assertions)
+------------------------[ Template-engine-Smarty ]------------------------  
+PHPUnit 3.5.0 by Sebastian Bergmann.
+
+..
+
+Time: 1 second, Memory: 4.25Mb
+
+OK (2 tests, 2 assertions)
+------------------------[ Template-engine-Twig ]------------------------  
+PHPUnit 3.5.0 by Sebastian Bergmann.
+
+..
+
+Time: 1 second, Memory: 4.25Mb
+
+OK (2 tests, 2 assertions)

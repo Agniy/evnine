@@ -1,0 +1,65 @@
+25.09.2011 
+------------------------[ ExtendController-Method ]------------------------  
+PHPUnit 3.5.0 by Sebastian Bergmann.
+
+.
+
+Time: 0 seconds, Memory: 4.25Mb
+
+OK (1 test, 1 assertion)
+------------------------[ Form ]------------------------  
+PHPUnit 3.5.0 by Sebastian Bergmann.
+
+.
+
+Time: 0 seconds, Memory: 4.25Mb
+
+OK (1 test, 1 assertion)
+------------------------[ FormMultiMethodSumbit ]------------------------  
+PHPUnit 3.5.0 by Sebastian Bergmann.
+
+.....
+
+Time: 0 seconds, Memory: 4.25Mb
+
+OK (5 tests, 5 assertions)
+------------------------[ GETArray ]------------------------  
+PHPUnit 3.5.0 by Sebastian Bergmann.
+
+..
+
+Time: 0 seconds, Memory: 4.25Mb
+
+OK (2 tests, 2 assertions)
+------------------------[ SEFForController ]------------------------  
+PHPUnit 3.5.0 by Sebastian Bergmann.
+
+.
+
+Time: 0 seconds, Memory: 4.25Mb
+
+OK (1 test, 1 assertion)
+------------------------[ SEFForMethod ]------------------------  
+PHPUnit 3.5.0 by Sebastian Bergmann.
+
+.
+
+Time: 0 seconds, Memory: 4.25Mb
+
+OK (1 test, 1 assertion)
+------------------------[ URIWithParamFromInput ]------------------------  
+PHPUnit 3.5.0 by Sebastian Bergmann.
+
+.
+
+Time: 0 seconds, Memory: 4.25Mb
+
+OK (1 test, 1 assertion)
+------------------------[ URIWithTemplateSetVar ]------------------------  
+PHPUnit 3.5.0 by Sebastian Bergmann.
+
+.
+
+Time: 0 seconds, Memory: 4.25Mb
+
+OK (1 test, 1 assertion)

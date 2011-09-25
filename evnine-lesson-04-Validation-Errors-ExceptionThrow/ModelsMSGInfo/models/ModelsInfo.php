@@ -1,79 +1,87 @@
 <?php
-/**
- * en: Model for info
- * ru: Модель сообщений 
+
+/** ModelsInfo
+ * en: Model for information.
+ * ru: Модель для отображения информации.
  *
- * @package Models
- * @author 1
- * @version 1.0
- * @created 01-окт-2010 22:03:39
+ * @package ModelsValidation
+ * @author ev9eniy
+ * @version 2
+ * @created 04-sep-2011 10:21:39
  */
 class ModelsInfo
 {
-	/**
-	 * en: Array for info
-	 * ru: Масcив информации
+	/** $this->_info_array 
+	 * 
+	 * en: Array for info.
+	 * ru: Массив информации.
+	 * 
+	 * @var array
+	 * @access protected
 	 */
-	var $form_info;
+	var $_info_array;
+
+	/** __construct 
+	 * en: The constructor set the info messages.
+	 * ru: Конструктор устанавливающий сообщения.
+	 * @access protected
+	 * @return void
+	 */
 	function __construct(){
-	/**
-	 * en: Array for info
-	 * ru: Масcив информации
-	 */
-		$this->form_info=array(
-			'alternative_way_of_setting_info' 	=> 'ModelsInfo->form_info[\'alternative_way_of_setting_info\']=description or array key',
+		$this->_info_array=array(
+			'alternative_way_of_setting_info' => 'ModelsInfo->_info_array[\'alternative_way_of_setting_info\']=description or array key',
 		);
 	}
 
-	/**
-   * en: Get description or array key
-   * en: of array by key $param['form_info']
-	 * ru: Получить из массива ошибок подробное описание
-   * ru: из массива $param['form_info']
+	/** getInfo(&$param)  
+	 * en: Get the detailed description for information message.
+	 * ru: Получить из массива информации подробное описание.
+	 *
+	 * en: Information message can be set in several ways:
+	 * ru: Информацию можно установить несколькими способами:
 	 * 
-	 * @param array
-	 * @return $param_info array or $param['info']
-   */
-function getInfo(&$param) 
-{
-	$param_info=array();
-	if (is_array($param['form_info'])){
-		foreach ($param['form_info'] as $param_title =>$param_value){
-			if (is_array($param_value)){
-				foreach ($param_value as $param_value_title =>$param_value_value){
-					if (isset($this->form_info[$param_value])){
-						$param_info[$param_title][$param_value_title] = $this->form_info[$param_value_value];
-					}else {
-						$param_info[$param_title][$param_value_title] = $param_value_value;
-					}
-				}
+	 * en: 1. A method call.
+	 * ru: 1. Установка через вызов метода.
+	 * ModelsError=>getInfo->alternative_way_of_setting_info
+	 * 
+	 * en: 2. By the throw new Exception.
+	 * ru: 2. Через исключение в методе.
+	 *	class Models {
+	 *		function method($param){
+	 *			throw new Exception('alternative_way_of_setting_info');
+	 *		}
+	 *	}
+	 *	
+	 * en: 3. Directly for the &$param.
+	 * ru: 3. Напрямую через массив info..
+	 *	class Models {
+	 *		function method(&$param){
+	 *			$param['info']='set_info';
+	 *		}
+	 *	}
+	 *
+	 * @see Controllers.controller
+	 * @param array &$param
+	 * en: Array data.
+	 * ru: Массив данных.
+	 * @return array or $param['info']
+	 */
+	function getInfo(&$param) 
+	{
+		if (!empty($param['info'])){
+			if (isset($this->_info_array[$param['info']])){
+				return $this->_info_array[$param['info']];
 			}else {
-				if (isset($this->form_info[$param_value])){
-						$param_info[$param_title] = $this->form_info[$param_value];
-				}else {
-						$param_info[$param_title] = $param_value;
-				}
+				return $param['info'];
 			}
 		}
-		unset($param['form_info']);
-		return $param_info;
-	}elseif (!empty($param['info'])){
-		if (isset($this->form_info[$param['info']])){
-			return $this->form_info[$param['info']];
-		}else {
-			return $param['info'];
-		}
 	}
-}
-
-/**
- * en; For unit test reset
- * ru: Обнулить таблицы для теста
- */
-function setResetForTest() 
-{	 
-}
-
-
+	
+	/**
+	 * en: Reset For PHPUnitTest.
+	 * ru: Сброс после каждого теста.
+	 */
+	function setResetForTest(){
+	}
 }
 ?>

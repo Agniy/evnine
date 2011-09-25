@@ -44,8 +44,6 @@ class TemplateConfig{
 	'tag_block_for_place_tmp_var'  => 2,
 	);
 	}
-
-
 }
 
 ?>

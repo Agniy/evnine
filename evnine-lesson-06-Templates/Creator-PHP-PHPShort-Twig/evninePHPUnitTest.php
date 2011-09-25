@@ -1,6 +1,6 @@
 <?php
 
-require_once 'D:\Freelance\evnine\evnine-lesson-06-Templates\Creator-PHP-PHPShort-Twig\evninePHPUnit.php';
+require_once 'evninePHPUnit.php';
 
 /**
  * Test class for evninePHPUnit.

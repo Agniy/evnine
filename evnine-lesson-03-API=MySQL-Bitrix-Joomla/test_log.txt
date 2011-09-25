@@ -1,0 +1,21 @@
+25.09.2011 
+------------------------[ BitrixAPI ]------------------------  
+PHPUnit 3.5.0 by Sebastian Bergmann.
+
+Cannot open file "./evninePHPUnitTest.php".
+------------------------[ BitrixAPITwig ]------------------------  
+PHPUnit 3.5.0 by Sebastian Bergmann.
+
+Cannot open file "./evninePHPUnitTest.php".
+------------------------[ JoomlaAPI ]------------------------  
+PHPUnit 3.5.0 by Sebastian Bergmann.
+
+Cannot open file "./evninePHPUnitTest.php".
+------------------------[ MySQL ]------------------------  
+PHPUnit 3.5.0 by Sebastian Bergmann.
+
+.
+
+Time: 0 seconds, Memory: 4.25Mb
+
+OK (1 test, 1 assertion)

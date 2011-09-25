@@ -394,7 +394,12 @@ class ModelsPHPUnit
 	function setInitParam(&$case_array,$param_title,&$param_array,&$multi_case_flag){
 		$count = count($param_array[$param_title]);
 		if ($count>0){
-			$case_array['1'][$param_title]=$param_array[$param_title][$this->_getFirstArrayKey($param_array[$param_title])];
+			$key = $this->_getFirstArrayKey($param_array[$param_title]);
+			if ((int)$key>0||$key=='0'){
+				$case_array['1'][$param_title]=$param_array[$param_title][$this->_getFirstArrayKey($param_array[$param_title])];
+			}else {
+				$case_array['1'][$param_title][$key]=$param_array[$param_title][$key];
+			}
 			if ($count==1){
 				unset($param_array[$param_title]);
 			}

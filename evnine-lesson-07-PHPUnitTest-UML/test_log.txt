@@ -1,0 +1,33 @@
+25.09.2011 
+------------------------[ FrozenDataForDebug ]------------------------  
+PHPUnit 3.5.0 by Sebastian Bergmann.
+
+.
+
+Time: 1 second, Memory: 4.25Mb
+
+OK (1 test, 1 assertion)
+------------------------[ PHPUnitTestGenerator ]------------------------  
+PHPUnit 3.5.0 by Sebastian Bergmann.
+
+....
+
+Time: 1 second, Memory: 4.25Mb
+
+OK (4 tests, 4 assertions)
+------------------------[ UML2Models ]------------------------  
+PHPUnit 3.5.0 by Sebastian Bergmann.
+
+..
+
+Time: 1 second, Memory: 4.25Mb
+
+OK (2 tests, 2 assertions)
+------------------------[ VisualTestGenerator ]------------------------  
+PHPUnit 3.5.0 by Sebastian Bergmann.
+
+......<form action="" method="get"><input value="Reset PHP Unit Cache" type="submit" name=""/></form><a name="head"></a> <table></table>.
+
+Time: 0 seconds, Memory: 4.50Mb
+
+OK (7 tests, 7 assertions)

@@ -1,9 +1,10 @@
+25.09.2011 
 ------------------------[ HelloWorld ]------------------------  
 PHPUnit 3.5.0 by Sebastian Bergmann.
 
 .
 
-Time: 1 second, Memory: 4.25Mb
+Time: 0 seconds, Memory: 4.25Mb
 
 OK (1 test, 1 assertion)
 ------------------------[ HelloWorldConfig ]------------------------  

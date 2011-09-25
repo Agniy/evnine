@@ -1,84 +1,114 @@
 <?php
-/**
+
+/** ModelsErrors
  * en: Model for Errors
- * ru: Модель ошибок
+ * ru: Модель для отображения ошибок.
  *
- * @package Models
- * @author 1
- * @version 1.0
- * @created 01-окт-2010 22:03:39
+ * @package ModelsValidation
+ * @author ev9eniy
+ * @version 2
+ * @created 04-sep-2011 10:21:39
  */
 class ModelsErrors
 {
 	/**
-	 * en: Array for errors
-	 * ru: Масcив ошибок
+	 * en: Array for errors.
+	 * ru: Массив ошибок.
 	 */
-	var $errors_array;
-	/**
-	 * en: current_error
-	 * ru: Текущие ошибки
+	var $_errors_array;
+
+	/** __construct 
+	 * en: The constructor set the error messages.
+	 * ru: Конструктор устанавливающий сообщения об ошибках.
+	 * 
+	 * @access protected
+	 * @return void
 	 */
-	var $_current_error;
 	function __construct(){
-	/**
-	 * en: Array for errors
-	 * ru: Масcив ошибок
-	 */
-		$this->errors_array=array(
-			'alternative_way_of_setting_errors' 	=> 'ModelsErrors->errors_array[\'alternative_way_of_setting_errors\']=description or array key',
+		$this->_errors_array=array(
+			'alternative_way_of_setting_errors' => 'ModelsErrors->_errors_array[\'alternative_way_of_setting_errors\']=description or array key',
 		);
 	}
 
-	/**
-   * en: Get description or array key
-   * en: of array by key $param['form_error']
-	 * ru: Получить из массива ошибок подробное описание
-   * ru: из массива $param['form_error']
+	/** getError(&$param)  
+	 * en: Get an detailed description for the error.
+	 * ru: Получить из массива ошибок подробное описание.
+	 *
+	 * en: Error can be set in several ways:
+	 * ru: Ошибку можно установить несколькими способами:
 	 * 
-	 * @param array
-	 * @return $param_error array or $param['info']
-   */
-function getError(&$param) 
-{
-	$param_error=array();
-	if (is_array($param['form_error'])){
-		foreach ($param['form_error'] as $param_title =>$param_value){
-			if (is_array($param_value)){
-				foreach ($param_value as $param_value_title =>$param_value_value){
-					if (isset($this->errors_array[$param_value])){
-						$param_error[$param_title][$param_value_title] = $this->errors_array[$param_value_value];
+	 * en: 1. A method call.
+	 * ru: 1. Установка через вызов метода.
+	 *	ModelsError=>getError->alternative_way_of_setting_errors
+	 * 
+	 * en: 2. Error validation in an array form_error.
+	 * ru: 2. Ошибку валидации, через массив form_error.
+	 * /controllers/ControllersExample.php
+	 *	'validation' => array(
+	 *		'test_id' => array('to'=>'TestID','error' => 'set_errors')
+	 *	)
+	 * 
+	 * en: 3. By the throw exception.
+	 * ru: 3. Через исключение в методе.
+	 *	class Models {
+	 *		function method($param){
+	 *			throw new Exception('set_error');
+	 *		}
+	 *	}
+	 *	
+	 * en: 4. Directly for the array of param.
+	 * ru: 4. Напрямую через массив info в параметрах.
+	 *	class Models {
+	 *		function method(&$param){
+	 *			$param['info']='set_error';
+	 *		}
+	 *	}
+	 * 
+	 * @see Controllers.controller
+	 * @param array $param 
+	 * en: Array data.
+	 * ru: Массив данных.
+	 * 
+	 * @access public
+	 * @return array|string
+	 */
+	function getError(&$param) 
+	{
+		$param_error=array();
+		if (is_array($param['form_error'])){
+			foreach ($param['form_error'] as $param_title =>$param_value){
+				if (is_array($param_value)){
+					foreach ($param_value as $param_value_title =>$param_value_value){
+						if (isset($this->_errors_array[$param_value])){
+							$param_error[$param_title][$param_value_title] = $this->_errors_array[$param_value_value];
+						}else {
+							$param_error[$param_title][$param_value_title] = $param_value_value;
+						}
+					}
+				}else {
+					if (isset($this->_errors_array[$param_value])){
+							$param_error[$param_title] = $this->_errors_array[$param_value];
 					}else {
-						$param_error[$param_title][$param_value_title] = $param_value_value;
+							$param_error[$param_title] = $param_value;
 					}
 				}
+			}
+			unset($param['form_error']);
+			return $param_error;
+		}elseif (!empty($param['info'])){
+			if (isset($this->_errors_array[$param['info']])){
+				return $this->_errors_array[$param['info']];
 			}else {
-				if (isset($this->errors_array[$param_value])){
-						$param_error[$param_title] = $this->errors_array[$param_value];
-				}else {
-						$param_error[$param_title] = $param_value;
-				}
+				return $param['info'];
 			}
 		}
-		unset($param['form_error']);
-		return $param_error;
-	}elseif (!empty($param['info'])){
-		if (isset($this->errors_array[$param['info']])){
-			return $this->errors_array[$param['info']];
-		}else {
-			return $param['info'];
-		}
 	}
-}
-
-/**
- * en: For unit test reset
- * ru: Обнулить таблицы для теста
- */
-function setResetForTest() 
-{	 
-}
-
-
+	
+	/**
+	 * en: Reset For PHPUnitTest
+	 * ru: Сброс после каждого теста
+	 */
+	function setResetForTest(){
+	}
 }
 ?>

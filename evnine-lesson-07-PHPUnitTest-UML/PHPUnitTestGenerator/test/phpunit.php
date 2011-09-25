@@ -81,7 +81,6 @@ $output = $evnine->getControllerForParam(
  * ru: Делаем запрос в контроллер. 
  * ru: Используем ссылку на себя как аргумент при формировании тестов.
  */
-echo '#$output: <pre>'; if(function_exists(print_r2)) print_r2($output); else print_r($output);echo "</pre><br />\r\n";
 echo $output['ModelsPHPUnit_getPHPUnitCodeWithBR'];
 if (!file_exists($php_unit_file)){
 	/**

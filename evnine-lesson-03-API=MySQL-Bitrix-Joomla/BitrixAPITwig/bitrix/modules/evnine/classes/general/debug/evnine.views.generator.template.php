@@ -47,8 +47,8 @@ function getArrayToTemplate ($array,$shift=0,$template='Twig') {
 	$template_method='getConfig'.$this->tpl;
 	$this->cfg = $cfg = TemplateConfig::$template_method();
 	return 
-		(empty($this->init_config['id'])?'':'<a name="'.$this->init_config['id'].'-tpl-gen"></a>')
-		.$this->getB(
+//		(empty($this->init_config['id'])?'':'<a name="'.$this->init_config['id'].'-tpl-gen"></a>').
+		$this->getB(
 		'evnine.views.generator.template.php: '
 			.'['
 				.($this->if_on?' IF ':'').($this->if_echo?' ECHO for ':'').($this->tpl?' '.$this->tpl.' ':'')

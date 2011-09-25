@@ -598,5 +598,127 @@ SCRIPTS;
 //				table.dBug_array td { background-color:#FFFFFF; }
 //				table.dBug_array td.dBug_arrayHeader { background-color:#009900; }
 //				table.dBug_array td.dBug_arrayKey { background-color:#CCFFCC; }
+
+function getForDebugArrayDiff($first_array,$second_array,$not_check=array('REQUEST_IN' => '','REQUEST_OUT' => ''/*,'ViewMethod' => ''*/),$max_in_array=200)
+{
+	$return = array (); // return
+	$new='+';
+	foreach ($first_array as $k => $pl) // payload
+		if (!isset($not_check[$k])){
+		if ( ! isset ($second_array[$k]) 
+			|| 
+			(	
+				$second_array[$k] != $pl 
+				&& 
+				count($second_array[$k]) != count($pl)
+			) 
+			//|| (count(array_merge(array_diff($second_array[$k],$pl)))>0)
+			||md5(
+			getMultiImplode(
+				($first_array[$k])
+			)
+			)!=md5(
+				getMultiImplode($second_array[$k])
+				)
+		){
+			//echo '<<===<pre>#$second_array[$k]: '; print_r($second_array[$k]); echo '</pre>!!';
+			if (is_array($pl)&&count($pl)>$max_in_array){
+				$i=0;
+				foreach ($pl as $pl_title =>$pl_value){
+					if($i>$max_in_array&&is_array($pl_value)&&isset ($second_array[$k])){
+						$return[$k][$new][$pl_title] = '...';
+					}else {
+						$return[$k][$new][$pl_title] = $pl_value;
+					}
+					$i++;
+				}		
+			}else {
+					$return[$k][$new] = $pl;
+			}
+			if (! isset ($second_array[$k])){
+				//$return[$k][$new] 
+				$tmp = $return[$k][$new];
+				unset($return[$k]);
+				$return[$new.$k]=$tmp;
+			}
+		}
+	}
+	$old='-';
+	foreach ($second_array as $k => $pl) // payload
+	if (!isset($not_check[$k])){
+		if ( ( ! isset ($first_array[$k]) 
+			|| ($first_array[$k] != $pl 
+			&& count($first_array[$k]) != count($pl) 
+		)
+			||md5(getMultiImplode(($first_array[$k])))!=md5(getMultiImplode($second_array[$k]))
+			//|| (count(array_merge(array_diff($first_array[$k],$pl)))>0)
+		) /*&& ! isset ($return[$k])*/ ){
+			if (is_array($pl)&&count($pl)>$max_in_array){
+				$i=0;
+				foreach ($pl as $pl_title =>$pl_value){
+					if($i>$max_in_array&&is_array($pl_value)/*&&isset($first_array[$k])*/){
+						$return[$k][$old][$pl_title] = '...';
+					}else {
+						$return[$k][$old][$pl_title] = $pl_value;
+					}
+					$i++;
+				}		
+			}else {
+					$return[$k][$old] = $pl;
+			}
+			if (count($return[$k])==1){
+				$tmp = $return[$k][$old];
+				unset($return[$k]);
+				$return[$old.$k]=$tmp;
+			}
+		if (isset($first_array[$k])&&isset($first_array[$k])){
+				$tmp1 = $return[$k][$new];
+				$tmp2 = $return[$k][$old];
+				$return[$k][$new] 
+						=getForDebugArrayDiff($tmp1,$tmp2,$not_check);
+				$return[$k][$old] 
+					=getForDebugArrayDiff($tmp2,$tmp1,$not_check);
+				if (count($return[$k][$old])==0){
+					unset($return[$k][$old]);
+					$return[$k][$old.' ']= $tmp2;
+				}
+				if (count($return[$k][$new])==0){
+					unset($return[$k][$new]);
+					$return[$k]['+']= $tmp1;
+				}	
+			}
+			if ($return[$new.$k]==$return[$old.$k]&&
+				count($return[$new.$k])==0&&
+				count($return[$new.$k])==0
+			){
+				unset($return[$new.$k]);
+				unset($return[$old.$k]);
+			}
+			if (count($return[$k])==2){
+				unset($return[$k][$old]);
+			}
+		}
+	}
+	return $return;
+} 
+
+function getMultiImplode($pieces)
+{
+    $string='';
+    if(is_array($pieces))
+    {
+        reset($pieces);
+        while(list($key,$value)=each($pieces))
+        {
+            $string.=$key.getMultiImplode($value);
+        }
+    }
+    else
+    {
+        return $pieces;
+		}
+    return $string;
+}
 function print_r2(&$var) { new dBug($var); }
+function p(&$var) { new dBug($var); }
 ?>

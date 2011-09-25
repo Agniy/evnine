@@ -219,7 +219,7 @@ class ModelsPHPUnit
 	function getPHPUnitCode(&$param) {
 		$php_unit_code= '<'.'?'.'php'."\r\n";
 		$php_unit_code.= '';
-		$php_unit_code.='/**'."\r\n"
+		$php_unit_code.='/*'.'*'."\r\n"
 		.' * Auto generator skeleton PHP Unit tests for the controller.'."\r\n"
 		.' * cmd/sh: phpunit --skeleton-test "evninePHPUnit"'."\r\n"
 		.' * '."\r\n"
