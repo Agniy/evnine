@@ -1,6 +1,6 @@
 @echo off
-set lang=""
-if not -%~2==- set lang=%~2\
+@set lang=""
+@if not -%~2==- set lang=%~2\
 @set sub_path="%~3"
 @if exist "%~1\%sub_path%js\jq.evnine.nav.js" xcopy "Source\%lang%js\jq.evnine.nav.js" "%~1\%sub_path%js\jq.evnine.nav.js" /I /Y /U /H
 @if exist "%~1\%sub_path%js\jq.evnine.func.js" xcopy "Source\%lang%js\jq.evnine.func.js" "%~1\%sub_path%js\jq.evnine.func.js" /I /Y /U /H
@@ -24,6 +24,7 @@ if not -%~2==- set lang=%~2\
 cd %~1
 @if exist evninePHPUnitTest.php call phpunit.bat evninePHPUnitTest.php
 set error=%errorlevel%
+@if not exist phpunit.bat set error=0
 if %error%==1 color 04
 if %error%==1 echo ERROR [%~1] 
 if %error%==1 pause

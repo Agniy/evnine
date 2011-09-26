@@ -9,16 +9,21 @@ mkdir "%PATH_TO_RU%"
 mkdir "%PATH_TO_RU%/controllers"
 mkdir "%PATH_TO_RU%/test"
 mkdir "%PATH_TO_RU%/models"
+mkdir "%PATH_TO_RU%/debug"
 mkdir "%PATH_TO_EN%"
 mkdir "%PATH_TO_EN%/controllers"
 mkdir "%PATH_TO_EN%/test"
 mkdir "%PATH_TO_EN%/models"
+mkdir "%PATH_TO_EN%/debug"
 :SPLIT_FILES
 call %PATH_TO_THIS%php_split_en_ru.sh.cmd index.php "" "%PATH_TO_SCRIPT%" %SPLIT_MODE%
 call %PATH_TO_THIS%php_split_en_ru.sh.cmd ModelsInfo.php models/ "%PATH_TO_SCRIPT%" %SPLIT_MODE%
 call %PATH_TO_THIS%php_split_en_ru.sh.cmd evnine.php "" "%PATH_TO_SCRIPT%" %SPLIT_MODE%
 call %PATH_TO_THIS%php_split_en_ru.sh.cmd evnine.config.php "" "%PATH_TO_SCRIPT%" %SPLIT_MODE%
 call %PATH_TO_THIS%php_split_en_ru.sh.cmd phpunit.php test/ "%PATH_TO_SCRIPT%" %SPLIT_MODE%
+call %PATH_TO_THIS%php_split_en_ru.sh.cmd evnine.debug.php debug/ "%PATH_TO_SCRIPT%" %SPLIT_MODE%
+call %PATH_TO_THIS%php_split_en_ru.sh.cmd evnine.views.generator.template.php debug/ "%PATH_TO_SCRIPT%" %SPLIT_MODE%
+call %PATH_TO_THIS%php_split_en_ru.sh.cmd evnine.views.generator.template.config.php debug/ "%PATH_TO_SCRIPT%" %SPLIT_MODE%
 call %PATH_TO_THIS%php_split_en_ru.sh.cmd ControllersPHPUnit.php test/ "%PATH_TO_SCRIPT%" %SPLIT_MODE%
 call %PATH_TO_THIS%php_split_en_ru.sh.cmd ControllersExample.php controllers/ "%PATH_TO_SCRIPT%" %SPLIT_MODE%
 call %PATH_TO_THIS%php_split_en_ru.sh.cmd ModelsBitrix.php models/ "%PATH_TO_SCRIPT%" %SPLIT_MODE%

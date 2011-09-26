@@ -5,6 +5,7 @@ cd %EXAMPLE%/
 call phpunit.bat evninePHPUnitTest.php >>../test_log.txt
 set error=%errorlevel%
 @if not exist evninePHPUnitTest.php set error=0
+@if not exist phpunit.bat set error=0
 if %error%==1 cd..
 type test_log.txt
 if %error%==1 color 04
