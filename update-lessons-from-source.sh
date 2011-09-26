@@ -1,5 +1,10 @@
 reset
-$(./Source/update-script/update-lessons-from-source-script.sh "evnine-lesson-01-Hello-World/HelloWorld")
+if [ -n $1 ]; then
+	lang=$1/
+else
+	lang=""
+fi
+$(./Source/update-script/update-lessons-from-source-script.sh "evnine-lesson-01-Hello-World/HelloWorld" ${lang})
 $(./Source/update-script/update-lessons-from-source-script.sh "evnine-lesson-01-Hello-World/HelloWorldConfig")
 $(./Source/update-script/update-lessons-from-source-script.sh "evnine-lesson-01-Hello-World/HelloWorldifParamHello")
 $(./Source/update-script/update-lessons-from-source-script.sh "evnine-lesson-01-Hello-World/HelloWorldParamDiff")

@@ -1,34 +1,36 @@
 cls
-call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-01-Hello-World\HelloWorld"
-call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-01-Hello-World\HelloWorldConfig"
-call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-01-Hello-World\HelloWorldifParamHello"
-call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-01-Hello-World\HelloWorldParamDiff"
-call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-01-Hello-World\HelloWorldYAML"
-call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-02-jQuery-AJAX-Extend-Parents\CallAJAXParent"
-call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-02-jQuery-AJAX-Extend-Parents\jQueryAJAXAnchorNavigation"
-call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-02-jQuery-AJAX-Extend-Parents\ThisAndExtendController"
-call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-03-API=MySQL-Bitrix-Joomla\BitrixAPI" "" "bitrix\modules\evnine\classes\general\"
-call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-03-API=MySQL-Bitrix-Joomla\BitrixAPITwig" "" "bitrix\modules\evnine\classes\general\"
-call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-03-API=MySQL-Bitrix-Joomla\JoomlaAPI"
-call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-03-API=MySQL-Bitrix-Joomla\MySQL"
-call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-04-Validation-Errors-ExceptionThrow\ModelsMSGErrors"
-call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-04-Validation-Errors-ExceptionThrow\ModelsMSGExceptionThrowError"
-call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-04-Validation-Errors-ExceptionThrow\ModelsMSGInfo"
-call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-04-Validation-Errors-ExceptionThrow\Validation"
-call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-05-HREF-SEF-FORM\ExtendController-Method"
-call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-05-HREF-SEF-FORM\Form"
-call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-05-HREF-SEF-FORM\FormMultiMethodSumbit"
-call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-05-HREF-SEF-FORM\GETArray"
-call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-05-HREF-SEF-FORM\SEFForController"
-call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-05-HREF-SEF-FORM\SEFForMethod"
-call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-05-HREF-SEF-FORM\URIWithParamFromInput"
-call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-05-HREF-SEF-FORM\URIWithTemplateSetVar"
-call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-06-Templates\Creator-PHP-PHPShort-Twig"
-call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-06-Templates\OneKeyForAllURLTemplates"
-call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-06-Templates\SetTemplateByMethodAndAJAXType"
-call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-06-Templates\Template-engine-Smarty"
-call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-06-Templates\Template-engine-Twig"
-call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-07-PHPUnitTest-UML\FrozenDataForDebug"
-call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-07-PHPUnitTest-UML\PHPUnitTestGenerator"
-call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-07-PHPUnitTest-UML\UML2Models"
-call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-07-PHPUnitTest-UML\VisualTestGenerator"
+@set lang=""
+@if not -%1==- set lang=%1
+call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-01-Hello-World\HelloWorld" %lang%
+call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-01-Hello-World\HelloWorldConfig" %lang%
+call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-01-Hello-World\HelloWorldifParamHello" %lang%
+call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-01-Hello-World\HelloWorldParamDiff" %lang%
+call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-01-Hello-World\HelloWorldYAML" %lang%
+call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-02-jQuery-AJAX-Extend-Parents\CallAJAXParent" %lang%
+call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-02-jQuery-AJAX-Extend-Parents\jQueryAJAXAnchorNavigation" %lang%
+call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-02-jQuery-AJAX-Extend-Parents\ThisAndExtendController" %lang%
+call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-03-API=MySQL-Bitrix-Joomla\BitrixAPI" %lang% "bitrix\modules\evnine\classes\general\"
+call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-03-API=MySQL-Bitrix-Joomla\BitrixAPITwig" %lang% "bitrix\modules\evnine\classes\general\"
+call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-03-API=MySQL-Bitrix-Joomla\JoomlaAPI" %lang%
+call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-03-API=MySQL-Bitrix-Joomla\MySQL" %lang%
+call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-04-Validation-Errors-ExceptionThrow\ModelsMSGErrors" %lang%
+call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-04-Validation-Errors-ExceptionThrow\ModelsMSGExceptionThrowError" %lang%
+call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-04-Validation-Errors-ExceptionThrow\ModelsMSGInfo" %lang%
+call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-04-Validation-Errors-ExceptionThrow\Validation" %lang%
+call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-05-HREF-SEF-FORM\ExtendController-Method" %lang%
+call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-05-HREF-SEF-FORM\Form" %lang%
+call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-05-HREF-SEF-FORM\FormMultiMethodSumbit" %lang%
+call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-05-HREF-SEF-FORM\GETArray" %lang%
+call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-05-HREF-SEF-FORM\SEFForController" %lang%
+call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-05-HREF-SEF-FORM\SEFForMethod" %lang%
+call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-05-HREF-SEF-FORM\URIWithParamFromInput" %lang%
+call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-05-HREF-SEF-FORM\URIWithTemplateSetVar" %lang%
+call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-06-Templates\Creator-PHP-PHPShort-Twig" %lang%
+call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-06-Templates\OneKeyForAllURLTemplates" %lang%
+call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-06-Templates\SetTemplateByMethodAndAJAXType" %lang%
+call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-06-Templates\Template-engine-Smarty" %lang%
+call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-06-Templates\Template-engine-Twig" %lang%
+call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-07-PHPUnitTest-UML\FrozenDataForDebug" %lang%
+call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-07-PHPUnitTest-UML\PHPUnitTestGenerator" %lang%
+call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-07-PHPUnitTest-UML\UML2Models" %lang%
+call Source\update-script\update-lessons-from-source-script.cmd "evnine-lesson-07-PHPUnitTest-UML\VisualTestGenerator" %lang%
