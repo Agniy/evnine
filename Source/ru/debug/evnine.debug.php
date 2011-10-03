@@ -1,48 +1,48 @@
 <?php
 /**
- * LAST UPDATE
- * ============
- * March 22, 2007
+ * LAST UPDATE<br>
+ * ============<br>
+ * March 22, 2007<br>
  *
  *
- * AUTHOR
- * =============
- * Kwaku Otchere 
- * ospinto@hotmail.com
+ * AUTHOR<br>
+ * =============<br>
+ * Kwaku Otchere <br>
+ * ospinto@hotmail.com<br>
  * 
- * Thanks to Andrew Hewitt (rudebwoy@hotmail.com) for the idea and suggestion
+ * Thanks to Andrew Hewitt (rudebwoy@hotmail.com) for the idea and suggestion<br>
  * 
- * All the credit goes to ColdFusion's brilliant cfdump tag
- * Hope the next version of PHP can implement this or have something similar
- * I love PHP, but var_dump BLOWS!!!
+ * All the credit goes to ColdFusion's brilliant cfdump tag<br>
+ * Hope the next version of PHP can implement this or have something similar<br>
+ * I love PHP, but var_dump BLOWS!!!<br>
  *
- * FOR DOCUMENTATION AND MORE EXAMPLES: VISIT http://dbug.ospinto.com
- *
- *
- * PURPOSE
- * =============
- * Dumps/Displays the contents of a variable in a colored tabular format
- * Based on the idea, javascript and css code of Macromedia's ColdFusion cfdump tag
- * A much better presentation of a variable's contents than PHP's var_dump and print_r functions
+ * FOR DOCUMENTATION AND MORE EXAMPLES: VISIT http://dbug.ospinto.com<br>
  *
  *
- * USAGE
- * =============
- * new dBug ( variable [,forceType] );
- * example:
- * new dBug ( $myVariable );
+ * PURPOSE<br>
+ * =============<br>
+ * Dumps/Displays the contents of a variable in a colored tabular format<br>
+ * Based on the idea, javascript and css code of Macromedia's ColdFusion cfdump tag<br>
+ * A much better presentation of a variable's contents than PHP's var_dump and print_r functions<br>
+ *
+ *
+ * USAGE<br>
+ * =============<br>
+ * new dBug ( variable [,forceType] );<br>
+ * example:<br>
+ * new dBug ( $myVariable );<br>
  *
  * 
- * if the optional "forceType" string is given, the variable supplied to the 
- * function is forced to have that forceType type. 
- * example: new dBug( $myVariable , "array" );
- * will force $myVariable to be treated and dumped as an array type, 
- * even though it might originally have been a string type, etc.
+ * if the optional "forceType" string is given, the variable supplied to the <br>
+ * function is forced to have that forceType type. <br>
+ * example: new dBug( $myVariable , "array" );<br>
+ * will force $myVariable to be treated and dumped as an array type, <br>
+ * even though it might originally have been a string type, etc.<br>
  *
- * NOTE!
- * ==============
- * forceType is REQUIRED for dumping an xml string or xml file
- * new dBug ( $strXml, "xml" );
+ * NOTE!<br>
+ * ==============<br>
+ * forceType is REQUIRED for dumping an xml string or xml file<br>
+ * new dBug ( $strXml, "xml" );<br>
  */
 
 class dBug {
@@ -272,7 +272,7 @@ class dBug {
 				if(is_object($value)||is_array($value)) {
 					$var_ser = serialize($value);
 					if(in_array($var_ser, $this->arrHistory, TRUE)) {
-						$value = (is_object($value)) ? "*RECURSION* -> $".get_class($value) : "*RECURSION*";
+						$value = (is_object($value)) ? "*RECURSION* -> $".get_class($value) : "*RECURSION*";<br>
 
 					}
 				}
@@ -480,7 +480,7 @@ class dBug {
 	function initJSandCSS() {
 		echo <<<SCRIPTS
 			<script language="JavaScript">
-			/* code modified from ColdFusion's cfdump code */
+			/* code modified from ColdFusion's cfdump code */<br>
 				function dBug_toggleRow(source) {
 					var target = (document.all) ? source.parentElement.cells[1] : source.parentNode.lastChild;
 					dBug_toggleTarget(target,dBug_toggleSource(source));
@@ -545,7 +545,7 @@ class dBug {
 				.dBug_xmlKey 
 					{ cursor:pointer; }
 				
-				/* array */
+				/* array */<br>
 				table.dBug_array { background-color:#888888;position:relative;z-index:1000}
 				table.dBug_arrayNew { background-color:#888888;}
 				table.dBug_arrayOld { background-color:darkgray; }
@@ -565,25 +565,25 @@ class dBug {
 				table.dBug_array td.dBug_arrayBugKeyBody { color:black;padding:1px; }
 
 				
-				/* object */
+				/* object */<br>
 				table.dBug_object { background-color:#0000CC; }
 				table.dBug_object td { background-color:#FFFFFF; }
 				table.dBug_object td.dBug_objectHeader { background-color:#4444CC; }
 				table.dBug_object td.dBug_objectKey { background-color:#CCDDFF; }
 				
-				/* resource */
+				/* resource */<br>
 				table.dBug_resourceC { background-color:#884488; }
 				table.dBug_resourceC td { background-color:#FFFFFF; }
 				table.dBug_resourceC td.dBug_resourceCHeader { background-color:#AA66AA; }
 				table.dBug_resourceC td.dBug_resourceCKey { background-color:#FFDDFF; }
 				
-				/* resource */
+				/* resource */<br>
 				table.dBug_resource { background-color:#884488; }
 				table.dBug_resource td { background-color:#FFFFFF; }
 				table.dBug_resource td.dBug_resourceHeader { background-color:#AA66AA; }
 				table.dBug_resource td.dBug_resourceKey { background-color:#FFDDFF; }
 				
-				/* xml */
+				/* xml */<br>
 				table.dBug_xml { background-color:#888888; }
 				table.dBug_xml td { background-color:#FFFFFF; }
 				table.dBug_xml td.dBug_xmlHeader { background-color:#AAAAAA; }

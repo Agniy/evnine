@@ -235,7 +235,7 @@ class ModelsPHPUnit
 		.' * @filename evninePHPUnit.php'."\r\n"
 		.' * @package PHPUnitTest'."\r\n"
 		.' * @author evnine'."\r\n"
-		.' * @updated '.date('Y-m-d',time())."\r\n"
+		.' * @updated 2011-10-03'."\r\n"
 		.' */'."\r\n";
 		$php_unit_code.='//$_SERVER["DOCUMENT_ROOT"]=\'\''."\r\n";
 		$php_unit_code.='include_once(\'evnine.php\');'."\r\n";
@@ -614,9 +614,10 @@ class ModelsPHPUnit
 				if (md5($this->_getMultiImplode($array_tmp))!==
 					md5($this->_getMultiImplode($param['getDataFromControllerByParam'][$param_id]))
 				){
-					$array[$param_id]=getForDebugArrayDiff(
-						$param['getDataFromControllerByParam'][$param_id],$array_tmp
-					);
+					if ($this->param['debug_param_diff'])
+						$array[$param_id]=getForDebugArrayDiff(
+							$param['getDataFromControllerByParam'][$param_id],$array_tmp
+						);
 					if (empty($array[$param_id])){
 						$array[$param_id]=false;
 					}
