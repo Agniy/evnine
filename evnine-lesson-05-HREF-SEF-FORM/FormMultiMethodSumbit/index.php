@@ -1,5 +1,4 @@
 <?php
-error_reporting(0);
 include_once 'evnine.php';
 include_once 'debug/evnine.debug.php';
 
@@ -11,10 +10,7 @@ $ctrlr = $evnine->getControllerForParam(
 		'ajax' => 'ajax',
 	)
 );
-
-
 ?>
-
 <form 
 	method="get" 
 	action=<?php echo $ctrlr['inURL']['default']['pre'].$ctrlr['inURL']['post']; ?>
@@ -51,10 +47,6 @@ $ctrlr = $evnine->getControllerForParam(
 	value="Method: submit_4"
 />
 </form>
-
-
 <?php
-
-print_r2($ctrlr, "array",false);
-
+print_r2($ctrlr);
 ?>

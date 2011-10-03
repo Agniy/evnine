@@ -11,12 +11,10 @@ $output = $evnine->getControllerForParam(
 		'ajax' => 'ajax',
 	)
 );
-
-print_r2($output, "array",false);
+print_r2($output);
 
 require_once 'Twig/Autoloader.php';
 Twig_Autoloader::register();
-	
 $loader = new Twig_Loader_Filesystem('views/');
 $twig = new Twig_Environment($loader, array(
 			'cache' => 'views/cache',

@@ -1,40 +1,32 @@
 <?php
 /**
- * HelloWorld
+ * ModelsHelloWorld
  * @package HelloWorld
- * @author ev9eniy
- * @version 1.0
- * @created 04-apr-2010 11:03:41
  */
 class ModelsHelloWorld extends ModelsBitrix
 {	
-
 	var $api;
-
-	/**
-	 * Constructor
-	 */
 	function __construct($api){
-		$this->api=$api;//save api (Bitrix link to class)
+		$this->api=$api;
 	}
 
-	/** getQuery 
-	 * Пример запроса функцию через кэш с установкой в апи триггеров на удаления кэша
-	 * 
+	/** 
+	 * ru: Выполнить запрос через API и с использованием кэша.
+	 *  
 	 * @param mixed $param 
 	 * @access public
-	 * @return void
+	 * @return array
 	 */
 	function getQuery($param) {
 		return $this->getFromCacheFunction($param, 'getAllElementArrayByID', /*$cache_keys=*/$param['arParams']['IBLOCK_ID']);
 	}
 
 	/**
-	 * Используется новый метод доступа
+	 * ru: Новый метод получения данных через API
 	 * 
-	 * @param mixed $param 
+	 * @param array $param 
 	 * @access public
-	 * @return void
+	 * @return array
 	 */
 	function getAllElementUserNewAPI($param) {
 	return $this->getAllFromAPI(
@@ -84,11 +76,12 @@ class ModelsHelloWorld extends ModelsBitrix
 	}
 
 	/** getAllElementArrayByID
-	 * Функция получения данных
+	 *
+	 * ru: Старая версия функции получения данных.
 	 * 
-	 * @param mixed $param 
+	 * @param array $param 
 	 * @access public
-	 * @return void
+	 * @return array
 	 */
 	function getAllElementArrayByID($param) {
 		return $this->api->getAllElementArrayByID(
@@ -110,9 +103,11 @@ class ModelsHelloWorld extends ModelsBitrix
 		);
 	}
 
-
-	function setResetForTest($param){//Reset any data
-		//echo 'setResetForTest<br />';
+	/**
+	 * en: Reset any data
+	 * ru: Сбросить все данные
+	 */
+	function setResetForTest($param){
 	}
 }
 ?>

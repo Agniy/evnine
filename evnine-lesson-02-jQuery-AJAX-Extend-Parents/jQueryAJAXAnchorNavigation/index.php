@@ -12,12 +12,12 @@ $output = $evnine->getControllerForParam(
 if ($_REQUEST['ajax']==='ajax'){
 	echo '<html><head></head><body>';
 	include('index-body.php');
-	print_r2($output, "array",false);
+	print_r2($output);
 	echo '</body></html>';
 }else {
 	include('index-header.php');
 	include('index-body.php');
-	print_r2($output, "array",false);
+	print_r2($output);
 	include('index-footer.php');
 }
 ?>

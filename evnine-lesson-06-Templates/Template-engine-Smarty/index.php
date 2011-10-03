@@ -9,8 +9,7 @@ $output = $evnine->getControllerForParam(
 		'ajax' => 'ajax',
 	)
 );
-
-print_r2($output, "array",false);
+print_r2($output);
 
 require('Smarty/Smarty.class.php');
 $smarty = new Smarty;

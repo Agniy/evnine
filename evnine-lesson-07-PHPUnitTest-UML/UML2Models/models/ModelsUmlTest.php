@@ -1,10 +1,7 @@
 <?php
-
-
 /**
- * @author 1
- * @version 1.0
- * @created 28-авг-2011 11:53:59
+ * ModelsUmlTest
+ * @package HelloWorld
  */
 class ModelsUmlTest
 {
@@ -17,17 +14,9 @@ class ModelsUmlTest
 	{
 	}
 
-
-
-	/**
-	 * 
-	 * @param param    param
-	 */
 	public function getTest(array $param)
 	{
 		return 'UML OK';
 	}
-
-
 }
 ?>

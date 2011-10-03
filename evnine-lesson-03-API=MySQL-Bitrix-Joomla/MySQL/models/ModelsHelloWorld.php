@@ -1,21 +1,15 @@
 <?php
 /**
- * HelloWorld
+ * ModelsHelloWorld
  * @package HelloWorld
- * @author ev9eniy
- * @version 1.0
- * @created 04-apr-2010 11:03:41
  */
 class ModelsHelloWorld
 {	
 
 	var $api;
 
-	/**
-	 * Constructor
-	 */
 	function __construct($api){
-		$this->api=$api;//save api (MySQL link to class)
+		$this->api=$api;
 	}
 
 	function getQuery($param) {
@@ -25,7 +19,11 @@ class ModelsHelloWorld
 		return $array;
 	}
 
-	function setResetForTest($param){//Reset any data
+	/**
+	 * en: Reset any data
+	 * ru: Сбросить все данные
+	 */
+	function setResetForTest($param){
 		echo 'setResetForTest<br />';
 	}
 }

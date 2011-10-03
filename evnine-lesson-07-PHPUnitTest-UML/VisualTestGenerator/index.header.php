@@ -5,4 +5,4 @@
 <script type="text/javascript" language="JavaScript" src="js/jq.include.js"></script>
 <script type="text/javascript" language="JavaScript" src="js/jq.index.js"></script>
 </head>
-<body id="body">
+<body>

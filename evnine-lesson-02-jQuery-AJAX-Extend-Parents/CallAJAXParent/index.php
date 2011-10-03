@@ -9,5 +9,6 @@ $output = $evnine->getControllerForParam(
 		'ajax' => 'false',
 	)
 );
-print_r2($output, "array",false);
+
+print_r2($output);
 ?>

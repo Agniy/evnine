@@ -1,5 +1,4 @@
 <?php
-error_reporting(0);
 include_once 'evnine.php';
 include_once 'debug/evnine.debug.php';
 
@@ -29,5 +28,5 @@ $ctrlr = $evnine->getControllerForParam(
 />
 </form>
 <?php
-print_r2($ctrlr, "array",false);
+print_r2($ctrlr);
 ?>

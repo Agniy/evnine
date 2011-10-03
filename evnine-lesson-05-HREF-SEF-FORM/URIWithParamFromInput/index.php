@@ -1,5 +1,4 @@
 <?php
-error_reporting(0);
 include_once 'evnine.php';
 include_once 'debug/evnine.debug.php';
 
@@ -12,8 +11,6 @@ $output = $evnine->getControllerForParam(
 	)
 );
 
-print_r2($output, "array",false);
-
+print_r2($output);
 echo 'URN: '.$output['inURL']['default']['pre'].$output['inURL']['default']['TestID'].$output['inURL']['default']['post'];
-
 ?>

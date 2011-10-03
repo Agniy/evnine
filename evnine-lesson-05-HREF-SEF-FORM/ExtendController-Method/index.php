@@ -9,8 +9,6 @@ $output = $evnine->getControllerForParam(
 	)
 );
 
-print_r2($output, "array",false);
-
+print_r2($output);
 echo 'URN: '.$output['inURL']['default']['pre'].$output['inURL']['default']['TestID'].$output['inURL']['default']['post'];
-
 ?>

@@ -1,10 +1,7 @@
 <?php
 /**
- * HelloWorld
+ * ControllersHelloWorld
  * @package Controller
- * @author *
- * @version *
- * @updated *
  */
 if (!class_exists('sfYamlParser')){
 /**

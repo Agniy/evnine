@@ -2,7 +2,6 @@
 include_once 'debug/evnine.debug.php';
 include_once 'evnine.php';
 include_once 'debug/evnine.views.generator.template.php';
-$evnine = new EvnineController();
 include('index.header.php');
 /**
  * en: Use two controllers.
@@ -12,7 +11,7 @@ include('index.header.php');
  * ru: Один для модели другой для вида (На входе параметры модели), 
  * ru: для получения доступа к URL генератору.
  */
-
+$evnine = new EvnineController();
 $out = $evnine->getControllerForParam(
 	array(
 		'controller' => 'param_gen_models',

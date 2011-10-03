@@ -9,13 +9,15 @@ $output = $evnine->getControllerForParam(
 		'hello'=>'hello',
 	)
 );
-print_r2($output, "array",false);
-echo '<br/>';
+
+print_r2($output);echo '<br/>';
+
 $output = $evnine->getControllerForParam(
 	array(
 		'controller' => 'helloworld',
 		'hello'=>'false',
 	)
 );
-print_r2($output, "array",false);
+
+print_r2($output);
 ?>

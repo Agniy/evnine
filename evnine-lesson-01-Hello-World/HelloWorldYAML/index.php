@@ -1,6 +1,7 @@
 <?php
 include_once 'evnine.php';
 include_once 'debug/evnine.debug.php';
+
 class EvnineConfig{
 	function __construct(){
 		$this->controller_alias=array(
@@ -8,12 +9,13 @@ class EvnineConfig{
 		);
 	}
 }
-$evnine = new EvnineController();
 
+$evnine = new EvnineController();
 $output = $evnine->getControllerForParam(
 	$param = array(
 		'controller' => 'helloworld',
 	)
 );
-print_r2($output, "array",false);
+
+print_r2($output);
 ?>

@@ -17,7 +17,6 @@ var $controller_alias;
 
 	$this->param_const=array(
 			'default_controller'=>'default_controller',
-//		'setResetForTest'=>true
 	);
 	$this->controller_alias=array(
 		'validation'=>'ControllersHelloValidation',

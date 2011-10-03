@@ -219,7 +219,7 @@ class ModelsPHPUnit
 	function getPHPUnitCode(&$param) {
 		$php_unit_code= '<'.'?'.'php'."\r\n";
 		$php_unit_code.= '';
-		$php_unit_code.='/**'."\r\n"
+		$php_unit_code.='/*'.'*'."\r\n"
 		.' * Auto generator skeleton PHP Unit tests for the controller.'."\r\n"
 		.' * cmd/sh: phpunit --skeleton-test "evninePHPUnit"'."\r\n"
 		.' * '."\r\n"
@@ -235,7 +235,7 @@ class ModelsPHPUnit
 		.' * @filename evninePHPUnit.php'."\r\n"
 		.' * @package PHPUnitTest'."\r\n"
 		.' * @author evnine'."\r\n"
-		.' * @updated '.date('Y-m-d',time())."\r\n"
+		.' * @updated 2011-10-03'."\r\n"
 		.' */'."\r\n";
 		$php_unit_code.='//$_SERVER["DOCUMENT_ROOT"]=\'\''."\r\n";
 		$php_unit_code.='include_once(\'evnine.php\');'."\r\n";

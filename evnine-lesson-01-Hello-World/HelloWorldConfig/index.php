@@ -8,5 +8,6 @@ $output = $evnine->getControllerForParam(
 		'controller' => 'helloworld',
 	)
 );
-print_r2($output, "array",false);
+
+print_r2($output);
 ?>

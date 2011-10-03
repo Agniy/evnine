@@ -10,9 +10,7 @@ $output = $evnine->getControllerForParam(
 	)
 );
 
-print_r2($output, "array",false);
-
-echo '<br/>';
+print_r2($output);echo '<br/>';
 
 $output = $evnine->getControllerForParam(
 	array(
@@ -21,5 +19,5 @@ $output = $evnine->getControllerForParam(
 	)
 );
 
-print_r2($output, "array",false);
+print_r2($output);
 ?>
