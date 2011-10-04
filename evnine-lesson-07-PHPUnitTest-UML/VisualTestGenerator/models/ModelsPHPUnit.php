@@ -614,9 +614,10 @@ class ModelsPHPUnit
 				if (md5($this->_getMultiImplode($array_tmp))!==
 					md5($this->_getMultiImplode($param['getDataFromControllerByParam'][$param_id]))
 				){
-					$array[$param_id]=getForDebugArrayDiff(
-						$param['getDataFromControllerByParam'][$param_id],$array_tmp
-					);
+					if ($this->param['debug_param_diff'])
+						$array[$param_id]=getForDebugArrayDiff(
+							$param['getDataFromControllerByParam'][$param_id],$array_tmp
+						);
 					if (empty($array[$param_id])){
 						$array[$param_id]=false;
 					}

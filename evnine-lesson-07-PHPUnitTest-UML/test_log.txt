@@ -1,4 +1,4 @@
-25.09.2011 
+04.10.2011 
 ------------------------[ FrozenDataForDebug ]------------------------  
 PHPUnit 3.5.0 by Sebastian Bergmann.
 
@@ -12,7 +12,7 @@ PHPUnit 3.5.0 by Sebastian Bergmann.
 
 ....
 
-Time: 1 second, Memory: 4.25Mb
+Time: 0 seconds, Memory: 4.25Mb
 
 OK (4 tests, 4 assertions)
 ------------------------[ UML2Models ]------------------------  
@@ -20,14 +20,49 @@ PHPUnit 3.5.0 by Sebastian Bergmann.
 
 ..
 
-Time: 1 second, Memory: 4.25Mb
+Time: 0 seconds, Memory: 4.25Mb
 
 OK (2 tests, 2 assertions)
 ------------------------[ VisualTestGenerator ]------------------------  
 PHPUnit 3.5.0 by Sebastian Bergmann.
 
-......<form action="" method="get"><input value="Reset PHP Unit Cache" type="submit" name=""/></form><a name="head"></a> <table></table>.
+F.....<form action="" method="get"><input value="Reset PHP Unit Cache" type="submit" name=""/></form><a name="head"></a> <table></table>.
 
-Time: 0 seconds, Memory: 4.50Mb
+Time: 0 seconds, Memory: 4.75Mb
 
-OK (7 tests, 7 assertions)
+There was 1 failure:
+
+1) evninePHPUnitTest::testGetControllerForParam_helloworld_default_Test
+Failed asserting that two arrays are equal.
+--- Expected
++++ Actual
+@@ @@
+         (
+-            [test1] => 1
+-            [test] => 23
++            [test2] => 1
+         )
+ 
+     [REQUEST_OUT] => Array
+         (
+-            [test1] => 1
+-            [test] => 23
++            [test2] => 1
+
+@@ @@
+                 (
+-                    [test1] => 1
+-                    [test] => 23
++                    [test2] => 1
+                 )
+ 
+             [PHPFlag] => 
+             [ajax] => 
+         )
+ 
+ )
+
+C:\Documents and Settings\1\evnine\evnine-lesson-07-PHPUnitTest-UML\VisualTestGenerator\evninePHPUnitTest.php:42
+
+FAILURES!
+Tests: 7, Assertions: 7, Failures: 1.

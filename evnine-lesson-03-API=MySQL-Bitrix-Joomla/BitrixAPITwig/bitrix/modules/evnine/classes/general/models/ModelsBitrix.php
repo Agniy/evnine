@@ -16,10 +16,9 @@
  *	}
  * }
  */
+//class ModelsBitrixInfoBlockParser {function __construct(){}} 
 if (!class_exists('ModelsBitrixInfoBlockParser')){
 	include_once 'ModelsBitrixInfoBlockParser.php';
-}else {
-	class ModelsBitrixInfoBlockParser{} 
 }
 
 /**
@@ -188,7 +187,7 @@ class ModelsBitrix extends ModelsBitrixInfoBlockParser
 			$arOrder=$param['$arOrder']
 			,$arFilter=$param['$arFilter']
 			,$arNavStartParams=$param['$arNavStartParams']
-			//,$arSelectFields=$param['$arSelectFields']
+			,$arSelectFields=$param['$arSelectFields']
 		);
 		}else {
 			$items=CIBlockElement::GetList(
@@ -218,8 +217,12 @@ class ModelsBitrix extends ModelsBitrixInfoBlockParser
 						$param
 					);
 				}else {
-					if ($param['get_prop']) {
-						$item['props']=$props;
+					if ($param['get_prop']){ 
+						if (is_object($item)){ // ru: Учёт случая без функции парсенга.
+							$item->fileds['props']=$props;
+						}else{
+							$item['props']=$props;
+						}
 					}
 					$tmp = $item;
 				}
@@ -241,8 +244,12 @@ class ModelsBitrix extends ModelsBitrixInfoBlockParser
 						$param
 					);
 				}else {
-					if ($param['get_prop']) {
-						$item['props']=$props;
+					if ($param['get_prop']){ 
+						if (is_object($item)){ // ru: Учёт случая без функции парсенга.
+							$item->fileds['props']=$props;
+						}else{
+							$item['props']=$props;
+						}
 					}
 					$tmp = $item;
 				}
@@ -617,7 +624,7 @@ class ModelsBitrix extends ModelsBitrixInfoBlockParser
 		global $USER;
 		$section = new CIBlockElement();
 		$arLoadProductArray = Array(
-			"MODIFIED_BY" => $USER->GetID(),
+		"MODIFIED_BY" => $USER->GetID(),
 		"IBLOCK_ID" => $id,
 		"PROPERTY_VALUES" => $property,
 		"NAME" => $name,
@@ -868,5 +875,30 @@ class ModelsBitrix extends ModelsBitrixInfoBlockParser
 			return mb_strlen($str, 'utf-8');
 		return strlen(utf8_decode($str));
 	}
+
+	/** getSerializeGZBase64($data)
+	 * en: Save space in the DB by compressing the serialized object.
+	 * ru: Получить сериализованную строку для хранения в базе.
+	 * 
+	 * @param mixed $data 
+	 * @access public
+	 * @return string
+	 */
+	function getSerializeGZBase64($data){
+	   return base64_encode(gzcompress(serialize($data)));
+	}
+	
+	/** getUnserializeGZBase64($txt)
+	 * en: Upack serialized object from string. 
+	 * ru: Получить распакованную строку из базы.
+	 * 
+	 * @param string $txt
+	 * @access public
+	 * @return mixed
+	 */
+	function getUnserializeGZBase64($txt){
+	   return unserialize(gzuncompress(base64_decode($txt)));
+	} 
+
 }
 ?>
