@@ -1,4 +1,4 @@
-25.09.2011 
+17.10.2011 
 ------------------------[ ExtendController-Method ]------------------------  
 PHPUnit 3.5.0 by Sebastian Bergmann.
 
@@ -20,17 +20,87 @@ PHPUnit 3.5.0 by Sebastian Bergmann.
 
 .....
 
-Time: 0 seconds, Memory: 4.25Mb
+Time: 1 second, Memory: 4.25Mb
 
 OK (5 tests, 5 assertions)
 ------------------------[ GETArray ]------------------------  
 PHPUnit 3.5.0 by Sebastian Bergmann.
 
-..
+.F
 
-Time: 0 seconds, Memory: 4.25Mb
+Time: 1 second, Memory: 4.50Mb
 
-OK (2 tests, 2 assertions)
+There was 1 failure:
+
+1) evninePHPUnitTest::testGetControllerForParam_helloworld_post_Test
+Failed asserting that two arrays are equal.
+--- Expected
++++ Actual
+@@ @@
+ Array
+ (
+     [ControllerError] => Array
+         (
+-            [0] => EvnineController::getPrivateMethod (evnine.php, line:3906): In controller "helloworld" not found Method "isValidModifierParamFormError_true"
++            [0] => EvnineController::getPrivateMethod (evnine.php, line:3904): In controller "helloworld" not found Method "isValidModifierParamFormError_true"
+         )
+ 
+     [LoadController] => helloworld
+     [LoadMethod] => post
+     [ModelsValidation_isValidModifierParamFormError] => 1
+     [REQUEST_IN] => Array
+         (
+             [test_id] => Array
+                 (
+                     [0] => 0
+                     [1] => 3
+                     [2] => 2
+                 )
+ 
+         )
+ 
+     [REQUEST_OUT] => Array
+         (
+             [TestID] => Array
+                 (
+                     [0] => 0
+                     [1] => 3
+                     [2] => 2
+                 )
+ 
+         )
+ 
+     [ViewMethod] => Array
+         (
+             [post] => post
+         )
+ 
+     [ajax] => True
+     [inURL] => Array
+         (
+             [default] => Array
+                 (
+                     [TestID] => &test_id[]=
+                     [pre] => ?c=helloworld&m=default
+                     [post] => 
+                 )
+ 
+             [post] => Array
+                 (
+                     [TestID] => test_id[]
+                     [inputs] => <input type="hidden" name="c" value="helloworld"/><input type="hidden" name="m" value="post"/>
+                     [pre] => ?c=helloworld&m=post
+                     [post] => 
+                 )
+ 
+         )
+ 
+ )
+
+C:\Documents and Settings\1\evnine\evnine-lesson-05-HREF-SEF-FORM\GETArray\evninePHPUnitTest.php:54
+
+FAILURES!
+Tests: 2, Assertions: 2, Failures: 1.
 ------------------------[ SEFForController ]------------------------  
 PHPUnit 3.5.0 by Sebastian Bergmann.
 

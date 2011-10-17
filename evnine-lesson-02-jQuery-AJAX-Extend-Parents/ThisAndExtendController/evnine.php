@@ -2218,7 +2218,8 @@ function setLoadController($set_controller) {
 					 * en: If the controller file from array does not exist, set the error.
 					 * ru: Если файла контроллера из массива не существует, выводим ошибку.
 					 */
-					$this->result['ControllerError'][]=__METHOD__.' ('.preg_replace("/.*\\\/","",__FILE__).', line:'.__LINE__.'): controller file [array case]"'.$controller_file. '" not exist ';
+					$this->result['ControllerError'][]=__METHOD__.' ('.preg_replace("/.*\\\/","",__FILE__).', line:'.__LINE__.'): controller file [array case]"'.$controller_file. '" not exist '
+						.'<br/>please check /evnine.config.php $this->path_to=\''.$this->path_to.'\'';
 					return;
 				}
 			}else {
@@ -2226,7 +2227,8 @@ function setLoadController($set_controller) {
 			 * en: If the controller file does not exist, set the error.
 			 * ru: Если файла контроллера не существует, выводим ошибку.
 			 */
-				$this->result['ControllerError'][]=__METHOD__.' ('.preg_replace("/.*\\\/","",__FILE__).', line:'.__LINE__.'): controller file "'.$controller_file. '" not exist ';
+				$this->result['ControllerError'][]=__METHOD__.' ('.preg_replace("/.*\\\/","",__FILE__).', line:'.__LINE__.'): controller file "'.$controller_file. '" not exist '
+				.'<br/>please check /evnine.config.php $this->path_to=\''.$this->path_to.'\'';
 				return;
 			}
 			include_once($controller_file);
