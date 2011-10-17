@@ -14,6 +14,7 @@
 @if exist "%~1\%sub_path%debug\evnine.views.generator.template.php" xcopy "Source\%lang_dir%debug\evnine.views.generator.template.php" "%~1\%sub_path%debug\evnine.views.generator.template.php" /I /Y /U /H
 @if exist "%~1\%sub_path%debug\evnine.views.generator.template.config.php" xcopy "Source\%lang_dir%debug\evnine.views.generator.template.config.php" "%~1\%sub_path%debug\evnine.views.generator.template.config.php" /I /Y /U /H
 @if exist "%~1\%sub_path%models\ModelsBitrix.php" xcopy "Source\%lang_dir%models\ModelsBitrix.php" "%~1\%sub_path%models\ModelsBitrix.php" /I /Y /U /H
+@if exist "%~1\%sub_path%controllers\ControllersExample.php" xcopy "Source\%lang_dir%controllers\ControllersExample.php" "%~1\%sub_path%controllers\ControllersExample.php" /I /Y /U /H
 @if exist "%~1\%sub_path%models\ModelsBitrixInfoBlockParser.php" xcopy "Source\%lang_dir%models\ModelsBitrixInfoBlockParser.php" "%~1\%sub_path%models\ModelsBitrixInfoBlockParser.php"  /I /Y /U /H
 @if exist "%~1\%sub_path%models\ModelsErrors.php" xcopy "Source\%lang_dir%models\ModelsErrors.php" "%~1\%sub_path%models\ModelsErrors.php" /I /Y /U /H
 @if exist "%~1\%sub_path%models\ModelsInfo.php" xcopy "Source\%lang_dir%models\ModelsInfo.php" "%~1\%sub_path%models\ModelsInfo.php" /I /Y /U /H

@@ -1,10 +1,10 @@
-04.10.2011 
+17.10.2011 
 ------------------------[ FrozenDataForDebug ]------------------------  
 PHPUnit 3.5.0 by Sebastian Bergmann.
 
 .
 
-Time: 1 second, Memory: 4.25Mb
+Time: 0 seconds, Memory: 4.25Mb
 
 OK (1 test, 1 assertion)
 ------------------------[ PHPUnitTestGenerator ]------------------------  
@@ -28,7 +28,7 @@ PHPUnit 3.5.0 by Sebastian Bergmann.
 
 F.....<form action="" method="get"><input value="Reset PHP Unit Cache" type="submit" name=""/></form><a name="head"></a> <table></table>.
 
-Time: 0 seconds, Memory: 4.75Mb
+Time: 1 second, Memory: 4.75Mb
 
 There was 1 failure:
 

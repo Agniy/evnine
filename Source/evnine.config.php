@@ -276,7 +276,7 @@ class EvnineConfig
 		 * en: Path to the classes of models and variables are initialized by default
 		 * ru: Путь до классов моделей и переменные инициализации по умолчанию
 		 */
-			'ModelsMySQL' => array(
+			/*'ModelsMySQL' => array(
 				'param'=>array(
 					'host'=>'localhost',
 					'login' => 'root',
@@ -285,6 +285,7 @@ class EvnineConfig
 				),
 				'path'=>'/models/'
 			),
+      */
 		);
 	}
 }

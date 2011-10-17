@@ -42,3 +42,5 @@ file_to_copy=models/ModelsPHPUnit.php
 [ -f "$1/${sub_path}$file_to_copy" ] && cp "Source/${lang_dir}${file_to_copy}" "$1/${sub_path}$file_to_copy" >&2 && echo "update $1/${sub_path}$file_to_copy" >&2
 file_to_copy=models/ModelsValidation.php
 [ -f "$1/${sub_path}$file_to_copy" ] && cp "Source/${lang_dir}${file_to_copy}" "$1/${sub_path}$file_to_copy" >&2 && echo "update $1/${sub_path}$file_to_copy" >&2
+file_to_copy=controllers/ControllersExample.php
+[ -f "$1/${sub_path}$file_to_copy" ] && cp "Source/${lang_dir}${file_to_copy}" "$1/${sub_path}$file_to_copy" >&2 && echo "update $1/${sub_path}$file_to_copy" >&2
