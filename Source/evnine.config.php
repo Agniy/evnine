@@ -232,12 +232,13 @@ class EvnineConfig
 	var $path_to;
 
 	function __construct(){
-		$this->path_to=(defined( '__DIR__' )?__DIR__:getcwd()).DIRECTORY_SEPARATOR;
-		/**
+		//$this->path_to=(defined( '__DIR__' )?__DIR__:getcwd()).DIRECTORY_SEPARATOR;
+		$this->path_to='/home/django-projects/sretenie_new/bitrix/modules/evnine/';
+                /**
 		 * en: Automatically detect the current path.
 		 * ru: Автоматическое определение текущего пути.
 		 */
-		$this->api='ModelsMySQL';
+		$this->api='ModelsBitrix';
 		/**
 		 * en: Alias API (MySQL, etc.) 
 		 * ru: Название API (MySQL, итд)
@@ -269,14 +270,18 @@ class EvnineConfig
 			'helloworld'=>array(
 				'class_name'=>'ControllersHelloWorld',
 				'path'=>'controllers'.DIRECTORY_SEPARATOR,
-			)
+			),
+                        'cartgetall'=>'CartGetAll'
+                        /*'cartgetall'=>array('CartGetAll',
+                        'path'=>'bitrix/modules/evnine/controllers'
+                         ),*/ 
 		);
-		$this->class_path=array(
+		/*$this->class_path=array(
 		/**
 		 * en: Path to the classes of models and variables are initialized by default
 		 * ru: Путь до классов моделей и переменные инициализации по умолчанию
-		 */
-			/*'ModelsMySQL' => array(
+		 
+			'ModelsMySQL' => array(
 				'param'=>array(
 					'host'=>'localhost',
 					'login' => 'root',
@@ -284,9 +289,26 @@ class EvnineConfig
 					'db' => 'information_schema'
 				),
 				'path'=>'/models/'
+			), 
+		);*/
+                
+                $this->class_path=array(
+			'ModelsBitrix'=>array(
+				'path'=>'/models/',
+//				'param'=>array(
+//					'host'=>'localhost',
+//					'login' => 'root',
+//					'pass' => 'root',
+//					'db' => 'information_schema'
+//				),
 			),
-      */
-		);
+			'ModelsCart'=>array(
+				'path'=>'/models/',
+				//'param'=>array(
+					//'hello'=>'config',
+				//),
+			),
+		);	
 	}
 }
 ?>
